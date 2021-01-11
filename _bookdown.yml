@@ -4,6 +4,21 @@ repo: https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook
 delete_merged_file: true
 clean: [packages.bib]
 language:
+  label:
+    fig: '図 '
+    tab: '表 '
+    eq: '式 '
+    thm: '定理 '
+    lem: '補題 '
+    cor: '系 '
+    prp: '命題 '
+    cnj: '予想 '
+    def: '定義 '
+    exm: '例 '
+    exr: '練習 '
+    proof: '証明. '
+    remark: '用例. '
+    solution: '解答. '
   ui:
     chapter_name: "Chapter "
 edit: "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/%s"

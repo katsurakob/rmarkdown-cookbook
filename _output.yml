@@ -19,7 +19,6 @@ rmdja::pdf_book_ja:
   keep_tex: yes
   fig_crop: false
   latex_engine: xelatex
-  template: null
   pandoc_args: [--top-level-division=chapter, --wrap=none]
   toc_depth: 3
   toc_unnumbered: no
