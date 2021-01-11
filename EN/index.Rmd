@@ -1,33 +1,32 @@
 --- 
-title: "R Markdown クックブック"
-author:
-  - "(著者) Xie, Yihui"
-  - "(著者) Dervieux, Christophe"
-  - "(著者) Riederer, Emily"
-  - "(翻訳者) Katagiri, Satoshi^[twitter @[ill_identified](https://twitter.com/ill_identified)]"
+title: "R Markdown Cookbook"
+author: "Yihui Xie, Christophe Dervieux, Emily Riederer"
 date: "`r Sys.Date()`"
 bibliography:
   - packages.bib
   - literature.bib
+biblio-style: apalike
 description: This book showcases short, practical examples of lesser-known tips and tricks to helps users get the most out of these tools. After reading this book, you will understand how R Markdown documents are transformed from plain text and how you may customize nearly every step of this processing. For example, you will learn how to dynamically create content from R code, reference code in other documents or chunks, control the formatting with customer templates, fine-tune how your code is processed, and incorporate multiple languages into your analysis.
-documentclass: bxjsreport
+documentclass: krantz
 link-citations: yes
 colorlinks: yes
-# graphics: yes
-# lot: yes
-# lof: yes
+graphics: yes
+lot: yes
+lof: yes
 fontsize: 11pt
+monofont: "Source Code Pro"
+monofontoptions: "Scale=0.8"
 site: bookdown::bookdown_site
-github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
+github-repo: yihui/rmarkdown-cookbook
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
 ---
 
 ```{r setup, include=FALSE}
-c("rmarkdown", "bookdown", "magick", "Cairo", "CairoDevice")
-
 set.seed(0728)
+
 knitr::opts_chunk$set(tidy = TRUE)
+
 if (knitr::is_html_output()) {
   # ignore percentage widths for HTML output, unless they are used for multiple
   # figures side by side
@@ -37,8 +36,10 @@ if (knitr::is_html_output()) {
     options
   })
 }
+
 # packages only available on Github
 remote_pkgs = c(character())  # e.g., c(equatiomatic = 'datalorax')
+
 lapply(c(
   'remotes', 'webshot', 'DiagrammeR', 'stargazer', 'gt', 'flextable', 'formatR',
   'equatiomatic', 'gifski', 'magick', 'pdftools', 'tikzDevice', 'xaringan',
@@ -51,8 +52,20 @@ lapply(c(
     }
   }
 )
+
 # screenshot HTML widgets
 if (is.null(webshot:::find_phantom())) webshot::install_phantomjs()
+
+import_example <- function(file, lang = xfun::file_ext(file)) {
+  x = xfun::read_utf8(file.path("examples", file))
+  lang = tolower(lang)
+  if (nchar(lang) > 1) {
+    lang = sub('^r', '', lang)
+    if (lang == 'nw') lang = 'tex'
+  }
+  knitr::asis_output(paste(c(sprintf("````%s", lang), x, "````"), collapse = '\n'))
+}
+
 options(bookdown.post.latex = function(x) {
   # substitute nonbreaking spaces in \texttt{} with normal spaces
   m = gregexpr('\\\\texttt\\{[^}]+}', x)
@@ -63,6 +76,7 @@ options(bookdown.post.latex = function(x) {
   if (Sys.getenv('BOOKDOWN_FULL_PDF', '') == 'false') return(bookdown:::strip_latex_body(
     x, '\nThis PDF is only a skeleton. Please either read the free online HTML version, or purchase a hard-copy of this book.\n'
     ))
+
   # fix syntax highlighting:
   # \FunctionTok{tufte:}\AttributeTok{:tufte_html: default} ->
   # \FunctionTok{tufte::tufte_html:}\AttributeTok{ default}
@@ -77,43 +91,27 @@ options(bookdown.post.latex = function(x) {
   x = x[-unlist(mapply(seq, i1, i2, SIMPLIFY = FALSE))]
   x
 })
-
-source("utils.R")
 ```
 
-# はじめに {-}
-
-```{block, type="rmdtip"}
-本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) で提供されています. オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
-
-This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
-```
-
-```{block, type="rmdtip"}
-R Markdown 関連資料として, 以下も参考になります
-
-* 『[knitr: Rによる美麗で柔軟そして高速な動的レポート生成](https://gedevan-aleksizde.github.io/knitr-doc-ja/index.html)』 / "[knitr: Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/knitr/)"
-* "[R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)"
-* "[bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/)"
-```
+# Preface {-}
 
 ```{asis, echo=!knitr::is_latex_output()}
 ::: {.infobox .caution}
-**注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) ライセンスのもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+**Note**: This book is to be published by [Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837). The online version of this book is free to read here (thanks to Chapman & Hall/CRC), and licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/). If you have any feedback, please feel free to [file an issue on GitHub](https://github.com/yihui/rmarkdown-cookbook/issues/new). Thank you!
 :::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
 ```
 
-R Markdown は分析とレポート作成を1つのドキュメントとして結びつけるパワフルなツールです. 2014年初頭に **rmarkdown** パッケージ [@R-rmarkdown] が誕生して以来, R Markdown はいくつかの出力フォーマットをサポートするだけの単なるパッケージから, 書籍・ブログ・科学論文・ウェブサイト, そして講義資料の作成までもサポートする拡張性と多様なエコシステムを持つパッケージへと成長を遂げました.
+R Markdown is a powerful tool for combining analysis and reporting into the same document. Since the birth of the **rmarkdown** package [@R-rmarkdown] in early 2014, R Markdown has grown substantially from a package that supports a few output formats, to an extensive and diverse ecosystem that supports the creation of books, blogs, scientific articles, websites, and even resumes.
 
-[*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) [@rmarkdown2018] という, ほんの数年前に書かれた情報の詰まったガイドブックがあります. これは **`rmarkdown`** パッケージやその他の拡張パッケージの組み込みフォーマットのリファレンスを詳説しています. しかし読者や出版社から, どうやって作りたい内容を実現できるのかを見つけまでが大変なので, より実践的で, 面白く役に立つ小規模な使用例を豊富に掲載したものがあればというコメントをいただきました (言い換えるなら, 前書は無機質すぎるということです). これが本書の生まれた経緯です.
+There is a wealth of guidance that has been written over the past few years, and the book [*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) [@rmarkdown2018] provides a detailed reference on the built-in R Markdown output formats of the **rmarkdown** package, as well as several other extension packages. However, we have received comments from our readers and publisher that it would be beneficial to provide more practical and relatively short examples to show the interesting and useful usage of R Markdown, because it can be daunting to find out how to achieve a certain task from the aforementioned reference book (put another way, that book is too dry to read). As a result, this cookbook was born.
 
-公式ドキュメントが存在するにも関わらず, R Markdown のユーザーは有名な Q&A フォーラム『スタック・オーバーフロー』でしょっちゅう助けを求めています. 本書の執筆時点では, [`r-markdown` タグのついた質問](https://stackoverflow.com/questions/tagged/r-markdown) が 6,000 件以上ありました. この膨大な件数は特定の問題を探すのでない場合, フォーラムの利用が難しくなります. よって R Markdown を使ってできること, あるいはどのすればできるか, ということについての全ての可能性を知ることが難しくなるかもしれません. 本書の狙いはスタック・オーバーフローやその他のオンラインリソース (ブログの投稿やチュートリアル) から有名な質問を取り上げ, 多くのユーザーが毎日こぞって検索している問題に対して最新のソリューションを提供することです. 実際, 本書で扱うトピックを決めるのに役立つよう, 第二著者の Christophe はスタックオーバーフローの日々の最も人気のある投稿をスクレイピングする R Markdown のダッシュボートを作成しました. 幸運にも, 我々のクックブックはこれらの人気の投稿を含むことでより一層役に立つものになったに違いありません.
+Despite the existence of the official documentation, R Markdown users often seek help on Stack Overflow, a popular Q&A forum. At the time of writing, there are more than 6,000 questions with [the `r-markdown` tag.](https://stackoverflow.com/questions/tagged/r-markdown) This huge number means that the use of the forum can be difficult if you do not have a specific problem to search for. Therefore, it may be hard for you to realize all possible things that you could do with R Markdown or how to do them. This book aims to draw together popular posts from Stack Overflow and other online resources (such as blog posts or tutorials) to provide up-to-date solutions for everyday queries that users commonly make. In fact, to help us make decisions on the potential topics to cover in this book, the second author of this book, Christophe, has built an R Markdown dashboard to scrape Stack Overflow daily for the most popular posts. Hopefully, our cookbook can become more useful by including recipes from these popular posts.
 
-本書は R Markdown 文書の機能をどう活用するかの多くの例を掲載しています. クックブックとして, このガイドは R Markdown をより効率よく使いたい, そして R Markdown の力をより知りたい新規または初心者ユーザーにおすすめです.
+This book is designed to provide a range of examples on how to extend the functionality of your R Markdown documents. As a cookbook, this guide is recommended to new and intermediate R Markdown users who desire to enhance the efficiency of using R Markdown and also explore the power of R Markdown.
 
-## 本書の読み方 {-#How-to-read-this-book}
+## How to read this book {-}
 
 It is recommended that readers have a basic understanding of R Markdown. [Chapter 2](https://bookdown.org/yihui/rmarkdown/basics.html) of *R Markdown: The Definitive Guide* [@rmarkdown2018] provides an overview of the basics of R Markdown and is recommended background reading for any new users of R Markdown. For example, we did not cover Markdown syntax in this book, and expect readers to learn Markdown elsewhere. In particular, we strongly recommend that you go through [the full manual of Pandoc](https://pandoc.org/MANUAL.html) at least once. The manual is quite lengthy, but it is also a gold mine. You do not have to remember everything, but it will be very helpful if you are aware of the possible features of Markdown. [For countless times, I have seen](https://yihui.org/en/2018/11/hard-markdown/) people fail to write verbatim code blocks that contain three backticks, or list items that contain child elements. Without fully reading the Markdown syntax in the manual, perhaps you will never know or understand the rule "`N + 1` outer backticks for `N` inner backticks" or "indent properly to indicate child elements."
 
@@ -135,19 +133,19 @@ You do not need to read this book in a particular order. Later chapters are not 
 
 If you want to try the examples by yourself, the full source code of this book and examples are freely provided on GitHub at https://github.com/yihui/rmarkdown-cookbook. If you are reading the electronic version of this book, you may also just copy and paste the examples from the pages and run them in your favorite editor.
 
-## 本書の構成 {-#Structure-of-the-book}
+## Structure of the book {-}
 
 The book is broken down into small "recipes" that aim to demonstrate a single concept at a time. Chapter \@ref(installation) provides instructions on how to install the necessary software tools. Chapter \@ref(conceptual-overview) gives a conceptual overview of R Markdown. Chapter \@ref(basics) introduces the basic components of R Markdown, and how to convert between R Markdown documents and R scripts. Chapter \@ref(document-elements) tells you how to generate certain document elements, such as page breaks, bibliographies, numbered figures, animations, diagrams, etc. Chapter \@ref(formatting) shows how to format content, such as adjusting the figure size and alignment. Chapter \@ref(latex-output) introduces tips and tricks for those who only want LaTeX/PDF output. Similarly, Chapter \@ref(html-output) is for HTML users, and Chapter \@ref(word) is for Word users. If you want to produce output documents in multiple output formats (which is often tricky), you may find Chapter \@ref(multi-formats) useful. Chapter \@ref(tables) is, to be honest, my least favorite chapter, but I know a lot of users really want to learn how to produce tables. I'm not an expert on fancy tables, but hope you will at least find the list of packages there helpful. Chapter \@ref(chunk-options) shows some applications of **knitr**'s chunk options that you may not know. Chapter \@ref(output-hooks) and Chapter \@ref(chunk-hooks) are a little advanced, but should also be very useful because they show you the great power of being able to control **knitr**'s output and behavior with custom hook functions. Chapter \@ref(knitr-misc) introduces a variety of **knitr** tricks. Chapter \@ref(other-languages) shows examples of using other languages in R Markdown, so you know R Markdown is not only for R. It also teaches you how to make **knitr** work with a new language that has not been supported yet. Chapter \@ref(managing-projects) introduces tips on managing projects related to R Markdown. Chapter \@ref(workflow) presents some tips on enhancing your workflow.
 
 The recipes in this book are usually independent of each other, so you can pick up any one to read if you do not have a specific goal in mind.
 
-## ソフトウェア情報と conventions {#software-info .unnumbered}
+## Software information and conventions {#software-info .unnumbered}
 
 The basic R session information when compiling this book is as follows:
 
 ```{r tidy=FALSE}
 xfun::session_info(c(
-  'bookdown', 'knitr', 'rmarkdown', 'rmdja', 'xfun'
+  'bookdown', 'knitr', 'rmarkdown', 'xfun'
 ), dependencies = FALSE)
 ```
 
@@ -155,7 +153,7 @@ We do not add prompts (`>` and `+`) to R source code in this book, and we commen
 
 "Rmd" is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book.
 
-## 謝辞 {-#acknowledgments}
+## Acknowledgments {-}
 
 As usual, first I want to thank my employer RStudio for giving me the freedom to work on this book. Since I started working on it, my weekly meeting time with my manager, Tareef Kawaf, was first reduced from 15 minutes to 5 minutes, and then the meetings were just canceled. I have heard from several friends that they have too many unbearable meetings in their institutions, which waste a lot of their time. In terms of managing distractions, one of them recently lamented, "You may be able to mute Slack for five minutes, but can you possibly mute it for _a whole day_?" "Of course, I can!" I told her. I can probably mute it for a whole month if I like. Do not get me wrong---I do not mean Tareef or my colleagues are distractions. I only mean how much freedom they can offer me.
 
@@ -176,6 +174,6 @@ I worked on the last part of this book in the vacant house (without Internet!) o
 Lastly, I will definitely not miss this unique opportunity to thank my two little "super helpful co-workers" (5 and 3) at home during the COVID-19 pandemic, without whom I could have published this book five months earlier. Now I miss the teachers at their daycare center (Small Miracle) and feel daycare centers are perhaps not that expensive...
 
 ::: {.flushright data-latex=""}
-Yihui Xie
-ネブラスカ州エルクホーンにて
+Yihui Xie  
+Elkhorn, Nebraska
 :::

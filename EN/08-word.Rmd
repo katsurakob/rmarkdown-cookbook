@@ -1,0 +1,133 @@
+# Word
+
+To generate a Word document from R Markdown, you can use the output format `word_document`. If you want to include cross-references in the document, you may consider the output format `bookdown::word_document2`, as mentioned in Section \@ref(cross-ref).
+
+```yaml
+---
+output:
+  word_document: default
+  bookdown::word_document2: default  # for cross-references
+---
+```
+
+From our experience, the most frequently asked questions about Word output are:
+
+1. How can I apply a custom Word template to the document?
+
+1. How can I incorporate changes made in Word in the original R Markdown document?
+
+1. How can I style individual document elements?
+
+We will address these questions in this chapter.
+
+## Custom Word templates {#word-template}
+
+You can apply the styles defined in a Word template\index{template!Word} document to new Word documents generated from R Markdown. Such a template document is also called a "style reference document." The key is that you have to create this template document from Pandoc first, and change the style definitions in it later. Then pass the path of this template to the `reference_docx` option of `word_document`\index{output option!reference\_docx}, e.g.,
+
+```yaml
+---
+output:
+  word_document:
+    reference_docx: "template.docx"
+---
+```
+
+As we just mentioned, the document `template.docx` has to be generated from Pandoc. You can create this template from an arbitrary R Markdown document with the `word_document` output format (the actual content of this document does not matter, but it should contain the type of elements of which you want to style). Then open the `.docx` file, and edit the styles.
+
+```{r, word-template-1, echo=FALSE, fig.cap='Find the styles of a specific document element.', out.width='100%'}
+knitr::include_graphics('images/word-template-1.png', dpi = NA)
+```
+
+Figure \@ref(fig:word-template-1) shows that you can open the "Styles" window from the "HOME" tab in Word. When you move the cursor to a specific element in the document, an item in the styles list will be highlighted. If you want to modify the style of any type of element, you can click the drop-down menu on the highlighted item, and you will see a dialog box like Figure \@ref(fig:word-template-2).
+
+```{r, word-template-2, echo=FALSE, fig.cap='Modify the styles of an element in a Word document.', out.width='100%'}
+knitr::include_graphics('images/word-template-2.png', dpi = NA)
+```
+
+After you finish modifying the styles, you can save the document (with a filename that will not be accidentally overwritten), and use it as the template for future Word documents. When Pandoc renders a new Word document with a reference document (template), it will read the styles in the template and apply them to the new document.
+
+You may watch a short video at https://vimeo.com/110804387, or read the article at https://rmarkdown.rstudio.com/articles_docx.html for more detailed instructions on how to create a Word template with custom styles.
+
+Sometimes it may not be straightforward to find the style name for an element. There may be multiple styles applied to the same element, and you will only see one of them highlighted in the list of styles. It may require some guesswork and online searching to figure out the actual style that you want to modify. For example, you have to click the "Manage Styles" button (the third button from left to right at the bottom of the style list in Figure \@ref(fig:word-template-1)), and scroll through a large number of style names before you find the "Table" style (see Figure \@ref(fig:word-table)). Then you can modify this style for your tables (e.g., add borders).
+
+```{r, word-table, echo=FALSE, fig.cap='Modify the styles of tables in a Word document.', out.width='100%'}
+knitr::include_graphics('images/word-table.png', dpi = NA)
+```
+
+## The two-way workflow between R Markdown and Word {#word-redoc}
+
+While it is easy to generate a Word document from R Markdown\index{Word!port to and from Rmd}, things can be particularly painful when someone else edits the Word document and you have to manually port the changes back to the original R Markdown document. Luckily, Noam Ross has provided a promising solution to this problem. The **redoc** package\index{R package!redoc} (https://github.com/noamross/redoc) allows you to generate a Word document, revise the Word document, and convert the revised Word document back to R Markdown. Please note that as of this writing (June 2020), the **redoc** package is still experimental, and more unfortunately, its author has suspended the development. Anyway, if you want to try it out, you can install the package from GitHub:
+
+```r
+remotes::install_github("noamross/redoc")
+```
+
+Once the package is installed, you may use the output format `redoc::redoc`:
+
+```yaml
+---
+output: redoc::redoc
+---
+```
+
+This output format generates a Word document that actually stores the original Rmd document, so the Word document can be converted back to Rmd. Tracked changes in Word will be converted to text written with the CriticMarkup syntax\index{CriticMarkup} (http://criticmarkup.com). For example, `{++ important ++}` represents the insertion of the word "important" in the text.
+
+You can convert the Word document generated by `redoc::redoc` to Rmd via the function `redoc::dedoc()`, e.g., `redoc::dedoc("file.docx")` will generate `file.Rmd`. In this process, you can decide how to deal with tracked changes in Word via the `track_changes` argument, e.g., you may accept or reject changes, or convert tracked changes to CriticMarkup. We recommend that you use `track_changes = 'criticmarkup'` to avoid the permanent loss of tracked changes.
+
+When editing the Word document, you are expected to edit the parts that are _not_ automatically generated by code chunks or inline R expressions in R Markdown. For example, you must not edit a table if it is automatically generated by `knitr::kable()` in a code chunk, because such changes will be lost when you convert Word to Rmd via `dedoc()`. To avoid accidentally editing the automatic results from code chunks, you may set the option `highlight_outputs` to `true` in the `redoc::redoc` format, which means the automatic output will be highlighted in Word (with a background color). You should tell your collaborator that they should not touch these highlighted parts in the Word document.
+
+Again, the **redoc** package is still experimental and its future is unclear at the moment, so the introduction here is intentionally brief. When in doubt, we recommend that you read its documentation on GitHub.
+
+## Style individual elements {#word-officedown}
+
+Due to the simplicity of Markdown, you can apply some global styles to the Word document (see Section \@ref(word-template)), but it is not straightforward to style individual elements, such as changing the color of a word, or centering a paragraph.
+
+Continuing his effort to make it easier to work with Office documents in R, David Gohel started to develop the **officedown** package\index{R package!officedown} [@R-officedown] in 2018, which aims to bring some **officer**\index{R package!officer} [@R-officer] features into R Markdown. As of this writing, this package is still experimental, although its initial version has been published on CRAN. You may either install it from CRAN or GitHub:
+
+```r
+# install from CRAN
+install.packages("officedown")
+
+# or GitHub
+remotes::install_github("davidgohel/officedown")
+```
+
+After the package is installed, you need to load it in your R Markdown document, e.g.,
+
+````md
+```{r, setup, include=FALSE}`r ''`
+library(officedown)
+```
+````
+
+There is an output format `rdocx_document` in the **officedown** package, which is based on `rmarkdown::word_document` by default, and has several other features such as styling tables and plots.
+
+The **officedown** package allows you to style specific Word elements via the **officer** package. For example, you can create a style via the function `officer::fp_text()`, and apply the style to a piece of text via `ftext()` an inline R expression:
+
+`r import_example('officer.Rmd')`
+
+Besides functions in **officer**, **officedown** also allows you to use some special HTML comments to perform **officer** tasks. For example, the function `officer::block_pour_docx()` can be used to import an external Word document\index{Word!import external} into the current document, and alternatively, you can use the HTML comment in R Markdown:
+
+```html
+<!---BLOCK_POUR_DOCX{file: 'my-file.docx'}--->
+```
+
+That is equivalent to the inline R expression:
+
+```md
+`r knitr::inline_expr("block_pour_docx(file = 'my-file.docx')")`
+```
+
+Other things you may do with **officedown** and **officer** include the following:
+
+- Insert page breaks.
+
+- Put content in a multi-column layout.
+
+- Change paragraph settings.
+
+- Insert a table of contents.
+
+- Change the orientation of a section (landscape or portrait).
+
+To learn more about **officedown**, please check out its documentation at https://davidgohel.github.io/officedown/.

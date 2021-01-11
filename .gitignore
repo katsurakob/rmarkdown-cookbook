@@ -3,13 +3,14 @@
 .RData
 .Ruserdata
 rsconnect
-_book/*
+_docs/*
 _bookdown_files/*
 packages.bib
 *-tikzDictionary
 css/box.css
 latex/blackbox.tex
 latex/infobox.tex
+_latex
 
 # OS generated files #
 ######################

@@ -1,0 +1,407 @@
+# Managing Projects
+
+When you work on larger projects or reports, you may not want to put all text and code in a single R Markdown document, but organize them in smaller units instead. In this chapter, we introduce tips on how to organize multiple files related to R Markdown.
+
+## Source external R scripts {#source-script}
+
+If your R Markdown document has a large amount of code, you may consider putting some code in external R scripts, and run these scripts via `source()`\index{source()} or `sys.source()`\index{sys.source()}, e.g.,
+
+````md
+```{r, include=FALSE}`r ''`
+source("your-script.R", local = knitr::knit_global())
+# or sys.source("your-script.R", envir = knitr::knit_global())
+```
+````
+
+We recommend that you use the argument `local` in `source()` or `envir` in `sys.source()` explicitly to make sure the code is evaluated in the correct environment, i.e., `knitr::knit_global()`\index{knitr!knit\_global()}. The default values for them may not be the appropriate environment: you may end up creating variables in the wrong environment, and being surprised that certain objects are not found in later code chunks.
+
+Next in the R Markdown document, you can use objects created in these scripts (e.g., data objects or functions). This way will not only make your R Markdown document cleaner, but also make it more convenient for you to develop R code (e.g., debugging R code is often easier with pure R scripts than R Markdown).
+
+Note that we used `include = FALSE`\index{chunk option!include} in the above example because we only want to execute the script without showing any output. If you do want output, you may remove this chunk option, or use the options in Section \@ref(hide-one) to selectively hide or show different types of output.
+
+## Read external scripts into a chunk {#option-code}
+
+There is a disadvantage of the `source()` method in Section \@ref(source-script). That is, you will not be able to see the source code by default. You can use `source(..., echo = TRUE)`, but the source code will not be properly syntax highlighted. Besides, you need to be careful about the `local` argument of `source()`, as mentioned in Section \@ref(source-script). In this section, we introduce an alternative method that does not have these problems.
+
+Basically, when you have one or more external scripts, you may read them and pass the content to the `code` option\index{chunk option!code} of a chunk. The `code` option can take a character vector and treat it as the content of the code chunk. Below we show a few examples.
+
+- The `code` option can take a character vector of source code. For example:
+
+    ````md
+    ```{r, code=c('1 + 1', 'if (TRUE) plot(cars)')}`r ''`
+    ```
+    ````
+
+- You can also read an external file:
+
+    ````md
+    ```{r, code=xfun::read_utf8('your-script.R')}`r ''`
+    ```
+    ````
+
+- You can read as many scripts as you want:
+
+    ````md
+    ```{r, include=FALSE}`r ''`
+    read_files <- function(files) {
+      unlist(lapply(files, xfun::read_utf8))
+    }
+    ```
+
+    ```{r, code=read_files(c('one.R', 'two.R'))}`r ''`
+    ```
+    ````
+
+You can read scripts of other languages, too. See Chapter \@ref(other-languages) for how to use other languages in R Markdown. Here are a few more examples on non-R code.
+
+- Read a Python script:
+
+    ````md
+    ```{python, code=xfun::read_utf8('script.py')}`r ''`
+    ```
+    ````
+
+- Read a C++ file:
+
+    ````md
+    ```{Rcpp, code=xfun::read_utf8('file.cpp')}`r ''`
+    ```
+    ````
+
+With the `code` option, you can develop complicated code in your favorite editor, and read it into a code chunk of an R Markdown document.
+
+## Read multiple code chunks from an external script (\*) {#read-chunk}
+
+In Section \@ref(option-code), we introduced a way to read code into a single code chunk. In this section, we introduce one method to read multiple code chunks from an external script. The key is that you need to label the code in the script, and you can use the same labels in the code chunks in your R Markdown document, so the code in the external script can be mapped to the code chunks via the function `knitr::read_chunk()`\index{knitr!read\_chunk()}. To label a block of code in a script, you write the label after `## ----` (optionally, you can add a series of dashes to the end of this line). One script can contain multiple labeled code blocks, e.g.,
+
+```r
+## ---- test-a --------
+1 + 1
+
+## ---- test-b --------
+if (TRUE) {
+  plot(cars)
+}
+```
+
+We assume that the filename of the above script is `test.R`. In the R Markdown document, we can read it via `knitr::read_chunk()`, and use the code in code chunks with the labels, e.g.,
+
+````md
+Read an external script:
+
+```{r, include=FALSE, cache=FALSE}`r ''`
+knitr::read_chunk('test.R')
+```
+
+Now we can use the code, e.g.,
+
+```{r, test-a, echo=FALSE}`r ''`
+```
+
+```{r, test-b, fig.height=4}`r ''`
+```
+````
+
+Note that we use `knitr::read_chunk()` mainly for its side effect, so please make sure the code chunk in which you call this function is not cached (see Section \@ref(cache) for the explanation).
+
+Like methods introduced in Section \@ref(source-script) and Section \@ref(option-code), this method also gives you the flexibility of developing code in a separate environment.
+
+## Child documents (\*) {#child-document}
+
+When you feel an R Markdown document is too long, you may consider splitting it into shorter documents\index{child documents}, and include them as child documents of the main document via the chunk option `child`\index{chunk option!child}. The `child` option takes a character vector of paths to the child documents, e.g.,
+
+````md
+```{r, child=c('one.Rmd', 'two.Rmd')}`r ''`
+```
+````
+
+Since **knitr** chunk options can take values from arbitrary R expressions, one application of the `child` option is the conditional inclusion of a document. For example, if your report has an appendix containing technical details that your boss may not be interested in, you may use a variable to control whether this appendix is included in the report:
+
+````md
+Change `BOSS_MODE` to `TRUE` if this report is to be read
+by the boss:
+
+```{r, include=FALSE}`r ''`
+BOSS_MODE <- FALSE
+```
+
+Conditionally include the appendix:
+
+```{r, child=if (!BOSS_MODE) 'appendix.Rmd'}`r ''`
+```
+````
+
+Or if you are writing a news report on a football game that has not taken place yet, you may include different child documents depending on the outcome, e.g., `child = if (winner == 'brazil') 'brazil.Rmd' else 'germany.Rmd'`. Then as soon as the game (between Germany and Brazil) is finished, you can publish your report.
+
+Another way to compile child documents is the function `knitr::knit_child()`\index{knitr!knit\_child()}. You can call this function in an R code chunk or an inline R expression, e.g.,
+
+````md
+```{r, echo=FALSE, results='asis'}`r ''`
+res <- knitr::knit_child('child.Rmd', quiet = TRUE)
+cat(res, sep = '\n')
+```
+````
+
+The function `knit_child()` returns a character vector of the knitted output, which we can write back to the main document with `cat()` and the chunk option `results = 'asis'`\index{chunk option!results}.
+
+You can even use a child document as a template, and call `knit_child()` on it repeatedly with different parameters. In the example below, we run a regression using `mpg` as the response variable and each of the rest of variables in the `mtcars` data as the explanatory variable.
+
+````md
+```{r, echo=FALSE, results='asis'}`r ''`
+res <- lapply(setdiff(names(mtcars), 'mpg'), function(x) {
+  knitr::knit_child(text = c(
+    '## Regression on "`r knitr::inline_expr('x')`"',
+    '',
+    '```{r}',
+    'lm(mpg ~ ., data = mtcars[, c("mpg", x)])',
+    '```',
+    ''
+  ), envir = environment(), quiet = TRUE)
+})
+cat(unlist(res), sep = '\n')
+```
+````
+
+To make the above example self-contained, we used the `text` argument of `knit_child()` instead of a file input to pass the R Markdown content to be knitted. You can certainly write the content to a file, and pass a path to `knit_child()` instead. For example, you can save the content below to a file named `template.Rmd`:
+
+
+````md
+## Regression on "`r knitr::inline_expr('x')`"
+
+```{r}`r ''`
+lm(mpg ~ ., data = mtcars[, c("mpg", x)])
+```
+````
+
+And knit the file instead:
+
+```{r, eval=FALSE, tidy=FALSE}
+res <- lapply(setdiff(names(mtcars), 'mpg'), function(x) {
+  knitr::knit_child(
+    'template.Rmd', envir = environment(), quiet = TRUE
+  )
+})
+cat(unlist(res), sep = '\n')
+```
+
+## Keep the plot files {#keep-files}
+
+Most R Markdown output formats use the option `self_contained = TRUE`\index{output option!self\_contained} by default. This causes R plots to be embedded in the output documents, so we do not need the intermediate plot files when viewing the output documents. As a consequence, the plot folder (which typically has a suffix `_files`) will be deleted after the Rmd document is rendered\index{figure!keep files}.
+
+Sometimes you may want to keep the plot files. For example, some academic journals require authors to submit figures files separately. For R Markdown, there are three ways to avoid the automatic deletion of these files:
+
+1. Use the option `self_contained = FALSE` if the output format supports this option, e.g.,
+
+    ```yaml
+    output:
+      html_document:
+        self_contained: false
+    ```
+
+    However, this means the plot files will not be embedded in the output document. If this is not what you want, you may consider the next two methods.
+ 
+1. Enable caching for at least one code chunk (see Section \@ref(cache)). When caching is enabled, R Markdown will not delete the plot folder.
+
+1. Use the option `keep_md = TRUE`\index{output option!keep\_md} if the output format supports this option, e.g.,
+
+    ```yaml
+    output:
+      word_document:
+        keep_md: true
+    ```
+
+    When you ask R Markdown to preserve the intermediate Markdown output file, it will also preserve the plot folder.
+
+## The working directory for R code chunks {#working-directory}
+
+By default, the working directory\index{working directory} for R code chunks is the directory that contains the Rmd document. For example, if the path of an Rmd file is `~/Downloads/foo.Rmd`, the working directory under which R code chunks are evaluated is `~/Downloads/`. This means when you refer to external files with relative paths in code chunks, you need to know that these paths are relative to the directory of the Rmd file. With the aforementioned Rmd example file, `read.csv("data/iris.csv")` in a code chunk means reading the CSV file `~/Downloads/data/iris.csv`.
+
+When in doubt, you can add `getwd()` to a code chunk, compile the document, and check the output from `getwd()`.
+
+Sometimes you may want to use another directory as the working directory. The usual way to change the working directory is `setwd()`, but please note that `setwd()` is not persistent in R Markdown (or other types of **knitr** source documents), which means `setwd()` only works for the current code chunk, and the working directory will be restored after this code chunk has been evaluated.
+
+If you want to change the working directory for all code chunks, you may set it via a `setup` code chunk in the beginning of your document:\index{knitr!root.dir}\index{knitr!opts\_knit}
+
+````md
+```{r, setup, include=FALSE}`r ''`
+knitr::opts_knit$set(root.dir = '/tmp')
+```
+````
+
+This will change the working directory of all subsequent code chunks.
+
+If you use RStudio, you can also choose the working directory\index{RStudio!working directory} from the menu `Tools -> Global Options -> R Markdown` (see Figure \@ref(fig:rmd-wd)). The default working directory is the directory of the Rmd file, and there are two other possible choices: you may use the current working directory of your R console (the option "Current"), or the root directory of the project that contains this Rmd file as the working directory (the option "Project").
+
+```{r, rmd-wd, echo=FALSE, fig.cap='Change the default working directory for all R Markdown documents in RStudio.', fig.align='center'}
+knitr::include_graphics('images/rmd-wd.png', dpi = NA)
+```
+
+In RStudio, you may also knit an individual Rmd document with a specific working directory, as shown in Figure \@ref(fig:knit-wd). After you change the "Knit Directory" and click the "Knit" button, **knitr** will use the new working directory to evaluate your code chunks. All these settings boil down to `knitr::opts_knit$set(root.dir = ...)` as we mentioned earlier, so if you are not satisfied by any of these choices, you can specify a directory by yourself with `knitr::opts_knit$set()`.
+
+```{r, knit-wd, echo=FALSE, fig.cap='Knit an Rmd document with other possible working directories in RStudio.', fig.align='center'}
+knitr::include_graphics('images/knit-wd.png', dpi = NA)
+```
+
+There is no absolutely correct choice for the working directory. Each choice has its own pros and cons:
+
+- If you use the Rmd document directory as the working directory for code chunks (**knitr**'s default), you assume that file paths are relative to the Rmd document. This is similar to how web browsers handle relative paths, e.g., for an image `<img src="foo/bar.png" />` on an HTML page `https://www.example.org/path/to/page.html`, your web browser will try to fetch the image from `https://www.example.org/path/to/foo/bar.png`. In other words, the relative path `foo/bar.png` is relative to the directory of the HTML file, which is `https://www.example.org/path/to/`.
+
+    The advantage of this approach is that you can freely move the Rmd file _together with_ its referenced files anywhere, as long as their relative locations remain the same. For the HTML page and image example above, the files `page.html` and `foo/bar.png` could be moved together to a different directory, such as `https://www.example.org/another/path/`, and you will not need to update the relative path in the `src` attribute of `<img />`.
+
+    Some users like to think of relative paths in Rmd documents as "relative to the working directory of the R console," as opposed to "relative to the Rmd file." Therefore **knitr**'s default working directory feels confusing. The reason that I did not use the working directory of the R console as the default when I designed **knitr** was that users could use `setwd()` to change the working directory at any time. This working directory is not guaranteed to be stable. Each time a user calls `setwd()` in the console, there is a risk that the file paths in the Rmd document may become invalid. It could be surprising that the file paths depend on an external factor (`setwd()`), which is out of the control of the Rmd file. If you treat the Rmd file as "the center of the universe" when thinking of relative paths, the paths inside the Rmd file may be stabler.
+    
+    Furthermore, if you do not want to think too hard on relative paths, you may enter a path in RStudio using its autocomplete, as shown in Figure \@ref(fig:rmd-relative). RStudio will try to autocomplete a path relative to the Rmd file.
+
+- Using the working directory of the R console can be a good choice for knitting documents programmatically or interactively. For example, you may knit a document multiple times in a loop, and use a different working directory each time to read a different data file (with the same filename) in that directory. This type of working directory is advocated by the **ezknitr** package\index{R package!ezknitr} [@R-ezknitr], which essentially uses `knitr::opts_knit$set(root.dir)` to change the working directory for code chunks in **knitr**.
+
+- Using the project directory as the working directory requires an obvious assumption: you have to use a project (e.g., an RStudio project or a version control project) in the first place, which could be a disadvantage of this approach. The advantage of this type of working directory is that all relative paths in any Rmd document are relative to the project root directory, so you do not need to think where your Rmd file is located in the project or adjust the relative paths of other files accordingly. This type of working directory is advocated by the **here** package\index{R package!here} [@R-here], which provides the function `here::here()` to return an absolute path by resolving a relative path passed to it (remember that the relative path is relative to the project root). The disadvantage is that when you move the referenced file together with the Rmd file to another location in the project, you need to update the referenced path in the Rmd document. When you share the Rmd file with other people, you also have to share the whole project.
+
+    These types of paths are similar to absolute paths without the protocol or domain in HTML. For example, an image `<img src="/foo/bar.png" />` on the page `https://www.example.org/path/to/page.html` refers to the image under the root directory of the website, i.e., `https://www.example.org/foo/bar.png`. The leading `/` in the `src` attribute of the image indicates the root directory of the website. If you want to learn more (or further confuse yourself) about absolute and relative paths in HTML, please see [Appendix B.1 of the **blogdown** book](https://bookdown.org/yihui/blogdown/html.html) [@blogdown2017].
+
+The working directory pain mainly arises from this question when dealing with relative paths: _relative to what?_ As we mentioned earlier, different people have different preferences, and there is not an absolutely right answer.
+
+```{r, rmd-relative, echo=FALSE, fig.cap='Autocomplete file paths in an Rmd document in RStudio.', fig.align='center'}
+knitr::include_graphics('images/rmd-relative.png', dpi = NA)
+```
+
+## R package vignettes {#package-vignette}
+
+If you have experience in developing R packages, or your project requires clear documentation and rigorous tests for custom functions written in the project, you may consider organizing the project as an R package. If you do not know how to create an R package, you can easily get started in the RStudio IDE by clicking the menu `File -> New Project`, and selecting the project type to be an R package.\index{R package!vignette}\index{vignette}
+
+There are a lot of benefits of using an R package to manage a project. For example, you can place datasets in the `data/` folder, write R code under `R/`, generate documentation (e.g., using the **roxygen2** package [@R-roxygen2]\index{R package!roxygen2}) to `man/`, and add unit tests to `test/`. When it comes to the R Markdown reports, you can write them as package vignettes under `vignettes/`. In the vignettes, you can load datasets and call functions in the package. When you build the package (via the command `R CMD build` or RStudio), vignettes will be automatically compiled.
+
+To create a package vignette in R Markdown, the easiest way is through the RStudio menu `File -> New File -> R Markdown -> From Template`\index{RStudio!vignette template} (see Figure \@ref(fig:package-vignette)). Then you select "Package Vignette" from the **rmarkdown** package, and you will get a vignette template. After changing the title, author, and other metadata of the template, you can start writing the content of your report.
+
+```{r, package-vignette, echo=FALSE, fig.cap='Create a package vignette in RStudio.'}
+knitr::include_graphics('images/package-vignette.png', dpi = NA)
+```
+
+Alternatively, you can install the package **usethis**\index{R package!usethis} [@R-usethis] and use its function `usethis::use_vignette()`\index{usethis!use\_vignette()} to create a vignette skeleton. Below is what the YAML frontmatter of a package vignette typically looks like\index{YAML!vignette frontmatter}:
+
+```yaml
+---
+title: "Vignette Title"
+author: "Vignette Author"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```
+
+Note that you need to change the vignette title in both the `title` field and the `\VignetteIndexEntry{}` command. Besides the above information in the vignette, you also need to do two more things in your package `DESCRIPTION` file:
+
+1. Specify `VignetteBuilder: knitr` in the `DESCRIPTION` file.
+
+1. Add `Suggests: knitr, rmarkdown` in `DESCRIPTION`.
+
+The vignette output format does not have to be HTML. It can also be PDF, so you can use `output: pdf_document`, too. Any other output formats that create HTML or PDF are also okay, such as `beamer_presentation` and `tufte::tufte_html`. However, currently, R only recognizes HTML and PDF vignettes.
+
+## R Markdown templates in R packages {#package-template}
+
+Figure \@ref(fig:package-vignette) of Section \@ref(package-vignette) illustrates the process of retrieving the editable Package Vignette (HTML) template from the **rmarkdown** package. This R Markdown file is pre-populated with the appropriate metadata for an R package vignette.\index{R package!R Markdown template}\index{template!R Markdown} 
+
+Similarly, any package may include R Markdown templates that package users can access through the RStudio IDE (as shown in the figure) or across any platform with the `rmarkdown::draft()`\index{rmarkdown!draft} function.
+
+### Template use-cases
+
+Templates are a useful way to share custom structure, style, and content. There are many excellent examples of this "in the wild."\index{R package!R Markdown templates}
+
+Many templates add structure and style by pre-populating the YAML metadata. We already saw an example of this with the **rmarkdown** package's Package Vignette (HTML) template. Similarly, the **rmdformats** package [@R-rmdformats] provides a number of templates that pass different custom styling functions to the `output` option.
+
+Other templates demonstrate document structures that the packages require. For example, the **pagedown** package [@R-pagedown] includes numerous templates for posters, resumes, and other page layouts. Similarly, the **xaringan** package's Ninja Presentation template [@R-xaringan] demonstrates the syntax for many different slide formatting options. 
+
+Templates may also demonstrate package features and syntax. For example, both the **flexdashboard** package [@R-flexdashboard] and the **learnr** package [@R-learnr] include templates with code chunks that call functions from the packages to create a sample dashboard or tutorial, respectively.
+
+Similarly, templates may also include boilerplate content. For example, the **rticles** package [@R-rticles] provides many such templates to align R Markdown output to the required style and content guidelines of different academic journals. Boilerplate content is also useful in organizational settings, such as a team generating quarterly reports. 
+
+### Template setup
+
+The **usethis** package [@R-usethis] has a helpful function for creating templates. Running `usethis::use_rmarkdown_template("Template Name")`\index{usethis!use\_rmarkdown\_template()} will automatically create the required directory structure and files (you should provide your own Template Name).
+
+If you wish to set up your template manually instead, create a subdirectory of the `inst/rmarkdown/templates` directory. Within this directory, you need to save at least two files:
+
+1. A file named `template.yaml`, which gives the RStudio IDE basic metadata such as a human-readable name for the template. At a minimum, this file should have the `name` and `description` fields, e.g.,
+
+    ```yaml
+    name: Example Template
+    description: What this template does
+    ```
+
+    You may include `create_dir: true` if you want a new directory to be created when the template is selected. This is useful if your template relies upon additional resources. For example, the [**learnr** package template](https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml) sets `create_dir: true`, whereas the [**flexdashboard** package template](https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml) uses the default `create_dir: false`. You may attempt to open both of these templates in RStudio to notice the different user prompts.
+
+2. An R Markdown document saved under `skeleton/skeleton.Rmd`. This may contain anything you wish to put in an R Markdown document. 
+
+Optionally, the `skeleton` folder may also include additional resources like style sheets or images used by your template. These files will be loaded to the user's computer along with the template.
+
+For more details on building custom R Markdown templates, please refer to the [RStudio Extensions](https://rstudio.github.io/rstudio-extensions/rmarkdown_templates.html) website and the [Document Templates chapter](https://bookdown.org/yihui/rmarkdown/document-templates.html) of the _R Markdown Definitive Guide_ [@rmarkdown2018]. 
+
+## Write books and long-form reports with **bookdown** {#bookdown}
+
+The **bookdown** package [@R-bookdown]\index{R package!bookdown} is designed for creating long-form documents\index{book} that are composed of multiple R Markdown documents. For example, if you want to write a book, you can write each chapter in its own Rmd file, and use **bookdown** to compile these Rmd files into a book.
+
+For RStudio users, the easiest way to get started is to create a **bookdown** project\index{RStudio!bookdown project} with the IDE by selecting `File -> New Project -> New Directory -> Book Project using bookdown`, as you can see from Figure \@ref(fig:bookdown-project).
+
+If you do not use RStudio or if you prefer to work from the console, you may produce the same result by calling the function `bookdown:::bookdown_skeleton('your-book-dir')`.
+
+```{r, bookdown-project, echo=FALSE, fig.cap='Create a bookdown project in RStudio.'}
+knitr::include_graphics('images/bookdown-project.png', dpi = NA)
+```
+
+To demonstrate the usage, we provide a minimal example consisting of three files within the same directory:
+
+```md
+directory
+  |- index.Rmd
+  |- 01-intro.Rmd
+  |- 02-analysis.Rmd
+```
+
+Below we show the content of each file and explain their roles.
+
+- **index.Rmd**:
+
+  ````md
+  ---
+  title: "A Minimal bookdown Project"
+  site: bookdown::bookdown_site
+  output: bookdown::gitbook
+  ---
+  
+  # Preface {-}
+  
+  Some content
+  ````
+
+The first file is typically called `index.Rmd`. It should be the only Rmd file in which you provide the YAML frontmatter. It should also include a special YAML field `site: bookdown::bookdown_site`, so that **rmarkdown** knows to use **bookdown** to build all Rmd files, instead of rendering a single Rmd file. You can use any **bookdown** output formats, such as `bookdown::gitbook`, `bookdown::pdf_book`, `bookdown::word_document2`, and `bookdown::epub_book`.
+
+The next two Rmd files are two chapters:
+
+- **01-intro.Rmd:**
+
+  ````md
+  # Chapter 1
+  
+  This is chapter 1.
+  ````
+
+- **02-analysis.Rmd**:
+
+  ```md
+  # Chapter 2
+  
+  This is chapter 2.
+  ```
+
+To render these Rmd files, you should call `bookdown::render_book('index.Rmd')` instead of `rmarkdown::render()`. Under the hood, **bookdown** merges all Rmd files into a single Rmd by default and compiles it. Files are merged in alphabetical order. That is why we added numeric prefixes to filenames in the above example.
+
+There are a lot of settings that you can customize for a **bookdown** project. For a more comprehensive overview of **bookdown**, you may see Chapter 18 the **rmarkdown** book [@rmarkdown2018]. For the full documentation, see the **bookdown** book [@bookdown2016].
+
+## Build websites with **blogdown** {#blogdown}
+
+If you want build a website based on R Markdown, you may consider using the **blogdown** package\index{R package!blogdown} [@R-blogdown]. The easiest way to get started is to use the RStudio menu  `File -> New Project -> New Directory -> Website using blogdown`, as you can see from Figure \@ref(fig:bookdown-project). If you have never used **blogdown** before, you may use the default settings in the dialog box, otherwise you can customize things like the website theme. If you do not use RStudio, you may call the function `blogdown::new_site()` under an empty directory to create a new website.
+
+A website project may contain any number of Rmd documents. They could either be normal pages or blog posts. R Markdown makes it easier for you to maintain your website because the results on your website are automatically and dynamically generated.
+
+We recommend that you read [Chapter 1](https://bookdown.org/yihui/blogdown/get-started.html) of the **blogdown** book [@blogdown2017] for an overview of this package as well as the basic workflow of maintaining a website.

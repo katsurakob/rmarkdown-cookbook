@@ -1,0 +1,486 @@
+# Tables
+
+Tables are one of the primary ways in which we can communicate results in a report. You may often desire to tweak their appearance to suit your particular needs. In this chapter, we will introduce techniques that can be used to customize tables. This chapter aims to do the following:
+
+- Show all features of the table-generating function `knitr::kable()`.
+
+- Highlight more advanced customization of tables using the **kableExtra** package [@R-kableExtra].
+
+- Provide a list of other packages that produce tables.
+
+## The function `knitr::kable()` {#kable}
+
+The `kable()`\index{knitr!kable()} function in **knitr** is a very simple table generator, and is simple by design. It only generates tables for strictly rectangular data such as matrices and data frames. You cannot heavily format the table cells or merge cells. However, this function does have a large number of arguments for you to customize the appearance of tables:
+
+```{r code=formatR::usage(knitr::kable, output=FALSE), eval=FALSE}
+```
+
+### Supported table formats {#kable-formats}
+
+In most cases, `knitr::kable(x)` may be enough if you only need a simple table for the data object `x`. The `format` argument is automatically set according to the **knitr** source document format. Its possible values are `pipe` (tables with columns separated by pipes), `simple` (Pandoc's simple tables), `latex` (LaTeX tables), `html` (HTML tables), and `rst` (reStructuredText tables). For R Markdown documents, `kable()` uses the `pipe` format for tables by default, which looks like this:
+
+```{r, echo=FALSE}
+# print kable() results as text instead of real tables
+kat = function(x, ...) {
+  if (length(x) > 0) x[1] = gsub('^\n+', '', x[1])
+  x = gsub('\n\n+', '\n', x)
+  cat(x, sep = '\n')
+}
+```
+```{r comment='', render=kat, class.output='md'}
+knitr::kable(head(mtcars[, 1:4]), 'pipe')
+```
+
+You can also generate simple tables, or tables in HTML, LaTeX, and reStructuredText:
+
+```{r comment='', render=kat, class.output='md'}
+knitr::kable(head(mtcars[, 1:4]), 'simple')
+```
+```{r comment='', render=kat, class.output='html'}
+knitr::kable(mtcars[1:2, 1:2], 'html')
+```
+```{r comment='', render=kat, class.output='tex'}
+knitr::kable(head(mtcars[, 1:4]), 'latex')
+```
+
+```{r comment='', render=kat, class.output='rst'}
+knitr::kable(head(mtcars[, 1:4]), 'rst')
+```
+
+Please note that only the formats `pipe` and `simple` are portable, i.e., they work for any output document format. Other table formats only work for specific output formats, e.g., `format = 'latex'` only works for LaTeX output documents. Using a specific table format will give you more control, at the price of sacrificing portability.
+
+If you only need one table format that is not the default format for a document, you can set the global R option `knitr.table.format`, e.g.,
+
+```{r, eval=FALSE}
+options(knitr.table.format = 'latex')
+```
+
+This option can also be a function that returns the format string or `NULL`. In the case of `NULL`, **knitr** will try to automatically decide the appropriate format. For example, we can use the `latex` format only when the output format is LaTeX:
+
+```{r, eval=FALSE}
+options(knitr.table.format = function() {
+  if (knitr::is_latex_output()) 'latex' else 'pipe'
+})
+```
+
+### Change column names
+
+<!-- https://stackoverflow.com/questions/51432502/replace-column-names-in-kable-r-markdown/51444998#51444998 -->
+
+The names of columns in a data frame may not be the same as what we want to display to readers. In R, the column names of data often do not use spaces to separate words but dots or underscores instead. This may not feel natural when we read them in a table. We can use the `col.names` argument to replace the column names with a vector of new names. For example, we substitute the dots with spaces in the column names of the `iris` data:
+
+```{r}
+iris2 = head(iris)
+knitr::kable(iris2, col.names = gsub('[.]', ' ', names(iris)))
+```
+
+The `col.names` argument can take an arbitrary character vector (not necessarily the modified column names via functions like `gsub()`), as long as the length of the vector is equal to the number of columns of the data object, e.g.,
+
+```{r, eval=FALSE, tidy=FALSE}
+knitr::kable(
+  iris,
+  col.names = c('We', 'Need', 'Five', 'Names', 'Here')
+)
+```
+
+### Specify column alignment
+
+To change the alignment of the table columns, you can use either a vector of values consisting of characters `l` (left), `c` (center), and `r` (right) or a single multi-character string for alignment, so `kable(..., align = c('c', 'l'))` can be shortened to `kable(..., align = 'cl')`. By default, numeric columns are right-aligned, and other columns are left-aligned. Here is an example:
+
+```{r}
+# left, center, center, right, right
+knitr::kable(iris2, align = 'lccrr')
+```
+
+### Add a table caption {#kable-caption}
+
+You can add a caption to the table via the `caption` argument, e.g. (see Table \@ref(tab:kable-cap) for the output),
+
+```{r kable-cap}
+knitr::kable(iris2, caption = 'An example table caption.')
+```
+
+As we mentioned in Section \@ref(cross-ref), a table can be cross-referenced when it has a caption and the output format is from **bookdown**.
+
+### Format numeric columns
+
+You can set the maximum number of decimal places via the `digits` argument (which will be passed to the `round()` function), and other formatting arguments via `format.args` (to be passed to the `format()` function in base R). First we show a few simple examples of `round()` and `format()` so you will understand how the arguments work later in `kable()`:
+
+```{r, collapse=TRUE}
+round(1.234567, 0)
+round(1.234567, digits = 1)
+round(1.234567, digits = 3)
+format(1000, scientific = TRUE)
+format(10000.123, big.mark = ',')
+```
+
+Then we round and format numbers in a table:
+
+```{r, R.options=list(digits = 7)}
+d = cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 0, 1000))
+# at most 4 decimal places
+knitr::kable(d, digits = 4)
+# round columns separately
+knitr::kable(d, digits = c(5, 0, 2))
+# do not use the scientific notation
+knitr::kable(d, digits = 3, format.args = list(scientific = FALSE))
+# add commas to big numbers
+knitr::kable(d, digits = 3, format.args = list(big.mark = ',', scientific = FALSE))
+```
+
+### Display missing values
+
+By default, missing values (i.e., `NA`) are displayed as the character string `NA` in the table. You can replace them with other values or choose not to display anything (i.e., leave the `NA` cells empty) with the global R option `knitr.kable.NA`, e.g., we make `NA` cells empty in the second table and display `**` in the third table below:
+
+```{r}
+d[rbind(c(1, 1), c(2, 3), c(3, 2))] = NA
+knitr::kable(d)  # NA is displayed by default
+# replace NA with empty strings
+opts = options(knitr.kable.NA = '')
+knitr::kable(d)
+options(knitr.kable.NA = '**')
+knitr::kable(d)
+options(opts)  # restore global R options
+```
+
+### Escape special characters
+
+If you are familiar with HTML or LaTeX, you know that there are a few special characters in these languages. To generate safe output, `kable()` will escape these special characters by default via the argument `escape = TRUE`, which means all characters will be generated verbatim, and special characters lose their special meanings. For example, `>` will be substituted with `&gt;` for HTML tables, and `_` will be escaped as `\_` for LaTeX tables. If you are an expert and know how to use special characters properly, you may disable this argument via `escape = FALSE`. In the second table below, we include a few LaTeX math expressions that contain special characters `$`, `\`, and `_`:
+
+```{r}
+m = lm(dist ~ speed, data = cars)
+d = coef(summary(m))
+knitr::kable(d)
+# add a few math expressions to row and column names
+rownames(d) = c('$\\beta_0$', '$\\beta_1$')
+colnames(d)[4] = '$P(T > |t|)$'
+knitr::kable(d, escape = FALSE)
+```
+
+Without `escape = FALSE`, special characters will either be escaped or substituted. For example, `$` is escaped as `\$`, `_` is escaped as `\_`, and `\` is substituted with `\textbackslash{}`:
+
+```{r, render=kat, comment='', class.output='tex'}
+knitr::kable(d, format = 'latex', escape = TRUE)
+```
+
+Other common special LaTeX characters include `#`, `%`, `&`, `{`, and `}`. Common special HTML characters include `&`, `<`, `>`, and `"`. You need to be cautious when generating tables with `escape = FALSE`, and make sure you are using the special characters in the right way. It is a very common mistake to use `escape = FALSE` and include `%` or `_` in column names or the caption of a LaTeX table without realizing that they are special.
+
+If you are not sure how to properly escape special characters, there are two internal helper functions in **knitr**. Below are some examples:\index{knitr!escape\_latex()}\index{knitr!escape\_html()}
+
+```{r}
+knitr:::escape_latex(c('100%', '# a comment', 'column_name'))
+knitr:::escape_html(c('<address>', 'x = "character"', 'a & b'))
+```
+
+### Multiple tables side by side
+
+You can pass a list of data frames or matrices to `kable()` to generate multiple tables side by side. For example, Table \@ref(tab:two-tables) contains two tables generated from the code below:
+
+```{r, two-tables, tidy=FALSE}
+d1 <- head(cars, 3)
+d2 <- head(mtcars[, 1:3], 5)
+knitr::kable(
+  list(d1, d2),
+  caption = 'Two tables placed side by side.',
+  booktabs = TRUE, valign = 't'
+)
+```
+
+Please note that this feature only works for HTML and PDF output.
+
+If you want to be able to customize each table individually when placing them side by side, you may use the `kables()`\index{knitr!kables()} function (the plural form of `kable()`), and pass a list of `kable()` objects to it. For example, we change the column names in the left table and set the number of decimal places to zero in the right table in Table \@ref(tab:kables):
+
+```{r, kables, tidy=FALSE}
+# data objects d1 and d2 are from the previous code chunk
+knitr::kables(
+  list(
+    # the first kable() to change column names
+    knitr::kable(
+      d1, col.names = c('SPEED', 'DISTANCE'), valign = 't'
+    ),
+    # the second kable() to set the digits option
+    knitr::kable(d2, digits = 0, valign = 't')
+  ),
+  caption = 'Two tables created by knitr::kables().'
+)
+```
+
+### Generate multiple tables from a `for`-loop (\*)
+
+One common confusion about `kable()` is that it does not work inside `for`-loops. This problem is not specific to `kable()` but exists in many other packages, too. The reason is a little complicated. In case you are interested in the technicality, it is explained in the blog post ["The Ghost Printer behind Top-level R Expressions."](https://yihui.org/en/2017/06/top-level-r-expressions/)
+
+You may expect the following code chunk to generate three tables, but it will not:
+
+````md
+```{r}`r ''`
+for (i in 1:3) {
+  knitr::kable(head(iris))
+}
+```
+````
+
+You have to explicitly print the `kable()` results, and apply the chunk option `results = 'asis'`\index{chunk option!results}, e.g.,
+
+````md
+```{r, results='asis'}`r ''`
+for (i in 1:3) {
+  print(knitr::kable(head(iris)))
+}
+```
+````
+
+In general, when you generate output from a `for`-loop, we recommend that you add a few line breaks (`\n`) or an HTML comment (`<!-- -->`) after each output element to clearly separate all output elements, e.g.,
+
+````md
+```{r, results='asis'}`r ''`
+for (i in 1:3) {
+  print(knitr::kable(head(iris), caption = 'A caption.'))
+  cat('\n\n<!-- -->\n\n')
+}
+```
+````
+
+Without the separators, Pandoc may be fail to detect the individual elements. For example, when a plot is followed immediately by a table, the table will not be recognized:
+
+```md
+![](logo.png)
+                      mpg   cyl   disp    hp
+------------------  -----  ----  -----  ----
+Mazda RX4            21.0     6    160   110
+Mazda RX4 Wag        21.0     6    160   110
+```
+
+But it will be if there is a clear separation like this (note that we added an empty line below the image):
+
+```md
+![](logo.png)
+
+                      mpg   cyl   disp    hp
+------------------  -----  ----  -----  ----
+Mazda RX4            21.0     6    160   110
+Mazda RX4 Wag        21.0     6    160   110
+```
+
+or
+
+```md
+![](logo.png)
+
+<!-- -->
+
+                      mpg   cyl   disp    hp
+------------------  -----  ----  -----  ----
+Mazda RX4            21.0     6    160   110
+Mazda RX4 Wag        21.0     6    160   110
+```
+
+### Customize LaTeX tables (\*)
+
+If the only output format you need is LaTeX, there are a few extra options you can use in `kable()`. Note that these options will be ignored in other types of output such as HTML. Unless you have set the table format option globally (see Section \@ref(kable-formats)), you will have to use the `format` argument of `kable()` explicitly in the examples of this section, e.g.,
+
+```{r, eval=FALSE}
+knitr::kable(iris2, format = 'latex', booktabs = TRUE)
+```
+
+When you assign a caption to a table (see Section \@ref(kable-caption)), `kable()` will use the `table` environment to include the table, i.e.,
+
+```latex
+\begin{table}
+% the table body (usually the tabular environment)
+\end{table}
+```
+
+You can change this environment via the `table.envir` argument, e.g.,
+
+```{r, render=kat, comment='', class.output='tex'}
+knitr::kable(cars[1:2, ], format = 'latex', table.envir = 'figure')
+```
+
+The floating position of the table is controlled by the argument `position`. For example, we can try to force a table to float to the bottom of a page via `position = "!b"`:
+
+```{r, render=kat, comment='', class.output='tex'}
+knitr::kable(cars[1:2, ], format = 'latex', table.envir = 'table', position = '!b')
+```
+
+When a table has a caption, you can also assign a short caption to it via the `caption.short` argument, e.g.,
+
+```{r, eval=FALSE}
+knitr::kable(iris2, caption = 'A long long long caption!', caption.short = 'A short one.')
+```
+
+The short caption goes into the square brackets of the `\caption[]{}` command in LaTeX, and is often used in the List of Tables of the PDF output document (if the short caption is not provided, the full caption is displayed there).
+
+If you are familiar with the LaTeX package [**booktabs**](https://ctan.org/pkg/booktabs)\index{LaTeX package!booktabs} for publication-quality tables, you can set `booktabs = TRUE`, e.g.,
+
+```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
+iris3 = head(iris, 10)
+knitr::kable(iris3, format = 'latex', booktabs = TRUE)
+```
+
+Please note that when you need additional LaTeX packages such as **booktabs** for an R Markdown document, you have to declare these packages in YAML (see Section \@ref(latex-extra) for how).
+
+Depending on whether the argument `booktabs` is `TRUE` or `FALSE` (default), the table appearance is different. For `booktabs = FALSE`:
+
+- Table columns are separated by vertical lines. You can explicitly remove the vertical lines via the `vline` argument, e.g., `knitr::kable(iris, vline = "")` (the default is `vline = "|"`). You can set this option as a global R option so you do not need to set it for every single table, e.g., `options(knitr.table.vline = "")`.
+
+- The horizontal lines can be defined via arguments `toprule`, `midrule`, `linesep`, and `bottomrule`. Their default values are all `\hline`.
+
+For `booktabs = TRUE`:
+
+- There are no vertical lines in the table, but you can add these lines via the `vline` argument.
+
+- The table only has horizontal lines for the table header and the bottom row. The default argument values are `toprule = "\\toprule"`, `midrule = "\\midrule"`, and `bottomrule = "\\bottomrule"`. A line space is added to every five rows by default. This is controlled by the argument `linesep`, which defaults to `c("", "", "", "", "\\addlinespace")`. If you want to add a space to every three rows, you can do this:
+
+  ```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
+  knitr::kable(iris3, format = 'latex', linesep = c('', '', '\\addlinespace'), booktabs = TRUE)
+  ```
+
+  If you want to remove the line spaces altogether, you may use `linesep = ''`.
+
+Sometimes your table may be longer than a page. In this case, you can use the argument `longtable = TRUE`, which uses the LaTeX package [**longtable**](https://ctan.org/pkg/longtable) to span your table to multiple pages.
+
+Tables are center-aligned by default when they are included in a table environment (i.e., when the table has a caption). If you do not want to center a table, use the argument `centering = FALSE`.
+
+### Customize HTML tables (\*)
+
+<!-- https://stackoverflow.com/questions/24254552/knitr-style-table-with-css -->
+
+If you want to customize tables generated via `knitr::kable(format = "html")`, there is only one extra argument besides the common arguments mentioned in previous sections: `table.attr`. This argument allows you to add arbitrary attributes to the `<table>` tag. For example:
+
+```{r, render=kat, comment='', class.output='html'}
+knitr::kable(mtcars[1:2, 1:2], table.attr = 'class="striped"', format = "html")
+```
+
+We added a class `striped` to the table. However, a class name is not enough to change the appearance of a table. You have to define CSS\index{CSS!striped table} rules for the class. For example, to make a striped table that has different colors for odd and even rows, you can add a light gray background to even or odd rows:
+
+```css
+.striped tr:nth-child(even) { background: #eee; }
+```
+
+The above CSS rule means all rows (i.e., the `<tr>` tags) with even row numbers (`:nth-child(even)`) that are children of an element with the `striped` class will have a background color `#eee`.
+
+A little bit of CSS can make a plain HTML table look decent. Figure \@ref(fig:striped-table) is a screenshot of an HTML table to which the following CSS rules are applied: 
+
+```css
+table {
+  margin: auto;
+  border-top: 1px solid #666;
+  border-bottom: 1px solid #666;
+}
+table thead th { border-bottom: 1px solid #ddd; }
+th, td { padding: 5px; }
+thead, tfoot, tr:nth-child(even) { background: #eee; }
+```
+
+```{r, striped-table, fig.cap='A striped table created with HTML and CSS.', echo=FALSE, fig.align='center', out.width='70%'}
+knitr::include_graphics('images/striped-table.png', dpi = NA)
+```
+
+## The **kableExtra** package {#kableextra}
+
+The **kableExtra** package [@R-kableExtra]\index{R package!kableExtra} is designed to extend the basic functionality of tables produced using `knitr::kable()` (see Section \@ref(kable)). Since `knitr::kable()` is simple by design (please feel free to read this as "Yihui is lazy"), it definitely has a lot of missing features that are commonly seen in other packages, and **kableExtra** has filled the gap perfectly. The most amazing thing about **kableExtra** is that most of its table features work for both HTML and PDF formats (e.g., making striped tables like the one in Figure \@ref(fig:striped-table)).
+
+This package can be installed from CRAN as usual, or you may try the development version on GitHub (https://github.com/haozhu233/kableExtra):
+
+```{r, eval=FALSE}
+# install from CRAN
+install.packages("kableExtra")
+
+# install the development version
+remotes::install_github("haozhu233/kableExtra")
+```
+
+It has extensive documentation at https://haozhu233.github.io/kableExtra/, which provides a lot of examples on how the `kable()` output can be customized for either HTML or LaTeX output. We recommend that you read its documentation by yourself, and will only present a handful of examples in this section.
+
+The **kableExtra** package features the pipe operator, `%>%`. You can pipe the `kable()` output to the styling functions of **kableExtra**, e.g.,
+
+```{r, results='hide', tidy=FALSE}
+library(knitr)
+library(kableExtra)
+kable(iris) %>%
+  kable_styling(latex_options = "striped")
+```
+
+### Set the font size
+
+The function `kable_styling()` in **kableExtra**\index{kableExtra!kable\_styling()} allows you to style the whole table. For example, you can specify the alignment of the table on the page, the width, and the font size of the table. Below is an example of using a smaller font size:
+
+```{r, tidy=FALSE}
+kable(head(iris, 5), booktabs = TRUE) %>%
+  kable_styling(font_size = 8)
+```
+
+### Style specific rows/columns
+
+The functions `row_spec()`\index{kableExtra!row\_spec()} and `column_spec()`\index{kableExtra!column\_spec()} can be used to style individual rows and columns, respectively. In the example below, we make the first row bold and italic, add a black background to the second and third rows while changing the font color to white, underline the fourth row and change its typeface, rotate the fifth row, and strike out the fifth column:
+
+```{r, tidy=FALSE}
+kable(head(iris, 5), align = 'c', booktabs = TRUE) %>%
+  row_spec(1, bold = TRUE, italic = TRUE) %>% 
+  row_spec(2:3, color = 'white', background = 'black') %>%
+  row_spec(4, underline = TRUE, monospace = TRUE) %>% 
+  row_spec(5, angle = 45) %>% 
+  column_spec(5, strikeout = TRUE)
+```
+
+Similarly, you can style individual cells with the `cell_spec()` function\index{kableExtra!cell\_spec()}.
+
+### Group rows/columns
+
+Rows and columns can be grouped via the functions `pack_rows()`\index{kableExtra!pack\_rows()} and `add_header_above()`\index{kableExtra!add\_header\_above()}, respectively. You can also collapse rows via `collapse_rows()`\index{kableExtra!collapse\_rows()}, so one cell can span multiple rows. Below is an example that shows a custom table header with grouped columns:
+
+```{r, tidy=FALSE}
+iris2 <- iris[1:5, c(1, 3, 2, 4, 5)]
+names(iris2) <- gsub('[.].+', '', names(iris2))
+kable(iris2, booktabs = TRUE) %>%
+  add_header_above(c("Length" = 2, "Width" = 2, " " = 1)) %>% 
+  add_header_above(c("Measurements" = 4, "More attributes" = 1))
+```
+
+For the named vector in `add_header_above()`, the names are the text to be shown in the table header, and the integer values of the vector indicate how many columns a name should span, e.g., `"Length" = 2` means `Length` should span two columns.
+
+Below is an example of `pack_rows()`. The meaning of its `index` argument is similar to the argument of `add_header_above()` as we just explained before.
+
+```{r, tidy=FALSE}
+iris3 <- iris[c(1:2, 51:54, 101:103), ]
+kable(iris3[, 1:4], booktabs = TRUE) %>% pack_rows(
+  index = c("setosa" = 2, "versicolor" = 4, "virginica" = 3)
+)
+```
+
+### Scaling down wide tables in LaTeX
+
+There are a few features that are specific to the HTML or LaTeX output format. For example, landscape pages only make sense in LaTeX, so the `landscape()` function\index{kableExtra!landscape()} in **kableExtra** only works for LaTeX output. Below we show an example to scale down a table to fit the page (otherwise it would be too wide):
+
+```{r, tidy=FALSE}
+tab <- kable(tail(mtcars, 5), booktabs = TRUE)
+tab  # original table (too wide)
+tab %>%
+  kable_styling(latex_options = "scale_down")
+```
+
+You will not see any differences in the above two tables if you are viewing the HTML version.
+
+## Other packages for creating tables {#table-other}
+
+There are many other R packages that can be used to generate tables\index{R package!table packages}. The main reason that I introduced `kable()` (Section \@ref(kable)) and **kableExtra** (Section \@ref(kableextra)) is not that they are better than other packages, but because I'm familiar with only them.^[Frankly speaking, I rarely use tables by myself, so I'm not highly motivated to learn how to create sophisticated tables.] Next I will list the packages that I'm aware of but not very familiar with. You can check them out by yourself, and decide which one fits your purpose best.
+
+- **flextable** [@R-flextable] and **huxtable** [@R-huxtable]: If you are looking for a table package that supports the widest range of output formats, **flextable** and **huxtable** are probably the two best choices. They all support HTML, LaTeX, and Office formats, and contain most common table features (e.g., conditional formatting). More information about **flextable** can be found at https://davidgohel.github.io/flextable/, and the documentation of **huxtable** is at https://hughjonesd.github.io/huxtable/.
+
+- **gt** [@R-gt]: Allows you to compose a table by putting together different parts of the table, such as the table header (title and subtitle), the column labels, the table body, row group labels, and the table footer. Some parts are optional. You can also format numbers and add background shading to cells. Currently **gt** mainly supports HTML output.^[If you need the support for other output formats such as LaTeX and Word, the **gtsummary** package [@R-gtsummary] has made some extensions based on **gt** that look very promising: https://github.com/ddsjoberg/gtsummary.] You can find more information about it at https://gt.rstudio.com.
+
+- **formattable** [@R-formattable]: Provides some utility functions to format numbers (e.g., `percent()` and `accounting()`), and also functions to style table columns (e.g., format the text, annotate numbers with background shading or color bars, or add icons in cells). Like **gt**, this package also primarily supports the HTML format. You can find more information about it from its GitHub project at https://github.com/renkun-ken/formattable.
+
+- **DT** [@R-DT]: As its author, I think I'm familiar with this package, but I did not introduce it in a separate section because it only supports the HTML format. **DT** is built on top of the JavaScript library **DataTables**, which can turn a static table into an interactive table on an HTML page. You may sort, search, and paginate the table. **DT** also supports formatting the cells, works with Shiny to build interactive applications, and has included a large number of **DataTables** extensions (e.g., you may export the table to Excel, or interactively reorder columns). See the package repository for more information: https://github.com/rstudio/DT.
+
+- **reactable** [@R-reactable]: Similar to **DT**, this package also creates interactive tables based on a JavaScript library. Frankly speaking, it looks better than **DT** in several aspects in my eyes (such as row grouping and aggregation, and embedding HTML widgets). Had **reactable** existed in 2015, I would not have developed **DT**. That said, **reactable** does not contain all the features of **DT**, so you may read its documentation and see which one fits your purpose better: https://glin.github.io/reactable/.
+
+- **rhandsontable** [@R-rhandsontable]: Also similar to **DT**, and has an Excel feel (e.g., you can edit data directly in the table). Visit https://jrowen.github.io/rhandsontable/ to learn more about it.
+
+- **pixiedust** [@R-pixiedust]: Features creating tables for models (such as linear models) converted through the **broom** package [@R-broom]. It supports Markdown, HTML, and LaTeX output formats. Its repository is at https://github.com/nutterb/pixiedust.
+
+- **stargazer** [@R-stargazer]: Features formatting regression models and summary statistics tables. The package is available on CRAN at https://cran.r-project.org/package=stargazer.
+
+- **xtable** [@R-xtable]: Perhaps the oldest package for creating tables---the first release was made in 2000. It supports both LaTeX and HTML formats. The package is available on CRAN at https://cran.r-project.org/package=xtable.
+
+I'm not going to introduce the rest of packages, but will just list them here: **tables** [@R-tables], **pander** [@R-pander], **tangram** [@R-tangram], **ztable** [@R-ztable], and **condformat** [@R-condformat].

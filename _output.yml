@@ -1,5 +1,6 @@
-bookdown::gitbook:
+rmdja::gitbook_ja:
   split_by: section
+  keep_md: true
   css: [css/style.css, css/box.css]
   config:
     toc:
@@ -10,7 +11,7 @@ bookdown::gitbook:
     sharing:
       github: yes
       facebook: no
-bookdown::pdf_book:
+rmdja::pdf_book_ja:
   includes:
     in_header: [latex/preamble.tex, latex/blackbox.tex, latex/infobox.tex]
     before_body: latex/before_body.tex
@@ -18,7 +19,6 @@ bookdown::pdf_book:
   keep_tex: yes
   fig_crop: false
   latex_engine: xelatex
-  citation_package: natbib
   template: null
   pandoc_args: [--top-level-division=chapter, --wrap=none]
   toc_depth: 3
@@ -26,4 +26,3 @@ bookdown::pdf_book:
   toc_appendix: yes
   highlight_bw: yes
   quote_footer: ["\\VA{", "}{}"]
-bookdown::epub_book: default

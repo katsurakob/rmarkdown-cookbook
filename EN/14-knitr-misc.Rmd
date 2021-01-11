@@ -1,0 +1,534 @@
+# Miscellaneous knitr Tricks {#knitr-misc}
+
+Besides chunk options (Chapter \@ref(chunk-options)), output hooks (Chapter \@ref(output-hooks)), and chunk hooks (Chapter \@ref(chunk-hooks)), there are other useful functions and tricks in **knitr**\index{knitr}. We introduce these tricks in this chapter, such as how to reuse code chunks, exit knitting early, display a plot in a custom place, and so on.
+
+## Reuse code chunks {#reuse-chunks}
+
+You can freely reuse code chunks\index{code chunk} anywhere in your source document without cut-and-paste. The key is to label your code chunks, so you can refer to them with labels in other places. There are three ways to reuse code chunks\index{code chunk!reuse}.
+
+### Embed one chunk in another chunk (\*) {#embed-chunk}
+
+You can embed one code chunk in another code chunk by enclosing its label in `<<>>`\index{code chunk!embed}\index{code chunk!<<>>}. Then **knitr** will automatically expand the string `<<label>>` to the actual code. For example, you can create an R function in this way:
+
+````md
+We define a function to convert Fahrenheit to Celsius.
+
+```{r, f2c}`r ''`
+F2C <- function(x) {
+  <<check-arg>>
+  <<convert>>
+}
+```
+
+First, we check if the input value is numeric:
+
+```{r, check-arg, eval=FALSE}`r ''`
+  if (!is.numeric(x)) stop("The input must be numeric!")
+```
+
+Then we do the actual conversion:
+
+```{r, convert, eval=FALSE}`r ''`
+  (x - 32) * 5/ 9
+```
+````
+
+This is based on one of the main ideas of [Literate Programming,](https://en.wikipedia.org/wiki/Literate_programming) which was proposed by Donald Knuth. The advantage of this technique is that you can split (complex) code into smaller parts, write each part in a separate code chunk, and explain them with narratives. All parts can be composed into the main code chunk to be executed.
+
+For the above example, the first code chunk (with the label `f2c`) will become:
+
+````md
+```{r, f2c}`r ''`
+F2C <- function(x) {
+  if (!is.numeric(x)) stop("The input must be numeric!")
+  (x - 32) * 5/ 9
+}
+```
+````
+
+You can embed an arbitrary number of other code chunks in one code chunk. The embedding can also be recursive. For example, you may embed chunk A in chunk B, and chunk B in chunk C. Then chunk C will include code from chunk A via chunk B.
+
+The marker `<<label>>` does not have to be on a separate line. It can be embedded anywhere in a code chunk.
+
+### Use the same chunk label in another chunk {#same-label}
+
+If you want to use exactly the same code chunk two or more times, you may define the chunk with a label, and create more code chunks with the same label but leave the chunk content empty, e.g.,
+
+````md
+Here is a code chunk that is not evaluated:
+
+```{r, chunk-one, eval=FALSE}`r ''`
+1 + 1
+2 + 2
+```
+
+Now we actually evaluate it:
+
+```{r, chunk-one, eval=TRUE}`r ''`
+```
+````
+
+We used the chunk label "chunk-one" twice in the above example, and the second chunk just reuses code from the first chunk.
+
+We recommend that you do not use this method to run a code chunk more than once to generate plots (or other files), because plot files created from a later chunk may overwrite files from a previous chunk. It is okay if only one of such chunks uses the chunk option `eval = TRUE`, and all other chunks use `eval = FALSE`.
+
+### Use reference labels (\*) {#ref-label}
+
+The chunk option `ref.label`\index{chunk option!ref.label} takes a vector of chunk labels to retrieve the content of these chunks. For example, the code chunk with the label `chunk-a` is the combination of `chunk-c` and `chunk-b` below:
+
+````md
+```{r chunk-a, ref.label=c('chunk-c', 'chunk-b')}`r ''`
+```
+
+```{r chunk-b}`r ''`
+# this is the chunk b
+1 + 1
+```
+
+```{r chunk-c}`r ''`
+# this is the chunk c
+2 + 2
+```
+````
+
+In other words, `chunk-a` is essentially this:
+
+````md
+```{r chunk-a}`r ''`
+# this is the chunk c
+2 + 2
+# this is the chunk b
+1 + 1
+```
+````
+
+The chunk option `ref.label` has provided a very flexible way of reorganizing code chunks in a document without resorting to cut-and-paste. It does not matter if the code chunks referenced are before or after the code chunk that uses `ref.label`. An early code chunk can reference a later chunk.
+
+There is an application of this chunk option in Section \@ref(code-appendix).
+
+## Use an object before it is created (\*) {#load-cache}
+
+All code in a **knitr** document, including the code in code chunks and inline R expressions, is executed in linear order from beginning to end. In theory, you cannot use a variable before it is assigned a value. However, in certain cases, we may want to mention the value of a variable earlier in the document. For example, it is common to present a result in the abstract of an article, but the result is actually computed later in the document. Below is an example that illustrates the idea but will not compile:
+
+````md
+---
+title: An important report
+abstract: >
+  In this analysis, the average value of
+  `x` is `r knitr::inline_expr('mx')`.
+---
+
+We create the object `mx` in the following chunk:
+
+```{r}`r ''`
+x <- 1:100
+mx <- mean(x)
+```
+````
+
+To solve this problem, the value of the object has to be saved somewhere and loaded the next time when the document is compiled. Please note that this means the document has to be compiled at least twice. Below is one possible solution using the `saveRDS()` function:
+
+````md
+```{r, include=FALSE}`r ''`
+mx <- if (file.exists('mean.rds')) {
+  readRDS('mean.rds')
+} else {
+  "The value of `mx` is not available yet"
+}
+```
+
+---
+title: An important report
+abstract: >
+  In this analysis, the average value of
+  `x` is `r knitr::inline_expr('mx')`.
+---
+
+We create the object `mx` in the following chunk:
+
+```{r}`r ''`
+x <- 1:100
+mx <- mean(x)
+saveRDS(mx, 'mean.rds')
+```
+````
+
+The first time you compile this document, you will see the phrase "The value of `mx` is not available yet" in the abstract. Later, when you compile it again, you will see the actual value of `mx`.
+
+The function `knitr::load_cache()`\index{knitr!load\_cache()} is an alternative solution, which allows you to load the value of an object from a specific code chunk after the chunk has been cached\index{caching}. The idea is similar to the above example, but it will save you the effort of manually saving and loading an object, because the object is automatically saved to the cache database, and you only need to load it via `load_cache()`. Below is the simplified example:
+
+````md
+---
+title: An important report
+abstract: >
+  In this analysis, the average value of
+  `x` is `r knitr::inline_expr("knitr::load_cache('mean-x', 'mx')")`.
+---
+
+We create the object `mx` in the following chunk:
+
+```{r mean-x, cache=TRUE}`r ''`
+x <- 1:100
+mx <- mean(x)
+```
+````
+
+In this example, we added a chunk label `mean-x` to the R code chunk (which is passed to the `load_cache()` function), and cached it using the chunk option `cache = TRUE`\index{chunk option!cache}. All objects in this code chunk will be saved to the cache database. Again, you will have to compile this document at least twice, so the object `mx` can be correctly loaded from the cache database. If the value of `mx` is not going to be changed in the future, you do not need to compile the document one more time.
+
+If you do not specify the object name in the second argument to `load_cache()`, the whole cache database will be loaded into the current environment. You can then use any objects that were in the cache database before these objects are created later in the document, e.g.,
+
+```{r, eval=FALSE}
+knitr::load_cache('mean-x')
+x   # the object `x`
+mx  # the object `mx`
+```
+
+## Exit knitting early {#knit-exit}
+
+Sometimes we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom that is not yet complete. In these situations, we could consider using the `knit_exit()`\index{knitr!knit\_exit()} function in a code chunk, which will end the knitting process after that chunk.
+
+Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:
+
+````md
+```{r}`r ''`
+1 + 1
+knitr::knit_exit()
+```
+
+You will only see the above content in the output.
+
+```{r}`r ''`
+Sys.sleep(100)
+```
+````
+
+Normally you have to wait for 100 seconds, but since we have called `knit_exit()`, the rest of the document will be ignored.
+
+## Generate a plot and display it elsewhere {#fig-chunk}
+
+Normally plots generated in a code chunk are displayed beneath the code chunk, but you can choose to show them elsewhere and (optionally) hide them in the code chunk. Below is an example:
+
+````md
+We generate a plot in this code chunk but do not show it:
+
+```{r cars-plot, dev='png', fig.show='hide'}`r ''`
+plot(cars)
+```
+
+After another paragraph, we introduce the plot:
+
+![A nice plot.](`r knitr::inline_expr("knitr::fig_chunk('cars-plot', 'png')")`)
+````
+
+In the code chunk, we used the chunk option `fig.show='hide'`\index{chunk option!fig.show} to hide the plot temporarily. Then in another paragraph, we called the function `knitr::fig_chunk()`\index{knitr!fig\_chunk()} to retrieve the path of the plot file, which is usually like `test_files/figure-html/cars-plot-1.png`. You need to pass the chunk label and the graphical device name to `fig_chunk()` for it to calculate the plot file path.
+
+You may see https://stackoverflow.com/a/46305297/559676 for an application of `fig_chunk()` to **blogdown** websites. This function works for any R Markdown output formats. It can be particularly helpful for presenting plots on slides, because the screen space is often limited on slide pages. You may present code on a slide, and reveal the plot on a different slide.
+
+## Modify a plot in a previous code chunk {#global-device}
+
+By default, **knitr** opens a new graphical device to record plots for each new code chunk. This brings a problem: you cannot easily modify a plot from a previous code chunk, because the previous graphical device has been closed. This is usually problematic for base R graphics (not so for grid graphics such as those created from **ggplot2** [@R-ggplot2] because plots can be saved to R objects). For example, if we draw a plot in one code chunk, and add a line to the plot in a later chunk, R will signal an error saying that a high-level plot has not been created, so it could not add the line.
+
+If you want the graphical device to remain open for all code chunks, you may set a **knitr** package option in the beginning of your document\index{knitr!opts\_knit}\index{knitr!global.device}\index{figure!global} device:
+
+```{r, eval=FALSE}
+knitr::opts_knit$set(global.device = TRUE)
+```
+
+Please note that it is `opts_knit` instead of the more frequently used `opts_chunk`. You may see the Stack Overflow post https://stackoverflow.com/q/17502050 for an example.
+
+When you no longer need this global graphical device, you can set the option to `FALSE`. Here is a full example:
+
+`r import_example('global-device.Rmd')`
+
+## Save a group of chunk options and reuse them (\*) {#opts-template}
+
+If you frequently use some chunk options, you may save them as a group\index{chunk option!options template}\index{template!chunk options} and reuse them later only using the group name. This can be done with `knitr::opts_template$set(name = list(options))`\index{knitr!opts\_template}. Then you can use the chunk option `opts.label`\index{chunk option!opts.label} to refer to the group name. For example:
+
+````md
+```{r, setup, include=FALSE}`r ''`
+knitr::opts_template$set(fullwidth = list(
+  fig.width = 10, fig.height = 6,
+  fig.retina = 2, out.width = '100%'
+))
+```
+
+```{r, opts.label='fullwidth'}`r ''`
+plot(cars)
+```
+````
+
+With `opts.label = 'fullwidth'`, **knitr** will read chunk options from `knitr::opts_template`, and apply them to the current chunk. This can save you some typing effort. If a chunk option is to be used globally in a document, you should consider setting it globally (see Chapter \@ref(chunk-options)).
+
+You can override options read from `opts.label`, e.g., if you set `fig.height = 7` in the chunk below, the actual `fig.height` will be `7` instead of `6`.
+
+````md
+```{r, opts.label='fullwidth', fig.height=7}`r ''`
+plot(cars)
+```
+````
+
+You can save an arbitrary number of grouped options, e.g.,  `knitr::opts_template$set(group1 = list(...), group2 = list(...))`.
+
+## Use `knitr::knit_expand()` to generate Rmd source {#knit-expand}
+
+The function `knitr::knit_expand()`\index{knitr!knit\_expand()} "expands" an expression in `{{ }}` (by default) to its value, e.g.,
+
+```{r, tidy=FALSE, collapse=TRUE}
+knitr::knit_expand(text = "The value of `pi` is {{pi}}.")
+knitr::knit_expand(
+  text = "The value of `a` is {{a}}, so `a + 1` is {{a+1}}.",
+  a = round(rnorm(1), 4)
+)
+```
+
+This means that if you have an Rmd document that contains some dynamic parts in `{{ }}`, you may apply `knit_expand()` on the document, and then call `knit()` to compile it. For example, here is a template document named `template.Rmd`:
+
+````md
+# Regression on {{i}}
+
+```{r lm-{{i}}}`r ''`
+lm(mpg ~ {{i}}, data = mtcars)
+```
+````
+
+We can build linear regression models using `mpg` against all other variables one by one in the `mtcars` dataset:
+
+````md
+```{r, echo=FALSE, results='asis'}`r ''`
+src = lapply(setdiff(names(mtcars), 'mpg'), function(i) {
+  knitr::knit_expand('template.Rmd')
+})
+res = knitr::knit_child(text = unlist(src), quiet = TRUE)
+cat(res, sep = '\n')
+```
+````
+
+If you find it difficult to understand this example, please see Section \@ref(results-asis) for the meaning of the chunk option `results = 'asis'`\index{chunk option!results}, and Section \@ref(child-document) for the usage of `knitr::knit_child()`\index{knitr!knit\_child()}.
+
+## Allow duplicate labels in code chunks (\*) {#duplicate-label}
+
+<!-- https://stackoverflow.com/questions/36868287/purl-within-knit-duplicate-label-error/47065392#47065392 -->
+
+By default, **knitr** does not allow duplicate code chunk labels in the document. Duplicate labels will result in an error when the document is knitted. This occurs most frequently when a code chunk is copied and pasted within a document. You may have seen an error message like this:
+
+```text
+processing file: myfile.Rmd
+Error in parse_block(g[-1], g[1], params.src, markdown_mode) :
+  Duplicate chunk label 'cars'
+Calls: <Anonymous> ... process_file -> split_file -> lapply ->
+  FUN -> parse_block
+Execution halted
+```
+
+However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one parent document `parent.Rmd` in which we knit the child document multiple times, it will fail:
+
+```{r, eval = FALSE}
+# settings
+settings = list(...)
+
+# run once
+knit_child('useful_analysis.Rmd')
+
+# new settings
+settings = list(...)
+
+# run again
+knit_child('useful_analysis.Rmd')
+```
+
+In this scenario, we can allow duplicate labels by setting this global option in R _before_ the child document is knitted\index{knitr!knitr.duplicate.label}:
+
+```{r, eval = FALSE}
+options(knitr.duplicate.label = 'allow')
+```
+
+If you want to allow duplicate labels in the main document instead of the child document, you have to set this option _before_ `knitr::knit()` is called. One possible way to achieve that is to set the option in your `~/.Rprofile` file (see the help page `?Rprofile` for more information).
+
+You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross references. For example, in theory, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without error or warning messages), because the filenames of plots are determined by the chunk labels. With the option `knitr.duplicate.label = "allow"`, **knitr** will silently change the duplicate labels by adding numeric suffixes. For example, for the two code chunks:
+
+````md
+```{r, test}`r ''`
+plot(1:10)
+```
+
+```{r, test}`r ''`
+plot(10:1)
+```
+````
+
+The second label will be silently changed to `test-1`. This may avoid overwriting the plot from the chunk with the label `test`, but it also makes the chunk label unpredictable, so you may have difficulties in cross-referencing figures\index{crossreference} (see Section \@ref(cross-ref)), because the cross references are also based on chunk labels.
+
+## A more transparent caching mechanism {#cache-rds}
+
+If you feel the caching mechanism of **knitr** introduced in Section \@ref(cache) is too complicated (it is!), you may consider a simpler caching mechanism\index{caching} based on the function `xfun::cache_rds()`\index{xfun!cache\_rds()}, e.g.,
+
+```{r, eval=FALSE}
+xfun::cache_rds({
+  # write your time-consuming code in this expression
+})
+```
+
+The tricky thing about **knitr**'s caching is how it decides when to invalidate the cache. For `xfun::cache_rds()`, it is much clearer: the first time you pass an R expression to this function, it evaluates the expression and saves the result to a `.rds` file; the next time you run `cache_rds()` again, it reads the `.rds` file and returns the result immediately without evaluating the expression again. The most obvious way to invalidate the cache is to delete the `.rds` file. If you do not want to manually delete it, you may call `xfun::cache_rds()` with the argument `rerun = TRUE`.
+
+When `xfun::cache_rds()` is called inside a code chunk in a **knitr** source document, the path of the `.rds` file is determined by the chunk option `cache.path`\index{chunk option!cache.path} and the chunk label. For example, for a code chunk with the chunk label `foo` in the Rmd document `input.Rmd`:
+
+````md
+```{r, foo}`r ''`
+res <- xfun::cache_rds({
+  Sys.sleep(3)
+  1:10
+})
+```
+````
+
+The path of the `.rds` file will be of the form `input_cache/FORMAT/foo_HASH.rds`, where `FORMAT` is the Pandoc output format name (e.g., `html` or `latex`), and `HASH` is an MD5 hash that contains 32 hexadecimal digits (consisting a-z and 0-9), e.g., `input_cache/html/foo_7a3f22c4309d400eff95de0e8bddac71.rds`.
+
+As documented on the help page `?xfun::cache_rds`, there are two common cases in which you may want to invalidate the cache: 1) the code in the expression to be evaluated has changed; 2) the code uses an external variable, and the value of that variable has changed. Next we will explain how these two ways of cache invalidation work, as well as how to keep multiple copies of the cache corresponding to different versions of the code.
+
+### Invalidate the cache by changing code in the expression
+
+When you change the code in `cache_rds()` (e.g., from `cache_rds({x + 1})` to `cache_rds({x + 2})`), the cache will be automatically invalidated and the expression will be re-evaluated. However, please note that changes in white spaces or comments do not matter. Or generally speaking, as long as the change does not affect the parsed expression, the cache will not be invalidated. For example, the two expressions passed to `cache_rds()` below are essentially identical:
+
+```r
+res <- xfun::cache_rds({
+  Sys.sleep(3  );
+  x<-1:10;  # semi-colons won't matter
+  x+1;
+})
+
+res <- xfun::cache_rds({
+  Sys.sleep(3)
+  x <- 1:10  # a comment
+  x +
+    1  # feel free to make any changes in white spaces
+})
+```
+
+Hence if you have executed `cache_rds()` on the first expression, the second expression will be able to take advantage of the cache. This feature is helpful because it allows you make cosmetic changes in your code without invalidating the cache.
+
+If you are not sure if two versions of code are equivalent, you may try the `parse_code()` below:
+
+```{r, tidy=FALSE}
+parse_code <- function(expr) {
+  deparse(substitute(expr))
+}
+# white spaces and semi-colons do not matter
+parse_code({x+1})
+parse_code({ x   +    1; })
+# left arrow and right arrow are equivalent
+identical(parse_code({x <- 1}), parse_code({1 -> x}))
+```
+
+### Invalidate the cache by changes in global variables
+
+There are two types of variables in an expression: global variables and local variables. Global variables are those created outside the expression, and local variables are those created inside the expression. If the value of a global variable in the expression has changed, your cached result will no longer reflect the result that you would obtain by running the expression again. For example, in the expression below, if `y` has changed, you are most likely to want to invalidate the cache and rerun the expression, otherwise you still get the result from the old value of `y`:
+
+```r
+y <- 2
+
+res <- xfun::cache_rds({
+  x <- 1:10
+  x + y
+})
+```
+
+To invalidate the cache\index{caching!invalidation} when `y` has changed, you may let `cache_rds()` know through the `hash` argument that `y` needs to be considered when deciding if the cache should be invalidated:
+
+```r
+res <- xfun::cache_rds({
+  x <- 1:10
+  x + y
+}, hash = list(y))
+```
+
+When the value of the `hash` argument is changed, the 32-digit hash in the cache filename (as mentioned earlier) will change accordingly, therefore the cache will be invalidated. This provides a way to specify the cache's dependency on other R objects. For example, if you want the cache to be dependent on the version of R, you may specify the dependency like this:
+
+```r
+res <- xfun::cache_rds({
+  x <- 1:10
+  x + y
+}, hash = list(y, getRversion()))
+```
+
+Or if you want the cache to depend on when a data file was last modified:
+
+```r
+res <- xfun::cache_rds({
+  x <- read.csv("data.csv")
+  x[[1]] + y
+}, hash = list(y, file.mtime("data.csv")))
+```
+
+If you do not want to provide this list of global variables to the `hash` argument, you may try `hash = "auto"` instead, which tells `cache_rds()` to try to figure out all global variables automatically and use a list of their values as the value for the `hash` argument, e.g.,
+
+```r
+res <- xfun::cache_rds({
+  x <- 1:10
+  x + y + z  # y and z are global variables
+}, hash = "auto")
+```
+
+This is equivalent to:
+
+```r
+res <- xfun::cache_rds({
+  x <- 1:10
+  x + y + z  # y and z are global variables
+}, hash = list(y = y, z = z))
+```
+
+The global variables are identified by `codetools::findGlobals()` when `hash = "auto"`, which may not be completely reliable. You know your own code the best, so we recommend that you specify the list of values explicitly in the `hash` argument if you want to be completely sure which variables can invalidate the cache.
+
+### Keep multiple copies of the cache
+
+Since the cache is typically used for time-consuming code, perhaps you should invalidate it conservatively. You might regret invalidating the cache too soon or aggressively, because if you should need an older version of the cache again, you would have to wait for a long time for the computing to be redone.
+
+The `clean` argument of `cache_rds()` allows you to keep older copies of the cache if you set it to `FALSE`\index{caching!clean}. You can also set the global R option `options(xfun.cache_rds.clean = FALSE)` if you want this to be the default behavior throughout the entire R session. By default, `clean = TRUE` and `cache_rds()` will try to delete the older cache every time. Setting `clean = FALSE` can be useful if you are still experimenting with the code. For example, you can cache two versions of a linear model:
+
+```{r, eval=FALSE}
+model <- xfun::cache_rds({
+  lm(dist ~ speed, data = cars)
+}, clean = FALSE)
+
+model <- xfun::cache_rds({
+  lm(dist ~ speed + I(speed^2), data = cars)
+}, clean = FALSE)
+```
+
+After you decide which model to use, you can set `clean = TRUE` again, or delete this argument (so the default `TRUE` is used).
+
+### Comparison with **knitr**'s caching
+
+You may wonder when to use **knitr**'s caching (i.e., set the chunk option `cache = TRUE`), and when to use `xfun::cache_rds()` in a **knitr** source document. The biggest disadvantage of `xfun::cache_rds()` is that it does not cache side effects (but only the value of the expression), whereas **knitr** does. Some side effects may be useful, such as printed output or plots. For example, in the code below, the text output and the plot will be lost when `cache_rds()` loads the cache the next time, and only the value `1:10` will be returned:
+
+```{r, eval=FALSE}
+xfun::cache_rds({
+  print("Hello world!")
+  plot(cars)
+  1:10
+})
+```
+
+By comparison, for a code chunk with the option `cache = TRUE`, everything will be cached:
+
+````md
+```{r, cache=TRUE}`r ''`
+print("Hello world!")
+plot(cars)
+1:10
+```
+````
+
+The biggest disadvantage of **knitr**'s caching (and also what users complain most frequently about) is that your cache might be inadvertently invalidated, because the cache is determined by too many factors. For example, any changes in chunk options can invalidate the cache,^[This is the default behavior, and you can change it. See https://yihui.org/knitr/demo/cache/ for how you can make the cache more granular, so not all chunk options affect the cache.] but some chunk options may not be relevant to the computing. In the code chunk below, changing the chunk option `fig.width = 6` to `fig.width = 10` should not invalidate the cache, but it will:
+
+````md
+```{r, cache=TRUE, fig.width=6}`r ''`
+# there are no plots in this chunk
+x <- rnorm(1000)
+mean(x)
+```
+````
+
+Actually, **knitr** caching is quite powerful and flexible, and its behavior can be tweaked in many ways. As its author, I often doubt if it is worth introducing these lesser-known features, because you may end up spending much more time on learning and understanding how the cache works than the time the actual computing takes.
+
+In case it is not clear, `xfun::cache_rds()` is a general way for caching the computing, and it works anywhere, whereas **knitr**'s caching only works in **knitr** documents.

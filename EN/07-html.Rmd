@@ -1,0 +1,495 @@
+# HTML Output
+
+Compared to LaTeX, HTML may be a little weak in typesetting for paged output. However, it is much more powerful in presenting results, especially when combined with CSS and JavaScript. For example, you can embed interactive applications in HTML, and dynamically modify the appearance and even the content of an HTML page. Some useful yet simple CSS and JavaScript tricks for HTML output are very difficult (and often impossible) to reproduce in LaTeX output.
+
+In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
+
+## Apply custom CSS {#html-css}
+
+We strongly recommend that you learn some CSS and JavaScript if you wish to customize the appearance of HTML documents. [Appendix B](https://bookdown.org/yihui/blogdown/website-basics.html) of the **blogdown** book [@blogdown2017] contains short tutorials on HTML, CSS, and JavaScript.
+
+For beginners, it is extremely important to understand selectors and precedence of rules in CSS, otherwise you may be confused why your custom CSS\index{CSS} rules do not work as expected (they may not have enough precedence).
+
+To include one or multiple custom stylesheets in an Rmd document, you can use the `css` option\index{output option!css}, e.g.,
+
+```yaml
+output:
+  html_document:
+    css: "style.css"
+```
+
+To include multiple stylesheets, you may list them in brackets, e.g.,
+
+```yaml
+output:
+  html_document:
+    css: ["style-1.css", "style-2.css"]
+```
+
+Alternatively, you can use a `css` code chunk\index{language engine!css} to embed the CSS rules directly in your Rmd document, e.g.,
+
+````md
+We embed a `css` code chunk here.
+
+```{css, echo=FALSE}`r ''`
+p {
+  font-size: 32px;
+}
+```
+````
+
+The chunk option `echo = FALSE`\index{chunk option!echo} means the CSS code will not be displayed verbatim in the output, but a `<style>` tag containing the CSS code will be generated to the HTML output file.
+
+## Center section headings {#center-heading}
+
+As an application of the methods mentioned in Section \@ref(html-css), we can use CSS to adjust the alignment of headings\index{CSS property!text-align}. For example, you may center section headings of level 1, 2, and 3 with the CSS code below:
+
+```css
+h1, h2, h3 {
+  text-align: center;
+}
+```
+
+Please see Section \@ref(html-css) on how to apply the CSS to your Rmd document.
+
+## Style code blocks and text output {#chunk-styling}
+
+<!-- https://stackoverflow.com/questions/41030477/changing-chunk-background-color-in-rmarkdown -->
+
+We can customize the style of code chunks and their text output using the chunk options `class.source`\index{chunk option!class.source} and `class.output`\index{chunk option!class.output}, respectively. These options take character vectors of class names\index{class!custom classes} (see Section \@ref(attr-output) for more information). For example, when `class.source = "important"`, the HTML element containing the code chunk in the output will have a class `important`. Then you can define CSS rules for this class.^[In this case, the rule would begin `.important` because in CSS, classes are prefixed with a period (`.`).] This can be useful when you want to highlight a certain code chunk or its text output.
+
+By default, the HTML output of R Markdown includes the Bootstrap framework\index{Bootstrap}, which makes it easy for you to change the appearance of your code and output, because Bootstrap has predefined some [CSS classes for backgrounds:](https://getbootstrap.com/docs/3.4/css/#helper-classes) `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`, and `"bg-danger"`.\index{class!Bootstrap classes}\index{class!bg-primary}\index{class!bg-success}\index{class!bg-info}\index{class!bg-warning}\index{class!bg-danger}
+
+Below is an example using the chunk options `class.source = "bg-danger"` and `class.output = "bg-warning"`, and you can see its output in Figure \@ref(fig:chunk-bg).
+
+`r import_example('chunk-style.Rmd')`
+
+```{r chunk-bg, echo=FALSE, fig.cap="A code chunk and its text output with background colors defined by Bootstrap."}
+knitr::include_graphics("images/chunk-bg.png", dpi = NA)
+```
+
+You can also use arbitrary class names and define CSS rules accordingly. In this case, you will have to include your custom CSS rules using the methods mentioned in Section \@ref(html-css).
+Below is an example:
+
+`r import_example('chunk-custom.Rmd')`
+
+The output style is shown in Figure \@ref(fig:chunk-border).
+
+```{r chunk-border, echo=FALSE, fig.cap="A code chunk with a light pink background color and a thick red border."}
+knitr::include_graphics("images/chunk-border.png", dpi = NA)
+```
+
+If you want all code blocks in the document to use the custom style, you can set `class.source` in the global **knitr** options, e.g.,
+
+```{r, eval=FALSE}
+knitr::opts_chunk$set(class.source='watch-out')
+```
+
+You can apply multiple classes to the code blocks. For example, with `class.source = c("important", "warning")`, the code block will have two classes, "important" and "warning."
+
+If you want to decorate individual elements in code blocks instead of the whole blocks, you may consider using the **flair** package\index{R package!flair} [@R-flair]. With this package, you can highlight different parts of your code (such as fixed strings, function names, and arguments) with custom styles (e.g., color, font size, and/or font weight).
+
+## Scrollable code blocks (\*) {#html-scroll}
+
+When you have large amounts of code and/or verbatim text output to display on an HTML page, it may be desirable to limit their heights. Otherwise the page may look overwhelmingly lengthy, and it will be difficult for those who do not want to read the details in the code or its text output to skip these parts. There are multiple ways to solve this problem. One solution is to use the `code_folding` option in the `html_document` format\index{output option!code\_folding}. This option will fold code blocks in the output and readers can unfold them by clicking a button (see Section \@ref(fold-show) for more details).
+
+The other possible solution is to make the code blocks scrollable within a fixed height when they are too long. This can be achieved by the CSS properties `max-height`\index{CSS property!max-height} and `overflow-y`\index{CSS property!overflow-y}. Below is a full example with the output in Figure \@ref(fig:html-scroll):
+
+`r import_example('html-scroll.Rmd')`
+
+```{r html-scroll, echo=FALSE, fig.cap="Scrollable code blocks using custom CSS."}
+knitr::include_graphics("images/html-scroll.png", dpi = NA)
+```
+
+In the above example, we defined a global maximum height of 300px for all code blocks. Remember that code blocks are placed in `<pre>` tags in the HTML output. Then we limited the height of `<pre>` blocks to 100px with `class` attributes. That is what the CSS selector `pre[class]` means. By default, text output will be contained in `<pre> </pre>`, and R code blocks are contained in `<pre class="r"> </pre>` (note that the `<pre>` tag has a `class` attribute here).
+
+The height of the text output from the second R code chunk is also 100px. That is because we assigned a custom class name `scroll-100` to the output, and defined the maximum height to be 100px.
+
+If you want to specify different maximum heights for individual code blocks, you may see the example in Section \@ref(hook-scroll).
+
+## Fold all code blocks but show some initially {#fold-show}
+
+If code blocks in the output document are potentially distracting to readers, you may choose to fold them initially. Readers can then choose to display them by clicking the fold buttons:
+
+```yaml
+output:
+  html_document:
+    code_folding: hide
+```
+
+You can also choose to unfold all code blocks initially (so readers can choose to fold them later):
+
+```yaml
+output:
+  html_document:
+    code_folding: show
+```
+
+If you fold all code blocks initially, you can specify certain blocks to be unfolded initially with the chunk option `class.source = "fold-show"`, e.g.,
+
+`r import_example('fold-show.Rmd')`
+
+You can also do it the other way around, i.e., show all code blocks but hide some of them initially. For example:
+
+````md
+---
+output:
+  html_document:
+    code_folding: show
+---
+
+```{r}`r ''`
+1  # code is shown initially
+```
+
+```{r class.source = 'fold-hide'}`r ''`
+2  # code is hidden initially
+```
+````
+
+## Put content in tabs {#html-tabs}
+
+<!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
+
+One natural way of organizing parallel sections in an HTML report is to use tabsets. This allows readers to view the content of different sections by clicking the tab titles instead of scrolling back and forth on the page.
+
+To turn sections into tabs, you can add a class attribute `.tabset`\index{tabset} to the section header that is one level higher than the headers to be converted to tabs, e.g., adding the `.tabset` attribute to a level-2 header will convert all subsequent level-3 headers to tabs. Below is a full example:
+
+`r import_example('html-tabs.Rmd')`
+
+The output is shown in Figure \@ref(fig:html-tabs). Note that you can only see one tab at a time in reality. In this figure, we actually concatenated two screenshots for you to see both tabs.
+
+```{r html-tabs, echo=FALSE, fig.cap="Turn sections into tabs."}
+knitr::include_graphics("images/html-tabs.png", dpi = NA)
+```
+
+You can add another attribute `.tabset-pills` to the upper-level section header to add a "pill" effect to the tab, and the tab will have a dark blue background.
+
+```md
+## Results {.tabset .tabset-pills}
+```
+
+By default, the first tab is active (i.e., displayed). If you want a different tab to be displayed initially, you may add the attribute `.active` to it.
+
+To end the tabset, you need to start a new section header of the upper level. The new section header can be empty, e.g.,
+
+```md
+## Results {.tabset}
+
+### Tab One
+
+### Tab Two
+
+## {-}
+
+With the above unnumbered (`{-}`) and empty section header,
+we can end the tabset and continue to write more paragraphs.
+```
+
+## Embed the Rmd source file in the HTML output file {#embed-rmd}
+
+When you share an HTML output page with others, they may want the Rmd source file, too. For example, they may want to change the Rmd source and compile the report by themselves. You can use the option `code_download`\index{output option!code\_download} to embed a copy of the Rmd source file in the HTML output file:
+
+```yaml
+output:
+  html_document:
+    code_download: true
+```
+
+After the option is turned on, the HTML output page will contain a download button, and readers of the page can hit the button to download the Rmd source file.
+
+## Embed arbitrary files in the HTML output file {#embed-file}
+
+As mentioned in Section \@ref(embed-rmd), we can embed a copy of the Rmd source document in the HTML output file. Sometimes the Rmd source file alone may not be enough to reproduce the report. For example, the report may need an external data file. There is a series of functions in the **xfun** package\index{R package!xfun} [@R-xfun] that enable you to embed arbitrary files in the HTML output file. To use these functions, make sure you have the following R packages available:
+
+```{r, eval=FALSE}
+xfun::pkg_load2(c('htmltools', 'mime'))
+```
+
+Then you can use one of the functions `xfun::embed_file()`\index{xfun!embed\_file()}, `xfun::embed_files()`\index{xfun!embed\_files()}, or `xfun::embed_dir()`\index{xfun!embed\_dir()} in an R code chunk to embed one or multiple files or an entire directory in the HTML output, e.g.,
+
+````md
+```{r echo=FALSE}`r ''`
+# a single file
+xfun::embed_file('source.Rmd')
+
+# multiple files
+xfun::embed_files(c('source.Rmd', 'data.csv'))
+
+# a directory
+xfun::embed_dir('data/', text = 'Download full data')
+```
+````
+
+You can also provide the list of files programmatically, e.g.,
+
+```{r eval=FALSE}
+# embed all Rmd and csv files
+xfun::embed_files(list.files('.', '[.](Rmd|csv)$'))
+```
+
+For multiple files, they are first compressed to a zip file, and the zip file will be embedded. These functions return a link, on which a reader can click on the HTML page to download the embedded file.
+
+You can learn more technical details behind these functions from the help page `?xfun::embed_file` or the blog post at https://yihui.org/en/2018/07/embed-file/. Based on the same idea, the **downloadthis** package\index{R package!downloadthis} [@R-downloadthis] has implemented download buttons, so that users can click buttons to download files instead of links. If you prefer using buttons, you may consider using this package.
+
+## Use a custom HTML template (\*) {#html-template}
+
+We mentioned LaTeX templates in Section \@ref(latex-template). You can also specify a custom HTML template\index{template!HTML} for Pandoc to convert Markdown to HTML. Below is a brief example template:
+
+```html
+<html>
+  <head>
+    <title>$title$</title>
+    $for(css)$
+    <link rel="stylesheet" href="$css$" type="text/css" />
+    $endfor$
+  </head>
+  <body>
+  $body$
+  </body>
+</html>
+```
+
+You can see that the template contains a few variables such as `$title$` and `$body$`. You can find the full list of Pandoc variables and their meanings at https://pandoc.org/MANUAL.html#templates.
+
+The template gives you the ultimate power to customize the HTML output. For example, you can include arbitrary CSS stylesheets or JavaScript code or libraries in the `<head>` area. For example, we could use a Boolean variable `draft` to indicate whether the document is a draft or a final version:
+
+```html
+<head>
+<style type="text/css">
+.logo {
+  float: right;
+}
+</style>
+</head>
+
+<body>
+<div class="logo">
+$if(draft)$
+<!-- use draft.png to show that this is a draft -->
+<img src="images/draft.png" alt="Draft mode" />
+$else$
+<!-- insert the formal logo if this is final -->
+<img src="images/logo.png" alt="Final version" />
+$endif$
+</div>
+
+$body$
+</body>
+```
+
+Then we can set the variable `draft` to `true` or `false` in the YAML metadata of the Rmd document, e.g.,
+
+```yaml
+---
+title: "An Important Report"
+draft: true
+---
+```
+
+To apply a template to an Rmd document, you can save the template to a file, and pass the file path to the `template` option of `html_document`\index{output option!template}, e.g.,
+
+```yaml
+output:
+  html_document:
+    template: my-template.html
+```
+
+The **rmarkdown** package uses a custom HTML template shipped with the package, which is different from Pandoc's default template. To use the latter, you can specify `template: null`.
+
+## Include the content of an existing HTML file (\*) {#include-html}
+
+With the `includes` option\index{output option!includes} of the `html_document` format (or any other formats that support this option), you can include the content of an existing HTML file in the HTML output document in three possible places: the `<head>` area, the beginning of `<body>`, and the end of `</body>`.
+
+```yaml
+output:
+  html_document:
+    includes:
+      in_header: header.html
+      before_body: before.html
+      after_body: after.html
+```
+
+If you are not familiar with HTML, Section \@ref(html-template) may help you better understand these options.
+
+With the `in_header` option, you can inject CSS and JavaScript code into the `<head>` tag. With `before_body`, you may include a header that shows a banner or logo. With `after_body`, you can include a footer, e.g.,
+
+```html
+<div class="footer">Copyright &copy; John Doe 2020</div>
+```
+
+Sometimes you may want to include the content of an external HTML file in an arbitrary place of the body, which can be done with `htmltools::includeHTML()`. You pass the path of the HTML file to this function. It will read the file, and write its content to the output document. You may also use the technique in Section \@ref(raw-content), e.g.,
+
+`````md
+````{=html}
+```{r, echo=FALSE, results='asis'}`r ''`
+xfun::file_string('file.html')
+```
+````
+`````
+
+Please note that you must not include the content of a full HTML file in another HTML file, but can only include an HTML fragment. A full HTML file contains the `<html>` tag, which cannot be embedded in another `<html>` tag. Below is an invalid HTML document when a full HTML document is included in another HTML document:
+
+```html
+<html>
+  <head>  </head>
+
+  <body>
+  Parent HTML file.
+  
+  <!-- htmltools::includeHTML() below -->
+    <html>
+      <head>  </head>
+      <body>
+      Child HTML file.
+      </body>
+    </html>
+  <!-- included above -->
+
+  </body>
+</html>
+```
+
+If you run into problems when including an HTML file in an HTML output document, you may check if the HTML file contains the `<html>` tag.
+
+There is an output format `html_fragment` in the **rmarkdown** package, which generates an HTML fragment instead of a full HTML document. If you want to include the compiled results of an Rmd document in another Rmd document, the former Rmd document may use the `html_fragment` format instead of the usual `html_document`.
+
+If you want to include an Rmd or Markdown document instead of an HTML file, you may use child documents introduced in Section \@ref(child-document).
+
+## Add a custom browser icon {#favicon}
+
+Section \@ref(include-html) demonstrates that we can inject additional code into the HTML head, body, or footer with the `includes` option of the `html_document` format. This technique can be used to add a custom browser icon, called a favicon\index{figure!favicon}, to your HTML output.
+
+Favicons are the website logos that are displayed in your browser's address bar, tab title, history, and bookmarks. For example, if you visit the CRAN website (https://cran.r-project.org) in Google Chrome, and look at the browser tab, you will see a small R logo. On mobile devices, favicons are also used in place of an App icon for websites that are pinned to the home screen.
+
+To add a favicon to your HTML document, add the following line of code to a custom header file (such as the file `header.html` mentioned in Section \@ref(include-html)):
+
+```html
+<link rel="shortcut icon" href="{path to favicon file}" />
+```
+
+Recall that this file can be injected into the document `<head>` area using the YAML metadata\index{output option!includes}:
+
+```yaml
+output:
+  html_document:
+    includes:
+      in_header: header.html
+```
+
+The path you provide to the `href` attribute in `<link>` should assume the same relative path structure as you would use to reference any other asset (e.g., an image or dataset). For the image itself, most small, square PNG files will work reasonably well. Bear in mind that a typical web browser will often display the image in a 16 x 16 pixel box, so simple designs are better.
+
+If you want to ensure that each browser or platform on which your document is viewed uses a version of your icon with optimal resolution for its specific layout, you may use a service such as https://realfavicongenerator.net to generate a set of favicons and a slightly more complex version of the header HTML code. This service is currently used by the **pkgdown** package's `pkgdown::build_favicon()` function [@R-pkgdown] to make a set of favicons out of R package logos.
+
+## Use the `<details>` disclosure element {#details-tag}
+
+As mentioned in Section \@ref(html-scroll), we can fold source code chunks via the option `code_folding: hide` in the `html_document` format. Currently it is not possible to fold output blocks, but we can use some JavaScript tricks to make output foldable, too. This can be useful especially when the output is relatively long but not very important. We can fold it initially, and, if the reader is interested, they can unfold it to view the content. Figure \@ref(fig:details-tag) shows an example: you may click on the "Details" button to unfold the output.
+
+```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='Wrap text output in the details element.', out.width=if(knitr::is_latex_output()) '100%'}
+knitr::include_graphics(c('images/details-closed.png', 'images/details-open.png'), dpi = NA)
+```
+
+If you are viewing the HTML version of this book, you can actually see it in action below. If you are reading the PDF or printed version, such an interaction (clicking the "Details" button) is certainly not possible.
+
+```{r}
+1:100
+```
+
+Below is the full source Rmd document that includes the JavaScript code to find output blocks, and wrap them into the `<details>` tags.
+
+```{js, echo=FALSE, include=knitr::is_html_output()}
+(function() {
+  var codes = document.querySelectorAll('pre:not([class])');
+  var code, i, d, s, p;
+  for (i = 0; i < codes.length; i++) {
+    code = codes[i];
+    p = code.parentNode;
+    d = document.createElement('details');
+    s = document.createElement('summary');
+    s.innerText = 'Details';
+    // <details><summary>Details</summary></details>
+    d.appendChild(s);
+    // move the code into <details>
+    p.replaceChild(d, code);
+    d.appendChild(code);
+  }
+})();
+```
+
+`r import_example('details-tag.Rmd')`
+
+You may try to adapt the JavaScript code above to your own need. The key is to find out the elements to be wrapped into `<details>`:
+
+```js
+document.querySelectorAll('pre:not([class])');
+```
+
+The CSS selector `pre:not([class])` means all `<pre>` elements without the `class` attribute. You can also select other types of elements. For more about CSS selectors, see https://www.w3schools.com/css/css_selectors.asp. For more about the HTML tags `<details>` and `<summary>`, see https://www.w3schools.com/tags/tag_details.asp.
+
+## Sharing HTML output on the web {#html-share}
+
+One appealing aspect of rendering R Markdown to HTML files is that it is very easy to host these files on the Internet and share them just as one shares any other website. This section briefly summarizes numerous options for sharing the HTML\index{HTML hosting} documents that you have created.
+
+### R-specific services
+
+RStudio offers a number of services for publishing various types of content created in R Markdown to the Internet. These services make it particularly easy to publish content by using the RStudio IDE or the **rsconnect** package [@R-rsconnect].
+
+- [**RPubs**](https://rpubs.com) enables free hosting of static single-file R Markdown content. It is easy to publish via the `Publish` button in the RStudio IDE or the `rsconnect::rpubsUpload()` function. Please see the "Getting Started" page (https://rpubs.com/about/getting-started) for more details.
+
+- [**ShinyApps.io**](https://www.shinyapps.io) allows for hosting dynamic content that requires a server to run R. For example, one can host interactive R Markdown documents that include Shiny components.^[You may include Shiny components in an R Markdown document by setting the option `runtime: shiny` or `runtime: shiny_prerendered` in the YAML metadata. You will no longer be able to render your document to an HTML document as before; instead, you run your document with `rmarkdown::run()`. To learn more, please refer to @rmarkdown2018 (Chapter 19: https://bookdown.org/yihui/rmarkdown/shiny-documents.html).] ShinyApps.io is an analog to RPubs for Shiny applications. Apps and interactive R Markdown documents can be published using the push-button in the RStudio IDE or the `rsconnect::deployApp()` function. See the user guide (https://docs.rstudio.com/shinyapps.io/) for more details.
+
+- [**bookdown.org**](https://bookdown.org/home/about/) offers free hosting specifically for books written with the **bookdown** package. You may easily publish static output files of your book using the `bookdown::publish_book()` function.
+
+- [**RStudio Connect**](https://rstudio.com/products/connect/) is an enterprise product that organizations may run on their own servers. It can host a wide variety of content created in R (such as R Markdown documents, Shiny apps, and APIs) in a secured environment with document-level access controls, viewership history, and more. Content can be published to RStudio Connect using manual upload, the **rsconnect** package, or with GIT-based deployment.
+
+### Static website services
+
+In a few words, a simple static website is composed of any number of HTML files (typically containing an `index.html`, which is the homepage), JavaScript, CSS files, and additional content such as images. This collection of files can be hosted as-is on a web server and rendered in a web browser.
+
+When R Markdown is rendered to the HTML output format, the result may be treated as a static website. Websites can range in complexity from a single, standalone HTML file (which is what we get when we use the default `self_contained: true` option), a set of files, or a sophisticated project like a website based on **blogdown** (which relies upon a static website generator). For more details, see [Section 2.1 on Static Sites](https://bookdown.org/yihui/blogdown/static-sites.html) of the **blogdown** book [@blogdown2017].
+
+As a result, in addition to R-specific services, you may host your HTML document on many freely available static website hosting services. Commonly used options in the R community are: 
+
+- [**GitHub Pages**](https://pages.github.com) makes it particularly easy to publish Markdown and HTML content straight from a GitHub repository. You may specify whether to host content from either the main branch's root, a `docs/` directory on the main branch, or a specific `gh-pages` branch. Publishing new content can be as simple as pushing new HTML files to your repository via GIT.
+
+- [**GitLab Pages**](https://docs.gitlab.com/ce/user/project/pages/) offers similar functionality to GitHub Pages for GitLab repositories. GitLab deploys content stores in the `public/` directory of a repository. To build and publish content, you must provide a YAML file, `.gitlab-ci.yml` with instructions, but GitLab provides many helpful templates. For an example of hosting rendered HTML content, please see https://gitlab.com/pages/plain-html/-/tree/master. 
+
+- [**Netlify**](https://www.netlify.com) is a platform to build and deploy static website content. It is a popular choice for web content created by the **blogdown** and **pkgdown** packages, but it can host all kinds of HTML files. There are many different publishing options including drag-and-drop, command line, or automated publishing from GitHub and GitLab repositories. Additionally, Netlify offers many helpful features such as website previews in pull requests. See the Netlify documentation (https://docs.netlify.com) or the RStudio webinar ["Sharing on Short Notice"](https://rstudio.com/resources/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown/) for more details.
+
+## Improve accessibility of HTML pages {#html-accessibility}
+
+It is important to make your HTML output documents accessible\index{HTML!accessible} to readers who are visually impaired or blind. These readers often have to use special tools, such as screen readers, to _hear_ instead of visually reading your documents. Usually, screen readers can only read out text, but not (raster) images. This means you need to provide enough text hints to screen readers. The good news is that with some small efforts, you can actually greatly enhance the accessibility of your documents. Jonathan Godfrey has provided some tips in the article at https://r-resources.massey.ac.nz/rmarkdown/ on making accessible R Markdown documents.^[JooYoung Seo has also published a post about a few R packages to help visually impaired users at https://jooyoungseo.com/post/ds4blind/. It is not directly related to R Markdown, but it can be helpful for you to learn how blind users read graphs.] Based on this article, we highlight some tips below for the convenience of the readers of this book:
+
+- HTML documents are often more accessible than PDF.
+
+- Try to provide the Rmd source document along with the HTML output document if possible (e.g., Section \@ref(embed-rmd) demonstrates one way to do this). In case anything in the HTML document is not accessible, the blind reader may be able to figure it out from the Rmd source, or fix it in the source.
+
+- Provide informative text tags to your graphics. At the useR! conference in 2014, Jonathan explained this issue to me in person. It was the first time that I had learned about the importance of the `alt` attribute of images on web pages\index{figure!alt text}.
+
+    To understand this problem, first you have to know that images on web pages are generated by the HTML tag `<img />`. This tag has an `src` attribute, which points to the source of the image, e.g., `<img src="foo_figures/image.png" />`. Sighted readers can see the image, but it is hard for blind users to know anything about the image, because usually screen readers cannot read it, especially when it is a raster image (vector graphics can be better, such as SVG). In this case, it is helpful to provide a text hint, which screen readers can read out to the blind reader. This text hint can be provided in the `alt` attribute of the image, which stands for "alternate text."
+    
+    For images generated from code chunks in R Markdown, the `alt` attribute will be generated if you provide the chunk option `fig.cap` (i.e., figure caption). Alternatively, you can insert an image using the Markdown syntax `![]()`. You input the image path in parentheses, and the `alt` text in square brackets, e.g., `![an informative text](path/to/image.png)`.
+    
+    The `alt` text is not displayed to sighted readers on an HTML page. However, when you provide the figure caption or alternate text to an image, the `rmarkdown::html_document` format will render a visible figure caption element by default. If you do not want the real figure captions, you can turn off the `fig_caption` option, e.g., 
+    
+    ```yaml
+    output:
+      html_document:
+        fig_caption: false
+    ```
+    
+    In this case, the `alt` attributes will still be generated, but are no longer visible.
+
+- Write mathematical content using the LaTeX syntax (e.g., `$ $` or `$$ $$`) instead of images. By default, R Markdown uses the MathJax library to render math content, and the result is readable to screen readers.
+
+- Get rid of the leading hashes (`##`) in the text output of code chunks by setting the chunk option `comment = ""` (see Section \@ref(opts-comment)).
+
+We are not experts on accessibility, so we recommend that you read the original article to learn more details.
+
+## For hardcore HTML users (\*) {#html-hardcore}
+
+In Section \@ref(latex-hardcore), we mentioned that if you feel the constraint of Markdown (due to its simplicity) is too strong, you can embed code chunks in a pure LaTeX document instead of Markdown. Similarly, if you are familiar and comfortable with writing raw HTML code, you can intermingle code chunks with HTML, too. Such documents have the conventional filename extension `.Rhtml`.\index{HTML!Rhtml}
+
+In an `Rhtml` document, code chunks are embedded between `<!--begin.rcode` and `end.rcode-->`, and inline R expressions are embedded in `<!--rinline -->`. Below is a full `Rhtml` example. You can save it to a file named `test.Rhtml`, and use `knitr::knit("test.Rhtml")` to compile it. The output will be an HTML (`.html`) file. In RStudio, you can also hit the `Knit` button on the toolbar to compile the document.
+
+`r import_example('knitr.Rhtml')`
