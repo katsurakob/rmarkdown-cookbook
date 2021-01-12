@@ -1,35 +1,35 @@
-# About the Authors {#author .unnumbered}
+# 著者について {#author .unnumbered}
 
-Yihui typed out most of the words in this book, which is the only justification for him being the "first" author. Christophe has made substantial contribution to this book by helping Yihui organize all the GitHub issues and occasionally writing a few sections. Emily was originally a reviewer of this book. Since Yihui was not patient enough to deal with her lengthy comments, he invited her to become a co-author of this book (out of revenge) to feel his pain of having to deal with so many additional things when he thought he was pretty much done! Just kidding... No, he invited her out of full appreciation, because her comments were so helpful, yet Yihui lacked the time to do all the improvements that she suggested.
+Yihui が本書のほとんどの文を書きました. これが第一著者であることを正当化する唯一の根拠です. Christophe は全ての Github issues をまとめ, そしていくつかのセクションを書いたというはっきりした貢献があります. Emily は本来は本書の査読者でした. Yihui は彼女と長いコメントでやり取りできるほどの忍耐がないので, 自分でとてもうまく書けたと思っていたものに大量の追加注文を付けられる痛みを分かち合うために (報復のために) 共同著者として招待されました. いいえ, 冗談です. 彼女のコメントはとても有意義でしたが, Yihui には提案された全ての改善案に対処する時間がなかったため, 完全に賛意によって彼女を招待しました.
 
-When you see the pronoun "I" in this book, it refers to Yihui. Using "I" instead of "We" does not mean the co-authors were forgotten, but Yihui wanted to express certain opinions completely on his own. He certainly wants to appear smart, but in case he is actually silly, he wants to be silly alone.
+本書で「私」という表現があれば, それは Yihui のことを指します. 「我々」ではなく「私」を使うのは, 共著者のことを忘れてしまったからではなく, 完全に Yihui の独自の意見を表明したいことを意味しています. 彼は賢く見られたいと思っていますが, 実は愚かであるというのなら愚かなのは自分だけであってほしいと思っています.
 
 ## Yihui Xie {-}
 
-Yihui Xie (https://yihui.org) is a software engineer at RStudio (<https://www.rstudio.com>). He earned his PhD from the Department of Statistics, Iowa State University. He is interested in interactive statistical graphics and statistical computing. As an active R user, he has authored several R packages, such as **knitr**, **bookdown**, **blogdown**, **xaringan**, **tinytex**, **rolldown**, **animation**, **DT**, **tufte**, **formatR**, **fun**, **xfun**, **testit**, **mime**, **highr**, **servr**, and **Rd2roxygen**, among which the **animation** package won the 2009 John M. Chambers Statistical Software Award (ASA). He also co-authored a few other R packages, including **shiny**, **rmarkdown**, **pagedown**, and **leaflet**.
+Yihui Xie (https://yihui.org) は RStudio (<https://www.rstudio.com>) のソフトウェアエンジニアです. アイオワ州立大学の統計学部で PhD を取得しました. インタラクティブな統計的グラフィックと統計的コンピューティングに関心があります. 活動的な R ユーザーとして, **knitr**, **bookdown**, **blogdown**, **xaringan**, **tinytex**, **rolldown**, **animation**, **DT**, **tufte**, **formatR**, **fun**, **xfun**, **testit**, **mime**, **highr**, **servr**, **Rd2roxygen** といった R パッケージを開発しています. その中でも **animation** パッケージは 2009年の John M. Chambers Statistical Software Award (ASA) を受賞しています. また, **shiny**, **rmarkdown**, **pagedown**, **leaflet** といったパッケージの開発メンバーにも加わっています.
 
-He has authored two books, _Dynamic Documents with knitr_ [@knitr2015], and _bookdown: Authoring Books and Technical Documents with R Markdown_ [@bookdown2016], and co-authored two books, _blogdown: Creating Websites with R Markdown_ [@blogdown2017], and _R Markdown: The Definitive Guide_ [@rmarkdown2018].
+彼は2つの本を書いています, _Dynamic Documents with knitr_ [@knitr2015], と _bookdown: Authoring Books and Technical Documents with R Markdown_ [@bookdown2016], です. そして2つの本の共著者です, _blogdown: Creating Websites with R Markdown_ [@blogdown2017], と _R Markdown: The Definitive Guide_ [@rmarkdown2018] です.
 
-In 2006, he founded the Capital of Statistics (https://cosx.org), which has grown into a large online community on statistics in China. He initiated the Chinese R conference in 2008, and has been involved in organizing R conferences in China since then. During his PhD training at Iowa State University, he won the Vince Sposito Statistical Computing Award (2011) and the Snedecor Award (2012) in the Department of Statistics.
+2006年, 彼は Capital of Statistics (https://cosx.org) を設立しました. これは中国国内の大きな統計学のオンラインコミュニティに成長しました. 彼はまた 2008年に Chinese R conference を開始し, 以降, 中国での R カンファレンスの企画に関わってきました. アイオワ州立大学での PhD のトレーニングの間に, 彼は学部で Vince Sposito Statistical Computing Award (2011年) と Snedecor Award (2012)^[訳注: Committee of Presidents of Statistical Societies の授与するものではなく, 大学内で学生に授与されるもの]を受賞しました.
 
-He usually reads Twitter messages once a week (https://twitter.com/xieyihui), and most of the time you can find him on GitHub (https://github.com/yihui).
+彼はたいていの場合, twitter のメッセージを週に1度確認します (https://twitter.com/xieyihui). ほとんどの時間, 彼は Github (https://github.com/yihui) で見かけることができます.
 
-He has four hobbies: reading, writing (mostly blogging), cooking, and playing badminton. He is actually more interested in cooking than eating. There are not many types of food that he cannot resist eating, and spicy food is one of the few. Since cooking is more fun, he rarely goes to restaurants. When he does go and is asked "how spicy you want your food to be" in the restaurant, he usually answers "as spicy as your chef can make it to be."
+彼には4つの趣味があります. 読むこと, 書くこと (ほとんどはブログ), 料理, そしてバドミントンをすることです. 彼は実際食べるより料理する方に関心があります. 食べるのに我慢できないほど好きな料理はそう多くなく, 辛い料理が数少ない一例です. 料理がさらに楽しくなったので, レストランに行くことがまれになっています. レストランに行って「料理はどれくらい辛くしたらよろしいでしょうか」と訊かれれば彼はたいてい「シェフができる限界まで辛くして」と答えます.
 
 ## Christophe Dervieux {-}
 
-Christophe Dervieux is an active member of the R community, currently living in France. With a master's degree in energy and economics, he started working with R as an analyst doing economic studies about market designs, before becoming a developer advocate and R admin, promoting R and supporting R users where he works.
+Christophe Dervieux は R コミュニティの活動的なメンバーであり, 現在はフランス在住です. エネルギーと経済に関する修士号を取得しており, R を使った最初の仕事はマーケットデザインに関する経済研究のアナリストです. これは developer advocate および R 管理者となって R の布教と職場での R ユーザーへのサポートをするようになる前のことです.
 
-He is interested in helping others get the most from R, and you can find him wandering in the RStudio Community as a sustainer, or on several GitHub issue boards for various R packages. In both places, you may better recognize him by his shorter handle "cderv."
+彼は人々が R を 最大限活用できるように手助けすることに関心があり, 彼が RStudio Community で sustainer としてあちこちを渡り歩く姿を, あるいはいくつかの R パッケージの Github issues であなたも目にすることができるでしょう. どちらの場でも, "cderv" という短縮ハンドルネームで彼だと認識できるでしょう.
 
-As an R developer, he is a contributor to several R packages, such as **bookdown**, **rmarkdown**, and **knitr**. He has also co-authored the **crrri** package. His own projects can be found on GitHub (https://github.com/cderv), and sometimes he shares his ideas on Twitter (https://twitter.com/chrisderv).
+R開発者としての彼は, **bookdown**, **rmarkdown**, **knitr** といったいくつかの R パッケージのコントリビューターです. **crrri** パッケージの開発メンバーの一人でもあります. 彼自身のプロジェクトは GitHub (https://github.com/cderv) で確認できますし, ときどき Twitter でアイディアを共有することもあります.
 
-He does not like spicy food, but he enjoys playing badminton every week.
+彼は辛い料理は苦手ですが, 毎週バドミントンを楽しんでいます.
 
 ## Emily Riederer {-}
 
-Emily Riederer works in data science for the consumer finance industry where she leads a team to build analysis tools in R and cultivate an open science culture in industry. Previously, she studied mathematics and statistics at the University of North Carolina at Chapel Hill. 
+Emily Riederer は消費者金融業界でデータサイエンスの仕事をしており, R を使った分析ツールを構築するチームを率い, この業界でオープンサイエンスの文化を育てています. それ以前は, 彼女はチャペルヒルのノースカロライナ大学で数学と統計学を専攻していました.
 
-Emily frequently discusses R on Twitter (https://twitter.com/emilyriederer) and in her blog (https://emily.rbind.io) and shared projects, including her **projmgr** R package, on GitHub (https://github.com/emilyriederer). She has also served as a package reviewer for rOpenSci and a founding co-organizer of the annual satRday Chicago R conference. 
+Emily は頻繁に Twitter (https://twitter.com/emilyriederer) や自分のブログ (https://emily.rbind.io) で R について議論し, プロジェクトを共有します. その中には GitHub (https://github.com/emilyriederer) にある **projmgr** パッケージも含まれます. rOpenSci のパッケージレビュアーとしても活動し, さらに satuRday Chicago R conference の発起メンバーの一人でもあります.
 
-Emily's other interests include reading and weightlifting. She thinks she likes spicy food, but since she has only ever lived in the United States, she has been told that she does not really know what that actually means. 
+Emily の他の関心は読書とウェイトリフティングです. 彼女は自分で辛い料理が好きだと考えていますが, 合衆国内にしか住んだことがないため, その言葉が実際に意味するところをよく分かっていないのだと言われています.
