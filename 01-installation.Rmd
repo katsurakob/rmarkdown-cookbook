@@ -1,42 +1,42 @@
 \mainmatter
 
-# Installation
+# インストール方法 {#installation}
 
-To use R Markdown, you have to install R [@R-base] and the R package **rmarkdown** [@R-rmarkdown].
+R Markdown を使うにはR [@R-base] と R パッケージである **rmarkdown** [@R-rmarkdown] のインストールが必要です.
 
 ```{r eval=FALSE}
-# install the rmarkdown package from CRAN in R
+# CRAN から rmarkdown パッケージを R にインストール
 install.packages('rmarkdown')
 
-# or install from GitHub if you want to test the development version
+# または, 開発版をインストールしたければ GitHub からインストール
 if (!requireNamespace("remotes")) install.packages('remotes')
 remotes::install_github('rstudio/rmarkdown')
 ```
 
-Unless you have a favorite editor or IDE (Integrated Development Environment), we recommend that you also install the RStudio\index{RStudio} IDE (https://www.rstudio.com). RStudio is not required, but it will make it easier for an average user to work with R Markdown because of the strong editor support. If you choose not to use the RStudio IDE, you will need to install Pandoc\index{Pandoc} (see Section \@ref(install-pandoc)), which is the tool used by **rmarkdown** to convert Markdown to other document formats.
+こだわりのあるテキストエディタや IDE (統合開発環境) がなければ, RStudio\index{RStudio} IDE (https://www.rstudio.com) のインストールも推奨します. RStudio は必須ではないですが, エディタに強力な R Markdown 支援機能があるので平均的なユーザーにとっては作業がより簡単になります. RStudio IDE を使わない選択をしたなら, Markdown を他の形式の文書に変換するために **rmarkdown** が使用する  Pandoc\index{Pandoc}(see \@ref(install-pandoc) 節参照)をインストールする必要があります.
 
-If you need to create PDF output, you may need to install LaTeX\index{LaTeX} (Section \@ref(install-latex)) and certain LaTeX packages (Section \@ref(install-latex-pkgs)).
+PDF として作成する必要があるなら, LaTeX\index{LaTeX} (\@ref(install-latex) 節) およびいくつかのパッケージ (\@ref(install-latex-pkgs) 節) のインストールも必要になるかもしれません.
 
-## Use a Pandoc version not bundled with the RStudio IDE {#install-pandoc}
+## RStudio IDE にバンドルされていないバージョンの Pandoc を使う {#install-pandoc}
 
-The RStudio IDE has bundled a version of Pandoc\index{Pandoc}, so you do not need to install Pandoc by yourself if you are using the RStudio IDE. However, the bundled version is often not the latest, or may not be the exact version that you want. You can choose to install a separate copy of Pandoc by yourself. Please keep in mind that the bundled version may be more thoroughly tested with R Markdown, because most RStudio users may just use the bundled version. If you want to go with a different version (especially a higher version), you might run into problems that have not been discovered by other R Markdown users or developers.
+RStudio IDE は特定のバージョンの Pandoc\index{Pandoc} を同梱しているため, RStudio IDE を使用する場合は自分で Pandoc をインストールする必要はありません. しかし同梱されたバージョンが最新でないことはよくありますし, 必要なバージョンでないかもしれません. 別の Pandoc を自分でインストールすることができます. ほとんどの RStudio ユーザーは同梱されたバージョンを使用しているでしょうから, このバージョンの Pandoc は R Markdown での徹底的なテストを乗り越えていることを覚えておいてください. 異なるバージョン (特に新しいバージョン) を使う場合, 他の R Markdown ユーザーや開発者が解決できない問題にぶつかるかもしれません.
 
-There are detailed instructions on how to install Pandoc on different platforms on the Pandoc website at https://pandoc.org/installing.html. If you have installed Pandoc by yourself and want to use that specific version, you may inform the **rmarkdown** package by calling the function `rmarkdown::find_pandoc()`, e.g.,
+Pandoc のサイトに, プラットフォームごとの Pandoc のインストール方法の詳細なインストラクション https://pandoc.org/installing.html があります. 特定のバージョンを使うために Pandoc を自分でインストールしたのなら, `rmarkdown::find_pandoc()` 関数を呼び出して **rmarkdown** パッケージにそのことを知らせることになるでしょう. 例えば以下のように.
 
 ```{r, eval=FALSE}
-# to find a specific version
+# 特定のバージョンを検索
 rmarkdown::find_pandoc(version = '2.9.1')
 
-# to find Pandoc under a specific directory
+# 特定のディレクトリから検索
 rmarkdown::find_pandoc(dir = '~/Downloads/Pandoc')
 
-# ignore the previously found Pandoc and search again
+# 以前発見した Pandoc を無視して再検索する
 rmarkdown::find_pandoc(cache = FALSE)
 ```
 
-As you can see in the above code chunk, there are several ways to find a version of Pandoc. By default, `rmarkdown::find_pandoc()` tries to find the highest version of Pandoc in your system. Once found, the version information is cached, and you can invalidate the cache with `cache = FALSE`. Please see the help page `?rmarkdown::find_pandoc` for the potential directories under which the `pandoc` executable may be found.
+上記のコードチャンクのように, Pandoc のバージョンを特定する方法はいくつかあります. デフォルトでは `rmarkdown::find_pandoc()` はお使いのシステムの最新の Pandoc を発見しようとします. 発見できたなら, バージョン情報はキャッシュされ `cache = FALSE` でキャッシュは無効化されます. `pandoc` 実行ファイルの発見されるであろうディレクトリがどこにある可能性があるかは, ヘルプページの `?rmarkdown::find_pandoc` を見てください.
 
-This function can be called either inside or outside an Rmd document. If you want an Rmd document to be compiled by a specific version of Pandoc installed on your computer, you may call this function in any code chunk in the document, e.g., in a setup chunk:
+この関数は Rmd 文書内でも外部でも呼び出される可能性があります. あなたのコンピュータにインストールした特定のバージョンの Pandoc で Rmd 文書をコンパイルしたい場合, この関数を文書内のチャンクのどれかで呼び出すことになるでしょう. 例えばセットアップ用のチャンクで.
 
 ````md
 ```{r, setup, include=FALSE}`r ''`
@@ -44,28 +44,28 @@ rmarkdown::find_pandoc(version = '2.9.1')
 ```
 ````
 
-## Install LaTeX (TinyTeX) for PDF reports {#install-latex}
+## PDF レポートの作成に LaTeX (TinyTeX) をインストールする {#install-latex}
 
-If you would like to create PDF documents from R Markdown, you will need to have a LaTeX\index{LaTeX} distribution installed. Although there are several traditional options including MiKTeX\index{LaTeX!MiKTeX}, MacTeX, and TeX Live, we recommend that R Markdown users install [TinyTeX.](https://yihui.org/tinytex/)
+R Markdown から PDF 文書を作りたいなら, LaTeX\index{LaTeX} がインストール済みである必要があります. 伝統的な選択肢として MiKTeX\index{LaTeX!MiKTeX}, MacTeX, そして TeX Live がありますが, R Markdown ユーザーに対しては [TinyTeX](https://yihui.org/tinytex/) のインストールを推奨します.
 
-TinyTeX\index{LaTeX!TinyTeX} is a custom LaTeX distribution based on TeX Live that is relatively small in size, but functions well in most cases, especially for R users. Installing or running TinyTeX does not require sysadmin privileges.^[Actually, we recommend that you **do not** use your root privilege (i.e., `sudo`) to install TinyTeX on Linux or macOS, if you are the only user of your system.] You can install TinyTeX with the R package **tinytex**\index{LaTeX!tinytex} [@R-tinytex]:
+TinyTeX\index{LaTeX!TinyTeX} は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です^[というより, あなたがシステムの唯一のユーザーなら Linux や macOS では TinyTeX を root 権限で (つまり `sudo` で) インストール**しない**ことをお薦めします.]. TinyTeX は R パッケージの **tinytex**\index{LaTeX!tinytex} [@R-tinytex] でインストールできます.
 
 ```{r eval=FALSE}
 tinytex::install_tinytex()
-# to uninstall TinyTeX, run tinytex::uninstall_tinytex() 
+# TinyTeX をアンインストールするなら, tinytex::uninstall_tinytex() を実行してください
 ```
 
-Please note that "**tinytex**" refers to the R package, and "TinyTeX" refers to the LaTeX distribution. There are two advantages of using TinyTeX: 
+"**tinytex**" は R パッケージのことを指し, "TinyTeX" は LaTeX ディストリビューションを指すことに注意してください. TinyTeX を使う利点は2つあります.
 
-1. TinyTeX is lightweight (compared to other LaTeX distributions), cross-platform, and portable. For example, you can store a copy of TinyTeX on your USB drive or other portable devices, and use it on other computers with the same operating system. 
+1. TinyTeX は (他の LaTeX ディストリビューションと比べて) 軽量であり, クロスプラットフォームでありポータブルです. 例えば USB ドライブや他のポータブルデバイスに TinyTeX のコピーを保存し, 同じオペレーティングシステムの別のコンピュータで使用することができます.
 
-1. When R Markdown is converted to PDF, Pandoc converts Markdown to an intermediate LaTeX document first. The R package **tinytex** has provided helper functions to compile LaTeX documents to PDF (the main function is `tinytex::latexmk()`). If you use TinyTeX and certain LaTeX packages are required but not installed, **tinytex** will try to automatically install them for you. It will also try to compile the LaTeX file for a sufficient number of times to make sure all cross-references are resolved.
+1. R Markdown を PDF へ変換する時, Pandoc はまず Markdown を中間ファイルとして LaTeX 文書に変換します. **tinytex** パッケージは LaTeX 文書を PDF にコンパイルするヘルパー関数を提供します (主な関数は `tinytex::latexmk()` です). TinyTeX を使っていて, インストールされていない LaTeX パッケージが必要ならば, **tinytex** は自動でインストールしようとします. LaTeX ファイルに対するコンパイルも, 全ての相互参照を確実に解決するために十分な回数だけ行おうとします.
 
-If you are interested in the technical details, you may check out the article @tinytex2019 and the FAQ page at https://yihui.org/tinytex/faq/.
+技術的に詳しい話に興味があるなら, @tinytex2019 の論文と https://yihui.org/tinytex/faq/ の FAQ を確認するとよいかもしれません.
 
-## Install missing LaTeX packages {#install-latex-pkgs}
+## 足りない LaTeX パッケージをインストールする {#install-latex-pkgs}
 
-When you compile a document to PDF through LaTeX, you may run into errors like these:
+文書を LaTeX を通して PDF にコンパイルしたい時, これらのようなエラーに遭遇するかもしれません.
 
 ```latex
 ! LaTeX Error: File `ocgbase.sty' not found.
@@ -77,32 +77,32 @@ When you compile a document to PDF through LaTeX, you may run into errors like t
   Font tcrm0700 at 600 not found
 ```
 
-If you are using TinyTeX as introduced in Section \@ref(install-latex), usually you do not need to deal with such errors, since **tinytex** [@R-tinytex] will automatically deal with them, but if you run into such errors anyway, it is still easy to install the missing LaTeX package(s)\index{LaTeX!packages} via `tinytex::parse_install()`\index{tinytex!parse\_install()}. This function takes the path of the LaTeX log file as the input, tries to figure out the missing packages automatically, and installs them if they are found on CTAN (the Comprehensive TEX Archive Network, https://ctan.org). The LaTeX log file typically has the same base name as your input document, and has an extension `.log`. If you cannot find this log file, you can pass the error message to the `text` argument of this function. Both ways should work:
+\@ref(install-latex) 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. **tinytex** [@R-tinytex] が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, `tinytex::parse_install()`\index{tinytex!parse\_install()} で足りない LaTex パッケージ\index{LaTeX!packages}をインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, https://ctan.org) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, `.log` という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の `text` 引数に与えることができます. どちらの方法でも動作するはずです.
 
 ```{r, tidy=FALSE, eval=FALSE}
-# if the log file is filename.log
+# ログファイルが filename.log だとする
 tinytex::parse_install("filename.log")
 
-# or use the `text` argument
+# または `text` 引数を使う
 tinytex::parse_install(
   text = "! LaTeX Error: File `ocgbase.sty' not found."
 )
-# it will install the "ocgx2" package
+# "ocgx2" パッケージがインストールされる
 ```
 
-If you do not use TinyTeX, the R package **tinytex** can still help you figure out the LaTeX package names from the error log---use the function `tinytex::parse_packages()`\index{tinytex!parse\_packages()}, e.g.,
+TinyTeX を使わない場合, **tinytex** パッケージはやはりエラーログから LaTeX パッケージ名を解決しようとします.  `tinytex::parse_packages()`\index{tinytex!parse\_packages()} を例えばこのように使用してください.
 
 ```{r, tidy=FALSE, eval=FALSE}
-# if the log file is filename.log
+# ログファイル名が filename.log だったとする
 tinytex::parse_packages("filename.log")
 
-# or use the `text` argument
+# または `text` 引数を使う
 tinytex::parse_packages(
   text = "! LaTeX Error: File `ocgbase.sty' not found."
 )
-# it should return "ocgx2"
+# "ocgx2" と返ってくるはず
 ```
 
-Once you know the package names, you can install them with the package manager of your LaTeX distribution.
+パッケージ名が判明したら, あなたの LaTeX ディストリビューションのパッケージマネージャでインストールすることができます.
 
-If you are using MiKTeX\index{LaTeX!MiKTeX} instead, it can also install missing packages automatically. During the installation of MiKTeX, be sure to check the setting "Always install missing packages on-the-fly." If you have already installed it without this setting, [you can still change it in the MiKTeX Console.](https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175)
+代わりに MiKTeX\index{LaTeX!MiKTeX} を使っているなら, これも自動で足りないパッケージをインストールできます. MikTeX のインストール中に "Always install missing packages on-the-fly" の設定に必ずチェックしてください.  この設定をせずにインストールしていても, [まだ MiKTeX  Console で変更できます](https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175).
