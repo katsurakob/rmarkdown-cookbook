@@ -32,4 +32,6 @@ Emily Riederer は消費者金融業界でデータサイエンスの仕事を�
 
 Emily は頻繁に Twitter (https://twitter.com/emilyriederer) や自分のブログ (https://emily.rbind.io) で R について議論し, プロジェクトを共有します. その中には GitHub (https://github.com/emilyriederer) にある **projmgr** パッケージも含まれます. rOpenSci のパッケージレビュアーとしても活動し, さらに satuRday Chicago R conference の発起メンバーの一人でもあります.
 
+TODO: "satRday" はタイポか?
+
 Emily の他の関心は読書とウェイトリフティングです. 彼女は自分で辛い料理が好きだと考えていますが, 合衆国内にしか住んだことがないため, その言葉が実際に意味するところをよく分かっていないのだと言われています.

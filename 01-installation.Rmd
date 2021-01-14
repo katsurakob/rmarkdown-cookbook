@@ -13,9 +13,9 @@ if (!requireNamespace("remotes")) install.packages('remotes')
 remotes::install_github('rstudio/rmarkdown')
 ```
 
-こだわりのあるテキストエディタや IDE (統合開発環境) がなければ, RStudio\index{RStudio} IDE (https://www.rstudio.com) のインストールも推奨します. RStudio は必須ではないですが, エディタに強力な R Markdown 支援機能があるので平均的なユーザーにとっては作業がより簡単になります. RStudio IDE を使わない選択をしたなら, Markdown を他の形式の文書に変換するために **rmarkdown** が使用する  Pandoc\index{Pandoc}(see \@ref(install-pandoc) 節参照)をインストールする必要があります.
+こだわりのあるテキストエディタや IDE (統合開発環境) がなければ, RStudio\index{RStudio} IDE (https://www.rstudio.com) のインストールも推奨します. RStudio は必須ではないですが, エディタに強力な R Markdown 支援機能があるので平均的なユーザーにとっては作業がより簡単になります. RStudio IDE を使わない選択をしたなら, Markdown を他の形式の文書に変換するために **rmarkdown** が使用する  Pandoc\index{Pandoc}(\@ref(install-pandoc) 節参照)をインストールする必要があります.
 
-PDF として作成する必要があるなら, LaTeX\index{LaTeX} (\@ref(install-latex) 節) およびいくつかのパッケージ (\@ref(install-latex-pkgs) 節) のインストールも必要になるかもしれません.
+PDF として作成する必要があるなら, LaTeX\index{LaTeX} (\@ref(install-latex) 節) およびいくつかのパッケージ (\@ref(install-latex-pkgs)) のインストールも必要になるかもしれません.
 
 ## RStudio IDE にバンドルされていないバージョンの Pandoc を使う {#install-pandoc}
 
@@ -36,7 +36,7 @@ rmarkdown::find_pandoc(cache = FALSE)
 
 上記のコードチャンクのように, Pandoc のバージョンを特定する方法はいくつかあります. デフォルトでは `rmarkdown::find_pandoc()` はお使いのシステムの最新の Pandoc を発見しようとします. 発見できたなら, バージョン情報はキャッシュされ `cache = FALSE` でキャッシュは無効化されます. `pandoc` 実行ファイルの発見されるであろうディレクトリがどこにある可能性があるかは, ヘルプページの `?rmarkdown::find_pandoc` を見てください.
 
-この関数は Rmd 文書内でも外部でも呼び出される可能性があります. あなたのコンピュータにインストールした特定のバージョンの Pandoc で Rmd 文書をコンパイルしたい場合, この関数を文書内のチャンクのどれかで呼び出すことになるでしょう. 例えばセットアップ用のチャンクで.
+この関数は Rmd 文書内でも外部でも呼び出される可能性があります. あなたのコンピュータにインストールした特定のバージョンの Pandoc で Rmd 文書をコンパイルしたい場合, この関数を文書内のチャンクのどれかで呼び出すことになるでしょう. 例えばセットアップ用のチャンクで以下のように.
 
 ````md
 ```{r, setup, include=FALSE}`r ''`

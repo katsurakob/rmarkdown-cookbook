@@ -1,5 +1,5 @@
 --- 
-title: "R Markdown クックブック"
+title: "R Markdown クックブック 日本語版"
 author:
   - "(著者) Xie, Yihui"
   - "(著者) Dervieux, Christophe"
@@ -12,7 +12,11 @@ bibliography:
   - 'bib/literature-ja.bib'
 description: This book showcases short, practical examples of lesser-known tips and tricks to helps users get the most out of these tools. After reading this book, you will understand how R Markdown documents are transformed from plain text and how you may customize nearly every step of this processing. For example, you will learn how to dynamically create content from R code, reference code in other documents or chunks, control the formatting with customer templates, fine-tune how your code is processed, and incorporate multiple languages into your analysis.
 mainfont: "DejaVu Serif"
+mainfontoptions:
+  - Scale=0.9
 sansfont: "DejaVu Sans"
+sansfontoptions:
+  - Scale=0.9
 monofont: "Ricty"
 jamainfont: "Noto Serif CJK JP"
 jasansfont: "Noto Sans CJK JP"
@@ -98,7 +102,7 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 
 ```{asis, echo=!knitr::is_latex_output()}
 ::: {.infobox .caution}
-**注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/) ライセンスのもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+**注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
 :::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
@@ -123,7 +127,7 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 - *R for Data Science* [@wickham2016Data]^[本書は https://r4ds.had.co.nz/ で無料公開されています. また, 日本語訳がオライリー・ジャパンより出版されています.] の Part V "Communicate".: このパートは上記の "Definitive Guide" よりも技術的なことは少ないので, より平易な R Markdown の入門になるでしょう.
 
 - *Dynamic Documents with R and knitr* [@knitr2015] は **knitr** パッケージ [@R-knitr] の網羅的な入門書です (補足しますと, R Markdown は **knitr** パッケージのサポートする文書形式の1つにすぎません). 短縮版を読みたい場合, Karl Broman による最小限のチュートリアル ["knitr in a knutshell"](https://kbroman.org/knitr_knutshell/) が役に立つでしょう. **訳注**: これらは日本語訳が存在しませんが, Yihui 氏によるドキュメント *[knitr
-Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/knitr/)* の日本語訳は既に用意してあります^[https://gedevan-aleksizde.github.io/knitr-doc-ja/index.html].
+Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/knitr/)* の日本語訳は既に用意してあります^[https://gedevan-aleksizde.github.io/knitr-doc-ja/].
 
 - *bookdown: Authoring Books and Technical Documents with R Markdown* [@bookdown2016] は **bookdown** パッケージ [@R-bookdown] の公式ドキュメントとして書かれた小規模な書籍です. **bookdown** パッケージは長大なフォーマットのドキュメントを R Markdown で簡単に書くために設計されました.
 
@@ -157,7 +161,6 @@ xfun::session_info(c(
 
 ## 謝辞 {-#acknowledgments}
 
-TODO:
 常のこととして, 初めに本書の執筆作業の自由を与えていただいた雇用主である RStudio 社に感謝の意を表します. 執筆作業が始まってから, 上司である Tareef Kawaf との毎週のミーティング当初15分から5分に削減され, それから完全になくなりました. 私は複数の友人から所属先で耐えられないほど多くのミーティングがあり, 時間の浪費になっていると聞いていました. 集中力の維持の観点から, 最近友人の一人は「5分間 Slack をミュートすることができるかもしれないが, **1日中**ミュートできるものか?」と嘆きました「もちろんできる!」と私は答えました. 私は1ヶ月でも好きなだけ Slack をミュートできるようになったようです. 誤解しないでください --- Tareef や同僚が邪魔だという意味ではありません. 皆の提供してくれた自由がどれだけ価値あることかを伝えたいだけです.
 
 *R Markdown Definitive Guide* を刊行したのち, このクックブックを執筆することを思いつきましたが, アイディアはまだ貧弱でした. 困難で高く付く作業でした. 最初に [Michael Harper's](http://mikeyharper.uk) の後押しがなければ, この作業にまじめに取り組むことはなかったでしょう. Christophe Dervieux は助けが必要なときにいつも近くにいました. 彼の R と R Markdown のスキルにより作成されたダッシュボード ( **flexdashboard** パッケージによるもの) は人々が興味を持つであろうもの, 役に立つであろうトピックを本書に記載する助けになりました. 同時に多数の Github issues を手伝ってくれたため, 最小限の再現例も添付してないバグ報告と格闘する時間を執筆作業に割くことができました. 同様に,  Martin Schmelzer, Marcel Schilling, Ralf Stubner をはじめ数名がスタック・オーバーフロー上の R Markdown の質問に答えるのを手伝ってくれました. おそらく意図してのことではないと思いますが, 彼らの努力は私の多くの持ち時間を節約してくれました. 最近のスタック・オーバーフローでは Johannes Friedrich の活動が注意を引きます. これまでに何度か, スタック・オーバーフローの質問を開いたら彼がもう回答していた, ということがありました.
