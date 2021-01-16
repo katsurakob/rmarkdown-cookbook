@@ -1,61 +1,61 @@
-# Basics
+# 基本 {#basics}
 
-In this chapter, we present some key concepts about R Markdown. First, we introduce the basic components of an R Markdown document: the prose and code. Next, we show how to convert R Markdown documents to R scripts, and vice versa.
+この章では, R Markdown の重要な概念をいくつか提示します. まず「平文」「コード」という R Markdown の基本的なコンポネントを紹介します. 次に, R Markdown 文書をどう R スクリプトへ変換するか, あるいは逆はどうするかを提示します.
 
-For those seeking lower-level basics, please read Chapter 2 of the _R Markdown Definitive Guide_ [@rmarkdown2018].
+もっと基本的な話を求める方は, _R Markdown Definitive Guide_ [@rmarkdown2018] の2章を見てください.
 
-## Code chunks and inline R code {#r-code}
+## コードチャンクとインライン R コード {#r-code}
 
-An R Markdown document consists of intermingled prose (narratives) and code. There are two types of code in an Rmd document: code chunks\index{code chunk} and inline R code. Below is a quick example:
+R Markdown 文書は平文 (ナラティブ) とコードが混合してできています. Rmd 文書には2種類のコード, コードチャンク\index{code chunk}とインライン (行内) R コードです. 以下は簡単な例です.
 
 ````md
 ```{r}`r ''`
-x <- 5  # radius of a circle
+x <- 5  # 円の半径
 ```
 
-For a circle with the radius `r knitr::inline_expr('x')`,
-its area is `r knitr::inline_expr('pi * x^2')`.
+半径 `r knitr::inline_expr('x')` の円に対し,
+その面積は `r knitr::inline_expr('pi * x^2')` である.
 ````
 
-A code chunk usually starts with ```` ```{}```` and ends with ```` ``` ````. You can write any number of lines of code in it. Inline R code is embedded in the narratives of the document using the syntax `` `r ` ``. In the above example, we defined a variable `x` in a code chunk, which is the radius of a circle, and calculated its area in the next paragraph.
+コードチャンクはたいていは ```` ```{}````  で始まり,  ```` ``` ```` で終わります. コードチャンク内ではコードを何行でも書いてかまいません. インライン R コードは `` `r ` `` という構文を使って文書のナラティブの中に埋め込まれます. 上記の例ではコードチャンク内で円の半径として変数 `x` を定義し, この円の面積を次のパラグラフで計算しています.
 
-You can customize the behavior and output of code chunks through chunk options (provided inside the curly brackets `{}`). You will find several examples in Chapter \@ref(chunk-options). You may write code of other languages in code chunks, too (see Chapter \@ref(other-languages)).
+チャンクオプションを通してコードチャンクの挙動と出力をカスタマイズできます (オプションはカーリー・ブレイス `{}` 内に与えます). 例のいくつかは\@ref(chunk-options)章で見つかるでしょう. コードチャンクに別のプログラミング言語のコードを書くこともあるでしょう (\@ref(other-languages) 章を見てください).
 
-## Write Markdown in the RStudio visual editor {#rstudio-visual}
+## RStudio のビジュアルエディタで R Markdown を書く {#rstudio-visual}
 
-If you are not familiar with Markdown yet, or do not prefer writing Markdown code, RStudio\index{RStudio} v1.4 has included an experimental visual editor for Markdown documents, which feels similar to traditional WYSIWYG editors like Word, as shown in Figure \@ref(fig:visual-edit). You can find the full documentation at https://rstudio.github.io/visual-markdown-editing/.
+あなたがまだ Markdown の書き方に慣れていないか, Markdown コードを書くのが気に入らないならば, RStudio\index{RStudio} ver. 1.4 には実験的ですが Markdown 文書用のビジュアルエディタがあります. これは図\@ref(fig:visual-edit)で示すように Word のような伝統的な WYSIWYG なエディタと似ていると感じるでしょう. この完全なドキュメントは https://rstudio.github.io/visual-markdown-editing/ で見ることができます.
 
-```{r visual-edit, echo=FALSE, fig.cap="The visual Markdown editor in RStudio.", out.width='100%', fig.align='center'}
-knitr::include_graphics("images/visual-edit.png", dpi = NA)
+```{r visual-edit, echo=FALSE, out.width="100%", fig.cap="RStudio のビジュアル Markdown エディタ"}
+knitr::include_graphics("images/visual-edit.png")
 ```
 
-With the visual editor, you can visually edit almost any Markdown elements supported by Pandoc, such as section headers, figures, tables, footnotes, and so on. That means you do not have remember the syntax for all elements. In case you forget the syntax for a certain element, you may use the RStudio toolbar (see Figure \@ref(fig:visual-edit)) or a keyboard shortcut to add or edit it.
+ビジュアルエディタによって, ヘッダ, 図, 表, 脚注などといった Pandoc でサポートされているほとんどあらゆる Markdown 要素を視覚的に編集できます. あなたは全ての構文を覚えなくてもよいということです. ある要素の構文を忘れた場合, RStudio ツールバー (図\@ref(fig:visual-edit)参照) を使うかキーボードショートカットを使って要素を追加したり編集したりすることになるでしょう.
 
-If you are already a Markdown expert, you can still write your document in the source mode by clicking the rightmost button on the toolbar, which allows you to switch between the source mode and the visual mode.
+あなたが既に Markdown に熟練しているなら, ツールバーを右クリックしてソースモードとビジュアルモードを切り替えられるので, 文書をソースモードのままで書くこともできます.
 
-## Render an R script to a report {#spin}
+## R スクリプトをレポートにレンダリングする {#spin}
 
-Even if you are a long-time R Markdown user, you may have missed another possibility. Dean Attali called it ["**knitr**'s best hidden gem".](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/) That is, you can render a pure R script to a report directly. If you use the RStudio IDE, the keyboard shortcut to render R scripts is the same as when you knit Rmd documents (`Ctrl / Cmd + Shift + K`).
+年季の入った Rを Markdown ユーザーであっても, 別の選択肢があることを見落としているかもしれません. Dean Attali はこれを["**knitr** の隠された至宝](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/)と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するとき (`Ctrl / Cmd + Shift + K`) と同じです.
 
-When rendering an R script to a report, the function `knitr::spin()`\index{knitr!spin()} is called to convert the R script to an Rmd file first. This function is what Dean Attali called **knitr**'s best hidden gem. You will see all text and graphical output in the report.
+R スクリプトをレポートにレンダリングすると, まず `knitr::spin()`\index{knitr!spin()} 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数が Dean Attali が「**knitr**の隠された至宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.
 
-If you want granular control over the elements in the report, below are a few syntax rules to help you:
+レポートの要素を細かく管理したいなら, 以下のようにその助けとなるいくつかの構文があります.
 
-- Roxygen comments will be treated as normal text. A roxygen comment is an R comment that starts with `#'`. This can help you write narratives in your report. You can use any Markdown syntax in the comments.
+- Roxygen コメントは平文として扱われます. roxygen コメントは `#'` で始まる R コメントで, レポートにナラティブを書くのに役立つかもしれません. コメント内ではあらゆる Markdown 構文を使うことができます.
 
-- A comment starting with `#+` is treated as the **knitr** chunk header. For example, `knitr::spin()` will translate the comment `#+ label, fig.width=5` to the chunk header ```` ```{r label, fig.width=5}```` in R Markdown.
+- `#+` で始まるコメントは `knitr` チャンクヘッダとして扱われます. 例えば `#+ label, fig.width=5` というコメントを, `knitr::spin()` は R Markdown の ```` ```{r label, fig.width=5}```` というチャンクヘッダへ翻訳します.
 
-- R code of the form `{{ code }}` is translated to an inline R expression in R Markdown. Please note that `{{ code }}` must be on its own line.
+- `{{ code }}` で囲まれた R コードは R Markdown のインライン R 表現へ翻訳されます. `{{ code }}` は1行で書かなければならないことに注意してください.
 
-- The YAML\index{YAML} frontmatter can be written in the beginning of the R script in roxygen comments, too. Please watch out for the indentation in YAML fields. It is very important. If you omit the indentation, the data structure expressed in your YAML will be different and incorrect. For example, the field `keep_tex: true` should be indented for two more spaces under `pdf_document` in the example below.
+- YAML\index{YAML} フロントマターも, R スクリプトの冒頭の roxigen コメント内に書くことができます. YAML フィールドのインデントによく気をつけてください. YAML のインデントを省くとデータ構造の表現は不正確なものに変わることがあります. 例えば `keep_tex: true` というフィールドは, 後述する例のように `pdf_document` 以下に2つ以上のスペースでインデントするべきです.
 
-- Any text between `/*` and `*/` will be ignored (i.e., they are treated as true comments).
+- `/*` と `*/` の間の任意のテキストは無視されます (つまり, 完全にコメントとして扱われます)
 
-Below is a full example illustrating the above rules:
+上記のルールの全ての例を表現したのが以下です.
 
 `r import_example('spin.R')`
 
-When this script is rendered to a report, `knitr::spin()` will convert it to R Markdown:
+このスクリプトがレポートにレンダリングされた時, `knitr::spin()` はこれを R Markdown へと変換します.
 
 ```{r, class.output='md', comment='', echo=FALSE}
 xfun::raw_string(
@@ -63,15 +63,15 @@ xfun::raw_string(
 )
 ```
 
-This method of generating reports can be particularly useful when you primarily work with R scripts and do not need a lot of narratives. If the proportion of text is substantial in your report, R Markdown may be a better choice, because you do not need to put all text in roxygen comments.
+このレポート生成方法は, 主に R スクリプトを使って作業していて, 多くのナラティブを必要としないときに特に役立つかもしれません. レポートが実質テキストであるほどの割合のテキストなら, 全てのテキストを  roxygen コメントに入れなくてもいいので R Markdown がより良い選択かもしれません. 
 
-## Convert R Markdown to R script {#purl}
+## Markdown から R script への変換 {#purl}
 
-When you want to extract all R code from an R Markdown document, you can call the function `knitr::purl()`\index{knitr!purl()}. Below is a simple Rmd example with the filename `purl.Rmd`:
+R Markdown から全ての R コードを取り出したい時, あなたは `knitr::purl()`\index{knitr!purl()} を呼ぶことができます. 以下は `purl.Rmd` というファイル名の簡単な Rmd の例です.
 
 `r import_example('purl.Rmd')`
 
-If we call `knitr::purl("purl.Rmd")`, it generates the following R script (with the filename `purl.R` by default):
+`knitr::purl("purl.Rmd")` を呼び出したら, 以下の R スクリプト (デフォルトのファイル名は `purl.R`) が生成されます.
 
 ```{r, class.output='r', comment='', echo=FALSE}
 purl2 = function(file, ...) {
@@ -82,25 +82,25 @@ purl2 = function(file, ...) {
 purl2('examples/purl.Rmd')
 ```
 
-The above R script contains the chunk options in a comment. If you want pure R code, you may call `knitr::purl()` with the argument `documentation = 0`, which will generate the R script below:
+上記の R スクリプトでは, チャンクオプションはコメントとして書かれています. 純粋な R コードが欲しい場合, `documentation = 0` という引数を与えて `knitr::purl()` を呼ぶことになるでしょう. これで以下のような R スクリプトが生成されます.
 
 ```{r, class.output='r', comment='', echo=FALSE}
 purl2('examples/purl.Rmd', documentation = 0)
 ```
 
-If you want to retain all the text, you may use the argument `documentation = 2`, which generates the R script below:
+テキストも全て維持したい場合 `documentation = 2` 引数を使うことになるでしょう. これは以下のような R スクリプトを生成します.
 
 ```{r, class.output='r', comment='', echo=FALSE}
 purl2('examples/purl.Rmd', documentation = 2)
 ```
 
-Note that code chunks with the option `purl = FALSE` will be excluded in the R script.
+`purl = FALSE` というオプションのあるコードチャンクはこの R スクリプトから除外されることに注意してください.
 
-Inline R expressions are ignored by default. If you want to include them in the R script, you need to set the global R option `options(knitr.purl.inline = TRUE)` before calling `knitr::purl()`.
+インライン R 表現はデフォルトでは無視されます. R スクリプトにインライン表現も含めたいなら, `knitr::purl()` を呼ぶ前に R のグローバルオプション `options(knitr.purl.inline = TRUE)` を設定する必要があります.
 
-## R Markdown Notebooks {#notebook}
+## R Markdown Notebook {#notebook}
 
-As mentioned in [Section 2.2](https://bookdown.org/yihui/rmarkdown/compile.html) of the _R Markdown Definitive Guide_ [@rmarkdown2018], there are several ways to compile an Rmd document. One of them is to use R Markdown Notebooks, with the output format `html_notebook`, e.g.,
+ _R Markdown Definitive Guide_ [@rmarkdown2018] の [Section 2.2](https://bookdown.org/yihui/rmarkdown/compile.html) で言及したように, Rmd 文書をコンパイルする方法はいくつかあります. その1つは `html_notebook` という出力形式で R Markdown Notebook を使うことです.  例えば以下のように.
 
 ```yaml
 ---
@@ -109,11 +109,11 @@ output: html_notebook
 ---
 ```
 
-When you use this output format in RStudio, the `Knit` button on the toolbar will become the `Preview` button.
+RStudio でこの出力形式を使うと, ツールバー上の `knit` ボタンが `Preview` ボタンになります.
 
-The main advantage of using notebooks\index{RStudio!notebook} is that you can work on an Rmd document _iteratively in the same R session_. You can run one code chunk at a time by clicking the green arrow button on each chunk, and you will see the text or plot output in the editor. When you click the `Preview` button on the toolbar, it only renders the Rmd document to an HTML output document containing the output of all code chunks that you have already executed. The `Preview` button does not execute any code chunks. By comparison, when you use other output formats and hit the `Knit` button, RStudio launches a new R session to compile the whole document (hence all code chunks are executed at once), which usually takes more time.
+notebook\index{RStudio!notebook} を使う主な利点は Rmd 文書を**同じRセッションで繰り返し**作業できることです. コードチャンクにある緑色の矢印ボタンを押すことでチャンクを個別に随時実行し, エディタ上でテキストやグラフの出力を見ることができます. ツールバー上の `Preview` ボタンを押せば Rmd 文書は, あなたが既に実行したコードチャンクの出力を含む HTML 出力の文書へのみレンダリングされます. `Preview` ボタンは一切のコードチャンクを実行しません. これと比較して, 他の出力形式を使い `knit` ボタンを押せば RStudio は文書全体をコンパイルする (つまり全てのコードチャンクが一気に実行されます) ために R セッションを新規で立ち上げます. これはたいてい, より時間がかかります.
 
-If you do not like RStudio's default behavior of showing the output of code chunks inline when you run them individually, you can uncheck the option "Show output inline for all R Markdown documents" from the menu `Tools -> Global Options -> R Markdown`. After that, when you run a code chunk, the output will be shown in the R console instead of inside the source editor. You can also set this option for an individual Rmd document in its YAML metadata:
+コードチャンクを個別に実行した時に出力が表示されるという RStudio のデフォルトの挙動が気に入らないなら, `Tools -> Global Options -> R Markdown` から "Show output inline for all R Markdown documents" というオプションのチェックを外すことができます. 以降は, コードチャンクを実行すると出力はソースエディタ内ではなく R コンソールに表示されます. このオプションは YAML メタデータで個別の Rmd 文書ごとに設定できます. このように.
 
 ```yaml
 editor_options:

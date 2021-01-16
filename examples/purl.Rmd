@@ -1,20 +1,18 @@
 ---
-title: Use `purl()` to extract R code
+title: R コードを取りだすために `purl()` を使いましょう
 ---
 
-The function `knitr::purl()` extracts R code chunks from
-a **knitr** document and save the code to an R script.
+`knitr::purl()` 関数は **knitr** 文書から  R コードチャンクを取り出しコードを R スクリプトに保存します.
 
-Below is a simple chunk:
+以下は簡単なチャンクです.
 
 ```{r, simple, echo=TRUE}
 1 + 1
 ```
 
-Inline R expressions like `r 2 * pi` are ignored by default.
+`r 2 * pi` のようなインライン R 表現はデフォルトでは無視されます.
 
-If you do not want certain code chunks to be extracted,
-you can set the chunk option `purl = FALSE`, e.g.,
+特定のコードチャンクを取り出してほしくない場合は, チャンクオプション `purl = FALSE` を設定できます. 例えば以下のように.
 
 ```{r, ignored, purl=FALSE}
 x = rnorm(1000)
