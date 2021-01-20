@@ -1,10 +1,12 @@
-# Document Elements
+# 文書の要素 {#document-elements}
 
-In this chapter, we introduce some tips and tricks that can be used to customize or generate the document elements of R Markdown, including page breaks, the YAML metadata, section headings, citations, cross-references, equations, animations, interactive plots, diagrams, and comments.
+本章では, 改ページ, YAML メタデータ, セクションヘッダ, 引用, 相互参照, 数式, アニメーション, 対話的プロット, ダイアグラム, コメントといった R Markdown 文書の要素をカスタマイズしたり生成したりするのに使える豆知識と小ワザを紹介します.
 
-## Insert page breaks {#pagebreaks}
+## 改ページ (改段) を挿入する {#pagebreaks}
 
-When you want to break a page\index{line breaks}, you can insert the command `\newpage` in the document. It is a LaTeX command, but the **rmarkdown** package is able to recognize it for both LaTeX output formats and a few non-LaTeX output formats including HTML,^[For HTML output, page breaks only make sense when you print the HTML page, otherwise you will not see the page breaks, because an HTML page is just a single continuous page.] Word, and ODT. For example:
+改ページしたい場合\index{line breaks}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
+
+例えば以下のように.
 
 ```md
 ---
@@ -16,20 +18,20 @@ output:
   odt_document: default
 ---
 
-# The first section
+# 第一節
 
 \newpage
 
-# The second section
+# 第二節
 ```
 
-This feature is based on Pandoc's Lua filters\index{Lua filter} (see Section \@ref(lua-filters)). For those who are interested in the technology, you may view this package vignette:
+これは Pandoc の Lua フィルタ\index{Lua filter} に基づく機能です (\@ref(lua-filters) 節参照). 技術的なことに興味のある方はこのパッケージの vignettte を見てください.
 
 ```r
 vignette("lua-filters", package = "rmarkdown")
 ```
 
-## Set the document title dynamically {#dynamic-yaml}
+## 文書タイトルを動的に設定する {#dynamic-yaml}
 
 You can use inline R code (see Section \@ref(r-code)) anywhere in an Rmd document, including the YAML metadata section. This means some YAML metadata can be dynamically generated\index{YAML!dynamic generation} with inline R code, such as the document title. For example:
 
