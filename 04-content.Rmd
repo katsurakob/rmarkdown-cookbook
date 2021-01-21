@@ -33,22 +33,23 @@ vignette("lua-filters", package = "rmarkdown")
 
 ## 文書タイトルを動的に設定する {#dynamic-yaml}
 
-You can use inline R code (see Section \@ref(r-code)) anywhere in an Rmd document, including the YAML metadata section. This means some YAML metadata can be dynamically generated\index{YAML!dynamic generation} with inline R code, such as the document title. For example:
+Rmd 文書内のどこでも, YAML メタデータの部分であっても行内 R コード (\@ref(r-code)節) を使うことができます. つまり行内 R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!dynamic generation}が可能ということです. 例えばこのように.
 
 ```yaml
 ---
-title: "An analysis of `r knitr::inline_expr('nrow(mtcars)')` cars"
+title: "自動車 `r knitr::inline_expr('nrow(mtcars)')` 台の分析"
 ---
 ```
 
-If your title depends on an R variable created later in the document, you may add the `title` field in a later YAML section, e.g., the following:
+タイトルが以降の文書内で作成される R の変数に依存する場合, 以下の例のようにその後に YAML セクションを書いて `title` フィールドを加えることになるでしょう. 
 
 ````md
 ---
-author: "Smart Analyst"
+author: "利口なアナリスト"
 output: pdf_document
 ---
 
+我々の市場シェアを頑張って計算してみました.
 I just tried really hard to calculate our market share:
 
 ```{r}`r ''`
@@ -56,42 +57,40 @@ share <- runif(1)
 ```
 
 ---
-title: "Our market share is `r knitr::inline_expr('round(100 * share, 2)')`% now!"
+title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * share, 2)')`% である!"
 ---
 
-I feel `r knitr::inline_expr('if(share > 0.8) "happy" else "sad"')` about it.
+これはとても `r knitr::inline_expr('if(share > 0.8) "喜ばしい" else "悲しい"')` ことです.
 ````
 
-In the example above, we added the document title after we created the variable `share`. The title works in this case because Pandoc can read any number of YAML sections in a document (and merge them).
+上記の例では, 変数 `share` を作成してから文書のタイトルを追加しています. Pandoc は文書内に YAML セクションをいくつ書いても読み込む (そして全てマージする) ことができるため, この例が動作します. 
 
-You can also generate titles or any YAML fields dynamically from parameters in parameterized reports\index{YAML!parameters|see {parameter}}\index{parameter} (see Section \@ref(parameterized-reports)), e.g.,
+タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!parameters|see {parameter}}\index{parameter}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
 
 ```yaml
 ---
 title: "`r knitr::inline_expr('params$doc_title')`"
-author: "Smart Analyst"
+author: "利口なアナリスト"
 params:
-  doc_title: "The Default Title"
+  doc_title: "デフォルトのタイトル"
 ---
 ```
+タイトルが動的なパラメータなら, タイトルだけ異なるレポートのまとまりを簡単に生成できます.
 
-With the title being a dynamic parameter, you can easily generate a batch of reports with different titles.
+この節ではタイトルを例にしましたが, このアイディアは YAML セクションのどのメタデータのフィールドにも適用可能です.
 
-We used the title as the example in this section, but the idea can be applied to any metadata fields in the YAML section.
+## R コード内で文書メタデータにアクセスする {#document-metadata}
 
-## Access the document metadata in R code {#document-metadata}
-
-When an Rmd document is compiled, all of its metadata in the YAML section\index{YAML} will be stored in the list object `rmarkdown::metadata`. For example, `rmarkdown::metadata$title` gives you the title of the document. You can use this `metadata` object in your R code, so that you do not need to hard-code information that has been provided in the YAML metadata. For example, when you send an email with the **blastula** package [@R-blastula]\index{R package!blastula} within an Rmd document, you may use the title of the document as the email subject, and get the sender information from the author field:
+Rmd 文書をコンパイルする際に, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に保存されます. 例えば `rmarkdown::metadata$title` は文書のタイトルを与えます. YAML メタデータに与えられた情報をハードコードしなくてすむように, この `metadata` オブジェクトを R コード内で使うことができます. 例えば  **blastula** パッケージ [@R-blastula]\index{R package!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
 
 ````md
 ---
-title: An important report
+title: 重要なレポート
 author: John Doe
 email: john@example.com
 ---
 
-We have done an important analysis, and want to email
-the results.
+重要な分析ができましたので結果をメールで送りたいと思います.
 
 ```{r}`r ''`
 library(rmarkdown)
@@ -104,9 +103,9 @@ smtp_send(
 ```
 ````
 
-## Unnumbered sections {#unnumbered-sections}
+## 番号のない節 {#unnumbered-sections}
 
-Most output formats support an option `number_sections`\index{output option!number\_sections}, which can be used to enable numbering sections if set to `true`, e.g.,
+ほとんどの出力フォーマットは `number_sections`\index{output option!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
 
 ```yaml
 output:
@@ -116,27 +115,27 @@ output:
     number_sections: true
 ```
 
-If you want a certain section to be unnumbered when the option `number_sections` is `true`, you may add `{-}` after the section heading, e.g.,
+特定の節に番号を付けたくないならば, `number_sections` オプションは `true` のままにして, その節のヘッダの直後に `{-}` を加えます. 例えばこのように.
 
 ```md
-# This section is unnumbered {-}
+# この節には番号がつきません {-}
 ```
 
-Equivalently, you may also use `{.unnumbered}`. You can also add other attributes to the heading, e.g., `{.unnumbered #section-id}`. Please see https://pandoc.org/MANUAL.html#extension-header_attributes for more information.
+全く同じことを, `{.unnumbered}` を使ってもできます. 例えば `{.unnumbered #section-id}` のように, 他の属性を追加することもできます. 詳細は https://pandoc.org/MANUAL.html#extension-header_attributes を確認してください.
 
-Unnumbered sections are often used for providing extra information about the writing. For example, for this book, the chapters "Preface" and "About the Authors" are unnumbered, since they do not belong to the body of this book. As you may see in Figure \@ref(fig:unnumbered-sections), the actual body starts after the two unnumbered chapters, and the chapters in the book body are numbered.
+付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図\@ref(fig:unnumbered-sections)で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています. TODO: 日本語版が出来たらスクリーンショット撮り直す.
 
-```{r, unnumbered-sections, echo=FALSE, fig.cap='A screenshot of the table of contents of this book to show numbered and unnumbered chapters.'}
+```{r, unnumbered-sections, echo=FALSE, fig.cap='付番された章とされていない章を示すための目次のスクリーンショット'}
 knitr::include_graphics('images/unnumbered-sections.png', dpi = NA)
 ```
 
-Section numbers are incremental. If you insert an unnumbered section after a numbered section, and then start another numbered section, the section number will resume incrementing.
+節番号は漸増します. もし付番されている節の後にされていない節が挿入し, その後にさらに付番された節が開始しているなら, 節番号はそこから増加を再開します.
 
-## Bibliographies and citations {#bibliography}
+## 参考文献と引用 {#bibliography}
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-For an overview of including bibliographies\index{bibliography} in your output document, you may see [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) of @bookdown2016. The basic usage requires us to specify a bibliography file using the `bibliography` metadata field in YAML\index{YAML!bibliography}. For example:
+参考文献の目録\index{bibliography}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ると良いでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
 
 ```yaml
 ---
@@ -145,7 +144,7 @@ bibliography: references.bib
 ---
 ```
 
-where the BibTeX database is a plain-text file with the `*.bib` extension that consists of bibliography entries like this:
+そしてこのファイルに文献アイテムがこのようなエントリで含まれています.
 
 ```bibtex
 @Manual{R-base,
@@ -159,11 +158,11 @@ where the BibTeX database is a plain-text file with the `*.bib` extension that c
 }
 ```
 
-Items can be cited directly within the documentation using the syntax `@key` where `key` is the citation key in the first line of the entry, e.g., `@R-base`. To put citations in parentheses, use `[@key]`. To cite multiple entries, separate the keys by semicolons, e.g., `[@key-1; @key-2; @key-3]`. To suppress the mention of the author, add a minus sign before `@`, e.g., `[-@R-base]`.
+文書内 `@key` という構文で文献アイテムを直接引用することができます. `key` の部分エントリの最初の行にある引用キーです. 上記の例なら `@R-base` です. 括弧で囲んで引用したいなら, `[@key]` を使います. 複数のエントリを同時に引用するなら, `[@key-1; @key-2; @key-3]` のようにセミコロンでキーを区切ります. 著者名を表示しないのなら, `[-@R-base]` のように `@` の前にマイナス記号を付けます.
 
-### Changing citation style
+### 引用スタイルの変更 {#changing-citation-style}
 
-By default, Pandoc will use a Chicago author-date format for citations\index{citation} and references. To use another style, you will need to specify a CSL (Citation Style Language) file in the `csl` metadata field\index{YAML!csl}, e.g.,
+デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{citation}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
 
 ```yaml
 ---
@@ -173,13 +172,13 @@ csl: biomed-central.csl
 ---
 ```
 
-To find your required formats, we recommend using [the Zotero Style Repository,](https://www.zotero.org/styles) which makes it easy to search for and download your desired style.
+必要としているフォーマットを見つけるには, [Zotero Style Repository,](https://www.zotero.org/styles) を使うことをおすすめします. これは必要なスタイルの検索とダウンロードが簡単にできます.
 
-CSL files can be tweaked to meet custom formatting requirements. For example, we can change the number of authors required before "et al." is used to abbreviate them. This can be simplified through the use of visual editors such as the one available at https://editor.citationstyles.org.
+CSL ファイルはカスタマイズされたフォーマット要件に合うようにを修正できます. 例えば "et al." の前に表示する著者の人数を変更できます. これは https://editor.citationstyles.org で使用できるようなビジュアルエディタを使って簡単にできます.
 
-### Add an item to a bibliography without using it 
+### 引用していない文献を参考文献に追加する {add-an-item-to-a-bibliography-without-using-it}
 
-By default, the bibliography will only display items that are directly referenced in the document. If you want to include items in the bibliography without actually citing them in the body text, you can define a dummy `nocite` metadata field\index{YAML!nocite} and put the citations there.
+デフォルトでは参考文献には文書で直接参照されたアイテムのみ表示されます. 本文中に実際に引用されていない文献を含めたい場合, `notice` というダミーのメタデータフィールド\index{YAML!nocite}を定義し, そこで引用します.
 
 ```yaml
 ---
@@ -189,9 +188,9 @@ nocite: |
 ```
 
 
-### Add all items to the bibliography
+### 全てのアイテムを参考文献に掲載する {-add-all-items-to-the-bibliography}
 
-If we do not wish to explicitly state all of the items within the bibliography but would still like to show them in our references, we can use the following syntax:
+文献目録のすべてのアイテムを明示的に言及したくないが, 参考文献には掲載したいというなら, 以下のような構文が使えます.
 
 ```yaml
 ---
@@ -199,14 +198,14 @@ nocite: '@*'
 ---
 ```
 
-This will force all items to be displayed in the bibliography.
+これは全てのアイテムを参考文献として強制的に掲載させます.
 
-### Include appendix after bibliography (\*)
+### 参考文献の後に補遺を掲載する (\*) {include-appendix-after-bibliography}
 
 <!-- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 -->
 <!-- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography -->
 
-By default, the bibliography appears at the very end of the document. However, there can be cases in which we want to place additional text after the references, most typically if we wish to include appendices in the document. We can force the position of the references by using `<div id="refs"></div>`, as shown below:
+デフォルトでは参考文献は文書全体の最後に掲載されます. しかし参考文献一覧の後に追加のテキストを置きたいこともあるでしょう. 一番よくあるのは文書に補遺 (appendix) を含めたいときです. 以下に示すように, `<div id="refs"></div>` を使うことで参考文献一覧の位置を矯正できます.
 
 ```md
 # References
@@ -216,37 +215,37 @@ By default, the bibliography appears at the very end of the document. However, t
 # Appendix
 ```
 
-Although `<div>` is an HTML tag, this method also works for other output formats such as PDF.
+`<div>` は HTML タグですが, この方法は PDF など他の出力フォーマットでも機能します.
 
-We can improve this further by using the **bookdown** package [@R-bookdown], which allows you to insert a [special header](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers) `# (APPENDIX) Appendix {-}` before you start the appendix, e.g.,
+**bookdown** パッケージ [@R-bookdown] を使うことで, 補遺の開始前に [special header](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers) `# (APPENDIX) Appendix {-}` の挿入が可能となり さらに改善できます. 例えば以下のように.
 
 ```md
-# References
+# 参考文献
 
 <div id="refs"></div>
 
-# (APPENDIX) Appendix {-} 
+# (APPENDIX) 補遺 {-} 
 
-# More information
+# 追加情報
 
-This will be Appendix A.
+これは「補遺 A」になる.
 
-# One more thing
+# さらにもう1つ
 
-This will be Appendix B.
+これは「補遺 B」になる.
 ```
 
-The numbering style of appendices will be automatically changed in LaTeX/PDF and HTML output (usually in the form A, A.1, A.2, B, B.1, and so on).
+LaTeX/PDF および HTML フォーマットでは補遺の付番スタイルは自動的に変更されます (たいていは A, A.1, A.2, B, B.1, ... という形式です).
 
-## Generate R package citations {#write-bib}
+## R パッケージの引用を生成する {#write-bib}
 
-To cite an R package, you can use the function `citation()`\index{utils!citation()} from base R. If you want to generate a citation entry for BibTeX, you can pass the returned object of `citation()` to `toBibtex()`\index{utils!toBibtex()}, e.g.,
+R パッケージを引用するには, base R の `citation()`\index{utils!citation()} を使うことができます. BibTeX 用の引用エントリを生成したいなら, `citation()` の返り値を `toBibtex()`\index{utils!toBibtex()} を与えることができます. 例えばこうです.
 
 ```{r, comment='', class.output='bibtex'}
 toBibtex(citation('xaringan'))
 ```
 
-To use citation entries generated from `toBibtex()`, you have to copy the output to a `.bib` file, and add citation keys (e.g., change `@Manual{,` to `@Manual{R-xaringan,`). This can be automated via the function `knitr::write_bib()`\index{knitr!write\_bib()}, which generates citation entries to a file and adds keys automatically, e.g.,
+`toBibtex()` で生成されたエントリを使うには, 出力を `.bib` ファイルにコピーし, 引用キーを追加しなければなりません (例えば `@Manual{,` の部分を `@Manual{R-xaringan,` と書き換える). これは `knitr::write_bib()`\index{knitr!write\_bib()} 関数によって自動化できます. この関数は引用エントリを生成し, 自動的にキーを加えてファイルに書き込みます. 例えばこのようにします.
 
 ```{r eval=FALSE}
 knitr::write_bib(c(
@@ -254,17 +253,17 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
-The first argument should be a character vector of package names, and the second argument is the path to the `.bib` file. In the above example, `.packages()` returns the names of all packages loaded in the current R session. This makes sure all packages being used will have their citation entries written to the `.bib` file. When any of these packages are updated (e.g., the author, title, year, or version of a package is changed), `write_bib()` can automatically update the `.bib` file.
+第1引数はパッケージ名の文字列ベクトルで, 第2引数は `.bib` ファイルのパスであるべきです. 上記の例では, `.packages()` は現在の R セッションが読み込んでいる全てのパッケージ名を返します. これらのパッケージのいずれかが更新された (例えば著者, タイトル, 年, あるいはバージョンが変更された) とき, `write_bib()` は自動的に `.bib` を更新できます.
 
-There are two possible types of citation entries. One type is generated from the package's `DESCRIPTION` file, and the other type is generated from the package's `CITATION` file if provided. For the former type, the citation keys are of the form `R-pkgname`, where `pkgname` is the package name (e.g., `R-knitr`). For the latter type, the keys are created by concatenating the package name and the publication year (e.g., `knitr2015`). If there are multiple entries in the same year, a letter suffix will be added, e.g., `knitr2015a` and `knitr2015b`. The former type is often used to cite the package itself (i.e., the software), and the latter type often consists of publications related to the package, such as journal papers or books.
+引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの `DESCRIPTION` ファイルをもとに生成したもので, もう1つは, もしパッケージに `CITATION` ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが `R-(パッケージ名)` という形式になり (例えば `R-knitr`), 後者のタイプはパッケージ名と公開年を結合したものがキーとなります (例: `knitr2015`). もし複数のエントリが同一年にあるなら, 接尾文字が追加されます. 例えば  `knitr2015a` と `knitr2015b` のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプはしばしば論文や書籍のようなパッケージと関連のある出版物として扱われます.
 
 ```{r, warning=FALSE, comment='', class.output='bibtex'}
 knitr::write_bib(c('knitr', 'rmarkdown'), width = 60)
 ```
 
-Without the file path argument, `knitr::write_bib()` writes the citation entries to the R console, as you can see from the above example.
+ファイルパスの引数がないと, `knitr::write_bib()` は上記の例のように引用エントリをコンソールに出力します.
 
-Note that `write_bib()` is designed to overwrite the existing bibliography file. If you want to manually add any other entries to the bibliography, it is recommended that you create a second `.bib` file and refer to it in the YAML field `bibliography`\index{YAML!bibliography}, e.g.,
+`write_bib()` は既存の文献目録ファイルを上書きするように設計されていることに注意してください. 文献目録に手動で他のエントリを追加したい場合, 2つ目の `.bib` ファイルを作成して, この例のように `bibliography`\index{YAML!bibliography} フィールドで参照してください.
 
 ````md
 ---
@@ -276,11 +275,11 @@ knitr::write_bib(file = 'packages.bib')
 ```
 ````
 
-In the above example, `packages.bib` is automatically generated, and you should not manually change it. All other citation entries can be manually written to `references.bib`.
+上記の例では `packages.bib` が自動で生成されたもので, 手動で変更すべきではありません. それ以外の全ての引用エントリは `references.bib` に手動で書き込むことができます.
 
-We only introduced one way to generate R package citations above. To dynamically generate citations for other types of literature, you may check out the **knitcitations** package \index{R package!knitcitations} [@R-knitcitations].
+ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには,  **knitcitations** パッケージ\index{R package!knitcitations} [@R-knitcitations] を確認すると良いでしょう.
 
-## Cross-referencing within documents {#cross-ref}
+## 文書内の相互参照 {#cross-ref}
 
 <!--https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables-->
 
