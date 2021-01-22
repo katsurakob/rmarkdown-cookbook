@@ -1,11 +1,11 @@
 ---
-title: Animations in PDF
+title: PDF でのアニメーション
 output:
   pdf_document:
     extra_dependencies: animate
 ---
 
-The animation below can only be viewed in Acrobat Reader.
+以下のアニメーションは Acrobat Reader でのみ見ることができます.
 
 ```{r, fig.show='animate'}
 for (i in 1:2) {

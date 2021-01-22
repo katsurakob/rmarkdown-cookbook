@@ -77,7 +77,7 @@ tinytex::install_tinytex()
   Font tcrm0700 at 600 not found
 ```
 
-\@ref(install-latex) 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. **tinytex** [@R-tinytex] が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, `tinytex::parse_install()`\index{tinytex!parse\_install()} で足りない LaTex パッケージ\index{LaTeX!packages}をインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, https://ctan.org) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, `.log` という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の `text` 引数に与えることができます. どちらの方法でも動作するはずです.
+\@ref(install-latex) 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. **tinytex** [@R-tinytex] が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, `tinytex::parse_install()`\index{tinytex!parse\_install()} で足りない LaTex パッケージ\index{LaTeX!パッケージ}をインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, https://ctan.org) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, `.log` という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の `text` 引数に与えることができます. どちらの方法でも動作するはずです.
 
 ```{r, tidy=FALSE, eval=FALSE}
 # ログファイルが filename.log だとする

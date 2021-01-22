@@ -4,7 +4,7 @@
 
 ## 改ページ (改段) を挿入する {#pagebreaks}
 
-改ページしたい場合\index{line breaks}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
+改ページしたい場合\index{改行}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
 
 例えば以下のように.
 
@@ -25,7 +25,7 @@ output:
 # 第二節
 ```
 
-これは Pandoc の Lua フィルタ\index{Lua filter} に基づく機能です (\@ref(lua-filters) 節参照). 技術的なことに興味のある方はこのパッケージの vignettte を見てください.
+これは Pandoc の Lua フィルタ\index{Lua フィルタ} に基づく機能です (\@ref(lua-filters) 節参照). 技術的なことに興味のある方はこのパッケージの vignettte を見てください.
 
 ```r
 vignette("lua-filters", package = "rmarkdown")
@@ -33,7 +33,7 @@ vignette("lua-filters", package = "rmarkdown")
 
 ## 文書タイトルを動的に設定する {#dynamic-yaml}
 
-Rmd 文書内のどこでも, YAML メタデータの部分であっても行内 R コード (\@ref(r-code)節) を使うことができます. つまり行内 R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!dynamic generation}が可能ということです. 例えばこのように.
+Rmd 文書内のどこでも, YAML メタデータの部分であっても行内 R コード (\@ref(r-code)節) を使うことができます. つまり行内 R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!動的生成}が可能ということです. 例えばこのように.
 
 ```yaml
 ---
@@ -57,7 +57,7 @@ share <- runif(1)
 ```
 
 ---
-title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * share, 2)')`% である!"
+title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * share, 2)')`% です!"
 ---
 
 これはとても `r knitr::inline_expr('if(share > 0.8) "喜ばしい" else "悲しい"')` ことです.
@@ -65,7 +65,7 @@ title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * sha
 
 上記の例では, 変数 `share` を作成してから文書のタイトルを追加しています. Pandoc は文書内に YAML セクションをいくつ書いても読み込む (そして全てマージする) ことができるため, この例が動作します. 
 
-タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!parameters|see {parameter}}\index{parameter}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
+タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!パラメータ|see {パラメータ}}\index{パラメータ}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
 
 ```yaml
 ---
@@ -81,7 +81,7 @@ params:
 
 ## R コード内で文書メタデータにアクセスする {#document-metadata}
 
-Rmd 文書をコンパイルする際に, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に保存されます. 例えば `rmarkdown::metadata$title` は文書のタイトルを与えます. YAML メタデータに与えられた情報をハードコードしなくてすむように, この `metadata` オブジェクトを R コード内で使うことができます. 例えば  **blastula** パッケージ [@R-blastula]\index{R package!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
+Rmd 文書をコンパイルする際に, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に保存されます. 例えば `rmarkdown::metadata$title` は文書のタイトルを与えます. YAML メタデータに与えられた情報をハードコードしなくてすむように, この `metadata` オブジェクトを R コード内で使うことができます. 例えば  **blastula** パッケージ [@R-blastula]\index{R パッケージ!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
 
 ````md
 ---
@@ -105,7 +105,7 @@ smtp_send(
 
 ## 番号のない節 {#unnumbered-sections}
 
-ほとんどの出力フォーマットは `number_sections`\index{output option!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
+ほとんどの出力フォーマットは `number_sections`\index{出力オプション!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
 
 ```yaml
 output:
@@ -162,7 +162,7 @@ bibliography: references.bib
 
 ### 引用スタイルの変更 {#changing-citation-style}
 
-デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{citation}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
+デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{引用}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
 
 ```yaml
 ---
@@ -176,7 +176,7 @@ csl: biomed-central.csl
 
 CSL ファイルはカスタマイズされたフォーマット要件に合うようにを修正できます. 例えば "et al." の前に表示する著者の人数を変更できます. これは https://editor.citationstyles.org で使用できるようなビジュアルエディタを使って簡単にできます.
 
-### 引用していない文献を参考文献に追加する {add-an-item-to-a-bibliography-without-using-it}
+### 引用していない文献を参考文献に追加する {#add-an-item-to-a-bibliography-without-using-it}
 
 デフォルトでは参考文献には文書で直接参照されたアイテムのみ表示されます. 本文中に実際に引用されていない文献を含めたい場合, `notice` というダミーのメタデータフィールド\index{YAML!nocite}を定義し, そこで引用します.
 
@@ -188,7 +188,7 @@ nocite: |
 ```
 
 
-### 全てのアイテムを参考文献に掲載する {-add-all-items-to-the-bibliography}
+### 全てのアイテムを参考文献に掲載する {#add-all-items-to-the-bibliography}
 
 文献目録のすべてのアイテムを明示的に言及したくないが, 参考文献には掲載したいというなら, 以下のような構文が使えます.
 
@@ -200,7 +200,7 @@ nocite: '@*'
 
 これは全てのアイテムを参考文献として強制的に掲載させます.
 
-### 参考文献の後に補遺を掲載する (\*) {include-appendix-after-bibliography}
+### 参考文献の後に補遺を掲載する (\*) {#include-appendix-after-bibliography}
 
 <!-- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 -->
 <!-- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography -->
@@ -208,11 +208,11 @@ nocite: '@*'
 デフォルトでは参考文献は文書全体の最後に掲載されます. しかし参考文献一覧の後に追加のテキストを置きたいこともあるでしょう. 一番よくあるのは文書に補遺 (appendix) を含めたいときです. 以下に示すように, `<div id="refs"></div>` を使うことで参考文献一覧の位置を矯正できます.
 
 ```md
-# References
+# 参考文献
 
 <div id="refs"></div>
 
-# Appendix
+# 補遺
 ```
 
 `<div>` は HTML タグですが, この方法は PDF など他の出力フォーマットでも機能します.
@@ -283,118 +283,119 @@ knitr::write_bib(file = 'packages.bib')
 
 <!--https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables-->
 
-Cross-referencing\index{crossreference} is a useful way of directing your readers through your document, and can be automatically done within R Markdown. While this has been explained in [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) from the **bookdown** book, we want to present a brief summary below.
+相互参照\index{crossreference} はあなたの文書を通して読者を誘導するのに役に立つ方法であり, R Markdown ではこれを自動的に行なえます. これは **bookdown**  本の [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) で既に説明されていますが, 以下で簡潔な説明をします.
 
-To use cross-references, you will need:
+相互参照を使用するにあたって, 以下が必要になります.
 
-- **A bookdown output format**: Cross-referencing is not provided directly within the base **rmarkdown** package, but is provided as an extension in **bookdown** [@R-bookdown]. We must therefore use an output format from **bookdown** (e.g., `html_document2`, `pdf_document2`, and `word_document2`, etc.) in the YAML `output` field.
+- **bookdown 出力フォーマット**: 相互参照は基本となる **rmarkdown** パッケージでは直接提供されず, **bookdown** [@R-bookdown] による拡張機能として提供されています. よって YAML の `output` フィールドで **bookdown** のフォーマット (例: `html_document2`, `pdf_document2`, `word_document2` など) を使用しなければなりません.
 
-- **A caption to your figure (or table)**: Figures without a caption will be included directly as images and will therefore not be a numbered figure.
+- **図 (または表) に対するキャプション**: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 
-- **A labeled code chunk**:\index{code chunk!label} This provides the identifier for referencing the figure generated by the chunk.
+- **ラベルの設定されたコードチャンク**:\index{code chunk!label} チャンクによって生成された図を参照するための識別子を提供してくれます.
 
-After these conditions are met, we can make cross-references within the text using the syntax `\@ref(type:label)`, where `label` is the chunk label and `type` is the environment being referenced (e.g. `tab`, `fig`, or `eqn`). An example is provided below:
+これらの条件が合わさって初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照するものの環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
 
 `r import_example('cross-ref.Rmd')`
 
-The output of this document is shown in Figure \@ref(fig:bookdown-ref). 
+この文書の出力を図 \@ref(fig:bookdown-ref) に示します. 
 
-```{r bookdown-ref, fig.cap="Example of cross-referencing within an R Markdown document.", fig.align='center', echo=FALSE}
+```{r bookdown-ref, fig.cap="R Markdown 文書内の相互参照の例", fig.align='center', echo=FALSE}
 knitr::include_graphics("images/bookdown-ref.png", dpi = NA)
 ```
 
-You can also cross-reference equations, theorems, and section headers. These types of references are explained further in Section 2.2 and Section 2.6 of the **bookdown** book.
+数式, 定理, 節の見出しにも相互参照することができます. これらのタイプの参照は **bookdown** 本の 2.2, 2.6節でより説明されています.
 
-## Update the date automatically {#update-date}
+## 日付を自動的に更新する {#update-date}
 
 <!-- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown -->
 
-If you want the date on which the Rmd document is compiled to be reflected in the output report, you can add an inline R expression to the `date` field in YAML\index{YAML!date}, and use the `Sys.Date()` or `Sys.time()` function to obtain the current date, e.g.,
+出力されたレポートに Rmd 文書がコンパイルされた日付を表示したいなら, YAML メタデータの `date` フィールド\index{YAML!date}に行内 R 評価式を追加し, 現在の日付を得るために `Sys.Date()` or `Sys.time()` 関数を使用できます.
 
 ```yaml
 date: "`r knitr::inline_expr('Sys.Date()')`"
 ```
 
-You may want to specify the desired date or date-time format to make it more human-readable, e.g.,
+もっと人間にとって読みやすい, 特定の日次フォーマットを指定したいかもしれません. 例えば以下のようにします.
 
 ```yaml
-date: "`r knitr::inline_expr("format(Sys.time(), '%d %B, %Y')")`"
+date: "`r knitr::inline_expr("format(Sys.time(), '%x')")`"
 ```
 
-This will generate the date dynamically each time you knit your document, e.g., `r format(Sys.time(), '%d %B, %Y')`. If you wish to customize the format of the dates, you can alter the time format by providing your own format string. Here are some examples:
+例えば `r format(Sys.time(), '%Y年%B%d日')` といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%B %Y`: `r format(Sys.time(), '%B %Y')`
-- `%d/%m/%y`: `r format(Sys.time(), '%d/%m/%y')`
-- `%a/%d/%b`: `r format(Sys.time(), '%a %d %b')`
+- `%Y %B`: `r format(Sys.time(), '%Y %B')`
+- `%y/%m/%d`: `r format(Sys.time(), '%y/%m/%d')`
+- `%b%d (%a)`: `r format(Sys.time(), '%b%d (%a)')`
 
-A full table of POSIXct formats is shown in Table \@ref(tab:date-format).
+表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
 Table: (\#tab:date-format) Date and time formats in R.
 
 |Code |Meaning                       |Code |Meaning                                       |
 |:----|:-----------------------------|:----|:---------------------------------------------|
-|%a   |Abbreviated weekday           |%A   |Full weekday                                  |
-|%b   |Abbreviated month             |%B   |Full month                                    |
-|%c   |Locale-specific date and time |%d   |Decimal date                                  |
-|%H   |Decimal hours (24 hour)       |%I   |Decimal hours (12 hour)                       |
-|%j   |Decimal day of the year       |%m   |Decimal month                                 |
-|%M   |Decimal minute                |%p   |Locale-specific AM/PM                         |
-|%S   |Decimal second                |%U   |Decimal week of the year (starting on Sunday) |
-|%w   |Decimal Weekday (0=Sunday)    |%W   |Decimal week of the year (starting on Monday) |
-|%x   |Locale-specific Date          |%X   |Locale-specific Time                          |
-|%y   |2-digit year                  |%Y   |4-digit year                                  |
-|%z   |Offset from GMT               |%Z   |Time zone (character)                         |
+|%a   |曜日の略称                    |%A   |曜日の名称                                    |
+|%b   |月の略称                      |%B   |月の名称                                      |
+|%c   |ロケール依存の時刻            |%d   |数値表記の日                                  |
+|%H   |数値表記の時間 (24 時間)      |%I   |数値表記の時間 (12 時間)                      |
+|%j   |1年の何日目か                 |%m   |数値表記の月                                  |
+|%M   |数値表記の分                  |%p   |ロケール依存の午前/午後                       |
+|%S   |数値表記の秒                  |%U   |年の何週目か (日曜日始まり)                   |
+|%w   |数値表記の曜日 (0=日曜日)     |%W   |年の何週目か (月曜日始まり)                   |
+|%x   |ロケール依存の日付 (YYYY月/MM月/DD日) |%X   |ロケール依存の時刻 (「HH時MM分SS秒」)|
+|%y   |下2桁表記の年                 |%Y   |4桁表記の年                                   |
+|%z   |GMT からのオフセット          |%Z   |タイムゾーン (文字表記)                       |
 
-As a final note, you may also want to include some explanatory text along with the date. You can add any text such as "Last compiled on" before the R code as follows:
+最後に, 説明的なテキストを日付に含めたいかもしれないときのことを書いておきます. このように Rコードの前に「最終コンパイル日」のような何らかの文を追加することができます.
 
 ```yaml
-date: "Last compiled on `r knitr::inline_expr("format(Sys.time(), '%d %B, %Y')")`"
+date: "最終コンパイル日 `r knitr::inline_expr("format(Sys.time(), '%Y/%m/%d')")`"
 ```
 
-## Multiple authors in a document {#multiple-authors}
+## 文書に複数の著者を表記する {#multiple-authors}
 
 <!-- https://stackoverflow.com/questions/26043807/multiple-authors-and-subtitles-in-rmarkdown-yaml -->
 
-We can add multiple authors to an R Markdown document within the YAML frontmatter in a number of ways\index{YAML!author}. If we simply want to list them on the same line, we can provide a single string to the document, e.g.,
+R Markdown 文書のYAML フロントマターに複数の著者を加える方法は複数あります\index{YAML!author}. 単純に, 全員を同列に並べたい場合, 1つの文字列を与えることでできます. 例えばこのように.
 
 ```yaml
 ---
-title: "Untitled"
+title: "無題"
 author: "John Doe, Jane Doe"
 ---
 ```
 
-Alternatively, if we wish each entry to be on its own line, we can provide a list of entries to the YAML field. This can be useful if you wish to include further information about each author such as an email address or institution, e.g.,
+別の方法として, 各エントリごとに行を分けたいならば, YAML フィールドにエントリのリストを与えることができます. これは著者ごとにEメールアドレスや所属情報を加えたいときに役に立ちます. 例えばこのように.
+
 
 ```yaml
 ---
 author:
-  - John Doe, Institution One
-  - Jane Doe, Institution Two
+  - John Doe, 組織1
+  - Jane Doe, 組織2
 ---
 ```
 
-We can make use of the Markdown syntax `^[]` to add additional information as a footnote to the document. This may be more useful if you have extended information that you wish to include for each author, such as providing a contact Email and address. The exact behavior will depend on the output format:
+追加情報を文書の脚注として追記したい時, Markdown 構文の `^[]` を利用できます. これは著者ごとに連絡先Eメールや住所といった多くの情報を含めたい場合により便利です. 厳密な動作は出力フォーマットに依存します.
 
 ```yaml
 ---
 author:
-  - John Doe^[Institution One, john@example.org]
-  - Jane Doe^[Institution Two, jane@example.org]
+  - John Doe^[組織1, john@example.org]
+  - Jane Doe^[組織2, jane@example.org]
 ---
 ```
 
-Certain R Markdown templates will allow you to specify additional parameters directly within the YAML. For example, the [Distill](https://rstudio.github.io/distill/) output format allows `url`, `affiliation`, and `affiliation_url` to be specified. After you install the **distill** package [@R-distill]\index{R package!distill}:
+特定の R Markdown テンプレートでは YAML に直接追加パラメータを指定することができます. 例えば [Distill](https://rstudio.github.io/distill/) 出力フォーマットは `url`, `affiliation`, `affiliation_url` を指定することが可能です. まずは **distill** パッケージ [@R-distill]\index{R package!distill} をインストールします.
 
 ```{r, eval=FALSE}
 install.packages('distill')
 ```
 
-you can use the Distill format with detailed author information, e.g.,
+Distill フォーマットは詳細な著者情報を与えて使うことができます. 例えばこのように.
 
 ```yaml
 ---
-title: "Distill for R Markdown"
+title: "R Markdown のための Distill"
 author:
   - name: "JJ Allaire"
     url: https://github.com/jjallaire
@@ -404,11 +405,11 @@ output: distill::distill_article
 ---
 ```
 
-## Numbered figure captions {#figure-number}
+## 図のキャプションへの付番 {#figure-number}
 
 <!-- https://stackoverflow.com/questions/37116632/r-markdown-html-number-figures -->
 
-We can use **bookdown** [@R-bookdown] output formats\index{bookdown!html\_document2()} to add figure numbers to their captions. Below is an example:
+**bookdown** [@R-bookdown] 出力フォーマット\index{bookdown!html\_document2()} を, 図のキャプションに図番号を追加するのに使うことができます. 以下はその例です.
 
 ```yaml
 ---
@@ -417,18 +418,18 @@ output: bookdown::html_document2
 ```
 
 ````md
-```{r cars, fig.cap = "An amazing plot"}`r ''`
+```{r cars, fig.cap = "すごいプロット"}`r ''`
 plot(cars)
 ```
 
-```{r mtcars, fig.cap = "Another amazing plot"}`r ''`
+```{r mtcars, fig.cap = "これもすごいプロット"}`r ''`
 plot(mpg ~ hp, mtcars)
 ```
 ````
 
-Section \@ref(cross-ref) demonstrates how this works for other elements such as tables and equations, and how to cross-reference the numbered elements within the text. Besides `html_document2`, there are several other similar functions for other output formats, such as `pdf_document2` and `word_document2`.
+\@ref(cross-ref) 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています.  `html_document2` いがいにも, `pdf_document2`, `word_document2` といった他の出力に対する同様のフォーマット関数もあります.
 
-You can add this feature to R Markdown output formats outside **bookdown**, too. The key is to use those formats as the "base formats" of **bookdown** output formats. For example, to number and cross-reference figures in the `rticles::jss_article` format, you can use:
+**bookdown** 以外の R Markdown 出力フォーマットにもこの機能を追加できます. 鍵はこれらが **bookdown** 出力フォーマットの「基本フォーマット」であることです. 例えば, `rticles::jss_article` フォーマットで図に付番と相互参照をするために以下が使えます.
 
 ```yaml
 output:
@@ -436,108 +437,86 @@ output:
     base_format: rticles::jss_article
 ```
 
-Please read the help pages of the **bookdown** output format functions to see if they have the `base_format` argument\index{output option!base\_format} (e.g., `?bookdown::html_document2`).
+**bookdown** 出力フォーマット関数のヘルプページを読んで, `base_format` 引数\index{出力オプション!base\_format}があるかどうか確認してみてください (例: `?bookdown::html_document2`). 
 
-## Combine words into a comma-separated phrase {#combine-words}
+## 単語をコンマ区切りで結合する {#combine-words}
 
-When you want to output a character vector for humans to read (e.g., `x <- c("apple", "banana", "cherry")`), you probably do not want something like `[1] "apple" "banana" "cherry"`, which is the normal way to print a vector in R. Instead, you may want a character string "`apple, banana, and cherry`". There is a base R function, `paste()`, that you can use to concatenate a character vector into a single string, e.g., `paste(x, collapse = ', ')`, and the output will be `"apple, banana, cherry"`. The problems are (1) the conjunction "and" is missing, and (2) when the vector only contains two elements, we should not use commas (e.g., the output should be `"apple and banana"` instead of `"apple, banana"`).
+文字列ベクトルを人間の読みやすい形で出力したいとします. 例えば `x <- c("apple", "banana", "cherry")` について, きっとあなたは `[1] "apple" "banana" "cherry"` のような R が通常プリントする形式で出力をしてほしくないでしょう. あなたは代わりに "`apple, banana, and cherry`" という文字列がほしいのではないでしょうか. 文字列ベクトルを連結して1つにまとめる R 基本関数の `paste()` があります. 例えば `paste(x, collapse = ', ')` とすれば, 出力は `"apple, banana, cherry"` となるでしょう. この方法の問題は (1) 接続詞 "and" が欠けており, (2) ベクトルの要素が2つだけの場合はコンマを使うべきでない (`"apple, banana"` ではなく `"apple and banana"` という出力になるべき) ということです.
 
-The function `knitr::combine_words()`\index{knitr!combine\_words()} can be used to concatenate words into a phrase regardless of the length of the character vector. Basically, for a single word, it will just return this word; for two words A and B, it returns `"A and B"`; for three or more words, it returns `"A, B, C, ..., Y, and Z"`. The function also has a few arguments that can customize the output. For example, if you want to output the words in pairs of backticks, you may use ``knitr::combine_words(x, before = '`')``. Below are more examples with different arguments, and please see the help page `?knitr::combine_words` if the meaning of any argument is not clear from the output here:
+`knitr::combine_words()`\index{knitr!combine\_words()} 関数は文字列ベクトルの長さにかかわらず, 要素を連結して文にできます. 基本的に, 単語1つに対してはそのまま同じものを返し, "A and B" という2つの単語に対しては `"A and B"` と返し, 3つ以上なら `"A, B, C, ..., Y, and Z"` と言うふうに返します. この関数はさらに出力をカスタマイズするいくつかの引数を持っています. 例えば出力される単語をバッククオートで囲みたいなら, ``knitr::combine_words(x, before = '`')`` を使えば良いでしょう. 以下に他の引数についてもさらなる例を示します. これらの出力例から引数の意味がよくわからないのであれば, ヘルプページ `?knitr::combine_words` もご覧ください.
 
 ```{r, collapse=TRUE}
 v = c("apple", "banana", "cherry")
 knitr::combine_words(v)
 knitr::combine_words(v, before = '`', after = "'")
-knitr::combine_words(v, and = "")
+knitr::combine_words(v, sep = "、", and = "そして")
 knitr::combine_words(v, sep = " / ", and = "")
-knitr::combine_words(v[1])  # a single word
-knitr::combine_words(v[1:2])  # two words
+knitr::combine_words(v[1])  # 単語1つ
+knitr::combine_words(v[1:2])  # 単語2つ
 knitr::combine_words(LETTERS[1:5])
 ```
 
-This function can be particularly handy when it is used in an inline R expression, e.g.,
+この関数は行内 R 評価式を使うときに特に使いやすいでしょう. 例えばこのように.
 
 ```markdown
-This morning we had `r knitr::inline_expr("knitr::combine_words(v)")` for breakfast.
+今朝は`r v <- c("りんご", "バナナ", "さくらんぼ"); knitr::inline_expr("knitr::combine_words(v, sep = '、', and='')")`を食べた.
 ```
 
-## Preserve a large number of line breaks {#linebreaks}
+## 複数の改行コードを維持する {#linebreaks}
 
-Markdown users may be surprised to realize that whitespaces\index{line breaks} (including line breaks) are usually meaningless unless they are used in a verbatim environment (code blocks). Two or more spaces are the same as one space, and a line break is the same as a space. If you have used LaTeX or HTML before, you may not be surprised because the rule is the same in these languages.
+Markdown ユーザは, verbatim 環境 (コードブロック) 以外の場所では空白\index{改行} (改行コード含む) は大抵の場合意味を持たないことに気づき, 驚くでしょう. 2つ以上のスペースはスペース1つと同じであり, 改行1つはスペース1つと同じです. LaTeX や HTML を使ったことがあるなら, これらの言語と同じルールであるため驚くことはないかもしれません.
 
-In Markdown, we often use a blank line to separate elements such as paragraphs. To break a line without introducing a new paragraph, you have to use two trailing spaces. Sometimes you may want to break the lines many times, especially when you write or quote poems or lyrics. Adding two spaces after each line manually is a tedious task. The function `blogdown:::quote_poem()`\index{blogdown!quote\_poem()} can do this task automatically, e.g.,
+Markdown では, 空白行はしばしば段落などの要素の分離に使われます. 新しい段落に入らずに改行をするには, 末尾にスペース2つを追加しなければなりません. 特に詩や歌詞を引用したいときなど, 複数回改行したいときもあるかもしれません. 各行の末尾にスペース2つを手動で書き加えるのはうんざりする作業です. `blogdown:::quote_poem()`\index{blogdown!quote\_poem()} はこの作業を自動でやってくれます. 例えばこのように.
 
 ```{r, collapse=TRUE}
-blogdown:::quote_poem(c('This line', 'should be', 'broken.'))
+blogdown:::quote_poem(c('かたつむり', 'そろそろ登れ', '富士の山'))
 ```
 
-If you use the RStudio IDE and have installed the package **blogdown** [@R-blogdown], you can select the text in which you want to preserve the line breaks, and click the RStudio addin "Quote Poem"\index{RStudio!Quote Poem addin} in the drop-down menu "Addins" on the toolbar. For example, the text below (in a fenced code block) does not contain trailing spaces:
+RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストールして使っているなら, 改行を維持したいテキストを選択し, ツールバーの "Addins" から RStudio アドインの "Quote Poem"\index{RStudio!Quote Poem アドイン} をクリックすることができます. 例えば以下のテキスト (fenced code block 記法内) は末尾にスペースが付いていません.
 
 ```md
-Like Barley Bending
+田子の浦ゆ
+うち出でてみれば
+真白にそ
+富士の高嶺に
+雪は降りける
 
-Like barley bending
-　In low fields by the sea,
-Singing in hard wind
-　Ceaselessly;
-
-Like barley bending
-　And rising again,
-So would I, unbroken,
-　Rise from pain;
-
-So would I softly,
-　Day long, night long,
-Change my sorrow
-　Into song.
-
---- Sara Teasdale
+--- 山部赤人
 ```
 
-After we select the above poem and click the RStudio addin "Quote Poem," the output will be:
+上記の詩句を選択肢, RStudio アドインの "Quote Poem" をクリックすれば, こう出力されます.
 
-> Like Barley Bending  
->
-> Like barley bending  
-　In low fields by the sea,  
-Singing in hard wind  
-　Ceaselessly;
->
-> Like barley bending  
-　And rising again,  
-So would I, unbroken,  
-　Rise from pain;
->
-> So would I softly,  
-　Day long, night long,  
-Change my sorrow  
-　Into song.
+> 田子の浦ゆ  
+うち出でてみれば  
+真白にそ  
+富士の高嶺に  
+雪は降りける
 >
 > ::: {.flushright data-latex=""}
-> --- Sara Teasdale
+> --- 山部赤人
 > :::
 
-Some users may ask, "Since the fenced code block preserves whitespaces, why not put poems in code blocks?" Code could be poetic, but poems are not code. Please do not be too addicted to coding...
+時に「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. 「コーディング」という行為にこだわりすぎないでください.
 
-## Convert models to equations {#equatiomatic}
+## モデルを数式に変換する {#equatiomatic}
 
-The **equatiomatic** package\index{R package!equatiomatic} (https://github.com/datalorax/equatiomatic) developed by Daniel Anderson et al. provides a convenient and automatic way to show the equations corresponding to models fitted in R. We show a few brief examples below:
+Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic} (https://github.com/datalorax/equatiomatic) はRで当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
 
 ```{r, results='asis'}
 fit <- lm(mpg ~ cyl + disp, mtcars)
-# show the theoretical model
+# 理論モデルを表示
 equatiomatic::extract_eq(fit)
-# display the actual coefficients
+# 実際の係数を表示
 equatiomatic::extract_eq(fit, use_coefs = TRUE)
 ```
 
-To display the actual math equations, you need the chunk option `results = "asis"`\index{chunk option!results} (see Section \@ref(results-asis) for the meaning of this option), otherwise the equations will be displayed as normal text output.
+実際の数式を表示するには, チャンクオプション `results = "asis"`\index{チャンクオプション!results} (オプションの意味は\@ref(results-asis)節参照) が必要です. そうしないと, テキスト出力がそのまま表示されてしまいます.
 
-Please read the documentation and follow the development of this package on GitHub if you are interested in knowing more about it.
+このパッケージについてより詳しく知りたいならば, ドキュメントを読み, Github 上での開発状況を追ってください.
 
-## Create an animation from multiple R plots {#animation}
+## 複数の R プロットからアニメーションを作成する {#animation}
 
-When you generate a series of plots in a code chunk, you can combine them into an animation\index{animation}. It is easy to do so if the output format is HTML---you only need to install the **gifski** package\index{R package!gifski} [@R-gifski] and set the chunk option `animation.hook = "gifski"`\index{chunk option!animation.hook}. Figure \@ref(fig:pacman) shows a simple "Pac-man" animation created from the code chunk below:
+1つのコードチャンクで一連のプロットを生成したとき, これらを結合し1つのアニメーション\index{アニメーション}を生成できます. 出力フォーマットが HTML なら, これは簡単です. **gifski** パッケージ\index{R パッケージ!gifski} [@R-gifski] をインストールし, チャンクオプション `animation.hook = "gifski"`\index{チャンクオプション!animation.hook} 設定するだけです. 図\@ref(fig:pacman) はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.
 
 ````md
 ```{r, animation.hook="gifski"}`r ''`
@@ -547,58 +526,58 @@ for (i in 1:2) {
 ```
 ````
 
-```{r pacman, animation.hook=if (knitr::is_html_output()) 'gifski', echo=FALSE, fig.cap='A Pac-man animation.', fig.show='hold', out.width=if (knitr::is_latex_output()) '50%'}
+```{r pacman, animation.hook=if (knitr::is_html_output()) 'gifski', echo=FALSE, fig.cap='パックマンのアニメーション', fig.show='hold', out.width=if (knitr::is_latex_output()) '50%'}
 par(mar = rep(0, 4))
 for (i in 1:2) {
   pie(c(i %% 2, 6), col = c('red', 'yellow'), labels = NA)
 }
 ```
 
-The image format of the animation is GIF, which works well for HTML output, but it is not straightforward to support GIF in LaTeX. That is why you only see two static image frames in Figure \@ref(fig:pacman) if you are reading the PDF or printed version of this book. If you read the online version of this book, you will see the actual animation.
+アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\@ref(fig:pacman) が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
-Animations can work in PDF, but there are two prerequisites. First, you have to load the LaTeX package [**animate**](https://ctan.org/pkg/animate) (see Section \@ref(latex-extra) for how). Second, you can only use Acrobat Reader to view the animation. Then the chunk option `fig.show = "animate"`\index{chunk option!fig.show} will use the **animate** package\index{R package!animate} to create the animation. Below is an example:
+PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に,  Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. それからチャンクオプション `fig.show = "animate"`\index{チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします. 以下はその例です.
 
 `r import_example('latex-animation.Rmd')`
 
-The time interval between image frames in the animation can be set by the chunk option `interval`\index{chunk option!interval}. By default, `interval = 1` (i.e., one second).
+アニメーションのイメージフレーム間の表示間隔はチャンクオプション `interval`\index{チャンクオプション!interval} で設定できます. デフォルトでは `interval = 1` (つまり1秒) です.
 
-The R package **animation**\index{R package!animation} [@R-animation] contains several animation examples to illustrate methods and ideas in statistical computing. The **gganimate** package\index{R package!gganimate} [@R-gganimate] allows us to create smooth animations based on **ggplot2**\index{R package!gglot2} [@R-ggplot2]. Both packages work with R Markdown.
+R パッケージ **animation**\index{R パッケージ!animation} [@R-animation]  には, 統計的計算の方法やアイディアを表現するアニメーションの例がいくつか入っています. **gganimate** パッケージ\index{R パッケージ!gganimate} [@R-gganimate] は **ggplot2**\index{R パッケージ!gglot2} [@R-ggplot2] に基づいた滑らかなアニメーションの作成を可能にします. どちらも R Markdown で動作します.
 
-## Create diagrams {#diagrams}
+## ダイアグラムを作成する {#diagrams}
 
-There are many separate programs (e.g., Graphviz) that can be used to produce diagrams\index{figure!creating diagrams} and flowcharts, but it can be easier to manage them directly inside R code chunks in Rmd documents. 
+ダイアグラム\index{図!ダイアグラムの作成}やフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接管理することができます.
 
-While there are several different packages available for R, we will only briefly introduce the package **DiagrammeR**\index{R package!DiagrammeR} [@R-DiagrammeR], and mention other packages at the end. You can find the full documentation of **DiagrammeR** at https://rich-iannone.github.io/DiagrammeR/. In this section, we will introduce the basic usages and also how to use R code in diagrams.
+R ではいくつかのパッケージが使用可能ですが, その中で **DiagrammeR**\index{R パッケージ!DiagrammeR} [@R-DiagrammeR] とその他いくつかを最後に簡単に解説します. 完全なデモは https://rich-iannone.github.io/DiagrammeR/ で見ることができます. この節では基本的な使用法とダイアグラム内で R コードを使う方法を紹介します.
 
-### Basic diagrams
+### 基本的なダイアグラム {#basic-diagrams}
 
-**DiagrammeR** provides methods to build graphs for a number of different graphing languages. We will present a Graphviz example in this section,^[Depending on your background, this section may be a biased introduction to **DiagrammeR**. Please see its official documentation if you are interested in this package.] but you can also use pure R code to create graphs and diagrams with **DiagrammeR**.
+**DiagrammeR** はいくつかの異なるグラフ言語を使ってグラフを作成する方法を提供します. この節では Graphviz の例を提示しますが,^[あなたのバックグラウンド次第では, この節は **DiagrammeR** に対する偏った解説になるかもしれません. このパッケージに興味があるなら, パッケージの公式ドキュメントをご覧ください.] **DiagrammeR** は純粋に R コードだけでグラフを作ることもできます.
 
-The RStudio IDE provides native support for Graphviz (`.gv`) and mermaid (`.mmd`) files. Editing these types of files in RStudio has the advantage of syntax highlighting. RStudio also allows you to preview the diagrams by clicking the "Preview" button on the toolbar. Figure \@ref(fig:diagram-profit) is a simple flowchart example that has four rectangles representing four steps, generated by the code below:
+RStudio IDE は Graphviz (`.gv`) および mermaid (`.mmd`) ファイルをネイティブにサポートしています. これらのタイプのファイルを RStudio で編集すると, シンタックスハイライトされるという利点があります. RStudio のツールバーの "Preview" ボタンをクリックすると, ダイアグラムをプレビューすることができます. 図\@ref(fig:diagram-profit) は, 4つのステップを表す矩形で構成された, フローチャートの単純な例です. これは以下のコードで生成されています.
 
-```{r diagram-profit, fig.align='center', fig.cap="A diagram showing a programmer's daydream.", fig.dim=c(3, 6), out.width="100%"}
+```{r diagram-profit, fig.align='center', fig.cap="プログラマの絵空事を表したダイアグラム", fig.dim=c(3, 6), out.width="100%"}
 DiagrammeR::grViz("digraph {
   graph [layout = dot, rankdir = TB]
   
   node [shape = rectangle]        
-  rec1 [label = 'Step 1. Wake up']
-  rec2 [label = 'Step 2. Write code']
-  rec3 [label =  'Step 3. ???']
-  rec4 [label = 'Step 4. PROFIT']
+  rec1 [label = 'ステップ 1. 起床する']
+  rec2 [label = 'ステップ 2. コードを書く']
+  rec3 [label =  'ステップ 3. ???']
+  rec4 [label = 'ステップ 4. 収入を得る']
   
-  # edge definitions with the node IDs
+  # ノードIDでエッジを定義
   rec1 -> rec2 -> rec3 -> rec4
   }",
   height = 500)
 ```
 
-There are extensive controls that can be used to define the shape of nodes, colors, line types, and add additional parameters.
+ノードの形状, 色, 線のタイプを定義したり, パラメータを追加したりといったことができる拡張的な操作も用意されています.
 
-### Adding parameters to plots
+### 図にパラメータを追加する {#adding-parameters-to-plots}
 
-Graphviz substitution allows for mixing R expressions into a Graphviz graph specification, without sacrificing readability. If you specify a substitution with `@@`, you must ensure there is a valid R expression for that substitution. The expressions are placed as footnotes and their evaluations must result in an R vector object. The `@@` notation is immediately followed by a number, and that number should correspond to the number of the R expression footnote. Figure \@ref(fig:diagram-params) shows an example of embedding and evaluating R code in the diagram.
+Graphviz の置換機能は可読性を損なうことなく, R 評価式を Graphviz のグラフ設定に混ぜ込むことができます. `@@` を伴う置換を指定すれば, そこに置換される有効な R 評価式が確実にあるようにせねばなりません.   評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. `@@` という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図\@ref(fig:diagram-params)はダイアグラムへの R コードの埋め込みと評価の例です.
 
-```{r diagram-params, fig.cap="A diagram using parameters input from R.", fig.dim=c(6, 1), out.width="100%", crop=TRUE}
+```{r diagram-params, fig.cap="R から入力されたパラメータを使用したダイアグラム", fig.dim=c(6, 1), out.width="100%", crop=TRUE}
 DiagrammeR::grViz("
   digraph graph2 {
   
@@ -622,55 +601,56 @@ DiagrammeR::grViz("
   height = 100)
 ```
 
-### Other packages for making diagrams
+### その他のダイアグラム作成パッケージ {#other-packages-for-making-diagrams}
 
-You may also check out these packages for creating diagrams: **nomnoml** [@R-nomnoml], **diagram** [@R-diagram], **dagitty** [@R-dagitty], **ggdag** [@R-ggdag], and **plantuml** (https://github.com/rkrug/plantuml).
+ダイアグラム作成に使えるパッケージとして, **nomnoml** [@R-nomnoml], **diagram** [@R-diagram], **dagitty** [@R-dagitty], **ggdag** [@R-ggdag], **plantuml** (https://github.com/rkrug/plantuml) といったものを確かめることになるかもしません.
 
-## Escape special characters {#special-chars}
+## 特殊文字をエスケープする {#special-chars}
 
-Some characters have special meanings in the Markdown syntax. If you want these characters verbatim, you have to escape them. For example, a pair of underscores surrounding text usually makes the text italic. You need to escape the underscores if you want verbatim underscores instead of italic text. The way to escape a special character is to add a backslash before it, e.g., `I do not want \_italic text\_ here`. Similarly, if `#` does not indicate a section heading, you may write `\# This is not a heading`.
+Markdown 構文で特殊な意味を持つ文字がいくつかあります. これらの文字を直接使いたい場合, エスケープしなければなりません. 例えばテキストを囲むアンダースコアの組はたいていの場合テキストをイタリック体にします. イタリック体ではなく, アンダースコアをそのまま表示させたいなら, アンダースコアをエスケープする必要があります. 特殊な文字をエスケープする方法は, その直前にバックスラッシュを付けることです. 例えば「`ここは\_イタリックに\_したくない.`」というふうに. 同様に, `#` をセクションヘッダを表してほしくないなら, `\# これは見出しではない` などと書けばよいでしょう.
 
-As mentioned in Section \@ref(linebreaks), a sequence of whitespaces will be rendered as a single regular space. If you want to render the sequence of spaces literally, you need to escape each of them, e.g., `keep the social \ \ \ distance`. When a space is escaped, it is converted to a "non-breaking space," which means the line will not be wrapped at this space, e.g., `Mr.\ Dervieux`.
+\@ref(linebreaks) 節で言及したように, 連続した空白文字は1つの正規スペースとして表示されます. 書いたとおりに連続した空白文字を表示させたいならば, 1つ1つにエスケープが必要です. 例えば `ソーシャル \ \ \ ディスタンス維持` というふうに. 空白がエスケープされた時, 空白は「改行しない空白」に変換されます. これは, そのスペースの位置では行が折り返されないということです. 例えば `Mr.\ Dervieux` と言うふうに. TODO: ここもしかして折返しが発生するように調整されてる?
 
-## Comment out text {#comments}
+## テキストのコメントアウト {#comments}
 
 <!-- https://stackoverflow.com/questions/17046518/comment-out-text-in-r-markdown -->
 
-It is useful to comment out text\index{comment} in the source document, which will not be displayed in the final output document. For this purpose, we can use the HTML syntax `<!-- your comment -->`. The comments will not be displayed in any output format.
+ソース文書内のテキストを最終的な出力文書に表示させないようコメントアウト\index{コメント}するのはとても便利です.  この用途のため, HTML の構文である `<!-- ここにコメント -->` を使えます. コメントはどの出力形式にも表示されません.
 
-Comments can span either a single line or multiple lines. This may be useful for you to write draft content.
-<!-- TODO: it also allows us to comment out code chunks and prevent them from being run in knitr (not possible at the moment). -->
+コメントは1行でも, 複数行にも広げられます. これは草稿を書くのに便利でしょう.
 
-If you use RStudio, you can use the keyboard shortcut\index{RStudio!comment shortcut} `Ctrl + Shift + C` (`Command + Shift + C` on macOS) to comment out a line of text.
+<!-- TODO: これでコードチャンクをコメントでき, knitr によって実行されるのも防ぐことができる (今は不可). -->
 
-## Omit a heading in the table of contents {#toc-unlisted}
+RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボードショートカット\index{RStudio!コメントのショートカット} `Ctrl + Shift + C` (MacOS なら`Command + Shift + C`) を使えます.
 
-If you do not want certain section headings to be included in the table of contents, you can add two classes to the heading: `unlisted`\index{class!unlisted} and `unnumbered`\index{class!unnumbered}. For example:
+## 目次から見出しを省略する {#toc-unlisted}
+
+目次に特定のセクションの見出しを表示させたくないなら, 見出しに2つのクラスを追加できます. `unlisted`\index{クラス!unlisted} と `unnumbered`\index{クラス!unnumbered} です. 例えばこのように
 
 ```md
-# Section heading {.unlisted .unnumbered}
+# 見出し {.unlisted .unnumbered}
 ```
 
-Note that this feature requires at least Pandoc 2.10. You may check your Pandoc version via `rmarkdown::pandoc_version()`. If the version is lower than 2.10, you may install a newer version (see Section \@ref(install-pandoc)).
+この機能は Pandoc 2.10 以降のバージョンが必要です. `rmarkdown::pandoc_version()` で Pandoc のバージョンを確認しましょう. バージョンが 2.10 より古いなら, 新しいバージョンをインストールすることになるでしょう (\@ref(install-pandoc)節参照).
 
-## Put together all code in the appendix (\*) {#code-appendix}
+## 全てのコードを補遺に置く (\*) {#code-appendix}
 
-Unless the target readers are highly interested in the computational details while they read a report, you may not want to show the source code blocks in the report. For this purpose, you can set the chunk option `echo = FALSE`\index{chunk option!echo} to hide the source code instead, so readers will not be distracted by the program code for computing. However, the source code is still important for the sake of reproducible research. Sometimes readers may want to verify the computational correctness after they have finished reading the report. In this case, it can be a good idea to hold all code blocks in the body of the report, and display them at the end of a document (e.g., in an appendix).
+対象読者がレポートを読む時, 計算の詳細に強く関心があるのでない限り, あなたはレポートにソースコードブロックを表示させたくないかもしれません. この用途で, チャンクオプション `echo = FALSE`\index{チャンクオプション!echo} を設定してソースコードを隠し, 読者がプログラムコードで気が散らないようにすることができます. しかしそれでも, ソースコードは再現可能性のある研究のために重要です. 読者はレポートを読み終わった後に計算の正しさを検証したいと思うかも知れません. この場合, 本文中の全てのコードブロックをまとめ, 文書の末尾 (例えば補遺として) に表示するというのは良い考えでしょう.
 
-There is a simple method of extracting all code chunks in a document and putting them together in a single code chunk using the chunk option `ref.label`\index{chunk option!ref.label} and the function `knitr::all_labels()`\index{knitr!all\_labels()}, e.g.,
+チャンクオプションの `ref.label`\index{チャンクオプション!ref.label} と `knitr::all_labels()`\index{knitr!all\_labels()} 関数を使い, 文書内の全てのコードチャンクを取り出して1つのコードチャンクにまとめる簡単な方法があります. 例えばこのように.
 
 ````md
-# Appendix: All code for this report
+# 補遺: 本稿で使ったコード全文
 
 ```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE}`r ''`
 ```
 ````
 
-Please read Section \@ref(ref-label) if you are not familiar with the chunk option `ref.label`.
+チャンクオプション `ref.label` について詳しく知らないならば, \@ref(ref-label)節を読んでください.
 
-The function `knitr::all_labels()` returns a vector of all chunk labels in the document, so `ref.label = knitr::all_labels()` means retrieving all source code chunks to this code chunk. With the chunk options `echo = TRUE` (display the code) and `eval = FALSE`\index{chunk option!eval} (do not evaluate this particular code chunk because all code has been executed before), you can show a copy of all your source code in one code chunk.
+`knitr::all_labels()` 関数は文書内の全てのチャンクラベルを返すため, `ref.label = knitr::all_labels()` は全てのソースコードチャンクを回収しこのチャンクに持ってくることを意味します. チャンクオプション `echo = TRUE` (コードを表示させる) と `eval = FALSE`\index{チャンクオプション!eval} (全てのコードはすでに実行されているため, このコードチャンクは実行してはいけません) を付与すれば, 1つのコードチャンクに全てのソースコードのコピーを表示させられます.
 
-Since `ref.label` can be a character vector of arbitrary chunk labels, you can certainly filter the labels to decide a subset of code chunks to display in the code appendix. Below is an example (credits to [Ariel Muldoon](https://yihui.org/en/2018/09/code-appendix/)) of excluding the labels `setup` and `get-labels`:
+`ref.label` は任意のチャンクラベルの文字列ベクトルであるため, 補遺に表示するコードチャンクを一部だけにするようにラベルをフィルタリングできます. 以下はその例 ([Ariel Muldoon](https://yihui.org/en/2018/09/code-appendix/) によるものです) として `setup` と `get-labels` というラベルを排除しています.
 
 ````md
 ```{r get-labels, echo = FALSE}`r ''`
@@ -682,31 +662,31 @@ labs = setdiff(labs, c("setup", "get-labels"))
 ```
 ````
 
-You can also filter code chunks using the arguments of `knitr::all_labels()`. For example, you may use `knitr::all_labels(engine == "Rcpp", echo == FALSE)` to obtain all your code chunks that use the `Rcpp` engine (`engine == "Rcpp"`) and are not displayed in the document (`echo = FALSE`). If you want precise control over which code chunks to display in the appendix, you may use a special chunk option `appendix = TRUE` on certain code chunks, and `ref.label = knitr::all_labels(appendix == TRUE)` to obtain the labels of these code chunks.
+`knitr::all_labels()` の引数を使ってコードチャンクをフィルタリングすることもできます. 例えば `Rcpp` エンジン (`engine == "Rcpp"`) を使用した全てのコードチャンクを得て, かつ文書に表示しない (`echo = FALSE`) ようにするには `knitr::all_labels(engine == "Rcpp", echo == FALSE)` を使えば良いでしょう. どのコードチャンクを補遺に表示したいのか, 正確にコントロールしたいならば, 指定したいコードチャンクに特殊なチャンクオプション `appendix = TRUE` を使い, それらのチャンクのラベルを得るのに `ref.label = knitr::all_labels(appendix == TRUE)` を使えば良いでしょう.
 
-## Manipulate Markdown via Pandoc Lua filters (\*) {#lua-filters}
+## Pandoc の Lua フィルタから操作する (\*) {#lua-filters}
 
-\index{Pandoc!Lua filter|see  {Lua filter}}
+\index{Pandoc!Lua フィルタ|see  {Lua フィルタ}}
 
-Technically, this section may be a little advanced, but once you learn how your Markdown content is translated into the Pandoc abstract syntax tree (AST), you will have the power of manipulating any Markdown elements with the programming language called Lua.
+技術的にはこの節は少し発展的ですが, Markdown の内容が Pandoc 抽象構文木 (AST) にどのように翻訳されるかを一度学べば, Lua というプログラミング言語を使ってどのような Markdown の要素も操作する力を得ることになります.
 
-Basically, when Pandoc reads a Markdown file, the content will be parsed into an AST. Pandoc allows you to modify this AST with Lua scripts\index{Lua filter}. We use the following simple Markdown file (named `ast.md`) to show what the AST means:
+基本として, Pandoc は Markdown ファイルを読み取り, その内容が AST にパースされます. Pandoc はこの AST をLua スクリプト\index{Lua フィルタ}を使って修正することを可能にします. AST の意味するものを示すため, 以下のような簡単な Markdown ファイル (`ast.md`) を使います.
 
 ```{cat, engine.opts=list(file='ast.md', lang='md')}
-## Section One
+## 第1節
 
 Hello world!
 ```
 
-This file contains a header and a paragraph. After Pandoc parses this content, it may be easier for R users to understand the resulting AST if we convert the file to the JSON format:
+このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後ファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.
 
 ```{sh}
 pandoc -f markdown -t json -o ast.json ast.md
 ```
 
-Then read the JSON file into R, and print out the data structure. 
+そして JSON ファイルを R に読み込み, データ構造を書き出します.
 
-When you do this, you will see that the Markdown content is represented in a recursive list. Its structure is printed below. The label `t` stands for "type," and `c` stands for "content." Take the header for example. Its type is "Header", and its content has three sub-elements: the header level (`2`), the attributes (e.g., the ID is `section-one`), and the text content.
+この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル `t` は "type", `c` は "content" を表します. 例として見出しを取り上げてみましょう. タイプは "Header" で, その中身は3つの要素が含まれています. 見出しのレベル (`2`), 属性 (例えば ID が `section-one` であること), そしてテキストの内容です.
 
 ```{r, comment='', tidy=FALSE}
 xfun:::tree(
@@ -714,50 +694,50 @@ xfun:::tree(
 )
 ```
 
-After you are aware of the AST, you can modify it with the Lua programming language. Pandoc has a built-in Lua interpreter, so you do not need to install additional tools. The Lua scripts are called "Lua filters" for Pandoc. Next we give a quick example of raising the levels of headers by one, e.g., convert level 3 headers to level 2 headers. This may be useful when the top-level headers of your document are level 2 headers, but you want to start with level 1 headers instead.
+あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1増やす, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
 
-First, we create a Lua script file named `raise-header.lua`, which contains a function named `Header`, indicating that we want to modify elements of the type "Header" (in general, you can use the type name as the function name to process elements of a certain type):
+最初に `raise-header.lua` という名前の Lua スクリプトファイルを作ります. これには `Header` という名前の関数が含まれており, "Header" タイプの要素を修正したいということを意味しています (一般に,  あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).
 
 ```{cat, engine.opts=list(file='raise-header.lua', lang='lua')}
 function Header(el)
-  -- The header level can be accessed via the attribute 'level'
-  -- of the element. See the Pandoc documentation later.
+  -- 見出しのレベルは要素の持つ 'level' 属性でアクセスできます.
+  -- 後述の Pandoc ドキュメントを見てください.
   if (el.level <= 1) then
-    error("I don't know how to raise the level of h1")
+    error("h1 のレベルを上げる方法がわかりません")
   end
   el.level = el.level - 1
   return el
 end
 ```
 
-Then we can pass this script to Pandoc via the argument `--lua-filter`, e.g.,
+そしてこのスクリプト Pandoc の `--lua-filter` 引数に与えることができます. 例えばこうです.
 
 ```{sh, comment=''}
 pandoc -t markdown --atx-headers \
   --lua-filter=raise-header.lua ast.md
 ```
 
-You can see that we have successfully converted `## Section One` to `# Section One`. You may feel this example is trivial, and wonder why not simply replace `##` with `#` with a regular expression like:
+`## Section One` を `# Section One` へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, なんでこんなふうに単に正規表現を使って `##` を `#` に置き換えないのかと思うかも知れません.
 
 ```{r, eval=FALSE}
 gsub('^##', '#', readLines('ast.md'))
 ```
 
-Usually it is not robust to manipulate a structured document with regular expressions, because there are almost always exceptions, e.g., what if `##` means a comment in R code? The AST gives you the structured data, so you know for sure that you are modifying the expected elements.
+例えば `##` が R コード内でコメントに使われていたら, と言うふうに, 正規表現はほとんど常に例外があるため, たいていの場合で, 構造化された文書を操作するのにロバストな手段ではありません. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.
 
-Pandoc has extensive documentation on Lua filters at https://pandoc.org/lua-filters.html, where you can find a large number of examples. You can also find some filters written by the community in the GitHub repository at https://github.com/pandoc/lua-filters.
+Pandoc の Lua フィルタに関する追加ドキュメントが https://pandoc.org/lua-filters.html にあり, ここで多くの例を見つけることができます. GitHub リポジトリ https://github.com/pandoc/lua-filters のコミュニティで書かれたフィルタを見つけることもできます.
 
-In the R Markdown world, below is an incomplete list of packages that have made use of Lua filters (usually they are in the `inst/` directory):
+R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは `inst/` ディレクトリにあります)
 
-- The **rmarkdown** package (https://github.com/rstudio/rmarkdown) contains filters that insert page breaks (see Section \@ref(pagebreaks)) and generate custom blocks (see Section \@ref(custom-blocks)).
+- **rmarkdown** パッケージ (https://github.com/rstudio/rmarkdown) は改行 (\@ref(pagebreaks)節参照) を挿入するフィルタとカスタムブロック (\@ref(custom-blocks)節参照)を生成するフィルタを含んでいます.
 
-- The **pagedown** package [@R-pagedown] contains filters that help implement footnotes and the list of figures on HTML pages.
+- **pagedown** パッケージ [@R-pagedown] には脚注を実装するのを助けるフィルタと HTML ページに図のリストを表示するフィルタがあります.
 
-- The **govdown** package [@R-govdown] contains filters to convert Pandoc's fenced `Div`s to appropriate HTML tags.
+- **govdown** パッケージ [@R-govdown] には Pandoc の `Div` による囲みを適切な HTML タグに変換するフィルタがあります.
 
-You can also find an example in Section \@ref(lua-color) in this book, which shows you how to change the text color with a Lua filter.
+本書の\@ref(lua-color)節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.
 
-For R Markdown users who do not want to create R packages to ship the Lua filters (like the above packages), you may store these Lua scripts anywhere on your computer, and apply them through the `pandoc_args`\index{output option!pandoc\_args} option of an R Markdown output format, e.g.,
+Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{出力オプション!pandoc\_args} オプションで適用すると良いでしょう. 例えばこのように.
 
 ```yaml
 ---

@@ -4,7 +4,7 @@
 
 ## レンダリング時に何が起こっているのか {#rmarkdown-process}
 
-R Markdown はいくつかの異なるプロセスを合わせて文書を作成し, これが R Markdown の全ての部品がどう連動してるかに関する混乱の主な理由です.^[Allison Horst が R Markdown の処理を魔法になぞらえたすばらしいイラストに描き出してくれました (https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/rmarkdown_wizards.png). そして実際のところ, この絵は本書の表紙絵に使われました.] 幸運にも, ユーザーが文書を作成できるようになるためにはこれらの処理の内部の挙動を全て理解することは必須ではありません. しかし, 文書の挙動の変えようとするだろうユーザーにとっては, どの部品がどの挙動を担当しているかを理解することは重要です. あなたが検索する適切な範囲を絞れるようになれば, ヘルプを探すのがより簡単になります.
+R Markdown はいくつかの異なるプロセスを合わせて文書を作成し, これが R Markdown の全ての部品がどう連動してるかに関する混乱の主な理由です.^[Allison Horst が R Markdown の処理を魔法になぞらえたすばらしいイラストに描き出してくれました (https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/rmarkdown_wizards.png). そして実際のところ, この絵は本書の扉絵に使われました.] 幸運にも, ユーザーが文書を作成できるようになるためにはこれらの処理の内部の挙動を全て理解することは必須ではありません. しかし, 文書の挙動の変えようとするだろうユーザーにとっては, どの部品がどの挙動を担当しているかを理解することは重要です. あなたが検索する適切な範囲を絞れるようになれば, ヘルプを探すのがより簡単になります.
 
 R Markdown 文書に対する基本的なワークフローの構造を図\@ref(fig:rmdworkflow)に示します. ステップ (矢印) と, 出力ファイルが生成される前に作成される中間ファイルを強調しています. 全ての処理は `rmarkdown::render()` 関数内で実装されています. 以降は各段階を詳細に説明します.
 
@@ -12,7 +12,7 @@ R Markdown 文書に対する基本的なワークフローの構造を図\@ref(
 knitr::include_graphics("images/workflow.png", dpi = NA)
 ```
 
-`.Rmd` 文書は, 文書の本来の形式です. YAML (メタデータ)\index{YAML}, テキスト (ナラティブ), コードチャンク\index{code chunk} を含んでいます.
+`.Rmd` 文書は, 文書の本来の形式です. YAML (メタデータ)\index{YAML}, テキスト (ナラティブ), コードチャンク\index{コードチャンク} を含んでいます.
 
 最初に **knitr**\index{knitr} [@R-knitr] の `knit()` 関数が `.Rmd` ファイルに埋め込まれた全てのコードを実行することになり, そして出力文書にコードの出力を表示します. 全ての結果は, 一時的に作られた `.md` ファイルに含まれるよう, 適正なマークアップ言語へと変換されます.
 
@@ -109,7 +109,7 @@ R Markdown のテキスト部分で見られる最後の興味深いコンテン
 
 コードチャンクを作ることができるいくつかの mod について理解するためには, **knitr** の処理をあとほんの少しだけ詳しく知ることが有意義です. 各チャンクでは, **knitr** 言語エンジンは3つの入力の部品を得ます. knit 環境 (`knitr::knit_global()`), コードの入力, 任意に指定できるラベル, そしてチャンクオプションのリストです. コードチャンクはコードもその出力も整形された表現として返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図\@ref(fig:knitr-workflow)のように表せます.
 
-```{r knitr-workflow, echo = FALSE, fig.cap = '言語エンジンにへの入出力フローチャート', out.width = '100%', fig.dim=c(7, 3.5), fig.align='center', cache=TRUE}
+```{r knitr-workflow, echo = FALSE, fig.cap = '言語エンジンへの入出力フローチャート', out.width = '100%', fig.dim=c(7, 3.5), fig.align='center', cache=TRUE}
 nomnoml::nomnoml(
   "
   [<frame>コードチャンク|
