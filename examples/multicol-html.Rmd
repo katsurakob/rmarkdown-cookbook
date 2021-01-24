@@ -5,7 +5,7 @@ output: html_document
 :::: {style="display: flex;"}
 
 ::: {}
-Here is the **first** Div.
+ここは **最初の** Div です.
 
 ```{r}
 str(iris)
@@ -13,7 +13,7 @@ str(iris)
 :::
 
 ::: {}
-And this block will be put on the right:
+こっちは右側に配置されるブロックです.
 
 ```{r}
 plot(iris[, -5])

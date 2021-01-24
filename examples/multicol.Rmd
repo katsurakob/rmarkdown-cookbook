@@ -1,22 +1,24 @@
 ---
 output:
+  pdf_document: 
+    latex_engine: lualatex
+    keep_tex: true
+    includes:
+      in_header: columns.tex
   html_document: 
     css: columns.css
-  pdf_document: 
-    keep_tex: true
-    includes:
-      in_header: columns.tex
   beamer_presentation: 
     keep_tex: true
+    latex_engine: lualatex
     includes:
       in_header: columns.tex
+documentclass: "`r if(knitr::opts_knit$get('rmarkdown.pandoc.to') == 'beamer') 'beamer' else 'ltjsarticle'`"
+mainfont: 'Noto Sans CJK JP'
 ---
 
-# Two columns
+# 二段組み
 
-Below is a Div containing three child Divs side by side. The Div
-in the middle is empty, just to add more space between the left
-and right Divs.
+以下は 3つの子要素の Div を横並びに持つ Div コンテナです. 中央の Div は空で, 左右の Div の間に空白を作るためだけに存在します.
 
 :::::: {.cols data-latex=""}
 
@@ -29,18 +31,17 @@ plot(cars, pch = 19)
 
 ::: {.col data-latex="{0.05\textwidth}"}
 \ 
-<!-- an empty Div (with a white space), serving as
-a column separator -->
+<!-- 段どうしのセパレータとして機能するだけの空の Div (空白入り) -->
 :::
 
 ::: {.col data-latex="{0.4\textwidth}"}
-The figure on the left-hand side shows the `cars` data.
+左側の図は `cars` データを表しています.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-enim ad minim veniam, quis nostrud exercitation ullamco laboris
-nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-nulla pariatur.
+
+> いろはにほへと ちりぬるを
+わかよたれそ つねならむ
+うゐのおくやま けふこえて
+あさきゆめみし ゑひもせす
+
 :::
 ::::::
