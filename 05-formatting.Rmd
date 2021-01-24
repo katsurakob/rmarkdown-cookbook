@@ -366,3 +366,5 @@ LaTeX 出力 (`pdf_document`) では, LaTeX プリアンブルで LaTeX 環境 `
 Beamer 出力でも `columns.tex` で同じハックを適用しています. Pandoc は `::: {.columns}`, `::: {.column}`, `::: {.incremental}` といった[スライドショー](https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc)用の特別な `Div` を提供していることに注意してください. これらは特別な意味を持つため, この節で言及されたような方法で `Div` を LaTeX 環境を変換しようとするなら, これらのタイプの `Div` を**使わない**ように注意しなければなりません. `columns` または `column` ではなく, `cols`, `col` という名前の `Div` タイプを使ったのはこれが理由です.
 
 fenced `Div` についてより詳しく知りたいなら, \@ref(custom-blocks)節を見てください.
+
+**訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御することができます (\@ref(latex-variables)節参照).
