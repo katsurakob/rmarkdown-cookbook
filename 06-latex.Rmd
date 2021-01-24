@@ -1,12 +1,12 @@
-# LaTeX Output
+# LaTeX 出力 {#latex-output}
 
-For many authors, the main output of their work will be the PDF report, in which case they can utilize the powerful styling of LaTeX. In this chapter, we discuss approaches that can be used to customize PDF reports, such as including LaTeX code or packages in the preamble, using custom LaTeX templates, adding headers and footers, generating sub-figures, and writing raw LaTeX code in the document body.
+多くの著者にとって作品の主な出力は PDF レポートで, この出力では強力な LaTex のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX レンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
 
-We want to offer a note of caution before we start, however. One benefit of R Markdown is the fact that a single source document can create documents with multiple formats. By tailoring your work to a single output format, you may improve the appearance and performance of a single output format, but at the expense of this transferability. This problem is not unique to LaTeX, but all other output formats as well.
+ただし, 始める前に注意しておきたいことがあります.R Markdown の恩恵の1つは単一のソース文書から複数のフォーマットの文書を生成できるということです. あなたの作品を単一の出力に対して仕立て上げるこにとよって, その出力フォーマット単体の見た目やパフォーマンスは向上するかもしれませんが, それはこの移植性を犠牲にすることでもあります. この問題は LaTeX に限ったことでなく. 他の出力フォーマットでも同様です.
 
-## Add LaTeX code to the preamble {#latex-preamble}
+## プリアンブルに LaTeX コードを追加する {#latex-preamble}
 
-The general structure of a LaTeX document\index{LaTeX} is like this:
+LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっています.
 
 ```tex
 \documentclass{article}
@@ -16,19 +16,19 @@ The general structure of a LaTeX document\index{LaTeX} is like this:
 \end{document}
 ```
 
-That is, you declare the document class in `\documentclass{}`, load certain LaTeX packages and set certain options if necessary in the preamble, and start writing the body of your document after `\begin{document}`. A Markdown document is mostly the body of the document. 
+これは文書クラスを `\documentclass{}` で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして `\begin{document}` の後で文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.
 
-If you want to add anything to the preamble, you have to use the `includes` option of `pdf_document`\index{output option!includes}. This option has three sub-options: `in_header`, `before_body`, and `after_body`. Each of them takes one or multiple file paths. The file(s) specified in `in_header` will be added to the preamble. The files specified in `before_body` and `after_body` are added before and after the document body, respectively.
+プリアンブルになにか追加したい時, `pdf_document`\index{出力オプション!includes} `include` を使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. これらは1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
 
-For example, below is a trick that turns hyperlinks in text into footnotes. This trick is useful when the PDF output document is printed on paper, because readers will not be able to click the links (generated from `\href{URL}{text}`) on paper but can see the URLs in footnotes. This trick displays both the text and URL.
+例えば以下はテキスト内のハイパーリンクを脚注に変えるトリックです. PDF 出力された文書が紙に印刷されたものだと, 読者は紙面のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注の URL を見ることはできるのでこのトリックは役に立ちます. このトリックはテキストと URL の両方を表示します.
 
 ```tex
-% you may want to save a copy of \href before redefining it
+% あなたはレンダリング前に \href のコピーを保存したいかもしれない
 % \let\oldhref\href
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 ```
 
-You can save the above code in a file with an arbitrary filename, e.g., `preamble.tex`. Then include it in the preamble through:
+あるファイル名 , 例えば `preamble.tex` 内に上記のコードを保存できます. それからプリアンブルにこれを読み込んでください.
 
 ```yaml
 output:
@@ -37,13 +37,14 @@ output:
       in_header: "preamble.tex"
 ```
 
-For this particular trick, you do not really have to implement it by yourself, but can simply set the YAML option `links-as-notes` to `true`\index{YAML!links-as-notes} because it is a built-in feature of Pandoc's default LaTeX template (see Section \@ref(latex-variables)).
+このトリックは実際には自分で実装しなくてもよく, Pandoc のデフォルトのテンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true``\index{YAML!links-as-notes}にすることで簡単にできます.
 
-Another way to add code to the preamble is to pass it directly to the `header-includes` field in the YAML frontmatter\index{YAML!header-includes}. We will show an example in Section \@ref(latex-logo). The advantage of using `header-includes` is that you can keep everything in one R Markdown document. However, if your report is to be generated in multiple output formats, we still recommend that you use the `includes` method, because the `header-includes` field is unconditional, and will be included in non-LaTeX output documents, too. By comparison, the `includes` option is only applied to the `pdf_document` format.
 
-## Pandoc options for LaTeX output {#latex-variables}
+コードをプリアンブルに追加する別の方法は,  YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接与えることです. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown 文書1つの内部に全てを含められることです. しかしあなたのレポートを複数の出力フォーマットに生成しなければならないなら, `includes` を使う方法をお薦めします. `header-includes` は無条件であり, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. 比較として, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
 
-If you are using the default Pandoc template for LaTeX output, there are several options that you may set to adjust the appearance of the PDF output document. We list a few example options below, and you may see https://pandoc.org/MANUAL.html#variables-for-latex for a full list.
+## LaTeX 出力の Pandoc オプション {#latex-variables}
+
+LaTeX 出力に対してデフォルトの Pandoc を使うなら, PDF 出力の文書の見た目を調整するいくつかのオプションがあります. いくつかのオプションの例を以下に挙げていきます. 完全なリストは https://pandoc.org/MANUAL.html#variables-for-latex で見ることができます.
 
 ```yaml
 documentclass: book
@@ -56,9 +57,9 @@ fontsize: 12pt
 links-as-notes: true
 ```
 
-The meanings of these options should be clear if you have some knowledge about LaTeX. The `documentclass` option\index{YAML!documentclass} sets the document class, e.g., `article`, `book`, and `report`, etc. The `classoption` is a list of options to be passed to the document class, e.g., you can create a two-column document with the `twocolumn` option,^[This option changes the layout of the whole document, but if you want to switch back to the one-column mode from a certain point, you may insert a command `\onecolumn` at that point. If you want to continue the two-column mode, insert `\twocolumn`.] or the landscape layout with the `landscape` option (the default is the portrait layout). The `papersize`\index{YAML!papersize} option sets the paper size, e.g., `a4`, `paper`, or `a5`. The `linestretch`\index{YAML!linestretch} option sets the line spacing. The `fontsize`\index{YAML!fontsize} option sets the font size, e.g., `10pt`, `11pt`, or `12pt`. The `links-as-notes` option turns links in text to footnotes, which is useful when the PDF is printed on paper, because readers will not be able to click the links on paper but can see the URLs in footnotes.
+あなたが LaTeX にある程度詳しいなら, これらのオプションの意味は明らかでしょう. `documentclass` オプション\index{YAML!documentclass} は, 例えば `article`, `book`, `report` などの文書クラスを設定します. `classoption` は文書クラスに与えるオプションのリストで, 例えば二段組の文書を作りたいなら `twocolumn` オプション,^[このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに `\onecolumn` コマンドを挿入することになるでしょう. 二段組モードを続けたいなら `\twocolumn` を挿入します.], 横置きレイアウトにするなら `landscape` オプション (デフォルトでは縦置き (portrait) レイアウト) があります. `papersize`\index{YAML!papersize} オプションは `a4`, `paper`, `a5` といった用紙サイズを設定します. `linestretch`\index{YAML!linestretch} オプションは行間を設定します. `fontsize`\index{YAML!fontsize} オプションはフォントサイズを `10pt`, `11pt`, `12pt` というふうに設定します. `links-as-notes` オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
 
-Changing fonts can be a little trickier. It depends on which LaTeX engine you are using. If you are using `pdflatex`\index{pdflatex}, which is usually the default engine for most LaTeX-based output formats, you may use the `fontfamily` option to select a LaTeX font package to be loaded in your document to change the font, e.g.,
+フォントの変更は少しトリッキーです. どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで大抵の場合デフォルトである `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.], 読み込む LaTeX フォントパッケージを選択するために  `fontfamily` オプションを使ってください. 例えばこのように.
 
 ```yaml
 fontfamily: accanthis
@@ -67,9 +68,9 @@ output:
     latex_engine: pdflatex
 ```
 
-Then the document will use the font [Accanthis.](https://tug.org/FontCatalogue/accanthis/) You may see https://tug.org/FontCatalogue/ for a list of many other LaTeX font packages. If your LaTeX distribution is TinyTeX and the required font packages have not been installed, they should be automatically installed when the document is compiled (see Section \@ref(install-latex)).
+これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他の多数の LaTeX フォントパッケージのリストは You may see https://tug.org/FontCatalogue/  で見ることができます. LaTeX ディストリビューションに TinyTeX をお使いで, フォントパッケージがインストールされていないならば,   文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
 
-If you use the LaTeX engine `xelatex` or `lualatex`, you will be able to select fonts that are available on your local computer, and do not have to install additional LaTeX packages. YAML options like `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, and `monofont`\index{YAML!monofont} can be used to specify the main font, sans serif font, and typewriter font, respectively, e.g.,
+LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプション `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} はメインのフォント, サンセリフ体, そしてタイプライタ体のフォントをそれぞれ指定するのに使えます.^[**訳注**: rmdja では YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
 
 ```yaml
 mainfont: Arial
@@ -78,59 +79,59 @@ output:
     latex_engine: xelatex
 ```
 
-You can also use some of those LaTeX options when you generate Beamer slides\index{Beamer}, because a Beamer document is a LaTeX document, too. In addition, Pandoc has provided a few more options for Beamer slides, which can be found at https://pandoc.org/MANUAL.html#variables-for-beamer-slides. For example, you can specify the author affiliation via the `institute` option\index{YAML!institute}:
+Beamer \index{Beamer}の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にいくつか追加オプションを提供してくれています. それらは https://pandoc.org/MANUAL.html#variables-for-beamer-slides で確認できます. 例えば `institute` オプションでoption\index{YAML!institute}著者の所属機関を指定することができます.
 
 ```yaml
 ---
 output: beamer_presentation
-institute: "University of Hackers"
+institute: "ハッカーの大学"
 ---
 ```
 
-## Add logo to title page {#latex-logo}
+## 表紙ページにロゴを置く {#latex-logo}
 
 <!-- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf -->
 
-We can use the **titling** LaTeX package\index{LaTeX package!titling} to alter our title block to include an image\index{figure!title page}. Below is a full example that shows how to add the R logo (`logo.jpg`) to the title page. The image can be of any format that LaTeX supports (e.g., `jpg`, `png`, or `pdf`).
+LaTeX パッケージの **titling** \index{LaTeX パッケージ!titling} を表題ブロックを画像に変更\index{図!表紙ページ}するのに使うとができます. 以下は R ロゴ (`logo.jpg`) を表紙に配置する方法の例の全容です. 画像は LaTeX のサポートする形式 (例えば `jpg`, `png`, `pdf`) ならなんでも使えます.
 
 `r import_example('latex-logo.Rmd')`
 
-An example output is shown in Figure \@ref(fig:latex-logo).
+図\@ref(fig:latex-logo) がこの例の出力です.
 
-```{r latex-logo, echo=FALSE, fig.cap="A logo on a LaTeX title page.", fig.align='center'}
+```{r latex-logo, echo=FALSE, fig.cap="LaTeX の表紙ページにロゴを追加する", fig.align='center'}
 knitr::include_graphics("images/latex-logo.png", dpi = NA)
 ```
 
-An alternative method that does not require a special LaTeX package (**titling**) is to just insert the image in the `title` field using the Markdown syntax\index{YAML!title}. For example:
+LaTeX パッケージ (**titling**) を特に要求しない代替方法として, Markdown 構文を使って `title` フィールド\index{YAML!title}に画像を挿入する方法があります. 例えばこのように.
 
 ```yaml
 title: |
   ![](logo.jpg){width=1in}  
-  Adding a Logo to LaTeX Title
+  LaTeX のタイトルにロゴを追加する
 ```
 
-In this case, you will not need the `header-includes` field in the YAML frontmatter\index{YAML!header-includes} in the first example. Please note that although you cannot see them, there are two trailing spaces after `![](logo.jpg){width=1in}`, which means a line break in Markdown (see Section \@ref(linebreaks)). Without the line break, the image and the title would be on the same line, which may not be what you desire.
+この場合, 最初の例のように YAML フロントマターの `header-includes` フィールドは不要になります. 例からは見えませんが, `![](logo.jpg){width=1in}` の末尾にスペースが2つあることに注意してください. これは Markdown では改行を意味します(\@ref(linebreaks)節参照). 改行がない場合画像とタイトルは同じ行に現れてしまい, きっとそれはあなたの意図するものではないでしょう.
 
-## Include additional LaTeX packages {#latex-extra}
+## LaTeX パッケージを追加で読み込む {#latex-extra}
 
 <!-- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 -->
 
-The use of additional LaTeX packages can allow for extensive customization of document styling. In addition, several packages such as **kableExtra**\index{R package!kableExtra} [@R-kableExtra] may have LaTeX dependencies for the R package to function. Much like R, we need to load packages within the R Markdown document before we are able to use their functions.
+追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて **kableExtra**\index{R パッケージ!kableExtra} [@R-kableExtra]  のようないくつかのパッケージは R パッケージの関数を提供するために LaTeX に依存しているかもしれません. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.
 
-### Loading LaTeX packages
+### LaTeX パッケージを読み込む {#loading-latex-packages}
 
-We can load additional LaTeX packages using the `extra_dependencies` option\index{output option!extra\_dependencies} within the `pdf_document` YAML settings. This allows us to provide a list of LaTeX packages\index{LaTeX package} to be loaded in the intermediate LaTeX output document, e.g.,
+`pdf_document` の YAML での設定 `extra_dependencies` オプション\index{出力オプション!extra\_dependencies} を使って追加の LaTeX パッケージを読み込めます. 中間ファイルの LaTeX 出力文書で読み込む LaTeX パッケージ\index{LaTeX パッケージ}のリストを与えることができます. 例えばこのように.
 
 ```yaml
 ---
-title: "Using more LaTeX packages"
+title: "追加 LaTeX パッケージを使う"
 output: 
   pdf_document:
     extra_dependencies: ["bbm", "threeparttable"]
 ---
 ```
 
-If you need to specify options when loading the package, you can add a second level to the list and provide the options as a list, e.g.,
+パッケージ読み込み時のオプションを指定する必要があるなら, 第2のレベルを加えてオプションをリストとして与えられます. 例えばこのように.
 
 ```yaml
 output: 
@@ -141,7 +142,7 @@ output:
       lmodern: null
 ```
 
-For those familiar with LaTeX, this is equivalent to the following LaTeX code:
+LaTeX に慣れた人にとっては, これは以下の LaTeX コードと同じです.
 
 ```tex
 \usepackage[labelfont={bf}]{caption} 
@@ -149,32 +150,32 @@ For those familiar with LaTeX, this is equivalent to the following LaTeX code:
 \userpackage{lmodern}
 ```
 
-The advantage of using the `extra_dependencies` argument over the `includes` argument introduced in Section \@ref(latex-preamble) is that you do not need to include an external file, so your Rmd document can be self-contained.
+\@ref(latex-preamble)節で紹介した `includes` 引数に対し `extra_dependencies` 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.
 
-### Example packages
+### パッケージの例 {#example-packages}
 
-There is an extensive community for LaTeX, and there are over 4,000 packages available through the [Comprehensive TeX Archive Network](https://ctan.org) (CTAN). Here are some examples of LaTeX packages you could consider using within your report:
+LaTeX には広範なコミュニティがあり [Comprehensive TeX Archive Network](https://ctan.org) (CTAN) 全体には 4,000 種類以上のパッケージがあります. ここにレポートに使えるかもしれない LaTeX パッケージの例をいくつか挙げます.
 
-- [pdfpages](https://ctan.org/pkg/pdfpages): Include full PDF pages from an external PDF document within your document.
-- [caption](https://ctan.org/pkg/caption): Change the appearance of caption subtitles. For example, you can make the figure title italic or bold.
-- [fancyhdr](https://ctan.org/pkg/fancyhdr): Change the style of running headers of all pages.
+- [pdfpages](https://ctan.org/pkg/pdfpages): あなたの文書内に, 別の外部 PDF 文書からページを丸ごと持ってきて埋め込むことができます.
+- [caption](https://ctan.org/pkg/caption): キャプションのサブタイトルを変更します. 例えば図のタイトルをイタリックや太字にできます.
+- [fancyhdr](https://ctan.org/pkg/fancyhdr): 全てのページのラニングタイトル (欄外見出し) を変更できます.
 
-## Control the placement of figures {#figure-placement}
+## 図の位置を制御する {#figure-placement}
 
 <!-- https://stackoverflow.com/questions/16626462/figure-position-in-markdown-when-converting-to-pdf-with-knitr-and-pandoc/17648350#17648350 -->
 <!-- Some of the solutions adapted from https://texfaq.org/FAQ-floats. Link left here for future reference -->
 
-One common frustration with LaTeX is the placement of figures\index{figure!placement} and tables. Unlike in a word processor like Microsoft Word, in which figures are placed directly where the user specifies, LaTeX will attempt to place a figure in a position that does not violate certain typographic rules. In doing so, figures may float away from where they are referenced in the text. This section will explain some background information on how floating environments (such as figures) work and provide several options for customizing their behavior.
+LaTeX に共通の不満点の1つは図表の位置\index{図!位置}です. Microsoft ワードのような図がユーザーの指定した場所にそのまま置かれるワードプロセッサと違い, LaTeX は特定の組版ルールに反しないように図を配置しようとします. そうなると図はテキストで参照した場所から浮動 (フロート) するかもしれませn. この節では (図などの) フロート環境がどう機能し, その挙動をカスタマイズするためにどうオプションを与えるかについての予備知識を解説します.
 
-### Floating environments
+### フロート環境 {#floating-environment}
 
-By default, figures with captions are generated with the `figure` environment in LaTeX. For example, Pandoc will convert the following Markdown code that contains an image
+LaTeX ではデフォルトではキャプションのある図は `figure` 環境で生成されます. 例えば Pandoc は以下の画像を含む Markdown コードを…,
 
 ```md
 ![This is a figure.](images/cool.jpg)
 ```
 
-to the LaTeX code:
+こう変換します.
 
 ```tex
 \begin{figure}
@@ -183,20 +184,20 @@ to the LaTeX code:
 \end{figure}
 ```
 
-The `figure` environment is a floating environment. You can read a detailed description of floats at https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions. In summary, floats are used as containers for things that cannot be broken over a page, such as tables and figures. If the figure or table cannot be contained in the space left on the current page, LaTeX will try to place it at the top of the next page. If the figure is tall enough, it may occupy the whole next page, even if there is still space left for a few lines of text. The behavior can be controlled by different placement specifiers in square brackets after `\begin{figure}`, e.g., `\begin{figure}[b]`. Below is a list of possible specifiers:
+`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白におさめられないと, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後のブラケット内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
 
-- `h`: Place the float _here_, i.e., approximately at the same point it occurs in the source text.
-- `t`: Position at the _top_ of the page.
-- `b`: Position at the _bottom_ of the page.
-- `p`: Put on a special _page_ for floats only.
-- `!`: Override internal parameters LaTeX uses for determining "good" float positions.
-- `H`: Place the float at precisely the location in the LaTeX code. This requires the **float** package (`\usepackage{float}`).
+- `h`: フロートを**ここ** (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.
+- `t`: そのページの**先頭** (top) に配置します.
+- `b`: そのページの**末尾** (bottom) に配置します.
+- `p`: フロート専用の特別な**ページ**に配置します.
+- `!`: LaTex が「良い」フロートの位置を決定するための内部パラメータ上書きします.
+- `H`: フロートを正確に LaTex コード上と同じ位置に配置します. **float** パッケージが必要です (`\usepackage{float}`).
 
-These specifiers can be used in conjunction, e.g., `!b` forces LaTeX to place the figure at the bottom of a page. The default behavior is `tbp`. That is, LaTeX will try to position the figure at the top of the page, then at the bottom, and then on a separate page.
+これらの修飾子は併用できます. 例えば `!b` は LaTeX に図をページ末尾に置くよう矯正できます. デフォルトの挙動は `tbp` です. これは LaTeX が図をまずページ先頭に, ついで末尾に, そして独立したページに置こうとします.
 
-### Prevent figures from floating
+### 図がフロートするのを防ぐ {"prevent-figures-from-floating}
 
-Many users will initially want to prevent figures from floating in their document, replicating the behavior of a traditional word processor. To do this, we must firstly load the LaTeX package **float**\index{LaTeX package!float}. This can be done by including the following line in the YAML:
+多くのユーザは初めに, 伝統的なワードプロセッサの挙動を再現できるよう, 文書内を図が移動するのを防ぎたくなります. これを実現するには, まず LaTeX パッケージの **float**\index{LaTeX パッケージ!float} を読み込まなければなりません. YAML に以下の記述を含めることでできます.
 
 ```yaml
 output: 
@@ -204,19 +205,19 @@ output:
     extra_dependencies: ["float"]
 ```
 
-We can use the chunk option `fig.pos`\index{chunk option!fig.pos} to control the float behavior. The option value `!H` will prevent any floating within the document. We can set the default behavior for the document so that all chunks have this setting by including the following line in the first code chunk in your R Markdown document:
+チャンクオプション `fig.pos`\index{チャンクオプション!fig.pos} をフロートの挙動を制御するのに使えます. オプションの値 `!H` は文書でのいかなる移動も防ぎます. 以下の行を　R Markdown 文書の最初のコードチャンクに書くことで, 全てのチャンクがこの設定を持つように, これをデフォルトの挙動にすることもできます.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 ```
 
-In general, we do not recommend that users force LaTeX to stop floating figures. This solution was included in this book by popular demand,^[The related Stack Overflow question has been viewed for over 45,000 times: https://stackoverflow.com/q/16626462/559676.] but there could be some serious side effects when LaTeX is unable to float figures.
+一般論として, LaTeX の図のフロートを強制的にやめさせることをおすすめしません. よくある要望なので, 本書にこの解決策を盛り込んだのですが,^[関連するスタック・オーバーフローの質問 https://stackoverflow.com/q/16626462/559676 は 45,000 回以上閲覧されました.] LaTeX が図をフロートできないときにはいくつかの深刻な副作用が発生することがあります.
 
-### Force floats forward
+### フロートを後回しに強制する {#force-floats-forward}
 
 <!-- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text -->
 
-An alternative to forcing all floats to be held is to force floating forward in the text. This can remove a common issue, where a figure is shown at the top of the page before the relevant text comes. This can break the reading flow of a report. We can force the figure to always appear after the text by using the **flafter** LaTeX package\index{LaTeX package!flafter} as follows:
+全てのフロートを固定するよう矯正することに代わる方法は, テキスト上でフロートが後回しになるよう矯正することです. これは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうというよくある問題を排除できます. こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
 
 ```yaml
 output: 
@@ -224,28 +225,30 @@ output:
     extra_dependencies: ["flafter"]
 ```
 
-### Adjust LaTeX placement rules (\*)
+### LaTeX 配置ルールを調整する (\*)
 
-LaTeX's own float placement parameters could prevent placements that seem entirely "reasonable" to you---they are notoriously rather conservative. These defaults are displayed in Table \@ref(tab:float-default).
+LaTeX 自体のフロート配置パラメータは全体として, あなたにとって「理にかなった」配置を邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
 
 ```{r float-default, echo = FALSE}
 floatOpts <- data.frame(
-  Command = c("topfraction", "bottomfraction", "textfraction",
+  `コマンド` = c("topfraction", "bottomfraction", "textfraction",
               "floatpagefraction", "topnumber", "bottomnumber",
               "totalnumber"),
-  Description = c("max fraction of page for floats at top",
-                  "max fraction of page for floats at bottom",
-                  "min fraction of page for text",
-                  "min fraction of page that should have floats",
-                  "max number of floats at top of page", "max number of floats at bottom of page",
-                  "max number of floats on a page"),
-  Default = c("0.7", "0.3", "0.2", "0.5", "2", "1", "3"),
+  `概要` = c(
+    "1ページに対するフロートの先頭からの最大割合",
+    "1頁に対するフロートの末尾からの最大割合",
+    "1ページのテキストの最小割合",
+    "フロートが存在すべきページの最小割合",
+    "ページ先頭のフロート最大数",
+    "ページ末尾のフロート最大数",
+    "1ページの最大フロート数"),
+  `デフォルト` = c("0.7", "0.3", "0.2", "0.5", "2", "1", "3"),
   stringsAsFactors = FALSE
 )
-knitr::kable(floatOpts, caption = "Default LaTeX float settings.")
+knitr::kable(floatOpts, caption = "LaTeX デフォルトのフロート設定")
 ```
 
-To encourage LaTeX not to move your figures, we can alter these default settings. We could include the following in our LaTeX preamble file, reducing the minimum amount of text required on a page and allow more room for floats:
+LaTeX に図を動かさないよう努力してもらうために, これらの設定を変えることができます. LaTeX プリアンブルファイルに, 1ページのテキストの最小量を減らすような以下のコードを追加し, フロートが収まる余地を増やさせることができます.
 
 ```tex
 \renewcommand{\topfraction}{.85}
@@ -257,13 +260,14 @@ To encourage LaTeX not to move your figures, we can alter these default settings
 \setcounter{totalnumber}{4}
 ```
 
-If we have added these lines to a `.tex` file, we could include this file in the preamble of the LaTeX document using the method introduced in Section \@ref(latex-preamble).
+これらの記述を `.tex` ファイルに追加したら, \@ref(latex-preamble)節で紹介した方法で LaTeX 文書のプリアンブルで読み込ませることができます.
 
-## LaTeX sub-figures {#latex-subfigure}
+## LaTeX で複数の図をまとめる {#latex-subfigure}
 
+複数の画像を1つの画像環境に含めたいときがあるかもしれません. 複数の画像を1つの環境に並べ, それぞれのサブキャプションを与えることで, 複数の図 (サブ図) をまとめる\index{図!複数の図をまとめる}ことが達成できます.
 Sometimes you may want to include multiple images in a single figure environment. Sub-figures\index{figure!sub-figures} allow us to achieve this by arranging multiple images within a single environment and providing each with its own sub-caption.
 
-Sub-figures require the LaTeX package **subfig**\index{LaTeX package!subfig}. We can load it via the `extra_dependencies` YAML option\index{output option!extra\_dependencies} within the `pdf_document` output. For example:
+図をまとめるには LaTeX パッケージの **subfig**\index{LaTeX package!subfig} が必要です. `pdf_document` 出力の YAML オプションの `extra_dependencies`\index{output option!extra\_dependencies} で読み込ませることができます. 例えばこのように.
 
 ```yaml
 ---
@@ -273,13 +277,14 @@ output:
 ---
 ```
 
-To arrange all plots from a code chunk in sub-figures, you have to use the chunk options `fig.cap`\index{chunk option!fig.cap} (the caption for the whole figure environment) and `fig.subcap`\index{chunk option!fig.subcap} (a character vector of the captions for sub-figures). For best output, you can also use the following options:
+コードチャンクからの全てのプロットを並べるために, チャンクオプション `fig.cap`\index{チャンクオプション!fig.cap} (環境全体のキャプション)  と `fig.subcap`\index{チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の選択のために, 以下のような選択肢も使用できます.
 
-- `fig.ncol`\index{chunk option!fig.ncol}: The number of columns of sub-figures. By default, all plots are arranged in a single row. You can break them into multiple rows.
 
-- `out.width`\index{chunk option!out.width}: The output width of individual plots. You will normally set this to `100%` divided by the number of columns. For example, if you have two plots, the `out.width` option should be equal to or less than `50%`, otherwise the plots may exceed the page margin.
+- `fig.ncol`\index{チャンクオプション!fig.ncol}: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これは複数の行に分けられます.
 
-Below is an illustrative example:
+- `out.width`\index{チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定しますが. 例えば2つグラフがあるなら,  `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
+
+以下は具体例の1つです.
 
 ```yaml
 ---
@@ -297,22 +302,21 @@ boxplot(Sepal.Width ~ Species, data = iris)
 ```
 ````
 
-The output is shown in Figure \@ref(fig:latex-subfig). For the sake of simplicity, we omitted a few chunk options in the chunk header of the above example, including `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"`, and the actual long captions.
+この出力を図\@ref(fig:latex-subfig)に示します. 簡潔さのため, 上記の例は `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"` や長いキャプションなどのチャンクオプションをいくつか省略しています.
 
-```{r latex-subfig, fig.cap="An example of one figure environment containing multiple sub-figures.", echo=FALSE}
+```{r latex-subfig, fig.cap="複数の図を含む単一の figure 環境の例", echo=FALSE}
 knitr::include_graphics("images/latex-subfig.png", dpi = NA)
 ```
 
-## Render documents containing Unicode characters {#latex-unicode}
+## Unicode 文字を含む文書をレンダリングする {#latex-unicode}
 
-If you run into an error like this:
 
 ```latex
 ! Package inputenc Error:
   Unicode char \u8: not set up for use with LaTeX.
 ```
 
-it probably means that you are using the default LaTeX engine, `pdflatex`, to render the (intermediate `.tex`) document to PDF, which was unable to process certain Unicode characters in your document. If that is the case, you may switch to `xelatex` or `lualatex`, e.g.,\index{output option!latex\_engine}
+もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジン `pdflatex` を使って文書 (中間ファイルの `.tex` ) を PDF へレンダリングしているのでしょう. `pdflatex` はそのファイルにある何らかの Unicode 文字を処理できません. もしこのようなケースであれば, `xelatex` か `lualatex` へ切り替える\index{出力オプション!latex\_engine}ことになるでしょう. 例えばこのように.
 
 ```yaml
 output:
@@ -320,7 +324,7 @@ output:
     latex_engine: xelatex
 ```
 
-You may also change the LaTeX engine for other document output formats, especially those based on `pdf_document`, such as `bookdown::pdf_document2` and `tufte::tufte_handout`, e.g.,
+他の文書出力フォーマットの LaTeX エンジンも変更できるでしょう. 特に `bookdown::pdf_document2` や `tufte::tufte_handout` といった `pdf_document` ベースのものは. 例えばこのように.
 
 ```yaml
 output:
