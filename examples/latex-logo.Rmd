@@ -1,5 +1,5 @@
 ---
-title: Adding a Logo to LaTeX Title
+title: LaTeX のタイトルにロゴを追加する
 author: Michael Harper
 date: December 7th, 2018
 output: pdf_document
@@ -10,15 +10,14 @@ header-includes:
   - \posttitle{\end{center}}
 ---
 
-<!-- Optionally include a page break. This will force the start
-of the document to the second page -->
+<!-- 改ページを含めることもできます. これで文書を強制的に2ページ目から始めさせます. -->
 
 \newpage
 
-This is your report.
+ここからあなたのレポート
 
 ```{r, include=FALSE}
-# copy the R logo to the current directory
+# R ロゴをカレントディレクトリにコピー
 file.copy(file.path(R.home("doc"), "html", "logo.jpg"), '.')
 ```
 
