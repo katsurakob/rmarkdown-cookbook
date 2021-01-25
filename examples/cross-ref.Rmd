@@ -2,8 +2,12 @@
 title: 図, 表, 数式を相互参照する
 author: bookdown による生成
 output:
+  bookdown::pdf_document2:
+    latex_engine: lualatex
   bookdown::html_document2: default
-  bookdown::pdf_document2: default
+documentclass: ltjsarticle
+mainfont: Noto Serif CJK JP
+sansfont: Noto Sans CJK JP
 ---
 
 図 \@ref(fig:cars-plot) を見よ.

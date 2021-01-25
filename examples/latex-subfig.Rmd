@@ -1,10 +1,14 @@
 ---
 output:
   pdf_document:
+    latex_engine: lualatex
     extra_dependencies: "subfig"
+documentclass: ltjsarticle
+mainfont: Noto Serif CJK JP
+sansfont: Noto Sans CJK JP
 ---
 
-```{r fig-sub, fig.dim=c(5, 3), fig.cap='Multiple plots from a single code chunk.', fig.subcap=c('A boring scatterplot showing numbers from 1 to 10.', 'Another scatterplot for the cars data, with solid points.', 'A boxplot of the iris data.'), out.width='50%', fig.ncol=2, fig.align='center'}
+```{r fig-sub, fig.dim=c(5, 3), fig.cap='1つのコードチャンクでグラフを複数描く', fig.subcap=c('1から10の数字を示す退屈な散布図', 'cars データを示す散布図. 実点で表示', 'iris データの箱ひげ図'), out.width='50%', fig.ncol=2, fig.align='center', echo=F}
 par(mar = c(4, 4, .1, .1))
 plot(1:10)
 plot(cars, pch = 19)

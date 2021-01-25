@@ -1,8 +1,13 @@
 ---
 title: LaTeX のタイトルにロゴを追加する
 author: Michael Harper
-date: December 7th, 2018
-output: pdf_document
+date: 2018/12/7
+output:
+  pdf_document:
+    latex_engine: lualatex
+documentclass: ltjsarticle
+mainfont: 'Noto Serif CJK JP'
+sasnfont: 'Noto Sans CJK JP'
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
