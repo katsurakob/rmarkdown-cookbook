@@ -329,7 +329,7 @@ date: "`r knitr::inline_expr("format(Sys.time(), '%x')")`"
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
-Table: (\#tab:date-format) Date and time formats in R.
+Table: (\#tab:date-format) Rにおける日付と時刻のフォーマット
 
 |コード |意味                       |コード |意味                                       |
 |:----|:-----------------------------|:----|:---------------------------------------------|

@@ -298,7 +298,7 @@ pre.numberSource code > span > a:first-child::before {
 }
 ```
 
-**revealjs**' の `revealjs_presentation` 出力フォーマット [@R-revealjs] に対しても CSS の調整が必要かもしれません.
+**revealjs** の `revealjs_presentation` 出力フォーマット [@R-revealjs] に対しても CSS の調整が必要かもしれません.
 
 ```css
 .reveal pre code {
