@@ -79,7 +79,7 @@ output:
     latex_engine: xelatex
 ```
 
-Beamer \index{Beamer}の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にいくつか追加オプションを提供してくれています. それらは https://pandoc.org/MANUAL.html#variables-for-beamer-slides で確認できます. 例えば `institute` オプションでoption\index{YAML!institute}著者の所属機関を指定することができます.
+Beamer \index{Beamer}の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にいくつか追加オプションを提供してくれています. それらは https://pandoc.org/MANUAL.html#variables-for-beamer-slides で確認できます. 例えば `institute` オプション\index{YAML!institute}で著者の所属機関を指定することができます.
 
 ```yaml
 ---
@@ -165,7 +165,7 @@ LaTeX には広範なコミュニティがあり [Comprehensive TeX Archive Netw
 <!-- https://stackoverflow.com/questions/16626462/figure-position-in-markdown-when-converting-to-pdf-with-knitr-and-pandoc/17648350#17648350 -->
 <!-- Some of the solutions adapted from https://texfaq.org/FAQ-floats. Link left here for future reference -->
 
-LaTeX に共通の不満点の1つは図表の位置\index{図!位置}です. Microsoft ワードのような図がユーザーの指定した場所にそのまま置かれるワードプロセッサと違い, LaTeX は特定の組版ルールに反しないように図を配置しようとします. そうなると図はテキストで参照した場所から浮動 (フロート) するかもしれませn. この節では (図などの) フロート環境がどう機能し, その挙動をカスタマイズするためにどうオプションを与えるかについての予備知識を解説します.
+LaTeX に共通の不満点の1つは図表の位置\index{図!位置}です. Microsoft Word のような図がユーザーの指定した場所にそのまま置かれるワードプロセッサと違い, LaTeX は特定の組版ルールに反しないように図を配置しようとします. そうなると図はテキストで参照した場所から浮動 (フロート) するかもしれません. この節では (図などの) フロート環境がどう機能し, その挙動をカスタマイズするためにどうオプションを与えるかについての予備知識を解説します.
 
 ### フロート環境 {#floating-environment}
 
@@ -195,7 +195,7 @@ LaTeX ではデフォルトではキャプションのある図は `figure` 環�
 
 これらの修飾子は併用できます. 例えば `!b` は LaTeX に図をページ末尾に置くよう矯正できます. デフォルトの挙動は `tbp` です. これは LaTeX が図をまずページ先頭に, ついで末尾に, そして独立したページに置こうとします.
 
-### 図がフロートするのを防ぐ {"prevent-figures-from-floating}
+### 図がフロートするのを防ぐ {#prevent-figures-from-floating}
 
 多くのユーザは初めに, 伝統的なワードプロセッサの挙動を再現できるよう, 文書内を図が移動するのを防ぎたくなります. これを実現するには, まず LaTeX パッケージの **float**\index{LaTeX パッケージ!float} を読み込まなければなりません. YAML に以下の記述を含めることでできます.
 
@@ -217,7 +217,7 @@ knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 
 <!-- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text -->
 
-全てのフロートを固定するよう矯正することに代わる方法は, テキスト上でフロートが後回しになるよう矯正することです. これは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうというよくある問題を排除できます. こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
+全てのフロートを固定するよう強制することに代わる方法は, テキスト上でフロートが後回しになるよう強制することです. これは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうというよくある問題を排除できます. こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
 
 ```yaml
 output: 
@@ -235,10 +235,10 @@ floatOpts <- data.frame(
               "floatpagefraction", "topnumber", "bottomnumber",
               "totalnumber"),
   `概要` = c(
-    "1ページに対するフロートの先頭からの最大割合",
-    "1頁に対するフロートの末尾からの最大割合",
-    "1ページのテキストの最小割合",
-    "フロートが存在すべきページの最小割合",
+    "ページ先頭からフロートが占めるページ割合の最大値",
+    "ページ末尾からフロートが占めるページ割合の最大値",
+    "1ページに占めるテキストの割合の最小値",
+    "1ページに占めるフロートの割合の最小値",
     "ページ先頭のフロート最大数",
     "ページ末尾のフロート最大数",
     "1ページの最大フロート数"),
@@ -316,7 +316,7 @@ knitr::include_graphics("images/latex-subfig.png", dpi = NA)
   Unicode char \u8: not set up for use with LaTeX.
 ```
 
-もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジン `pdflatex` を使って文書 (中間ファイルの `.tex` ) を PDF へレンダリングしているのでしょう. `pdflatex` はそのファイルにある何らかの Unicode 文字を処理できません. もしこのようなケースであれば, `xelatex` か `lualatex` へ切り替える\index{出力オプション!latex\_engine}ことになるでしょう. 例えばこのように.
+もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジンである `pdflatex` を使って文書 (中間ファイルの `.tex` ) を PDF へレンダリングしているのでしょう. `pdflatex` はそのファイルにある何らかの Unicode 文字を処理できません. もしこのようなケースであれば, `xelatex` か `lualatex` へ切り替える\index{出力オプション!latex\_engine}ことになるでしょう. 例えばこのように.
 
 ```yaml
 output:
@@ -324,7 +324,7 @@ output:
     latex_engine: xelatex
 ```
 
-他の文書出力フォーマットの LaTeX エンジンも変更できるでしょう. 特に `bookdown::pdf_document2` や `tufte::tufte_handout` といった `pdf_document` ベースのものは. 例えばこのように.
+他の文書出力フォーマット, 特に `bookdown::pdf_document2` や `tufte::tufte_handout` といった `pdf_document` ベースのものも LaTeX エンジンも変更できるでしょう. 例えばこのように.
 
 ```yaml
 output:
@@ -334,11 +334,11 @@ output:
     latex_engine: xelatex
 ```
 
-## Generate a LaTeX fragment {#latex-fragment}
+## LaTeX のコードフラグメントを生成する {#latex-fragment}
 
-If you work primarily with pure LaTeX documents, you may still find R Markdown useful. Sometimes it may be more convenient to write in R Markdown and convert the document to a LaTeX fragment\index{LaTeX!fragment}, which can be included in other LaTeX documents.
+もし純粋な LaTeX 文書で作業しているのなら, R Markdown はそれでもやはり便利だと感じているかもしれません. R Markdown で書いて, 文書を他の LaTeX 文書に読み込める LaTeX のコード片 (フラグメント)\index{LaTeX!fragment} に変換したほうが便利なこともあるかもしれません.
 
-When you render an Rmd document to LaTeX, it generates a full LaTeX document that includes the `\documentclass{}`, `\begin{body}`, and `\end{body}`. A LaTeX fragment is basically the body of a full LaTeX document. To render a LaTeX fragment, you may use the `latex_fragment` output format, e.g.,
+Rmd 文書を LaTeX にレンダリングするとき, `\documentclass{}`, `\begin{body}`, `\end{body}` を含む完全な LaTeX 文書が生成されます. フラグメントはこの完全な文書の主に本文の部分です. LaTeX フラグメントをレンダリングするのに, `latex_fragment` 出力フォーマットが使えます. 例えばこのように.
 
 ```yaml
 ---
@@ -346,57 +346,58 @@ output: latex_fragment
 ---
 ```
 
-This will render a `.tex` file, e.g., `foo.Rmd` will render `foo.tex`, and you can use `\input{foo.tex}` to include this fragment in another LaTeX document.
+これは `.tex` ファイルをレンダリングします. 例えば `foo.Rmd` は `foo.tex` にレンダリングされ, 別の LaTeX 文書で `\input{foo.tex}` を使うことでフラグメントを読み込めます.
 
-## Add custom headers and footers (\*) {#latex-header}
+## カスタムヘッダとフッタ (\*) {#latex-header}
 
 <!-- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown -->
 <!-- https://tex.stackexchange.com/questions/139139/adding-headers-and-footers-using-pandoc -->
 
-The LaTeX package **fancyhdr**\index{LaTeX package!fancyhdr} has provided several commands to customize the header and footer lines of your document. For a more complete guide, please refer to the full documentation at https://ctan.org/pkg/fancyhdr. To begin with, we must load the package. Then we can change the header style, e.g.,
+LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は文書のヘッダとフッタをカスタマイズするいくつかのコマンドを提供します. より完全なガイドとして, https://ctan.org/pkg/fancyhdr の完全版ドキュメントを参照してください. 最初に, パッケージを読み込みます. それからヘッダのスタイルを買えます. 例えばこのように.
 
 ```tex
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 ```
 
-The package offers three different interfaces, but we will use the commands `\fancyhead` and `\fancyfoot`. The syntax for the formatting is `\fancyhead[selectors]{output text}`, whereby the selectors state the part of the header that we wish to customize. We can use the following selectors for the page locators:
+このパッケージは異なる3つのインターフェースを提示しますが, ここでは `\fancyhead` と `\fancyfoot` コマンドを使います. 形式を決める構文は `\fancyhead[selectors]{output text}` で, ここでカスタマイズしたいヘッダの部分がどこかをセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.
 
-- **E** for even pages
-- **O** for odd pages
-- **L** for the left side
-- **C** for the center
-- **R** for the right side
+- **E** 偶数ページ
+- **O** 奇数ページ
+- **L** ページ左側
+- **C** ページ中央
+- **R** ページ右側
 
-For example, `\fancyhead[LE,RO]{Your Name}` will print the text "Your Name" on the left side of the header for even pages, and the right side for odd pages. We can combine this with additional LaTeX commands to extract details from our document for each page:
+例えば `\fancyhead[LE,RO]{あなたの名前}` は偶数ページの頭の左側と, 奇数ページの頭の右側に「あなたの名前」と印字します. さらに LaTeX コマンドを織り交ぜることで, 各ページの詳細情報を取りだすことができます.
 
-- `\thepage`: the number of the current page.
-- `\thechapter`: the number of the current chapter.
-- `\thesection`: the number of the current section.
-- `\chaptername`: the word "Chapter" in English, or its equivalent in the current language, or the text that the author specified by redefining this command.
-- `\leftmark`: the name and number of the current top-level structure in uppercase letters.
-- `\rightmark`: the name and number of the current next to top-level structure in uppercase letters.
+- `\thepage`: 現在のページ番号
+- `\thechapter`: 現在の章番号
+- `\thesection`: 現在の節番号
+- `\chaptername`: 英語の "Chapter" の単語, あるいは現在の言語でそれに対応するもの, または著者がこのコマンドを再定義してできたテキスト.
+- `\leftmark`: 大文字で現在のトップレベル構造の名前と番号.
+- `\rightmark`: 大文字で現在のトップレベル構造に次ぐレベルの名前と番号.
 
+以下は\@ref(latex-preamble)節で紹介した方法で, プリアンブルに追加することができる LaTeX コードの例です.
 Below is some example LaTeX code that you can add to the preamble using the methods introduced in Section \@ref(latex-preamble):
 
 ```latex
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-% center of header
+% ヘッダ中央
 \fancyhead[CO,CE]{Your Document Header}
-% center of footer
+% フッタ中央
 \fancyfoot[CO,CE]{And this is a fancy footer}
-% page number on the left of even pages and right of odd pages
+% 偶数ページ左と奇数ページ右にページ番号
 \fancyfoot[LE,RO]{\thepage}
 ```
 
 <!-- https://stackoverflow.com/questions/30922602/creating-a-footer-for-every-page-including-first-using-r-markdown -->
 
-By default, headers and footers will not be displayed on the first page of your PDF document. If we wish to show our footer on the front page, we must include an additional line `\fancypagestyle{plain}{\pagestyle{fancy}}`.
+デフォルトではヘッダとフッタは PDF 文書の最初のページには表示されません. 表示にもフッタを表示したいなら, もう1行  `\fancypagestyle{plain}{\pagestyle{fancy}}` を追加しなければなりません.
 
-## Use a custom Pandoc LaTeX template (\*) {#latex-template}
+## Pandoc の LaTeX テンプレートをカスタマイズする (\*) {#latex-template}
 
-Pandoc converts Markdown to LaTeX through a template\index{template!LaTeX}. The template is a LaTeX file containing Pandoc\index{Pandoc} variables, and Pandoc will replace these variables with their values. Below is a simple template that only contains a single variable `$body$`:
+Pandoc はテンプレート\index{テンプレート!LaTeX} を通じて Markdown を LaTeX に変換します. テンプレートは Pandoc\index{Pandoc} 変数を含む LaTeX ファイルであり, Pandoc はこれらの変数を値に置き換えます. 以下は `$body$` という変数を1つだけ含んだ単純なテンプレートです.
 
 ```tex
 \documentclass{article}
@@ -405,9 +406,9 @@ $body$
 \end{document}
 ```
 
-The value of `$body$` is the LaTeX code generated from the body of the Markdown document. For example, if the body text is `Hello **world**!` in Markdown, the value of `$body$` will be `Hello \textbf{world}!`.
+`$body$` の値は Markdown ドキュメントの本文から生成された LaTeX コードです. 例えば Markdown で本文が `Hello **world**!` ならば, `$body$` の値は `Hello \textbf{world}!` となります.
 
-If the LaTeX customization methods in Sections \@ref(latex-preamble), \@ref(latex-variables), and \@ref(latex-extra) are not enough for you, you may try to use a custom template instead. A template allows you to use arbitrary LaTeX code in it, and hence is much more flexible. To use a template, include the path of the template in the `template` option\index{output option!template} of `pdf_document`, e.g.,
+\@ref(latex-preamble), \@ref(latex-variables), \@ref(latex-extra)節で紹介した LaTeX のカスタマイズ方法だけでは不十分なら, 代わりにカスタムテンプレートを使ってみてください. テンプレートはその内部に任意の LaTeX コードを使うことが可能なので, はるかに柔軟です. テンプレートを使うには, `pdf_document` の `template` オプション\index{出力オプション!template} にテンプレートのパスを含めます.
 
 ```yaml
 output:
@@ -415,9 +416,9 @@ output:
     template: my-template.tex
 ```
 
-The default LaTeX template of Pandoc can be found at https://github.com/jgm/pandoc/tree/master/data/templates (named `default.latex`). If you want to create your own template, you may want to start with this template.
+デフォルトの LaTeX テンプレートは https://github.com/jgm/pandoc/tree/master/data/templates で見ることができます (ファイル名は `default.latex`). 自分でテンプレートを作成したい場合, このテンプレートから作りたいと思うことでしょう.
 
-For the full list of Pandoc variables and their meanings (such as `$body$` and `$title$`), see Pandoc's manual at https://pandoc.org/MANUAL.html#templates. You can also use arbitrary custom variables, which are typically passed to the template from the YAML metadata. If you want to learn by examples, you may take a look at the **MonashEBSTemplates** package\index{R package!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates), which has provided several custom LaTeX templates. These templates are under the `inst/rmarkdown/templates/*/resources/` directories (here `*` denotes the template names). For example, the template for the output format `MonashEBSTemplates::memo` allows you to use a variable `branding` in the YAML metadata to control whether to include the brand logo of Monash University. This is achieved by an `if` statement in the template that looks like this:
+Pandoc 変数の完全なリストとその意味 (`$body$` や `$title$` のような) は Pandoc マニュアルの https://pandoc.org/MANUAL.html#templates で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, **MonashEBSTemplates** パッケージ\index{R パッケージ!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates) を確認すると良いでしょう. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは `inst/rmarkdown/templates/*/resources/` ディレクトリ (`*` はテンプレート名を指します) 以下にあります. 例えば出力フォーマット `MonashEBSTemplates::memo` に対するテンプレートは YAML メタデータの変数 `branding` をモナシュ大学のブランドロゴを含むかどうかをコントロールするのに使えます. このようにテンプレート内で `if` 文を使うことでこれを実現しています.
 
 ```latex
 $if(branding)$%
@@ -428,11 +429,11 @@ $else$
 $endif$
 ```
 
-## Write raw LaTeX code {#raw-latex}
+## 生の LaTeX コードを書く {#raw-latex}
 
-By default, Pandoc will preserve raw LaTeX code\index{LaTeX!raw code} in Markdown documents when converting the document to LaTeX, so you can use LaTeX commands or environments in Markdown. However, sometimes your LaTeX code might be too complex for Pandoc to parse, in which case Pandoc will treat the content as normal Markdown. The consequence is that special LaTeX characters may be escaped, e.g., Pandoc may convert a backslash `\` to `\textbackslash{}`.
+デフォルトでは Pandoc は LaTeX へ変換する時, 文書内の LaTeX コード\index{LaTeX!生のコード}を維持するので, Markdown 内で LaTeX コマンドや環境を使うことができます. しかし, LaTeX コードが Pandoc がパースするには複雑過ぎるときがあるかもしれず, そのような場合 Pandoc は通常の Markdown として扱います. 結果として特別な LaTeX の文字はエスケープされます. 例えばバックスラッシュ `\` は `\textbackslash{}` に変換されるかもしれません.
 
-To make sure that Pandoc does not touch the raw LaTeX code in your Markdown document, you may wrap the code in a fenced code block with the attribute `=latex`, e.g.,
+Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, `=latex` の属性を付けると良いでしょう. 例えばこのように.
 
 ````md
 ```{=latex}
@@ -443,18 +444,18 @@ A & B \\
 ```
 ````
 
-Do not forget the equal sign before `latex`, i.e., it is `=latex` instead of `latex`. This feature requires a Pandoc version higher than 2.0 (check `rmarkdown::pandoc_version()`).
+`latex` の前の等号を忘れないでください. つまり `latex` ではなく  `=latex` です. この機能は Pandoc 2.0 以降のバージョンが必要です (`rmarkdown::pandoc_version()` で確認してください).
 
-## For hardcore LaTeX users (\*) {#latex-hardcore}
+## ハードコア LaTeX ユーザーのために (\*) {#latex-hardcore}
 
-R Markdown is certainly not the best possible document format for authoring or typesetting documents. Simplicity is both its advantage and disadvantage. LaTeX is much more powerful than Markdown in terms of typesetting at the price of more commands to be typed. If typesetting is of much higher priority to you and you are comfortable with using all kinds of LaTeX commands and environments, you can just use pure LaTeX code instead of Markdown to write the whole document.
+R Markdown はきっと執筆と組版のための最善の文書フォーマットではないでしょう. シンプルさは長所であると同時に短所でもあります. LaTeX はタイプすべきコマンドの多さと引き換えに, 組版の観点で Markdown よりはるかに強力です. あなたにとって組版がはるかに優先すべき事項で, あらゆる LaTeX コマンドや環境を使うことに満足しているのなら, 文書全体で Markdown を使う代わりに純粋な LaTeX コードを使うことができます.
 
-The **knitr** package supports a variety of source document formats, including but not limited to R Markdown. Below is an example of intermingling R code with pure LaTeX code:
+**knitr** パッケージは R Markdown に限定されない多様なソース文書フォーマットをサポートしています. 以下は R コードと純粋な LaTeX コードが混ざり合っている例です
 
 `r import_example('knitr.Rnw')`
 
-The filename usually has the extension `.Rnw`\index{LaTeX!Rnw}, e.g., the above file is `latex.Rnw`. The idea is the same but the syntax for writing R code chunks and inline R expressions is different. An R code chunk starts with `<<>>=` (with optional chunk options inside the angle brackets) and ends with `@`. An inline R expression is written in `\Sexpr{}`.
+例えば上記のファイルは `latex.Rnw` であるようにファイル名はたいてい `.Rnw`\index{LaTeX!Rnw} という拡張子がつきます. 考え方は同じですが R コードチャンクと行内 R コードを書くための構文が異なっています. R コードチャンクは `<<>>=` で始まり (チャンクオプションは括弧内に書きます), `@` で終わります. 行内 R 式は `Sexpr{}` 内に書きます.
 
-The function `knitr::knit()` can compile an `Rnw` document to a LaTeX (`.tex`) output file, which can be further compiled to PDF through your LaTeX tools such as `pdflatex`. You can also use `knitr::knit2pdf()`\index{knitr!knit2pdf()} to compile `Rnw` to PDF in one step. If you use RStudio, you can hit the `Compile PDF` button on the toolbar. Please note that the default method to compile Rnw documents is through Sweave, and you may want to change it to **knitr** (see the post http://stackoverflow.com/q/27592837/559676 for how to do that).
+`knitr::knit()` 関数は `Rnw` 文書を出力ファイルである LaTeX (`.tex`) にコンパイルでき, それをさらに `pdflatex` といった LaTeX ツールを通して PDF にコンパイルできます. `.Rnw` から PDF を一足でコンパイルするのに `knitr::knit2pdf()`\index{knitr!knit2pdf()} を使うこともできます. RStudio を使っているならツールバーの `Compile PDF` を押すこともできます. Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, たぶんあなたは **knitr** に変更したいだろうということに注意してください (その方法はこの投稿 http://stackoverflow.com/q/27592837/559676 を確認してください).
 
-An `Rnw` document gives you the full power of LaTeX. This could be your last resort if there are typesetting problems that are really difficult to solve in Markdown. However, before you drop Markdown, we would like to remind you of the fact that a custom Pandoc LaTeX template may also be helpful (see Section \@ref(latex-template)).
+`Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも覚えておいてほしいです.
