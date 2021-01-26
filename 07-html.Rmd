@@ -1,16 +1,17 @@
-# HTML Output
+# HTML 出力 {#html-output}
 
-Compared to LaTeX, HTML may be a little weak in typesetting for paged output. However, it is much more powerful in presenting results, especially when combined with CSS and JavaScript. For example, you can embed interactive applications in HTML, and dynamically modify the appearance and even the content of an HTML page. Some useful yet simple CSS and JavaScript tricks for HTML output are very difficult (and often impossible) to reproduce in LaTeX output.
+LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら修正できます. HTML 出力における有用ながらもシンプルな CSS と JavaScript のトリックは LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
 
+この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった,  R Markdown の HTML 出力を向上するテクニックを紹介します.
 In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
 
-## Apply custom CSS {#html-css}
+## カスタム CSS を適用する {#html-css}
 
-We strongly recommend that you learn some CSS and JavaScript if you wish to customize the appearance of HTML documents. [Appendix B](https://bookdown.org/yihui/blogdown/website-basics.html) of the **blogdown** book [@blogdown2017] contains short tutorials on HTML, CSS, and JavaScript.
+HTML 文書の外観をカスタマイズしようと思うのなら, CSS と JavaScript を少しでも勉強することを強く勧めます. **blogdown** 本 [@blogdown2017] の [Appendix B](https://bookdown.org/yihui/blogdown/website-basics.html) には HTML, CSS, JavaScript の簡単なチュートリアルがあります.
 
-For beginners, it is extremely important to understand selectors and precedence of rules in CSS, otherwise you may be confused why your custom CSS\index{CSS} rules do not work as expected (they may not have enough precedence).
+CSS のセレクタと優先度のルールを理解することは初心者にとっては極めて重要です. さもなければ自分のカスタム CSS\index{CSS} が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).
 
-To include one or multiple custom stylesheets in an Rmd document, you can use the `css` option\index{output option!css}, e.g.,
+Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, `css` オプション\index{出力オプション!css} を使うことができます. 例えばこのように.
 
 ```yaml
 output:
@@ -18,7 +19,7 @@ output:
     css: "style.css"
 ```
 
-To include multiple stylesheets, you may list them in brackets, e.g.,
+複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使うことになるでしょう.
 
 ```yaml
 output:
@@ -26,7 +27,7 @@ output:
     css: ["style-1.css", "style-2.css"]
 ```
 
-Alternatively, you can use a `css` code chunk\index{language engine!css} to embed the CSS rules directly in your Rmd document, e.g.,
+あるいは, Rmd 文書に 直接 CSS のルールを埋め込むのに, `css` コードチャンク\index{言語エンジン!css} を使うこともできます. 例えばこのように.
 
 ````md
 We embed a `css` code chunk here.
@@ -38,11 +39,11 @@ p {
 ```
 ````
 
-The chunk option `echo = FALSE`\index{chunk option!echo} means the CSS code will not be displayed verbatim in the output, but a `<style>` tag containing the CSS code will be generated to the HTML output file.
+チャンクオプション `echo = FALSE`\index{チャンクオプション!echo} は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む `<style>` タグは HTML 出力ファイルにも生成されます.
 
-## Center section headings {#center-heading}
+## セクションヘッダを中央揃えにする {#center-heading}
 
-As an application of the methods mentioned in Section \@ref(html-css), we can use CSS to adjust the alignment of headings\index{CSS property!text-align}. For example, you may center section headings of level 1, 2, and 3 with the CSS code below:
+\@ref(html-css)節で言及した応用方法のように, CSS を見出しのアラインメント調整\index{CSS プロパティ!text-align}に使うことができます. 例えば以下のような CSS コードを使ってレベル1から3の見出しを中央揃えにしたいかもしれません.
 
 ```css
 h1, h2, h3 {
@@ -50,44 +51,43 @@ h1, h2, h3 {
 }
 ```
 
-Please see Section \@ref(html-css) on how to apply the CSS to your Rmd document.
+Rmd 文書に CSS を適用する方法は\@ref(html-css)節を見てください.
 
-## Style code blocks and text output {#chunk-styling}
+## コードチャンクのスタイルを変更する {#chunk-styling}
 
 <!-- https://stackoverflow.com/questions/41030477/changing-chunk-background-color-in-rmarkdown -->
 
-We can customize the style of code chunks and their text output using the chunk options `class.source`\index{chunk option!class.source} and `class.output`\index{chunk option!class.output}, respectively. These options take character vectors of class names\index{class!custom classes} (see Section \@ref(attr-output) for more information). For example, when `class.source = "important"`, the HTML element containing the code chunk in the output will have a class `important`. Then you can define CSS rules for this class.^[In this case, the rule would begin `.important` because in CSS, classes are prefixed with a period (`.`).] This can be useful when you want to highlight a certain code chunk or its text output.
+チャンクオプションの `class.source`\index{チャンクオプション!class.source} と `class.output`\index{チャンクオプション!class.output} を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名\index{クラス!カスタムクラス}の文字列ベクトルを取ります (\@ref(attr-output)節参照). 例えば `class.source = "important"` は出力時にコードチャンクを含む HTML 要素に `important` というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.^[CSS ではクラスは先頭にピリオド (`.`) を付けるため, この場合はルールは `.important` から始まります.] このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.
 
-By default, the HTML output of R Markdown includes the Bootstrap framework\index{Bootstrap}, which makes it easy for you to change the appearance of your code and output, because Bootstrap has predefined some [CSS classes for backgrounds:](https://getbootstrap.com/docs/3.4/css/#helper-classes) `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`, and `"bg-danger"`.\index{class!Bootstrap classes}\index{class!bg-primary}\index{class!bg-success}\index{class!bg-info}\index{class!bg-warning}\index{class!bg-danger}
+デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワーク\index{Bootstrap}を読み込みます. Bootstrap は `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`,  `"bg-danger"` \index{クラス!Bootstrap クラス}\index{クラス!bg-primary}\index{クラス!bg-success}\index{クラス!bg-info}\index{クラス!bg-warning}\index{クラス!bg-danger}といったいくつかの [背景に対する CSS クラス](https://getbootstrap.com/docs/3.4/css/#helper-classes) が定義済みのため, コードと出力の外観の変更を容易にしてくれます.
 
-Below is an example using the chunk options `class.source = "bg-danger"` and `class.output = "bg-warning"`, and you can see its output in Figure \@ref(fig:chunk-bg).
+以下はチャンクオプション `class.source = "bg-danger"` と `class.output = "bg-warning"` を使った例で, その出力は図\@ref(fig:chunk-bg)で見られます.
 
 `r import_example('chunk-style.Rmd')`
 
-```{r chunk-bg, echo=FALSE, fig.cap="A code chunk and its text output with background colors defined by Bootstrap."}
+```{r chunk-bg, echo=FALSE, fig.cap="Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック"}
 knitr::include_graphics("images/chunk-bg.png", dpi = NA)
 ```
 
-You can also use arbitrary class names and define CSS rules accordingly. In this case, you will have to include your custom CSS rules using the methods mentioned in Section \@ref(html-css).
-Below is an example:
+任意のクラスを使って対応する CSS ルールを定義することもできます. この場合, \@ref(html-css)節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません. 以下はその例です.
 
 `r import_example('chunk-custom.Rmd')`
 
-The output style is shown in Figure \@ref(fig:chunk-border).
+図\@ref(fig:chunk-border)がスタイルの出力です.
 
-```{r chunk-border, echo=FALSE, fig.cap="A code chunk with a light pink background color and a thick red border."}
+```{r chunk-border, echo=FALSE, fig.cap="明桃色の背景, 赤い太枠線をもつコードチャンク"}
 knitr::include_graphics("images/chunk-border.png", dpi = NA)
 ```
 
-If you want all code blocks in the document to use the custom style, you can set `class.source` in the global **knitr** options, e.g.,
+文書内の全てのコードブロックにカスタムスタイルを塩要したいなら, グローバルな **knitr** オプションで `class.source` を設定します. 例えばこのように.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(class.source='watch-out')
 ```
 
-You can apply multiple classes to the code blocks. For example, with `class.source = c("important", "warning")`, the code block will have two classes, "important" and "warning."
+複数のクラスをコードブロックに適用できます. 例えば `class.source = c("important", "warning")` でコードブロックに "important" と "warning" という2つのクラスを持たせられます.
 
-If you want to decorate individual elements in code blocks instead of the whole blocks, you may consider using the **flair** package\index{R package!flair} [@R-flair]. With this package, you can highlight different parts of your code (such as fixed strings, function names, and arguments) with custom styles (e.g., color, font size, and/or font weight).
+コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, **flair** パッケージ\index{R パッケージ!flair} [@R-flair] の使用を検討してもよいかもしれません. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.
 
 ## Scrollable code blocks (\*) {#html-scroll}
 
