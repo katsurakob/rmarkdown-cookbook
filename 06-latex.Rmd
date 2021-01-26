@@ -353,7 +353,7 @@ output: latex_fragment
 <!-- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown -->
 <!-- https://tex.stackexchange.com/questions/139139/adding-headers-and-footers-using-pandoc -->
 
-LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は文書のヘッダとフッタをカスタマイズするいくつかのコマンドを提供します. より完全なガイドとして, https://ctan.org/pkg/fancyhdr の完全版ドキュメントを参照してください. 最初に, パッケージを読み込みます. それからヘッダのスタイルを買えます. 例えばこのように.
+LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は文書のヘッダとフッタをカスタマイズするいくつかのコマンドを提供します. より完全なガイドとして, https://ctan.org/pkg/fancyhdr の完全版ドキュメントを参照してください. 最初に, パッケージを読み込みます. それからヘッダのスタイルを変えます. 例えばこのように.
 
 ```tex
 \usepackage{fancyhdr}
@@ -377,8 +377,7 @@ LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は�
 - `\leftmark`: 大文字で現在のトップレベル構造の名前と番号.
 - `\rightmark`: 大文字で現在のトップレベル構造に次ぐレベルの名前と番号.
 
-以下は\@ref(latex-preamble)節で紹介した方法で, プリアンブルに追加することができる LaTeX コードの例です.
-Below is some example LaTeX code that you can add to the preamble using the methods introduced in Section \@ref(latex-preamble):
+以下は LaTeX コードの例で, \@ref(latex-preamble)節で紹介した方法でプリアンブルに書き加えることができます.
 
 ```latex
 \usepackage{fancyhdr}
