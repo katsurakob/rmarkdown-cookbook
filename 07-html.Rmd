@@ -89,27 +89,27 @@ knitr::opts_chunk$set(class.source='watch-out')
 
 コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, **flair** パッケージ\index{R パッケージ!flair} [@R-flair] の使用を検討してもよいかもしれません. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.
 
-## Scrollable code blocks (\*) {#html-scroll}
+## コードブロックをスクロール可能にする (\*) {#html-scroll}
 
-When you have large amounts of code and/or verbatim text output to display on an HTML page, it may be desirable to limit their heights. Otherwise the page may look overwhelmingly lengthy, and it will be difficult for those who do not want to read the details in the code or its text output to skip these parts. There are multiple ways to solve this problem. One solution is to use the `code_folding` option in the `html_document` format\index{output option!code\_folding}. This option will fold code blocks in the output and readers can unfold them by clicking a button (see Section \@ref(fold-show) for more details).
+大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したいかもしれません. そうしないとページはとてつもなく長くなり, それらを細かく読む気のない読者に読み飛ばしづらくなるかもしれません. この問題の解決法は複数あります. `html_document` フォーマットの `code_folding` オプション\index{出力オプション!code\_folding}を使うというのがその1つです. このオプションは出力文書のコードブロックを折りたたみ, また読者はボタンを押して展開することができます (詳細は\@ref(fold-show)節).
 
-The other possible solution is to make the code blocks scrollable within a fixed height when they are too long. This can be achieved by the CSS properties `max-height`\index{CSS property!max-height} and `overflow-y`\index{CSS property!overflow-y}. Below is a full example with the output in Figure \@ref(fig:html-scroll):
+他の可能性としてはコードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの `max-height`\index{CSS プロパティ!max-height} と `overflow-y`\index{CSS プロパティ!overflow-y} で実現できます. 以下はその使用例の全容で, 出力は図\@ref(fig:html-scroll)になります.
 
 `r import_example('html-scroll.Rmd')`
 
-```{r html-scroll, echo=FALSE, fig.cap="Scrollable code blocks using custom CSS."}
+```{r html-scroll, echo=FALSE, fig.cap="カスタム CSS を使用したスクロール可能なコードブロック"}
 knitr::include_graphics("images/html-scroll.png", dpi = NA)
 ```
 
-In the above example, we defined a global maximum height of 300px for all code blocks. Remember that code blocks are placed in `<pre>` tags in the HTML output. Then we limited the height of `<pre>` blocks to 100px with `class` attributes. That is what the CSS selector `pre[class]` means. By default, text output will be contained in `<pre> </pre>`, and R code blocks are contained in `<pre class="r"> </pre>` (note that the `<pre>` tag has a `class` attribute here).
+上記の例では全てのコードブロックに大域的に 300px の高さ上限を定義しています. HTML 出力時にはコードブロックが `<pre>` タグで囲まれていることを思い出してください. それから `class` 属性に `<pre>` ブロックの高さを 100px に制限します. これは CSS セレクタ `pre[class]` が意味するところです. デフォルトではテキスト出力は `<pre> </pre>` に含まれ, R コードブロックは `<pre class="r"> </pre>` に含まれます (ここで `<pre>` タグが `class` 属性を持っていることに注意してください).
 
-The height of the text output from the second R code chunk is also 100px. That is because we assigned a custom class name `scroll-100` to the output, and defined the maximum height to be 100px.
+第2の R  コードチャンクからのテキスト出力の高さも 100px です. これが出力にたいして, カスタムクラス名 `scroll-100` を割り当て, 高さの上限を 100px に定義した理由です.
 
-If you want to specify different maximum heights for individual code blocks, you may see the example in Section \@ref(hook-scroll).
+個別のコードブロックに対して異なる最大高さを指定したいならば, \@ref(hook-scroll)節の例を見ればよいでしょう.
 
-## Fold all code blocks but show some initially {#fold-show}
+## 全コードブロックを折りたたみ, かついくつかは表示する {#fold-show}
 
-If code blocks in the output document are potentially distracting to readers, you may choose to fold them initially. Readers can then choose to display them by clicking the fold buttons:
+出力文書に書かれたコードブロックが読者に嫌がられるおそれがあるなら, はじめは折りたたんでおくという選択をするとよいかもしれません. 読者はボタンを押して表示を選ぶことができます.
 
 ```yaml
 output:
@@ -117,7 +117,7 @@ output:
     code_folding: hide
 ```
 
-You can also choose to unfold all code blocks initially (so readers can choose to fold them later):
+全てのコードブロックを最初から展開することもできます (よって読者は折りたたむことを選べます).
 
 ```yaml
 output:
@@ -125,11 +125,11 @@ output:
     code_folding: show
 ```
 
-If you fold all code blocks initially, you can specify certain blocks to be unfolded initially with the chunk option `class.source = "fold-show"`, e.g.,
+最初から全てのコードブロックを折りたたんだなら, チャンクオプション `class.source = "fold-show"` を使い特定のブロックを展開だけを最初から展開させておくこともできます. このように.
 
 `r import_example('fold-show.Rmd')`
 
-You can also do it the other way around, i.e., show all code blocks but hide some of them initially. For example:
+反対のこともできます. つまり, 最初から全てのコードブロックを表示するもののそれらの一部は表示させます. 例えばこのように.
 
 ````md
 ---
@@ -147,31 +147,31 @@ output:
 ```
 ````
 
-## Put content in tabs {#html-tabs}
+## 内容をタブブラウジングさせる {#html-tabs}
 
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
 
-One natural way of organizing parallel sections in an HTML report is to use tabsets. This allows readers to view the content of different sections by clicking the tab titles instead of scrolling back and forth on the page.
+HTML レポートの並列しているセクションをまとめる自然な方法の1つは, タブセットを使うことです. これは読者がページをスクロールして戻したり進めたりするかわりに, タブのタイトルをクリックすることで異なるセクションの内容を閲覧することを可能にします.
 
-To turn sections into tabs, you can add a class attribute `.tabset`\index{tabset} to the section header that is one level higher than the headers to be converted to tabs, e.g., adding the `.tabset` attribute to a level-2 header will convert all subsequent level-3 headers to tabs. Below is a full example:
+セクションをタブにするために, タブに変換する見出しより1レベル上の見出しにクラス属性 `.tabset`\index{tabset} を追加できます. 例えばレベル2の見出しに `.tabset` を追加するとそれ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.
 
 `r import_example('html-tabs.Rmd')`
 
-The output is shown in Figure \@ref(fig:html-tabs). Note that you can only see one tab at a time in reality. In this figure, we actually concatenated two screenshots for you to see both tabs.
+出力を図\@ref(fig:html-tabs)に示します. 実際には一度に1つのタブしか見られないことに注意してください. この図は両方のタブがみられるよう2つのスクリーンショットを連結したものです.
 
-```{r html-tabs, echo=FALSE, fig.cap="Turn sections into tabs."}
+```{r html-tabs, echo=FALSE, fig.cap="複数のセクションをタブに"}
 knitr::include_graphics("images/html-tabs.png", dpi = NA)
 ```
 
-You can add another attribute `.tabset-pills` to the upper-level section header to add a "pill" effect to the tab, and the tab will have a dark blue background.
+タブに "pill" 効果を付けるため, さらに別の属性 `.tabset-pills` を上位レベルの見出しに追加することができます. これでタブは暗青色の背景になります.
 
 ```md
 ## Results {.tabset .tabset-pills}
 ```
 
-By default, the first tab is active (i.e., displayed). If you want a different tab to be displayed initially, you may add the attribute `.active` to it.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加するとよいでしょう.
 
-To end the tabset, you need to start a new section header of the upper level. The new section header can be empty, e.g.,
+タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にすることができます. 例えばこのように.
 
 ```md
 ## Results {.tabset}
@@ -182,13 +182,13 @@ To end the tabset, you need to start a new section header of the upper level. Th
 
 ## {-}
 
-With the above unnumbered (`{-}`) and empty section header,
-we can end the tabset and continue to write more paragraphs.
+上記のように番号なし (`{-}`) で空のセクション見出しがあれば,
+タブセットを終了しさらなる段落を続けることができます.
 ```
 
-## Embed the Rmd source file in the HTML output file {#embed-rmd}
+## Rmd ソースファイルを HTML に埋め込む {#embed-rmd}
 
-When you share an HTML output page with others, they may want the Rmd source file, too. For example, they may want to change the Rmd source and compile the report by themselves. You can use the option `code_download`\index{output option!code\_download} to embed a copy of the Rmd source file in the HTML output file:
+HTML 出力ページを共有するとき, Rmd ソースファイルもほしいかもしれません. 例えば Rmd ソースを変更し, 自分自身でレポートをコンパイルしたいかもしれません. Rmd ソースファイルのコピーを HTML に埋め込むにはオプション `code_download`\index{出力オプション!code\_download} を使うことができます.
 
 ```yaml
 output:
@@ -196,7 +196,7 @@ output:
     code_download: true
 ```
 
-After the option is turned on, the HTML output page will contain a download button, and readers of the page can hit the button to download the Rmd source file.
+オプションが有効になると, HTML 出力ページはダウンロードボタンを持ち, 読者はそのボタンを押してソースファイルのダウンロードができます.
 
 ## Embed arbitrary files in the HTML output file {#embed-file}
 

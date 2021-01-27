@@ -1,5 +1,5 @@
 ---
-title: Scrollable code blocks
+title: スクロール可能なコードブロック
 output: html_document
 ---
 
@@ -14,22 +14,18 @@ pre[class] {
 }
 ```
 
-We have defined some CSS rules to limit the height of
-code blocks. Now we can test if these rules work on code
-blocks and text output:
+コードブロックの高さを制限する CSS ルールをいくつか定義しました. これらのルールがコードブロックとテキスト出力に対して機能するのかテストすることができます.
 
 ```{r}
-# pretend that we have a lot of code in this chunk
+# このチャンクに多くのコードがあるように見せかける
 if (1 + 1 == 2) {
-  # of course that is true
+  # もちろん真になる
   print(mtcars)
-  # we just printed a lengthy data set
+  # 単に長いデータを表示させるだけ
 }
 ```
 
-Next we add rules for a new class `scroll-100` to limit
-the height to 100px, and add the class to the output of
-a code chunk via the chunk option `class.output`:
+次に高さを100px に制限するために `scroll-100` という新しいクラスにルールを追加し,  チャンクオプション `class.output` でこのクラスをコードチャンクの出力に追加します.
 
 ```{css, echo=FALSE}
 .scroll-100 {

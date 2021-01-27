@@ -1,12 +1,11 @@
 ---
-title: Scrollable code blocks
+title: スクロール可能なコードブロック
 output: 
   html_document: 
     highlight: tango
 ---
 
-We set up an `output` hook to add a `style` attribute to the
-text output when the chunk option `max.height` is set.
+チャンクオプション `max.height` が設定されている時, テキスト出力に `style` 属性を追加するような `output` フックを設定します.
 
 ```{r, include=FALSE}
 options(width = 60)
@@ -22,25 +21,19 @@ local({
 })
 ```
 
-Without the `max.height` option, you will see the full output,
-e.g.,
+`max.height` がない場合, 出力の全体が表示されます. 例えば...,
 
 ```{r}
 1:100
 ```
 
-Now we set `max.height` to `100px`. You will see a scrollbar
-in the text output because its height is larger than 100px.
+ここで `max.height` に `100px` を設定します. この高さは 100px を超えているので, テキスト出力にスクロールバーが現れます.
 
 ```{r, max.height='100px'}
 1:100
 ```
 
-Essentially the `max.height` option is converted to the
-`attr.output` option. It works even if the `attr.output`
-option is present, i.e., it will not override the
-`attr.output` option, e.g., we show line numbers on the left
-side of the text output via the `.numberLines` attribute:
+原則として `max.height` オプションは `attr.output` オプションに変換されます. `attr.output` が既に設定されていたとしても動作します. つまり `attr.output` オプションは上書きされません. 例えば `.numberLines` 属性を付けてテキスト出力の端に行番号を表示させてみます.
 
 ```{r, max.height='100px', attr.output='.numberLines'}
 1:100

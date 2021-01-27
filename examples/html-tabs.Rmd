@@ -1,24 +1,24 @@
 ---
-title: Use tabs to organize content
+title: 内容をタブにまとめる
 output: html_document
 ---
 
-You can turn parallel sections to tabs in `html_document` output.
+`html_document` 出力で並列するセクションをタブにできます.
 
-## Results {.tabset}
+## 結果 {.tabset}
 
-### Plots
+### グラフ
 
-We show a scatter plot in this section.
+このセクションでは散布図を表示します.
 
 ```{r, fig.dim=c(5, 3)}
 par(mar = c(4, 4, .5, .1))
 plot(mpg ~ hp, data = mtcars, pch = 19)
 ```
 
-### Tables
+### 表
 
-We show the data in this tab.
+このタブではデータを表示します.
 
 ```{r}
 head(mtcars)
