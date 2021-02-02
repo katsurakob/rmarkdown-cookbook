@@ -198,15 +198,15 @@ output:
 
 オプションが有効になると, HTML 出力ページはダウンロードボタンを持ち, 読者はそのボタンを押してソースファイルのダウンロードができます.
 
-## Embed arbitrary files in the HTML output file {#embed-file}
+## HTML 出力に好きなファイルを埋め込む {#embed-file}
 
-As mentioned in Section \@ref(embed-rmd), we can embed a copy of the Rmd source document in the HTML output file. Sometimes the Rmd source file alone may not be enough to reproduce the report. For example, the report may need an external data file. There is a series of functions in the **xfun** package\index{R package!xfun} [@R-xfun] that enable you to embed arbitrary files in the HTML output file. To use these functions, make sure you have the following R packages available:
+\@ref(embed-rmd)節で言及したように, HTML出力には Rmd ソース文書のコピーを埋め込めます. Rmd ファイル単体ではレポートを再現するのに不十分な場合もあるかもしれません. 例えばレポートに外部のデータファイルが必要かもしれません. HTML 出力ファイルに好きなファイルを埋め込んでくれる一連の関数が **xfun** パッケージ\index{R パッケージ!xfun} [@R-xfun] にあります. これらの関数を使うために, 以下の R パッケージを用意しておきます.
 
 ```{r, eval=FALSE}
 xfun::pkg_load2(c('htmltools', 'mime'))
 ```
 
-Then you can use one of the functions `xfun::embed_file()`\index{xfun!embed\_file()}, `xfun::embed_files()`\index{xfun!embed\_files()}, or `xfun::embed_dir()`\index{xfun!embed\_dir()} in an R code chunk to embed one or multiple files or an entire directory in the HTML output, e.g.,
+これで1つ以上のファイルやディレクトリを HTML 出力に埋め込むのに, コードチャンク内で `xfun::embed_file()`\index{xfun!embed\_file()}, `xfun::embed_files()`\index{xfun!embed\_files()}, `xfun::embed_dir()`\index{xfun!embed\_dir()}  を使えます. 例えばこのように.
 
 ````md
 ```{r echo=FALSE}`r ''`
@@ -221,20 +221,20 @@ xfun::embed_dir('data/', text = 'Download full data')
 ```
 ````
 
-You can also provide the list of files programmatically, e.g.,
+プログラミング的にファイルのリストを与えることもできます. 例えばこのように.
 
 ```{r eval=FALSE}
 # embed all Rmd and csv files
 xfun::embed_files(list.files('.', '[.](Rmd|csv)$'))
 ```
 
-For multiple files, they are first compressed to a zip file, and the zip file will be embedded. These functions return a link, on which a reader can click on the HTML page to download the embedded file.
+複数のファイルに対し, これらの関数はまず zip ファイルに圧縮してから, この zip ファイルを埋め込みます. これらの関数はリンクを返し, 読者は HTML ページのリンクをクリックして埋め込んだファイルをダウンロードすることができます.
 
-You can learn more technical details behind these functions from the help page `?xfun::embed_file` or the blog post at https://yihui.org/en/2018/07/embed-file/. Based on the same idea, the **downloadthis** package\index{R package!downloadthis} [@R-downloadthis] has implemented download buttons, so that users can click buttons to download files instead of links. If you prefer using buttons, you may consider using this package.
+ヘルプページ `?xfun::embed_file` またはブログ投稿 https://yihui.org/en/2018/07/embed-file/ でこれらの関数のより詳細な技術的情報を学ぶことができます. 同様のアイディアにより,  **downloadthis** package\index{R パッケージ!downloadthis} [@R-downloadthis] はダウンロードボタンを実装したことでユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.
 
-## Use a custom HTML template (\*) {#html-template}
+## カスタム HTML テンプレートを使う (\*) {#html-template}
 
-We mentioned LaTeX templates in Section \@ref(latex-template). You can also specify a custom HTML template\index{template!HTML} for Pandoc to convert Markdown to HTML. Below is a brief example template:
+既に\@ref(latex-template)節では LaTeX テンプレートについて話しました. Pandoc が Markdown を HTML へ変換するに際しカスタム HTML テンプレート \index{テンプレート!HTML}を指定することもできます. 以下は簡単なテンプレートの例です.
 
 ```html
 <html>
@@ -250,9 +250,9 @@ We mentioned LaTeX templates in Section \@ref(latex-template). You can also spec
 </html>
 ```
 
-You can see that the template contains a few variables such as `$title$` and `$body$`. You can find the full list of Pandoc variables and their meanings at https://pandoc.org/MANUAL.html#templates.
+テンプレートに `$title$`, `$body$` といったいくつかの変数が含まれているのがわかるでしょう. Pandoc 変数の完全なリストとそれぞれの意味については https://pandoc.org/MANUAL.html#templates で検索することができます.
 
-The template gives you the ultimate power to customize the HTML output. For example, you can include arbitrary CSS stylesheets or JavaScript code or libraries in the `<head>` area. For example, we could use a Boolean variable `draft` to indicate whether the document is a draft or a final version:
+テンプレートによってあなたは HTML 出力をカスタマイズする究極の力を得ることになります. 例えば好きな CSS スタイルシートや JavaScript コード, あるいはライブラリを `<head>` 内で読み込ませたりできます. あるいは文書が下書きか, 最終稿かを示すブーリアン変数 `draft` も使えます.
 
 ```html
 <head>
@@ -278,7 +278,7 @@ $body$
 </body>
 ```
 
-Then we can set the variable `draft` to `true` or `false` in the YAML metadata of the Rmd document, e.g.,
+すると Rmd 文書の YAML メタデータ内で `draft` 変数に  `true` または `false` を設定できます. 例えばこのように.
 
 ```yaml
 ---
@@ -287,7 +287,8 @@ draft: true
 ---
 ```
 
-To apply a template to an Rmd document, you can save the template to a file, and pass the file path to the `template` option of `html_document`\index{output option!template}, e.g.,
+テンプレートを Rmd 文書に適用するのに, テンプレートをファイルに保存し, `html_document` の `template` オプション\index{出力オプション!template}にファイルパスを与えることができます. 例えばこのように.
+
 
 ```yaml
 output:
@@ -295,11 +296,11 @@ output:
     template: my-template.html
 ```
 
-The **rmarkdown** package uses a custom HTML template shipped with the package, which is different from Pandoc's default template. To use the latter, you can specify `template: null`.
+**rmarkdown** パッケージは Pandoc のデフォルトテンプレートとは異なるカスタム HTML テンプレートをパッケージ内で読み込んで使用しています. Pandoc のデフォルトを使うには `template: null` で指定できます.
 
-## Include the content of an existing HTML file (\*) {#include-html}
+## 既存の HTML ファイルの内容を読み込む (\*) {#include-html}
 
-With the `includes` option\index{output option!includes} of the `html_document` format (or any other formats that support this option), you can include the content of an existing HTML file in the HTML output document in three possible places: the `<head>` area, the beginning of `<body>`, and the end of `</body>`.
+`html_document` フォーマット (あるいはこのオプションをサポートしている他のフォーマット) の `includes` オプション\index{出力オプション!includes} があれば, 既存の HTML ファイルの本文を HTML 出力文書の3箇所のどこかで読み込むことができます. それらは `<head>`, `<body>` の開始時点, そして `</body>` の末尾です.
 
 ```yaml
 output:
@@ -310,9 +311,9 @@ output:
       after_body: after.html
 ```
 
-If you are not familiar with HTML, Section \@ref(html-template) may help you better understand these options.
+HTML にあまり詳しくないなら, \@ref(html-template)節がこのオプションをより理解するのに役に立つかもしれません.
 
-With the `in_header` option, you can inject CSS and JavaScript code into the `<head>` tag. With `before_body`, you may include a header that shows a banner or logo. With `after_body`, you can include a footer, e.g.,
+`in_header` オプションを使うなら, CSS と JavaScript コードを `<head>` タグ内に挿入することができます. `before_body` を使うなら, バナーやロゴを表示するヘッダを埋め込むと良いでしょう. `after_body` を使うなら, フッタを読み込ませることができます. 例えばこのように.
 
 ```html
 <div class="footer">Copyright &copy; John Doe 2020</div>
