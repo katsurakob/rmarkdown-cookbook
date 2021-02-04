@@ -1,19 +1,18 @@
 ---
-title: Use the `<details>` disclosure element
+title: 折りたたみ要素 `<details>` を使う
 output: html_document
 ---
 
-We show text output inside the `<details>` tags in this
-example. We used JavaScript to wrap text output blocks
-in `<details></details>`. The JavaScript code needs to
-be executed at the end of this document, so it is placed
-at the end. Below is a testing code chunk:
+この例ではテキスト出力を `<details>` タグ内に表示します.
+JavaScript でテキスト出力ブロックを `<details></details>` で囲みます.
+Javascript コードはこの文書の末尾で実行する必要があるため,
+最後に配置します. 以下はテスト用のコードチャンクです.
 
 ```{r}
 1:100
 ```
 
-The actual JavaScript code is below.
+実際の JavaScript コードは以下になります.
 
 ```{js, echo=FALSE}
 (function() {
@@ -24,10 +23,10 @@ The actual JavaScript code is below.
     p = code.parentNode;
     d = document.createElement('details');
     s = document.createElement('summary');
-    s.innerText = 'Details';
-    // <details><summary>Details</summary></details>
+    s.innerText = '詳細';
+    // <details><summary>詳細</summary></details>
     d.appendChild(s);
-    // move the code into <details>
+    // コードを <details> 内に移動
     p.replaceChild(d, code);
     d.appendChild(code);
   }

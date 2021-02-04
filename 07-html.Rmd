@@ -319,7 +319,7 @@ HTML にあまり詳しくないなら, \@ref(html-template)節がこのオプ�
 <div class="footer">Copyright &copy; John Doe 2020</div>
 ```
 
-Sometimes you may want to include the content of an external HTML file in an arbitrary place of the body, which can be done with `htmltools::includeHTML()`. You pass the path of the HTML file to this function. It will read the file, and write its content to the output document. You may also use the technique in Section \@ref(raw-content), e.g.,
+外部 HTML ファイルの内容を本文の好きな位置で読み込みたいときもあるかもしれません. これは `htmltools::includeHTML()` を使えば可能です. HTML ファイルパスをこの関数に与えます. 関数はこのファイルを読み込み, 出力文書にたいしてこのファイルの中身を書き込みます. \@ref(raw-content)節で使用したようなテクニックをを使っても良いかもしれません. 例えばこのように.
 
 `````md
 ````{=html}
@@ -329,47 +329,47 @@ xfun::file_string('file.html')
 ````
 `````
 
-Please note that you must not include the content of a full HTML file in another HTML file, but can only include an HTML fragment. A full HTML file contains the `<html>` tag, which cannot be embedded in another `<html>` tag. Below is an invalid HTML document when a full HTML document is included in another HTML document:
+HTML ファイル内読み込めるのは別の HTML 部分だけであり, 完全なHTMLファイルを読み込んではならないことに注意してください. 完全な HTML ファイルとは `<html>` タグを含むものであり, これは他の `<html>` タグ内に埋め込むことができません. 以下は HTML 文書に別の完全な HTML 文書が 埋め込まれた場合の無効な HTML 文書です.
 
 ```html
 <html>
   <head>  </head>
 
   <body>
-  Parent HTML file.
-  
-  <!-- htmltools::includeHTML() below -->
+  親 HTML ファイル.
+
+  <!-- 以下 htmltools::includeHTML() -->
     <html>
       <head>  </head>
       <body>
-      Child HTML file.
+      子 HTML ファイル.
       </body>
     </html>
-  <!-- included above -->
+  <!-- 読み込み終わり -->
 
   </body>
 </html>
 ```
 
-If you run into problems when including an HTML file in an HTML output document, you may check if the HTML file contains the `<html>` tag.
+HTML ファイルを別の HTML 出力文書に読み込む時に問題が発生したなら, HTML ファイルに `<html>` タグが含まれていないか確認するとよいかもしれません.
 
-There is an output format `html_fragment` in the **rmarkdown** package, which generates an HTML fragment instead of a full HTML document. If you want to include the compiled results of an Rmd document in another Rmd document, the former Rmd document may use the `html_fragment` format instead of the usual `html_document`.
+**rmarkdown** パッケージには `html_fragment` という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書は `html_document` フォーマットの代わりに `html_fragment` フォーマットを使うと良いでしょう.
 
-If you want to include an Rmd or Markdown document instead of an HTML file, you may use child documents introduced in Section \@ref(child-document).
+HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら,  \@ref(child-document)節で紹介されている子文書を使うとよいでしょう.
 
-## Add a custom browser icon {#favicon}
+## ブラウザアイコンをカスタマイズする {#favicon}
 
-Section \@ref(include-html) demonstrates that we can inject additional code into the HTML head, body, or footer with the `includes` option of the `html_document` format. This technique can be used to add a custom browser icon, called a favicon\index{figure!favicon}, to your HTML output.
+\@ref(include-html)節では `html_document` フォーマットの `includes` オプションで追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました.  このテクニックはファビコン\index{図!ファビコン}というカスタムブラウザアイコンを HTML 出力に追加することに使えます.
 
-Favicons are the website logos that are displayed in your browser's address bar, tab title, history, and bookmarks. For example, if you visit the CRAN website (https://cran.r-project.org) in Google Chrome, and look at the browser tab, you will see a small R logo. On mobile devices, favicons are also used in place of an App icon for websites that are pinned to the home screen.
+ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (https://cran.r-project.org) を開いてブラウザのタブを見ると, 小さな  R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.
 
-To add a favicon to your HTML document, add the following line of code to a custom header file (such as the file `header.html` mentioned in Section \@ref(include-html)):
+HTML 文書にファビコンを追加するには, 以下のコードをカスタムヘッダファイル (\@ref(include-html)節で言及したように, `header.html` といった名前のファイル) を追加します.
 
 ```html
-<link rel="shortcut icon" href="{path to favicon file}" />
+<link rel="shortcut icon" href="{ファビコン画像ファイルへのパス}" />
 ```
 
-Recall that this file can be injected into the document `<head>` area using the YAML metadata\index{output option!includes}:
+YAML メタデータ\index{出力オプション!includes}を使って, このファイルを文書の `<head>` 内に挿入できることを思い出してください.
 
 ```yaml
 output:
@@ -378,25 +378,25 @@ output:
       in_header: header.html
 ```
 
-The path you provide to the `href` attribute in `<link>` should assume the same relative path structure as you would use to reference any other asset (e.g., an image or dataset). For the image itself, most small, square PNG files will work reasonably well. Bear in mind that a typical web browser will often display the image in a 16 x 16 pixel box, so simple designs are better.
+`<link>` の `href` 属性に与えたパスは他のアセット (例えば画像やデータ・セット) を参照するときと同じように, 相対パス構造を前提とすべきです. 使用する画像は, 最も小さい正方形の PNG ファイルがよく機能します. 典型的なウェブブラウザは画像を 16 x 16 ピクセルの領域に表示するため, シンプルなデザインがより良いということに留意してください.
 
-If you want to ensure that each browser or platform on which your document is viewed uses a version of your icon with optimal resolution for its specific layout, you may use a service such as https://realfavicongenerator.net to generate a set of favicons and a slightly more complex version of the header HTML code. This service is currently used by the **pkgdown** package's `pkgdown::build_favicon()` function [@R-pkgdown] to make a set of favicons out of R package logos.
+あなたの文書を表示するそれぞれのブラウザやプラットフォームは特定のレイアウトに対して最適な解像度のバージョンを使用します.  ファビコンセットとより複雑な HTML ヘッダのコードを生成するのに, https://realfavicongenerator.net といったサービスを使うとよいかもしれません. このサービスは現在 **pkgdown** パッケージ [@R-pkgdown] の `pkgdown::build_favicon()` 関数で R パッケージロゴのセットを作り出すのに使用されています.
 
-## Use the `<details>` disclosure element {#details-tag}
+## 折りたたみ要素 `<details>` を使う {#details-tag}
 
-As mentioned in Section \@ref(html-scroll), we can fold source code chunks via the option `code_folding: hide` in the `html_document` format. Currently it is not possible to fold output blocks, but we can use some JavaScript tricks to make output foldable, too. This can be useful especially when the output is relatively long but not very important. We can fold it initially, and, if the reader is interested, they can unfold it to view the content. Figure \@ref(fig:details-tag) shows an example: you may click on the "Details" button to unfold the output.
+\@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, 出力を折りたたみできるようにするのに JavaScript のトリックが使えます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
 
-```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='Wrap text output in the details element.', out.width=if(knitr::is_latex_output()) '100%'}
+```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='details 要素でテキスト出力を囲む', out.width=if(knitr::is_latex_output()) '100%'}
 knitr::include_graphics(c('images/details-closed.png', 'images/details-open.png'), dpi = NA)
 ```
 
-If you are viewing the HTML version of this book, you can actually see it in action below. If you are reading the PDF or printed version, such an interaction (clicking the "Details" button) is certainly not possible.
+あなたがご覧になっているのが本書の HTML バージョンなら, 以下のチャンクで実際に動くのを見ることができます. PDF または印刷版を読んでいるのなら, このような対話的機能 (「詳細」ボタンを押すこと) はおそらく不可能です.
 
 ```{r}
 1:100
 ```
 
-Below is the full source Rmd document that includes the JavaScript code to find output blocks, and wrap them into the `<details>` tags.
+以下は出力ブロックを検出し, それを `<details>` タグで囲む JavaScript コードを読み込ませた Rmd 文書の完全なソースです. 
 
 ```{js, echo=FALSE, include=knitr::is_html_output()}
 (function() {
@@ -407,10 +407,10 @@ Below is the full source Rmd document that includes the JavaScript code to find 
     p = code.parentNode;
     d = document.createElement('details');
     s = document.createElement('summary');
-    s.innerText = 'Details';
-    // <details><summary>Details</summary></details>
+    s.innerText = '詳細';
+    // <details><summary>詳細</summary></details>
     d.appendChild(s);
-    // move the code into <details>
+    // コードを <details> 内に移動
     p.replaceChild(d, code);
     d.appendChild(code);
   }
@@ -419,37 +419,37 @@ Below is the full source Rmd document that includes the JavaScript code to find 
 
 `r import_example('details-tag.Rmd')`
 
-You may try to adapt the JavaScript code above to your own need. The key is to find out the elements to be wrapped into `<details>`:
+上記の JavaScript コードを自分で適用すればよいでしょう. ポイントは要素を `<details>` で囲むということです.
 
 ```js
 document.querySelectorAll('pre:not([class])');
 ```
 
-The CSS selector `pre:not([class])` means all `<pre>` elements without the `class` attribute. You can also select other types of elements. For more about CSS selectors, see https://www.w3schools.com/css/css_selectors.asp. For more about the HTML tags `<details>` and `<summary>`, see https://www.w3schools.com/tags/tag_details.asp.
+CSS セレクタの `pre:not([class])` は `class` 属性のない全ての `<pre>` 要素を意味します. 他の要素のタイプを選択することもできます. CSS セレクタについてより知りたいなら, https://www.w3schools.com/css/css_selectors.asp を見てください. HTML タグ `<details>` と `<summary>` をより知りたいなら, https://www.w3schools.com/tags/tag_details.asp を見てください.
 
-## Sharing HTML output on the web {#html-share}
+## HTML 出力を Web で共有する {#html-share}
 
-One appealing aspect of rendering R Markdown to HTML files is that it is very easy to host these files on the Internet and share them just as one shares any other website. This section briefly summarizes numerous options for sharing the HTML\index{HTML hosting} documents that you have created.
+R Markdown を HTML ファイルにレンダリングするということの魅力的な側面の1つは, これらのファイルをとても簡単にインターネットでホストし他のウェブサイトと同様に共有できるということです. この節では貴方の作成した HTML\index{HTML ホスティング} 文書を共有するオプションを簡単に要約します.
 
-### R-specific services
+### R 特化のサービス {#r-specific-services}
 
-RStudio offers a number of services for publishing various types of content created in R Markdown to the Internet. These services make it particularly easy to publish content by using the RStudio IDE or the **rsconnect** package [@R-rsconnect].
+RStudio は R Markdown で作られた様々な種類のコンテンツをインターネットで公開するためのサービスをいくつか提案しています. これらのサービスは特に RStudio IDE または **rsconnect** パッケージ [@R-rsconnect] を使って簡単に公開できます.
 
-- [**RPubs**](https://rpubs.com) enables free hosting of static single-file R Markdown content. It is easy to publish via the `Publish` button in the RStudio IDE or the `rsconnect::rpubsUpload()` function. Please see the "Getting Started" page (https://rpubs.com/about/getting-started) for more details.
+- [**RPubs**](https://rpubs.com) は静的な単一の R Markdown コンテンツの無料ホスティングを可能とします. RStudio IDE の `Publish` ボタンまたは `rsconnect::rpubsUpload()` 関数で簡単に公開できます. 詳細は "Getting Started" のページ (https://rpubs.com/about/getting-started) をご覧ください.
 
-- [**ShinyApps.io**](https://www.shinyapps.io) allows for hosting dynamic content that requires a server to run R. For example, one can host interactive R Markdown documents that include Shiny components.^[You may include Shiny components in an R Markdown document by setting the option `runtime: shiny` or `runtime: shiny_prerendered` in the YAML metadata. You will no longer be able to render your document to an HTML document as before; instead, you run your document with `rmarkdown::run()`. To learn more, please refer to @rmarkdown2018 (Chapter 19: https://bookdown.org/yihui/rmarkdown/shiny-documents.html).] ShinyApps.io is an analog to RPubs for Shiny applications. Apps and interactive R Markdown documents can be published using the push-button in the RStudio IDE or the `rsconnect::deployApp()` function. See the user guide (https://docs.rstudio.com/shinyapps.io/) for more details.
+- [**ShinyApps.io**](https://www.shinyapps.io) は R を実行するサーバを要求するような動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる^[R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで `runtime: shiny` または `runtime: shiny_prerendered` オプションを設定するとよいでしょう. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに `rmarkdown::run()` で文書を実行することになります. 詳しく知るには @rmarkdown2018 (Chapter 19, https://bookdown.org/yihui/rmarkdown/shiny-documents.html) をご覧ください.]インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか `rsconnect::deployApp()` 関数を使って公開できます. 詳細はユーザーガイド (https://docs.rstudio.com/shinyapps.io/) をご覧ください.
 
-- [**bookdown.org**](https://bookdown.org/home/about/) offers free hosting specifically for books written with the **bookdown** package. You may easily publish static output files of your book using the `bookdown::publish_book()` function.
+- [**bookdown.org**](https://bookdown.org/home/about/) は **bookdown** パッケージで書かれた本の無料ホスティングを提案します. `bookdown::publish_book()` 関数であなたの書籍の静的な出力ファイルを簡単に公開できるでしょう.
 
-- [**RStudio Connect**](https://rstudio.com/products/connect/) is an enterprise product that organizations may run on their own servers. It can host a wide variety of content created in R (such as R Markdown documents, Shiny apps, and APIs) in a secured environment with document-level access controls, viewership history, and more. Content can be published to RStudio Connect using manual upload, the **rsconnect** package, or with GIT-based deployment.
+- [**RStudio Connect**](https://rstudio.com/products/connect/) は組織団体が自前のサーバで動作させるような企業向け製品です. で作成された広範な種類のコンテンツ (R Markdown 文書, Shiny アプリケーション, API など) を文書レベルでのアクセス制御, 閲覧履歴などといった機能を使いセキュアな環境でホストできます. コンテンツは RStudio Connect に手動でアップロードするか, **rsconnect** パッケージか, または git ベースのデプロイによって公開できます.
 
-### Static website services
+### Static website services {#static-website-services}
 
-In a few words, a simple static website is composed of any number of HTML files (typically containing an `index.html`, which is the homepage), JavaScript, CSS files, and additional content such as images. This collection of files can be hosted as-is on a web server and rendered in a web browser.
+端的に言うなら, 単純な静的ウェブサイトは数個の HTML ファイル (典型的にはホームページである `index.html`), JavaScript, CSS ファイル, そして画像などの追加のコンテンツで構成されます. 一連のファイルは web サーバにそのままホストし, web ブラウザに表示させることができます.
 
-When R Markdown is rendered to the HTML output format, the result may be treated as a static website. Websites can range in complexity from a single, standalone HTML file (which is what we get when we use the default `self_contained: true` option), a set of files, or a sophisticated project like a website based on **blogdown** (which relies upon a static website generator). For more details, see [Section 2.1 on Static Sites](https://bookdown.org/yihui/blogdown/static-sites.html) of the **blogdown** book [@blogdown2017].
+R Markdown が HTML 出力フォーマットでレンダリングされた場合, その結果は静的なウェブサイトとして扱われます. ウェブサイトは単一のスタンドアロンな HTML ファイル (デフォルトオプション `self_contained: true` を使った場合に得られます) から, ファイルのセット, **blogdown** パッケージ (静的なウェブサイトジェネレータに依存しています) に基づいたウェブサイトのような洗練されたプロジェクトまで複雑さの点で多岐に及びます. より詳しく知りたいなら,  **blogdown** 本 [@blogdown2017] の [Section 2.1 on Static Sites](https://bookdown.org/yihui/blogdown/static-sites.html) を見てください.
 
-As a result, in addition to R-specific services, you may host your HTML document on many freely available static website hosting services. Commonly used options in the R community are: 
+結論として, あなたは R 特化のサービスに加え, 多くの無料で使用可能な静的ウェブサイトホスティングサービスを使って HTML 文書をホストできるでしょう. R コミュニティでのよくある選択としては以下があります.
 
 - [**GitHub Pages**](https://pages.github.com) makes it particularly easy to publish Markdown and HTML content straight from a GitHub repository. You may specify whether to host content from either the main branch's root, a `docs/` directory on the main branch, or a specific `gh-pages` branch. Publishing new content can be as simple as pushing new HTML files to your repository via GIT.
 
@@ -457,7 +457,7 @@ As a result, in addition to R-specific services, you may host your HTML document
 
 - [**Netlify**](https://www.netlify.com) is a platform to build and deploy static website content. It is a popular choice for web content created by the **blogdown** and **pkgdown** packages, but it can host all kinds of HTML files. There are many different publishing options including drag-and-drop, command line, or automated publishing from GitHub and GitLab repositories. Additionally, Netlify offers many helpful features such as website previews in pull requests. See the Netlify documentation (https://docs.netlify.com) or the RStudio webinar ["Sharing on Short Notice"](https://rstudio.com/resources/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown/) for more details.
 
-## Improve accessibility of HTML pages {#html-accessibility}
+## HTML ページのアクセシビリティを向上させる {#html-accessibility}
 
 It is important to make your HTML output documents accessible\index{HTML!accessible} to readers who are visually impaired or blind. These readers often have to use special tools, such as screen readers, to _hear_ instead of visually reading your documents. Usually, screen readers can only read out text, but not (raster) images. This means you need to provide enough text hints to screen readers. The good news is that with some small efforts, you can actually greatly enhance the accessibility of your documents. Jonathan Godfrey has provided some tips in the article at https://r-resources.massey.ac.nz/rmarkdown/ on making accessible R Markdown documents.^[JooYoung Seo has also published a post about a few R packages to help visually impaired users at https://jooyoungseo.com/post/ds4blind/. It is not directly related to R Markdown, but it can be helpful for you to learn how blind users read graphs.] Based on this article, we highlight some tips below for the convenience of the readers of this book:
 
