@@ -451,27 +451,27 @@ R Markdown が HTML 出力フォーマットでレンダリングされた場合
 
 結論として, あなたは R 特化のサービスに加え, 多くの無料で使用可能な静的ウェブサイトホスティングサービスを使って HTML 文書をホストできるでしょう. R コミュニティでのよくある選択としては以下があります.
 
-- [**GitHub Pages**](https://pages.github.com) makes it particularly easy to publish Markdown and HTML content straight from a GitHub repository. You may specify whether to host content from either the main branch's root, a `docs/` directory on the main branch, or a specific `gh-pages` branch. Publishing new content can be as simple as pushing new HTML files to your repository via GIT.
+- [**GitHub Pages**](https://pages.github.com) は Github リポジトリから Markdown と HTML コンテンツをそのまま公開する場合は特に簡単です. main ブランチのルートの `doc` ディレクトリか, あるいは `gh-pages` ブランチからコンテンツをホストすることを指定することになるでしょう. 新しいコンテンツの公開は git でリポジトリに新しい HTML ファイルをプッシュするだけで可能です.
 
-- [**GitLab Pages**](https://docs.gitlab.com/ce/user/project/pages/) offers similar functionality to GitHub Pages for GitLab repositories. GitLab deploys content stores in the `public/` directory of a repository. To build and publish content, you must provide a YAML file, `.gitlab-ci.yml` with instructions, but GitLab provides many helpful templates. For an example of hosting rendered HTML content, please see https://gitlab.com/pages/plain-html/-/tree/master. 
+- [**GitLab Pages**](https://docs.gitlab.com/ce/user/project/pages/) は GitHub Pages と類似の機能を GitLab リポジトリに対して提案します. GitLab はリポジトリの `public` ディレクトリに保存されたコンテンツをデプロイします. コンテンツをビルドし公開するには, 指示のため `.gitlab-ci.yml` という YAML ファイルを与えなければなりませんが, GitLab は多くの便利なテンプレートを提供してくれます. レンダリングされた HTML コンテンツをホストする例として, https://gitlab.com/pages/plain-html/-/tree/master をご覧ください.
 
-- [**Netlify**](https://www.netlify.com) is a platform to build and deploy static website content. It is a popular choice for web content created by the **blogdown** and **pkgdown** packages, but it can host all kinds of HTML files. There are many different publishing options including drag-and-drop, command line, or automated publishing from GitHub and GitLab repositories. Additionally, Netlify offers many helpful features such as website previews in pull requests. See the Netlify documentation (https://docs.netlify.com) or the RStudio webinar ["Sharing on Short Notice"](https://rstudio.com/resources/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown/) for more details.
+- [**Netlify**](https://www.netlify.com) は静的な web コンテンツをビルドしデプロイするプラットフォームです. **blogdown** と **pkgdown** で作成された web コンテンツに対する選択としてはよく知られていますが, これはあらゆる種類の HTML ファイルをホスティングできます. 公開方法として, ドラッグ・アンド・ドロップ, コマンドライン, あるいは GitHub および GitLab レポジトリから自動公開するといったいくつもの選択があります. 加えて, プルリクエストから web サイトをプレビューするといった多くの役立つ機能も提案されています. 詳細は Netlify のドキュメント (https://docs.netlify.com) や RStudio webinar ["Sharing on Short Notice"](https://rstudio.com/resources/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown/) をご覧ください.
 
 ## HTML ページのアクセシビリティを向上させる {#html-accessibility}
 
-It is important to make your HTML output documents accessible\index{HTML!accessible} to readers who are visually impaired or blind. These readers often have to use special tools, such as screen readers, to _hear_ instead of visually reading your documents. Usually, screen readers can only read out text, but not (raster) images. This means you need to provide enough text hints to screen readers. The good news is that with some small efforts, you can actually greatly enhance the accessibility of your documents. Jonathan Godfrey has provided some tips in the article at https://r-resources.massey.ac.nz/rmarkdown/ on making accessible R Markdown documents.^[JooYoung Seo has also published a post about a few R packages to help visually impaired users at https://jooyoungseo.com/post/ds4blind/. It is not directly related to R Markdown, but it can be helpful for you to learn how blind users read graphs.] Based on this article, we highlight some tips below for the convenience of the readers of this book:
+HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対するアクセシビリティ\index{HTML!アクセシビリティ}をもたせることは重要です. こういた読者はしばしば, 文書を視覚的に読み上げる代わりにスクリーンリーダ (音声読み上げソフト) といった**聞く**ための, 特殊なツールを使います. 大抵はスクリーンリーダはテキストを読み上げることができるだけで, (ラスタ) 画像を読み上げられません. つまりあなたはスクリーンリーダに十分なヒントを与える必要があるということです. 良いニュースは, 少々の労力であなたの文書のアクセシビリティをかなり向上できるということです. Jonathan Godfrey が R Markdown 文書のアクセシビリティのためのいくつかのヒントを https://r-resources.massey.ac.nz/rmarkdown/ で記事にしています.^[JooYoung Seo も, 視覚障害を持つ人の手助けになる R パッケージを https://jooyoungseo.com/post/ds4blind/ で紹介しています. これは R Markdown と直接関係しませんが, 視覚障害者がどうグラフを読み取っているのかを学ぶのに役に立つでしょう.] この記事に基づいて, 本書の読者にとっての利便性になるいくつかのヒントを以下に提示します.
 
-- HTML documents are often more accessible than PDF.
+- HTML 文書はしばしば PDF よりアクセシビリティが優れている.
 
-- Try to provide the Rmd source document along with the HTML output document if possible (e.g., Section \@ref(embed-rmd) demonstrates one way to do this). In case anything in the HTML document is not accessible, the blind reader may be able to figure it out from the Rmd source, or fix it in the source.
+- 可能ならば HTML 出力文書に Rmd ソース文書を同梱するようにする (例えば\@ref(embed-rmd)節でその方法の1つを実演しています). HTML 文書にアクセシビリティがない場合, 視覚障害者は Rmd ソースから内容を理解できるかもしれませんし, ソースを修正することもできるかもしれません.
 
-- Provide informative text tags to your graphics. At the useR! conference in 2014, Jonathan explained this issue to me in person. It was the first time that I had learned about the importance of the `alt` attribute of images on web pages\index{figure!alt text}.
+- テキスト情報をグラフに与える. 2014年の useR! カンファレンスで, 私は Jonathan からこの問題を個人的に教えてもらいました. web ページ上の画像の `alt` 属性\index{図!alt text}の重要さを私は初めて理解しました.
 
-    To understand this problem, first you have to know that images on web pages are generated by the HTML tag `<img />`. This tag has an `src` attribute, which points to the source of the image, e.g., `<img src="foo_figures/image.png" />`. Sighted readers can see the image, but it is hard for blind users to know anything about the image, because usually screen readers cannot read it, especially when it is a raster image (vector graphics can be better, such as SVG). In this case, it is helpful to provide a text hint, which screen readers can read out to the blind reader. This text hint can be provided in the `alt` attribute of the image, which stands for "alternate text."
-    
-    For images generated from code chunks in R Markdown, the `alt` attribute will be generated if you provide the chunk option `fig.cap` (i.e., figure caption). Alternatively, you can insert an image using the Markdown syntax `![]()`. You input the image path in parentheses, and the `alt` text in square brackets, e.g., `![an informative text](path/to/image.png)`.
-    
-    The `alt` text is not displayed to sighted readers on an HTML page. However, when you provide the figure caption or alternate text to an image, the `rmarkdown::html_document` format will render a visible figure caption element by default. If you do not want the real figure captions, you can turn off the `fig_caption` option, e.g., 
+    この問題を理解するために, まずは web ページの画像が HTML タグ `<img />` によって生成されることを知らなければなりません. このタグは `src` 属性を持ち, 画像ファイルのソースの場所を指定しています. 例えば `<img src="foo_figures/image.png" />` のように. 視力のある読者はこの画像を見ることができますが, スクリーンリーダは画像を読むことが出来ないため, 視覚障害者には描かれていることを知るのは難しいです, 特にラスタ画像の場合は (SVG のようなベクタ画像は多少ましかもしれません). この場合テキストでのヒントを与えると, スクリーンリーダは読み上げることができるので便利です. このテキストでのヒントは画像の代替 (alternate) テキストを意味する `alt` 属性で与えることできます.
+
+    R Markdown のコードチャンクから生成された画像の場合は, もしチャンクオプション `fig.cap` (つまり 画像のキャプション, figure caption) 設定されているなら `alt` 属性はここから生成されます. 代わりに Markdown 構文 `![]()` を使って画像を挿入することもできます. 画像パスをパーレン `()` 内に入力し, `alt` テキストをブラケット `[]` 内に入力, 例えば `![テキスト情報](パス/image.png)` のように.
+
+    `alt` テキストは視力のある読者にとっては HTML ページ上に表示されません. しかし画像にキャプションや代替テキストを与えた場合, `rmarkdown::html_document` フォーマットはデフォルトでキャプション要素を表示します. もし実際にキャプションを表示させたくないなら, このように `fig_caption` をオフにすることができます.  
     
     ```yaml
     output:
@@ -479,18 +479,18 @@ It is important to make your HTML output documents accessible\index{HTML!accessi
         fig_caption: false
     ```
     
-    In this case, the `alt` attributes will still be generated, but are no longer visible.
+    このケースでは `alt` 属性はまだ生成されますが, 表示されることはありません.
 
-- Write mathematical content using the LaTeX syntax (e.g., `$ $` or `$$ $$`) instead of images. By default, R Markdown uses the MathJax library to render math content, and the result is readable to screen readers.
+- 画像の代わりに LaTeX 構文を使って数学的なコンテンツを書く (例: `$ $`, あるいは `$$ $$`). デフォルトでは, R Markdown は数学的なコンテンツのレンダリングに MathJax ライブラリを使い, 結果としてスクリーンリーダが読み上げられるものになります.
 
-- Get rid of the leading hashes (`##`) in the text output of code chunks by setting the chunk option `comment = ""` (see Section \@ref(opts-comment)).
+- チャンクオプション `comment = ""` を設定してコードチャンクのテキスト出力の行頭の `##` を除く (\@ref(opts-comment)節参照).
 
-We are not experts on accessibility, so we recommend that you read the original article to learn more details.
+我々はアクセシビリティの専門家ではありませんので, 詳細は元の記事を読むことをお薦めします.
 
-## For hardcore HTML users (\*) {#html-hardcore}
+## ハードコア HTML ユーザー向けの話 (\*) {#html-hardcore}
 
-In Section \@ref(latex-hardcore), we mentioned that if you feel the constraint of Markdown (due to its simplicity) is too strong, you can embed code chunks in a pure LaTeX document instead of Markdown. Similarly, if you are familiar and comfortable with writing raw HTML code, you can intermingle code chunks with HTML, too. Such documents have the conventional filename extension `.Rhtml`.\index{HTML!Rhtml}
+\@ref(latex-hardcore)節では, あなたが Markdown のシンプルさのためにその制約が強すぎると感じているなら, Markdown の代わりに純粋な LaTeX 文書にコードチャンクを埋め込むことができる, という話をしました. 同様にあなたが直接 HTML コードを書くことに慣れていて快適さを感じるなら, HTML にコードチャンクを混ぜ合わせることもまた可能です. そのような文書は慣習的に `.Rhtml` というファイル拡張子を持ちます\index{HTML!Rhtml}.
 
-In an `Rhtml` document, code chunks are embedded between `<!--begin.rcode` and `end.rcode-->`, and inline R expressions are embedded in `<!--rinline -->`. Below is a full `Rhtml` example. You can save it to a file named `test.Rhtml`, and use `knitr::knit("test.Rhtml")` to compile it. The output will be an HTML (`.html`) file. In RStudio, you can also hit the `Knit` button on the toolbar to compile the document.
+`Rhtml` 文書では, コードチャンクは `<!--begin.rcode` と `end.rcode-->` の間に埋め込まれ, インライン R コードは `<!--rinline -->` 内に埋め込まれます. 以下は `Rhtml` 全体の例です. これを `test.Rhtml` というファイル名で保存し, コンパイルには `knitr::knit("test.Rhtml")` を使うことができます. 出力は 1つの HTML (`.html`) ファイルになります. RStudio では, ツールバーの `Knit` ボタンを押すことでもコンパイルできます.
 
 `r import_example('knitr.Rhtml')`
