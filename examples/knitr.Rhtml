@@ -1,45 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A minimal knitr example in HTML</title>
+  <title>HTML の最低限の knitr 使用例</title>
 </head>
 <body>
 <!--begin.rcode
   knitr::opts_chunk$set(fig.width=5, fig.height=5)
   end.rcode-->
 
-  <p>This is a minimal example that shows
-  how <strong>knitr</strong> works with pure HTML
-  pages.</p>
+  <p>これは <strong>knitr</strong> が純粋な HTML ページでどのように動作するかの最低限の例です.</p>
 
-  <p>Boring stuff as usual:</p>
+  <p>お決まりの退屈な使用例.</p>
 
 <!--begin.rcode
-    # a simple calculator
+    # 単純な計算
     1 + 1
-    # boring random numbers
+    # 退屈な乱数生成
     set.seed(123)
     rnorm(5)
     end.rcode-->
 
-  <p>We can also produce plots (centered by the
-  option <code>fig.align='center'</code>):</p>
+  <p>図を生成することもできます (<code>fig.align='center'</code>オプションで中央揃えしています).</p>
 
 <!--begin.rcode cars-scatter, fig.align='center'
     plot(mpg ~ hp, data = mtcars)
     end.rcode-->
 
-  <p>Errors, messages and warnings can be put into
-  <code>div</code>s with different <code>class</code>es:</p>
+  <p>エラー, メッセージ, 警告文はそれぞれ異なる<code>class</code>を持つ <code>div</code> 内に配置されます.</p>
 
 <!--begin.rcode
-    sqrt(-1)  # warning
+    sqrt(-1)  # 警告
     message('knitr says hello to HTML!')
-    1 + 'a'  # mission impossible
+    1 + 'a'  # ミッションインポッシブル
     end.rcode-->
 
-  <p>Well, everything seems to be working. Let's ask R what is
-  the value of &pi;? Of course it is <!--rinline pi -->.</p>
+  <p>さて全てうまくいっているようです. R に &pi; の値を聞いてみましょう. もちろん答えは <!--rinline pi --> です.</p>
 
 </body>
 </html>

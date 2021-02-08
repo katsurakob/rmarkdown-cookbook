@@ -1,5 +1,5 @@
 ---
-title: Style text with officedown
+title: officedown でテキストにスタイルを適用する
 output:
   officedown::rdocx_document: default
 ---
@@ -10,7 +10,6 @@ library(officer)
 ft <- fp_text(color = 'red', bold = TRUE)
 ```
 
-# Test
+# テスト
 
-The **officedown** package is
-`r ftext('awesome', ft)`!
+**officedown** パッケージは `r ftext('すごい', ft)`!
