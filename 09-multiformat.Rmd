@@ -1,12 +1,12 @@
-# Multiple Output Formats {#multi-formats}
+# 複数の出力フォーマット {#multi-formats}
 
-One main advantage of R Markdown is that it can create multiple output formats from a single source, which could be one or multiple Rmd documents. For example, this book was written in R Markdown, and compiled to two formats: PDF for printing, and HTML for the online version.
+R Markdown の主な利点は1つのソースから複数種類の出力フォーマットを作成できることです. これは1つ以上の Rmd ファイルでも可能です. 例えば本書は R Markdown で書かれ, 2種類のフォーマットでコンパイルされています. 印刷用の PDF と, オンライン版の HTML です.
 
-Sometimes it can be challenging to make an output element of a code chunk work for all output formats. For example, it is extremely simple to create a rounded and circular image in HTML output with a single CSS rule (`img { border-radius: 50%; }`), but not so straightforward in LaTeX output (typically it will involve TikZ graphics).
+コードチャンクの出力を全ての出力フォーマットに対応させるのは時には難題になることがあります. 例えばたった1つの CSS ルール (`img { border-radius: 50%; }`) で HTML 出力に対して円の画像を作成するのは非常に単純ですが, LaTeX 出力ではこれとそのまま同じようにはいきません. 典型的には Tikz グラフィックスに関係する問題になります.
 
-Sometimes it is just impossible for an output element to work for all output formats. For example, you can easily create a GIF animation with the **gifski** package [@R-gifski] (see Section \@ref(animation)), and it will work perfectly for HTML output, but embedding such an animation in LaTeX output is not possible without extra steps of processing the GIF file and using extra LaTeX packages.
+単に出力要素が出力フォーマットの全てに対して動作しないこともあります. 例えば **gifski** パッケージ [@R-gifski] (\@ref(animation)節参照) で GIF アニメを簡単に作ることができ, これは HTML 出力では完璧に動作しますが, LaTeX 出力に埋め込んだものは追加の GIF ファイルの処理と LaTeX パッケージなしでは不可能です.
 
-This chapter provides a few examples that can work for multiple formats. If a certain feature is only available to a specific output format, we will show you how to conditionally enable or disable it based on the output format.
+この章では複数のフォーマットで動作する例を少しだけ提示します. ある機能が特定の出力フォーマットでのみ有効なら, その出力形式に基づいて条件付きで有効・無効にする方法を提示します.
 
 ## LaTeX or HTML output {#latex-html}
 
