@@ -10,7 +10,7 @@ bibliography:
   - bib/packages.bib
   - bib/literature.bib
   - 'bib/literature-ja.bib'
-description: This book showcases short, practical examples of lesser-known tips and tricks to helps users get the most out of these tools. After reading this book, you will understand how R Markdown documents are transformed from plain text and how you may customize nearly every step of this processing. For example, you will learn how to dynamically create content from R code, reference code in other documents or chunks, control the formatting with customer templates, fine-tune how your code is processed, and incorporate multiple languages into your analysis.
+description: 本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう.
 mainfont: "DejaVu Serif"
 mainfontoptions:
   - Scale=0.9
