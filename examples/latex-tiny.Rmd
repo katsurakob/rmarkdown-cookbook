@@ -1,8 +1,10 @@
 ---
-title: Render a table in a tiny environment
+title: tiny 環境内で表をレンダリングする
 output:
-  pdf_document: default
+  pdf_document:
+    latex_engine: lualatex
   html_document: default
+documentclass: ltjsarticle
 ---
 
 ```{r, setup, include=FALSE}
@@ -12,7 +14,7 @@ options(knitr.table.format = function() {
 })
 ```
 
-The LaTeX environment `tiny` is only generated for LaTeX output.
+LaTeX 環境の `tiny` は LaTeX 出力でのみ生成されます.
 
 ```{r, include=knitr::is_latex_output()}
 knitr::asis_output('\n\n\\begin{tiny}')
@@ -26,7 +28,7 @@ knitr::kable(mtcars)
 knitr::asis_output('\\end{tiny}\n\n')
 ```
 
-By comparison, below is the table with the normal font size.
+比較のため, 以下に通常のフォントサイズの表を配置します.
 
 ```{r}
 knitr::kable(mtcars)

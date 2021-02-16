@@ -8,22 +8,22 @@ R Markdown の主な利点は1つのソースから複数種類の出力フォ�
 
 この章では複数のフォーマットで動作する例を少しだけ提示します. ある機能が特定の出力フォーマットでのみ有効なら, その出力形式に基づいて条件付きで有効・無効にする方法を提示します.
 
-## LaTeX or HTML output {#latex-html}
+## LaTeX か HTML か {#latex-html}
 
-LaTeX and HTML are two commonly used output formats. The function `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} tells you if the output format is LaTeX (including Pandoc output formats `latex` and `beamer`). Similarly, the function `knitr::is_html_output`\index{knitr!is\_html\_output()} tells you if the output format is HTML. By default, these Pandoc output formats are considered HTML formats: `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, and `slidy`. If you do not think a certain Pandoc format is HTML, you may use the `excludes` argument to exclude it, e.g.,
+LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} 関数は出力フォーマットが LaTeX かどうか (Pandoc 出力フォーマットの `latex` および `beamer`) を教えてくれます. 同様に `knitr::is_html_output`\index{knitr!is\_html\_output()} 関数は出力フォーマットが HTML かどうか教えてくれます. デフォルトでは Pandoc 出力フォーマットのうち `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, そして `slidy` が HTML 出力とみなされます.  です. ある Pandoc 出力が HTML であると思えないなら, そのフォーマットを除外するために, 例えばこのように `excludes` 引数を使えます.
 
 ```{r, collapse=TRUE}
-# do not treat markdown as an HTML format
+# markdown を HTML として扱わない
 knitr::is_html_output(excludes = 'markdown')
 ```
 
-If a certain output element can only be generated in LaTeX or HTML, you can use these functions to conditionally generate it. For example, when a table is too big on a PDF page, you may include the table in an environment of a smaller font size, but such a LaTeX environment certainly will not work for HTML output, so it should not be included in HTML output (if you want to tweak the font size for HTML output, you may use CSS). Below is a full example:
+特定の出力要素を LaTeX または HTML でのみ生成することができるのなら, これらの関数は条件つきで生成するのに使うことができます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるといいでしょうが, そういった LaTeX 環境はおそらく HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うと良いでしょう). 以下はその例です.
 
 `r import_example('latex-tiny.Rmd')`
 
-The key in the above example is the chunk option `include = knitr::is_latex_output()`\index{chunk option!include}. That is, the environment `\begin{tiny} \end{tiny}` is only included when the output format is LaTeX. The two tables in the example will look identical when the output format is not LaTeX.
+上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
 
-In Section \@ref(font-color), we used these functions to change the text color for HTML and LaTeX output. In Section \@ref(animation), we showed an animation example, which also used this trick. The code chunk that generated the animation for HTML output and static images for LaTeX output is like this:
+\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
 
 ````md
 ```{r animation.hook=if (knitr::is_html_output()) 'gifski'}`r ''`
@@ -33,11 +33,13 @@ for (i in 1:2) {
 ```
 ````
 
-These conditional functions can be used anywhere. You can use them in other chunk options (e.g., `eval` for conditional evaluation of the chunk), or in your R code, e.g.,
+これらの条件付き関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
+
+TODO: conditional functions をなんと呼ぶのが良いか
 
 ````md
 ```{r, eval=knitr::is_html_output(), echo=FALSE}`r ''`
-cat('You will only see me in HTML output.')
+cat('これは HTML 出力でのみ見えます')
 ```
 
 ```{r}`r ''`

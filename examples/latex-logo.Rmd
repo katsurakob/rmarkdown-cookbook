@@ -6,8 +6,6 @@ output:
   pdf_document:
     latex_engine: lualatex
 documentclass: ltjsarticle
-mainfont: 'Noto Serif CJK JP'
-sasnfont: 'Noto Sans CJK JP'
 header-includes:
   - \usepackage{titling}
   - \pretitle{\begin{center}
