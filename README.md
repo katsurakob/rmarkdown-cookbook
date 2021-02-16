@@ -1,5 +1,8 @@
 # R Markdown Cookbook
 
+
+## About this
+
 このリポジトリは『R Markdown クックブック』翻訳版のソースコードを含んでいます. **現在, 翻訳版は作成中です**
 
 完成版は https://gedevan-aleksizde.github.io/rmarkdown-cookbook で公開する予定です.
@@ -9,6 +12,10 @@
 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) で提供されています. オンライン版のオリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
 
 This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
+
+## 進捗状況
+
+SS 9.1 まで翻訳 (全17章 + Appendix)
 
 ## 関連リンク
 
