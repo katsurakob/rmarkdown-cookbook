@@ -49,9 +49,9 @@ if (knitr::is_latex_output()) {
 ```
 ````
 
-## Display HTML widgets {#html-widgets}
+## HTML ウィジェットを表示する {#html-widgets}
 
-HTML widgets (<https://htmlwidgets.org>)\index{HTML!widgets} are typically interactive JavaScript applications, which only work in HTML output. If you knit an Rmd document containing HTML widgets to a non-HTML format such as PDF or Word, you may get an error message like this:
+HTML ウィジェット (<https://htmlwidgets.org>)\index{HTML!ウィジェット} は典型的にはインタラクティブな JavaScript アプリケーションで, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit するなら, このようなエラーメッセージが返ってくるかもしれません.
 
 ```md
 Error: Functions that produce HTML output found in document
@@ -66,44 +66,46 @@ Note however that the HTML output will not be visible in
 non-HTML formats.
 ```
 
-There is actually a better solution than the one mentioned in the above error message, but it involves extra packages. You can install the **webshot** package [@R-webshot]\index{R package!webshot} in R and also install PhantomJS\index{PhantomJS}:
+上記のエラーメッセージの方法よりも良い解決法が存在しますが, 追加のパッケージが絡んできます. R に **webshot** パッケージ[@R-webshot]\index{R パッケージ!webshot} をインストールし, さらに PhantomJS\index{PhantomJS} をインストールしてください.
 
 ```{r, eval=FALSE}
 install.packages('webshot')
 webshot::install_phantomjs()
 ```
 
-Then if you knit an Rmd document with HTML widgets to a non-HTML format, the HTML widgets will be displayed as static screenshots. The screenshots are automatically taken in **knitr**. [Section 2.10](https://bookdown.org/yihui/bookdown/html-widgets.html) of the **bookdown** book contains more information on finer control over the screenshots.
+それから HTML ウィジェットつきの Rmd 文書を非 HTML フォーマットで knit すれば, HTML ウィジェットは静的なスクリーンショットとして表示されます. スクリーンショットは **knitr** によって自動的に作られます. **bookdown** 本の [Section 2.10](https://bookdown.org/yihui/bookdown/html-widgets.html) に, スクリーンショットの詳しい操作方法が書かれています.
 
-## Embed a web page {#include-url}
+## Web ページの埋め込み {#include-url}
 
-If you have the **webshot** package [@R-webshot]\index{R package!webshot} and PhantomJS\index{PhantomJS} installed (see Section \@ref(html-widgets)), you can embed any web page in the output document through `knitr::include_url()`\index{knitr!include\_url()}. When you pass a URL of a web page to this function in a code chunk, it will generate an `<iframe>` (inline frame)\index{HTML!iframe} if the output format is HTML, and a screenshot of the web page for other output formats. You can view the actual page in the inline frame. For example, Figure \@ref(fig:include-url) should show you my homepage if you are reading the online version of this book, otherwise you will see a static screenshot instead.
+**webshot** パッケージ [@R-webshot]\index{R パッケージ!webshot} と PhantomJS\index{PhantomJS} をインストール (\@ref(html-widgets)説参照)していれば, `knitr::include_url()`\index{knitr!include\_url()} でどんな web ページも出力文書に埋め込むことができます. コードチャンク内でこの関数に URL を与えれば, 出力フォーマットが HTML ならば `<iframe>` (インラインフレーム)\index{HTML!iframe} が生成され, 他のパッケージならばスクリーンショットが埋め込まれます. 例えば図\@ref(fig:include-url)は, 本書のオンライン版を読んでいるなら私の個人サイトが, それ以外なら代わりに静的なスクリーンショットが現れているはずです.
 
 \let\ooldhref\href
 \let\href\oldhref
 
-```{r, include-url, out.width='100%', fig.cap="Embed Yihui's homepage as an iframe or screenshot.", dev='png', cache=TRUE, screenshot.opts=list(vwidth=992)}
+```{r, include-url, out.width='100%', fig.cap="iframe または screenshot による Yihui's のホームページ", dev='png', cache=TRUE, screenshot.opts=list(vwidth=992)}
 knitr::include_url('https://yihui.org')
 ```
 
 \let\href\ooldhref
 
-Most chunk options related to figures also work for `knitr::include_url()`, such as `out.width` and `fig.cap`.
+`out.width` や `fig.cap` といった図に関連するほとんどのチャンクオプションが `knitr::include_url()` でも機能します.
 
-If you have published a Shiny app publicly on a server, you can use `knitr::include_app()`\index{knitr!include\_app()} to include it, which works in the same way as `include_url()`. [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) of the **bookdown** book [@bookdown2016] contains more details about `include_app()` and `include_url()`.
+サーバ上で Shiny アプリを公開しているなら, これを文書に含めるために `knitr::include_app()`\index{knitr!include\_app()} を使うことができます. これは `include_url()` と同じように動作します. **bookdown** 本 [@bookdown2016] の [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) には `include_app()` と `include_url()` に関する詳細な話が書かれています.
 
-## Multiple figures side by side {#figures-side}
+## 複数の図を横並びに {#figures-side}
 
-You can place multiple figures side by side using the `fig.show="hold"`\index{chunk option!fig.show} along with the `out.width` option\index{chunk option!out.width}. In the example below, we have set `out.width="50%"` (see Figure \@ref(fig:figures-side) for the output):
+`fig.show="hold"`\index{チャンクオプション!fig.show} と `out.width` option\index{チャンクオプション!out.width} オプションを併用して複数の図を並べることができます. 以下の例では `out.width="48%"` を設定し, 出力は図\@ref(fig:figures-side)になります.
 
 `r import_example('figures-side.Rmd')`
 
-```{r, child='examples/figures-side.Rmd', echo=FALSE, fig.dim=c(5, 4), fig.cap="Side-by-side figures."}
+```{r, child='examples/figures-side.Rmd', echo=FALSE, fig.dim=c(5, 4), fig.cap="横に並べた図"}
 ```
 
-This simple approach works for both PDF and HTML output.
+この単純なアプローチは PDF でも HTML 出力でも動作します.
 
-If you want to use sub-figures when there are multiple plots in a figure, you may see Section \@ref(latex-subfigure), but please note that sub-figures are only supported in LaTeX output.
+**訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48%  と少し小さくしています.
+
+図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, \@ref(latex-subfigure)説を見るとよいでしょう. しかしサブフィギュアは LaTeX に対してのみのサポートです.
 
 ## Write raw content (\*) {#raw-content}
 
