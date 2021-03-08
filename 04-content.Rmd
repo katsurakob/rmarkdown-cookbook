@@ -496,6 +496,8 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 > --- 山部赤人
 > :::
 
+TODO: quote poem だと flushrght が作られない?
+
 時に「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. 「コーディング」という行為にこだわりすぎないでください.
 
 ## モデルを数式に変換する {#equatiomatic}

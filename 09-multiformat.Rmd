@@ -51,7 +51,7 @@ if (knitr::is_latex_output()) {
 
 ## HTML ウィジェットを表示する {#html-widgets}
 
-HTML ウィジェット (<https://htmlwidgets.org>)\index{HTML!ウィジェット} は典型的にはインタラクティブな JavaScript アプリケーションで, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit するなら, このようなエラーメッセージが返ってくるかもしれません.
+HTML ウィジェット (<https://htmlwidgets.org>)\index{HTML!ウィジェット} は典型例で言えばインタラクティブな JavaScript アプリケーションで, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit するなら, このようなエラーメッセージが返ってくるかもしれません.
 
 ```md
 Error: Functions that produce HTML output found in document
@@ -107,14 +107,14 @@ knitr::include_url('https://yihui.org')
 
 図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, \@ref(latex-subfigure)説を見るとよいでしょう. しかしサブフィギュアは LaTeX に対してのみのサポートです.
 
-## Write raw content (\*) {#raw-content}
+## 生のコードを書く (\*) {#raw-content}
 
-The technique introduced in Section \@ref(raw-latex) is actually a general technique. You can protect any complex raw content in Markdown by specifying the content as "raw." For example, if you want to write raw HTML content, you can use the attribute `=html`:
+\@ref(raw-latex)節で紹介したテクニックは実に汎用的なものです. たどんな複雑な生のコードであっても Markdown 内で「生の」コンテンツとして指定すれば保護されます. 例えば HTML を直接書いたなら, `=html` 属性を使用することができます.
 
 ````md
 ```{=html}
-<p>Any <strong>raw</strong> HTML content works here.
-For example, here is a Youtube video:</p>
+<p>どんな<strong>生の</strong> HTML コンテンツでもここでは動作します.
+例えば, ここにユーチューブのビデオがあります.</p>
 
 <iframe width="100%" height="400"
   src="https://www.youtube.com/embed/s3JldKoA0zw?rel=0"
@@ -123,7 +123,7 @@ For example, here is a Youtube video:</p>
 ```
 ````
 
-The attribute name is the Pandoc output format name. If you want to know the output format name, you may check the output of the code chunk below inside an Rmd document\index{knitr!pandoc\_toc()}:
+属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力を確認すればよいでしょう\index{knitr!pandoc\_toc()}.
 
 ````md
 ```{r}`r ''`
@@ -131,26 +131,24 @@ knitr:::pandoc_to()
 ```
 ````
 
-Please note that raw content is only visible to a specific output format. For example, raw LaTeX content will be ignored when the output format is HTML.
+生のコンテンツは特定の出力フォーマットでのみ表示されることに注意してください. 例えば生の LaTeX コンテンツは出力フォーマットが HTML の場合は無視されます.
 
-## Custom blocks (\*) {#custom-blocks}
+## カスタムブロック (\*) {#custom-blocks}
 <!-- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown -->
 
-[Section 2.7](https://bookdown.org/yihui/bookdown/custom-blocks.html) of the **bookdown** book mentioned how we can use custom blocks in R Markdown to customize the appearance of blocks of content. This can be a useful way to make some content stand out from your report or book, to make sure that your readers take away the key points from your work. Examples of how these blocks could be used include:
+**bookdown** 本の [2.7節](https://bookdown.org/yihui/bookdown/custom-blocks.html) では, どうすれば R Markdown でブロックの見た目をカスタマイズできるかを話しました. これはレポートや本の中で, 読者があなたの著作の中の要点を確実に取りせるようにコンテンツを目立たせるための, 便利な方法になりうるでしょう. これらのブロックをどう使うかの例として, 次のようなものがあります.
 
-- display a warning message to make sure users are using up-to-date packages before running your analysis;
+- あなたの分析コードを実行する前に, ユーザが最新のパッケージを使用しているか確認するための警告メッセージを表示する.
+- ソースコードのある GitHub リポジトリへのリンクを文書の冒頭に追加する.
+- あなたの分析から得られた要点や知見を強調する.
 
-- add a link at the beginning of your document to your GitHub repository containing the source;
+この節では PDF と HTML の両方でカスタムブロックを作成する方法を説明します. どちらのフォーマットでも R Markdown 上で同じ整形の構文を使用できますが, 要求される設定は異なります.
 
-- highlight key results and findings from your analysis.
+### 構文 {#block-syntax}
 
-In this section, we will explain how to create your own custom blocks for both PDF and HTML output. They can both use the same formatting syntax in the R Markdown document, but require different configurations.
+カスタムブロックの構文は Pandoc の [fenced `Div` blocks](https://pandoc.org/MANUAL.html#divs-and-spans) に基づいています. `Div` ブロック\index{Div}はとても強力ですが1つだけ問題があります. これはおもに HTML 出力に対して動作し, LaTeX 出力に対しては動作しないことです.
 
-### Syntax {#block-syntax}
-
-The syntax for custom blocks is based on Pandoc's [fenced `Div` blocks.](https://pandoc.org/MANUAL.html#divs-and-spans) `Div` blocks\index{Div} are very powerful, but there is a problem at the moment: they mainly work for HTML output and do not work for LaTeX output.
-
-Since version 1.16 of the **rmarkdown** package, it has been possible to convert `Div` blocks to both HTML and LaTeX. For HTML output, all attributes of the block will become attributes of the `<div>` tag. For example, a `Div` can have an ID (after `#`), one or multiple classes (class names are written after `.`), and other attributes. The following `Div` block
+バージョン 1.16 以降の **rmarkdown** パッケージは `Div` ブロックを HTML と LaTeX どちらに対しても変換するようになりました. HTML 出力に対してはブロックの全ての属性が `<div>` タグの属性になります. 例えば `Div` は ID (`#` の後のに続くもの), 1つまたは複数のクラス (クラス名は `.` の後に書かれるものです), そしてそれ以外の属性を持ちます. 以下の `Div` ブロック,
 
 ```md
 ::: {#hello .greeting .message width="40%"}
@@ -158,7 +156,7 @@ Hello **world**!
 :::
 ```
 
-will be converted to the HTML code below:
+は以下の HTML コードに変換されます.
 
 ```html
 <div id="hello" class="greeting message" width="40%">
@@ -166,55 +164,53 @@ will be converted to the HTML code below:
 </div>
 ```
 
-For LaTeX output, the first class name will be used as the LaTeX environment name. You should also provide an attribute named `data-latex`\index{Div!LaTeX compatability} in the `Div` block, which will be the arguments of the environment. This attribute can be an empty string if the environment does not need arguments. We show two simple examples below. The first example uses the `verbatim` environment in LaTeX, which does not have any arguments:
+LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, `data-latex`\index{Div!LaTeXとの互換性} と名付けた属性を `Div` ブロックに与えるべきです. これは環境に対する引数になります. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で `verbatim` 環境を使用します. これは引数を必要としません.
 
 ````md
 ::: {.verbatim data-latex=""}
-We show some _verbatim_ text here.
+ここに _verbatim_ テキストを表示.
 :::
 ````
 
-Its LaTeX output will be:
+LaTeX 出力はこうなります.
 
 ```tex
 \begin{verbatim}
-We show some \emph{verbatim} text here.
+ここに \emph{verbatim} テキストを表示.
 \end{verbatim}
 ```
 
-When the block is converted to HTML, the HTML code will be:
+ブロックが HTML へと変換される場合は, HTML コードはこのようになります.
 
 ```html
 <div class="verbatim">
-We show some <em>verbatim</em> text here.
+ここに <em>verbatim</em> テキストを表示.
 </div>
 ```
 
-The second example uses the `center` and `minipage` environments to display some text in a centered box of half of the page width.
+2つ目の例は `center` と `minipage` 環境を使い, ページ幅の半分の大きさの中央揃えしたボックス内にテキストを表示しています.
 
 ```md
 :::: {.center data-latex=""}
 
 ::: {.minipage data-latex="{.5\linewidth}"}
-This paragraph will be centered on the page, and
-its width is 50% of the width of its parent element.
+この段落は中央揃えされ, 親要素の半分の幅で表示されます.
 :::
 
 ::::
 ```
 
-Note that we nested the `minipage` block in the `center` block. You need more colons for a parent block to include a child block. In the above example, we used four colons (you can use five or more) for the `center` block. The two blocks will be converted to the LaTeX code below:
+`center` ブロックの中に `minipage` ブロックをネストしていることに注意してください. 親ブロックに子ブロックを入れるには, さらに1つ余分にコロンが必要です. 上記の例では `center` ブロックに4つのコロンを使用していますが, 5個以上書くことも可能です. 2つのブロックは以下の LaTeX コードに変換されます.
 
 ```tex
 \begin{center}
 \begin{minipage}{.5\linewidth}
-This paragraph will be centered on the page, and
-its width is 50\% of the width of its parent element.
+この段落は中央揃えされ, 親要素の半分の幅で表示されます.
 \end{minipage}
 \end{center}
 ```
 
-It is up to the user to define the appearance of their `<div>` blocks via CSS for the HTML output. Similarly, for LaTeX output, you may use the command `\newenvironment` to define the environment if it has not been defined, or `\renewenvironment` to redefine an existing environment in LaTeX. In the LaTeX definitions, you can decide on the appearance of these blocks in PDF. These customizations will normally be contained in their own files such as `style.css` or `preamble.tex`, and then included within the YAML options:
+HTML 出力では, ユーザーの好みで CSS によって `<div>` ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば `\newenvironment` を, 既存の環境を再定義するならば `\renewenvironment` コマンドを LaTeX 上で使うと良いでしょう. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は `style.css` や `preamble.tex` といったファイルを内に記述子, YAML オプションで読み込みます.
 
 ```yaml
 ---
@@ -227,9 +223,9 @@ output:
 ---
 ```
 
-Next we will demonstrate a few more advanced custom blocks that use custom CSS rules and LaTeX environments. You may find an additional example in Section \@ref(multi-column), in which we arranged multiple blocks in a multi-column layout.
+次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. \@ref(multi-column)節にさらなる使用例として, 多段組みレイアウト内で複数ブロックを並べるものがあります.
 
-### Adding a shaded box {#block-shaded}
+### 影付きブロックを追加する {#block-shaded}
 
 First, we show how to include content in a shaded box. The box has a black background with an orange frame with rounded corners. The text in the box is in white.
 
