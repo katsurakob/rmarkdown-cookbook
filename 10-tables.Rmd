@@ -1,23 +1,21 @@
-# Tables
+# 表 {#tables}
 
-Tables are one of the primary ways in which we can communicate results in a report. You may often desire to tweak their appearance to suit your particular needs. In this chapter, we will introduce techniques that can be used to customize tables. This chapter aims to do the following:
+表は, レポート上で結果を伝えることができる主要な手段です. 表をあなたの独自の要件に合った外見に調整したいと思うことはしばしばあるでしょう. この章では表のカスタマイズに使えるテクニックを紹介します. この章のねらいは以下のとおりです.
 
-- Show all features of the table-generating function `knitr::kable()`.
+- 表生成関数 `knitr::kable()` の全ての特徴を紹介する
+- **kableExtra** パッケージ [@R-kableExtra] を使用したより発展的な表のカスタマイズに焦点を当てる
+- 表を生成してくれる他のパッケージの一覧を提示する
 
-- Highlight more advanced customization of tables using the **kableExtra** package [@R-kableExtra].
+## `knitr::kable()` 関数 {#kable}
 
-- Provide a list of other packages that produce tables.
-
-## The function `knitr::kable()` {#kable}
-
-The `kable()`\index{knitr!kable()} function in **knitr** is a very simple table generator, and is simple by design. It only generates tables for strictly rectangular data such as matrices and data frames. You cannot heavily format the table cells or merge cells. However, this function does have a large number of arguments for you to customize the appearance of tables:
+**knitr** パッケージの `kable()`\index{knitr!kable()} 関数はとてもシンプルな表生成用の関数で, 表のデザインもシンプルです. 行列やデータフレーム厳密に矩形状のデータに対してのみ表を生成します. 表のセルを細かく整形したりセルを結合したりはできません. しかしこの関数は表の外見をカスタマイズする多くの引数を持っています.
 
 ```{r code=formatR::usage(knitr::kable, output=FALSE), eval=FALSE}
 ```
 
-### Supported table formats {#kable-formats}
+### サポートする表形式 {#kable-formats}
 
-In most cases, `knitr::kable(x)` may be enough if you only need a simple table for the data object `x`. The `format` argument is automatically set according to the **knitr** source document format. Its possible values are `pipe` (tables with columns separated by pipes), `simple` (Pandoc's simple tables), `latex` (LaTeX tables), `html` (HTML tables), and `rst` (reStructuredText tables). For R Markdown documents, `kable()` uses the `pipe` format for tables by default, which looks like this:
+データオブジェクト `x` を単純な表で表すことだけが必要ならば, ほとんどの場合, `knitr::kable(x)` で十分でしょう. `format` 引数は **knitr** のソース文書フォーマットに従って自動的に設定されます. 使用可能な値は列をパイプで区切った `pipe`, Pandoc 式の単純な表である `simple`, LaTeX の表 `latex`, HTML の表 `html`, reStructuredText (rst) 形式の `rst` です. R Markdown 文書に対して `kable()` はデフォルトで `pipe` フォーマットを使用し, このような外見になります.
 
 ```{r, echo=FALSE}
 # print kable() results as text instead of real tables
@@ -31,6 +29,7 @@ kat = function(x, ...) {
 knitr::kable(head(mtcars[, 1:4]), 'pipe')
 ```
 
+単純な表, そして HTML, LaTeX, reStructuredText での表を生成できます.
 You can also generate simple tables, or tables in HTML, LaTeX, and reStructuredText:
 
 ```{r comment='', render=kat, class.output='md'}
@@ -47,15 +46,15 @@ knitr::kable(head(mtcars[, 1:4]), 'latex')
 knitr::kable(head(mtcars[, 1:4]), 'rst')
 ```
 
-Please note that only the formats `pipe` and `simple` are portable, i.e., they work for any output document format. Other table formats only work for specific output formats, e.g., `format = 'latex'` only works for LaTeX output documents. Using a specific table format will give you more control, at the price of sacrificing portability.
+`pipe` と `simple` のフォーマットのみが移植可能だと覚えておいてください. つまり, これらだけがいずれの出力文書フォーマットでも動作します. それ以外の表形式は特定のフォーマットに対してのみ, 例えば `format = 'latex'` は LaTeX 出力に対してのみの動作です. 移植性を犠牲にする代わりに, 特定の表形式を使うことでより細かい操作ができます.
 
-If you only need one table format that is not the default format for a document, you can set the global R option `knitr.table.format`, e.g.,
+特定の1つの表形式だけが必要で, それが文書のデフォルト形式でないなら, `knitr.table.format` という R のグローバルオプションで一括設定できます. 例えばこのように.
 
 ```{r, eval=FALSE}
 options(knitr.table.format = 'latex')
 ```
 
-This option can also be a function that returns the format string or `NULL`. In the case of `NULL`, **knitr** will try to automatically decide the appropriate format. For example, we can use the `latex` format only when the output format is LaTeX:
+このオプションには, 表形式を表す文字列か `NULL` を返す関数を与えることもできます. `NULL` の場合は **knitr** は適切な表形式を自動的に決定しようとします. 例えば出力フォーマットが LaTeX の場合のみ `latex` を使用できます.
 
 ```{r, eval=FALSE}
 options(knitr.table.format = function() {
@@ -63,48 +62,48 @@ options(knitr.table.format = function() {
 })
 ```
 
-### Change column names
+### 列名を変更する {#change-column-names}
 
 <!-- https://stackoverflow.com/questions/51432502/replace-column-names-in-kable-r-markdown/51444998#51444998 -->
 
-The names of columns in a data frame may not be the same as what we want to display to readers. In R, the column names of data often do not use spaces to separate words but dots or underscores instead. This may not feel natural when we read them in a table. We can use the `col.names` argument to replace the column names with a vector of new names. For example, we substitute the dots with spaces in the column names of the `iris` data:
+データフレームの列の名前と読者に見せたいものは一致しないかもしれません. R ではデータの列名で, しばしば単語を区切るのにスペースを使わずドットやアンダースコアで代用することがあります. これはこれは表を読む上で不自然に感じるでしょう. `col.names` 引数で列名をを新しい名前の列に置き換えることができます. 例えば `iris` データの列名のドットをスペースに置換します.
 
 ```{r}
 iris2 = head(iris)
 knitr::kable(iris2, col.names = gsub('[.]', ' ', names(iris)))
 ```
 
-The `col.names` argument can take an arbitrary character vector (not necessarily the modified column names via functions like `gsub()`), as long as the length of the vector is equal to the number of columns of the data object, e.g.,
+`col.names` 引数には必ずしも `gsub()` ような関数で列を与える必要はなく, 元のデータオブジェクトの列数と同じ長さであれば, 好きな文字列ベクトルを与えることができます. 例えば以下のように.
 
 ```{r, eval=FALSE, tidy=FALSE}
 knitr::kable(
   iris,
-  col.names = c('We', 'Need', 'Five', 'Names', 'Here')
+  col.names = c('ここ', 'には', '5つの', '名前が', '必要')
 )
 ```
 
-### Specify column alignment
+### 列のアラインメントを指定する {#specify-column-alignment}
 
-To change the alignment of the table columns, you can use either a vector of values consisting of characters `l` (left), `c` (center), and `r` (right) or a single multi-character string for alignment, so `kable(..., align = c('c', 'l'))` can be shortened to `kable(..., align = 'cl')`. By default, numeric columns are right-aligned, and other columns are left-aligned. Here is an example:
+表の各列のアラインメントを変更するには, 左揃え `l`, 中央揃え `c`, 右揃え `r` のどれかと一致する1文字のベクトルまたは, 1つの文字列で指定できます. よって `kable(..., align = c('c', 'l'))` は `kable(..., align = 'cl')` に省略できます. デフォルトでは, 数値列は右揃えで, それ以外は左揃えになります. これが使用例です.
 
 ```{r}
-# left, center, center, right, right
+# 左, 中央, 中央, 中央, 右, 右揃え
 knitr::kable(iris2, align = 'lccrr')
 ```
 
-### Add a table caption {#kable-caption}
+### 表にキャプションを追加する {#kable-caption}
 
-You can add a caption to the table via the `caption` argument, e.g. (see Table \@ref(tab:kable-cap) for the output),
+`caption` 引数で表にキャプションを追加できます. 以下が例です (表\@ref(tab:kable-cap)参照).
 
 ```{r kable-cap}
-knitr::kable(iris2, caption = 'An example table caption.')
+knitr::kable(iris2, caption = '表のキャプションの例')
 ```
 
-As we mentioned in Section \@ref(cross-ref), a table can be cross-referenced when it has a caption and the output format is from **bookdown**.
+\@ref(cross-ref)節で言及したように, 出力フォーマットが **bookdown** パッケージ由来のものであれば, キャプションのある表を相互参照することができます.
 
-### Format numeric columns
+### 数値列を整形する {#format-numeric-columns}
 
-You can set the maximum number of decimal places via the `digits` argument (which will be passed to the `round()` function), and other formatting arguments via `format.args` (to be passed to the `format()` function in base R). First we show a few simple examples of `round()` and `format()` so you will understand how the arguments work later in `kable()`:
+小数点以下の最大表示桁数を `digits` 引数で指定できます. 値は `round()` 関数に与えられるものと同じです. それ以外の整形用の引数は base R の `format()` 関数に与えられるものを `format.args` に与えられます. まず `round()` や `format()` を使ったいくつかの簡単な例をお見せすれば, この後の `kable()` 引数がどう動作するか理解できることでしょう.
 
 ```{r, collapse=TRUE}
 round(1.234567, 0)
@@ -114,102 +113,102 @@ format(1000, scientific = TRUE)
 format(10000.123, big.mark = ',')
 ```
 
-Then we round and format numbers in a table:
+それでは表の数値を丸め整形します.
 
 ```{r, R.options=list(digits = 7)}
 d = cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 0, 1000))
-# at most 4 decimal places
+# 最大で4桁表示
 knitr::kable(d, digits = 4)
-# round columns separately
+# 列ごとにそれぞれ丸める
 knitr::kable(d, digits = c(5, 0, 2))
-# do not use the scientific notation
+# 指数表記を使わせない
 knitr::kable(d, digits = 3, format.args = list(scientific = FALSE))
-# add commas to big numbers
+# 大きな数に対してカンマ区切りする
 knitr::kable(d, digits = 3, format.args = list(big.mark = ',', scientific = FALSE))
 ```
 
-### Display missing values
+### 欠損値を表示する {#display-missing-values}
 
-By default, missing values (i.e., `NA`) are displayed as the character string `NA` in the table. You can replace them with other values or choose not to display anything (i.e., leave the `NA` cells empty) with the global R option `knitr.kable.NA`, e.g., we make `NA` cells empty in the second table and display `**` in the third table below:
+デフォルトでは欠損値 (`NA`) は表の上で `NA` という文字で表示されます. これを R のグローバルオプション `knitr.kable.NA`  で他の値に置き換えたり何も表示させない, つまり `NA` を空白にする, といったことができます. 例えば以下の2つ目の表では `NA` を空白に置き換え, 3つ目の表で `**` で表示しています.
 
 ```{r}
 d[rbind(c(1, 1), c(2, 3), c(3, 2))] = NA
-knitr::kable(d)  # NA is displayed by default
-# replace NA with empty strings
+knitr::kable(d)  # デフォルトでは NA は表示される
+# NA を空白に置き換え
 opts = options(knitr.kable.NA = '')
 knitr::kable(d)
 options(knitr.kable.NA = '**')
 knitr::kable(d)
-options(opts)  # restore global R options
+options(opts)  # グローバルオプションを元に戻す
 ```
 
-### Escape special characters
+### 特殊文字をエスケープする {#escape-special-characters}
 
-If you are familiar with HTML or LaTeX, you know that there are a few special characters in these languages. To generate safe output, `kable()` will escape these special characters by default via the argument `escape = TRUE`, which means all characters will be generated verbatim, and special characters lose their special meanings. For example, `>` will be substituted with `&gt;` for HTML tables, and `_` will be escaped as `\_` for LaTeX tables. If you are an expert and know how to use special characters properly, you may disable this argument via `escape = FALSE`. In the second table below, we include a few LaTeX math expressions that contain special characters `$`, `\`, and `_`:
+あなたがもし HTML や LaTeX に詳しいなら, これらの言語にいくつかの特殊文字があることを知っているでしょう. 安全に出力するために, `kable()` はデフォルトでは `escape = TRUE` 引数によって特殊文字をエスケープし, これは全ての文字がそのまま表示され, 特殊文字はその特別な意味を失います. 例えば `>` は HTML の表に対しては `&gt;` に置き換えられ, LaTeX の表に対しては `_` は `\_` としてエスケープされます. あなたが専門家で, 特殊文字を適切に扱う方法を知っているなら, `escape = FALSE` 引数によってこれを無効化すると良いでしょう. 以下の2つ目の表では, 特殊文字である `$`, `\`, `_` を含む LaTeX の数式表現を与えています.
 
 ```{r}
 m = lm(dist ~ speed, data = cars)
 d = coef(summary(m))
 knitr::kable(d)
-# add a few math expressions to row and column names
+# 行と列の名前に数式表現を与える
 rownames(d) = c('$\\beta_0$', '$\\beta_1$')
 colnames(d)[4] = '$P(T > |t|)$'
 knitr::kable(d, escape = FALSE)
 ```
 
-Without `escape = FALSE`, special characters will either be escaped or substituted. For example, `$` is escaped as `\$`, `_` is escaped as `\_`, and `\` is substituted with `\textbackslash{}`:
+`escape = FALSE` なしでは特殊文字はエスケープされるか置き換えられます. 例えば `$` は `\$` に, `_` は `\_` に, `\` は `\textbackslash{}` にエスケープされます.
 
 ```{r, render=kat, comment='', class.output='tex'}
 knitr::kable(d, format = 'latex', escape = TRUE)
 ```
 
-Other common special LaTeX characters include `#`, `%`, `&`, `{`, and `}`. Common special HTML characters include `&`, `<`, `>`, and `"`. You need to be cautious when generating tables with `escape = FALSE`, and make sure you are using the special characters in the right way. It is a very common mistake to use `escape = FALSE` and include `%` or `_` in column names or the caption of a LaTeX table without realizing that they are special.
+LaTeX で他によく知られた特殊文字として, `#`, `%`, `&`, `{`, `}` があります. HTML のよく知られた特殊文字は `&`, `<`, `>` そして `"` です. `escape = FALSE` で表を生成する際には注意深くなり, 正しい方法で特殊文字を使うよう確認する必要があります. とてもよくある失敗として, LaTeX で `escape = FALSE` を使いつつ,   `%` や `_` が特殊文字であると気づかずに表の列名やキャプションに含んでしまうというものがあります.
 
-If you are not sure how to properly escape special characters, there are two internal helper functions in **knitr**. Below are some examples:\index{knitr!escape\_latex()}\index{knitr!escape\_html()}
+特殊文字のエスケープの方法を正しく知っている自信がないなら **knitr** には2つのヘルパー内部関数があります. 以下はその例です\index{knitr!escape\_latex()}\index{knitr!escape\_html()}.
 
 ```{r}
-knitr:::escape_latex(c('100%', '# a comment', 'column_name'))
-knitr:::escape_html(c('<address>', 'x = "character"', 'a & b'))
+knitr:::escape_latex(c('100%', '# コメント', '列名'))
+knitr:::escape_html(c('<アドレス>', 'x = "文字列"', 'a & b'))
 ```
 
-### Multiple tables side by side
+### 複数の表を横に並べる {#multiple-tables-siede-by-side}
 
-You can pass a list of data frames or matrices to `kable()` to generate multiple tables side by side. For example, Table \@ref(tab:two-tables) contains two tables generated from the code below:
+複数の表を並べて生成すために, データフレームや行列のリストを `kable()` に与えることができます. 例えば表\@ref(tab:two-tables)は以下のコードから生成された2つの表を含んでいます.
 
 ```{r, two-tables, tidy=FALSE}
 d1 <- head(cars, 3)
 d2 <- head(mtcars[, 1:3], 5)
 knitr::kable(
   list(d1, d2),
-  caption = 'Two tables placed side by side.',
+  caption = '横に並べられた2つの表',
   booktabs = TRUE, valign = 't'
 )
 ```
 
-Please note that this feature only works for HTML and PDF output.
+この機能は HTML と PDF 出力でのみ機能することに注意してください.
 
-If you want to be able to customize each table individually when placing them side by side, you may use the `kables()`\index{knitr!kables()} function (the plural form of `kable()`), and pass a list of `kable()` objects to it. For example, we change the column names in the left table and set the number of decimal places to zero in the right table in Table \@ref(tab:kables):
+表を横に並べて個別の表をカスタマイズできるようになりたいと考えているなら, `kables()`\index{knitr!kables()} 関数 (つまり, `kable()` の複数形を意味しています) を使い, `kable()` オブジェクトのリストを与えると良いでしょう. 例えば, 表\@ref(tab:kables)の左の表の列名を変更し, かつ右の表の表示桁数をゼロに変更します.
 
 ```{r, kables, tidy=FALSE}
-# data objects d1 and d2 are from the previous code chunk
+# データオブジェクト d1, d2 は以前のコードチャンクのもの
 knitr::kables(
   list(
-    # the first kable() to change column names
+    # 第1の kable() は列名を変更する
     knitr::kable(
-      d1, col.names = c('SPEED', 'DISTANCE'), valign = 't'
+      d1, col.names = c('速さ', '距離'), valign = 't'
     ),
-    # the second kable() to set the digits option
+    # 第2の kable() は表示桁数を設定する
     knitr::kable(d2, digits = 0, valign = 't')
   ),
-  caption = 'Two tables created by knitr::kables().'
+  caption = 'knitr::kables() によって作成された2つの表.'
 )
 ```
 
-### Generate multiple tables from a `for`-loop (\*)
+### `for` ループから複数の表を作成する (\*) {#generate-multiple-table-from-for-loop}
 
-One common confusion about `kable()` is that it does not work inside `for`-loops. This problem is not specific to `kable()` but exists in many other packages, too. The reason is a little complicated. In case you are interested in the technicality, it is explained in the blog post ["The Ghost Printer behind Top-level R Expressions."](https://yihui.org/en/2017/06/top-level-r-expressions/)
+`kable()` に関してよく混乱することの1つは, `for` ループ内では動作しないということです. この問題は `kable()` に限らず他のパッケージにも存在します. 原因は少々複雑です. 技術的な話に関心があるなら, ["The Ghost Printer behind Top-level R Expressions."](https://yihui.org/en/2017/06/top-level-r-expressions/) というブログ記事で解説されています.
 
-You may expect the following code chunk to generate three tables, but it will not:
+以下のコードチャンクは3つの表を生成する, とあなたは予想するかもしれませんが, そうはなりません.
 
 ````md
 ```{r}`r ''`
@@ -219,7 +218,7 @@ for (i in 1:3) {
 ```
 ````
 
-You have to explicitly print the `kable()` results, and apply the chunk option `results = 'asis'`\index{chunk option!results}, e.g.,
+明示的に `kable()` の結果をプリントし, チャンクオプション `results = 'asis'`\index{チャンクオプション!results} を適用しなければなりません. 例えばこのように.
 
 ````md
 ```{r, results='asis'}`r ''`
@@ -229,7 +228,7 @@ for (i in 1:3) {
 ```
 ````
 
-In general, when you generate output from a `for`-loop, we recommend that you add a few line breaks (`\n`) or an HTML comment (`<!-- -->`) after each output element to clearly separate all output elements, e.g.,
+一般に, `for` ループ内で出力を生成するときは, 出力する要素をそれぞれ区別するためにそれぞれの直後に改行コード (`\n`) または HTML のコメント行 (`<!-- -->`) を加えることをおすすめします. これが例です.
 
 ````md
 ```{r, results='asis'}`r ''`
@@ -240,7 +239,7 @@ for (i in 1:3) {
 ```
 ````
 
-Without the separators, Pandoc may be fail to detect the individual elements. For example, when a plot is followed immediately by a table, the table will not be recognized:
+セパレータがないと Pandoc は個別の要素を検出するのに失敗します. 例えばグラフのすぐ後に表を続けて書いたとき, 表が認識されなくなります.
 
 ```md
 ![](logo.png)
@@ -250,7 +249,7 @@ Mazda RX4            21.0     6    160   110
 Mazda RX4 Wag        21.0     6    160   110
 ```
 
-But it will be if there is a clear separation like this (note that we added an empty line below the image):
+しかし明示的に分離した場合はこうなります. 以下では画像の直後に空白行を挟んでいます.
 
 ```md
 ![](logo.png)
@@ -261,7 +260,7 @@ Mazda RX4            21.0     6    160   110
 Mazda RX4 Wag        21.0     6    160   110
 ```
 
-or
+あるいはこのように.
 
 ```md
 ![](logo.png)
@@ -274,15 +273,15 @@ Mazda RX4            21.0     6    160   110
 Mazda RX4 Wag        21.0     6    160   110
 ```
 
-### Customize LaTeX tables (\*)
+### LaTeX の表をカスタマイズする (\*) {#customize-latex-tables}
 
-If the only output format you need is LaTeX, there are a few extra options you can use in `kable()`. Note that these options will be ignored in other types of output such as HTML. Unless you have set the table format option globally (see Section \@ref(kable-formats)), you will have to use the `format` argument of `kable()` explicitly in the examples of this section, e.g.,
+必要なのが LaTeX の出力のみなら, さらにいくつか `kable()` のオプションがあります. これらは HTML 等, 他の種類のフォーマットでは無視されることに注意してください. 表のフォーマットオプションをグローバルに設定 (\@ref(kable-formats)節参照) していない限り, この節の例では `kable()` の `format` 引数を明示的に使わなければなりません.
 
 ```{r, eval=FALSE}
 knitr::kable(iris2, format = 'latex', booktabs = TRUE)
 ```
 
-When you assign a caption to a table (see Section \@ref(kable-caption)), `kable()` will use the `table` environment to include the table, i.e.,
+表のキャプションを設定 (\@ref(kable-caption)節参照) している場合, `kable()` は表を `table` 環境で囲みます. つまりこうなります.
 
 ```latex
 \begin{table}
@@ -296,69 +295,68 @@ You can change this environment via the `table.envir` argument, e.g.,
 knitr::kable(cars[1:2, ], format = 'latex', table.envir = 'figure')
 ```
 
-The floating position of the table is controlled by the argument `position`. For example, we can try to force a table to float to the bottom of a page via `position = "!b"`:
+表のフロート位置は `position` 引数によって制御されます. 例えば `position = "!b"` によって表のフロートをページ下部に置くことを強制できます.
 
 ```{r, render=kat, comment='', class.output='tex'}
 knitr::kable(cars[1:2, ], format = 'latex', table.envir = 'table', position = '!b')
 ```
 
-When a table has a caption, you can also assign a short caption to it via the `caption.short` argument, e.g.,
+表にキャプションがある場合, `caption.short` 引数でこの例のようにキャプションの短縮形を与えることもできます.
 
 ```{r, eval=FALSE}
-knitr::kable(iris2, caption = 'A long long long caption!', caption.short = 'A short one.')
+knitr::kable(iris2, caption = '長い長いキャプション', caption.short = '短いキャプション')
 ```
 
-The short caption goes into the square brackets of the `\caption[]{}` command in LaTeX, and is often used in the List of Tables of the PDF output document (if the short caption is not provided, the full caption is displayed there).
+キャプションの短縮形は LaTeX 上では `\caption[]{}` コマンドのブラケット (`[]`) 内に与えられ, ほとんどの場合は出力された PDF の表一覧で使用されます. 短縮形がない場合は, キャプション全文が表示されます.
 
-If you are familiar with the LaTeX package [**booktabs**](https://ctan.org/pkg/booktabs)\index{LaTeX package!booktabs} for publication-quality tables, you can set `booktabs = TRUE`, e.g.,
+出版物レベルのクオリティの作表のための LaTeX パッケージの [**booktabs**](https://ctan.org/pkg/booktabs)\index{LaTeX パッケージ!booktabs} に詳しいなら, この例のように `booktabs = TRUE` を設定できます.
 
 ```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
 iris3 = head(iris, 10)
 knitr::kable(iris3, format = 'latex', booktabs = TRUE)
 ```
 
-Please note that when you need additional LaTeX packages such as **booktabs** for an R Markdown document, you have to declare these packages in YAML (see Section \@ref(latex-extra) for how).
+R Markdown で **booktabs** のような LaTeX パッケージが追加で必要なら, YAML で宣言しなければならないことを忘れないでください (やり方は\@ref(latex-extra)節参照).
 
-Depending on whether the argument `booktabs` is `TRUE` or `FALSE` (default), the table appearance is different. For `booktabs = FALSE`:
+引数 `booktabs` が `TRUE` か `FALSE` (デフォルト) であるかに依存して表の外見は変わります. `booktabs = FALSE` なら
 
-- Table columns are separated by vertical lines. You can explicitly remove the vertical lines via the `vline` argument, e.g., `knitr::kable(iris, vline = "")` (the default is `vline = "|"`). You can set this option as a global R option so you do not need to set it for every single table, e.g., `options(knitr.table.vline = "")`.
+- 表の列が垂直線で区切られます. `vline` 引数を使って垂直線を削除することができます. 例えば `knitr::kable(iris, vline = "")` と言うふうにします. デフォルトは `vline = "|"` です.このオプションをグローバルに設定することもでき, 表ごとに指定する必要はありません. 例えば `options(knitr.table.vline = "")` とします.
+- 水平線を `toprule`, `midrule`, `linesep`, `bottomrule` 引数で定義できます. これらのデフォルト値は `\hline` です.
 
-- The horizontal lines can be defined via arguments `toprule`, `midrule`, `linesep`, and `bottomrule`. Their default values are all `\hline`.
+`booktabs = TRUE` の場合は
 
-For `booktabs = TRUE`:
-
-- There are no vertical lines in the table, but you can add these lines via the `vline` argument.
-
-- The table only has horizontal lines for the table header and the bottom row. The default argument values are `toprule = "\\toprule"`, `midrule = "\\midrule"`, and `bottomrule = "\\bottomrule"`. A line space is added to every five rows by default. This is controlled by the argument `linesep`, which defaults to `c("", "", "", "", "\\addlinespace")`. If you want to add a space to every three rows, you can do this:
-
+- 表に垂線はありませんが, `vline` 引数で追加することができます.
+- テーブルのヘッダと末尾にのみ水平線が描かれます. デフォルトの引数の値は `toprule = "\\toprule"`, `midrule = "\\midrule"`, `bottomrule = "\\bottomrule"` です. デフォルトでは1行分の空きが5行ごとに挿入されます. これは `linesep` 引数で制御でき, このデフォルトは `c("", "", "", "", "\\addlinespace")` となっています. 3行ごとに空白を与えたいなら, このようにできます.
+  
   ```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
   knitr::kable(iris3, format = 'latex', linesep = c('', '', '\\addlinespace'), booktabs = TRUE)
   ```
+  
+  行空けを完全に削除したいなら, `linesep = ''` とするとよいでしょう.
 
-  If you want to remove the line spaces altogether, you may use `linesep = ''`.
+表がページよりも長くなってしまうもともあるでしょう. そのような場合は `longtable = TRUE` を使用しできます. このオプションは LaTeX パッケージ [**longtable**](https://ctan.org/pkg/longtable) を使い表を複数ページに分割します.
 
-Sometimes your table may be longer than a page. In this case, you can use the argument `longtable = TRUE`, which uses the LaTeX package [**longtable**](https://ctan.org/pkg/longtable) to span your table to multiple pages.
+table 環境に含まれた場合, つまり表にキャプションを設定した場合は表はデフォルトで中央揃えになります. 表を中央揃えにしたくないなら, `centering = FALSE` 引数を使用してください.
 
-Tables are center-aligned by default when they are included in a table environment (i.e., when the table has a caption). If you do not want to center a table, use the argument `centering = FALSE`.
-
-### Customize HTML tables (\*)
+### HTML の表をカスタマイズする (\*) {#customize-html-tables}
 
 <!-- https://stackoverflow.com/questions/24254552/knitr-style-table-with-css -->
 
-If you want to customize tables generated via `knitr::kable(format = "html")`, there is only one extra argument besides the common arguments mentioned in previous sections: `table.attr`. This argument allows you to add arbitrary attributes to the `<table>` tag. For example:
+`knitr::kable(format = "html")` で生成した表をカスタマイズしたいなら,  前節で紹介した共通の引数の他, 1つだけ `table.attr` という引数があります. この引数で任意の属性を `<table>` タグに追加することができます. 例えばこのように.
 
 ```{r, render=kat, comment='', class.output='html'}
 knitr::kable(mtcars[1:2, 1:2], table.attr = 'class="striped"', format = "html")
 ```
 
-We added a class `striped` to the table. However, a class name is not enough to change the appearance of a table. You have to define CSS\index{CSS!striped table} rules for the class. For example, to make a striped table that has different colors for odd and even rows, you can add a light gray background to even or odd rows:
+表に `striped` クラスを追加しています. しかしクラス名だけでは表の外見を変更するのに不十分です. クラスに対して CSS\index{CSS!ストライプ柄の表} ルールを定義しなければなりません. 例えば偶数列と気数列で色の異なるストライプ背景の表を作るには, 明灰色の背景を偶数または気数列に追加できます.
 
 ```css
 .striped tr:nth-child(even) { background: #eee; }
 ```
 
-The above CSS rule means all rows (i.e., the `<tr>` tags) with even row numbers (`:nth-child(even)`) that are children of an element with the `striped` class will have a background color `#eee`.
+上記の CSS ルールは, `striped` クラスを持つ要素の子要素の全ての偶数行 (`:nth-child(even)`) 全て, つまり `<tr>` タグ に対して,  偶数行が背景色 `#eee` になることを意味します.
 
+少しの CSS の記述だけでプレーンの HTML の表の見栄えをよくできます. 図\@ref(fig:striped-table)は, 以下の CSS ルールを適用した HTML 表のスクリーンショットです
 A little bit of CSS can make a plain HTML table look decent. Figure \@ref(fig:striped-table) is a screenshot of an HTML table to which the following CSS rules are applied: 
 
 ```css
@@ -372,15 +370,15 @@ th, td { padding: 5px; }
 thead, tfoot, tr:nth-child(even) { background: #eee; }
 ```
 
-```{r, striped-table, fig.cap='A striped table created with HTML and CSS.', echo=FALSE, fig.align='center', out.width='70%'}
+```{r, striped-table, fig.cap='HTML と CSS で作成したストライプ背景の表', echo=FALSE, fig.align='center', out.width='70%'}
 knitr::include_graphics('images/striped-table.png', dpi = NA)
 ```
 
-## The **kableExtra** package {#kableextra}
+## **kableExtra** パッケージ {#kableextra}
 
-The **kableExtra** package [@R-kableExtra]\index{R package!kableExtra} is designed to extend the basic functionality of tables produced using `knitr::kable()` (see Section \@ref(kable)). Since `knitr::kable()` is simple by design (please feel free to read this as "Yihui is lazy"), it definitely has a lot of missing features that are commonly seen in other packages, and **kableExtra** has filled the gap perfectly. The most amazing thing about **kableExtra** is that most of its table features work for both HTML and PDF formats (e.g., making striped tables like the one in Figure \@ref(fig:striped-table)).
+**kableExtra** package [@R-kableExtra]\index{R パッケージ!kableExtra}は `knitr::kable()` (\@ref(kable)節参照) を使用して作成した表の基本機能を拡張するために設計されました. `knitr::kable()` はシンプルな設計なので (これは Yihui が怠け者であるという意味として読み流してください), 他のパッケージで見られるような機能の多くが決定的に失われてしまっています. そして **kableExtra** はこのギャップを完全に埋めてくれます. **kableExtra** について最も驚異することは, 表のほとんどの機能, 例えば, 図\@ref(fig:striped-table)のようなストライプ背景の表をつくるなどが HTML でも PDF でも動作することです. 
 
-This package can be installed from CRAN as usual, or you may try the development version on GitHub (https://github.com/haozhu233/kableExtra):
+このパッケージはいつものように CRAN からインストールできますし, GitHub  (https://github.com/haozhu233/kableExtra) から開発版をインストールしてもよいでしょう.
 
 ```{r, eval=FALSE}
 # install from CRAN
@@ -390,9 +388,9 @@ install.packages("kableExtra")
 remotes::install_github("haozhu233/kableExtra")
 ```
 
-It has extensive documentation at https://haozhu233.github.io/kableExtra/, which provides a lot of examples on how the `kable()` output can be customized for either HTML or LaTeX output. We recommend that you read its documentation by yourself, and will only present a handful of examples in this section.
+発展的なドキュメントが https://haozhu233.github.io/kableExtra/  にあり,  `kable()` の出力を HTML や LaTeX 出力でどうカスタマイズするかについて多くの使用例が掲載されています. 我々としてはご自分でドキュメントを読むことをおすすめし, ここでは一部の例だけを提示します.
 
-The **kableExtra** package features the pipe operator, `%>%`. You can pipe the `kable()` output to the styling functions of **kableExtra**, e.g.,
+**kableExtra** パッケージはパイプ演算子 `%>%` を前面に出しています. `kable()` の出力に **kableExtra** のスタイル関数を接続することができます. 例えばこのように.
 
 ```{r, results='hide', tidy=FALSE}
 library(knitr)
@@ -401,18 +399,18 @@ kable(iris) %>%
   kable_styling(latex_options = "striped")
 ```
 
-### Set the font size
+### フォントサイズを設定する {#set-the-font-size}
 
-The function `kable_styling()` in **kableExtra**\index{kableExtra!kable\_styling()} allows you to style the whole table. For example, you can specify the alignment of the table on the page, the width, and the font size of the table. Below is an example of using a smaller font size:
+**kableExtra**\index{kableExtra!kable\_styling()} パッケージの `kable_styling()` 関数によってテーブル全体のスタイルを設定できます. 例えばページ上での表のアラインメント, 幅, フォントサイズなどです. 以下は小さいフォントサイズを使う例です.
 
 ```{r, tidy=FALSE}
 kable(head(iris, 5), booktabs = TRUE) %>%
   kable_styling(font_size = 8)
 ```
 
-### Style specific rows/columns
+### 特定の行・列のスタイルを設定する {#style-specific-rows-columns}
 
-The functions `row_spec()`\index{kableExtra!row\_spec()} and `column_spec()`\index{kableExtra!column\_spec()} can be used to style individual rows and columns, respectively. In the example below, we make the first row bold and italic, add a black background to the second and third rows while changing the font color to white, underline the fourth row and change its typeface, rotate the fifth row, and strike out the fifth column:
+関数 `row_spec()`\index{kableExtra!row\_spec()} と `column_spec()`\index{kableExtra!column\_spec()} はそれぞれ個別の行と列のスタイル設定に使うことができます. 以下の例では第1行をボールドイタリックにし, 第2, 第3行を黒色背景と白色文字にし, 第4行にアンダーラインを引きタイプフェースを変更し, 第5行を回転させ, そして第5列に打ち消し線を引きます.
 
 ```{r, tidy=FALSE}
 kable(head(iris, 5), align = 'c', booktabs = TRUE) %>%
@@ -423,23 +421,23 @@ kable(head(iris, 5), align = 'c', booktabs = TRUE) %>%
   column_spec(5, strikeout = TRUE)
 ```
 
-Similarly, you can style individual cells with the `cell_spec()` function\index{kableExtra!cell\_spec()}.
+同様に, `cell_spec()`\index{kableExtra!cell\_spec()} 関数で個別のセルにスタイル設定できます.
 
-### Group rows/columns
+### 行・列をグループ化する {#group-rows-columns}
 
-Rows and columns can be grouped via the functions `pack_rows()`\index{kableExtra!pack\_rows()} and `add_header_above()`\index{kableExtra!add\_header\_above()}, respectively. You can also collapse rows via `collapse_rows()`\index{kableExtra!collapse\_rows()}, so one cell can span multiple rows. Below is an example that shows a custom table header with grouped columns:
+行や列をそれぞれ, `pack_rows()`\index{kableExtra!pack\_rows()} と `add_header_above()`\index{kableExtra!add\_header\_above()} 関数でまとめることができます. `collapse_rows()`\index{kableExtra!collapse\_rows()} 関数で行を崩し, セルを複数行にまたがらせることができます. 以下は行をグループ化したカスタムテーブルヘッダの例です.
 
 ```{r, tidy=FALSE}
 iris2 <- iris[1:5, c(1, 3, 2, 4, 5)]
 names(iris2) <- gsub('[.].+', '', names(iris2))
 kable(iris2, booktabs = TRUE) %>%
-  add_header_above(c("Length" = 2, "Width" = 2, " " = 1)) %>% 
+  add_header_above(c("長さ" = 2, "幅" = 2, " " = 1)) %>% 
   add_header_above(c("Measurements" = 4, "More attributes" = 1))
 ```
 
-For the named vector in `add_header_above()`, the names are the text to be shown in the table header, and the integer values of the vector indicate how many columns a name should span, e.g., `"Length" = 2` means `Length` should span two columns.
+`add_header_above()` 内の名前付きベクトルに対して, 名前がテーブルヘッダにテキストとして表示され, 整数値のベクトルが対応する名前の列の長さを表します. 例えば `"Length" = 2` が `Length` が2列にまたがることを意味します.
 
-Below is an example of `pack_rows()`. The meaning of its `index` argument is similar to the argument of `add_header_above()` as we just explained before.
+以下は `pack_rows()` の例です. `index` 引数の意味は既に説明した `add_header_above()` の引数と似ています.
 
 ```{r, tidy=FALSE}
 iris3 <- iris[c(1:2, 51:54, 101:103), ]
@@ -448,39 +446,39 @@ kable(iris3[, 1:4], booktabs = TRUE) %>% pack_rows(
 )
 ```
 
-### Scaling down wide tables in LaTeX
+### LaTeX で表を縮小する {#scaling-down-wide-tables-in-latex}
 
-There are a few features that are specific to the HTML or LaTeX output format. For example, landscape pages only make sense in LaTeX, so the `landscape()` function\index{kableExtra!landscape()} in **kableExtra** only works for LaTeX output. Below we show an example to scale down a table to fit the page (otherwise it would be too wide):
+HTML や LaTeX 出力特有の機能もいくつかあります. 例えば横向きページは LaTeX でのみ意味をなすので, **kableExtra** の `landscape()`  関数\index{kableExtra!landscape()}は LaTeX でのみ機能します. 以下はページに合わせて表を縮小する例です. 縮小しなければ横に長すぎる表になります.
 
 ```{r, tidy=FALSE}
 tab <- kable(tail(mtcars, 5), booktabs = TRUE)
-tab  # original table (too wide)
+tab  # 長すぎる元の表
 tab %>%
   kable_styling(latex_options = "scale_down")
 ```
 
-You will not see any differences in the above two tables if you are viewing the HTML version.
+HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう.
 
-## Other packages for creating tables {#table-other}
+## その他の表作成パッケージ {#table-other}
 
-There are many other R packages that can be used to generate tables\index{R package!table packages}. The main reason that I introduced `kable()` (Section \@ref(kable)) and **kableExtra** (Section \@ref(kableextra)) is not that they are better than other packages, but because I'm familiar with only them.^[Frankly speaking, I rarely use tables by myself, so I'm not highly motivated to learn how to create sophisticated tables.] Next I will list the packages that I'm aware of but not very familiar with. You can check them out by yourself, and decide which one fits your purpose best.
+多くの作表用 R パッケージがあります\index{R パッケージ!作表パッケージ}. `kable()` (\@ref(kable)節) と**kableExtra** (\@ref(kableextra)節)  を紹介した)主な理由は他のパッケージより良いからではなく, 私がこれらにのみ詳しかったからです.^[平たく言うと, 自分では表を全く使いませんから, 洗練された表を作る方法を学ぶ強いモチベーションがありませんでした.] 存在は知っていますがあまり詳しくないパッケージを次に列挙します.^[**訳注**: これらの差異について, 翻訳者も自信の作成したドキュメントでいくらか言及しています https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html] ご自分で確認し, 目的に最も合っているものを決めることができます.
 
-- **flextable** [@R-flextable] and **huxtable** [@R-huxtable]: If you are looking for a table package that supports the widest range of output formats, **flextable** and **huxtable** are probably the two best choices. They all support HTML, LaTeX, and Office formats, and contain most common table features (e.g., conditional formatting). More information about **flextable** can be found at https://davidgohel.github.io/flextable/, and the documentation of **huxtable** is at https://hughjonesd.github.io/huxtable/.
+- **flextable** [@R-flextable] と **huxtable** [@R-huxtable]: 幅広い種類の出力フォーマットをサポートするパッケージを探しているなら, **flextable** と **huxtable** が最善の2つの選択です. HTML, LaTeX. そして Office フォーマットを全てサポートし, よく使われる表の機能  (例えば条件付き書式とか) のほとんどをサポートしています. **flextable** の詳細は https://davidgohel.github.io/flextable/ で, **huxtable** のドキュメントは https://hughjonesd.github.io/huxtable/ で見られます.
 
-- **gt** [@R-gt]: Allows you to compose a table by putting together different parts of the table, such as the table header (title and subtitle), the column labels, the table body, row group labels, and the table footer. Some parts are optional. You can also format numbers and add background shading to cells. Currently **gt** mainly supports HTML output.^[If you need the support for other output formats such as LaTeX and Word, the **gtsummary** package [@R-gtsummary] has made some extensions based on **gt** that look very promising: https://github.com/ddsjoberg/gtsummary.] You can find more information about it at https://gt.rstudio.com.
+- **gt** [@R-gt]: 表のヘッダ, (題名・副題), 列のラベル, 表の本体, 行グループのラベル, 表のフッタといった異なる表のパーツをまとめて表を構成することができます. 数字のフォーマットを指定したり, セルの背景色に影をつけたりもできます. 現在は **gt** は主に HTML 出力をサポートしています.^[LaTeX や Word といった他の出力フォーマットへのサポートが必要ならば, **gtsummary** パッケージ [@R-gtsummary] はとても有望な **gt** を下地に拡張しています. https://github.com/ddsjoberg/gtsummary]  詳細は https://gt.rstudio.com で見られます.
 
-- **formattable** [@R-formattable]: Provides some utility functions to format numbers (e.g., `percent()` and `accounting()`), and also functions to style table columns (e.g., format the text, annotate numbers with background shading or color bars, or add icons in cells). Like **gt**, this package also primarily supports the HTML format. You can find more information about it from its GitHub project at https://github.com/renkun-ken/formattable.
+- **formattable** [@R-formattable]: `percent()`, `accounting()` といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. **gt** のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの https://github.com/renkun-ken/formattable で見ることができます.
 
-- **DT** [@R-DT]: As its author, I think I'm familiar with this package, but I did not introduce it in a separate section because it only supports the HTML format. **DT** is built on top of the JavaScript library **DataTables**, which can turn a static table into an interactive table on an HTML page. You may sort, search, and paginate the table. **DT** also supports formatting the cells, works with Shiny to build interactive applications, and has included a large number of **DataTables** extensions (e.g., you may export the table to Excel, or interactively reorder columns). See the package repository for more information: https://github.com/rstudio/DT.
+- **DT** [@R-DT]: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみサポートしているため, 独立した節を設けて紹介したりはしません. **DT** は JavaScript ライブラリの **DataTables** を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. **DT** はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの **DaataTables** の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ https://github.com/rstudio/DT を見てください.
 
-- **reactable** [@R-reactable]: Similar to **DT**, this package also creates interactive tables based on a JavaScript library. Frankly speaking, it looks better than **DT** in several aspects in my eyes (such as row grouping and aggregation, and embedding HTML widgets). Had **reactable** existed in 2015, I would not have developed **DT**. That said, **reactable** does not contain all the features of **DT**, so you may read its documentation and see which one fits your purpose better: https://glin.github.io/reactable/.
+- **reactable** [@R-reactable]: **DT** と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 平たく言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で **DT** より優れているようです. もし **reactable** が 2015年時点で存在していれば, 私は **DT** を開発していなかったと思います. よってあなたはこのパッケージのドキュメントを読み, どちらが目的に合ったものかを知るとよいでしょう. https://glin.github.io/reactable/
 
-- **rhandsontable** [@R-rhandsontable]: Also similar to **DT**, and has an Excel feel (e.g., you can edit data directly in the table). Visit https://jrowen.github.io/rhandsontable/ to learn more about it.
+- **rhandsontable** [@R-rhandsontable]: これも **DT** と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには https://jrowen.github.io/rhandsontable/ を見てください.
 
-- **pixiedust** [@R-pixiedust]: Features creating tables for models (such as linear models) converted through the **broom** package [@R-broom]. It supports Markdown, HTML, and LaTeX output formats. Its repository is at https://github.com/nutterb/pixiedust.
+- **pixiedust** [@R-pixiedust]: **broom** パッケージ [@R-broom] を介して統計モデル (線形モデルとか) 向けの表を作るのが特徴です. Markdown, HTML, LaTeX 出力フォーマットをサポートしています. リポジトリは https://github.com/nutterb/pixiedust です.
 
-- **stargazer** [@R-stargazer]: Features formatting regression models and summary statistics tables. The package is available on CRAN at https://cran.r-project.org/package=stargazer.
+- **stargazer** [@R-stargazer]: 回帰モデルと要約統計量の表を整形するのが特徴です. このパッケージは CRAN の https://cran.r-project.org/package=stargazer にあります.
 
-- **xtable** [@R-xtable]: Perhaps the oldest package for creating tables---the first release was made in 2000. It supports both LaTeX and HTML formats. The package is available on CRAN at https://cran.r-project.org/package=xtable.
+- **xtable** [@R-xtable]: おそらく最古の作表パッケージです. 最初のリリースは2000年になります. LaTeX と HTML フォーマットの両方をサポートしています. パッケージは CRAN の https://cran.r-project.org/package=xtable にあります.
 
-I'm not going to introduce the rest of packages, but will just list them here: **tables** [@R-tables], **pander** [@R-pander], **tangram** [@R-tangram], **ztable** [@R-ztable], and **condformat** [@R-condformat].
+その他のパッケージは紹介しませんが, 名前だけ挙げておきます. **tables** [@R-tables], **pander** [@R-pander], **tangram** [@R-tangram], **ztable** [@R-ztable], **condformat** [@R-condformat] があります.
