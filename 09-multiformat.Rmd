@@ -227,9 +227,9 @@ output:
 
 ### 影付きブロックを追加する {#block-shaded}
 
-First, we show how to include content in a shaded box. The box has a black background with an orange frame with rounded corners. The text in the box is in white.
+まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.
 
-For HTML output, we define these rules in a CSS file. If you are unfamiliar with CSS\index{CSS}, there are plenty of free online tutorials, e.g., https://www.w3schools.com/css/.
+HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくないなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか. TODO: 日本語の代替サイト
 
 ```{cat, class.source='css', engine.opts=list(file = 'css/box.css')}
 .blackbox {
@@ -244,7 +244,7 @@ For HTML output, we define these rules in a CSS file. If you are unfamiliar with
 }
 ```
 
-For LaTeX output, we create a new environment named `blackbox` and based on the LaTeX package **framed**\index{LaTeX package!framed}, with a black background and white text:
+LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パッケージ!framed} を基にして `blackbox` という名前で黒い背景色と白い文字色の新しい環境を作成します.
 
 ```{cat, class.source='latex', engine.opts=list(file = 'latex/blackbox.tex')}
 \usepackage{color}
@@ -258,7 +258,7 @@ For LaTeX output, we create a new environment named `blackbox` and based on the 
  {\end{shaded}}
 ```
 
-We used the **framed** package in this book because it is fairly lightweight, but it is not possible to draw a colored frame with rounded corners with this package. To achieve the latter, you will need more sophisticated LaTeX packages such as **tcolorbox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX package!tcolorbox}, which offers a set of very flexible options for creating shaded boxes. You can find many examples in its documentation. The LaTeX environment below will create a shaded box of similar appearance to the above CSS example:
+本書で **framed** パッケージを使うのはこれがかなり軽量だからですが, このパッケージは角の丸い枠を描画することができません. それを実現するには, 影付きボックスを作るためのとても柔軟な一連のオプションを持つ, より洗練された LaTeX パッケージである **tcolorblox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX パッケージ!tcolorbox}が必要になります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.
 
 ```tex
 \usepackage{tcolorbox}
@@ -271,33 +271,31 @@ We used the **framed** package in this book because it is fairly lightweight, bu
   arc=4pt}
 ```
 
-Now we can use our custom box in both PDF and HTML output formats. The source code of the box is:
+これで PDF と HTML 出力の両方のフォーマットでカスタムボックスを使用できるようになりました. ボックスのソースコードはこのようになります.
 
 ```md
 :::: {.blackbox data-latex=""}
 ::: {.center data-latex=""}
-**NOTICE!**
+**注意!**
 :::
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 ::::
 ```
 
-The output is:
+出力は:
 
 :::: {.blackbox data-latex=""}
 ::: {.center data-latex=""}
-**NOTICE!**
+**注意!**
 :::
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 ::::
 
-### Including icons {#block-image}
+### アイコンを加える {#block-image}
 
-We can make custom blocks even more visually appealing by including images in them. Images can also be an effective way to convey the content of the block. For the following example, we assume that we are working within a directory structure below, which is a simplified version of what is used to build this book:
+カスタムボックス内に画像を含めることで, より注意を引く見た目に作ることができます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 次の例は, このようなディレクトリ構造で動作させるという前提です. これは本書を作成するために使ったものを簡略化したものです.
 
 ```text
 directory/
@@ -310,27 +308,25 @@ directory/
           └── caution.png
 ```
 
-We show the source code and output of the example before we explain how everything works:
+どのように動作するか説明する前に, この例のソースコードと出力を示します.
 
 ```md
 ::: {.infobox .caution data-latex="{caution}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 ```
 
-The output is:
+出力はこうなります.
 
 ::: {.infobox .caution data-latex="{caution}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
-For the HTML output, we can add an image to the box through the `background-image` property in CSS\index{CSS property!background-image}. We insert the image into the background, and add enough padding on the left-hand side to avoid the text overlapping with this image. If you are using local images, the file path to the images is provided relative to the CSS file. For example:
+HTML 出力では, CSS の `background-image`\index{CSS プロパティ!background-image} プロパティ内にボックスの画像を追加することができます. 背景に画像を挿入し, 左側に十分な幅のパディングを追加することでテキストと画像の重なりを避けます. ローカルの画像ファイルを使用するなら, ファイルパスは CSS との相対パスで与えます. これが例です.
 
 ```css
 .infobox {
@@ -346,7 +342,7 @@ For the HTML output, we can add an image to the box through the `background-imag
 }
 ```
 
-Note that we used two class names, `.infobox` and `.caution`, on the outer block. The `infobox` class will be used to define the shaded box with a colored border, and the `caution` class will be used to include the image. The advantage of using two classes is that we can define more blocks with different icons without repeating the setup of the shaded box. For example, if we need a `warning` box, we only need to define the following CSS rule without repeating rules in `.infobox`:
+ブロックに `.infobox` と `.caution` という2つのクラス名を使用していることに注意してください. `infobox` クラスは色付きの外枠のある影付きボックスを定義するのに使用し, `caution` クラスは画像を入れるために使用されています. 2つのクラスを使用する利点は影付きボックスの設定を繰り返すことなく, いろいろなアイコンの付いたブロックを定義できるということです. `warning` のボックスが必要ならば, `.infobox` のルールを繰り返し書くことなく, 以下のように定義するだけで十分です.
 
 ```css
 .warning {
@@ -354,17 +350,17 @@ Note that we used two class names, `.infobox` and `.caution`, on the outer block
 }
 ```
 
-Then you can create a `warning` box with the Markdown source code below:
+すると以下の Markdown ソースコードで `warning` ボックスを作成できます.
 
 ```md
 :::: {.infobox .warning data-latex="warning"}
 
-Include the actual content here.
+実際のコンテンツをここに表示
 
 ::::
 ```
 
-For the PDF output, we can create an `infobox` environment based on the `blackbox` environment defined in the previous example, and add the icon to the left side of the box. There are multiple ways of including images in a LaTeX environment. Here is only one of them (it does not precisely reproduce the box style defined in the CSS above):
+PDF 出力に対しては, 以前の例で定義した `blackbox` 環境を基に `infobox` 環境を作成し, ボックスの左側に画像を追加できます. LaTeX 環境に画像を追加する方法はいくつもあります. これはそのうちの1つにすぎません. なお, これは上記の CSS で定義したスタイルを正確に再現するものではありません.
 
 ```{cat, class.source='tex', engine.opts=list(file = 'latex/infobox.tex')}
 \newenvironment{infobox}[1]
@@ -386,36 +382,37 @@ For the PDF output, we can create an `infobox` environment based on the `blackbo
   }
 ```
 
+以下に, 異なるアイコンでブロックを示します.
 Below we show more example blocks with different icons:
 
 ::: {.infobox .warning data-latex="{warning}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
 ::: {.infobox .note data-latex="{note}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
 ::: {.infobox .important data-latex="{important}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
 ::: {.infobox .tip data-latex="{tip}"}
-**NOTICE!**
+**注意!**
 
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
-Alternatively, you may use the LaTeX package [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX package!awesomebox} to generate boxes with icons in the PDF output. This package gives you a much larger number of icons to choose from. We give a brief example below: please refer to the package documentation for the possible LaTeX environments and their arguments.
+
+代替案として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成しても良いでしょう. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
 
 `r import_example('awesomebox.Rmd')`
+
+
+**訳注**: 翻訳者の開発した **rmdja** パッケージでは, デフォルトでこの節で紹介されているようなカスタムブロックが定義されており, より簡単にアイコン付きブロックを記述できます. 詳細はこのパッケージのドキュメントをご覧ください.

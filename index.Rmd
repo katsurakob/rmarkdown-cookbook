@@ -1,5 +1,5 @@
 --- 
-title: "R Markdown クックブック 日本語版"
+title: "R Markdown クックブック"
 author:
   - "(著者) Xie, Yihui"
   - "(著者) Dervieux, Christophe"
