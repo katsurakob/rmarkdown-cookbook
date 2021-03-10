@@ -15,7 +15,7 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 
 ## 進捗状況
 
-§ 9.1 まで翻訳 (全17章 + Appendix)
+10章まで翻訳 (全17章 + Appendix)
 
 ## 関連リンク
 
