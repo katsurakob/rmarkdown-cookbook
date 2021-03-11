@@ -20,6 +20,6 @@ language:
     remark: '用例. '
     solution: '解答. '
   ui:
-    chapter_name: "Chapter "
+    chapter_name: ""
 edit: "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/%s"
 

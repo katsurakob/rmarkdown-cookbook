@@ -4,7 +4,7 @@
 \backmatter
 
 `r if (knitr::is_html_output()) '
-# References {-}
+# 参考文献 {-}
 '`
 
 ```{r include=FALSE, tidy=FALSE}

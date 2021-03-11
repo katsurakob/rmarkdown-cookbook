@@ -1,33 +1,32 @@
-Hide source code:
+ソースコードを隠す.
 
 ```{r, echo=FALSE}
 1 + 1
 ```
 
-Hide text output (you can also use `results = FALSE`):
+テキスト出力を隠す. `results = FALSE` を使うのも可.
 
 ```{r, results='hide'}
 print("You will not see the text output.")
 ```
 
-Hide messages:
+メッセージを隠す.
 
 ```{r, message=FALSE}
 message("You will not see the message.")
 ```
 
-Hide warning messages:
+警告メッセージを隠す.
 
 ```{r, warning=FALSE}
 # this will generate a warning but it will be suppressed
 1:2 + 1:3
 ```
 
-Hide plots:
+グラフを隠す.
 
 ```{r, fig.show='hide'}
 plot(cars)
 ```
 
-Note that the plot will be generated in the above chunk. It is
-just not displayed in the output.
+上記のチャンクではグラフが生成されることに注意してください. 出力に表示しなくするだけです.

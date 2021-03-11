@@ -2,18 +2,20 @@
 title: Awesome Boxes
 output:
   pdf_document:
+    latex_engine: lualatex
     extra_dependencies: awesomebox
+documentlass: ltjsarticle
+mainfont: Noto Serif CJK JP
+sansfont: Noto Sans CJK JP
 ---
 
-A note box:
+"note" 型のボックス:
 
 ::: {.noteblock data-latex=""}
-Thank you for noticing this **new notice**! Your noticing it has
-been noted, and _will be reported to the authorities_!
+この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, あなたがこれを見ていることは監視されており, _当局に報告される_!
 :::
 
-We define an R function `box_args()` to generate the arguments
-for the box:
+このボックスの引数を生成するための R 関数 `box_args()` を定義しました.
 
 ```{r}
 box_args <- function(
@@ -30,12 +32,10 @@ box_args <- function(
 }
 ```
 
-Pass some arguments to the `awesomeblock` environment through
-an inline R expression:
+インライン R コード内で `awesomeblock` 環境に引数を与えます.
 
-::: {.awesomeblock data-latex="`r box_args(title = 'NOTICE!')`"}
-Thank you for noticing this **new notice**!
+::: {.awesomeblock data-latex="`r box_args(title = '注意!')`"}
+この**新しい注意書き**を見てくれてありがとう!
 
-Your noticing it has been noted, and _will be reported to
-the authorities_!
+あなたがこれを見ていることは監視されており, _当局に報告される_!
 :::

@@ -1,10 +1,10 @@
-# Chunk Options {#chunk-options}
+# チャンクオプション {#chunk-options}
 
-As illustrated in Figure \@ref(fig:rmdworkflow), the R package **knitr** plays a critical role in R Markdown. In this chapter and the next three chapters, we show some recipes related to **knitr**.
+図\@ref(fig:rmdworkflow)が表すように, **knitr** パッケージは R Markdown においてきわめて重要な役割を持ちます. この章と次の3つの章では **knitr** に関連するレシピをお見せします. 
 
-There are more than 50 chunk options\index{chunk option} that can be used to fine-tune the behavior of **knitr** when processing R chunks. Please refer to the online documentation at <https://yihui.org/knitr/options/> for the full list of options. `r if (knitr::is_latex_output()) 'For your convenience, we have also provided a copy of the documentation in Appendix \\@ref(full-options) of this book.'`
+R のチャンクを処理する際には, **knitr** の挙動を微調整するのに 50 のチャンクオプション\index{チャンクオプション}が使われる可能性があります. 完全なリストは <https://yihui.org/knitr/options/> のオンラインドキュメントをご覧ください.^[**訳注**: 翻訳者に寄る日本語訳はこちら: https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html] `r if (knitr::is_latex_output()) '利便性のため, 本書の 付録\\@ref(full-options)としてこのドキュメントのコピーを掲載しました.'`
 
-In the following sections, we only show examples of applying chunk options to individual code chunks. However, please be aware of the fact that any chunk options can also be applied globally to a whole document, so you do not have to repeat the options in every single code chunk. To set chunk options globally, call `knitr::opts_chunk$set()`\index{chunk option!set globally} in a code chunk (usually the first one in the document), e.g.,
+続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いという事実を覚えてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで `knitr::opts_chunk$set()`\index{チャンクオプション!グローバルに設定する} を呼び出してください. たいていは文書の中で最初のチャンクオプションです. 例えばこのように.
 
 ````md
 ```{r, include=FALSE}`r ''`
@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 ```
 ````
 
-## Use variables in chunk options {#chunk-variable}
+## チャンクオプションに変数を使う {#chunk-variable}
 
-Usually chunk options take constant values (e.g., `fig.width = 6`), but they can actually take values from arbitrary R expressions, no matter how simple or complicated the expressions are. A special case is a variable\index{chunk option!variable values} passed to a chunk option (note that a variable is also an R expression). For example, you can define a figure width in a variable in the beginning of a document, and use it later in other code chunks, so you will be able to easily change the width in the future:
+大抵の場合, 例えば `fig.width = 6` のようにチャンクオプションは定数をとりますが, 簡単であるか複雑であるかに関わらず, 任意の R コードを与えることもできます. 単純なケースはチャンクオプションに通せる変数\index{チャンクオプション!変数の値}です. 変数もまた R コードであることに注意してください. 例えば文書の冒頭で変数として図の幅を定義して, その後の他のコードチャンクで使うことができるので, それ以降の幅を簡単に変更できます.
 
 ````md
 ```{r}`r ''`
@@ -28,11 +28,11 @@ plot(cars)
 ```
 ````
 
-Below is an example of using an `if-else` statement in a chunk option\index{chunk option!with if else logic}:
+以下はチャンクオプショで `if-else` 文を使う例です\index{チャンクオプション!if else ロジック}.
 
 ````md
 ```{r}`r ''`
-fig_small <- FALSE  # change to TRUE for larger figures
+fig_small <- FALSE  # 大きい図に対しては TRUE に変更
 width_small <- 4
 width_large <- 8
 ```
@@ -42,7 +42,7 @@ plot(cars)
 ```
 ````
 
-And we have one more example below in which we evaluate (i.e., execute) a code chunk only if a required package is available:
+さらに以下にもう1つの例として, 必要なパッケージが使用可能な場合のみコードチャンクを評価する (つまり実行する) ものを示します.
 
 ````md
 ```{r, eval=require('leaflet')}`r ''`
@@ -51,11 +51,11 @@ leaflet() %>% addTiles()
 ```
 ````
 
-In case you do not know it, `require('package')` returns `TRUE` if the package is available (and `FALSE` if not).
+意図が分からない方のために説明しますと, `require('package')` はパッケージが使用可能なら `TRUE` を返し, そうでないなら `FALSE` を返します.
 
-## Do not stop on error {#opts-error}
+## エラーが起こっても中止しない {#opts-error}
 
-Sometimes you may want to show errors on purpose (e.g., in an R tutorial). By default, errors in the code chunks of an Rmd document will halt R. If you want to show the errors without stopping R, you may use the chunk option `error = TRUE`\index{chunk option!error}, e.g.,
+時として, 例えば R のチュートリアルのために, わざとエラーを見せたいこともあるかもしれません. デフォルトでは, Rmd 文書のコードチャンクでのエラーは R の処理を停止させます. R の処理を停めることなくエラーを見せたいなら, 例えばこのように `error = TRUE`\index{チャンクオプション!error} チャンクオプションを使うと良いでしょう.
 
 ````md
 ```{r, error=TRUE}`r ''`
@@ -63,17 +63,17 @@ Sometimes you may want to show errors on purpose (e.g., in an R tutorial). By de
 ```
 ````
 
-You will see the error message in the output document after you compile the Rmd document:
+Rmd 文書をコンパイルすると, 出力文書上でのエラーメッセージはこのような見た目になります.
 
 ```{r, error=TRUE, echo=FALSE, comment=''}
 1 + "a"
 ```
 
-In R Markdown, `error = FALSE` is the default, which means R should stop on error when running the code chunks.
+R Markdown では `error = FALSE` がデフォルトであり, これはコードチャンクの実行時のエラーは処理を停止させます.
 
-## Multiple graphical output formats for the same plot {#dev-vector}
+## 同じグラフを複数の出力フォーマットに {#dev-vector}
 
-In most cases, you may want one image format for one plot, such as `png` or `pdf`. The image format is controlled by the chunk option `dev`\index{chunk option!dev}\index{figure!graphical device} (i.e., the graphical device to render the plots). This option can take a vector of device names, e.g.,
+ほとんどの場合, 1つの図に対して `png` や `pdf` といった1つの画像フォーマットにしたいでしょう. 画像フォーマットはチャンクオプション `dev`\index{チャンクオプション!dev}\index{図!グラフィックデバイス} で操作できます. つまり, グラフをレンダリングするグラフィックデバイスを意味します. このオプションはデバイス名のベクトルをとることができます. これが例です.
 
 ````md
 ```{r, dev=c('png', 'pdf', 'svg', 'tiff')}`r ''`
@@ -81,19 +81,19 @@ plot(cars)
 ```
 ````
 
-Only the first format is used in the output document, but the images corresponding to the rest of formats are also generated. This can be useful when you are required to submit figures of different formats additionally (e.g., you have shown a `png` figure in the report but the `tiff` format of the same figure is also required).
+出力文書には最初のフォーマットのみが使われますが, 残りのフォーマットに対応する画像も生成されます. 例えば, レポートでは `png` 画像を掲載するが, 同じ画像の `tiff` 形式が求められるというように, 追加で異なるフォーマットの図の提出が要求されるような場合に便利でしょう.
 
-Note that by default, plot files are typically deleted after the output document is rendered. To preserve these files, please see Section \@ref(keep-files).
+デフォルトでは, 典型として画像ファイルは出力文書がレンダリングされた後に削除されます. ファイルを保持する方法は\@ref(keep-files)節を参照してください.
 
-## Cache time-consuming code chunks {#cache}
+## 時間のかかるチャンクをキャッシュする {#cache}
 
-When a code chunk is time-consuming to run, you may consider caching it via the chunk option `cache = TRUE`\index{chunk option!cache}\index{caching}. When the cache is turned on, **knitr** will skip the execution of this code chunk if it has been executed before and nothing in the code chunk has changed since then. When you modify the code chunk (e.g., revise the code or the chunk options), the previous cache will be automatically invalidated, and **knitr** will cache the chunk again.
+コードチャンクの実行に時間がかかる場合, チャンクオプション `cache = TRUE`\index{チャンクオプション!cache}\index{キャッシュ} で結果をキャッシュすることを検討すると良いでしょう. キャッシュが有効な場合, このコードが以前にも実行され, その後コードに変更がないならば, **knitr** はこの実行を飛ばします. コードチャンクを変更し, つまりコードまたはチャンクオプションを修正したなら, 過去のキャッシュは自動的に無効になり **knitr** はもう一度チャンクをキャッシュします.
 
-For a cached code chunk, its output and objects will be automatically loaded from the previous run, as if the chunk were executed again. Caching is often helpful when loading results is much faster than computing the results. However, there is no free lunch. Depending on your use case, you may need to learn more about how caching (especially [cache invalidation](https://yihui.org/en/2018/06/cache-invalidation/)) works, so you can take full advantage of it without confusing yourself as to why sometimes **knitr** invalidates your cache too often and sometimes there is not enough invalidation.
+キャッシュされたコードチャンクに関しては, チャンクが再度実行されたかのように, 過去の実行結果から出力とオブジェクトが自動的に読み込まれます. キャッシュを取ることは結果を計算するより読み込んだほうがはるかに速いという場合に役に立ちます. しかしながら, うまい話というのは世に存在しません. あなたの使う場面にもよりますが, キャッシュがどのように動作するかをより学びぶ必要があるかもしれません, 特に [cache invalidation](https://yihui.org/en/2018/06/cache-invalidation/) を. これにより,  **knitr**がしょっちゅうキャッシュを無効化したり, あるいは時に無効化が十分できていない理由に混乱することなく, あなたはキャッシュの利点を最大限活かすことができます.
 
-The most appropriate use case of caching is to save and reload R objects that take too long to compute in a code chunk, and the code does not have any side effects, such as changing global R options via `options()` (such changes will not be cached). If a code chunk has side effects, we recommend that you do not cache it.
+最も適切なキャッシュの使用例は, コードチャンク内での計算に非常に時間がかかるり, そして `options()` を使って R のグローバルオプションを変更するといった副産物 (このような変更はキャッシュされません) の一切ない R オブジェクトの保存と再読込に使うことです. コードチャンクに副産物があるなら, キャッシュを使わないことをお薦めします.
 
-As we briefly mentioned earlier, the cache depends on chunk options. If you change any chunk options (except the option `include`), the cache will be invalidated. This feature can be used to solve a common problem. That is, when you read an external data file, you may want to invalidate the cache when the data file is updated. Simply using `cache = TRUE` is not enough:
+最初のほうで簡単に書いたように, キャッシュはチャンクオプションに依存します. もし `include` 以外のチャンクオプションを変更したら,  キャッシュは無効化されます. この性質はよくある問題を解決するのに使うことができます. それは外部データファイルを読み込むときに, ファイルが更新されていたならキャッシュを無効化したい, というような場合です. 単純に `cache = TRUE` を使うだけでは不十分です.
 
 ````md
 ```{r import-data, cache=TRUE}`r ''`
@@ -101,13 +101,13 @@ d <- read.csv('my-precious.csv')
 ```
 ````
 
-You have to let **knitr** know if the data file has been changed. One way to do it is to add another chunk option `cache.extra = file.mtime('my-precious.csv')`\index{chunk option!cache.extra} or more rigorously, `cache.extra = tools::md5sum('my-precious.csv')`. The former means if the modification time of the file has been changed, we need to invalidate the cache. The latter means if the content of the file has been modified, we update the cache. Note that `cache.extra` is not a built-in **knitr** chunk option. You can use any other name for this option, as long as it does not conflict with built-in option names.
+**knitr** にデータファイルが変更されたかどうかを教えなければなりません. 1つの方法として別のチャンクオプション `cache.extra = file.mtime('my-precious.csv')`\index{チャンクオプション!cache.extra} を, あるいはより厳密に `cache.extra = tools::md5sum('my-precious.csv')` を追加することがあります. 前者はファイルの更新時刻が変更されたらキャッシュを無効化する, という意味です. 後者はファイルの中身が変更されたらキャッシュを更新するということです. `cache.extra` は **knitr** の組み込みのチャンクオプションではないということに注意してください. 他の組み込みのオプション名と競合しない限り, この用途のオプションには好きな名前を使うことができます.
 
-Similarly, you can associate the cache with other information such as the R version (`cache.extra = getRversion()`), the date (`cache.extra = Sys.Date()`), or your operating system (`cache.extra = Sys.info()[['sysname']]`), so the cache can be properly invalidated when these conditions change.
+同様に, 他の情報をキャッシュと関連付けることができます. 例えば R のバージョンなら `cache.extra = getRversion()`, 日付なら `cache.extra = Sys.Date()`, オペレーティングシステムなら `cache.extra = Sys.info()[['sysname']]` というようにすると, これらの条件が変更されたときにキャッシュは正しく無効化されます.
 
-We do not recommend that you set the chunk option `cache = TRUE` globally in a document. Caching can be fairly tricky. Instead, we recommend that you enable caching only on individual code chunks that are surely time-consuming and do not have side effects.
+文書全体で `cache = TRUE` を設定することはお薦めしません. キャッシュはかなり扱いにくいものです. そうではなく, 実行に時間がかかり副産物のないとはっきりしているコードチャンクに対してのみ個別にキャッシュを有効化することをお薦めします.
 
-If you are not happy with **knitr**'s design for caching, you can certainly cache objects by yourself. Below is a quick example:
+**knitr** のキャッシュの設計に不満があるなら, 自分でオブジェクトのキャッシュを取ることもできます. 以下はごく簡単な例です.
 
 ```{r, eval=FALSE}
 if (file.exists('results.rds')) {
@@ -118,24 +118,24 @@ if (file.exists('results.rds')) {
 }
 ```
 
-In this case, the only (and also simple) way to invalidate the cache is to delete the file `results.rds`. If you like this simple caching mechanism, you may use the function `xfun::cache_rds()`\index{xfun!cache\_rds()} introduced in Section \@ref(cache-rds).
+この例では, キャッシュを無効化する唯一の, そして簡単な方法は `result.rds`` ファイルを削除することです. この簡単なキャッシュのしくみが気に入ったなら, \@ref(cache-rds)節で紹介する `xfun::cache_rds()`\index{xfun!cache\_rds()} を使うと良いでしょう.
 
-## Cache a code chunk for multiple output formats {#cache-path}
+## 複数の出力フォーマットに対してチャンクをキャッシュする {#cache-path}
 
-When caching is turned on via the chunk option `cache = TRUE`\index{chunk option!cache}\index{caching}, **knitr** will write R objects generated in a code chunk to a cache database, so they can be reloaded the next time. The path to the cache database is determined by the chunk option `cache.path`\index{chunk option!cache.path}. By default, R Markdown uses different cache paths for different output formats, which means a time-consuming code chunk will be fully executed for each output format. This may be inconvenient, but there is a reason for this default behavior: the output of a code chunk can be dependent on the specific output format. For example, when you generate a plot, the output for the plot could be Markdown code like `![text](path/to/image.png)` when the output format is `word_document`, or HTML code like `<img src="path/to/image.png" />` when the output format is `html_document`.
+`cache = TRUE`\index{チャンクオプション!cache}\index{caching} でキャッシュが有効化されたとき, **knitr** は R コードチャンクで生成された R オブジェクトをキャッシュデータベースに書き込みます. これで次回から再読込ができます. キャッシュデータベースのパスはチャンクオプション `cache.path`\index{chunk option!cache.path} によって決まります. デフォルトでは R Markdown は出力フォーマットごとに異なるキャッシュのパスを使用するので, 時間のかかるコードチャンクは出力フォーマットごとに丸ごと実行されることになります. これは不便かもしれませんが, これがデフォルトの挙動であることには理由があります. コードチャンクの出力は, 出力フォーマットに依存します. 例えばグラフを生成した時, 出力フォーマットが `word_document` なら `![text](path/to/image.png)` のような Markdown 構文で図を掲載できますし, 出力フォーマットが `html_document` なら `<img src="path/to/image.png" />` が使えます.
 
-When a code chunk does not have any side effects (such as plots), it is safe to use the same cache database for all output formats, which can save you time. For example, when you read a large data object or run a time-consuming model, the result does not depend on the output format, so you can use the same cache database. You can specify the path to the database via the chunk option `cache.path` on a code chunk, e.g.,
+コードチャンクにグラフなど副作用が一切ないとき, 全ての出力フォーマットで同じキャッシュデータベースを使っても安全であり, 時間を節約できます. 例えば大きなデータオブジェクトを読み込むか時間のかかるモデルを実行するかというときは, 結果は出力フォーマットに依存しませんので, 同じキャッシュデータベースを使うことができます. コードチャンクに `cache.path` を指定することでデータベースのパスを指定できます. これが例です.
 
 ````md
 ```{r important-computing, cache=TRUE, cache.path="cache/"}`r ''`
 ```
 ````
 
-By default, `cache.path = "INPUT_cache/FORMAT/"` in R Markdown, where `INPUT` is the input filename, and `FORMAT` is the output format name (e.g., `html`, `latex`, or `docx`).
+R Markdown ではデフォルトでは `cache.path = "INPUT_cache/FORMAT/"` で, `INPUT` には入力ファイル名が, `FORMAT` には `html`, `latex`, `docx` といった出力フォーマット名が入ります.
 
-## Cache large objects {#cache-lazy}
+## 巨大オブジェクトをキャッシュする {#cache-lazy}
 
-When the chunk option `cache = TRUE`, cached objects will be lazy-loaded into the R session, which means an object will not be read from the cache database until it is actually used in the code\index{caching}. This can save you some memory when not all objects are used later in the document. For example, if you read a large data object but only use a subset in the subsequent analysis, the original data object will not be loaded from the cache database:
+チャンクオプション  `cache = TRUE` を使うと, キャッシュされたオブジェクトは R セッション内で遅延読み込みされます. これはオブジェクトが実際にコード内で使用されるまで\index{caching}キャッシュデータベースから読み込まれないことを意味します. 以降の文書内で全てのオブジェクトが使われるわけではない場合にメモリを多少節約することができます. 例えば大きなデータオブジェクトを読み込んだが, 以降の分析ではその一部しか使わないなら, 元のデータオブジェクトはキャッシュデータベースから読み込まれません.
 
 ````md
 ```{r, read-data, cache=TRUE}`r ''`
@@ -149,7 +149,7 @@ plot(rows)
 ```
 ````
 
-However, when an object is too large, you may run into an error like this:
+しかし, オブジェクトが大きすぎるときは, このようなエラーに遭遇するかもしれません.
 
 ```r
 Error in lazyLoadDBinsertVariable(vars[i], ... 
@@ -157,49 +157,49 @@ Error in lazyLoadDBinsertVariable(vars[i], ...
 Execution halted
 ```
 
-If this problem occurs, you can try to turn off the lazy-loading via the chunk option `cache.lazy = FALSE`\index{chunk option!cache.lazy}. All objects in this chunk will be immediately loaded into memory.
+この問題が発生したら, チャンクオプション `cache.lazy = FALSE`\index{チャンクオプション!cache.lazy} で遅延読み込みを無効にできます. チャンク内の全てのオブジェクトが即座にメモリに読み込まれます.
 
-## Hide code, text output, messages, or plots {#hide-one}
+## コード, テキスト出力, メッセージ, グラフを隠す {#hide-one}
 
-By default, **knitr** displays all possible output from a code chunk, including the source code, text output, messages, warnings, and plots. You can hide them individually using the corresponding chunk options.
+デフォルトでは, **knitr** はコードチャンクから, ソースコード・テキスト出力・メッセージ・警告・エラー・グラフといった可能な全ての出力を表示します. これらに対応するコードチャンクを使い, 個別に隠すことができます.
 
 `r import_example('knitr-hide.Rmd')`
 
-One frequently asked question about **knitr** is how to hide package loading messages. For example, when you `library(tidyverse)` or `library(ggplot2)`, you may see some loading messages. Such messages can also be suppressed by the chunk option `message = FALSE`.
+**knitr** に関するよくある質問の1つは, パッケージ読み込み時のメッセージを隠す方法です. 例えば `library(tidyverse)` や `library(ggplot2)` を使ったとき, いくつかの読み込みメッセージが現れます. このようなメッセージはチャンクオプション `message = FALSE` で抑制することもできます.
 
-You can also selectively show or hide these elements by indexing them. In the following example, we only show the fourth and fifth expressions of the R source code (note that a comment counts as one expression), the first two messages, and the second and third warnings:
+インデックスによってこれらの要素を表示したり隠したり選択することも出来ます. 以下の例では, ソースコードの4つ目と5つ目の式を表示し, 最初の2つのメッセージと2つ目と3つ目の警告を隠しています.  コメントも式1つとして数えられることに注意してください.
 
 ````md
 ```{r, echo=c(4, 5), message=c(1, 2), warning=2:3}`r ''`
-# one way to generate random N(0, 1) numbers
+# 乱数 N(0, 1) を生成する方法の1つ
 x <- qnorm(runif(10))
-# but we can just use rnorm() in practice
+# だが rnorm() を使うほうが実用的
 x <- rnorm(10)
 x
 
-for (i in 1:5) message('Here is the message ', i)
+for (i in 1:5) message('ここにメッセージ ', i)
 
-for (i in 1:5) warning('Here is the warning ', i)
+for (i in 1:5) warning('ここにメッセージ ', i)
 ```
 ````
 
-You can use negative indices, too. For example, `echo = -2`\index{chunk option!echo} means to exclude the second expression of the source code in the output.
+負のインデックスを使用することもできます. 例えば `echo = -2`\index{チャンクオプション!echo} は出力部のソースコードの2つ目の式を排除します.
 
-Similarly, you can choose which plots to show or hide by using indices for the `fig.keep` option\index{chunk option!fig.keep}. For example, `fig.keep = 1:2` means to keep the first two plots. There are a few shortcuts for this option: `fig.keep = "first"` will only keep the first plot, `fig.keep = "last"` only keeps the last plot, and `fig.keep = "none"` discards all plots. Note that the two options `fig.keep = "none"` and `fig.show = "hide"` are different: the latter will generate plots but only hide them, and the former will not generate plot files at all.
+同様に, `fig.keep` オプション\index{チャンクオプション!fig.keep}に対してインデックスを使うことでどのグラフを表示あるいは隠すかを選ぶこともできます. 例えば `fig.keep = 1:2` は最初の2つのグラフを残すことを意味します. このオプションにはいくつかのショートカットがあります. `fig.keep = "first"` は最初のグラフのみを残し, `fig.keep = "last"` は最後のグラフのみを残し, `fig.keep = "none"` は全てのグラフを破棄します. 2つのオプション `fig.keep = "none"` と `fig.show = "hide"` は異なることに注意してください. 前者はそもそも画像ファイルを生成しませんが, 後者はグラフを生成し隠すだけです.
 
-For source code blocks in the `html_document` output, if you do not want to completely omit them (`echo = FALSE`), you may see Section \@ref(fold-show) for how to fold them on the page, and allow users to unfold them by clicking the unfolding buttons.
+`html_document` 出力のソースコードブロックに対して, `echo = FALSE` で完全に省略したくないというならば, ページ上でブロックを折りたたみ, ユーザーが展開ボタンを押して展開させるようにできる方法を書いた\@ref(fold-show)節を見ると良いかもしれません. 
 
-## Hide everything from a chunk {#hide-all}
+## チャンクの出力を全て隠す {#hide-all}
 
-Sometimes we may want to execute a code chunk without showing any output at all. Instead of using separate options mentioned in Section \@ref(hide-one), we can suppress the entire output of the code chunk using a single option `include = FALSE`\index{chunk option!include}, e.g.,
+ときには出力を全く表示させずにコードチャンクを実行したいかもしれません. \@ref(hide-one)節で言及したような方法で個別にオプションを使うのではなく, ただ1つ `include = FALSE`\index{チャンクオプション!include} を使うことで出力全体を抑制できます. これが例です.
 
 ````md
 ```{r, include=FALSE}`r ''`
-# any R code here
+# ここに何らかの R コード
 ```
 ````
 
-With `include=FALSE`, the code chunk will be evaluated (unless `eval=FALSE`), but the output will be completely suppressed---you will not see any code, text output, messages, or plots.
+`include=FALSE` オプションがあると, `eval = FALSE` の指定がない限りコードチャンクは評価されますが, 出力は完全に抑制されます. コードも, テキスト出力も, メッセージもグラフも見えなくなります.
 
 ## Collapse text output blocks into source blocks {#opts-collapse}
 
