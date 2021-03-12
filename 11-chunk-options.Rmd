@@ -201,57 +201,57 @@ for (i in 1:5) warning('ここにメッセージ ', i)
 
 `include=FALSE` オプションがあると, `eval = FALSE` の指定がない限りコードチャンクは評価されますが, 出力は完全に抑制されます. コードも, テキスト出力も, メッセージもグラフも見えなくなります.
 
-## Collapse text output blocks into source blocks {#opts-collapse}
+## テキスト出力をソースコードとまとめる {#opts-collapse}
 
-If you feel there is too much spacing between text output blocks and source code blocks in the output, you may consider collapsing the text output into the source blocks with the chunk option `collapse = TRUE`\index{chunk option!collapse}. This is what the output looks like when `collapse = TRUE`:
+テキスト出力ブロックとソースコードブロックの間隔が空きすぎていると感じたら, チャンクオプション  `collapse = TRUE`\index{チャンクオプション!collapse} でテキスト出力をソースブロックと連結することを検討するとよいでしょう. `collapse = TRUE` としたとき, 出力はこのようになります.
 
 ```{r, test-collapse, collapse=TRUE}
 1 + 1
 1:10
 ```
 
-Below is the same chunk but it does not have the option `collapse = TRUE` (the default is `FALSE`):
+以下は同じチャンクですが `collapse = TRUE` オプションがありません. デフォルトは `FALSE` です.
 
 ```{r, test-collapse}
 ```
 
-## Reformat R source code {#opts-tidy}
+## R のソースコードを整形する {#opts-tidy}
 
-When you set the chunk option `tidy = TRUE`\index{chunk option!tidy}, the R source code will be reformatted by the `tidy_source()` function in the **formatR** package\index{R package!formatR} [@R-formatR]. The `tidy_source()` can reformat the code in several aspects, such as adding spaces around most operators, indenting the code properly, and replacing the assignment operator `=` with `<-`. The chunk option `tidy.opts`\index{chunk option!tidy.opts} can be a list of arguments to be passed to `formatR::tidy_source()`, e.g.,
+チャンクオプション `tidy = TRUE`\index{チャンクオプション!tidy} を設定すると, **formatR** パッケージ\index{R パッケージ!formatR} [@R-formatR] の `tidy_source()` 関数によって R のソースコードが整形されます. `tidy_source()` 関数は, ほとんどの演算子の前後にスペースを追加する, 適切なインデントをする, 代入演算子 `=` を `<-` に置き換えるなど, いくつかの観点でソースコードを整形します. チャンクオプション `tidy.opts`\index{チャンクオプション!tidy.opts} には `formatR::tidy_source()` に与えられる引数のリストが使えます. これが例です. 
 
 `r import_example('tidy-opts.Rmd')`
 
-The output:
+整形後の出力はこうなります.
 
 ```{r, child='examples/tidy-opts.Rmd', results='hide'}
 ```
 
-In Section \@ref(text-width), we mentioned how to control the width of text output. If you want to control the width of the source code, you may try the `width.cutoff` argument when `tidy = TRUE`, e.g.,
+\@ref(text-width)節ではテキストの幅を制御する方法について言及しました. ソースコードの幅を制御したいなら, `tidy = TRUE` としたときに `width.cutoff` 引数を試してみると良いでしょう. これが例です.
 
 `r import_example('tidy-width.Rmd')`
 
-The output:
+出力はこうなります.
 
 ```{r, child='examples/tidy-width.Rmd', results='hide'}
 ```
 
-Please read the help page `?formatR::tidy_source` to know the possible arguments, and also see https://yihui.org/formatR/ for examples and limitations of this function.
+使用可能な引数を知るにはヘルプページ `?formatR::tidy_source` を読んでください. そして https://yihui.org/formatR/ で使用例とこの関数の限界を理解してください.
 
-Alternatively, you may use the **styler** package [@R-styler] to reformat your R code\index{R package!styler} if you set the chunk option `tidy = 'styler'`. The R code will be formatted with the function `styler::style_text()`. The **styler** package has richer features than **formatR**. For example, it can align function arguments and works with the pipe operator `%>%`. The chunk option `tidy.opts`\index{chunk option!tidy.opts} can also be used to pass additional arguments to `styler::style_text()`, e.g.,
+`tidy = styler` を設定したら, コード整形には代わりに **styler** パッケージ [@R-styler]\index{R パッケージ!styler} が使われるでしょう. R コードは `styler::style_text()` 関数で整形されます. **styler** パッケージは **formatR** よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 `%>%` のあるコードも対処できたりします. チャンクオプション `tidy.opts`\index{チャンクオプション!tidy.opts} には `styler::style_text()` への引数を使うこともできます. これが例です.
 
 ````md
 ```{r, tidy='styler', tidy.opts=list(strict=FALSE)}`r ''`
-# align the assignment operators
+# 代入演算子のアラインメント
 a   <- 1#one variable
 abc <- 2#another variable
 ```
 ````
 
-By default, `tidy = FALSE` and your R code will not be reformatted.
+デフォルトでは `tidy = FALSE` であり, あなたのコードは整形されません.
 
-## Output text as raw Markdown content (\*) {#results-asis}
+## テキストを生の Markdown として出力する (\*) {#results-asis}
 
-By default, text output from code chunks will be written out verbatim with two leading hashes (see Section \@ref(opts-comment)). The text is verbatim because **knitr** puts it in fenced code blocks. For example, the raw output of the code `1:5` from **knitr** is:
+デフォルトではコードチャンクからのテキスト出力は冒頭に2つハッシュを置いて, テキストをそのまま書き出します (\@ref(opts-comment)節参照). **knitr** は出力をコードブロックで囲むため, テキストはそのまま表示されます. 例えば `1:5` というコードの生の出力はこうなります.
 
 ````md
 ```
@@ -259,32 +259,32 @@ By default, text output from code chunks will be written out verbatim with two l
 ```
 ````
 
-Sometimes you may not want verbatim text output, but treat text output as Markdown content instead. For example, you may want to write out a section header with `cat('# This is a header')`, but the raw output is:
+時には生のテキストをそのまま出力するのではなく, Markdown 構文として扱いたいこともあるでしょう. 例えば `cat('# これは見出しです')` でセクション見出しを書きたい時があるかもしれませんが, 生の出力はこうなります.
 
 ````md
 ```
-## # This is a header
+## # これは見出しです
 ```
 ````
 
-You do not want the text to be in a fenced code block (or the leading hashes). That is, you want the raw output to be exactly the character string passed to `cat()`:
+テキストをコードブロックで囲んでほしくない, あるいは冒頭のハッシュもいらない. つまり, 生の出力が `cat()` に与えた文字列そのままになるようにしたい, というわけです.
 
 ````md
 # This is a header
 ````
 
-The solution to this problem is the chunk option `results = 'asis'`\index{chunk option!results}. This option tells **knitr** not to wrap your text output in verbatim code blocks, but treat it "as is." This can be particularly useful when you want to generate content dynamically from R code. For example, you may generate the list of column names of the `iris` data from the following code chunk with the option `results = 'asis'`:
+これを解決するのはチャンクオプション `results = 'asis'`\index{チャンクオプション!results} です. このオプションは テキスト出力をコードブロックで囲むのではなく, "as is" (そのまま) 扱うよう **knitr** に指示します. R コードから動的にコンテンツを生成したい時に, このオプションは特に有用でしょう. 例えば以下のコードチャンクと `results = 'asis'` オプションで, `iris` データから列名のリストを生成します.
 
 ```{r, iris-asis, results='asis'}
 cat(paste0('- `', names(iris), '`'), sep = '\n')
 ```
 
-The hyphen (`-`) is the syntax for unordered lists in Markdown. The backticks are optional. You can see the verbatim output of the above chunk without the `results = 'asis'` option:
+ハイフン (`-`) は番号のない箇条書き意味する Markdown 構文です.  バッククォートはオプションです. `results = 'asis'` オプションなしで上記のコードチャンクがそのまま出力されるのを見ることもできます.
 
 ```{r, iris-asis, comment=''}
 ```
 
-Below is a full example that shows how you can generate section headers, paragraphs, and plots in a `for`-loop for all columns of the `mtcars` data:
+以下は, セクション見出し, パラグラフ,  `mtcars` データの全ての列に対して`for` ループ内で作成したグラフを表示する例の全貌です
 
 `r import_example('generate-content.Rmd')`
 

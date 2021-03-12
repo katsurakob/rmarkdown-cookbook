@@ -5,7 +5,6 @@ author:
   - "(著者) Dervieux, Christophe"
   - "(著者) Riederer, Emily"
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
-date: "`r Sys.time()` (翻訳作業中の草稿)"
 bibliography:
   - bib/packages.bib
   - bib/literature.bib
@@ -89,7 +88,13 @@ options(bookdown.post.latex = function(x) {
 })
 
 source("utils.R")
+
+original_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
 ```
+
+---
+date: "`r original_time` (翻訳作業中の草稿)"
+---
 
 # はじめに {-}
 

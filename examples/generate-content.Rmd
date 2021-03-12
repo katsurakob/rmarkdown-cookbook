@@ -1,20 +1,18 @@
 ---
-title: Generate content programmatically
+title: プログラミングでコンテンツを生成する
 ---
 
-With the chunk option `results = 'asis'`, you can
-write out text as raw Markdown content, which can
-also be mixed with plots.
+チャンクオプション `results = 'asis'` で生の Markdown コンテンツを書き出すことができます. これはプロットを含めることもできます. 
 
 ```{r, mtcars-plots, results='asis'}
 for (i in names(mtcars)) {
-  cat('\n\n# Summary of the variable `', i, '`\n\n')
+  cat('\n\n# 変数 `', i, '` の要約.\n\n')
   x <- mtcars[, i]
   if (length(unique(x)) <= 6) {
-    cat('`', i, '` is a categorical variable.\n\n')
-    plot(table(x), xlab = i, ylab = 'Frequency', lwd = 10)
+    cat('`', i, '` はカテゴリカル変数である.\n\n')
+    plot(table(x), xlab = i, ylab = '度数', lwd = 10)
   } else {
-    cat('Histogram for the continuous variable `', i, '`.\n\n')
+    cat('連続変数 `', i, '` のヒストグラム.\n\n')
     hist(x, xlab = i, main = '')
   }
 }
