@@ -393,52 +393,51 @@ if (TRUE) {
 </pre>
 ````
 
-You can find more examples in Section \@ref(number-lines) and Section \@ref(hook-scroll).
+\@ref(number-lines), \@ref(hook-scroll)節でさらなる例を見ることができます.
 
-As a technical note, the chunk options `class.*` are just special cases of `attr.*`, e.g., `class.source = 'numberLines'` is equivalent to `attr.source = '.numberLines'` (note the leading dot here), but `attr.source` can take arbitrary attribute values, e.g., `attr.source = c('.numberLines', 'startFrom="11"')`.
+技術的なことをいいますと, チャンクオプション `class.*` は `attr.*` の特殊形です. 例えば `class.source = 'numberLines'` は `attr.source = '.numberLines'` と同じです (後者は先頭にドットがあることに注意). しかし `attr.source` は任意の属性をとることができ, 例えば `attr.source = c('.numberLines', 'startFrom="11"')` も可能です.
 
-These options are mostly useful to HTML output. There are cases in which the attributes may be useful to other output formats, but these cases are relatively rare. The attributes need to be supported by either Pandoc (such as the `.numberLines` attribute, which works for both HTML and LaTeX output), or a third-party package (usually via a Lua filter, as introduced in Section \@ref(lua-filters)).
+これらのオプションはほとんどの HTML 出力で有効です. 属性が他の出力フォーマットでも有効な場合もありますが, そのような場合になるのは比較的珍しいです. 属性は Pandoc か, 何らかのサードパーティ製パッケージ でもサポートされている必要があります. `.numberLines` 属性は Pandoc によって HTML と LaTeX の両方で動作し,  サードパーティ製パッケージというのは大抵は\@ref(lua-filters)節で紹介したような Lua フィルターを使ったものになります.
 
-## Post-process plots (\*) {#fig-process}
+## グラフに後処理をかける (\*) {#fig-process}
 
-After a plot is generated from a code chunk, you can post-process the plot file via the chunk option `fig.process`\index{chunk option!fig.process}\index{figure!post-processing}, which should be a function that takes the file path as the input argument and returns a path to the processed plot file. This function can have an optional second argument `options`, which is a list of the current chunk options.
+コードチャンクでグラフが生成された後, チャンクオプション `fig.process`\index{チャンクオプション!fig.process}\index{図!後処理} によってグラフに後処理をかけることが出来ます. これはファイルパスを引数にとり, 生成された画像ファイルのパスを返す関数であるべきです. この関数はオプションで第2引数 `option` を取ることができ, これには現在のチャンクのオプションのリストが与えられます.
 
-Below we show an example of adding an R logo to a plot using the extremely powerful **magick** package [@R-magick]\index{R package!magick}. If you are not familiar with this package, we recommend that you read its online documentation or package vignette, which contains lots of examples. First, we define a function `add_logo()`:
+R のロゴをグラフに埋め込むために, とても強力な **magick** パッケージ [@R-magick]\index{R パッケージ!magick} を使用する例を以下にお見せします. このパッケージに詳しくないなら, オンラインドキュメントか, 豊富な使用例を含むパッケージのヴィネットをを読むことをお薦めします. 初めに, 関数 `add_logo()` を定義します.  `add_logo()`:
 
 ```{r}
 add_logo = function(path, options) {
-  # the plot created from the code chunk
+  # コードチャンクで作成された画像
   img = magick::image_read(path)
-  # the R logo
+  # R のロゴ
   logo = file.path(R.home("doc"), "html", "logo.jpg")
   logo = magick::image_read(logo)
-  # the default gravity is northwest, and users can change it via the chunk
-  # option magick.gravity
+  # デフォルトの重心は `northwest` (左上) で, ユーザーはチャンクオプション `magick.gravity` で変更できる
   if (is.null(g <- options$magick.gravity)) g = 'northwest'
-  # add the logo to the plot
+  # ロゴを画像に追加する
   img = magick::image_composite(img, logo, gravity = g)
-  # write out the new image 
+  # 新しい画像を書き出す 
   magick::image_write(img, path)
   path
 }
 ```
 
-Basically the function takes the path of an R plot, adds an R logo to it, and saves the new plot to the original path. By default, the logo is added to the upper-left corner (northwest) of the plot, but users can customize the location via the custom chunk option `magick.gravity` (this option name can be arbitrary).
+基本的にこの関数は R のグラフのパスをとり, R のロゴを追加し, 元画像のパスに新しい画像を保存します. デフォルトでは, ロゴはグラフの左上 (northwest) の隅に追加されますが, ユーザーはカスタムチャンクオプション `magick.gravity` で位置をカスタマイズできます. このオプション名は任意に決められます.
 
-Now we apply the above processing function to the code chunk below with chunk options `fig.process = add_logo` and `magick.gravity = "northeast"`, so the logo is added to the upper-right corner. See Figure \@ref(fig:magick-logo) for the actual output.
+では上記の処理関数を `fig.process = add_logo` と `magick.gravity = "northwest"` オプションで以下のコードチャンクに適用します. よってロゴは右上の隅に追加されます. 実際の出力は図\@ref(fig:magick-logo)になります.
 
-```{r, magick-logo, dev='png', fig.retina=1, fig.process=add_logo, magick.gravity = 'northeast', fig.cap='Add the R logo to a plot via the chunk option fig.process.'}
+```{r, magick-logo, dev='png', fig.retina=1, fig.process=add_logo, magick.gravity = 'northeast', fig.cap='チャンクオプション fig.process でグラフに R のロゴを追加する'}
 par(mar = c(4, 4, .1, .1))
 hist(faithful$eruptions, breaks = 30, main = '', col = 'gray', border = 'white')
 ```
 
-After you get more familiar with the **magick** package, you may come up with more creative and useful ideas to post-process your R plots.
+あなたが **magick** パッケージにより詳しくなったら, R のグラフに後処理をするための, より創造的で有用なアイディアを思いつくことでしょう.
 
-Finally, we show one more application of the `fig.process` option. The `pdf2png()` function below converts a PDF image to PNG. In Section \@ref(graphical-device), we have an example of using the `tikz` graphical device to generate plots. The problem is that this device generates PDF plots, which will not work for non-LaTeX output documents. With the chunk options `dev = "tikz"` and `fig.process = pdf2png`, we can show the PNG version of the plot in Figure \@ref(fig:dev-tikz).
+最後に, `fig.process` オプションのもう1つの応用例をお見せします. 以下の `pdf2png()` 関数は PDF 画像を PNG に変換します. \@ref(graphical-device)節ではグラフの生成のために `tikz` グラフィックデバイスを使用する例を見せました. この方法の問題は, デバイスが PDF を生成することで, LaTeX でない出力の文書に対しては機能しないということです. チャンクオプション `dev = "tikz"` と `fig.process = pdf2png` で, グラフの PNG 版を図\@ref(fig:dev-tikz)に示すことができます.
 
 ```{r}
 pdf2png = function(path) {
-  # only do the conversion for non-LaTeX output
+  # LaTeX でない出力に対してのみ変換する
   if (knitr::is_latex_output()) return(path)
   path2 = xfun::with_ext(path, "png")
   img = magick::image_read_pdf(path)
@@ -447,17 +446,17 @@ pdf2png = function(path) {
 }
 ```
 
-## High-quality graphics (\*) {#graphical-device}
+## 高品質なグラフィック (\*) {#graphical-device}
 
-The **rmarkdown** package has set reasonable default graphical devices for different output formats. For example, HTML output formats use the `png()` device, so **knitr** will generate PNG plot files, and PDF output formats use the `pdf()` device, etc. If you are not satisfied with the quality of the default graphical devices, you can change them via the chunk option `dev`\index{chunk option!dev}. All possible devices supported by **knitr** are: `r knitr::combine_words(names(knitr:::auto_exts), before = '\x60"', after = '"\x60')`.
+**rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF  出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `r knitr::combine_words(names(knitr:::auto_exts), before = '\x60"', after = '"\x60')`
 
-Usually, a graphical device name is also a function name. If you want to know more about a device\index{figure!device}, you can read the R help page. For example, you can type `?svg` in the R console to know the details about the `svg` device, which is included in base R. Note that the `quartz_XXX` devices are based on the `quartz()` function, and they are only available on macOS. The `CairoXXX` devices are from the add-on R package **Cairo** [@R-Cairo], the `Cairo_XXX` devices are from the **cairoDevice** package [@R-cairoDevice], the `svglite` device is from the **svglite** package [@R-svglite], and `tikz` is a device in the **tikzDevice** package [@R-tikzDevice]. If you want to use devices from an add-on package, you have to install the package first.\index{R package!graphics devices}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{図!デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば `svg` デバイスの詳細を知るのに, R コンソールで `?svg` と打つことができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: これらと異なり, `cairo_pdf` は base R に含まれています.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
-Usually, vector graphics have higher quality than raster graphics, and you can scale vector graphics without loss of quality. For HTML output, you may consider using `dev = "svg"` or `dev = "svglite"` for SVG plots. Note that SVG is a vector graphics format, and the default `png` device produces a raster graphics format.
+大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために `dev = "svg"` または `dev = "svglite"` を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの `png` デバイスはラスタ画像形式であることに注意してください.
 
-For PDF output, if you are really picky about the typeface in your plots, you may use `dev = "tikz"`, because it offers native support for LaTeX, which means all elements in a plot, including text and symbols, are rendered in high quality through LaTeX. Figure \@ref(fig:dev-tikz) shows an example of writing LaTeX math expressions in an R plot rendered with the chunk option `dev = "tikz"`.
+あなたが PDF 出力時のグラフ内の書体に対してこだわりが強い人なら, `dev = "tikz"`  を使うと良いでしょう. これは LaTeX がネイティヴでサポートしているからです. つまり, テキストや記号を含むグラフの全ての要素が LaTeX を介して高品質にレンダリングされるということです. 図\@ref(fig:dev-tikz)に, `dev = "tikz"` で R のグラフ内で LaTeX 数式表現を書く例を示します.
 
-```{r, dev-tikz, dev='tikz', tidy=FALSE, fig.cap='A plot rendered via the tikz device.', fig.dim=c(6, 4), fig.align='center', fig.process=pdf2png, cache=TRUE}
+```{r, dev-tikz, dev='tikz', tidy=FALSE, fig.cap='tikz デバイスでレンダリングされたグラフ', fig.dim=c(6, 4), fig.align='center', fig.process=pdf2png, cache=TRUE}
 par(mar = c(4, 4, 2, .1))
 curve(dnorm, -3, 3, xlab = '$x$', ylab = '$\\phi(x)$',
       main = 'The density function of $N(0, 1)$')
@@ -465,40 +464,41 @@ text(-1, .2, cex = 3, col = 'blue',
   '$\\phi(x)=\\frac{1}{\\sqrt{2\\pi}}e^{\\frac{-x^2}{2}}$')
 ```
 
-Note that base R actually supports math expressions, but they are not rendered via LaTeX (see `?plotmath` for details). There are several advanced options to tune the typesetting details of the `tikz` device. You may see `?tikzDevice::tikz` for the possibilities. For example, if your plot contains multibyte characters, you may want to set the option:
+base R は実は数式表現をサポートしていますが, LaTeX を介してレンダリングされていないことに注意してください (詳細は `?plotmath` を見てください). `tikz` デバイスの細かい組版を調整するいくつかの発展的なオプションがあります. `?tikzDevice::tikz` で, できることを確認するとよいでしょう. 例えばグラフにマルチバイト文字が含まれているなら, このオプションを設定すると良いでしょう.
 
 ```{r, eval=FALSE}
 options(tikzDefaultEngine = 'xetex')
 ```
 
-That is because `xetex` is usually better than the default engine `pdftex` in processing multibyte characters in LaTeX documents.
+これは, LaTeX 文書でマルチバイト文字を処理する観点で, `xetex` の方が大抵の場合はデフォルトのエンジン `pdftex` より優れているからです.
 
-There are two major disadvantages of the `tikz` device. First, it requires a LaTeX installation, but this may not be too bad (see Section \@ref(install-latex)). You also need a few LaTeX packages, which can be easily installed if you are using TinyTeX:
+`tikz` の主な欠点が2つあります. 1つ目は LaTeX のインストールが必要ということですが, これはそこまで深刻ではありません (\@ref(install-latex)節参照). 他にもいくつかの LaTeX パッケージが必要になりますが, TinyTeX を使用しているなら簡単にインストールできます.
 
 ```{r, tikz-packages, eval=!tinytex:::check_installed(c('pgf', 'preview', 'xcolor')), message=FALSE}
 tinytex::tlmgr_install(c('pgf', 'preview', 'xcolor'))
 ```
 
-Second, it is often significantly slower to render the plots, because this device generates a LaTeX file and has to compile it to PDF. If you feel the code chunk is time-consuming, you may enable caching by the chunk option `cache = TRUE` (see Section \@ref(cache)).
+2つ目の欠点は, デバイスが LaTeX ファイルを生成してから PDF にコンパイルするため, グラフのレンダリングが顕著に遅くなるということです. コードチャンクに時間がかかると感じるなら, `cache = TRUE` でチャンクオプションを有効にするとよいでしょう (\@ref(cache)節参照).
 
-For Figure \@ref(fig:dev-tikz), we also used the chunk option `fig.process = pdf2png`\index{chunk option!fig.process}, where the function `pdf2png` is defined in Section \@ref(fig-process) to convert the PDF plot to PNG when the output format is not LaTeX. Without the conversion, you may not be able to view the PDF plot in the online version of this book in the web browser.
+図\@ref(fig:dev-tikz)には, チャンクオプション `fig.process = pdf2png`\index{チャンクオプション!fig.process} が使われています. `pdf2png` は\@ref(fig-process)節で定義された, 出力フォーマットが LaTeX でない時に PDF 画像を PNG に変換するものです. 変換しない場合, 本書のオンライン版をウエブブラウザで閲覧しても PDF グラフは見られないでしょう.
 
-## Step-by-step plots with low-level plotting functions (\*) {#low-plots}
+## 低水準作図関数で1つづつグラフを作る (\*) {#low-plots}
 
-For R graphics, there are two types of plotting functions: high-level plotting functions create new plots, and low-level functions add elements to existing plots. You may see Chapter 12 ("Graphical procedures") of the R manual [_An Introduction to R_](https://cran.r-project.org/doc/manuals/r-release/R-intro.html) for more information.
+R グラフィックスには2種類の作図関数があります. 高水準作図関数は新たなグラフを作成し, 低水準作図関数は既存のグラフに要素を追加します. 詳細は R マニュアルの12章  [_An Introduction to R_](https://cran.r-project.org/doc/manuals/r-release/R-intro.html) を確認するとよいでしょう.
 
+デフォルトでは **knitr** は低水準作図関数による中間グラフ\index{図!中間グラフ}はそれより前のグラフを修正するのに使います. 全ての低水準作図による変更が反映された最後のグラフのみが表示されます. 
 By default, **knitr** does not show the intermediate plots when a series of low-level plotting functions\index{figure!intermediate plots} are used to modify a previous plot. Only the last plot on which all low-level plotting changes have been made is shown.
 
-It can be useful to show the intermediate plots, especially for teaching purposes. You can set the chunk option `fig.keep = 'low'`\index{chunk option!fig.keep} to keep low-level plotting changes. For example, Figure \@ref(fig:low-plots-1) and Figure \@ref(fig:low-plots-2) are from a single code chunk with the chunk option `fig.keep = 'low'`, although they appear to be from two code chunks. We also assigned different figure captions to them with the chunk option `fig.cap = c('A scatterplot ...', 'Adding a regression line...')`.\index{chunk option!fig.cap}
+特に教育目的では, 中間グラフを表示することが有用になりえます. 低水準作図による変更を保存するために, チャンクオプション `fig.keep = 'low'`\index{チャンクオプション!fig.keep} を設定することができます. 例えば 図\@ref(fig:low-plots-1), \@ref(fig:low-plots-2)は `fig.keep = 'low'` のオプションを設定した同一のコードチャンク由来ですが, 2つのコードチャンクから生成されたように見えます. さらに異なる図のキャプションを, チャンクオプション `fig.cap = c('...の散布図', '... に回帰直線を追加')` で割り当てています.\index{チャンクオプション!fig.cap}
 
-```{r, low-plots, fig.cap=c('A scatterplot of the cars data.', 'Adding a regression line to an existing scatterplot.'), fig.keep='low'}
+```{r, low-plots, fig.cap=c('cars データの散布図.', '既にある散布図に回帰曲線を追加'), fig.keep='low'}
 par(mar = c(4, 4, .1, .1))
 plot(cars)
 fit = lm(dist ~ speed, data = cars)
 abline(fit)
 ```
 
-If you want to keep modifying a plot in a _different_ code chunk, please see Section \@ref(global-device).
+**異なる**コードチャンク間でグラフの変更を維持したいなら, \@ref(global-device)節を参照してください.
 
 ## Customize the printing of objects in chunks (\*) {#opts-render}
 
