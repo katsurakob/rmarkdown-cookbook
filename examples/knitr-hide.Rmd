@@ -7,19 +7,19 @@
 テキスト出力を隠す. `results = FALSE` を使うのも可.
 
 ```{r, results='hide'}
-print("You will not see the text output.")
+print("テキスト出力はあなたには見えない.")
 ```
 
 メッセージを隠す.
 
 ```{r, message=FALSE}
-message("You will not see the message.")
+message("このメッセージはあなたには見えない.")
 ```
 
 警告メッセージを隠す.
 
 ```{r, warning=FALSE}
-# this will generate a warning but it will be suppressed
+# 警告を発生させるが抑制される
 1:2 + 1:3
 ```
 
