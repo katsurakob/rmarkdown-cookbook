@@ -1,6 +1,8 @@
 ---
 title: "R Markdown クックブック 日本語版"
-output: github_document
+output:
+  github_document:
+    html_preview: false
 ---
 
 ## About this
@@ -17,7 +19,7 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 
 ## 進捗状況
 
-10章まで翻訳 (全17章 + Appendix)
+11章まで翻訳 (全17章 + Appendix)
 
 ## 関連リンク
 
