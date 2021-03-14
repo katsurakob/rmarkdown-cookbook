@@ -500,21 +500,21 @@ abline(fit)
 
 **異なる**コードチャンク間でグラフの変更を維持したいなら, \@ref(global-device)節を参照してください.
 
-## Customize the printing of objects in chunks (\*) {#opts-render}
+## チャンク内のオブジェクト表示をカスタマイズする (\*) {#opts-render}
 
-By default, objects in code chunks are printed through the `knitr::knit_print()`\index{knitr!knit\_print()} function, which is by and large just `print()` in base R. The `knit_print()` function is an S3 generic function, which means you can extend it by yourself by registering S3 methods on it. The following is an example that shows how to automatically print data frames as tables via `knitr::kable()`:
+デフォルトではコードチャンク内のオブジェクトは `knitr::knit_print()`\index{knitr!knit\_print()} 関数を通して表示され, これは概ね base R の `print()` と同じです. `knit_print()` 関数は S3 ジェネリック関数であり, あなたが自分で S3 メソッドを登録することで機能を拡張できることを意味します. 以下は `knitr::kable()` でデータフレームを表として自動的に表示する方法の例を示しています.
 
 `r import_example('print-method.Rmd')`
 
-You can learn more about the `knit_print()` function in the **knitr** package\index{R package!knitr} vignette:
+`knit_print()` 関数の詳細は **knitr** パッケージ\index{R パッケージ!knitr}のビネットから学ぶことができます.
 
 ```{r, eval=FALSE}
 vignette('knit_print', package = 'knitr')
 ```
 
-The **printr** package\index{R package!printr} [@R-printr] has provided a few S3 methods to automatically print R objects as tables if possible. All you need is `library(printr)` in an R code chunk, and all methods will be automatically registered.
+**printr** パッケージ\index{R パッケージ!printr} [@R-printr] はいくつかの R オブジェクトを可能な範囲で自動的に表として表示する S3 メソッドをいくつか提供します. コードチャンクで `library(printr)` を実行するだけで十分で, 全てのメソッドが自動的に登録されます.
 
-If you find this technique too advanced for you, some R Markdown output formats such as `html_document` and `pdf_document` also provide an option `df_print`, which allows you to customize the printing behavior of data frames. For example, if you want to print data frames as tables via `knitr::kable()`, you may set the option:
+このテクニックがとても上級者向けだと感じたなら, `html_document` や `pdf_document` のような R Markdown の出力フォーマットに `df_print` オプションを与えてください. これでデータフレームの表示に関する挙動をカスタマイズできます. 例えばデータフレームを `knitr::kable()` で表示したいなら, このようにオプションを設定するとよいでしょう.
 
 ```yaml
 ---
@@ -524,9 +524,9 @@ output:
 ---
 ```
 
-Please see the help pages of the output format functions (e.g., `?rmarkdown::html_document`) to determine whether an output format supports the `df_print` option and, if so, what the possible values are. 
+出力フォーマットが `df_print` をサポートするかどうか, そしてもしそうなら使用可能な値が何であるかの判断は, 出力フォーマット関数のヘルプページを見てください.
 
-In fact, you can completely replace the printing function `knit_print()` through the chunk option `render`, which can take any function to print objects. For example, if you want to print objects using the **pander** package\index{R package!pander}, you may set the chunk option `render` to the function `pander::pander()`:
+実際には, `render` チャンクオプションで `knit_print()` 関数を完全に置き換えることができます. このオプションはオブジェクトを表示する任意の関数を取ることができます. 例えば **pander** パッケージ\index{R パッケージ!pander} を使用するオブジェクトを表示したいなら, チャンクオプション `render` に `pander::pander()` を設定するとよいでしょう.
 
 ````md
 ```{r, render=pander::pander}`r ''`
@@ -534,11 +534,11 @@ iris
 ```
 ````
 
-The `render` option gives you complete freedom on how to print your R objects.
+`render` オプションによって, あなたは R オブジェクトの表示方法に対する完全なる自由を手に入れるでしょう.
 
-## Option hooks (\*) {#option-hooks}
+## オプションフック (\*) {#option-hooks}
 
-Sometimes you may want to change certain chunk options\index{chunk option!option hooks}\index{option hooks} dynamically according to the values of other chunk options. You may use the object `opts_hooks` to set up an _option hook_ to do it. An option hook is a function associated with the option and to be executed when a corresponding chunk option is not `NULL`. This function takes the list of options for the current chunk as the input argument, and should return the (potentially modified) list. For example, we can tweak the `fig.width` option so that it is always no smaller than `fig.height`:
+あるチャンクオプションを, 他のチャンクオプションの値に応じて動的に変えたい\index{チャンクオプション!オプションフック}\index{オプションフック}ことがあるかもしれません. これを実施するには**オプションフック**を設定するために, `opts_hooks` オブジェクトを使用するとよいでしょう. オプションフックはオプションと関連付けられた関数で, 対応するチャンクオプションが `NULL` でないときに実行されます. この関数は現在のチャンクのオプションのリストを引数として受け取り, そのリストを (おそらく変更して) 返すものであるべきです. 例えば `fig.width` オプションを常に `fig.height` より小さくならないように調整することができます.
 
 ```{r, eval=FALSE}
 knitr::opts_hooks$set(fig.width = function(options) {
@@ -549,7 +549,7 @@ knitr::opts_hooks$set(fig.width = function(options) {
 })
 ```
 
-Because `fig.width` will never be `NULL`, this hook function is always executed before a code chunk to update its chunk options. For the code chunk below, the actual value of `fig.width` will be 6 instead of the initial 5 if the above option hook has been set up:
+`fig.width` が `NULL` になることはないので, このフック関数は常に, コードチャンクの直前にチャンクオプションの更新のために実行されます. 以下のコードチャンクは, 上記のオプションフックが設定されていれば, `fig.width` が初期値の5の代わりに実際には6になります.
 
 ````md
 ```{r fig.width = 5, fig.height = 6}`r ''`
@@ -557,7 +557,7 @@ plot(1:10)
 ```
 ````
 
-As another example, we rewrite the last example in Section \@ref(opts-comment) so we can use a single chunk option `console = TRUE` to imply `comment = ""` and `prompt = TRUE`. Note that `console` is not a built-in **knitr** chunk option but a custom and arbitrary option name instead. Its default value will be `NULL`. Below is a full example:
+別の例として, \@ref(opts-comment)説の最後の例を書き換えます. 単一のチャンクオプション `console = TRUE` が,  `comment = ""` と `prompt = TRUE` を意味するようにできます. `console` は **knitr** の固有のチャンクオプションでなく, 任意の名前のカスタムオプションであることに注意してください. デフォルト値は `NULL` です. 以下はその完全な例です.
 
 ````md
 ```{r, include=FALSE}`r ''`
@@ -569,7 +569,7 @@ knitr::opts_hooks$set(console = function(options) {
 })
 ```
 
-Default output:
+デフォルトの出力.
 
 ```{r}`r ''`
 1 + 1
@@ -578,7 +578,7 @@ if (TRUE) {
 }
 ```
 
-Output with `console = TRUE`:
+`console = TRUE` で出力.
 
 ```{r, console=TRUE}`r ''`
 1 + 1
@@ -588,7 +588,7 @@ if (TRUE) {
 ```
 ````
 
-The third example is about how to automatically add line numbers to any output blocks, including source code blocks, text output, messages, warnings, and errors. We have mentioned in Section \@ref(number-lines) how to use chunk options such as `attr.source` and `attr.output` to add line numbers. Here we want to use a single chunk option (`numberLines` in this example) to control the blocks to which we want to add line numbers.
+3つ目の例はどうやって自動的にソースコード・テキスト出力・メッセージ・警告・エラーの出力ブロックに行番号を追加するかに関するものです. 行番号を追加するために `attr.source`, `attr.output` といったチャンクオプションを使用する方法は\@ref(number-lines)節で紹介しています. ここでは単一のチャンクオプション (この例では `numberLines`) で行番号を追加するかどうかを制御したいとします.
 
 ```{r, eval=FALSE, tidy=FALSE}
 knitr::opts_hooks$set(
@@ -606,24 +606,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-Basically, the option hook `numberLines` appends the attribute `.numberLines` to output blocks, and the chunk option `numberLines` set via `opts_chunk$set()` makes sure that the option hook will be executed.
+基本的に, オプションフック `numberLines` は `.numberLines` 属性を出力ブロックに追加し, チャンクオプション `opts_chunk$set()` によって設定された `numberLunes` はオプションフックによって実行されたことが確認されます.
 
-With the above setup, you can use the chunk option `numberLines` on a code chunk to decide which of its output blocks will have line numbers, e.g., `numberLines = c('source', 'output')`. Specifying `numberLines = NULL` removes line numbers completely.
+上記の設定では, チャンクオプション `numberLines` をコードチャンクで使用して, そのチャンクの出力ブロックのどの部分に行番号を付けるかを決めることができます. 例えば `numberLines = c('source', 'output')` のように. `numberLines = NULL` は行番号を完全に削除します.
 
-You may wonder how this approach differs from setting the chunk options directly, e.g., just `knitr::opts_chunk$set(attr.source = '.numberLines')` like we did in Section \@ref(number-lines). The advantage of using the option hooks here is that they only _append_ the attribute `.numberLines` to chunk options, which means they will not _override_ existing chunk option values, e.g., the source code block of the chunk below will be numbered (with the above setup), and the numbers start from the second line:
+このアプローチがチャンクオプションを直接設定するのと何が違うのかと思うかもしれません. 例えば\@ref(number-lines)節でしたように, 単に `knitr::opts_chunk$set(attr.source = '.numberLines')` とする場合と. ここでオプションフックを使う利点は `.numberLines` 属性をチャンクオプションに**追加する**という点のみです. これはチャンクオプションの既に存在する値を**上書きする**ことを意味しません. 例えば以下のチャンクのソースコードブロックは (既に設定したため) 行番号が付いており, そして番号を2行目から始めます.
 
 ````md
 ```{r, attr.source='startFrom="2"'}`r ''`
-# this comment line will not be numbered
+# このコメント行には番号がつかない
 1 + 1
 ```
 ````
 
-It is equivalent to:
+これは以下と同等です.
 
 ````md
 ```{r, attr.source=c('startFrom="2"', '.numberLines'}`r ''`
-# this comment line will not be numbered
+# このコメント行には番号がつかない
 1 + 1
 ```
 ````
