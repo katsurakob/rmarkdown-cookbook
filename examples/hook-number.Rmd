@@ -1,9 +1,9 @@
 ---
-title: Add line numbers to source code
+title: ソースコードに行番号を追加する
 ---
 
-We set up a `source` hook to add line numbers to the source
-code. The numbers appear in comments at the end of each line.
+行番号をソースコードに追加する `source` フックを用意します.
+番号は各行の末尾のコメントに現れます.
 
 ```{r, include=FALSE}
 local({
@@ -11,7 +11,7 @@ local({
   knitr::knit_hooks$set(source = function(x, options) {
     x <- xfun::split_lines(x)
     n <- nchar(x, 'width')
-    i <- seq_along(x)  # line numbers
+    i <- seq_along(x)  # 行番号
     n <- n + nchar(i)
     s <- knitr:::v_spaces(max(n) - n)
     x <- paste(x, s, '  # ', i, sep = '', collapse = '\n')
@@ -20,8 +20,8 @@ local({
 })
 ```
 
-Now we can test the new hook. When you knit this document, you
-will see line numbers in trailing comments.
+ここで新しいフックのテストができます. この文書を knit するとき,
+末尾のコメントに行番号が見られます.
 
 ```{r}
 if (TRUE) {

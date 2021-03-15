@@ -1,8 +1,8 @@
-# Output Hooks (\*) {#output-hooks}
+# 出力フック (\*) {#output-hooks}
 
-With the **knitr** package, you have control over every piece of output from your code chunks, such as source code, text output, messages, and plots. The control is achieved through "output hooks."\index{output hooks} Output hooks are a series of functions that take a piece of output as the input (typically a character vector), and return a character vector to be written to the output document. This may not be easy to understand for now, but hopefully you can see the idea more clearly with a small example below explaining how the output of a simple code chunk is rendered through **knitr**'s output hooks.
+**knitr** パッケージによって, あなたはコードチャンクから出力されるものを各パーツ, ソースコード・テキスト出力・メッセージ・グラフといったものごとに制御しています. この制御は「出力フック」\index{出力フック}\index{output hooks|see{出力フック}} (output hook(s))によって実現されています. 出力フックは出力の各パーツを入力 (典型的には文字列ベクトルとして扱います) として, 出力文書に書き出すための文字列を返す一連の関数です. 現時点ではこのしくみを理解するのは簡単ではないでしょうが, これから説明する簡単な例を見ればこのアイディアがはっきりと理解できるものと思います. この例ではコードチャンクの出力がどのようにして **knitr** の出力フックを介してレンダリングされるかを表しています.
 
-Consider this code chunk with one line of code:
+このような1行だけのコードチャンクについて考えてみてください.
 
 ````md
 ```{r}`r ''`
@@ -10,17 +10,17 @@ Consider this code chunk with one line of code:
 ```
 ````
 
-After **knitr** evaluates the code chunk, it gets two output elements, and both are stored as character strings: the source code `"1 + 1"`, and the text output `"[1] 2"`. These character strings will be further processed by chunk hooks for the desired output format. For example, for Markdown documents, **knitr** will wrap the source code in a fenced code block with a language name. This is done through the `source` hook, which more or less looks like this function:
+**knitr** がコードチャンクを評価した後, 2つの出力要素を得て, 2つとも文字列ベクトルとして保持されます. ソースコードの `"1 + 1"` と, テキスト出力の `"[1] 2"` です. これらの文字列は求められている出力フォーマットに応じて, チャンクフックによってさらなる処理がなされます. たとえば Markdown 文書では **knitr** はソースコードを言語名を付けてコードブロックで囲みます. これは `source` フックを介して行われ, だいたいこのような関数となります.
 
 ```{r, eval=FALSE}
-# for the above case, `x` is a character string "1 + 1"
+# 上記のケースでは, `x` は文字列 "1 + 1" に相当
 function(x, options) {
-  # the little "r" here indicates the language name
+  # ここの小文字 "r" は言語名を表す
   paste(c('```r', x, '```'), collapse = '\n')
 }
 ```
 
-Similarly, the text output is processed by the `output` hook that looks like this function:
+同様に, テキスト出力はこのような `output` フック関数によって処理されます.
 
 ```{r, eval=FALSE}
 function(x, options) {
@@ -28,7 +28,7 @@ function(x, options) {
 }
 ```
 
-So the final output of the above code chunk is:
+よって上記のコードチャンクの最終的な出力はこのようになります.
 
 ````md
 ```r
@@ -40,71 +40,71 @@ So the final output of the above code chunk is:
 ```
 ````
 
-The actual hooks are more complicated than the two functions above, but the idea is the same. You may obtain the actual hooks from the object `knit_hooks`\index{knitr!knit\_hooks} via the `get()` method, e.g.,
+実際のフックは上記のような2つの関数よりも複雑ですが, 発想は同じです. `knit_hooks`\index{knitr!knit\_hooks} オブジェクトから `get()` メソッドで実際のフック関数を取得できます. これが例です.
 
 ```{r, eval=FALSE}
-# for meaningful output, the code below should be executed
-# *inside* a code chunk of a knitr document
+# 意味のある出力のため, 以下のコードは
+# knitr 文書のコードチャンクの *内部で* 実行されるべき
 knitr::knit_hooks$get('source')
 knitr::knit_hooks$get('output')
-# or knitr::knit_hooks$get(c('source', 'output'))
+# または knitr::knit_hooks$get(c('source', 'output'))
 ```
 
-Unless you are truly interested in making contributions to the **knitr** package, we do not recommend that you read the source code of these built-in hooks. If you are interested, this code can be found in the scripts named in the form `hooks-*.R` at https://github.com/yihui/knitr/tree/master/R (e.g., `hooks-md.R` contains hooks for R Markdown documents). As a **knitr** user, it usually suffices if you know how to create custom output hooks by taking advantage of the built-in hooks. You will learn that in several examples in this chapter, and we show the basic idea below.
+あなたが **knitr** パッケージの開発に貢献することに本当に関心があるのでない限り, 組み込みのフック関数のソースコードを読むことをお薦めしません. 関心があるのなら, このコードは https://github.com/yihui/knitr/tree/master/R  で `hooks-*.R` という形式で命名されたスクリプトファイルにて見ることができます. 例えば `hooks-md.R` には R Markdown 文書に対するフックが含まれています. たいていの **knitr** ユーザーにとっては, 組み込みのフックよりも便利なカスタム出力フックの作り方を知っていれば十分です. この章のこれ以降では, あなたはいくつかの例で出力フックに関するこのようなことを学びます. さらに, 我々は以下のような基本的アイディアを示します. 
 
-A custom output hook is registered through the `set()` method of `knit_hooks`. Because this method will override the existing default hook, we recommend that you save a copy of an existing hook, process the output elements in your own way, and pass the results to the default hook. The usual syntax is:
+カスタム出力フックは `knit_hooks()` の `set()` メソッドによって登録されます. このメソッドは既存のデフォルのトフックを上書きするので, 既存のフックのコピーを保存し, 出力要素にあなた独自の処理してから, その結果をこのデフォルトのフックに与えるようにしておくことをお薦めします. 構文はたいていこのようになります.
 
 ```{r, eval=FALSE}
-# using local() is optional here (we just want to avoid creating unnecessary global variables like `hook_old`)
+# ここで local() を使うかは任意 (ここでは単に `hook_old` のような不要なグローバル変数を作ることを避ける目的)
 local({
-  hook_old = knitr::knit_hooks$get('NAME')  # save the old hook
+  hook_old = knitr::knit_hooks$get('NAME')  # 古いフックを保存する
   knitr::knit_hooks$set(NAME = function(x, options) {
-    # now do whatever you want to do with x, and pass the
-    # new x to the old hook
+    # ここで, x をどうしたいかにかかわらず, 新しい x を
+    # さらに古いフックに与える
     hook_old(x, options)
   })
 })
 ```
 
-Here, `NAME` is the name of the hook, which can be one of the following values:
+ここで, `NAME` は以下のいずれかのフックの名前を意味します.
 
-- `source`: processing the source code.
+- `source`: ソースコードを処理するフック.
 
-- `output`: processing text output.
+- `output`: テキスト出力を処理するフック.
 
-- `warning`: processing warnings (usually from `warning()`).
+- `warning`: 警告 (たいていは `warning()` で発生するもの) を処理するフック.
 
-- `message`: processing messages (usually from `message()`).
+- `message`: メッセージ (たいていは `message()` で発生するもの) を処理するフック.
 
-- `error`: processing error messages (usually from `stop()`).
+- `error`: エラーメッセージ (たいていは `stop()` で発生するもの) を処理するフック.
 
-- `plot`: processing plot file paths.
+- `plot`: グラフのファイルパスを処理するフック.
 
-- `inline`: processing output from inline R expressions.
+- `inline`: インライン R コードからの出力を処理するフック.
 
-- `chunk`: processing output from the whole chunk.
+- `chunk`: チャンク全体の出力を処理するフック.
 
-- `document`: processing the whole document.
+- `document`: 文書全体を処理するフック.
 
-The meaning of the argument `x` in the hook functions is explained in the above list. For the `options` argument of a hook, it denotes the chunk options (as a list) for the current code chunk. For example, if you set `foo = TRUE` on a chunk, you can obtain its value via `options$foo` in the hook. The `options` argument is not available to the `inline` and `document` hooks.
+フック関数の引数 `x` の意味は上記のリストで説明されています. `options` 引数は現在のコードチャンクのオプションのリストを意味します. 例えば `foo = TRUE` と設定したなら, フック関数内では `options$foo` でこの値を得ることができます. `options` 引数は `inline` および `document` フックでは利用できません.
 
-Output hooks give you the ultimate control over every single piece of your chunk and document output. Compared with chunk options, which often have predefined purposes, output hooks can be much more powerful since they are user-defined functions, and you can do anything you want in functions.
+出力フックによって, チャンクと文書の出力の部品1つ1つに対して究極のコントロールを得られます. あらかじめ定義された目的を持つチャンクオプションと比較すると, 出力フックはユーザー定義関数なのではるかに強力であり, 関数内ではあなたが望むことはなんでもできます.
 
-## Redact source code {#hook-hide}
+## ソースコードを検閲する {#hook-hide}
 
-Sometimes we may not want to fully display our source code in the report. For example, you may have a password in a certain line of code. We mentioned in Section \@ref(hide-one) that you can use the chunk option `echo` to select which expressions in the R code to display (e.g., show the second expression via `echo = 2`). In this section, we provide a more flexible method that does not require you to specify the indices of expressions.
+ときにはレポートにソースコードの全文を掲載したくないこともあるでしょう. 例えばコードのある行にパスワードが書かれているかもしれません. \@ref(hide-one)節ではチャンクオプション `echo` で R コードの文ごとに表示の有無を表せることを言及しました. 例えば `echo = 2` で2つ目の文を表示します. この節では, コードのインデックスを指定する必要のない, より柔軟な方法を提供します.
 
-The basic idea is that you add a special comment to the code (e.g., `# SECRET!!`). When this comment is detected in a line of code, you omit that line. Below is a full example using the `source` hook:
+基本的なアイディアはコードに特殊なコメント, 例えば `# 秘密!!` のようなものを追加するということです. このコメントがコードのある行から検出されると, 行を省略します. 以下は `source` フックを使用した完全な例です.
 
 `r import_example('hook-secret.Rmd')`
 
-The key part in the above `source` hook is this line, which matches the trailing comment `# SECRET!!` in the source code vector `x` via `grepl()` and exclude the matches:
+上記の `source` フックの重要な部分はこの行です. これはソースコードのベクトル `x` から `grepl()` で末尾の `# 秘密!!` とマッチングしたものを排除しています.
 
 ```{r, eval=FALSE}
 x <- x[!grepl('# SECRET!!$', x)]
 ```
 
-Precisely speaking, the above hook will exclude whole _expressions_ containing the trailing comment `# SECRET!!`, instead of individual lines, because `x` is actually a vector of R expressions. For example, for the code chunk below:
+正確に言うなら, 上記のフックは末尾に `# 秘密!!` というコメントのある行ではなく, **評価式** (expressions) を全て排除します. `x` は実際には R 評価式のベクトルだからです. 例えば以下のコードチャンクを考えます.
 
 ```{r, source-hook-x, eval=FALSE}
 1 + 1
@@ -113,27 +113,26 @@ if (TRUE) { # SECRET!!
 }
 ```
 
-The value of `x` in the `source` hook is:
+`source` フック内の `x` の値はこうなります.
 
 ```{r, eval=FALSE}
 c("1 + 1", "if (TRUE) { # SECRET!!\n  1:10\n}")
 ```
 
-
-If you want to hide lines instead of expressions of R code, you will have to split `x` into individual lines. You may consider using the function `xfun::split_lines()`\index{xfun!split\_lines()}. The body of the hook function will be:
+R 評価式ではなく行を隠したいなら, `x` を行ごとに分割しなければなりません. `xfun::split_lines()`\index{xfun!split\_lines()} の使用を検討するとよいでしょう. フック関数の本体はこうなります.
 
 ```{r, eval=FALSE}
-x <- xfun::split_lines(x)  # split into individual lines
+x <- xfun::split_lines(x)  # 個別の行に分割する
 x <- x[!grepl('# SECRET!!$', x)]
-x <- paste(x, collapse = '\n')  # combine into a single string
+x <- paste(x, collapse = '\n')  # 結合して1つの行にする
 hook_source(x, options)
 ```
 
-This example shows you how to manipulate the source code string, and `grepl()` is certainly not the only choice of string manipulation. In Section \@ref(hook-number), we will show another example.
+この例はソースコードの文字列を操作する方法を, そして `grepl()` はおそらく文字列操作の唯一の方法ではないだろう, ということを示しています. \@ref(hook-number)節では他の例もお見せしています.
 
-## Add line numbers to source code {#hook-number}
+## ソースコード内に行番号を追加する {#hook-number}
 
-In this section, we show an example of defining a `source` hook to add line numbers as comments to the source code. For example, for this code chunk:
+この節では, ソースコードに行番号をコメントとして追加する `source` フックの定義の例を示します. 例えば, このコードチャンクに対するものを考えます.
 
 ````md
 ```{r}`r ''`
@@ -144,7 +143,7 @@ if (TRUE) {
 ```
 ````
 
-We want the output to be:
+このような出力を求めているものとします.
 
 ```{r, eval=FALSE, tidy=FALSE}
 if (TRUE) {    # 1
@@ -153,19 +152,19 @@ if (TRUE) {    # 1
 }              # 4
 ```
 
-The full example is below:
+完全な例は以下になります.
 
 `r import_example('hook-number.Rmd')`
 
-The main trick in the above example is to determine the number of spaces needed before the comment on each line, so the comments can align to the right. The number depends on the widths of each line of code. We leave it to readers to digest the code in the hook function. Note that an internal function `knitr:::v_spaces()`\index{knitr!v\_spaces()} is used to generate spaces of specified lengths, e.g.,
+上記の例での主要なトリックは各行のコメントの前必要なスペースの数を決めることです. これによってコメントが右揃えになっています. この数は各行のコードに依存しています. このフック関数の意味を咀嚼することは読者に任せます. 内部で使われている関数 `knitr:::v_spaces()`\index{knitr!v\_spaces()} は特定の長さのスペースを生成することに使われている点に注意してください. これが例です.
 
 ```{r}
 knitr:::v_spaces(c(1, 3, 6, 0))
 ```
 
-The method introduced in Section \@ref(number-lines) may be the actual way in which you want to add line numbers to source code. The syntax is cleaner, and it works for both source code and text output blocks. The above `source` hook trick mainly aims to show you one possibility of manipulating the source code with a custom function.
+\@ref(number-lines)節で紹介した方法が, ソースコードに行番号を追加する方法としてあなたが本当に求めていたものかもしれません. そちらの構文はより簡潔で, ソースコードでもテキスト出力ブロックでも動作します. 上記の `source` フックのトリックは主に, カスタム関数でソースコードを操作する可能性の1つを示唆するのが狙いです.
 
-## Scrollable text output {#hook-scroll}
+## スクロール可能なテキスト出力 {#hook-scroll}
 
 In Section \@ref(html-scroll), we showed how to restrict the heights of code blocks and text output blocks via CSS. In fact, there is a simpler method with the chunk options `attr.source` and `attr.output` to add the `style` attribute to the fenced code blocks in the Markdown output (see Section \@ref(attr-output) for more information on these options). For example, for this code chunk with the `attr.output` option:
 
