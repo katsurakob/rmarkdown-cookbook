@@ -1,6 +1,6 @@
-# Chunk Hooks (\*) {#chunk-hooks}
+# チャンクフック (\*) {#chunk-hooks}
 
-A chunk hook\index{chunk hook} is a function that is triggered by a chunk option when the value of this chunk option is not `NULL`. Chunk hooks provide a way for you to execute additional tasks beyond running the code in a chunk. For example, you may want to post-process plots (e.g., Section \@ref(crop-plot) and Section \@ref(optipng)), or record the time taken by a code chunk (Section \@ref(time-chunk)). Such tasks may not be essential to the computing or analysis in the report, but they can be useful for other purposes (e.g., enhance plots or help you identify the most time-consuming chunks).
+チャンクフック\index{チャンクフック}\index{chunk hook|see{チャンクフック}}はあるチャンクオプションの値が `NULL` ではないことが引き金となる関数です. チャンクフックはチャンク内でのコードの実行の範囲を越えて追加のタスクを実行する方法を提供します. 例えばグラフに後処理をしたいときがあるかもしれません (例えば\@ref(crop-plot), \@ref(optipng)節) し, コードチャンクの実行時間を記録したいかもしれません. このようなタスクはレポート内の計算や分析に必須ではないかもしれませんが, 例えばグラフを改良したり最も時間のかかっているチャンクを特定したりといった, 他の目的に対しては有用になりえます.
 
 You can use chunk hooks purely for their side effects (e.g., only printing out certain information to the console), or for their returned values, which will be written to the output document if the value is a character value.
 
