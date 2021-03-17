@@ -2,6 +2,7 @@ book_filename: "rmarkdown-cookbook"
 output_dir: 'docs/'
 repo: https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook
 delete_merged_file: true
+rmd_subdir: "JP/"
 clean: [packages.bib]
 language:
   label:
