@@ -25,7 +25,7 @@ is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 ## 進捗状況
 
-12章まで翻訳 (全17章 + Appendix)
+13章まで翻訳 (全17章 + Appendix)
 
 ## 関連リンク
 

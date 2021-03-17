@@ -1,17 +1,17 @@
 ---
-title: Embed 3D plots with rgl
+title: rgl で3次元グラフを埋め込む
 output: html_document
 ---
 
-Set up a hook to save **rgl** plots:
+**rgl** を保存するフック関数を用意する.
 
 ```{r, setup}
 library(rgl)
 knitr::knit_hooks$set(webgl = hook_webgl)
 ```
 
-See if it works for this 3D plot after we enable the hook
-via the chunk option `webgl = TRUE`:
+フックを有効にした後で, チャンクオプション `webgl = TRUE` で
+この3次元グラフが動作するかを確認してください.
 
 ```{r, test-rgl, webgl=TRUE}
 x <- sort(rnorm(1000))

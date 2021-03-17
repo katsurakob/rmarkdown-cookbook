@@ -1,47 +1,41 @@
 ---
-title: Show chunk headers in the output
+title: 出力にチャンクヘッダを表示する
 ---
 
-Set up a chunk hook named `wrapper` to wrap the chunk
-output inside the original chunk header and footer.
+本来のチャンクヘッダとフッタの内側にチャンクを出力する
+`wrapper` という名前のチャンクフックを用意します.
 
 ```{r, setup, include=FALSE}
 knitr::knit_hooks$set(wrapper = function(before, options) {
-  # the original chunk might be indented
+  # 本来のチャンクはインデントされる
   if (is.null(indent <- options$indent)) indent <- ''
   
-  # hide the wrapper=TRUE option
+  # wrapper=TRUE オプションを隠す
   opts <- gsub(', wrapper=TRUE', '', options$params.src)
   
   if (before) {
-    # add the header
+    # ヘッダを追加する
     sprintf('\n\n%s````\n```{r,%s}\n````\n', indent, opts)
   } else {
-    # add the footer
+    # フッタを追加する
     sprintf('\n\n%s````\n```\n````\n', indent)
   }
 })
 ```
 
-Now we apply the hook via the chunk option `wrapper=TRUE`.
-Remember to put `wrapper=TRUE` at the end of the header, and
-it has to be `wrapper=TRUE` precisely (e.g., not `wrapper=T`),
-following a comma and a space, unless you adjust the `gsub()`
-call in the above hook.
+ここでチャンクオプション `wrapper=TRUE`  でフックを適用します. `wrapper=TRUE` をヘッダの最後に置くことと, 正確に `wrapper=TRUE` でなければならず, 上記で呼び出されている `gsub()` を修正しない限り, 例えば `wrapper=T` はダメで,  コンマとスペースの後に続けなければならないことも忘れないでください.
 
 ```{r, test-label, collapse=TRUE, wrapper=TRUE}
 1 + 1
 plot(cars)
 ```
 
-You should see the original chunk header appear in
-the output. The hook should also work when the chunk
-is indented, e.g.,
+本来のチャンクヘッダが出力に現れるはずです. フックはチャンクがインデントされていても動作するはずです. これが例です.
 
-- One bullet.
+- 箇条書きその1
 
   ```{r, eval=TRUE, wrapper=TRUE}
   2 + 2
   ```
 
-- Another bullet.
+- もう1つ箇条書き
