@@ -1,17 +1,17 @@
-# Miscellaneous knitr Tricks {#knitr-misc}
+# その他の knitr のトリック {#knitr-misc}
 
-Besides chunk options (Chapter \@ref(chunk-options)), output hooks (Chapter \@ref(output-hooks)), and chunk hooks (Chapter \@ref(chunk-hooks)), there are other useful functions and tricks in **knitr**\index{knitr}. We introduce these tricks in this chapter, such as how to reuse code chunks, exit knitting early, display a plot in a custom place, and so on.
+チャンクオプション(\@ref(chunk-options)章)・出力フック(\@ref(output-hooks)章)・チャンクフック ( \@ref(chunk-hooks)章) にとどまらず, 他にも役に立つ関数やトリックが **knitr**\index{knitr}にはあります. この章では, コードチャンクの再利用, knit の早期終了, グラフの配置場所のカスタマイズの方法などといったトリックを紹介します.
 
-## Reuse code chunks {#reuse-chunks}
+## コードチャンクの再利用 {#reuse-chunks}
 
-You can freely reuse code chunks\index{code chunk} anywhere in your source document without cut-and-paste. The key is to label your code chunks, so you can refer to them with labels in other places. There are three ways to reuse code chunks\index{code chunk!reuse}.
+コードチャンク\index{コードチャンク}の再利用は, コピーアンドペーストなしで文書のどの場所でも自由にすることができます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{コードチャンク!再利用}には3種類の方法があります.
 
-### Embed one chunk in another chunk (\*) {#embed-chunk}
+### チャンクを別の場所にも埋め込む (\*) {#embed-chunk}
 
-You can embed one code chunk in another code chunk by enclosing its label in `<<>>`\index{code chunk!embed}\index{code chunk!<<>>}. Then **knitr** will automatically expand the string `<<label>>` to the actual code. For example, you can create an R function in this way:
+あるコードチャンクを別の場所で, そのラベルを `<<>>`\index{コードチャンク!埋め込み}\index{コードチャンク!<<>>} で囲むことで埋め込めます. すると **knitr** は自動的に `<<ラベル>>` を実際のコードへと展開してくれます. 例えば, この方法で R 関数を作ることができます.
 
 ````md
-We define a function to convert Fahrenheit to Celsius.
+華氏温度を摂氏温度に変換する関数を定義する
 
 ```{r, f2c}`r ''`
 F2C <- function(x) {
@@ -20,22 +20,22 @@ F2C <- function(x) {
 }
 ```
 
-First, we check if the input value is numeric:
+最初に入力値が数値か確認する
 
 ```{r, check-arg, eval=FALSE}`r ''`
-  if (!is.numeric(x)) stop("The input must be numeric!")
+  if (!is.numeric(x)) stop("入力は数値でなければなりません!")
 ```
 
-Then we do the actual conversion:
+それから実際に変換します
 
 ```{r, convert, eval=FALSE}`r ''`
   (x - 32) * 5/ 9
 ```
 ````
 
-This is based on one of the main ideas of [Literate Programming,](https://en.wikipedia.org/wiki/Literate_programming) which was proposed by Donald Knuth. The advantage of this technique is that you can split (complex) code into smaller parts, write each part in a separate code chunk, and explain them with narratives. All parts can be composed into the main code chunk to be executed.
+これはドナルド=クヌースの提案する[文芸プログラミング](https://en.wikipedia.org/wiki/Literate_programming) の主要なアイディアの1つに基づいたものです. この技術の利点は (複雑な) コードを小さな部品に分割し, 別々のコードチャンクに書き, 文脈の中で説明することができる点です. 全ての部品は実行される主要なコードチャンクで構成することができます.
 
-For the above example, the first code chunk (with the label `f2c`) will become:
+上記の例に対して, `f2c` というラベルのある最初のコードチャンクはこうなります.
 
 ````md
 ```{r, f2c}`r ''`
