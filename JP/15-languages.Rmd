@@ -170,48 +170,48 @@ R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可
 
 ## `cat` エンジンでチャンクをファイルに書き出す {#eng-cat}
 
-Sometimes it could be useful to write the content of a code chunk to an external file, and use this file later in other code chunks. Of course, you may do this via the R functions like `writeLines()`, but the problem is that when the content is relatively long, or contains special characters, the character string that you would pass to `writeLines()` may look awkward. Below is an example of writing a long character string to a file `my-file.txt`:
+コードチャンクの内容を外部ファイルに書き出し, 以降の他のコードチャンクで使用するのは時には有用である可能性があります. もちろん, `writeLines()` のような R の関数で行っても良いですが, 内容が比較的長かったり, 特殊な文字が含まれていたり, `writeLines()` に渡したい文字列がごちゃごちゃしたりしているかもしれません. 以下は 長い文字列を `my-file.txt` に書き出す例です.
 
 ```{r, eval=FALSE}
-writeLines("This is a long character string.
-It has multiple lines. Remember to escape
-double quotes \"\", but 'single quotes' are OK.
-I hope you not to lose your sanity when thinking
-about how many backslashes you need, e.g., is it
-'\t' or '\\t' or '\\\\t'?",
+writeLines("これは長い文字列です.
+複数行にわたります. ダブルクオート \"\" は
+忘れずにエスケープしてください. 
+ですが 'シングルクオート' は大丈夫です.
+バックスラッシュがいくつ必要か考えるときにあなたが
+正気を失わないでいられることを願います.
+例えば, '\t' なのか `\\t` なのか '\\\\t' なのか?",
 con = "my-file.txt")
 ```
 
-This problem has been greatly alleviated since R 4.0.0, because R started to support raw strings in `r"( )"` (see the help page `?Quotes`), and you do not need to remember all the rules about special characters. Even with raw strings, it can still be a little distracting for readers to see a long string written to a file explicitly in a code chunk.
+R 4.0.0 以降では `r"()"` 内での生の文字列 (`?Quotes` のヘルプ参照) がサポートされ始めたので, 特殊文字のルールを全て覚える必要はなくなり, この問題は大いに緩和されました. 生の文字列があってもなお, チャンク内で長い文字列を明示的にファイルに書き出すことは読者の注意力を少しばかり削ぐ可能性があります.
 
-The `cat` engine\index{language engine!cat} in **knitr** has provided a way for you to present text content in a code chunk and/or write it to an external file, without thinking about all the rules about R's character strings (e.g., you need double backslashes when you need a literal backslash).
+**knitr** の `cat` エンジン\index{言語エンジン!cat}は, 例えばバックスラッシュのリテラルが必要な時は, 二重バックスラッシュが必要といった, R の文字列ルールを一切考えることなく, コードチャンクの内容の表示かつ/または外部ファイルへの書き出しの方法を提供してくれます.
 
-To write the chunk content to a file, specify the file path in the chunk option `engine.opts`\index{chunk option!engine.opts}, e.g., `engine.opts = list(file = 'path/to/file')`. Under the hood, the list of values specified in `engine.opts` will be passed to the function `base::cat()`, and `file` is one of the arguments of `base::cat()`.
+チャンクの内容をファイルに書き出すには, チャンクオプション `engine.opts`\index{チャンクオプション!engine.opts} にファイルパスを指定してください. 例えば `engine.opts = list(file = 'path/to/file')` のように. この内部では, `engine.opts` で指定された値のリストが `base::cat()` に渡されます. そして `file` は `base::cat()` の引数の1つです.
 
-Next we will present three examples to illustrate the use of the `cat` engine.
+次に, `cat` エンジンの使い方の詳しい説明のため3つの例を提示します.
 
-### CSS ファイルに書き込む
+### CSS ファイルへ書き込む
 
-As shown in Section \@ref(chunk-styling), you can embed a `css` code chunk in an Rmd document to style elements with CSS.\index{CSS}\index{language engine!css} An alternative way is to provide a custom CSS file to Pandoc via the `css` option of some R Markdown output formats such as `html_document`. The `cat` engine can be used to write this CSS file from Rmd.
+\@ref(chunk-styling)節でお見せしたように, 要素を CSS\index{CSS} でスタイル設定するために `css` コードチャンク\index{言語エンジン!css}を Rmd 文書に埋め込むことができます. 別の方法として, カスタム CSS ファイルを, `html_document` のようないくつかの R Markdown 出力フォーマットで有効な `css` オプションを介して Pandoc に渡す方法もあります. `cat` エンジンはこの CSS ファイルを Rmd から書き込むのに使用できます.
 
-This example below shows how to generate a file `custom.css` from a chunk in the
-document, and pass the file path to the `css` option of the `html_document` format:
+以下の例は文書のチャンクから `custom.css` ファイルを生成し, そのファイルパスを `html_document` フォーマットの `ccs` オプションに渡す方法を示しています.
 
 `r import_example("cat-css.Rmd")`
 
-The only difference between the `css` code chunk approach and this approach is that the former approach writes the CSS code in place (i.e., in the place of the code chunk), which is inside the `<body>` tag of the output document, and the latter approach writes CSS to the `<head>` area of the output document. There will not be any practical visual differences in the output document.
+`css` コードチャンクのアプローチとこのアプローチの唯一の違いは, 前者が CSS コードをその場に書き込む, つまりコードチャンクのあるまさにその場所に書き込み, そしてそこは出力文書の `<body>` タグの内側ですが, 後者は CSS を出力文書の `<head>` の領域に書き込みます. 出力文書の見た目に実用上の違いは一切生じません.
 
 ### LaTeX コードをプリアンブルに含める
 
-In Section \@ref(latex-preamble), we introduced how to add LaTeX code to the preamble, which requires an external `.tex` file. This file can also be generated from Rmd, and here is an example:
+\@ref(latex-preamble)節では, LaTeX コードをプリアンブルに追加する方法を紹介しました. これには 外部の `.tex` ファイルが必要でした. このファイルもまた Rmd から生成することができます. これがその例です.
 
 `r import_example("cat-latex.Rmd")`
 
-In the LaTeX code in the `cat` code chunk above, we have defined the header and footer of the PDF document. If we also want to show the author name in the footer, we can append the author information to `preamble.tex` in another `cat` code chunk with options `engine.opts = list(file = 'preamble.tex', append = TRUE)` and `code = sprintf('\\fancyfoot[LO,RE]{%s}', rmarkdown::metadata$author)`. To understand how this works, recall that we mentioned earlier in this section that `engine.opts` is passed to `base::cat()` (so `append = TRUE` is passed to `cat()`), and you may understand the chunk option `code` by reading Section \@ref(option-code).
+上記の `cat` コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の `cat` コードチャンクにオプション `engine.opts = list(file = 'preamble.tex', append = TRUE)` と `code = sprintf('\\fancyfoot[LO,RE]{%s}'` を付けることで `preamble.tex` に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した `engine.opts` が `base::cat()` に渡されるということを思い出してください. つまり `append = TRUE` は `cat()` に渡されます. そして チャンクオプション `code` はこの後の\@ref(option-code)節を読めば理解できるでしょう.
 
 ### YAML データをファイルに書き込みつつ表示する
 
-By default, the content of the `cat` code chunk will not be displayed in the output document. If you also want to display it after writing it out, set the chunk option `class.source` to a language name. The language name is used for syntax highlighting. In the example below, we specify the language to be `yaml`:
+`cat` コードチャンクの中身はデフォルトでは出力文書に表示されません. 中身を書き出した後で表示もしたいならば,  チャンクオプション `class.source` に言語名を指定してください. 言語名はシンタックスハイライトに使われます. 以下の例では, 言語名を `yaml` に指定しています.
 
 ````md
 ```{cat, engine.opts=list(file='demo.yml'), class.source='yaml'}`r ''`
@@ -224,7 +224,7 @@ b:
 ```
 ````
 
-Its output is displayed below, and it also generated a file `demo.yml`.
+その出力を以下に表示し, そしてファイル `demo.yml` としても生成します.
 
 ```{cat, engine.opts=list(file='demo.yml'), class.source='yaml'}
 a:
@@ -235,7 +235,7 @@ b:
   bb: 2
 ```
 
-To show the file `demo.yml` is really generated, we can try to read it into R with the **yaml** package [@R-yaml]:
+ファイル `demo.yml` が実際に生成されたことを示すには, **yaml** パッケージ [@R-yaml] で読み込んでみることができます.
 
 ```{r}
 xfun::tree(yaml::read_yaml('demo.yml'))
@@ -247,7 +247,7 @@ unlink('demo.yml')
 
 ## SAS コードを実行する {#eng-sas}
 
-You may run SAS (https://www.sas.com) code using the `sas` engine\index{language engine!SAS}. You need to either make sure the SAS executable is in your environment variable `PATH`, or (if you do not know what `PATH` means) provide the full path to the SAS executable via the chunk option `engine.path`\index{chunk option!engine.path}, e.g., `engine.path = "C:\\Program Files\\SASHome\\x86\\SASFoundation\\9.3\\sas.exe"`. Below is an example to print out "Hello World":
+あなたは `sas` エンジン\index{言語エンジン!SAS} で SAS (https://www.sas.com) を実行するかもしれません. あなたの環境変数 `PATH` に SAS の実行ファイルがあることを確認するか, (`PATH` の意味を知らないなら) チャンクオプション `engine.path`\index{チャンクオプション!engine.path} に実行ファイルのフルパスを与える必要があります. 例えば `engine.path = "C:\\Program Files\\SASHome\\x86\\SASFoundation\\9.3\\sas.exe"` のように. 以下は "Hello World" を表示する例です.
 
 ````md
 ```{sas}`r ''`
@@ -259,7 +259,7 @@ run;
 
 ## Stata コードを実行する {#eng-stata}
 
-You can run Stata (https://www.stata.com) code with the `stata` engine\index{language engine!stata} if you have installed Stata. Unless the `stata` executable can be found via the environment variable `PATH`, you need to specify the full path to the executable via the chunk option `engine.path`\index{chunk option!engine.path}, e.g., `engine.path = "C:/Program Files (x86)/Stata15/StataSE-64.exe"`. The following is a quick example:
+Stata をインストールしているなら, `stata` エンジン\index{言語エンジン!stata}で Stata のコードを実行できます. `stata` 実行ファイルが環境変数 `PATH` から見つけられないかぎり, チャンクオプション `engine.path`\index{チャンクオプション!engine.path} を介して実行ファイルのフルパスを指定する必要があります. 例えば `engine.path = "C:/Program Files (x86)/Stata15/StataSE-64.exe"` のように. 以下は簡単な例です.
 
 ````md
 ```{stata}`r ''`
@@ -268,13 +268,13 @@ summarize
 ```
 ````
 
-The `stata` engine in **knitr** is quite limited. Doug Hemken has substantially extended it in the **Statamarkdown** package\index{R package!Statamarkdown}, which is available on GitHub at https://github.com/Hemken/Statamarkdown. You may find tutorials about this package by searching online for "Stata R Markdown."
+**knitr** の `stata` エンジンの機能はかなり限定的です. Doug Hemken が **Statamarkdown** パッケージ\index{R パッケージ!Statamarkdown}でこれを実質的に拡張しており, GitHub の https://github.com/Hemken/Statamarkdown で利用可能です. "Stata R Markdown" でオンライン検索することでパッケージのチュートリアルを見つけられるでしょう.
 
 ## Asymptote でグラフィックを作成する {#eng-asy}
 
-Asymptote (https://asymptote.sourceforge.io) is a powerful language for vector graphics. You may write and run Asymptote code in R Markdown with the `asy` engine\index{Asymptote}\index{language engine!asy} if you have installed Asymptote (see its website for instructions on the installation). Below is an example copied from the repository https://github.com/vectorgraphics/asymptote, and its output is shown in Figure \@ref(fig:elevation):
+Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行するとよいでしょう. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
 
-```{asy, elevation, fig.cap='A 3D graph made with Asymptote.', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
+```{asy, elevation, fig.cap='Asymptote で作成した3Dグラフィック', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
 import graph3;
 import grid3;
 import palette;
@@ -295,19 +295,19 @@ draw(s,lightgray+opacity(0.7));
 grid3(XYZgrid);
 ```
 
-Note that for PDF output, you may need some additional LaTeX packages, otherwise you may get an error that looks like this:
+PDF 出力に対しては追加の LaTeX パッケージが必要であることに注意してください. そうでないとこのようなエラーが出ることでしょう.
 
 ```
 ! LaTeX Error: File `ocgbase.sty' not found.
 ```
 
-If such an error occurs, please see Section \@ref(install-latex-pkgs) for how to install the missing LaTeX packages.
+このようなエラーが発生したなら, 欠けている LaTeX パッケージのインストール方法を\@ref(install-latex-pkgs)節で確認してください.
 
-In the `asy` chunk above, we used the setting `settings.prc = false`. Without this setting, Asymptote generates an interactive 3D graph when the output format is PDF. However, the interactive graph can only be viewed in Acrobat Reader. If you use Acrobat Reader, you can interact with the graph. For example, you can rotate the 3D surface in Figure \@ref(fig:elevation) with your mouse.
+上記の `asy` チャンクでは, `settings.prc = false` という設定を使いました. この設定がないと Asymptote は PDF 出力時にインタラクティブな 3D グラフィックを表示してしまいます. しかしインタラクティブなグラフィックは Acrobat Reader でのみ見ることができます. Acrobat Reader を使用しているなら, グラフを操作できます. 例えば図\@ref(fig:elevation)ではマウス操作で3D平面を回転できます.
 
-### Generate data in R and read it in Asymptote
+### R でデータを生成し Asymptote に読み込ませる
 
-Now we show an example in which we first save data generated in R to a CSV file (below is an R code chunk):
+ここでは, 最初に以下の R コードチャンクのように, R で生成したデータを CSV ファイルに保存します.
 
 ```{r}
 x = seq(0, 5, l = 100)
@@ -315,9 +315,9 @@ y = sin(x)
 writeLines(paste(x, y, sep = ','), 'sine.csv')
 ```
 
-Then read it in Asymptote, and draw a graph based on the data as shown in Figure \@ref(fig:sine-curve) (below is an `asy` code chunk):
+それから Asymptote でこれを読み込み, データに基づいたグラフを描画し図\@ref(fig:sine-curve) に示します. 以下が `asy` コードチャンクです.
 
-```{asy, sine-curve, fig.cap='Pass data from R to Asymptote to draw a graph.', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
+```{asy, sine-curve, fig.cap='R からデータを渡し Asymptote でグラフを描く', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
 import graph;
 size(400,300,IgnoreAspect);
 settings.prc = false;
@@ -346,11 +346,11 @@ yaxis("$y$",LeftRight,RightTicks);
 unlink('sine.csv')
 ```
 
-## Style HTML pages with Sass/SCSS {#eng-sass}
+## Sass/SCSS で HTML ページをスタイリングする {#eng-sass}
 
-Sass (https://sass-lang.com) is a CSS extension language\index{CSS!Sass}\index{Sass} that allows you to create CSS rules in much more flexible ways than you'd do with plain CSS. Please see its official documentation if you are interested in learning it.
+Sass (https://sass-lang.com) は CSS を拡張した言語\index{CSS!Sass}\index{Sass}で, 基本的な CSS で行っていた のよりはるかに柔軟な方法でルールを作成できます. これを学ぶことに関心があるなら, 公式ドキュメントを見てください.
 
-The R package **sass** [@R-sass] \index{R package!sass}can be used to compile Sass to CSS. Based on the **sass** package, **knitr** includes two language engines: `sass`\index{language engine!sass} and `scss`\index{language engine!scss} (corresponding to the Sass and SCSS syntax, respectively) to compile code chunks to CSS. Below is a `scss` code chunk, with the chunk header ```` ```{scss}````:
+R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン,  `sass`\index{言語エンジン!sass} and `scss`\index{言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが  ```` ```{scss}```` である `scss` コードチャンクです.
 
 ```{scss}
 $font-stack: "Comic Sans MS", cursive, sans-serif;
@@ -362,7 +362,7 @@ $primary-color: #00FF00;
 }
 ```
 
-You can also use the `sass` engine, and the Sass syntax is slightly different with the SCSS syntax, e.g.,
+`sass` エンジンも使うことができます. Sass 構文は SCSS 構文とわずかに異なります. 例えばこのように.
 
 ````md
 ```{sass}`r ''`
@@ -375,6 +375,6 @@ $primary-color: #00FF00
 ```
 ````
 
-If you are reading [the HTML version of this section,](https://bookdown.org/yihui/rmarkdown-cookbook/eng-sass.html) you will notice that the font for this page has been changed to Comic Sans, which might be surprising, but please do not panic---[you are not having a stroke.](https://twitter.com/andrewheiss/status/1250438044542361600)
+あなたが[このセクションの HTML 版](https://bookdown.org/yihui/rmarkdown-cookbook/eng-sass.html)を読んでいるなら, このページのフォントが Comic Sans に変化したことに気付くでしょう. これには驚いたかもしれませんが, パニックにならないでください, [あなたは脳卒中になどなっていません](https://twitter.com/andrewheiss/status/1250438044542361600).
 
-The `sass`/`scss` code chunks are compiled through the `sass::sass()` function. Currently you can customize the output style for the CSS code via the chunk option `engine.opts`, e.g., `engine.opts = list(style = "expanded")`. The default style is "compressed." If you are not sure what this means, please refer to the help page `?sass::sass_options` and look for the `output_style` argument.
+`sass`/`scss` コードチャンクは `sass::sass()` 関数によってコンパイルされます. 現在はチャンクオプション `engine.opts` で CSS コードの出力スタイルをカスタマイズできます. 例えば `engine.opts = list(style = "expanded")` のように. デフォルトのスタイルは "compressed" です. これが何を意味するのか自信がないなら, `?sass::sass_options` のヘルプを参照し, `output_style` 引数の項目を探してください.

@@ -1,12 +1,12 @@
 ---
-title: "Create a CSS file from a code chunk"
-output: 
+title: "コードチャンクから CSS ファイルを作成する"
+output:
   html_document:
     css: custom.css
 ---
 
-The chunk below will be written to `custom.css`, which
-will be used during the Pandoc conversion.
+以下のチャンクは `custom.css` へ書き込まれ, ファイルは
+Pandoc の変換時に使われます.
 
 ```{cat, engine.opts = list(file = "my_custom.css")}
 h2 {
@@ -14,4 +14,4 @@ h2 {
 }
 ```
 
-## And this title will blue
+## そしてこの見出しは青くなります

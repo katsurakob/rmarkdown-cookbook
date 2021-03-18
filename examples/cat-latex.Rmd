@@ -1,30 +1,32 @@
 ---
-title: "Create a .tex file from a chunk"
+title: "チャンクから .tex ファイルを作成する"
 author: "Jane Doe"
+documentclass: ltjsarticle
 classoption: twoside
 output: 
   pdf_document:
+    latex_engine: lualatex
     includes:
       in_header: preamble.tex
 ---
 
-# How it works
+# どのように動作するか
 
-Write a code chunk to a file `preamble.tex` to define
-the header and footer of the PDF output document:
+出力する PDF のヘッダとフッタを定義するために
+コードチャンクを `preamble.tex` に書き出しましょう.
 
 ```{cat, engine.opts=list(file = 'preamble.tex')}
 \usepackage{fancyhdr}
 \usepackage{lipsum}
 \pagestyle{fancy}
-\fancyhead[CO,CE]{This is fancy header}
-\fancyfoot[CO,CE]{And this is a fancy footer}
+\fancyhead[CO,CE]{これは fancy header}
+\fancyfoot[CO,CE]{そしてこれは fancy footer}
 \fancyfoot[LE,RO]{\thepage}
 \fancypagestyle{plain}{\pagestyle{fancy}}
 ```
 
 \lipsum[1-15]
 
-# More random content
+# さらに適当なコンテンツ
 
 \lipsum[16-30]
