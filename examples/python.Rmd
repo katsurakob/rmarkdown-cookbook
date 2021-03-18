@@ -2,26 +2,26 @@
 library(reticulate)
 ```
 
-Create a variable `x` in the Python session:
+Python セッションで変数 `x` を作成する
 
 ```{python}
 x = [1, 2, 3]
 ```
 
-Access the Python variable `x` in an R code chunk:
+R コードチャンクで Python 変数 `x` にアクセスする
 
 ```{r}
 py$x
 ```
 
-Create a new variable `y` in the Python session using R,
-and pass a data frame to `y`:
+R を使って Python セッションで新しい変数 `y` を作成し,
+`y` にデータフレームを与える
 
 ```{r}
 py$y <- head(cars)
 ```
 
-Print the variable `y` in Python:
+Python で変数 `y` を表示する
 
 ```{python}
 print(y)

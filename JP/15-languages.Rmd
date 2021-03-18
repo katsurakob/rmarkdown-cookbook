@@ -1,40 +1,40 @@
-# Other Languages {#other-languages}
+# その他の言語 {#other-languages}
 
-Besides the R language, many other languages are supported in R Markdown through the **knitr** package. The language name is indicated by the first word in the curly braces after the three opening backticks. For example, the little `r` in ```` ```{r}```` indicates that the code chunk contains R code, and ```` ```{python}```` is a Python code chunk. In this chapter, we show a few languages that you may not be familiar with.
+R Markdown は **knitr** を通して R 言語以外の多くのプログラミング言語をもサポートしています. 言語の名前は3連続のバッククオートの後のカーリーブレースの最初の単語で表現されます. 例えば ```` ```{r}```` の小文字の `r` はコードチャンクに R のコードが含まれていることを意味し, ```` ```{python}```` は Python のコードチャンクであることを表しています. この章ではあなたがあまり詳しくないであろういくつかの言語をお見せします.
 
-In **knitr**, each language is supported through a language engine. Language engines are essentially functions that take the source code and options of a chunk as the input, and return a character string as the output. They are managed through the object `knitr::knit_engines`. You may check the existing engines via:
+**knitr** では, どの言語も言語エンジンを通してサポートされています. 言語エンジンは本質的にはソースコードとコードチャンクを入力として, 出力として文字列を返す関数です. これらは `knitr::knit_engines` オブジェクトで管理されています. 既存のエンジンはこのようにして確認すると良いでしょう.
 
 ```{r, eval=FALSE}
 names(knitr::knit_engines$get())
 ```
 ```{r, echo=FALSE}
-# remove engines registered by bookdown
+# bookdown によって登録されたエンジンを除外
 engs = names(knitr::knit_engines$get())
 i = match('theorem', engs)
 if (!is.na(i)) engs = head(engs, i - 1)
 engs
 ```
 
-At the moment, most code chunks of non-R languages are executed independently. For example, all `bash` code chunks in the same document are executed separately in their own sessions, so a later `bash` code chunk cannot use variables created in a previous `bash` chunk, and the changed working directory (via `cd`) will not be persistent across different `bash` chunks. Only R, Python, and Julia code chunks are executed in the same session. Please note that all R code chunks are executed in the same R session, and all Python code chunks are executed in the same Python session, etc. The R session and the Python session are two different sessions, but it is possible to access or manipulate objects of one session from another session (see Section \@ref(eng-python)).
+現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の `bash` コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の `bash` コードチャンクはそれ以前の `bash` チャンクで作成された変数を使うことができませんし, `cd` による作業ディレクトリの変更も異なる `bash` チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……,  ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\@ref(eng-python)節参照).
 
-[Section 2.7](https://bookdown.org/yihui/rmarkdown/language-engines.html) of the _R Markdown Definitive Guide_ [@rmarkdown2018] shows examples of using Python, Shell, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C, and Fortran code in R Markdown. In this chapter, we will show more language engines, and you may find more examples in the repository at https://github.com/yihui/knitr-examples (look for filenames that contain the word "engine").
+_R Markdown Definitive Guide_ [@rmarkdown2018] の  [Section 2.7](https://bookdown.org/yihui/rmarkdown/language-engines.html) では Python, シェル, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C そして Fortran のコードを使用する例が紹介されています. この章ではさらなる言語エンジンを紹介します. そしてさらなる例はリポジトリ https://github.com/yihui/knitr-examples で見られます. "engine" という単語を含むファイルを探してください.
 
-First, let's reveal how a language engine works by registering a custom language engine.
+初めに, カスタム言語エンジンの登録によってこれがどのように動作するかを解明しましょう.
 
-## Register a custom language engine (\*) {#custom-engine}
+## カスタム言語エンジンを登録する (\*) {#custom-engine}
 
-You can register a custom language engine\index{language engine!custom} via the method `knitr::knit_engines$set()`\index{knitr!knit\_engines}. It accepts a function as its input, e.g.,
+`knitr::knit_engines$set()`\index{knitr!knit\_engines} でカスタム言語エンジン\index{言語エンジン!カスタム}を登録できます. これは関数を入力として受け容れます. これが例です.
 
 ```{r, eval=FALSE}
 knitr::knit_engines$set(foo = function(options) {
-  # the source code is in options$code;
-  # just do whatever you want with it
+  # ソースコードは options$code にある
+  # それを使ってやりたいことは何でもやろう
 })
 ```
 
-This registers the `foo` engine, and you will be able to use a code chunk that starts with ```` ```{foo}````.
+これは `foot` エンジンを登録し, ```` ```{foo}```` で始まるコードチャンクを使えるようになります.
 
-The engine function has one argument, `options`, which is a list of chunk options of the code chunk. You can access the source code of the chunk as a character vector in `options$code`. For example, for the code chunk:
+エンジン関数は1つの引数 `options` を取り, これはコードチャンクのオプションのリストです. `options$code` にある文字列ベクトルとして, チャンクのソースコードにアクセスできます. 例えば, このコードチャンクに対して考えます.
 
 ````md
 ```{foo}`r ''`
@@ -43,9 +43,9 @@ The engine function has one argument, `options`, which is a list of chunk option
 ```
 ````
 
-The `code` element of `options` would be a character vector `c('1 + 1', '2 + 2')`.
+`options` の `code` 要素は文字列ベクトル `c('1 + 1', '2 + 2')` になります.
 
-Language engines do not really have to deal with computer languages, but can process any text in a code chunk. First, we show a simple example of an engine that converts the content of a code chunk to uppercase:
+言語エンジンは実はプログラミング言語として動作しなくてもよいですが, コードチャンクの任意のテキストを処理できます. まずは, コードチャンクの本文を大文字に変換するエンジンの例をお見せします.
 
 ```{r}
 knitr::knit_engines$set(upper = function(options) {
@@ -54,7 +54,7 @@ knitr::knit_engines$set(upper = function(options) {
 })
 ```
 
-The key is that we apply the function `toupper` to the "code," and return the result as a single character string (by concatenating all lines of code by `\n`). Note that `toupper()` is applied only when the chunk option `eval = TRUE`\index{chunk option!eval}, otherwise the original string is returned. This shows you how to make use of chunk options like `eval` inside the engine function. Similarly, you may consider adding `if (options$results == 'hide') return()` to the function body to hide the output when the chunk option `results = 'hide'`\index{chunk option!results}. Below is an example chunk that uses the `upper` engine, with its output:
+ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討するとよいでしょう. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
 
 > ````md
 > ```{upper}`r ''`
@@ -66,7 +66,7 @@ The key is that we apply the function `toupper` to the "code," and return the re
 > Hello, **knitr** engines!
 > ```
 
-Next we show an example of an alternative Python engine^[In practice, you should use the built-in `python` engine instead, which is based on the **reticulate** package and supports Python code chunks much better (see Section \@ref(eng-python)).] named `py`. This engine is implemented by simply calling the `python` command via the R function `system2()`:
+次に, `py` という名前のもう1つの Python エンジン^[実用的には組み込みの `python` エンジンをを使うべきです. これは **reticulate** パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (\@ref(eng-python)節参照).]の例を紹介します. このエンジンは単純に R の `system2()` 関数から `python` コマンドを呼び出すことで実装しています.
 
 ```{r, tidy=FALSE}
 knitr::knit_engines$set(py = function(options) {
@@ -78,15 +78,15 @@ knitr::knit_engines$set(py = function(options) {
 })
 ```
 
-To fully understand the above engine function, you need to know the following:
+上記のエンジン関数を完全に理解するために, 以下を知っておく必要があります.
 
-1. Given Python code as a character string (`code` in the above function), we can execute the code via a command-line call `python -c 'code'`. That is what `system2()` does. We collect the (text) output by specifying `stdout = TRUE` in `system2()`.
+1. Python コードは文字列として与えられ (上記関数の `code`), コードはコマンドラインの呼び出し `python -c 'code'` によって実行できます. これが `system2()` のしていることです. `system2()` `stdout = TRUE` を指定することでテキスト出力を収集しています.
 
-1. You can pass the chunk options, source code, and text output to the function `knitr::engine_output()`\index{knitr!engine\_output()} to generate the final output. This function deals with common chunk options like `echo = FALSE` and `results = 'hide'`, so you do not need to take care of these cases.
+1. 最終的な出力を生成するため, チャンクオプション・ソースコード・テキスト出力を `knitr::engine_output()`\index{knitr!engine\_output()} 関数に与えることができます. この関数は `echo = FALSE` と `results = 'hide'` のようなよく使うオプションを処理します. よってあなたはこれらの場合に注意する必要はありません.
 
-A lot of language engines in **knitr** are defined in this way (i.e., using `system2()` to execute commands corresponding to languages). If you are curious about the technical details, you may check out the source code of most language engines in the R source code here: https://github.com/yihui/knitr/blob/master/R/engine.R.
+**knitr** の多くの言語エンジンはこのようにして定義されています. つまり `system2()` を使って言語に対応するコマンドを実行してます. もし技術的に詳しい話に興味があるなら, R ソースコードにはほとんどの言語エンジンが書かれているここ https://github.com/yihui/knitr/blob/master/R/engine.R を確認するとよいでしょう.
 
-Now we can use the new engine `py`, e.g.,
+そして今や, 新しいエンジン `py` を使うことができます. 例えばこのように.
 
 > ````md
 > ```{py}`r ''`
@@ -98,13 +98,13 @@ Now we can use the new engine `py`, e.g.,
 > print(1 + 1)
 > ```
 
-You can even override existing language engines in **knitr** via `knitr::knit_engines$set()`, if you are sure that your versions are necessary or better than the existing ones. Usually we do not recommend that you do this because it may surprise users who are familiar with existing engines, but we want to make you aware of this possibility anyway.
+あなたのバージョンの言語エンジンが **knitr**  の既存の言語エンジンよりも必要性がるか, より良いものだと確信しているなら, `knitr::knit_engines$set()` によって既存のものを上書きすることすらできます. たいていの場合は既存のエンジンに慣れたユーザーが驚いてしまうかもしれないので, そうすることはお薦めしませんが, どちらにせよこの可能性は頭の片隅に置いてほしいです.
 
-## Run Python code and interact with Python {#eng-python}
+## Python コードの実行と双方向処理 {#eng-python}
 
-We know you love Python, so let's make it super clear: R Markdown and **knitr** do support Python\index{language engine!python}\index{Python}.
+あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と **knitr** はなんと Python\index{言語エンジン!python}\index{Python} をサポートしています.
 
-To add a Python code chunk to an R Markdown document, you can use the chunk header ```` ```{python}````, e.g.,
+Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ``` ```{python}```` を使うことができます. 例えばこのように.
 
 ````md
 ```{python}`r ''`
@@ -112,17 +112,17 @@ print("Hello Python!")
 ```
 ````
 
-You can add chunk options to the chunk header as usual, such as `echo = FALSE` or `eval = FALSE`. Plots drawn with the **matplotlib** package in Python are also supported.
+いつもどおりにチャンクヘッダに `echo = FALSE` or `eval = FALSE` といったチャンクオプションを追加することができます. Python の **matplotlib** パッケージで描かれたグラフもサポートしています.
 
-The Python support in R Markdown and **knitr** is based on the **reticulate** package\index{R package!reticulate} [@R-reticulate], and one important feature of this package is that it allows two-way communication between Python and R. For example, you may access or create Python variables from the R session via the object `py` in **reticulate**:
+R Markdown と **knitr** の Python サポートは **reticulate** パッケージ\index{R パッケージ!reticulate} [@R-reticulate] に基づいており, このパッケージの重要な機能の1つは Python と R の双方向的なコミュニケーションを可能にすることです. 例えば **reticulate** の `py` オブジェクトを介して R セッションから Python の変数にアクセスしたり作成したりするとよいでしょう.
 
 `r import_example('python.Rmd')`
 
-For more information about the **reticulate** package, you may see its documentation at https://rstudio.github.io/reticulate/.
+**reticulate** パッケージに関する詳細は, https://rstudio.github.io/reticulate/ のドキュメントを見るとよいでしょう.
 
-## Execute content conditionally via the `asis` engine {#eng-asis}
+## `asis` エンジンでコンテンツを条件付きで実行する Execute content conditionally via the `asis` engine {#eng-asis}
 
-As its name indicates, the `asis` engine\index{language engine!asis} writes out the chunk content as is. The advantage of using this engine is that you can include some content conditionally---the display of the chunk content is decided by the chunk option `echo`. When `echo = FALSE`, the chunk will be hidden. Below is a simple example:
+その名が示すとおり, `asis` エンジン\index{言語エンジン!asis}はチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション `echo` によりチャンクの内容の表示を決定します. `echo = FALSE` の時はチャンクは隠されます. 以下は簡単な例です.
 
 ````md
 ```{r}`r ''`
@@ -132,22 +132,21 @@ getRandomNumber <- function() {
 ```
 
 ```{asis, echo = getRandomNumber() == 4}`r ''`
-According to https://xkcd.com/221/, we just generated
-a **true** random number!
+https://xkcd.com/221/ によれば, **真の**乱数を生成しました!
 ```
 ````
 
-The text in the `asis` chunk will be displayed only if the condition `getRandomNumber() == 4` is (randomly) true.
+`asis` チャンク内のテキストは条件式 `getRandomNumber() == 4` が (ランダムに) 真であるならば表示されます.
 
-## Execute Shell scripts {#eng-bash}
+## シェルスクリプトを実行する {#eng-bash}
 
-You can run Shell scripts via the `bash` or `sh` or `zsh` engine\index{language engine!bash}\index{language engine!sh}\index{language engine!zsh}, depending on which shell you prefer. Below is a `bash` example, with the chunk header ```` ```{bash}````:
+あなたが好んでいるシェルに応じて, `bash` ・ `sh` ・ `zsh` エンジン\index{言語エンジン!bash}\index{言語エンジン!sh}\index{言語エンジン!zsh}でシェルスクリプトを実行できます. 以下はチャンクヘッダ ```` ```{bash}```` を使った `bash` の例です.
 
 ```{bash}
 ls *.Rmd | head -n 5
 ```
 
-Please note that `bash` is invoked with the R function `system2()`. It will ignore profile files like `~/.bash_profile` and `~/.bash_login`, in which you may have defined command aliases or modified environment variables like the `PATH` variable. If you want these profile files to be executed just like when you use the terminal, you may pass the argument `-l` to `bash` via `engine.opts`, e.g.,
+`bash` は R の `system2()` 関数で呼び出されていることに注意してください. `~/.bash_profile` や `~/.bash_login` のようなプロファイルにある, あなたの定義したコマンドのエイリアスや `PATH` などの環境変数は無視されます. ターミナル上でシェルを使っている時のようにこれらのプロファイルがほしいなら, `engine.opts` を介して `-l` 引数を与えるとよいでしょう. これが例です.
 
 ````md
 ```{bash, engine.opts='-l'}`r ''`
@@ -155,21 +154,21 @@ echo $PATH
 ```
 ````
 
-If you want to enable the `-l` argument globally for all `bash` chunks, you may set it in the global chunk option in the beginning of your document:
+`-l` 引数を全ての `bash` チャンクで有効にしたいなら, 文書の冒頭でグローバルチャンクオプションに設定するとよいでしょう.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(engine.opts = list(bash = '-l'))
 ```
 
-You can also pass other arguments to `bash` by providing them as a character vector to the chunk option `engine.opts`\index{chunk option!engine.opts}.
+チャンクオプション `engine.opts`\index{チャンクオプション!engine.opts} に文字列ベクトルとして他の引数を `bash` に与えることもできます.
 
-## Visualization with D3 {#d3}
+## D3 で可視化する {#d3}
 
-The R package **r2d3** [@R-r2d3]\index{R package!r2d3} is an interface to D3 visualizations. This package can be used in R Markdown documents as well as other applications (e.g., Shiny). To use it in R Markdown, you can either call its function `r2d3()` in a code chunk, or use its `d3` engine\index{language engine!D3}\index{D3}\index{figure!D3}. The latter requires you to understand the D3 library and JavaScript, which are beyond the scope of this book, and we will leave it to readers to learn them. Below is an example of using the `d3` engine to draw a bar chart:
+R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで `r2d3()` 関数を呼び出すか, `d3` エンジンindex{言語!D3}\index{D3}\index{図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は `d3` エンジンで棒グラフを描く例です.
 
 `r import_example('d3.Rmd')`
 
-## Write the chunk content to a file via the `cat` engine {#eng-cat}
+## `cat` エンジンでチャンクをファイルに書き出す {#eng-cat}
 
 Sometimes it could be useful to write the content of a code chunk to an external file, and use this file later in other code chunks. Of course, you may do this via the R functions like `writeLines()`, but the problem is that when the content is relatively long, or contains special characters, the character string that you would pass to `writeLines()` may look awkward. Below is an example of writing a long character string to a file `my-file.txt`:
 
@@ -191,7 +190,7 @@ To write the chunk content to a file, specify the file path in the chunk option 
 
 Next we will present three examples to illustrate the use of the `cat` engine.
 
-### Write to a CSS file
+### CSS ファイルに書き込む
 
 As shown in Section \@ref(chunk-styling), you can embed a `css` code chunk in an Rmd document to style elements with CSS.\index{CSS}\index{language engine!css} An alternative way is to provide a custom CSS file to Pandoc via the `css` option of some R Markdown output formats such as `html_document`. The `cat` engine can be used to write this CSS file from Rmd.
 
@@ -202,7 +201,7 @@ document, and pass the file path to the `css` option of the `html_document` form
 
 The only difference between the `css` code chunk approach and this approach is that the former approach writes the CSS code in place (i.e., in the place of the code chunk), which is inside the `<body>` tag of the output document, and the latter approach writes CSS to the `<head>` area of the output document. There will not be any practical visual differences in the output document.
 
-### Include LaTeX code in the preamble
+### LaTeX コードをプリアンブルに含める
 
 In Section \@ref(latex-preamble), we introduced how to add LaTeX code to the preamble, which requires an external `.tex` file. This file can also be generated from Rmd, and here is an example:
 
@@ -210,7 +209,7 @@ In Section \@ref(latex-preamble), we introduced how to add LaTeX code to the pre
 
 In the LaTeX code in the `cat` code chunk above, we have defined the header and footer of the PDF document. If we also want to show the author name in the footer, we can append the author information to `preamble.tex` in another `cat` code chunk with options `engine.opts = list(file = 'preamble.tex', append = TRUE)` and `code = sprintf('\\fancyfoot[LO,RE]{%s}', rmarkdown::metadata$author)`. To understand how this works, recall that we mentioned earlier in this section that `engine.opts` is passed to `base::cat()` (so `append = TRUE` is passed to `cat()`), and you may understand the chunk option `code` by reading Section \@ref(option-code).
 
-### Write YAML data to a file and also display it
+### YAML データをファイルに書き込みつつ表示する
 
 By default, the content of the `cat` code chunk will not be displayed in the output document. If you also want to display it after writing it out, set the chunk option `class.source` to a language name. The language name is used for syntax highlighting. In the example below, we specify the language to be `yaml`:
 
@@ -246,7 +245,7 @@ xfun::tree(yaml::read_yaml('demo.yml'))
 unlink('demo.yml')
 ```
 
-## Run SAS code {#eng-sas}
+## SAS コードを実行する {#eng-sas}
 
 You may run SAS (https://www.sas.com) code using the `sas` engine\index{language engine!SAS}. You need to either make sure the SAS executable is in your environment variable `PATH`, or (if you do not know what `PATH` means) provide the full path to the SAS executable via the chunk option `engine.path`\index{chunk option!engine.path}, e.g., `engine.path = "C:\\Program Files\\SASHome\\x86\\SASFoundation\\9.3\\sas.exe"`. Below is an example to print out "Hello World":
 
@@ -258,7 +257,7 @@ run;
 ```
 ````
 
-## Run Stata code {#eng-stata}
+## Stata コードを実行する {#eng-stata}
 
 You can run Stata (https://www.stata.com) code with the `stata` engine\index{language engine!stata} if you have installed Stata. Unless the `stata` executable can be found via the environment variable `PATH`, you need to specify the full path to the executable via the chunk option `engine.path`\index{chunk option!engine.path}, e.g., `engine.path = "C:/Program Files (x86)/Stata15/StataSE-64.exe"`. The following is a quick example:
 
@@ -271,7 +270,7 @@ summarize
 
 The `stata` engine in **knitr** is quite limited. Doug Hemken has substantially extended it in the **Statamarkdown** package\index{R package!Statamarkdown}, which is available on GitHub at https://github.com/Hemken/Statamarkdown. You may find tutorials about this package by searching online for "Stata R Markdown."
 
-## Create graphics with Asymptote {#eng-asy}
+## Asymptote でグラフィックを作成する {#eng-asy}
 
 Asymptote (https://asymptote.sourceforge.io) is a powerful language for vector graphics. You may write and run Asymptote code in R Markdown with the `asy` engine\index{Asymptote}\index{language engine!asy} if you have installed Asymptote (see its website for instructions on the installation). Below is an example copied from the repository https://github.com/vectorgraphics/asymptote, and its output is shown in Figure \@ref(fig:elevation):
 
