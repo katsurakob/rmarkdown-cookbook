@@ -1,34 +1,34 @@
 ---
-title: "Using a global graphical device to record plots"
+title: "グラフの保存にグローバルグラフィックデバイスを使用する"
 ---
 
-First, turn on a global graphical device:
+まず, グローバルグラフィックデバイスを有効にします.
 
 ```{r, include=FALSE}
 knitr::opts_knit$set(global.device = TRUE)
 ```
 
-Draw a plot:
+グラフを描画します.
 
 ```{r}
 par(mar = c(4, 4, 0.1, 0.1))
 plot(cars)
 ```
 
-Add a line to the plot in the previous code chunk:
+以前のコードチャンクのグラフに線を追加します.
 
 ```{r}
 fit <- lm(dist ~ speed, data = cars)
 abline(fit)
 ```
 
-No longer use the global device:
+グローバルデバイスを切ります.
 
 ```{r, include=FALSE}
 knitr::opts_knit$set(global.device = FALSE)
 ```
 
-Draw another plot:
+別のグラフを描画します.
 
 ```{r}
 plot(pressure, type = 'b')

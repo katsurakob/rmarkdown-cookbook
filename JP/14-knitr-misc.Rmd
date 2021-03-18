@@ -2,7 +2,7 @@
 
 チャンクオプション(\@ref(chunk-options)章)・出力フック(\@ref(output-hooks)章)・チャンクフック ( \@ref(chunk-hooks)章) にとどまらず, 他にも役に立つ関数やトリックが **knitr**\index{knitr}にはあります. この章では, コードチャンクの再利用, knit の早期終了, グラフの配置場所のカスタマイズの方法などといったトリックを紹介します.
 
-## コードチャンクの再利用 {#reuse-chunks}
+## コードチャンクを再利用する {#reuse-chunks}
 
 コードチャンク\index{コードチャンク}の再利用は, コピーアンドペーストなしで文書のどの場所でも自由にすることができます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{コードチャンク!再利用}には3種類の方法があります.
 
@@ -46,79 +46,79 @@ F2C <- function(x) {
 ```
 ````
 
-You can embed an arbitrary number of other code chunks in one code chunk. The embedding can also be recursive. For example, you may embed chunk A in chunk B, and chunk B in chunk C. Then chunk C will include code from chunk A via chunk B.
+1つのコードチャンクに好きな数のコードチャンクを埋め込むことができます. 埋め込みは再帰的にすることもできます. 例えば, チャンク A をチャンク B に埋め込み, さらにチャンク B をチャンク C に埋め込むとよいでしょう. チャンク C はチャンク B から読み込まれたチャンク A を含むことになります. 
 
-The marker `<<label>>` does not have to be on a separate line. It can be embedded anywhere in a code chunk.
+マーカー `<<ラベル>>` は独立した行に置く必要はありません. コードチャンクのどこにでも埋め込むことができます.
 
-### Use the same chunk label in another chunk {#same-label}
+### 別のチャンクで同一のチャンクラベルを使う {#same-label}
 
-If you want to use exactly the same code chunk two or more times, you may define the chunk with a label, and create more code chunks with the same label but leave the chunk content empty, e.g.,
+完全に同じコードを2回異常使いたいならば, ラベル付きのチャンクを定義し, そして同じラベルであるものの中身が空のチャンクを作るとよいでしょう. 例えばこのように.
 
 ````md
-Here is a code chunk that is not evaluated:
+これは評価されないコードチャンクです
 
 ```{r, chunk-one, eval=FALSE}`r ''`
 1 + 1
 2 + 2
 ```
 
-Now we actually evaluate it:
+実際に評価されるのはここです
 
 ```{r, chunk-one, eval=TRUE}`r ''`
 ```
 ````
 
-We used the chunk label "chunk-one" twice in the above example, and the second chunk just reuses code from the first chunk.
+上記の例でチャンクラベル "chunk-one" を2度使い, 2度目のチャンクは最初のチャンクの単なる再利用です.
 
-We recommend that you do not use this method to run a code chunk more than once to generate plots (or other files), because plot files created from a later chunk may overwrite files from a previous chunk. It is okay if only one of such chunks uses the chunk option `eval = TRUE`, and all other chunks use `eval = FALSE`.
+グラフかあるいは他のファイルを生成するのに, この方法で複数回コードチャンクを実行するのはお薦めしません. 最後のチャンクで作成された画像ファイルがそれ以前のものを上書きするかもしれないからです. これらのチャンクのうち1つだけにチャンクオプション `eval = TRUE` を使い, それ以外では `eval =FALSE` を使うのならば大丈夫です.
 
-### Use reference labels (\*) {#ref-label}
+### 参照ラベルを使う (\*) {#ref-label}
 
-The chunk option `ref.label`\index{chunk option!ref.label} takes a vector of chunk labels to retrieve the content of these chunks. For example, the code chunk with the label `chunk-a` is the combination of `chunk-c` and `chunk-b` below:
+チャンクオプション `ref.label`\index{チャンクオプション!ref.label} はチャンクの中身を取得するために, そのチャンクラベルのベクトルを取ります. 例えば以下の `chunk-a` というラベルのコードチャンクは `chunk-c` と `chunk-b` を結合したものです.
 
 ````md
 ```{r chunk-a, ref.label=c('chunk-c', 'chunk-b')}`r ''`
 ```
 
 ```{r chunk-b}`r ''`
-# this is the chunk b
+# これはチャンク b
 1 + 1
 ```
 
 ```{r chunk-c}`r ''`
-# this is the chunk c
+# これはチャンク c
 2 + 2
 ```
 ````
 
-In other words, `chunk-a` is essentially this:
+言い換えるなら, `chunk-a` は本質的にこうなります.
 
 ````md
 ```{r chunk-a}`r ''`
-# this is the chunk c
+# これはチャンク c
 2 + 2
-# this is the chunk b
+# これはチャンク b
 1 + 1
 ```
 ````
 
-The chunk option `ref.label` has provided a very flexible way of reorganizing code chunks in a document without resorting to cut-and-paste. It does not matter if the code chunks referenced are before or after the code chunk that uses `ref.label`. An early code chunk can reference a later chunk.
+チャンクオプション `ref.label` は, コピーアンドペーストを使うことなくコードチャンクを再構成する, とても柔軟な方法を提供しています. 参照先のコードチャンクが `ref.label` が使われたチャンクの前にあるか, 後にあるかは問題になりません. 先に書かれたコードチャンクは後のコードチャンクを参照できます.
 
-There is an application of this chunk option in Section \@ref(code-appendix).
+\@ref(code-appendix)節にはこのチャンクオプションの応用例があります.
 
-## Use an object before it is created (\*) {#load-cache}
+## オブジェクトが作られる前に使用する (\*) {#load-cache}
 
-All code in a **knitr** document, including the code in code chunks and inline R expressions, is executed in linear order from beginning to end. In theory, you cannot use a variable before it is assigned a value. However, in certain cases, we may want to mention the value of a variable earlier in the document. For example, it is common to present a result in the abstract of an article, but the result is actually computed later in the document. Below is an example that illustrates the idea but will not compile:
+コードチャンクと行内 R コードを含む **knitr** 文書内の全てのコードは, 始点から終点まで順番に実行されます. 理論上は, 値が代入される前の変数を使うことができません. しかしいくつかの場合では, 文書内で変数の値により早く言及したいことがあるかもしれません. 例えば結果を論文の概要に掲載したいというのはよくある状況ですが, 結果は実際には文書のもっと後で計算されます. 以下の例はそのアイディアを具体化したものですが, 実行はできません.
 
 ````md
 ---
-title: An important report
-abstract: >
-  In this analysis, the average value of
-  `x` is `r knitr::inline_expr('mx')`.
+title: 重要なレポート
+概要: >
+  この分析では `x` の平均値が
+  `r knitr::inline_expr('mx')` であった.
 ---
 
-We create the object `mx` in the following chunk:
+我々は次のチャンクで `mx` を作成した.
 
 ```{r}`r ''`
 x <- 1:100
@@ -126,25 +126,25 @@ mx <- mean(x)
 ```
 ````
 
-To solve this problem, the value of the object has to be saved somewhere and loaded the next time when the document is compiled. Please note that this means the document has to be compiled at least twice. Below is one possible solution using the `saveRDS()` function:
+この問題を解決するには, オブジェクトの値がどこかに保存され, 文書が次回コンパイルされる時に読み込まれなければなりません. これは, 文書が最低でも2回コンパイルされなければならないという意味であることに注意してください. 以下は `saveRDS()` 関数を使った, 実行可能な解決策の1つです.
 
 ````md
 ```{r, include=FALSE}`r ''`
 mx <- if (file.exists('mean.rds')) {
   readRDS('mean.rds')
 } else {
-  "The value of `mx` is not available yet"
+  "`mx` の値はまだ利用できない"
 }
 ```
 
 ---
-title: An important report
-abstract: >
-  In this analysis, the average value of
-  `x` is `r knitr::inline_expr('mx')`.
+title: 重要なレポート
+概要: >
+  この分析では `x` の平均値が
+  `r knitr::inline_expr('mx')` であった.
 ---
 
-We create the object `mx` in the following chunk:
+我々は次のチャンクで `mx` を作成した.
 
 ```{r}`r ''`
 x <- 1:100
@@ -153,19 +153,19 @@ saveRDS(mx, 'mean.rds')
 ```
 ````
 
-The first time you compile this document, you will see the phrase "The value of `mx` is not available yet" in the abstract. Later, when you compile it again, you will see the actual value of `mx`.
+最初のコンパイルでは, 概要に「`mx` の値はまだ利用できない」という文言が現れます. その後, もう1度コンパイルすると `mx` の値が現れます.
 
-The function `knitr::load_cache()`\index{knitr!load\_cache()} is an alternative solution, which allows you to load the value of an object from a specific code chunk after the chunk has been cached\index{caching}. The idea is similar to the above example, but it will save you the effort of manually saving and loading an object, because the object is automatically saved to the cache database, and you only need to load it via `load_cache()`. Below is the simplified example:
+`knitr::load_cache()`\index{knitr!load\_cache()} 関数はもう1つの解決策で, キャッシュ\index{キャッシュ}済みの特定のコードチャンクからオブジェクトの値を読み込むことが可能になります. このアイディアは上記の例と似ていますが, オブジェクトが自動でキャッシュデータベースに保存されるため,  オブジェクトを手動で保存して読み込む手間を省くことになります. あなたがする必要があるのは `load_cache()` で読み込むことだけになります. 以下は単純化した例です.
 
 ````md
 ---
 title: An important report
 abstract: >
-  In this analysis, the average value of
-  `x` is `r knitr::inline_expr("knitr::load_cache('mean-x', 'mx')")`.
+  この分析では `x` の平均値が
+  `r knitr::inline_expr("knitr::load_cache('mean-x', 'mx')")` であった.
 ---
 
-We create the object `mx` in the following chunk:
+我々は次のチャンクで `mx` を作成した.
 
 ```{r mean-x, cache=TRUE}`r ''`
 x <- 1:100
@@ -173,9 +173,10 @@ mx <- mean(x)
 ```
 ````
 
-In this example, we added a chunk label `mean-x` to the R code chunk (which is passed to the `load_cache()` function), and cached it using the chunk option `cache = TRUE`\index{chunk option!cache}. All objects in this code chunk will be saved to the cache database. Again, you will have to compile this document at least twice, so the object `mx` can be correctly loaded from the cache database. If the value of `mx` is not going to be changed in the future, you do not need to compile the document one more time.
+この例ではチャンクラベル `mean-x` をコードチャンクに追加し, これは `load_cache()` 関数に与えられています. そしてチャンクオプション `cache = TRUE`\index{チャンクオプション!cache} でチャンクはキャッシュされています. このコードチャンクの全てのオブジェクトはキャッシュデータベースに保存されます. 繰り返しになりますが, この文書を最低でも2回コンパイルしなければならず. よってオブジェクト `mx` はキャッシュデータベースから正しく読み込まれます. `mx` の値が将来も変更される予定がないなら, 文書をこれ以上コンパイルする必要はありません.
 
-If you do not specify the object name in the second argument to `load_cache()`, the whole cache database will be loaded into the current environment. You can then use any objects that were in the cache database before these objects are created later in the document, e.g.,
+もし `load_cache()` の第2引数でオブジェクト名を指定しないなら, キャッシュデータベース全体が現在の環境に読み込まれます. 文書の後方でオブジェクトが作成される前に, キャッシュデータベースにあるものならどれでも使うことができます. これが例です.
+
 
 ```{r, eval=FALSE}
 knitr::load_cache('mean-x')
@@ -183,11 +184,11 @@ x   # the object `x`
 mx  # the object `mx`
 ```
 
-## Exit knitting early {#knit-exit}
+## knit 処理を打ち切る {#knit-exit}
 
-Sometimes we may want to exit knitting early and not at the end of the document. For example, we may be working on some analysis and only wish to share the first half of the results, or we may still be working on code at the bottom that is not yet complete. In these situations, we could consider using the `knit_exit()`\index{knitr!knit\_exit()} function in a code chunk, which will end the knitting process after that chunk.
+時には knit 処理を文書の末尾よりも早い時点で終了したいかもしれません. 例えば何か分析する作業をしていて, 結果の前半だけを共有したいとか, まだ一番最後のコードが終了していないということがあるかもしれません. このような状況ではコードチャンクで `knit_exit()`\index{knitr!knit\_exit()} 関数を使うことができます. この関数はそのチャンクの直後で knit 処理を終わらせることができます.
 
-Below is a simple example, where we have a very simple chunk followed by a more time-consuming one:
+以下は単純な例です. ここではとても単純なチャンクと, その後にもっと時間のかかるチャンクを配置しています.
 
 ````md
 ```{r}`r ''`
@@ -195,54 +196,54 @@ Below is a simple example, where we have a very simple chunk followed by a more 
 knitr::knit_exit()
 ```
 
-You will only see the above content in the output.
+あなたは出力のうち上記のコンテンツだけを見たい.
 
 ```{r}`r ''`
 Sys.sleep(100)
 ```
 ````
 
-Normally you have to wait for 100 seconds, but since we have called `knit_exit()`, the rest of the document will be ignored.
+通常ならば100秒待たなければなりませんが, `knit_exit()` を呼び出しているので文書の残りの部分は無視されます.
 
-## Generate a plot and display it elsewhere {#fig-chunk}
+## どこにでもグラフを生成し, 表示させる {#fig-chunk}
 
-Normally plots generated in a code chunk are displayed beneath the code chunk, but you can choose to show them elsewhere and (optionally) hide them in the code chunk. Below is an example:
+グラフは通常コードチャンク内で生成され, その直下に表示されますが, どこに表示するかを好きに指定することも, コードチャンクに隠すこともできます. 以下はその例です.
 
 ````md
-We generate a plot in this code chunk but do not show it:
+このコードチャンクでグラフを生成しますが, 表示はしません.
 
 ```{r cars-plot, dev='png', fig.show='hide'}`r ''`
 plot(cars)
 ```
 
-After another paragraph, we introduce the plot:
+別の段落でグラフを導入します
 
 ![A nice plot.](`r knitr::inline_expr("knitr::fig_chunk('cars-plot', 'png')")`)
 ````
 
-In the code chunk, we used the chunk option `fig.show='hide'`\index{chunk option!fig.show} to hide the plot temporarily. Then in another paragraph, we called the function `knitr::fig_chunk()`\index{knitr!fig\_chunk()} to retrieve the path of the plot file, which is usually like `test_files/figure-html/cars-plot-1.png`. You need to pass the chunk label and the graphical device name to `fig_chunk()` for it to calculate the plot file path.
+コードチャンクでは, 一時的にグラフを隠すためにチャンクオプション `fig.show='hide'`\index{チャンクオプション!fig.show} を使用しました. それから別の段落でこのグラフ画像のファイルパスを取得するために `knitr::fig_chunk()`\index{knitr!fig\_chunk()} 関数を呼び出しました. このパスは普通は `test_files/figure-html/cars-plot-1.png` のようになっています. `fig_chunk()` 関数にはこのファイルパスを導出するためにチャンクラベルとグラフィックデバイス名を与える必要があります.
 
-You may see https://stackoverflow.com/a/46305297/559676 for an application of `fig_chunk()` to **blogdown** websites. This function works for any R Markdown output formats. It can be particularly helpful for presenting plots on slides, because the screen space is often limited on slide pages. You may present code on a slide, and reveal the plot on a different slide.
+**blogdown** で作成したウェブサイトへの `fig_chunk()` の応用を https://stackoverflow.com/a/46305297/559676 で見るとよいかもしれません. この関数はどの R Markdown 出力フォーマットでも動作します. 特にスライド上では, スクリーンの広さが限られているため, 画像を表示するのに便利でしょう. 1つのスライドでコードを提示し, さらに別のスライドで画像を表示させるとよいでしょう.
 
-## Modify a plot in a previous code chunk {#global-device}
+## 以前のコードチャンクのグラフを修正する {#global-device}
 
-By default, **knitr** opens a new graphical device to record plots for each new code chunk. This brings a problem: you cannot easily modify a plot from a previous code chunk, because the previous graphical device has been closed. This is usually problematic for base R graphics (not so for grid graphics such as those created from **ggplot2** [@R-ggplot2] because plots can be saved to R objects). For example, if we draw a plot in one code chunk, and add a line to the plot in a later chunk, R will signal an error saying that a high-level plot has not been created, so it could not add the line.
+ **knitr** はデフォルトでは, コードチャンクごとに新規にグラフィックデバイスを開いてグラフを記録しています. これは1つ問題を起こしています. グラフィックデバイスが既に閉じられているため, 以前のコードチャンクで作成されたグラフを簡単には修正できないという問題です. base グラフィックにとって, これはたいていの場合で問題となります. なお **ggplot2** [@R-ggplot2] のような grid ベースのグラフィックは, グラフを R オブジェクトとして保存できるので当てはまりません. 例えばあるコードチャンクでグラフを描き, 後でグラフに線を描き足したいなら, R は高水準グラフがまだ作られていないというエラーを示すので, 線を描き足すことができません.
 
-If you want the graphical device to remain open for all code chunks, you may set a **knitr** package option in the beginning of your document\index{knitr!opts\_knit}\index{knitr!global.device}\index{figure!global} device:
+全てのコードチャンクでグラフィックデバイスを開いたままにしたいなら, 文書の冒頭で **knitr** パッケージのオプションである \index{knitr!opts\_knit}\index{knitr!global.device}\index{図!グローバル} を設定します.
 
 ```{r, eval=FALSE}
 knitr::opts_knit$set(global.device = TRUE)
 ```
 
-Please note that it is `opts_knit` instead of the more frequently used `opts_chunk`. You may see the Stack Overflow post https://stackoverflow.com/q/17502050 for an example.
+より頻繁に使われる `opts_chunk` ではなく `opts_knit` が使われていることに注意してください. 例は Stack Overflow の https://stackoverflow.com/q/17502050 という投稿で見るとよいでしょう.
 
-When you no longer need this global graphical device, you can set the option to `FALSE`. Here is a full example:
+グローバルなグラフィックデバイスを必要としなくなった時は, オプションを `FALSE` に設定できます. これは完全な例です.
 
 `r import_example('global-device.Rmd')`
 
-## Save a group of chunk options and reuse them (\*) {#opts-template}
+## グループ化したチャンクオプションを保存し再利用する (\*) {#opts-template}
 
-If you frequently use some chunk options, you may save them as a group\index{chunk option!options template}\index{template!chunk options} and reuse them later only using the group name. This can be done with `knitr::opts_template$set(name = list(options))`\index{knitr!opts\_template}. Then you can use the chunk option `opts.label`\index{chunk option!opts.label} to refer to the group name. For example:
+いくつかのチャンクオプションを頻繁に使うのなら, それらを1つのグループ\index{チャンクオプション!オプションのテンプレート}\index{テンプレート!チャンクオプション}として保存し, 以降はグループ名を書くだけで再利用できるようにするとよいかもしれません. これは `knitr::opts_template$set(name = list(options))`\index{knitr!opts\_template} で実行できます.  それからこのグループ名をチャンクオプション `opts.label`\index{チャンクオプション!opts.label} で参照することで使用できます. 例えばこのように.
 
 ````md
 ```{r, setup, include=FALSE}`r ''`
@@ -257,9 +258,9 @@ plot(cars)
 ```
 ````
 
-With `opts.label = 'fullwidth'`, **knitr** will read chunk options from `knitr::opts_template`, and apply them to the current chunk. This can save you some typing effort. If a chunk option is to be used globally in a document, you should consider setting it globally (see Chapter \@ref(chunk-options)).
+`opts.label = 'fullwidth'` とすると, **knitr** は knitr::opts_template` から一連のチャンクオプションを読み込み, 現在のチャンクに適用します. これはタイピングの労力を削減できます. チャンクオプションを文書全体で使用しなければならないならば, グローバルに設定すべきでしょう (\@ref(chunk-options)章参照).
 
-You can override options read from `opts.label`, e.g., if you set `fig.height = 7` in the chunk below, the actual `fig.height` will be `7` instead of `6`.
+`opts.label` から読み込んだオプションを上書きすることもできます. 例えば以下のチャンクで `fig.height = 7` を設定したなら, 実際の値は `6` でなく `7` になります.
 
 ````md
 ```{r, opts.label='fullwidth', fig.height=7}`r ''`
@@ -267,31 +268,31 @@ plot(cars)
 ```
 ````
 
-You can save an arbitrary number of grouped options, e.g.,  `knitr::opts_template$set(group1 = list(...), group2 = list(...))`.
+オプションのグループは好きな数だけ保存できます. 例えば `knitr::opts_template$set(group1 = list(...), group2 = list(...))` のように.
 
-## Use `knitr::knit_expand()` to generate Rmd source {#knit-expand}
+## Rmd ソースの生成に `knitr::knit_expand()` を使う {#knit-expand}
 
-The function `knitr::knit_expand()`\index{knitr!knit\_expand()} "expands" an expression in `{{ }}` (by default) to its value, e.g.,
+`knitr::knit_expand()`\index{knitr!knit\_expand()} 関数はデフォルトでは `{{ }}` 内の表現を値に展開 (expand) します. これが例です.
 
 ```{r, tidy=FALSE, collapse=TRUE}
-knitr::knit_expand(text = "The value of `pi` is {{pi}}.")
+knitr::knit_expand(text = "`pi` の値は {{pi}} である.")
 knitr::knit_expand(
-  text = "The value of `a` is {{a}}, so `a + 1` is {{a+1}}.",
+  text = "`a` の値は {{a}} なので, `a + 1` は {{a+1}} である.",
   a = round(rnorm(1), 4)
 )
 ```
 
-This means that if you have an Rmd document that contains some dynamic parts in `{{ }}`, you may apply `knit_expand()` on the document, and then call `knit()` to compile it. For example, here is a template document named `template.Rmd`:
+`{{ }}` 内に動的なものが含まれている Rmd 文書であれば, `knit_expand()` を適用して `knit()` を呼び出してコンパイルすることができるということを, この例は意味しています. 例えばここに `template.Rmd` という文書があったとします.
 
 ````md
-# Regression on {{i}}
+# {{i}} に対する回帰
 
 ```{r lm-{{i}}}`r ''`
 lm(mpg ~ {{i}}, data = mtcars)
 ```
 ````
 
-We can build linear regression models using `mpg` against all other variables one by one in the `mtcars` dataset:
+`mtcars` データセット内で, `mpg` に対して他の全ての変数を一つ一つ使用した線型回帰モデルを構築できます.
 
 ````md
 ```{r, echo=FALSE, results='asis'}`r ''`
@@ -303,13 +304,13 @@ cat(res, sep = '\n')
 ```
 ````
 
-If you find it difficult to understand this example, please see Section \@ref(results-asis) for the meaning of the chunk option `results = 'asis'`\index{chunk option!results}, and Section \@ref(child-document) for the usage of `knitr::knit_child()`\index{knitr!knit\_child()}.
+この例が難しくて理解できないと感じたら, チャンクオプション `results = 'asis'`\index{チャンクオプション!results} の意味を知るのに\@ref(results-asis)節を, `knitr::knit_child()`\index{knitr!knit\_child()} の使用法を知るのに\@ref(child-document)節を見てください.
 
-## Allow duplicate labels in code chunks (\*) {#duplicate-label}
+## コードチャンクにラベルの重複を許可する (\*) {#duplicate-label}
 
 <!-- https://stackoverflow.com/questions/36868287/purl-within-knit-duplicate-label-error/47065392#47065392 -->
 
-By default, **knitr** does not allow duplicate code chunk labels in the document. Duplicate labels will result in an error when the document is knitted. This occurs most frequently when a code chunk is copied and pasted within a document. You may have seen an error message like this:
+**knitr** はデフォルトでは文書内でチャンクラベルが重複することを許可しません. 重複するラベルは文書を knit する際にエラーを引き起こします. これは文書内でコードチャンクをコピーアンドペーストするときに最もよく起こります. あなたもこのようなエラーメッセージにでくわしたことがあるかもしれません.
 
 ```text
 processing file: myfile.Rmd
@@ -320,31 +321,31 @@ Calls: <Anonymous> ... process_file -> split_file -> lapply ->
 Execution halted
 ```
 
-However, there are scenarios where we may wish to allow duplicate labels. For example, if we have one parent document `parent.Rmd` in which we knit the child document multiple times, it will fail:
+しかし, 今回のお話は重複するラベルを許可したいというものです. 例えば親文書 `parent.Rmd` があり, その中で子文書を複数回 knit するならば, 失敗するでしょう.
 
 ```{r, eval = FALSE}
-# settings
+# 設定
 settings = list(...)
 
-# run once
+# 1度目の実行
 knit_child('useful_analysis.Rmd')
 
-# new settings
+# 新しい設定
 settings = list(...)
 
-# run again
+# 再実行
 knit_child('useful_analysis.Rmd')
 ```
 
-In this scenario, we can allow duplicate labels by setting this global option in R _before_ the child document is knitted\index{knitr!knitr.duplicate.label}:
+この筋書きでは, 子文書が knit される**前に** R のグローバルオプションを設定することでラベルの重複を許可できます\index{knitr!knitr.duplicate.label}.
 
 ```{r, eval = FALSE}
 options(knitr.duplicate.label = 'allow')
 ```
 
-If you want to allow duplicate labels in the main document instead of the child document, you have to set this option _before_ `knitr::knit()` is called. One possible way to achieve that is to set the option in your `~/.Rprofile` file (see the help page `?Rprofile` for more information).
+子文書ではなくメインの文書でラベルの重複を許可したいなら, `knitr::knit()` が呼び出される**前に**設定しなければなりません. それを実現する可能性の1つとして, `~/.Rprofile` ファイル内で設定するという方法があります (詳細は `?Rprofile` のヘルプを見てください).
 
-You should set this option with caution. As with most error messages, they are there for a reason. Allowing duplicate chunks can create silent problems with figures and cross references. For example, in theory, if two code chunks have the same label and both chunks generate plots, their plot files will overwrite each other (without error or warning messages), because the filenames of plots are determined by the chunk labels. With the option `knitr.duplicate.label = "allow"`, **knitr** will silently change the duplicate labels by adding numeric suffixes. For example, for the two code chunks:
+このオプションの設定は注意深くすべきです. ほとんどのエラーメッセージと同様に, なんらかの理由があってこれらのエラーが存在します. 重複するチャンクを許可することは図や相互参照に関して暗黙の問題を生み出す可能性があります. 例えば, グラフ画像のファイル名はチャンクラベルによって決まるので, 2つのコードチャンクが同じラベルを持ち, かつ両方のチャンクが図を生成しているなら, 理論上はこれらの画像ファイルは互いに上書きすることになります (そしてエラーも警告も発しません). `knitr.duplicate.label = "allow"` オプションがあると, **knitr** は重複するラベルに暗黙に数字の接頭語を追加して変更してしまいます. 例えば, 2つのコードチャンクに対してはこうなります.
 
 ````md
 ```{r, test}`r ''`
@@ -356,21 +357,21 @@ plot(10:1)
 ```
 ````
 
-The second label will be silently changed to `test-1`. This may avoid overwriting the plot from the chunk with the label `test`, but it also makes the chunk label unpredictable, so you may have difficulties in cross-referencing figures\index{crossreference} (see Section \@ref(cross-ref)), because the cross references are also based on chunk labels.
+2つ目のラベルは暗黙のうちに `test-1` に変更されます. これはラベル `test` のチャンクからのグラフ画像を上書きすることを回避するかもしれませんが, 同時にチャンクラベルが予想に反したものになります. ゆえに, 相互参照がチャンクラベルに基づいているため, 図の相互参照\index{相互参照} (\@ref(cross-ref)節参照) が難しくなるかもしれません.
 
-## A more transparent caching mechanism {#cache-rds}
+## より透明性のあるキャッシュの仕組み {#cache-rds}
 
-If you feel the caching mechanism of **knitr** introduced in Section \@ref(cache) is too complicated (it is!), you may consider a simpler caching mechanism\index{caching} based on the function `xfun::cache_rds()`\index{xfun!cache\_rds()}, e.g.,
+\@ref(cache)節で紹介した **knitr** のキャッシュの仕組みが複雑すぎると思ったら (実際そうです!), `xfun::cache_rds()`\index{xfun!cache\_rds()} 関数に基づいた, より簡単なキャッシュの仕組み\index{キャッシュ}を検討するとよいかもしれません. これが例です.
 
 ```{r, eval=FALSE}
 xfun::cache_rds({
-  # write your time-consuming code in this expression
+  # ここに時間のかかるコードを書く
 })
 ```
 
-The tricky thing about **knitr**'s caching is how it decides when to invalidate the cache. For `xfun::cache_rds()`, it is much clearer: the first time you pass an R expression to this function, it evaluates the expression and saves the result to a `.rds` file; the next time you run `cache_rds()` again, it reads the `.rds` file and returns the result immediately without evaluating the expression again. The most obvious way to invalidate the cache is to delete the `.rds` file. If you do not want to manually delete it, you may call `xfun::cache_rds()` with the argument `rerun = TRUE`.
+**knitr** のキャッシュの難解なのは, キャッシュの無効化のタイミングがどう決定されるかという点です. `xfun::cache_rds()` にとっては, これはずっと明確です. この関数を最初に R コードに与えたとき, コードが評価され, 結果が `.rds` ファイルに保存されます. 次に `cache_rds()` を再実行すると, `.rds` ファイルを読み込み, コードを再び評価することなく直ちに結果を返します. キャッシュを無効化する最も明確な方法は, `.rds` ファイルを削除することです. 手動で削除したくないなら, `xfun::cache_rds()` に `return = TRUE` 引数を付けて呼び出すと良いでしょう.
 
-When `xfun::cache_rds()` is called inside a code chunk in a **knitr** source document, the path of the `.rds` file is determined by the chunk option `cache.path`\index{chunk option!cache.path} and the chunk label. For example, for a code chunk with the chunk label `foo` in the Rmd document `input.Rmd`:
+**knitr** のソース文書上のコードチャンクで `xfun::cache_rds()` が呼び出された時, `.rds` ファイルのパスはチャンクオプション `cache.path`\index{チャンクオプション!cache.path} とチャンクラベルによって決定します. 例えば `input.Rmd` という Rmd 文書に `foo` というチャンクラベルのあるコードチャンクがあるとします.
 
 ````md
 ```{r, foo}`r ''`
@@ -381,47 +382,47 @@ res <- xfun::cache_rds({
 ```
 ````
 
-The path of the `.rds` file will be of the form `input_cache/FORMAT/foo_HASH.rds`, where `FORMAT` is the Pandoc output format name (e.g., `html` or `latex`), and `HASH` is an MD5 hash that contains 32 hexadecimal digits (consisting a-z and 0-9), e.g., `input_cache/html/foo_7a3f22c4309d400eff95de0e8bddac71.rds`.
+`.rds` ファイルのパスは `input_cache/FORMAT/foo_HASH.rds` という形式になります. ここで  `FORMAT` は Pandoc の出力フォーマット名 (例えば `html` あるいは `latex`) であり, `HASH` は a-z および 0-9 からなる32桁の16進 MD5 ハッシュ値です. 例えば `input_cache/html/foo_7a3f22c4309d400eff95de0e8bddac71.rds` のようになります.
 
-As documented on the help page `?xfun::cache_rds`, there are two common cases in which you may want to invalidate the cache: 1) the code in the expression to be evaluated has changed; 2) the code uses an external variable, and the value of that variable has changed. Next we will explain how these two ways of cache invalidation work, as well as how to keep multiple copies of the cache corresponding to different versions of the code.
+`?xfun::cache_rds` のヘルプで言及されているように, キャッシュを無効化したいであろう2つのよくあるケースがあります. (1) 評価式が変更された時, (2) 評価式の外部の変数が使用され, その変数の値が変更された時です. 次に, この2つのキャッシュ無効化の方法がどう動作するのかと, 異なるコードのバージョンに対応する複数のキャッシュのコピーをどう保持するかを説明します.
 
-### Invalidate the cache by changing code in the expression
+### コードの変更によってキャッシュを無効化する
 
-When you change the code in `cache_rds()` (e.g., from `cache_rds({x + 1})` to `cache_rds({x + 2})`), the cache will be automatically invalidated and the expression will be re-evaluated. However, please note that changes in white spaces or comments do not matter. Or generally speaking, as long as the change does not affect the parsed expression, the cache will not be invalidated. For example, the two expressions passed to `cache_rds()` below are essentially identical:
+例えば `cache_rds({x + 1})` から `cache_rds({x + 2})` へと, `cache_rds()` 内のコードを変更したとき, キャッシュは自動で無効化され, コードは再評価されます. しかし, 空白やコメントの変更は問われないことに注意してください. あるいは一般論として, パースされた表現に影響のない範囲の変更ではキャッシュは無効化されません. 例えば以下の2つの `cache_rds()` でパースされたコードは本質的に同等です.
 
 ```r
 res <- xfun::cache_rds({
   Sys.sleep(3  );
-  x<-1:10;  # semi-colons won't matter
+  x<-1:10;  # セミコロンは問題ではない
   x+1;
 })
 
 res <- xfun::cache_rds({
   Sys.sleep(3)
-  x <- 1:10  # a comment
+  x <- 1:10  # これはコメント
   x +
-    1  # feel free to make any changes in white spaces
+    1  # 空白の変更は完全に自由
 })
 ```
 
-Hence if you have executed `cache_rds()` on the first expression, the second expression will be able to take advantage of the cache. This feature is helpful because it allows you make cosmetic changes in your code without invalidating the cache.
+つまり, 最初のコードを `cache_rds()` で実行したなら, 2度目のコードはキャッシュの利点を得ることができます. この性質はキャッシュを無効化することなくコードの見た目を整える変更が可能になるため, 便利です.
 
-If you are not sure if two versions of code are equivalent, you may try the `parse_code()` below:
+2つのバージョンのコードが同等であるか自信がないなら, 以下のように `parse_code()` を試すとよいでしょう.
 
 ```{r, tidy=FALSE}
 parse_code <- function(expr) {
   deparse(substitute(expr))
 }
-# white spaces and semi-colons do not matter
+# 空白とセミコロンは関係ない
 parse_code({x+1})
 parse_code({ x   +    1; })
-# left arrow and right arrow are equivalent
+# 左アロー演算子と右アロー演算子は同じ
 identical(parse_code({x <- 1}), parse_code({1 -> x}))
 ```
 
-### Invalidate the cache by changes in global variables
+### グローバル変数の変更によってキャッシュを無効化する
 
-There are two types of variables in an expression: global variables and local variables. Global variables are those created outside the expression, and local variables are those created inside the expression. If the value of a global variable in the expression has changed, your cached result will no longer reflect the result that you would obtain by running the expression again. For example, in the expression below, if `y` has changed, you are most likely to want to invalidate the cache and rerun the expression, otherwise you still get the result from the old value of `y`:
+変数にはグローバルとローカル変数の2種類があります. グローバル変数は評価式の外部で作られ, ローカル変数は評価式の内部で作られます. 評価式内のグローバル変数の値が変われば, キャッシュされた結果は, もはや再度実行して得られる結果を反映しません. 例えば以下の評価式で, `y` が変化したなら, あなたが一番やりたいのはきっと, キャッシュを無効化して評価をやり直すことでしょう. さもなければ古い `y` の値を維持したままになってしまいます.
 
 ```r
 y <- 2
@@ -432,7 +433,7 @@ res <- xfun::cache_rds({
 })
 ```
 
-To invalidate the cache\index{caching!invalidation} when `y` has changed, you may let `cache_rds()` know through the `hash` argument that `y` needs to be considered when deciding if the cache should be invalidated:
+`y` が変化した時にキャッシュを無効化\index{キャッシュ!無効化}するには,  キャッシュを無効化すべきかを決定する際に `y` も考慮する必要があることを, `hash` 引数を通して `cache_rds()` に教えてあげるとよいでしょう.
 
 ```r
 res <- xfun::cache_rds({
@@ -441,7 +442,7 @@ res <- xfun::cache_rds({
 }, hash = list(y))
 ```
 
-When the value of the `hash` argument is changed, the 32-digit hash in the cache filename (as mentioned earlier) will change accordingly, therefore the cache will be invalidated. This provides a way to specify the cache's dependency on other R objects. For example, if you want the cache to be dependent on the version of R, you may specify the dependency like this:
+`hash` 引数の値が変化した時, 前述のキャッシュファイル名に含まれる32桁のハッシュ値も対応して変化するため, キャッシュは無効化されます. これで他の R オブジェクトとキャッシュの依存関係を指定する手段を得ました. 例えば R のバージョンに依存してキャッシュを取りたいなら, このようにして依存関係を指定するとよいでしょう.
 
 ```r
 res <- xfun::cache_rds({
@@ -450,7 +451,7 @@ res <- xfun::cache_rds({
 }, hash = list(y, getRversion()))
 ```
 
-Or if you want the cache to depend on when a data file was last modified:
+あるいはデータファイルが最後に修正されたタイミングに依存させたいなら, こうします.
 
 ```r
 res <- xfun::cache_rds({
@@ -459,31 +460,31 @@ res <- xfun::cache_rds({
 }, hash = list(y, file.mtime("data.csv")))
 ```
 
-If you do not want to provide this list of global variables to the `hash` argument, you may try `hash = "auto"` instead, which tells `cache_rds()` to try to figure out all global variables automatically and use a list of their values as the value for the `hash` argument, e.g.,
+`hash` 引数にこのグローバル変数のリストを与えたくないなら, 代わりに `hash = "auto"` を試すとよいでしょう. これは全てのグローバル変数を自動的に把握し, それらの値のリストを `hash` 引数の値に使用することを試みるよう `cache_rds()` に指示するものです.
 
 ```r
 res <- xfun::cache_rds({
   x <- 1:10
-  x + y + z  # y and z are global variables
+  x + y + z  # y と z はグローバル変数
 }, hash = "auto")
 ```
 
-This is equivalent to:
+これは以下と同等です.
 
 ```r
 res <- xfun::cache_rds({
   x <- 1:10
-  x + y + z  # y and z are global variables
+  x + y + z  # y と z はグローバル変数
 }, hash = list(y = y, z = z))
 ```
 
-The global variables are identified by `codetools::findGlobals()` when `hash = "auto"`, which may not be completely reliable. You know your own code the best, so we recommend that you specify the list of values explicitly in the `hash` argument if you want to be completely sure which variables can invalidate the cache.
+`hash = "auto"` とした時, グローバル変数は `codetools::findGlobals()` によって識別されます. これは完全に信頼できるものではないかもしれません. あなたのコードを一番良く知っているのはあなた自身ですので, どの変数がキャッシュを無効化できるかを万全にしたいならば, `hash` 引数には明示的に値のリストを指定することをお薦めします.
 
-### Keep multiple copies of the cache
+### キャッシュの複数のコピーを保持する
 
-Since the cache is typically used for time-consuming code, perhaps you should invalidate it conservatively. You might regret invalidating the cache too soon or aggressively, because if you should need an older version of the cache again, you would have to wait for a long time for the computing to be redone.
+キャッシュは典型的には時間のかかるコードに対して使用されるので, たぶんあなたは無効化することに対して躊躇するべきでしょう. キャッシュを無効化するのが早すぎたり, 積極的すぎたりしたことを後悔するかもしれません. もし古いバージョンのキャッシュが再び必要になったら, 再現のために長い計算時間を待たなければなりませんから.
 
-The `clean` argument of `cache_rds()` allows you to keep older copies of the cache if you set it to `FALSE`\index{caching!clean}. You can also set the global R option `options(xfun.cache_rds.clean = FALSE)` if you want this to be the default behavior throughout the entire R session. By default, `clean = TRUE` and `cache_rds()` will try to delete the older cache every time. Setting `clean = FALSE` can be useful if you are still experimenting with the code. For example, you can cache two versions of a linear model:
+`cache_rds()` の `clean` 引数\index{キャッシュ!clean}を `FALSE` に設定すれば, キャッシュの古いコピーを保持することが可能になります. この挙動を R セッション全体を通してデフォルトにしたいなら, R のグローバルオプション `options(xfun.cache_rds.clean = FALSE)` で設定することもできます. デフォルトでは, `clean = TRUE` と `cache_rds()` は毎回, 古いキャッシュを削除しようと試みます. `clean = FALSE` の設定は, あなたがまだ試験的なコードを使用しているなら有用になりえます. 例えば, 2つのバージョンの線形モデルのキャッシュを取ることができます.
 
 ```{r, eval=FALSE}
 model <- xfun::cache_rds({
@@ -495,11 +496,11 @@ model <- xfun::cache_rds({
 }, clean = FALSE)
 ```
 
-After you decide which model to use, you can set `clean = TRUE` again, or delete this argument (so the default `TRUE` is used).
+どちらのモデルを使うかを決めたら, `clean = TRUE` を再度設定するか, この引数を消すことでデフォルトの `TRUE` に戻すことができます.
 
-### Comparison with **knitr**'s caching
+### **knitr** のキャッシュ機能との比較
 
-You may wonder when to use **knitr**'s caching (i.e., set the chunk option `cache = TRUE`), and when to use `xfun::cache_rds()` in a **knitr** source document. The biggest disadvantage of `xfun::cache_rds()` is that it does not cache side effects (but only the value of the expression), whereas **knitr** does. Some side effects may be useful, such as printed output or plots. For example, in the code below, the text output and the plot will be lost when `cache_rds()` loads the cache the next time, and only the value `1:10` will be returned:
+**knitr** キャッシュ, つまりチャンクオプション `cache = TRUE` をいつ使うべきか, そして `xfun::cache_rds()` をいつ使うべきか迷うかもしれません. `xfun::cache_rds()` の大きな利点は副作用のキャッシュを取らず, 評価式の値のみであることです. その一方で **knitr** は副作用についてもキャッシュを取ります. 出力やグラフを表示するといった副作用のいくつかは有用かもしれません. 例えば以下のコードでは, `cache_rds()` が次回にキャッシュを読み込んだ時, テキスト出力とグラフが失われてしまい, `1:10` という値だけが戻ってきます.
 
 ```{r, eval=FALSE}
 xfun::cache_rds({
@@ -509,7 +510,7 @@ xfun::cache_rds({
 })
 ```
 
-By comparison, for a code chunk with the option `cache = TRUE`, everything will be cached:
+これと比較してオプション `cache = TRUE` のあるコードチャンクでは, 全てがキャッシュされます.
 
 ````md
 ```{r, cache=TRUE}`r ''`
@@ -519,7 +520,7 @@ plot(cars)
 ```
 ````
 
-The biggest disadvantage of **knitr**'s caching (and also what users complain most frequently about) is that your cache might be inadvertently invalidated, because the cache is determined by too many factors. For example, any changes in chunk options can invalidate the cache,^[This is the default behavior, and you can change it. See https://yihui.org/knitr/demo/cache/ for how you can make the cache more granular, so not all chunk options affect the cache.] but some chunk options may not be relevant to the computing. In the code chunk below, changing the chunk option `fig.width = 6` to `fig.width = 10` should not invalidate the cache, but it will:
+**knitr** のキャッシュ機能の大きな利点であると同時にユーザーが最もよく不満の対象とする点は, キャッシュがとても多くの要因で決まるため, うっかり無効化してしまうかもしれないという点です. 例えば, チャンクオプションのいかなる変更もキャッシュを無効化する可能性がありますが,^[これはデフォルトの挙動であり, 変更することができます. 全てのチャンクオプションがキャッシュに影響しないよう, より細かい粒度でキャッシュを取るようにできるようなるには, https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html をご覧ください.] 計算に影響しないであろうチャンクオプションもあります. 以下のコードチャンクでは, チャンクオプション `fig.width = 6` を `fig.width = 10` へと変更することはキャッシュを無意味なものにしませんが, 無効化してしまいます.
 
 ````md
 ```{r, cache=TRUE, fig.width=6}`r ''`
@@ -529,6 +530,6 @@ mean(x)
 ```
 ````
 
-Actually, **knitr** caching is quite powerful and flexible, and its behavior can be tweaked in many ways. As its author, I often doubt if it is worth introducing these lesser-known features, because you may end up spending much more time on learning and understanding how the cache works than the time the actual computing takes.
+実際のところ **knitr** のキャッシュはかなり強力で柔軟であり, 多くの方法で挙動を調整できます. あなたはキャシュがどう動作するのかを学び理解するのに, 最終的に計算するタスクの所要時間よりもはるかに多くの時間を費やしてしまうかもしれません. ですので私はパッケージの作者として, これらのあまり知られていない機能は紹介するに値するのかと, しばしば疑問に思っています.
 
-In case it is not clear, `xfun::cache_rds()` is a general way for caching the computing, and it works anywhere, whereas **knitr**'s caching only works in **knitr** documents.
+まだはっきりわからない人は, `xfun::cache_rds()` は計算のキャッシュを取るために一般的な方法でなおかつどこでも動作し, 一方で **knitr** のキャッシュは **knitr** 文書でのみ動作すると覚えてください.
