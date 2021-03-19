@@ -353,7 +353,7 @@ Sass (https://sass-lang.com) は CSS を拡張した言語\index{CSS!Sass}\index
 R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン,  `sass`\index{言語エンジン!sass} and `scss`\index{言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが  ```` ```{scss}```` である `scss` コードチャンクです.
 
 ```{scss}
-$font-stack: "Comic Sans MS", cursive, sans-serif;
+$font-stack: "HGS創英角ﾎﾟｯﾌﾟ体", "Comic Sans MS", cursive, sans-serif;
 $primary-color: #00FF00;
 
 .book.font-family-1 {
@@ -366,7 +366,7 @@ $primary-color: #00FF00;
 
 ````md
 ```{sass}`r ''`
-$font-stack: "Comic Sans MS", cursive, sans-serif
+$font-stack: "HGS創英角ﾎﾟｯﾌﾟ体", "Comic Sans MS", cursive, sans-serif
 $primary-color: #00FF00
 
 .book.font-family-1

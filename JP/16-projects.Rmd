@@ -1,45 +1,45 @@
-# Managing Projects
+# プロジェクトを管理する {#managing-projects}
 
-When you work on larger projects or reports, you may not want to put all text and code in a single R Markdown document, but organize them in smaller units instead. In this chapter, we introduce tips on how to organize multiple files related to R Markdown.
+大きなプロジェクトやレポートの作業をしている時, 全てのテキストとコードを1つの R Markdown 文書に置かずに, 代わりに小さな単位に分けたものをまとめたいかもしれません. この章では, R Markdown と関係する複数のファイルをまとめる方法を紹介します.
 
-## Source external R scripts {#source-script}
+## 外部の R スクリプトを実行する {#source-script}
 
-If your R Markdown document has a large amount of code, you may consider putting some code in external R scripts, and run these scripts via `source()`\index{source()} or `sys.source()`\index{sys.source()}, e.g.,
+あなたの R Markdown 文書に大量のコードがあるなら, コードをいくらか外部 R スクリプトに配置し, `source()`\index{source()} か `sys.source()`\index{sys.source()} 経由で実行することを検討するとよいかもしれません. 例えばこのように.
 
 ````md
 ```{r, include=FALSE}`r ''`
 source("your-script.R", local = knitr::knit_global())
-# or sys.source("your-script.R", envir = knitr::knit_global())
+# または sys.source("your-script.R", envir = knitr::knit_global())
 ```
 ````
 
-We recommend that you use the argument `local` in `source()` or `envir` in `sys.source()` explicitly to make sure the code is evaluated in the correct environment, i.e., `knitr::knit_global()`\index{knitr!knit\_global()}. The default values for them may not be the appropriate environment: you may end up creating variables in the wrong environment, and being surprised that certain objects are not found in later code chunks.
+コードが適正な環境, つまり `knitr::knit_global()`\index{knitr!knit\_global()} で評価されることを確実にするため, `sys.source()` の `envir` 引数または `source()` の `local` 引数を明示的に使うことをお薦めします. これらのデフォルトの値は適切な環境名でないことがあるかもしれません. あなたは間違った環境で変数を作成し, その後のチャンクでオブジェクトが見つからないことに驚くということになるかもしれないのです.
 
-Next in the R Markdown document, you can use objects created in these scripts (e.g., data objects or functions). This way will not only make your R Markdown document cleaner, but also make it more convenient for you to develop R code (e.g., debugging R code is often easier with pure R scripts than R Markdown).
+次に, R Markdown 文書では, これらのスクリプトで作成された, データや関数といったオブジェクトを使うことができます. これは R Markdown 文書を簡潔にするだけでなく, R コードの開発をより便利にする効果もあります. 例えば R コードのデバッグはしばしば, R Markdown よりピュアな R スクリプトでやるほうが簡単です.
 
-Note that we used `include = FALSE`\index{chunk option!include} in the above example because we only want to execute the script without showing any output. If you do want output, you may remove this chunk option, or use the options in Section \@ref(hide-one) to selectively hide or show different types of output.
+出力を一切表示させずにスクリプトの実行のみをしたいので, 上記の例では `include = FALSE`\index{チャンクオプション!include} を使っていることに注意してください. 出力が欲しいのであればこのチャンクオプションを削除するか, \@ref(hide-one)節で紹介した, 異なる種類の出力を選択的に隠したり表示したりするオプションを使用するとよいでしょう.
 
-## Read external scripts into a chunk {#option-code}
+## 外部スクリプトをチャンク内で読み込む {#option-code}
 
-There is a disadvantage of the `source()` method in Section \@ref(source-script). That is, you will not be able to see the source code by default. You can use `source(..., echo = TRUE)`, but the source code will not be properly syntax highlighted. Besides, you need to be careful about the `local` argument of `source()`, as mentioned in Section \@ref(source-script). In this section, we introduce an alternative method that does not have these problems.
+\@ref(source-script)節で紹介した `source()` の方法には欠点があります. それはデフォルトではソースコードを見ることができないという点です. `source(..., echo = TRUE)` を使うことはできますが, ソースコードに適切なシンタックスハイライトがなされません. 加えて\@ref(source-script)節で言及したように, `source()` の `local` 引数について注意深くなる必要があります.  この節ではこれらの問題とは関係ない代わりの方法を紹介します.
 
-Basically, when you have one or more external scripts, you may read them and pass the content to the `code` option\index{chunk option!code} of a chunk. The `code` option can take a character vector and treat it as the content of the code chunk. Below we show a few examples.
+1つ以上の外部スクリプトがあるときは, 基本的にそれらを読み込みチャンクの `code` オプション\index{チャンクオプション!code}に中身を渡せばよいでしょう. `code` オプションは文字列ベクトルをとり, そしてそれをコードチャンクの本文として扱うことができます. 以下に少しだけ例をお見せします.
 
-- The `code` option can take a character vector of source code. For example:
+- `code` オプションはソースコードの文字列ベクトルを取ることができます. これが例です.
 
     ````md
     ```{r, code=c('1 + 1', 'if (TRUE) plot(cars)')}`r ''`
     ```
     ````
 
-- You can also read an external file:
+- 外部ファイルを読み込むこともできます.
 
     ````md
     ```{r, code=xfun::read_utf8('your-script.R')}`r ''`
     ```
     ````
 
-- You can read as many scripts as you want:
+- 大量のファイルを好きなだけ読み込むこともできます.
 
     ````md
     ```{r, include=FALSE}`r ''`
@@ -52,27 +52,27 @@ Basically, when you have one or more external scripts, you may read them and pas
     ```
     ````
 
-You can read scripts of other languages, too. See Chapter \@ref(other-languages) for how to use other languages in R Markdown. Here are a few more examples on non-R code.
+他の言語のスクリプトを読み込むこともできます. R Markdown で他の言語を使う方法は\@ref(other-languages)章を確認してください. 以下に, さらに少しだけ R でないコードの例をお見せします.
 
-- Read a Python script:
+- Python スクリプトを読み込む.
 
     ````md
     ```{python, code=xfun::read_utf8('script.py')}`r ''`
     ```
     ````
 
-- Read a C++ file:
+- C++ ファイルを読み込む:
 
     ````md
     ```{Rcpp, code=xfun::read_utf8('file.cpp')}`r ''`
     ```
     ````
 
-With the `code` option, you can develop complicated code in your favorite editor, and read it into a code chunk of an R Markdown document.
+`code` オプションがあれば, 好きなエディタで複雑なコードの開発を行い, そして R Markdown 文書のコードチャンクに読み込むことができます.
 
-## Read multiple code chunks from an external script (\*) {#read-chunk}
+## 外部スクリプトから複数のコードチャンクを読み込む (\*) {#read-chunk}
 
-In Section \@ref(option-code), we introduced a way to read code into a single code chunk. In this section, we introduce one method to read multiple code chunks from an external script. The key is that you need to label the code in the script, and you can use the same labels in the code chunks in your R Markdown document, so the code in the external script can be mapped to the code chunks via the function `knitr::read_chunk()`\index{knitr!read\_chunk()}. To label a block of code in a script, you write the label after `## ----` (optionally, you can add a series of dashes to the end of this line). One script can contain multiple labeled code blocks, e.g.,
+\@ref(option-code)節ではコードを単一のチャンクに読み込む方法を紹介しました. この節では外部スクリプトから複数のチャンクを読み取る方法の1つを紹介します. ポイントはスクリプト内のコードにラベルを付ける必要があるということ, そして R Markdown 文書のコードチャンクにも同じラベルを使用できるという点です. つまり外部スクリプトのコードを `knitr::read_chunk()`\index{knitr!read\_chunk()} 関数を介して各コードチャンクに展開できるということです. スクリプトのブロックにラベルを付けるには, ラベルの後に `## ----` と書きます (行の終わりにも好きな数のダッシュ記号を続けることができます). 例えばこのように, 1つのスクリプトには複数のラベル付けされたブロックを含めることができます.
 
 ```r
 ## ---- test-a --------
@@ -84,16 +84,16 @@ if (TRUE) {
 }
 ```
 
-We assume that the filename of the above script is `test.R`. In the R Markdown document, we can read it via `knitr::read_chunk()`, and use the code in code chunks with the labels, e.g.,
+上記のスクリプトのファイル名が `test.R` であるとします. R Markdown 文書ではこれを `knitr::read_chunk()` 関数で読み込み, ラベルの付いたコードチャンク内で使うことができます. これが例です.
 
 ````md
-Read an external script:
+外部スクリプトを読み込む
 
 ```{r, include=FALSE, cache=FALSE}`r ''`
 knitr::read_chunk('test.R')
 ```
 
-Now we can use the code, e.g.,
+これで, 例えばこのようにコードを使用できる
 
 ```{r, test-a, echo=FALSE}`r ''`
 ```
@@ -102,38 +102,37 @@ Now we can use the code, e.g.,
 ```
 ````
 
-Note that we use `knitr::read_chunk()` mainly for its side effect, so please make sure the code chunk in which you call this function is not cached (see Section \@ref(cache) for the explanation).
+主に副作用のために `knitr::read_chunk()` を使っていることに注意してください. つまりこの関数で読み込んだコードチャンクがキャッシュされていないことを確認してください (この説明は\@ref(cache)節参照).
 
-Like methods introduced in Section \@ref(source-script) and Section \@ref(option-code), this method also gives you the flexibility of developing code in a separate environment.
+\@ref(source-script), \@ref(option-code)節で紹介した方法のように, この方法は別の環境でコード開発できるという柔軟性をもたらしてくれます.
 
-## Child documents (\*) {#child-document}
+## 子文書 (\*) {#child-document}
 
-When you feel an R Markdown document is too long, you may consider splitting it into shorter documents\index{child documents}, and include them as child documents of the main document via the chunk option `child`\index{chunk option!child}. The `child` option takes a character vector of paths to the child documents, e.g.,
+R Markdown 文書が長過ぎると思った時は, 短い文書\index{子文書}に分割して, チャンクオプション `child`\index{チャンクオプション!child} を使って子文書としてメインの文書に読み込ませるとよいでしょう. `child` オプションは子文書のファイルパスの文字列ベクトルを取ります. 例えばこのように.
 
 ````md
 ```{r, child=c('one.Rmd', 'two.Rmd')}`r ''`
 ```
 ````
 
-Since **knitr** chunk options can take values from arbitrary R expressions, one application of the `child` option is the conditional inclusion of a document. For example, if your report has an appendix containing technical details that your boss may not be interested in, you may use a variable to control whether this appendix is included in the report:
+**knitr** のチャンクオプションは任意の R コードから値を取ることができるので, `child` オプションの応用の1つとしても文書の読み込みの条件付けがあります. 例えばあなたのレポートに, 上司が関心を持たなそうな技術的な詳細を含む補遺があるなら, この補遺をレポートに含むかどうかを制御する変数を使うとよいでしょう.
 
 ````md
-Change `BOSS_MODE` to `TRUE` if this report is to be read
-by the boss:
+あなたのボスにレポートを読ませるなら `BOSS_MODE` と `TRUE` に変える
 
 ```{r, include=FALSE}`r ''`
 BOSS_MODE <- FALSE
 ```
 
-Conditionally include the appendix:
+条件付きで補遺を読み込む
 
 ```{r, child=if (!BOSS_MODE) 'appendix.Rmd'}`r ''`
 ```
 ````
 
-Or if you are writing a news report on a football game that has not taken place yet, you may include different child documents depending on the outcome, e.g., `child = if (winner == 'brazil') 'brazil.Rmd' else 'germany.Rmd'`. Then as soon as the game (between Germany and Brazil) is finished, you can publish your report.
+あるいはまだ始まってないフットボールの試合の速報レポートを書いているなら, 試合結果に応じて異なる子文書を読み込むようにするとよいでしょう. 例えば `child = if (winner == 'brazil') 'brazil.Rmd' else 'germany.Rmd'` のように. これで試合 (ここではドイツ対ブラジル) が終わり次第すぐに, レポートを提出できます.
 
-Another way to compile child documents is the function `knitr::knit_child()`\index{knitr!knit\_child()}. You can call this function in an R code chunk or an inline R expression, e.g.,
+子文書をコンパイルする別の方法として, `knitr::knit_child()`\index{knitr!knit\_child()} 関数があります. この関数は R コードチャンクまたは行内 R コードの内部で呼び出すことができます. 例えばこのように.
 
 ````md
 ```{r, echo=FALSE, results='asis'}`r ''`
@@ -142,15 +141,15 @@ cat(res, sep = '\n')
 ```
 ````
 
-The function `knit_child()` returns a character vector of the knitted output, which we can write back to the main document with `cat()` and the chunk option `results = 'asis'`\index{chunk option!results}.
+`knit_child()` 関数は knit された子文書の文字列ベクトルを返します. これは `cat()` とチャンクオプション `results = "asis"`\index{チャンクオプション!results} を使ってメインの文書に還元することができます.
 
-You can even use a child document as a template, and call `knit_child()` on it repeatedly with different parameters. In the example below, we run a regression using `mpg` as the response variable and each of the rest of variables in the `mtcars` data as the explanatory variable.
+テンプレートとして子文書を使うこともできますし, 毎回異なるパラメータを与えつつ `knit_child()` 何度も呼び出すこともできます. 以下の例では `mpg` を従属変数として, そして `mtcars` データの残りの変数を説明変数として使って回帰分析を実行しています.
 
 ````md
 ```{r, echo=FALSE, results='asis'}`r ''`
 res <- lapply(setdiff(names(mtcars), 'mpg'), function(x) {
   knitr::knit_child(text = c(
-    '## Regression on "`r knitr::inline_expr('x')`"',
+    '## "`r knitr::inline_expr('x')`" への回帰',
     '',
     '```{r}',
     'lm(mpg ~ ., data = mtcars[, c("mpg", x)])',
@@ -162,18 +161,17 @@ cat(unlist(res), sep = '\n')
 ```
 ````
 
-To make the above example self-contained, we used the `text` argument of `knit_child()` instead of a file input to pass the R Markdown content to be knitted. You can certainly write the content to a file, and pass a path to `knit_child()` instead. For example, you can save the content below to a file named `template.Rmd`:
-
+上記の例を自己完結的なものにするために, `knit_child()` にファイルを入力するのではなく `text` 引数に R Markdown コンテンツを渡しました. もちろんファイルにコンテンツを書き出し, `knit_child()` にファイルパスを渡すこともできます. 例えば以下の例では `template.Rmd` という名前のファイルに保存しています. 
 
 ````md
-## Regression on "`r knitr::inline_expr('x')`"
+## "`r knitr::inline_expr('x')`" への回帰
 
 ```{r}`r ''`
 lm(mpg ~ ., data = mtcars[, c("mpg", x)])
 ```
 ````
 
-And knit the file instead:
+そして代わりにファイルを knit します.
 
 ```{r, eval=FALSE, tidy=FALSE}
 res <- lapply(setdiff(names(mtcars), 'mpg'), function(x) {
@@ -184,13 +182,13 @@ res <- lapply(setdiff(names(mtcars), 'mpg'), function(x) {
 cat(unlist(res), sep = '\n')
 ```
 
-## Keep the plot files {#keep-files}
+## グラフ画像ファイルを残す {#keep-files}
 
-Most R Markdown output formats use the option `self_contained = TRUE`\index{output option!self\_contained} by default. This causes R plots to be embedded in the output documents, so we do not need the intermediate plot files when viewing the output documents. As a consequence, the plot folder (which typically has a suffix `_files`) will be deleted after the Rmd document is rendered\index{figure!keep files}.
+ほとんどの R Markdown 出力フォーマットはデフォルトで `self_contained = TRUE`\index{出力オプション!self\_contained} オプションを使用しています. これは R グラフを出力文書に埋め込ませるので, 出力文書を閲覧する時には中間ファイルは必要ありません. 結果としてグラフ画像のフォルダ (典型的には `_files` という接尾語があります) は Rmd 文書がレンダリングされた後に削除されます\index{図!ファイルを残す}.
 
-Sometimes you may want to keep the plot files. For example, some academic journals require authors to submit figures files separately. For R Markdown, there are three ways to avoid the automatic deletion of these files:
+ときにはグラフ画像ファイルを残したいかもしれません. 例えば画像ファイルを別個に提出するよう著者に要求する学術誌があります. R Markdown ではこれらのファイルの自動削除を回避する3通りの方法があります.
 
-1. Use the option `self_contained = FALSE` if the output format supports this option, e.g.,
+1. 出力フォーマットがサポートしているなら, `self_contained = FALSE` オプションを使う. 例えばこのように.
 
     ```yaml
     output:
@@ -198,11 +196,11 @@ Sometimes you may want to keep the plot files. For example, some academic journa
         self_contained: false
     ```
 
-    However, this means the plot files will not be embedded in the output document. If this is not what you want, you may consider the next two methods.
+    しかし, これはグラフ画像ファイルが出力文書に埋め込まれません. それがあなたにとって望ましくないなら, 次の2つの方法を検討するとよいでしょう.
  
-1. Enable caching for at least one code chunk (see Section \@ref(cache)). When caching is enabled, R Markdown will not delete the plot folder.
+1. 最低いずれか1つのコードチャンクでキャッシュ (\@ref(cache)節参照) を有効にする. キャッシュが有効な時は R Markdown は画像フォルダを削除しません.
 
-1. Use the option `keep_md = TRUE`\index{output option!keep\_md} if the output format supports this option, e.g.,
+1. 出力フォーマットがサポートしているなら, `keep_md = TRUE`\index{出力オプション!keep\_md} オプションを使用する. 例えばこのように.
 
     ```yaml
     output:
@@ -210,17 +208,17 @@ Sometimes you may want to keep the plot files. For example, some academic journa
         keep_md: true
     ```
 
-    When you ask R Markdown to preserve the intermediate Markdown output file, it will also preserve the plot folder.
+    R Markdown が Markdown 中間出力ファイルを保存するよう指示した時, 同時に画像フォルダも保存されます.
 
-## The working directory for R code chunks {#working-directory}
+## R コードチャンク用の作業ディレクトリ {#working-directory}
 
-By default, the working directory\index{working directory} for R code chunks is the directory that contains the Rmd document. For example, if the path of an Rmd file is `~/Downloads/foo.Rmd`, the working directory under which R code chunks are evaluated is `~/Downloads/`. This means when you refer to external files with relative paths in code chunks, you need to know that these paths are relative to the directory of the Rmd file. With the aforementioned Rmd example file, `read.csv("data/iris.csv")` in a code chunk means reading the CSV file `~/Downloads/data/iris.csv`.
+デフォルトでは R コードチャンクの作業ディレクトリ\index{作業ディレクトリ}は Rmd 文書のあるディレクトリです. 例えば Rmd ファイルのパスが `~/Downloads/foo.Rmd` であるなら, R コードチャンクが評価される作業ディレクトリは `~/Downloads/` になります. これはチャンク内で外部ファイルを相対パスで参照するとき, そのパスは Rmd ファイルのあるディレクトリからの相対パスであることを知る必要があることを意味します. 前述の例の Rmd ファイルでは, コードチャンク内での `read.csv("data/iris.csv")` は `~/Downloads/data/iris.csv` から CSV ファイルを読み込むことを意味しています.
 
-When in doubt, you can add `getwd()` to a code chunk, compile the document, and check the output from `getwd()`.
+よく分からない時は, `getwd()` をコードチャンクに追加して文書をコンパイルし, `getwd()` の出力を確認することができます.
 
-Sometimes you may want to use another directory as the working directory. The usual way to change the working directory is `setwd()`, but please note that `setwd()` is not persistent in R Markdown (or other types of **knitr** source documents), which means `setwd()` only works for the current code chunk, and the working directory will be restored after this code chunk has been evaluated.
+時には他のディレクトリを作業ディレクトリとして使いたいかもしれません. たいていの場合は作業ディレクトリの変更方法は `setwd()` ですが, `setwd()` は R Markdown あるいは他の **knitr** ソース文書では一貫性がないことに注意してください. これは `setwd()` が現在のコードチャンクに対して動作し, 作業ディレクトリはこのコードチャンクが評価された後に元に戻ることを意味します.
 
-If you want to change the working directory for all code chunks, you may set it via a `setup` code chunk in the beginning of your document:\index{knitr!root.dir}\index{knitr!opts\_knit}
+全てのコードチャンクに対して作業ディレクトリを変更したい場合, 文書の冒頭の `setup` コードチャンクでこのように設定するとよいでしょう\index{knitr!root.dir}\index{knitr!opts\_knit}.
 
 ````md
 ```{r, setup, include=FALSE}`r ''`
@@ -228,180 +226,180 @@ knitr::opts_knit$set(root.dir = '/tmp')
 ```
 ````
 
-This will change the working directory of all subsequent code chunks.
+これは以降の全てのコードチャンクの作業ディレクトリを変更します.
 
-If you use RStudio, you can also choose the working directory\index{RStudio!working directory} from the menu `Tools -> Global Options -> R Markdown` (see Figure \@ref(fig:rmd-wd)). The default working directory is the directory of the Rmd file, and there are two other possible choices: you may use the current working directory of your R console (the option "Current"), or the root directory of the project that contains this Rmd file as the working directory (the option "Project").
+RStudio を使用しているなら, 作業ディレクトリをメニューバーの `Tools -> Global Options -> R Markdown` からも選択できます\index{RStudio!作業ディレクトリ} (図\@ref(fig:rmd-wd)参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. "Current" オプションで R コンソールの現在の作業ディレクトリを使うか, "Project" オプションで Rmd ファイルの含まれているプロジェクトのルートディレクトリを作業ディレクトリとして使うとよいでしょう.
 
-```{r, rmd-wd, echo=FALSE, fig.cap='Change the default working directory for all R Markdown documents in RStudio.', fig.align='center'}
+```{r, rmd-wd, echo=FALSE, fig.cap='R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する', fig.align='center'}
 knitr::include_graphics('images/rmd-wd.png', dpi = NA)
 ```
 
-In RStudio, you may also knit an individual Rmd document with a specific working directory, as shown in Figure \@ref(fig:knit-wd). After you change the "Knit Directory" and click the "Knit" button, **knitr** will use the new working directory to evaluate your code chunks. All these settings boil down to `knitr::opts_knit$set(root.dir = ...)` as we mentioned earlier, so if you are not satisfied by any of these choices, you can specify a directory by yourself with `knitr::opts_knit$set()`.
+RStudio では, 図\@ref(fig:knit-wd)で見せるように, 個別の Rmd 文書をそれぞれ固有の作業ディレクトリで knit してもよいでしょう. "Knit Directory" を変更し "Knit" ボタンをクリックした後で, **knitr** はコードチャンクの評価に新しい作業ディレクトリを使用します. これらの全ての設定は既に言及した `knitr::opts_knit$set(root.dir = ...)` に集約されています. よってあなたがこれらの選択のいずれにも満足しないのなら, `knitr::opts_knit$set()` を使いご自分でディレクトリを指定できます.
 
-```{r, knit-wd, echo=FALSE, fig.cap='Knit an Rmd document with other possible working directories in RStudio.', fig.align='center'}
+```{r, knit-wd, echo=FALSE, fig.cap='RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する', fig.align='center'}
 knitr::include_graphics('images/knit-wd.png', dpi = NA)
 ```
 
-There is no absolutely correct choice for the working directory. Each choice has its own pros and cons:
+作業ディレクトリに関して完全に正しい選択というものはありません. それぞれに長所と短所があります.
 
-- If you use the Rmd document directory as the working directory for code chunks (**knitr**'s default), you assume that file paths are relative to the Rmd document. This is similar to how web browsers handle relative paths, e.g., for an image `<img src="foo/bar.png" />` on an HTML page `https://www.example.org/path/to/page.html`, your web browser will try to fetch the image from `https://www.example.org/path/to/foo/bar.png`. In other words, the relative path `foo/bar.png` is relative to the directory of the HTML file, which is `https://www.example.org/path/to/`.
+(**knitr** のデフォルト) Rmd 文書のディレクトリをコードチャンクの作業ディレクトリとして使うなら, ファイルパスは Rmd 文書からの相対パスだと想定します. これは ウェブブラウザで相対パスを扱うのと似ています. 例えば 例えば `https://www.example.org/path/to/page.html` という HTML ページでの画像 `<img src="foo/bar.png" />` に対して, ウェブブラウザが `https://www.example.org/path/to/foo/bar.png` から画像を取得しようとするのと似ています. 言い換えるなら, 相対パス `foo/bar.png` は HTML ファイルのディレクトリ  `https://www.example.org/path/to/` からの相対位置です.
 
-    The advantage of this approach is that you can freely move the Rmd file _together with_ its referenced files anywhere, as long as their relative locations remain the same. For the HTML page and image example above, the files `page.html` and `foo/bar.png` could be moved together to a different directory, such as `https://www.example.org/another/path/`, and you will not need to update the relative path in the `src` attribute of `<img />`.
+    このアプローチの利点は Rmd ファイルを参照するファイルと**一緒に**, 相対的な位置関係を保っている限りどこへでも自由に移動できることです. 上記の HTML ページと画像の例では, `page.html` と `foo/bar.png` を `https://www.example.org/another/path/` へ一緒に移動させることができます. そしてあなたは `<img />` の `src` 属性の相対パスを更新する必要はありません.
 
-    Some users like to think of relative paths in Rmd documents as "relative to the working directory of the R console," as opposed to "relative to the Rmd file." Therefore **knitr**'s default working directory feels confusing. The reason that I did not use the working directory of the R console as the default when I designed **knitr** was that users could use `setwd()` to change the working directory at any time. This working directory is not guaranteed to be stable. Each time a user calls `setwd()` in the console, there is a risk that the file paths in the Rmd document may become invalid. It could be surprising that the file paths depend on an external factor (`setwd()`), which is out of the control of the Rmd file. If you treat the Rmd file as "the center of the universe" when thinking of relative paths, the paths inside the Rmd file may be stabler.
+    Rmd 文書の相対パスを「Rmd ファイルからの相対位置」とは対照的に「Rコンソールの作業ディレクトリからの相対位置」と考えるのを好むユーザもいます. よって **knitr** のデフォルトディレクトリは混乱を招きます. 私が **knitr** を設計する際に R コンソールの作業ディレクトリをデフォルトで使わないようにした理由は, ユーザがいつでも `setwd()` で作業ディレクトリを変更できるようにするためでした. この作業ディレクトリが安定している保証はありません.  毎度のようにユーザが `setwd()` をコンソールで呼び出すと, Rmd 文書内のファイルパスが無効になるリスクがあります. ファイルパスが `setwd()` という外部要因に依存していて, それが Rmd ファイルの制御の手から離れているというのは恐ろしいことでしょう. 相対パスを考慮して, Rmd ファイルを「宇宙の中心」として扱うのなら, Rmd ファイル内のパスは安定するでしょう.
     
-    Furthermore, if you do not want to think too hard on relative paths, you may enter a path in RStudio using its autocomplete, as shown in Figure \@ref(fig:rmd-relative). RStudio will try to autocomplete a path relative to the Rmd file.
+    その上, あなたが相対パスを考慮するのが難しすぎるのでやりたくないのなら, 図\@ref(fig:rmd-relative)のように RStudio 上で自動補完機能を使ってファイルパスを入力すればよいでしょう. RStudio は Rmd ファイルからの相対パスを補完しようと試みます.
 
-- Using the working directory of the R console can be a good choice for knitting documents programmatically or interactively. For example, you may knit a document multiple times in a loop, and use a different working directory each time to read a different data file (with the same filename) in that directory. This type of working directory is advocated by the **ezknitr** package\index{R package!ezknitr} [@R-ezknitr], which essentially uses `knitr::opts_knit$set(root.dir)` to change the working directory for code chunks in **knitr**.
+- R コンソールの作業ディレクトリはプログラミング的あるいは対話的に文書を knit するのに良い選択になりうるでしょう. 例えばループ中に文書を複数回 knit し, その毎回で異なる作業ディレクトリを使い, ディレクトリ内の異なるデータファイルを読み込む (ファイル名は同じとします) とよいでしょう. この種の作業ディレクトリは **ezknitr** パッケージ\index{R パッケージ!ezknitr} [@R-ezknitr] で支持されており, 実質的に **knitr** のコードチャンクのために作業ディレクトリを変更するために `knitr::opts_knit$set(root.dir)` を使用しています.
 
-- Using the project directory as the working directory requires an obvious assumption: you have to use a project (e.g., an RStudio project or a version control project) in the first place, which could be a disadvantage of this approach. The advantage of this type of working directory is that all relative paths in any Rmd document are relative to the project root directory, so you do not need to think where your Rmd file is located in the project or adjust the relative paths of other files accordingly. This type of working directory is advocated by the **here** package\index{R package!here} [@R-here], which provides the function `here::here()` to return an absolute path by resolving a relative path passed to it (remember that the relative path is relative to the project root). The disadvantage is that when you move the referenced file together with the Rmd file to another location in the project, you need to update the referenced path in the Rmd document. When you share the Rmd file with other people, you also have to share the whole project.
+- プロジェクトディレクトリを作業ディレクトリとして使うことには明確な前提が要求されます. そもそもプロジェクト (例えば RStudio のプロジェクトか, バージョン管理プロジェクト) を使わなければならないということです. これはこのアプローチの欠点となりえます. この種の作業ディレクトリの利点はあらゆる Rmd 文書内の全ての相対パスがプロジェクトのルートディレクトリからの相対パスになることです. よってプロジェクト内で Rmd ファイルがどこにあるかを考えたり, 対応する他のファイルの場所を調整したりする必要はありません. この種の作業ディレクトリは **here** パッケージ\index{R パッケージ!here} [@R-here] で支持されており, このパッケージは渡された相対パスを解決し絶対パスを返す `here::here()` 関数を提供しています (相対パスはプロジェクトのルートからの相対であることを忘れないでください). 欠点は参照されているファイルを Rmd ファイルとともにプロジェクト内の他の場所に移動させた時に, Rmd 文書内の参照パスを更新する必要があることです. Rmd ファイルを他の人と共有する時は, プロジェクト全体も共有しなければなりません.
 
-    These types of paths are similar to absolute paths without the protocol or domain in HTML. For example, an image `<img src="/foo/bar.png" />` on the page `https://www.example.org/path/to/page.html` refers to the image under the root directory of the website, i.e., `https://www.example.org/foo/bar.png`. The leading `/` in the `src` attribute of the image indicates the root directory of the website. If you want to learn more (or further confuse yourself) about absolute and relative paths in HTML, please see [Appendix B.1 of the **blogdown** book](https://bookdown.org/yihui/blogdown/html.html) [@blogdown2017].
+    これらの種類のパスは HTML でのプロトコルやドメインのない絶対パスと似ています. 例えば `https://www.example.org/path/to/page.html` というページの画像 `<img src="/foo/bar.png" />` はウェブサイトのルートディレクトリ以下の画像を参照しています. つまり `https://www.example.org/foo/bar.png` です. 画像の `src` 属性の先頭の `/` はウェブサイトのルートディレクトリを表しています. 絶対パスと相対パスについてもっと学びたい (あるいはもっと混乱したい) なら,  [**blogdown** 本の Appendix B.1](https://bookdown.org/yihui/blogdown/html.html) [@blogdown2017] を見てください.
 
-The working directory pain mainly arises from this question when dealing with relative paths: _relative to what?_ As we mentioned earlier, different people have different preferences, and there is not an absolutely right answer.
+うんざりさせられる作業ディレクトリ問題は相対パスに対処している時に発生した次のような疑問に端を発します. 「**何に対して相対的なの?**」と. 既に言及したように, いろいろな人がいろいろな好みを持っており, 完全に正しい回答はありません.
 
-```{r, rmd-relative, echo=FALSE, fig.cap='Autocomplete file paths in an Rmd document in RStudio.', fig.align='center'}
+```{r, rmd-relative, echo=FALSE, fig.cap='RStudio 上で Rmd 文書のファイルパスを自動補完する', fig.align='center'}
 knitr::include_graphics('images/rmd-relative.png', dpi = NA)
 ```
 
-## R package vignettes {#package-vignette}
+## R パッケージのビネット {#package-vignette}
 
-If you have experience in developing R packages, or your project requires clear documentation and rigorous tests for custom functions written in the project, you may consider organizing the project as an R package. If you do not know how to create an R package, you can easily get started in the RStudio IDE by clicking the menu `File -> New Project`, and selecting the project type to be an R package.\index{R package!vignette}\index{vignette}
+R パッケージの開発を経験したか, プロジェクトで自作関数の明瞭なドキュメントや厳格なテストが要求されたなら, あなたはプロジェクトを R パッケージと結びつけることを検討するかもしれません. R パッケージの作り方が分からないなら, RStudio IDE でメニューバーの `File -> New Project` をクリックし, プロジェクトの種類に R パッケージを選ぶことで簡単に始めることができます\index{R パッケージ!ビネット}\index{ビネット}\index{vignette|see{ビネット}}.
 
-There are a lot of benefits of using an R package to manage a project. For example, you can place datasets in the `data/` folder, write R code under `R/`, generate documentation (e.g., using the **roxygen2** package [@R-roxygen2]\index{R package!roxygen2}) to `man/`, and add unit tests to `test/`. When it comes to the R Markdown reports, you can write them as package vignettes under `vignettes/`. In the vignettes, you can load datasets and call functions in the package. When you build the package (via the command `R CMD build` or RStudio), vignettes will be automatically compiled.
+プロジェクトの管理に R パッケージを使うことには多くの利益があります. 例えば `data/` フォルダにデータを置き, `R/`  に R コードを書き, 例えば **roxygen2** パッケージ [@R-roxygen2]\index{R パッケージ!roxygen2} を使用して, ドキュメントを `man/` に生成し, `test/` には単体テストを追加できます. R Markdown のレポートなら `vignette/` にパッケージのビネットとして書くことができます. ビネット内ではデータセットを読み込みパッケージ内の関数を呼び出せます. (`R CMD build` コマンドか RStudio で) パッケージをビルドする時に, ビネットは自動でコンパイルされます.
 
-To create a package vignette in R Markdown, the easiest way is through the RStudio menu `File -> New File -> R Markdown -> From Template`\index{RStudio!vignette template} (see Figure \@ref(fig:package-vignette)). Then you select "Package Vignette" from the **rmarkdown** package, and you will get a vignette template. After changing the title, author, and other metadata of the template, you can start writing the content of your report.
+R Markdown でパッケージのビネットを作成するには, 最も簡単な方法は RStudio のメニュー `File -> New File -> R Markdown -> From Template`\index{RStudio!ビネットのテンプレート}を経由するものです (図\@ref(fig:package-vignette)参照). それから **rmarkdown** パッケージから "Package Vignette" を選択し, ビネットのテンプレートを得ます.  テンプレートの, タイトル・著者・その他のメタデータを変更したら, レポートの本文を書き始めることができます.
 
-```{r, package-vignette, echo=FALSE, fig.cap='Create a package vignette in RStudio.'}
+```{r, package-vignette, echo=FALSE, fig.cap='RStudio でパッケージのビネットを作成する'}
 knitr::include_graphics('images/package-vignette.png', dpi = NA)
 ```
 
-Alternatively, you can install the package **usethis**\index{R package!usethis} [@R-usethis] and use its function `usethis::use_vignette()`\index{usethis!use\_vignette()} to create a vignette skeleton. Below is what the YAML frontmatter of a package vignette typically looks like\index{YAML!vignette frontmatter}:
+代わりに, **usethis**\index{R パッケージ!usethis} [@R-usethis] をインストールしビネットのスケルトンを作成するのに `usethis::use_vignette()`\index{usethis!use\_vignette()} 関数を使うこともできます. 以下はパッケージのビネットの YAML フロントマターの典型的な姿です\index{YAML!ビネットのフロントマター}.
 
 ```yaml
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "ビネットのタイトル"
+author: "ビネットの著者"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{ビネットのタイトル}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 ```
 
-Note that you need to change the vignette title in both the `title` field and the `\VignetteIndexEntry{}` command. Besides the above information in the vignette, you also need to do two more things in your package `DESCRIPTION` file:
+`title` フィールドと `\VignetteIndexEntry{}` コマンドの両方で, ビネットのタイトルを変更する必要があることに注意してください. 上記のビネット情報の他にも, パッケージの `DESCRIPTION` ファイルにさらに2つ必要なことがあります.
 
-1. Specify `VignetteBuilder: knitr` in the `DESCRIPTION` file.
+1. `DESCRIPTION` ファイルに `VignetteBuilder: knitr` を指定する.
 
-1. Add `Suggests: knitr, rmarkdown` in `DESCRIPTION`.
+1. `DESCRIPTION` ファイルに `Suggests: knitr, rmarkdown` を指定する.
 
-The vignette output format does not have to be HTML. It can also be PDF, so you can use `output: pdf_document`, too. Any other output formats that create HTML or PDF are also okay, such as `beamer_presentation` and `tufte::tufte_html`. However, currently, R only recognizes HTML and PDF vignettes.
+ビネット出力フォーマットは HTML でなくてもよいです. PDF でも可能なので, `output: pdf_document` を使うこともできます. `beamer_presentation` や `tufte::tufte_html` のような, HTML か PDF を作成する他の出力フォーマットでも大丈夫です. しかし, 現時点では R は HTML と PDF のビネットのみを認識します.
 
-## R Markdown templates in R packages {#package-template}
+## R パッケージの R Markdown テンプレート {#package-template}
 
-Figure \@ref(fig:package-vignette) of Section \@ref(package-vignette) illustrates the process of retrieving the editable Package Vignette (HTML) template from the **rmarkdown** package. This R Markdown file is pre-populated with the appropriate metadata for an R package vignette.\index{R package!R Markdown template}\index{template!R Markdown} 
+\@ref(package-vignette)節の図\@ref(fig:package-vignette)は編集可能なパッケージビネットのテンプレートを **rmarkdown** パッケージから取得する工程を表しています. この R Markdown ファイルは  R パッケージのビネットに対して適切なメタデータが入力済みです\index{R パッケージ!R Markdown テンプレート}\index{テンプレート!R Markdown}.
 
-Similarly, any package may include R Markdown templates that package users can access through the RStudio IDE (as shown in the figure) or across any platform with the `rmarkdown::draft()`\index{rmarkdown!draft} function.
+同様に, R パッケージに, (この図で示しているように) ユーザが RStudio IDE を通してアクセスできるか, あるいはどのプラットフォーム上でも `rmarkdown::draft()`\index{rmarkdown!draft} 関数でアクセスできる Markdown テンプレートを同梱してもよいです.
 
-### Template use-cases
+### テンプレートのユースケースTemplate use-cases
 
-Templates are a useful way to share custom structure, style, and content. There are many excellent examples of this "in the wild."\index{R package!R Markdown templates}
+テンプレートはカスタマイズされた文書構造・スタイル・コンテンツを共有するのに便利な方法です. 多くのすばらしい例が世に出回っています\index{R パッケージ!R Markdown テンプレート}.
 
-Many templates add structure and style by pre-populating the YAML metadata. We already saw an example of this with the **rmarkdown** package's Package Vignette (HTML) template. Similarly, the **rmdformats** package [@R-rmdformats] provides a number of templates that pass different custom styling functions to the `output` option.
+多くのテンプレートは入力済みのメタデータによって文書構造とスタイルを追加しています. すでに **rmarkdown** パッケージの (HTML の) ビネットテンプレートを例としてお見せしました. 同様に, **rmdformats** パッケージ [@R-rmdformats] は様々なカスタムスタイル関数を `output` オプションに渡すテンプレートがいくつも提供されています.
 
-Other templates demonstrate document structures that the packages require. For example, the **pagedown** package [@R-pagedown] includes numerous templates for posters, resumes, and other page layouts. Similarly, the **xaringan** package's Ninja Presentation template [@R-xaringan] demonstrates the syntax for many different slide formatting options. 
+その他のテンプレートはパッケージを要求する文書構造を実現しています. 例えば *pagedown** パッケージ [@R-pagedown] はポスター・履歴書・その他のページレイアウト用に無数のテンプレートを同梱しています. 同様に **xaringan** パッケージ [@R-xaringan] の忍者風のプレゼンテーションテンプレートは様々なスライドフォーマットのオプションに対する構文を実現しています.
 
-Templates may also demonstrate package features and syntax. For example, both the **flexdashboard** package [@R-flexdashboard] and the **learnr** package [@R-learnr] include templates with code chunks that call functions from the packages to create a sample dashboard or tutorial, respectively.
+テンプレートはパッケージの機能と構文を実証していることもあります. 例えば **flexdashboard** パッケージ [@R-flexdashboard] と **learnr** package [@R-learnr] パッケージはサンプルのダッシュボートとチュートリアルをそれぞれ作成するためにパッケージから関数を呼び出すコードチャンクのあるテンプレートを同梱しています.
 
-Similarly, templates may also include boilerplate content. For example, the **rticles** package [@R-rticles] provides many such templates to align R Markdown output to the required style and content guidelines of different academic journals. Boilerplate content is also useful in organizational settings, such as a team generating quarterly reports. 
+同様に, テンプレートは定型的なコンテンツ様式をも含んでいるかもしれません. 例えば **rticles** パッケージ [@R-rticles] は R Markdown 出力を, 様々な学術誌で要求されるスタイルとガイドラインに沿って調整する, 多くのそのようなテンプレートを提供します. 様式に沿ったコンテンツは, 四半期レポートを作成するチームのような組織的な設定においても便利です.
 
-### Template setup
+### テンプレートの準備
 
-The **usethis** package [@R-usethis] has a helpful function for creating templates. Running `usethis::use_rmarkdown_template("Template Name")`\index{usethis!use\_rmarkdown\_template()} will automatically create the required directory structure and files (you should provide your own Template Name).
+**usethis** パッケージ [@R-usethis] にはテンプレートの作成に役に立つ関数があります. `usethis::use_rmarkdown_template("テンプレート名")`\index{usethis!use\_rmarkdown\_template()} を実行すると, 要求されたディレクトリ構造とファイルが自動で作成されます. そしてあなたは自分のテンプレート名を与えるべきです.
 
-If you wish to set up your template manually instead, create a subdirectory of the `inst/rmarkdown/templates` directory. Within this directory, you need to save at least two files:
+代わりに自分のテンプレートを手動で準備したいなら, `inst/rmarkdown/templates` のサブディレクトリに作成してください. このディレクトリ内に, 少なくとも2つのファイルを保存する必要があります.
 
-1. A file named `template.yaml`, which gives the RStudio IDE basic metadata such as a human-readable name for the template. At a minimum, this file should have the `name` and `description` fields, e.g.,
+1. `template.yaml` という名前のファイル. これは RStudio IDE に, 人間が判読できるテンプレートの名称といった基本的なメタデータを与えます. 最低でも, このファイルは `name` と `description` フィールドを持っているべきです. 例えばこのように.
 
     ```yaml
-    name: Example Template
-    description: What this template does
+    name: テンプレートの例
+    description: このテンプレートが何をするか
     ```
 
-    You may include `create_dir: true` if you want a new directory to be created when the template is selected. This is useful if your template relies upon additional resources. For example, the [**learnr** package template](https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml) sets `create_dir: true`, whereas the [**flexdashboard** package template](https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml) uses the default `create_dir: false`. You may attempt to open both of these templates in RStudio to notice the different user prompts.
+    テンプレートが選択された時に新しいディレクトリを作成してほしいなら, `create_dir: true` を含めてもよいでしょう. 例えば [**learnr** パッケージのテンプレート](https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml)は `create_dir: true` を設定しており, 一方で [**flexdashboard** パッケージのテンプレート](https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml) はデフォルトの `create_dir: false` を使用しています. 様々なユーザの意図に気付くために, これらのテンプレートを RStudio で開いてみるのもよいでしょう.
 
-2. An R Markdown document saved under `skeleton/skeleton.Rmd`. This may contain anything you wish to put in an R Markdown document. 
+2. `skeleton/skeleton.Rmd` 内保存された R Markdown 文書ファイル. これは R Markdown 文書に挿入したいものを含めることができます.
 
-Optionally, the `skeleton` folder may also include additional resources like style sheets or images used by your template. These files will be loaded to the user's computer along with the template.
+オプションとして, `skeleton` フォルダにはスタイルシートや画像といった, テンプレートで使われる追加のリソースを含めることができます. これらのファイルはテンプレートとともにユーザのコンピュータに読み込まれます.
 
-For more details on building custom R Markdown templates, please refer to the [RStudio Extensions](https://rstudio.github.io/rstudio-extensions/rmarkdown_templates.html) website and the [Document Templates chapter](https://bookdown.org/yihui/rmarkdown/document-templates.html) of the _R Markdown Definitive Guide_ [@rmarkdown2018]. 
+R Markdown のカスタムテンプレートを作るためのさらに詳細な情報は, [RStudio Extensions](https://rstudio.github.io/rstudio-extensions/rmarkdown_templates.html) と _R Markdown Definitive Guide_ [@rmarkdown2018] の [Document Templates chapter](https://bookdown.org/yihui/rmarkdown/document-templates.html) を参照してください.
 
-## Write books and long-form reports with **bookdown** {#bookdown}
+## **bookdown** で本や長いレポートを書く {#bookdown}
 
-The **bookdown** package [@R-bookdown]\index{R package!bookdown} is designed for creating long-form documents\index{book} that are composed of multiple R Markdown documents. For example, if you want to write a book, you can write each chapter in its own Rmd file, and use **bookdown** to compile these Rmd files into a book.
+**bookdown** パッケージ [@R-bookdown]\index{R パッケージ!bookdown} は複数の R Markdown 文書で構成される長い文書\index{本}を作成するように設計されています. 例えば本を執筆したいなら, 章ごとに別々の Rmd ファイルに書き, これらのファイルを本にコンパイルするのに **bookdown** を使うことが可能です. 
 
-For RStudio users, the easiest way to get started is to create a **bookdown** project\index{RStudio!bookdown project} with the IDE by selecting `File -> New Project -> New Directory -> Book Project using bookdown`, as you can see from Figure \@ref(fig:bookdown-project).
+RStudio ユーザーにとって最も簡単な始め方は, 図\@ref(fig:bookdown-project)で見られるように IDE 上で `File -> New Project -> New Directory -> Book Project using bookdown` を選んで **bookdown** プロジェクト\index{RStudio!bookdown プロジェクト}を作成することです.
 
-If you do not use RStudio or if you prefer to work from the console, you may produce the same result by calling the function `bookdown:::bookdown_skeleton('your-book-dir')`.
+RStudio を使っていないか, コンソールから作業するのが好きなら, `bookdown:::bookdown_skeleton('本のディレクトリ')` 関数を呼ぶことで同じものを生み出せます.
 
-```{r, bookdown-project, echo=FALSE, fig.cap='Create a bookdown project in RStudio.'}
+```{r, bookdown-project, echo=FALSE, fig.cap='RStudio で bookdown プロジェクトを作成する'}
 knitr::include_graphics('images/bookdown-project.png', dpi = NA)
 ```
 
-To demonstrate the usage, we provide a minimal example consisting of three files within the same directory:
+使用法を実演するために, 同じディレクトリに3つのファイルを含めた最低限の例を用意しました.
 
 ```md
 directory
   |- index.Rmd
-  |- 01-intro.Rmd
-  |- 02-analysis.Rmd
+  |- 01-導入.Rmd
+  |- 02-分析.Rmd
 ```
 
-Below we show the content of each file and explain their roles.
+以下に各ファイルの中身とそれぞれの役目を示します.
 
 - **index.Rmd**:
 
   ````md
   ---
-  title: "A Minimal bookdown Project"
+  title: "最低限の bookdown プロジェクト"
   site: bookdown::bookdown_site
   output: bookdown::gitbook
   ---
   
-  # Preface {-}
+  # はじめに {-}
   
-  Some content
+  なにか書く
   ````
 
-The first file is typically called `index.Rmd`. It should be the only Rmd file in which you provide the YAML frontmatter. It should also include a special YAML field `site: bookdown::bookdown_site`, so that **rmarkdown** knows to use **bookdown** to build all Rmd files, instead of rendering a single Rmd file. You can use any **bookdown** output formats, such as `bookdown::gitbook`, `bookdown::pdf_book`, `bookdown::word_document2`, and `bookdown::epub_book`.
+最初のファイルは典型的には `index.Rmd` と呼ばれます. YAML フロントマターを与える唯一の Rmd ファイルとなるべきです. また, 単一の Rmd ファイルをレンダリングするのではなく, 全ての Rmd ファイルをビルドするために **bookdown** を使うことを **rmarkdown** に知らせるための特殊な YAML フィールド, `site: bookdown::bookdown_site` を含むべきです. `bookdown::gitbook` ・ `bookdown::pdf_book` ・ `bookdown::word_document2` ・ `bookdown::epub_book` といった **bookdown** 出力フォーマットをいずれも使うことができます.
 
-The next two Rmd files are two chapters:
+次の2つの Rmd ファイルは2つの章になります.
 
-- **01-intro.Rmd:**
+- **01-導入.Rmd:**
 
   ````md
-  # Chapter 1
+  # 第1章
   
-  This is chapter 1.
+  これは第1章です.
   ````
 
-- **02-analysis.Rmd**:
+- **02-分析.Rmd**:
 
   ```md
-  # Chapter 2
+  # 第2章
   
-  This is chapter 2.
+  これは第2章です.
   ```
 
-To render these Rmd files, you should call `bookdown::render_book('index.Rmd')` instead of `rmarkdown::render()`. Under the hood, **bookdown** merges all Rmd files into a single Rmd by default and compiles it. Files are merged in alphabetical order. That is why we added numeric prefixes to filenames in the above example.
+これらの Rmd ファイルをレンダリングするために, `rmarkdown::render()` の代わりに `bookdown::render_book('index.Rmd')` を呼ぶべきです. その内部では, デフォルトでは **bookdown** が全ての Rmd ファイルを1つの Rmd に結合し, コンパイルします. ファイルは名前順に結合されます. 上記の例でファイル名の頭に数字を付けたのはそれが理由です.
 
-There are a lot of settings that you can customize for a **bookdown** project. For a more comprehensive overview of **bookdown**, you may see Chapter 18 the **rmarkdown** book [@rmarkdown2018]. For the full documentation, see the **bookdown** book [@bookdown2016].
+**bookdown** プロジェクトをカスタマイズすることができる設定は多くあります. **bookdown** のより包括的な概要として, **rmarkdown** 本 [@rmarkdown2018] の Chapter 18 を読むとよいでしょう. 完全なドキュメントは **bookdown** 本 [@bookdown2016] になります.
 
-## Build websites with **blogdown** {#blogdown}
+## **blogdown** でウェブサイトを構築する {#blogdown}
 
-If you want build a website based on R Markdown, you may consider using the **blogdown** package\index{R package!blogdown} [@R-blogdown]. The easiest way to get started is to use the RStudio menu  `File -> New Project -> New Directory -> Website using blogdown`, as you can see from Figure \@ref(fig:bookdown-project). If you have never used **blogdown** before, you may use the default settings in the dialog box, otherwise you can customize things like the website theme. If you do not use RStudio, you may call the function `blogdown::new_site()` under an empty directory to create a new website.
+R Markdown に基づいたウェブサイトを構築したいなら, **blogdown** パッケージ\index{R パッケージ!blogdown} [@R-blogdown] の使用を検討するとよいでしょう. 最も簡単な始め方は図\@ref(fig:bookdown-project)で見られるように RStudio メニューから `File -> New Project -> New Directory -> Website using blogdown` を選ぶことです. これまで **blogdown** を使ったことがないのなら, ダイアログボックスのデフォルト設定をを使うとよいでしょう. そうでないなら, ウェブサイトのテーマのようにカスタマイズできます. RStudio を使用していないのなら, 新しいウェブサイトを作る空のディレクトリで `blogdown::new_site()` 関数を呼び出すことができます.
 
-A website project may contain any number of Rmd documents. They could either be normal pages or blog posts. R Markdown makes it easier for you to maintain your website because the results on your website are automatically and dynamically generated.
+ウェブサイトのプロジェクトには Rmd 文書をいくつふくめてもよいです. これらは通常のページか, ブログの記事にできます. あなたのウェブサイトに表示されるものは自動的にかつ動的に生成されるので, R Markdown によってあなたは簡単に自分のウェブサイトを管理できるようになります.
 
-We recommend that you read [Chapter 1](https://bookdown.org/yihui/blogdown/get-started.html) of the **blogdown** book [@blogdown2017] for an overview of this package as well as the basic workflow of maintaining a website.
+ウェブサイトの管理の基本的なワークフローとこのパッケージの概要のために, **blogdown** 本 [@blogdown2017] の [Chapter 1](https://bookdown.org/yihui/blogdown/get-started.html) を読むことをお薦めします.
