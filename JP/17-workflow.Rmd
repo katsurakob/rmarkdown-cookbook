@@ -1,12 +1,12 @@
-# Workflow
+# ワークフロー {#workflow}
 
-In this chapter, we introduce some tips on working with individual R Markdown documents as well as running your R Markdown projects. You may also check out [Chapter 30](https://r4ds.had.co.nz/r-markdown-workflow.html) of the book _R for Data Science_ [@wickham2016], which briefly introduces some tips on using analysis notebooks (including R Markdown documents). Nicholas Tierney also discusses the workflow in the book [_R Markdown for Scientists_.](https://rmd4sci.njtierney.com/workflow.html)
+この章では R Markdown プロジェクトの運用のみならず個別の R Markdown 文書で作業する際の豆知識を紹介します. _R for Data Science_^[邦題『Rで学ぶデータサイエンス』] [@wickham2016] の [Chapter 30](https://r4ds.had.co.nz/r-markdown-workflow.html) も確認するとよいでしょう. ここには (R Markdown 文書を含む) 分析ノートの使用に関する豆知識が簡単に紹介されています. Nicholas Tierney も [_R Markdown for Scientists_.](https://rmd4sci.njtierney.com/workflow.html) でワークフローについて議論しています.
 
-## Use RStudio keyboard shortcuts {#rstudio-shortcuts}
+## RStudio のキーボード・ショートカットを使う {#rstudio-shortcuts}
 
-The R Markdown format can be used with any editor of your choice, as long as R, the **rmarkdown** package, and Pandoc are installed. However, RStudio\index{RStudio!keyboard shortcuts} is deeply integrated with R Markdown, so you can work with R Markdown smoothly.
+R・ **rmarkdown** パッケージ・Pandoc がインストールされているかぎり, R Markdown のフォーマットはあなたの選ぶどんなテキストエディタでも使用できます. しかし, RStudio\index{RStudio!キーボード・ショートカット}は R Markdownと深く統合されているので, 円滑に R Markdown と作業できます.
 
-Like any IDE (Integrated Development Environment), RStudio has keyboard shortcuts. A full list can be found under the menu `Tools -> Keyboard Shortcuts Help`. Some of the most useful shortcuts related to R Markdown are summarized in Table \@ref(tab:shortcuts).
+あらゆる IDE (統合開発環境) のように, RStudio にはキーボード・ショートカットがあります. 完全な一覧はメニューの `Tools -> Keyboard Shortcuts Help` で見られます. R Markdown に関連する最も便利なショートカットを表\@ref(tab:shortcuts)にまとめました.
 
 ```{r, include = FALSE}
 ks_win <- function(letters, ctrl = TRUE, alt = TRUE, shift = FALSE, enter = FALSE) {
@@ -47,18 +47,18 @@ keyboard_table <- tibble::tribble(
   "Show/hide document outline", ks_win("O", TRUE, FALSE, TRUE)         , ks_mac("O", TRUE, FALSE, TRUE),
   "Build book, website, ..."  , ks_win("B", TRUE, FALSE, TRUE)         , ks_mac("B", TRUE, FALSE, TRUE)
 )
-knitr::kable(keyboard_table, caption = "RStudio keyboard shortcuts related to R Markdown.", booktabs = TRUE)
+knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio のキーボード・ショートカット", booktabs = TRUE)
 ```
 
-Additionally, you can press `F7` to spell-check your document. You can also restart the R session by `Ctrl + Alt + F10` (or `Command + Option + F10` on macOS). Restarting regularly is helpful for reproducibility, because results are more likely to be reproducible if they are computed from a new R session. This can also be done through the drop-down menu Restart R and Run All Chunks behind the Run button on the toolbar.
+加えて, `F7` キーを押してあなたの文書のスペルチェックがができます.  `Ctrl + Alt + F10` (macOS では `Command + Option + F10`) で R セッションを再起動することもできます. 新しい R セッションから計算するなら, 結果は再現しやすいため, 正常に再起動することは再現可能性のために役に立ちます. これはドロップダウンメニューから R を再起動してツールバーの Run ボタンの背後にある "Run All Chunks" を使用することでも可能です.
 
-## Spell-check R Markdown {#spell-check}
+## R Markdown のスペルチェック {#spell-check}
 
 If you use the RStudio IDE\index{RStudio!spellcheck}, you can press the `F7` key or click the menu `Edit -> Check Spelling` to spell-check an Rmd document. Real-time spell checking has become available in RStudio v1.3, so you no longer need to manually trigger spell checking with this version or a later version of RStudio.
 
 If you do not use RStudio, the **spelling** package\index{R package!spelling} [@R-spelling] has a function `spell_check_files()`, which can check the spelling of common document formats, including R Markdown. When spell checking Rmd documents, it will skip code chunks and only check ordinary text.
 
-## Render R Markdown with `rmarkdown::render()` {#rmarkdown-render}
+## `rmarkdown::render()` で R Markdown をレンダリングする {#rmarkdown-render}
 
 If you do not use RStudio or any other IDE, you need to know this fact: R Markdown documents are rendered through the function `rmarkdown::render()`\index{rmarkdown!render()}. This means you can programmatically render an R Markdown document in any R script. For example, you could render a series of reports in a `for`-loop for each state of a country:
 
