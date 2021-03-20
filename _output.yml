@@ -3,6 +3,8 @@ rmdja::gitbook_ja:
   keep_md: true
   css: [css/style.css, css/box.css]
   config:
+    fontsettings:
+      family: serifq
     toc:
       before: |
         <li><a href="./">R Markdown Cookbook</a></li>
