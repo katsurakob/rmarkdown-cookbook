@@ -3,9 +3,9 @@ R Markdown クックブック 日本語版
 
 ## About this
 
-このリポジトリは『R Markdown
-クックブック』翻訳版のソースコードを含んでいます. **現在,
-翻訳版は校正中です**
+このリポジトリは『[R Markdown
+クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます.
+**現在, 翻訳版は校正中です**
 
 [![R Markdown
 Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png)](https://www.routledge.com/p/book/9780367563837)
