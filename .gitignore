@@ -27,3 +27,4 @@ examples/listings-settings.tex
 
 # keep them only at gh-pages branch
 /docs/*
+/dev/memo.md
