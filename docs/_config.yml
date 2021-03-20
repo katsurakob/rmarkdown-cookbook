@@ -1,1 +1,1 @@
-exclude: ["index.md"]
+exclude: ["index.md", "rmarkdown-cookbook.md"]

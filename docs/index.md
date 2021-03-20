@@ -38,7 +38,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/03/21 00:21:25 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/03/21 00:44:56 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
