@@ -99,7 +99,7 @@ colorize = function(x, color){
 
 ```md
 | 採用責任者
-| ニンジャ学校,
+| ニンジャの学校,
   ハッカーの大学
 | 404 Not Found Road,
   Undefined 0x1234, NA
