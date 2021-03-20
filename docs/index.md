@@ -37,7 +37,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/03/20 20:26:20, ver. Beta (翻訳作業中の草稿)"
+date: "2021/03/20 21:39:54, ver. Beta (翻訳作業中の草稿)"
 ---
 
 # はじめに {-}
@@ -426,8 +426,12 @@ R Markdown のテキスト部分で見られる最後の興味深いコンテン
 コードチャンクを作ることができるいくつかの mod について理解するためには, **knitr** の処理をあとほんの少しだけ詳しく知ることが有意義です. 各チャンクでは, **knitr** 言語エンジンは3つの入力の部品を得ます. knit 環境 (`knitr::knit_global()`), コードの入力, 任意に指定できるラベル, そしてチャンクオプションのリストです. コードチャンクはコードもその出力も整形された表現として返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図\@ref(fig:knitr-workflow)のように表せます.
 
 <div class="figure" style="text-align: center">
-<!--html_preserve--><div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:336px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [<frame>コードチャンク|\n  [コード]->[言語エンジン]\n  [チャンクオプション]->[言語エンジン]\n  [環境]->[言語エンジン]\n  [言語エンジン]->[整形されたコード]\n  [言語エンジン]->[整形された出力]\n  [言語エンジン]->[(変更された) 環境]\n  ]","svg":false},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+```{=html}
+<div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:336px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [<frame>コードチャンク|\n  [コード]->[言語エンジン]\n  [チャンクオプション]->[言語エンジン]\n  [環境]->[言語エンジン]\n  [言語エンジン]->[整形されたコード]\n  [言語エンジン]->[整形された出力]\n  [言語エンジン]->[(変更された) 環境]\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
+```
+
 <p class="caption">(\#fig:knitr-workflow)言語エンジンへの入出力フローチャート</p>
 </div>
 
@@ -480,8 +484,12 @@ print(y)
 この文書を書いていると, それぞれの小片は, テキストとコードを含んだ, 独立した節とともに直線上に並んでいるものとみなすかもしれません. しかし実際にしているのは, 概念としては図\@ref(fig:rmd-containers)でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です^[現実に, ここで見えているよりも多くのコンテナがあります. 例えば knit されたコードチャンクや, コードと出力がそれぞれ別のコンテナとして存在し, そしてこれらは親要素を共有しています.]
 
 <div class="figure" style="text-align: center">
-<!--html_preserve--><div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンク-x) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンク-y) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script><!--/html_preserve-->
+
+```{=html}
+<div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンク-x) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンク-y) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
+```
+
 <p class="caption">(\#fig:rmd-containers)入れ子状のコンテナとして表現された単純な R Markdown 文書の例</p>
 </div>
 
@@ -1451,8 +1459,8 @@ DiagrammeR::grViz("digraph {
 <div class="figure" style="text-align: center">
 
 ```{=html}
-<div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label =  \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0f1cd91748e09524640d" style="width:288px;height:500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f1cd91748e09524640d">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label =  \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 <p class="caption">(\#fig:diagram-profit)プログラマの絵空事を表したダイアグラム</p>
@@ -1492,8 +1500,8 @@ DiagrammeR::grViz("
 <div class="figure" style="text-align: center">
 
 ```{=html}
-<div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-daee486d3da8791976e9" style="width:576px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-daee486d3da8791976e9">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 <p class="caption">(\#fig:diagram-params)R から入力されたパラメータを使用したダイアグラム</p>
