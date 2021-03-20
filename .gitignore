@@ -24,3 +24,6 @@ examples/*.html
 examples/*/*.pdf
 examples/*/*.html
 examples/listings-settings.tex
+
+# keep them only at gh-pages branch
+/docs/
