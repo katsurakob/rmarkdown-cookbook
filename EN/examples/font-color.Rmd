@@ -1,0 +1,51 @@
+---
+title: "Lua フィルタによる文字の着色"
+output: 
+  html_document: 
+    pandoc_args: ["--lua-filter=color-text.lua"]
+  pdf_document: 
+    pandoc_args: ["--lua-filter=color-text.lua"]
+    keep_tex: true
+---
+
+初めに, Lua フィルタを定義し `color-text.lua` というファイルに書き出します.
+
+```{cat, engine.opts = list(file = "color-text.lua")}
+Span = function(el)
+  color = el.attributes['color']
+  -- if no color attribute, return unchange
+  if color == nil then return el end
+  
+  -- tranform to <span style="color: red;"></span>
+  if FORMAT:match 'html' then
+    -- remove color attributes
+    el.attributes['color'] = nil
+    -- use style attribute instead
+    el.attributes['style'] = 'color: ' .. color .. ';'
+    -- return full span element
+    return el
+  elseif FORMAT:match 'latex' then
+    -- remove color attributes
+    el.attributes['color'] = nil
+    -- encapsulate in latex code
+    table.insert(
+      el.content, 1,
+      pandoc.RawInline('latex', '\\textcolor{'..color..'}{')
+    )
+    table.insert(
+      el.content,
+      pandoc.RawInline('latex', '}')
+    )
+    -- returns only span content
+    return el.content
+  else
+    -- for other format return unchanged
+    return el
+  end
+end
+```
+
+これで, `color` 属性をブラケット内に書いたテキストに対してフィルタをテストできます. 例えばこのように.
+
+> 薔薇は[紅く**力強い**]{color="red"}そして
+> 菫は[青い]{color="blue"}.
