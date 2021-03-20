@@ -37,7 +37,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/03/20 19:39:49, ver. Beta (翻訳作業中の草稿)"
+date: "2021/03/20 20:26:55, ver. Beta (翻訳作業中の草稿)"
 ---
 
 # はじめに {-}

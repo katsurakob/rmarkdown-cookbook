@@ -468,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>(著者) Dervieux, Christophe</em></p>
 <p class="author"><em>(著者) Riederer, Emily</em></p>
 <p class="author"><em>(翻訳者) Katagiri, Satoshi<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></em></p>
-<p class="date"><em>2021/03/20 19:39:16, ver. Beta (翻訳作業中の草稿)</em></p>
+<p class="date"><em>2021/03/20 20:26:20, ver. Beta (翻訳作業中の草稿)</em></p>
 </div>
 <div id="はじめに" class="section level1 unnumbered">
 <h1>はじめに</h1>
@@ -520,13 +520,13 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,
-"facebook": false,
+"facebook": true,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {
 "theme": "white",
@@ -545,7 +545,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["rmarkdown-cookbook.pdf"],
+"download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
 "toc": {
 "collapse": "subsection"
 }

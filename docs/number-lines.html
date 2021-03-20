@@ -526,13 +526,13 @@ gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
 "github": true,
-"facebook": false,
+"facebook": true,
 "twitter": true,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {
 "theme": "white",
@@ -551,7 +551,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["rmarkdown-cookbook.pdf"],
+"download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
 "toc": {
 "collapse": "subsection"
 }
