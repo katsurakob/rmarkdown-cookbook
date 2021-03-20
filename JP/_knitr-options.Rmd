@@ -1,6 +1,10 @@
-# (APPENDIX) Appendix {-}
+# (APPENDIX) 補遺 {-}
 
-# **knitr**'s Chunk and Package Options {#full-options}
+# **knitr** のチャンク及びパッケージオプション {#full-options}
+
+```{block2, type="rmdtip"}
+この付録は https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html で公開されているものと同一です.
+```
 
 ```{r, echo=FALSE, results='asis'}
 # retrieve md from knitr's website; I have cloned the website repo locally, so
@@ -8,17 +12,25 @@
 # read from Github
 url = '../yihui.org/content/knitr/options.md'
 # system('git clone git@github.com:rbind/yihui.git ../yihui.org')
-if (!file.exists(url)) url = 'https://raw.githubusercontent.com/rbind/yihui/master/content/knitr/options.md'
+if (!file.exists(url)) url <- 'https://raw.githubusercontent.com/Gedevan-Aleksizde/knitr-doc-ja/master/source/01-options.Rmd' # url = 'https://raw.githubusercontent.com/rbind/yihui/master/content/knitr/options.md'
 txt = xfun::read_utf8(url)
 
 # remove YAML
-txt = txt[(which(txt == '---')[2] + 1):length(txt)]
-txt = sub('This page documents', 'This appendix describes', txt)
-txt = sub('the "Code Decoration" section', 'Section \\@ref(code-decoration)', txt, fixed = TRUE)
-txt = sub('## Chunk Options', '## Chunk options {#chunk-options-full}', txt)
-txt = sub('## Package Options', '## Package options', txt)
-txt = sub('### Animation', '### Animation {#animation-options}', txt)
-txt = sub('### Cache', '### Cache {#cache-options}', txt)
+txt = txt[(which(txt == '----')[1] + 5):length(txt)]  # unstable!
+txt = sub('このドキュメントでは', 'この付録では', txt)
+txt = sub('"\\[コードの装飾\\]\\(#code-decoration\\)" のセクション', '\\@ref(#code-decoration)節', txt)
+txt = sub('## チャンクオプション一覧 \\{#chunk-options\\}', '## チャンクオプション一覧 {#chunk-options-full}', txt)
+txt = sub('### アニメーション関連 \\{#animation\\}', '### アニメーション関連 {#animation-options}', txt)
+txt = sub('### キャッシュ関連 \\{#options-cache\\}', '### キャッシュ関連 {#cache-options}', txt)
+txt = sub('#child-document', '#child-document-appendix', txt)
+txt = sub('\\[framed のページ\\]\\(#framed\\)', '[framed のページ](https://gedevan-aleksizde.github.io/knitr-doc-ja/framed.html#framed)', txt)
+txt = sub('\\[チャンク参照\\]\\(#reference\\)', '[チャンク参照](https://gedevan-aleksizde.github.io/knitr-doc-ja/reference.html#reference)', txt)
+txt = sub('\\[キャッシュの解説\\]\\(#cache\\)', '[キャッシュの解説](https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html#cache)', txt)
+txt = sub('\\[`knitr::opts_knit`\\]\\(#objects\\)', '[`knitr::opts_knit`](https://gedevan-aleksizde.github.io/knitr-doc-ja/objects.html#objects)', txt)
+
+
+
+
 # resolve relative URLs to absolute URLs
 m = gregexpr('(?<=]\\()[^)]+(?=\\))', txt, perl = TRUE)
 regmatches(txt, m) = lapply(regmatches(txt, m), function(x) {
@@ -29,5 +41,8 @@ regmatches(txt, m) = lapply(regmatches(txt, m), function(x) {
   x
 })
 # output raw text
-cat(txt, sep = '\n')
+appendix_rmd <- tempfile(fileext = ".Rmd")
+write(txt, file = appendix_rmd)
+cat(knitr::knit_child(appendix_rmd, quiet = T), sep = '\n')
+unlink(appendix_rmd)
 ```
