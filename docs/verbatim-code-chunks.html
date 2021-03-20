@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5.6 コードチャンクをそのまま (verbatim) 表示 | R Markdown クックブック</title>
+  <meta name="description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5.6 コードチャンクをそのまま (verbatim) 表示 | R Markdown クックブック" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta property="og:description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5.6 コードチャンクをそのまま (verbatim) 表示 | R Markdown クックブック" />
+  
+  <meta name="twitter:description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+
+<meta name="author" content="(著者) Xie, Yihui" />
+<meta name="author" content="(著者) Dervieux, Christophe" />
+<meta name="author" content="(著者) Riederer, Emily" />
+<meta name="author" content="(翻訳者) Katagiri, Satoshi" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="fig-align.html"/>
+<link rel="next" href="number-lines.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="libs/es6shim/es6shim.js"></script>
+<script src="libs/es7shim/es7shim.js"></script>
+<script src="libs/graphre/graphre.js"></script>
+<script src="libs/nomnoml/nomnoml.js"></script>
+<script src="libs/nomnoml-binding/nomnoml.js"></script>
+<script src="libs/viz/viz.js"></script>
+<link href="libs/DiagrammeR-styles/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding/grViz.js"></script>
+<script src="libs/kePrint/kePrint.js"></script>
+<link href="libs/lightable/lightable.css" rel="stylesheet" />
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
+<link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
+<link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Markdown Cookbook</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>はじめに</a>
+<ul>
+<li class="chapter" data-level="" data-path="How-to-read-this-book.html"><a href="How-to-read-this-book.html"><i class="fa fa-check"></i>本書の読み方</a></li>
+<li class="chapter" data-level="" data-path="Structure-of-the-book.html"><a href="Structure-of-the-book.html"><i class="fa fa-check"></i>本書の構成</a></li>
+<li class="chapter" data-level="" data-path="software-info.html"><a href="software-info.html"><i class="fa fa-check"></i>ソフトウェア情報と表記のルール</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>著者について</a>
+<ul>
+<li class="chapter" data-level="" data-path="yihui-xie.html"><a href="yihui-xie.html"><i class="fa fa-check"></i>Yihui Xie</a></li>
+<li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
+<li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
+<li class="chapter" data-level="1.2" data-path="install-latex.html"><a href="install-latex.html"><i class="fa fa-check"></i><b>1.2</b> PDF レポートの作成に LaTeX (TinyTeX) をインストールする</a></li>
+<li class="chapter" data-level="1.3" data-path="install-latex-pkgs.html"><a href="install-latex-pkgs.html"><i class="fa fa-check"></i><b>1.3</b> 足りない LaTeX パッケージをインストールする</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="conceptual-overview.html"><a href="conceptual-overview.html"><i class="fa fa-check"></i><b>2</b> コンセプトについての概論</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="rmarkdown-process.html"><a href="rmarkdown-process.html"><i class="fa fa-check"></i><b>2.1</b> レンダリング時に何が起こっているのか</a></li>
+<li class="chapter" data-level="2.2" data-path="rmarkdown-anatomy.html"><a href="rmarkdown-anatomy.html"><i class="fa fa-check"></i><b>2.2</b> R Markdown の解剖学</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="rmarkdown-anatomy.html"><a href="rmarkdown-anatomy.html#yaml-metadata"><i class="fa fa-check"></i><b>2.2.1</b> YAML メタデータ</a></li>
+<li class="chapter" data-level="2.2.2" data-path="rmarkdown-anatomy.html"><a href="rmarkdown-anatomy.html#narrative"><i class="fa fa-check"></i><b>2.2.2</b> ナラティブ</a></li>
+<li class="chapter" data-level="2.2.3" data-path="rmarkdown-anatomy.html"><a href="rmarkdown-anatomy.html#code-chunks"><i class="fa fa-check"></i><b>2.2.3</b> コードチャンク</a></li>
+<li class="chapter" data-level="2.2.4" data-path="rmarkdown-anatomy.html"><a href="rmarkdown-anatomy.html#document-body"><i class="fa fa-check"></i><b>2.2.4</b> 文書の本文</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="what-to-change.html"><a href="what-to-change.html"><i class="fa fa-check"></i><b>2.3</b> 結果を変えるために変更できるのはなにか?</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>3</b> 基本</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="r-code.html"><a href="r-code.html"><i class="fa fa-check"></i><b>3.1</b> コードチャンクとインライン R コード</a></li>
+<li class="chapter" data-level="3.2" data-path="rstudio-visual.html"><a href="rstudio-visual.html"><i class="fa fa-check"></i><b>3.2</b> RStudio のビジュアルエディタで R Markdown を書く</a></li>
+<li class="chapter" data-level="3.3" data-path="spin.html"><a href="spin.html"><i class="fa fa-check"></i><b>3.3</b> R スクリプトをレポートにレンダリングする</a></li>
+<li class="chapter" data-level="3.4" data-path="purl.html"><a href="purl.html"><i class="fa fa-check"></i><b>3.4</b> Markdown から R script への変換</a></li>
+<li class="chapter" data-level="3.5" data-path="notebook.html"><a href="notebook.html"><i class="fa fa-check"></i><b>3.5</b> R Markdown Notebook</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="document-elements.html"><a href="document-elements.html"><i class="fa fa-check"></i><b>4</b> 文書の要素</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="pagebreaks.html"><a href="pagebreaks.html"><i class="fa fa-check"></i><b>4.1</b> 改ページ (改段) を挿入する</a></li>
+<li class="chapter" data-level="4.2" data-path="dynamic-yaml.html"><a href="dynamic-yaml.html"><i class="fa fa-check"></i><b>4.2</b> 文書タイトルを動的に設定する</a></li>
+<li class="chapter" data-level="4.3" data-path="document-metadata.html"><a href="document-metadata.html"><i class="fa fa-check"></i><b>4.3</b> R コード内で文書メタデータにアクセスする</a></li>
+<li class="chapter" data-level="4.4" data-path="unnumbered-sections.html"><a href="unnumbered-sections.html"><i class="fa fa-check"></i><b>4.4</b> 番号のない節</a></li>
+<li class="chapter" data-level="4.5" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献と引用</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="bibliography.html"><a href="bibliography.html#changing-citation-style"><i class="fa fa-check"></i><b>4.5.1</b> 引用スタイルの変更</a></li>
+<li class="chapter" data-level="4.5.2" data-path="bibliography.html"><a href="bibliography.html#add-an-item-to-a-bibliography-without-using-it"><i class="fa fa-check"></i><b>4.5.2</b> 引用していない文献を参考文献に追加する</a></li>
+<li class="chapter" data-level="4.5.3" data-path="bibliography.html"><a href="bibliography.html#add-all-items-to-the-bibliography"><i class="fa fa-check"></i><b>4.5.3</b> 全てのアイテムを参考文献に掲載する</a></li>
+<li class="chapter" data-level="4.5.4" data-path="bibliography.html"><a href="bibliography.html#include-appendix-after-bibliography"><i class="fa fa-check"></i><b>4.5.4</b> 参考文献の後に補遺を掲載する (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="write-bib.html"><a href="write-bib.html"><i class="fa fa-check"></i><b>4.6</b> R パッケージの引用を生成する</a></li>
+<li class="chapter" data-level="4.7" data-path="cross-ref.html"><a href="cross-ref.html"><i class="fa fa-check"></i><b>4.7</b> 文書内の相互参照</a></li>
+<li class="chapter" data-level="4.8" data-path="update-date.html"><a href="update-date.html"><i class="fa fa-check"></i><b>4.8</b> 日付を自動的に更新する</a></li>
+<li class="chapter" data-level="4.9" data-path="multiple-authors.html"><a href="multiple-authors.html"><i class="fa fa-check"></i><b>4.9</b> 文書に複数の著者を表記する</a></li>
+<li class="chapter" data-level="4.10" data-path="figure-number.html"><a href="figure-number.html"><i class="fa fa-check"></i><b>4.10</b> 図のキャプションへの付番</a></li>
+<li class="chapter" data-level="4.11" data-path="combine-words.html"><a href="combine-words.html"><i class="fa fa-check"></i><b>4.11</b> 単語をコンマ区切りで結合する</a></li>
+<li class="chapter" data-level="4.12" data-path="linebreaks.html"><a href="linebreaks.html"><i class="fa fa-check"></i><b>4.12</b> 複数の改行コードを維持する</a></li>
+<li class="chapter" data-level="4.13" data-path="equatiomatic.html"><a href="equatiomatic.html"><i class="fa fa-check"></i><b>4.13</b> モデルを数式に変換する</a></li>
+<li class="chapter" data-level="4.14" data-path="animation.html"><a href="animation.html"><i class="fa fa-check"></i><b>4.14</b> 複数の R プロットからアニメーションを作成する</a></li>
+<li class="chapter" data-level="4.15" data-path="diagrams.html"><a href="diagrams.html"><i class="fa fa-check"></i><b>4.15</b> ダイアグラムを作成する</a>
+<ul>
+<li class="chapter" data-level="4.15.1" data-path="diagrams.html"><a href="diagrams.html#basic-diagrams"><i class="fa fa-check"></i><b>4.15.1</b> 基本的なダイアグラム</a></li>
+<li class="chapter" data-level="4.15.2" data-path="diagrams.html"><a href="diagrams.html#adding-parameters-to-plots"><i class="fa fa-check"></i><b>4.15.2</b> 図にパラメータを追加する</a></li>
+<li class="chapter" data-level="4.15.3" data-path="diagrams.html"><a href="diagrams.html#other-packages-for-making-diagrams"><i class="fa fa-check"></i><b>4.15.3</b> その他のダイアグラム作成パッケージ</a></li>
+</ul></li>
+<li class="chapter" data-level="4.16" data-path="special-chars.html"><a href="special-chars.html"><i class="fa fa-check"></i><b>4.16</b> 特殊文字をエスケープする</a></li>
+<li class="chapter" data-level="4.17" data-path="comments.html"><a href="comments.html"><i class="fa fa-check"></i><b>4.17</b> テキストのコメントアウト</a></li>
+<li class="chapter" data-level="4.18" data-path="toc-unlisted.html"><a href="toc-unlisted.html"><i class="fa fa-check"></i><b>4.18</b> 目次から見出しを省略する</a></li>
+<li class="chapter" data-level="4.19" data-path="code-appendix.html"><a href="code-appendix.html"><i class="fa fa-check"></i><b>4.19</b> 全てのコードを補遺に置く (*)</a></li>
+<li class="chapter" data-level="4.20" data-path="lua-filters.html"><a href="lua-filters.html"><i class="fa fa-check"></i><b>4.20</b> Pandoc の Lua フィルタから操作する (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="formatting.html"><a href="formatting.html"><i class="fa fa-check"></i><b>5</b> 書式</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="font-color.html"><a href="font-color.html"><i class="fa fa-check"></i><b>5.1</b> フォント色</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="font-color.html"><a href="font-color.html#using-an-r-function-to-write-raw-html-or-latex-code"><i class="fa fa-check"></i><b>5.1.1</b> 生の HTML/LaTeX コードを書く関数を使う</a></li>
+<li class="chapter" data-level="5.1.2" data-path="font-color.html"><a href="font-color.html#lua-color"><i class="fa fa-check"></i><b>5.1.2</b> Lua フィルタを使う (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="indent-text.html"><a href="indent-text.html"><i class="fa fa-check"></i><b>5.2</b> テキストをインデントする</a></li>
+<li class="chapter" data-level="5.3" data-path="text-width.html"><a href="text-width.html"><i class="fa fa-check"></i><b>5.3</b> テキスト出力の幅を制御する</a></li>
+<li class="chapter" data-level="5.4" data-path="figure-size.html"><a href="figure-size.html"><i class="fa fa-check"></i><b>5.4</b> グラフ・画像のサイズを制御する</a></li>
+<li class="chapter" data-level="5.5" data-path="fig-align.html"><a href="fig-align.html"><i class="fa fa-check"></i><b>5.5</b> 図のアラインメント</a></li>
+<li class="chapter" data-level="5.6" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html"><i class="fa fa-check"></i><b>5.6</b> コードチャンクをそのまま (verbatim) 表示</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="verbatim-code-chunks.html"><a href="verbatim-code-chunks.html#show-a-verbatim-inline-expression"><i class="fa fa-check"></i><b>5.6.1</b> インライン R コードをそのまま表示</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="number-lines.html"><a href="number-lines.html"><i class="fa fa-check"></i><b>5.7</b> コードブロックに行番号を表示する (*)</a></li>
+<li class="chapter" data-level="5.8" data-path="multi-column.html"><a href="multi-column.html"><i class="fa fa-check"></i><b>5.8</b> 多段組み (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="latex-output.html"><a href="latex-output.html"><i class="fa fa-check"></i><b>6</b> LaTeX 出力</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="latex-preamble.html"><a href="latex-preamble.html"><i class="fa fa-check"></i><b>6.1</b> プリアンブルに LaTeX コードを追加する</a></li>
+<li class="chapter" data-level="6.2" data-path="latex-variables.html"><a href="latex-variables.html"><i class="fa fa-check"></i><b>6.2</b> LaTeX 出力の Pandoc オプション</a></li>
+<li class="chapter" data-level="6.3" data-path="latex-logo.html"><a href="latex-logo.html"><i class="fa fa-check"></i><b>6.3</b> 表紙ページにロゴを置く</a></li>
+<li class="chapter" data-level="6.4" data-path="latex-extra.html"><a href="latex-extra.html"><i class="fa fa-check"></i><b>6.4</b> LaTeX パッケージを追加で読み込む</a>
+<ul>
+<li class="chapter" data-level="6.4.1" data-path="latex-extra.html"><a href="latex-extra.html#loading-latex-packages"><i class="fa fa-check"></i><b>6.4.1</b> LaTeX パッケージを読み込む</a></li>
+<li class="chapter" data-level="6.4.2" data-path="latex-extra.html"><a href="latex-extra.html#example-packages"><i class="fa fa-check"></i><b>6.4.2</b> パッケージの例</a></li>
+</ul></li>
+<li class="chapter" data-level="6.5" data-path="figure-placement.html"><a href="figure-placement.html"><i class="fa fa-check"></i><b>6.5</b> 図の位置を制御する</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="figure-placement.html"><a href="figure-placement.html#floating-environment"><i class="fa fa-check"></i><b>6.5.1</b> フロート環境</a></li>
+<li class="chapter" data-level="6.5.2" data-path="figure-placement.html"><a href="figure-placement.html#prevent-figures-from-floating"><i class="fa fa-check"></i><b>6.5.2</b> 図がフロートするのを防ぐ</a></li>
+<li class="chapter" data-level="6.5.3" data-path="figure-placement.html"><a href="figure-placement.html#force-floats-forward"><i class="fa fa-check"></i><b>6.5.3</b> フロートを後回しに強制する</a></li>
+<li class="chapter" data-level="6.5.4" data-path="figure-placement.html"><a href="figure-placement.html#latex-配置ルールを調整する"><i class="fa fa-check"></i><b>6.5.4</b> LaTeX 配置ルールを調整する (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="latex-subfigure.html"><a href="latex-subfigure.html"><i class="fa fa-check"></i><b>6.6</b> LaTeX で複数の図をまとめる</a></li>
+<li class="chapter" data-level="6.7" data-path="latex-unicode.html"><a href="latex-unicode.html"><i class="fa fa-check"></i><b>6.7</b> Unicode 文字を含む文書をレンダリングする</a></li>
+<li class="chapter" data-level="6.8" data-path="latex-fragment.html"><a href="latex-fragment.html"><i class="fa fa-check"></i><b>6.8</b> LaTeX のコードフラグメントを生成する</a></li>
+<li class="chapter" data-level="6.9" data-path="latex-header.html"><a href="latex-header.html"><i class="fa fa-check"></i><b>6.9</b> カスタムヘッダとフッタ (*)</a></li>
+<li class="chapter" data-level="6.10" data-path="latex-template.html"><a href="latex-template.html"><i class="fa fa-check"></i><b>6.10</b> Pandoc の LaTeX テンプレートをカスタマイズする (*)</a></li>
+<li class="chapter" data-level="6.11" data-path="raw-latex.html"><a href="raw-latex.html"><i class="fa fa-check"></i><b>6.11</b> 生の LaTeX コードを書く</a></li>
+<li class="chapter" data-level="6.12" data-path="latex-hardcore.html"><a href="latex-hardcore.html"><i class="fa fa-check"></i><b>6.12</b> ハードコア LaTeX ユーザーのために (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="html-output.html"><a href="html-output.html"><i class="fa fa-check"></i><b>7</b> HTML 出力</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="html-css.html"><a href="html-css.html"><i class="fa fa-check"></i><b>7.1</b> カスタム CSS を適用する</a></li>
+<li class="chapter" data-level="7.2" data-path="center-heading.html"><a href="center-heading.html"><i class="fa fa-check"></i><b>7.2</b> セクションヘッダを中央揃えにする</a></li>
+<li class="chapter" data-level="7.3" data-path="chunk-styling.html"><a href="chunk-styling.html"><i class="fa fa-check"></i><b>7.3</b> コードチャンクのスタイルを変更する</a></li>
+<li class="chapter" data-level="7.4" data-path="html-scroll.html"><a href="html-scroll.html"><i class="fa fa-check"></i><b>7.4</b> コードブロックをスクロール可能にする (*)</a></li>
+<li class="chapter" data-level="7.5" data-path="fold-show.html"><a href="fold-show.html"><i class="fa fa-check"></i><b>7.5</b> 全コードブロックを折りたたみ, かついくつかは表示する</a></li>
+<li class="chapter" data-level="7.6" data-path="html-tabs.html"><a href="html-tabs.html"><i class="fa fa-check"></i><b>7.6</b> 内容をタブブラウジングさせる</a></li>
+<li class="chapter" data-level="7.7" data-path="embed-rmd.html"><a href="embed-rmd.html"><i class="fa fa-check"></i><b>7.7</b> Rmd ソースファイルを HTML に埋め込む</a></li>
+<li class="chapter" data-level="7.8" data-path="embed-file.html"><a href="embed-file.html"><i class="fa fa-check"></i><b>7.8</b> HTML 出力に好きなファイルを埋め込む</a></li>
+<li class="chapter" data-level="7.9" data-path="html-template.html"><a href="html-template.html"><i class="fa fa-check"></i><b>7.9</b> カスタム HTML テンプレートを使う (*)</a></li>
+<li class="chapter" data-level="7.10" data-path="include-html.html"><a href="include-html.html"><i class="fa fa-check"></i><b>7.10</b> 既存の HTML ファイルの内容を読み込む (*)</a></li>
+<li class="chapter" data-level="7.11" data-path="favicon.html"><a href="favicon.html"><i class="fa fa-check"></i><b>7.11</b> ブラウザアイコンをカスタマイズする</a></li>
+<li class="chapter" data-level="7.12" data-path="details-tag.html"><a href="details-tag.html"><i class="fa fa-check"></i><b>7.12</b> 折りたたみ要素 <code>&lt;details&gt;</code> を使う</a></li>
+<li class="chapter" data-level="7.13" data-path="html-share.html"><a href="html-share.html"><i class="fa fa-check"></i><b>7.13</b> HTML 出力を Web で共有する</a>
+<ul>
+<li class="chapter" data-level="7.13.1" data-path="html-share.html"><a href="html-share.html#r-specific-services"><i class="fa fa-check"></i><b>7.13.1</b> R 特化のサービス</a></li>
+<li class="chapter" data-level="7.13.2" data-path="html-share.html"><a href="html-share.html#static-website-services"><i class="fa fa-check"></i><b>7.13.2</b> Static website services</a></li>
+</ul></li>
+<li class="chapter" data-level="7.14" data-path="html-accessibility.html"><a href="html-accessibility.html"><i class="fa fa-check"></i><b>7.14</b> HTML ページのアクセシビリティを向上させる</a></li>
+<li class="chapter" data-level="7.15" data-path="html-hardcore.html"><a href="html-hardcore.html"><i class="fa fa-check"></i><b>7.15</b> ハードコア HTML ユーザー向けの話 (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="word.html"><a href="word.html"><i class="fa fa-check"></i><b>8</b> Word</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="word-template.html"><a href="word-template.html"><i class="fa fa-check"></i><b>8.1</b> カスタム Word テンプレート</a></li>
+<li class="chapter" data-level="8.2" data-path="word-redoc.html"><a href="word-redoc.html"><i class="fa fa-check"></i><b>8.2</b> R Markdown と Word 間の双方向ワークフロー</a></li>
+<li class="chapter" data-level="8.3" data-path="word-officedown.html"><a href="word-officedown.html"><i class="fa fa-check"></i><b>8.3</b> 個別の要素にスタイルを設定する</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multi-formats.html"><a href="multi-formats.html"><i class="fa fa-check"></i><b>9</b> 複数の出力フォーマット</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="latex-html.html"><a href="latex-html.html"><i class="fa fa-check"></i><b>9.1</b> LaTeX か HTML か</a></li>
+<li class="chapter" data-level="9.2" data-path="html-widgets.html"><a href="html-widgets.html"><i class="fa fa-check"></i><b>9.2</b> HTML ウィジェットを表示する</a></li>
+<li class="chapter" data-level="9.3" data-path="include-url.html"><a href="include-url.html"><i class="fa fa-check"></i><b>9.3</b> Web ページの埋め込み</a></li>
+<li class="chapter" data-level="9.4" data-path="figures-side.html"><a href="figures-side.html"><i class="fa fa-check"></i><b>9.4</b> 複数の図を横並びに</a></li>
+<li class="chapter" data-level="9.5" data-path="raw-content.html"><a href="raw-content.html"><i class="fa fa-check"></i><b>9.5</b> 生のコードを書く (*)</a></li>
+<li class="chapter" data-level="9.6" data-path="custom-blocks.html"><a href="custom-blocks.html"><i class="fa fa-check"></i><b>9.6</b> カスタムブロック (*)</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="custom-blocks.html"><a href="custom-blocks.html#block-syntax"><i class="fa fa-check"></i><b>9.6.1</b> 構文</a></li>
+<li class="chapter" data-level="9.6.2" data-path="custom-blocks.html"><a href="custom-blocks.html#block-shaded"><i class="fa fa-check"></i><b>9.6.2</b> 影付きブロックを追加する</a></li>
+<li class="chapter" data-level="9.6.3" data-path="custom-blocks.html"><a href="custom-blocks.html#block-image"><i class="fa fa-check"></i><b>9.6.3</b> アイコンを加える</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="tables.html"><a href="tables.html"><i class="fa fa-check"></i><b>10</b> 表</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="kable.html"><a href="kable.html"><i class="fa fa-check"></i><b>10.1</b> <code>knitr::kable()</code> 関数</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="kable.html"><a href="kable.html#kable-formats"><i class="fa fa-check"></i><b>10.1.1</b> サポートする表形式</a></li>
+<li class="chapter" data-level="10.1.2" data-path="kable.html"><a href="kable.html#change-column-names"><i class="fa fa-check"></i><b>10.1.2</b> 列名を変更する</a></li>
+<li class="chapter" data-level="10.1.3" data-path="kable.html"><a href="kable.html#specify-column-alignment"><i class="fa fa-check"></i><b>10.1.3</b> 列のアラインメントを指定する</a></li>
+<li class="chapter" data-level="10.1.4" data-path="kable.html"><a href="kable.html#kable-caption"><i class="fa fa-check"></i><b>10.1.4</b> 表にキャプションを追加する</a></li>
+<li class="chapter" data-level="10.1.5" data-path="kable.html"><a href="kable.html#format-numeric-columns"><i class="fa fa-check"></i><b>10.1.5</b> 数値列を整形する</a></li>
+<li class="chapter" data-level="10.1.6" data-path="kable.html"><a href="kable.html#display-missing-values"><i class="fa fa-check"></i><b>10.1.6</b> 欠損値を表示する</a></li>
+<li class="chapter" data-level="10.1.7" data-path="kable.html"><a href="kable.html#escape-special-characters"><i class="fa fa-check"></i><b>10.1.7</b> 特殊文字をエスケープする</a></li>
+<li class="chapter" data-level="10.1.8" data-path="kable.html"><a href="kable.html#multiple-tables-siede-by-side"><i class="fa fa-check"></i><b>10.1.8</b> 複数の表を横に並べる</a></li>
+<li class="chapter" data-level="10.1.9" data-path="kable.html"><a href="kable.html#generate-multiple-table-from-for-loop"><i class="fa fa-check"></i><b>10.1.9</b> <code>for</code> ループから複数の表を作成する (*)</a></li>
+<li class="chapter" data-level="10.1.10" data-path="kable.html"><a href="kable.html#customize-latex-tables"><i class="fa fa-check"></i><b>10.1.10</b> LaTeX の表をカスタマイズする (*)</a></li>
+<li class="chapter" data-level="10.1.11" data-path="kable.html"><a href="kable.html#customize-html-tables"><i class="fa fa-check"></i><b>10.1.11</b> HTML の表をカスタマイズする (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="kableextra.html"><a href="kableextra.html"><i class="fa fa-check"></i><b>10.2</b> <strong>kableExtra</strong> パッケージ</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="kableextra.html"><a href="kableextra.html#set-the-font-size"><i class="fa fa-check"></i><b>10.2.1</b> フォントサイズを設定する</a></li>
+<li class="chapter" data-level="10.2.2" data-path="kableextra.html"><a href="kableextra.html#style-specific-rows-columns"><i class="fa fa-check"></i><b>10.2.2</b> 特定の行・列のスタイルを設定する</a></li>
+<li class="chapter" data-level="10.2.3" data-path="kableextra.html"><a href="kableextra.html#group-rows-columns"><i class="fa fa-check"></i><b>10.2.3</b> 行・列をグループ化する</a></li>
+<li class="chapter" data-level="10.2.4" data-path="kableextra.html"><a href="kableextra.html#scaling-down-wide-tables-in-latex"><i class="fa fa-check"></i><b>10.2.4</b> LaTeX で表を縮小する</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="table-other.html"><a href="table-other.html"><i class="fa fa-check"></i><b>10.3</b> その他の表作成パッケージ</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="chunk-options.html"><a href="chunk-options.html"><i class="fa fa-check"></i><b>11</b> チャンクオプション</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="chunk-variable.html"><a href="chunk-variable.html"><i class="fa fa-check"></i><b>11.1</b> チャンクオプションに変数を使う</a></li>
+<li class="chapter" data-level="11.2" data-path="opts-error.html"><a href="opts-error.html"><i class="fa fa-check"></i><b>11.2</b> エラーが起こっても中止しない</a></li>
+<li class="chapter" data-level="11.3" data-path="dev-vector.html"><a href="dev-vector.html"><i class="fa fa-check"></i><b>11.3</b> 同じグラフを複数の出力フォーマットに</a></li>
+<li class="chapter" data-level="11.4" data-path="cache.html"><a href="cache.html"><i class="fa fa-check"></i><b>11.4</b> 時間のかかるチャンクをキャッシュする</a></li>
+<li class="chapter" data-level="11.5" data-path="cache-path.html"><a href="cache-path.html"><i class="fa fa-check"></i><b>11.5</b> 複数の出力フォーマットに対してチャンクをキャッシュする</a></li>
+<li class="chapter" data-level="11.6" data-path="cache-lazy.html"><a href="cache-lazy.html"><i class="fa fa-check"></i><b>11.6</b> 巨大オブジェクトをキャッシュする</a></li>
+<li class="chapter" data-level="11.7" data-path="hide-one.html"><a href="hide-one.html"><i class="fa fa-check"></i><b>11.7</b> コード, テキスト出力, メッセージ, グラフを隠す</a></li>
+<li class="chapter" data-level="11.8" data-path="hide-all.html"><a href="hide-all.html"><i class="fa fa-check"></i><b>11.8</b> チャンクの出力を全て隠す</a></li>
+<li class="chapter" data-level="11.9" data-path="opts-collapse.html"><a href="opts-collapse.html"><i class="fa fa-check"></i><b>11.9</b> テキスト出力をソースコードとまとめる</a></li>
+<li class="chapter" data-level="11.10" data-path="opts-tidy.html"><a href="opts-tidy.html"><i class="fa fa-check"></i><b>11.10</b> R のソースコードを整形する</a></li>
+<li class="chapter" data-level="11.11" data-path="results-asis.html"><a href="results-asis.html"><i class="fa fa-check"></i><b>11.11</b> テキストを生の Markdown として出力する (*)</a></li>
+<li class="chapter" data-level="11.12" data-path="opts-comment.html"><a href="opts-comment.html"><i class="fa fa-check"></i><b>11.12</b> テキストの先頭のハッシュ記号を消す</a></li>
+<li class="chapter" data-level="11.13" data-path="attr-output.html"><a href="attr-output.html"><i class="fa fa-check"></i><b>11.13</b> テキスト出力ブロックに属性を与える (*)</a></li>
+<li class="chapter" data-level="11.14" data-path="fig-process.html"><a href="fig-process.html"><i class="fa fa-check"></i><b>11.14</b> グラフに後処理をかける (*)</a></li>
+<li class="chapter" data-level="11.15" data-path="graphical-device.html"><a href="graphical-device.html"><i class="fa fa-check"></i><b>11.15</b> 高品質なグラフィック (*)</a></li>
+<li class="chapter" data-level="11.16" data-path="low-plots.html"><a href="low-plots.html"><i class="fa fa-check"></i><b>11.16</b> 低水準作図関数で1つづつグラフを作る (*)</a></li>
+<li class="chapter" data-level="11.17" data-path="opts-render.html"><a href="opts-render.html"><i class="fa fa-check"></i><b>11.17</b> チャンク内のオブジェクト表示をカスタマイズする (*)</a></li>
+<li class="chapter" data-level="11.18" data-path="option-hooks.html"><a href="option-hooks.html"><i class="fa fa-check"></i><b>11.18</b> オプションフック (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="output-hooks.html"><a href="output-hooks.html"><i class="fa fa-check"></i><b>12</b> 出力フック (*)</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="hook-hide.html"><a href="hook-hide.html"><i class="fa fa-check"></i><b>12.1</b> ソースコードを検閲する</a></li>
+<li class="chapter" data-level="12.2" data-path="hook-number.html"><a href="hook-number.html"><i class="fa fa-check"></i><b>12.2</b> ソースコード内に行番号を追加する</a></li>
+<li class="chapter" data-level="12.3" data-path="hook-scroll.html"><a href="hook-scroll.html"><i class="fa fa-check"></i><b>12.3</b> スクロール可能なテキスト出力</a></li>
+<li class="chapter" data-level="12.4" data-path="hook-truncate.html"><a href="hook-truncate.html"><i class="fa fa-check"></i><b>12.4</b> テキスト出力を中断する</a></li>
+<li class="chapter" data-level="12.5" data-path="hook-html5.html"><a href="hook-html5.html"><i class="fa fa-check"></i><b>12.5</b> HTML5 フォーマットで図を出力する</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="chunk-hooks.html"><a href="chunk-hooks.html"><i class="fa fa-check"></i><b>13</b> チャンクフック (*)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="crop-plot.html"><a href="crop-plot.html"><i class="fa fa-check"></i><b>13.1</b> グラフをクロップする</a></li>
+<li class="chapter" data-level="13.2" data-path="optipng.html"><a href="optipng.html"><i class="fa fa-check"></i><b>13.2</b> PNG のグラフを最適化する</a></li>
+<li class="chapter" data-level="13.3" data-path="time-chunk.html"><a href="time-chunk.html"><i class="fa fa-check"></i><b>13.3</b> チャンクの実行時間をレポートする</a></li>
+<li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
+<li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
+<ul>
+<li class="chapter" data-level="14.1.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html#embed-chunk"><i class="fa fa-check"></i><b>14.1.1</b> チャンクを別の場所にも埋め込む (*)</a></li>
+<li class="chapter" data-level="14.1.2" data-path="reuse-chunks.html"><a href="reuse-chunks.html#same-label"><i class="fa fa-check"></i><b>14.1.2</b> 別のチャンクで同一のチャンクラベルを使う</a></li>
+<li class="chapter" data-level="14.1.3" data-path="reuse-chunks.html"><a href="reuse-chunks.html#ref-label"><i class="fa fa-check"></i><b>14.1.3</b> 参照ラベルを使う (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="14.2" data-path="load-cache.html"><a href="load-cache.html"><i class="fa fa-check"></i><b>14.2</b> オブジェクトが作られる前に使用する (*)</a></li>
+<li class="chapter" data-level="14.3" data-path="knit-exit.html"><a href="knit-exit.html"><i class="fa fa-check"></i><b>14.3</b> knit 処理を打ち切る</a></li>
+<li class="chapter" data-level="14.4" data-path="fig-chunk.html"><a href="fig-chunk.html"><i class="fa fa-check"></i><b>14.4</b> どこにでもグラフを生成し, 表示させる</a></li>
+<li class="chapter" data-level="14.5" data-path="global-device.html"><a href="global-device.html"><i class="fa fa-check"></i><b>14.5</b> 以前のコードチャンクのグラフを修正する</a></li>
+<li class="chapter" data-level="14.6" data-path="opts-template.html"><a href="opts-template.html"><i class="fa fa-check"></i><b>14.6</b> グループ化したチャンクオプションを保存し再利用する (*)</a></li>
+<li class="chapter" data-level="14.7" data-path="knit-expand.html"><a href="knit-expand.html"><i class="fa fa-check"></i><b>14.7</b> Rmd ソースの生成に <code>knitr::knit_expand()</code> を使う</a></li>
+<li class="chapter" data-level="14.8" data-path="duplicate-label.html"><a href="duplicate-label.html"><i class="fa fa-check"></i><b>14.8</b> コードチャンクにラベルの重複を許可する (*)</a></li>
+<li class="chapter" data-level="14.9" data-path="cache-rds.html"><a href="cache-rds.html"><i class="fa fa-check"></i><b>14.9</b> より透明性のあるキャッシュの仕組み</a>
+<ul>
+<li class="chapter" data-level="14.9.1" data-path="cache-rds.html"><a href="cache-rds.html#コードの変更によってキャッシュを無効化する"><i class="fa fa-check"></i><b>14.9.1</b> コードの変更によってキャッシュを無効化する</a></li>
+<li class="chapter" data-level="14.9.2" data-path="cache-rds.html"><a href="cache-rds.html#グローバル変数の変更によってキャッシュを無効化する"><i class="fa fa-check"></i><b>14.9.2</b> グローバル変数の変更によってキャッシュを無効化する</a></li>
+<li class="chapter" data-level="14.9.3" data-path="cache-rds.html"><a href="cache-rds.html#キャッシュの複数のコピーを保持する"><i class="fa fa-check"></i><b>14.9.3</b> キャッシュの複数のコピーを保持する</a></li>
+<li class="chapter" data-level="14.9.4" data-path="cache-rds.html"><a href="cache-rds.html#knitr-のキャッシュ機能との比較"><i class="fa fa-check"></i><b>14.9.4</b> <strong>knitr</strong> のキャッシュ機能との比較</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="other-languages.html"><a href="other-languages.html"><i class="fa fa-check"></i><b>15</b> その他の言語</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="custom-engine.html"><a href="custom-engine.html"><i class="fa fa-check"></i><b>15.1</b> カスタム言語エンジンを登録する (*)</a></li>
+<li class="chapter" data-level="15.2" data-path="eng-python.html"><a href="eng-python.html"><i class="fa fa-check"></i><b>15.2</b> Python コードの実行と双方向処理</a></li>
+<li class="chapter" data-level="15.3" data-path="eng-asis.html"><a href="eng-asis.html"><i class="fa fa-check"></i><b>15.3</b> <code>asis</code> エンジンでコンテンツを条件付きで実行する Execute content conditionally via the <code>asis</code> engine</a></li>
+<li class="chapter" data-level="15.4" data-path="eng-bash.html"><a href="eng-bash.html"><i class="fa fa-check"></i><b>15.4</b> シェルスクリプトを実行する</a></li>
+<li class="chapter" data-level="15.5" data-path="d3.html"><a href="d3.html"><i class="fa fa-check"></i><b>15.5</b> D3 で可視化する</a></li>
+<li class="chapter" data-level="15.6" data-path="eng-cat.html"><a href="eng-cat.html"><i class="fa fa-check"></i><b>15.6</b> <code>cat</code> エンジンでチャンクをファイルに書き出す</a>
+<ul>
+<li class="chapter" data-level="15.6.1" data-path="eng-cat.html"><a href="eng-cat.html#css-ファイルへ書き込む"><i class="fa fa-check"></i><b>15.6.1</b> CSS ファイルへ書き込む</a></li>
+<li class="chapter" data-level="15.6.2" data-path="eng-cat.html"><a href="eng-cat.html#latex-コードをプリアンブルに含める"><i class="fa fa-check"></i><b>15.6.2</b> LaTeX コードをプリアンブルに含める</a></li>
+<li class="chapter" data-level="15.6.3" data-path="eng-cat.html"><a href="eng-cat.html#yaml-データをファイルに書き込みつつ表示する"><i class="fa fa-check"></i><b>15.6.3</b> YAML データをファイルに書き込みつつ表示する</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="eng-sas.html"><a href="eng-sas.html"><i class="fa fa-check"></i><b>15.7</b> SAS コードを実行する</a></li>
+<li class="chapter" data-level="15.8" data-path="eng-stata.html"><a href="eng-stata.html"><i class="fa fa-check"></i><b>15.8</b> Stata コードを実行する</a></li>
+<li class="chapter" data-level="15.9" data-path="eng-asy.html"><a href="eng-asy.html"><i class="fa fa-check"></i><b>15.9</b> Asymptote でグラフィックを作成する</a>
+<ul>
+<li class="chapter" data-level="15.9.1" data-path="eng-asy.html"><a href="eng-asy.html#r-でデータを生成し-asymptote-に読み込ませる"><i class="fa fa-check"></i><b>15.9.1</b> R でデータを生成し Asymptote に読み込ませる</a></li>
+</ul></li>
+<li class="chapter" data-level="15.10" data-path="eng-sass.html"><a href="eng-sass.html"><i class="fa fa-check"></i><b>15.10</b> Sass/SCSS で HTML ページをスタイリングする</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="managing-projects.html"><a href="managing-projects.html"><i class="fa fa-check"></i><b>16</b> プロジェクトを管理する</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="source-script.html"><a href="source-script.html"><i class="fa fa-check"></i><b>16.1</b> 外部の R スクリプトを実行する</a></li>
+<li class="chapter" data-level="16.2" data-path="option-code.html"><a href="option-code.html"><i class="fa fa-check"></i><b>16.2</b> 外部スクリプトをチャンク内で読み込む</a></li>
+<li class="chapter" data-level="16.3" data-path="read-chunk.html"><a href="read-chunk.html"><i class="fa fa-check"></i><b>16.3</b> 外部スクリプトから複数のコードチャンクを読み込む (*)</a></li>
+<li class="chapter" data-level="16.4" data-path="child-document.html"><a href="child-document.html"><i class="fa fa-check"></i><b>16.4</b> 子文書 (*)</a></li>
+<li class="chapter" data-level="16.5" data-path="keep-files.html"><a href="keep-files.html"><i class="fa fa-check"></i><b>16.5</b> グラフ画像ファイルを残す</a></li>
+<li class="chapter" data-level="16.6" data-path="working-directory.html"><a href="working-directory.html"><i class="fa fa-check"></i><b>16.6</b> R コードチャンク用の作業ディレクトリ</a></li>
+<li class="chapter" data-level="16.7" data-path="package-vignette.html"><a href="package-vignette.html"><i class="fa fa-check"></i><b>16.7</b> R パッケージのビネット</a></li>
+<li class="chapter" data-level="16.8" data-path="package-template.html"><a href="package-template.html"><i class="fa fa-check"></i><b>16.8</b> R パッケージの R Markdown テンプレート</a>
+<ul>
+<li class="chapter" data-level="16.8.1" data-path="package-template.html"><a href="package-template.html#テンプレートのユースケースtemplate-use-cases"><i class="fa fa-check"></i><b>16.8.1</b> テンプレートのユースケースTemplate use-cases</a></li>
+<li class="chapter" data-level="16.8.2" data-path="package-template.html"><a href="package-template.html#テンプレートの準備"><i class="fa fa-check"></i><b>16.8.2</b> テンプレートの準備</a></li>
+</ul></li>
+<li class="chapter" data-level="16.9" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i><b>16.9</b> <strong>bookdown</strong> で本や長いレポートを書く</a></li>
+<li class="chapter" data-level="16.10" data-path="blogdown.html"><a href="blogdown.html"><i class="fa fa-check"></i><b>16.10</b> <strong>blogdown</strong> でウェブサイトを構築する</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="workflow.html"><a href="workflow.html"><i class="fa fa-check"></i><b>17</b> ワークフロー</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="rstudio-shortcuts.html"><a href="rstudio-shortcuts.html"><i class="fa fa-check"></i><b>17.1</b> RStudio のキーボード・ショートカットを使う</a></li>
+<li class="chapter" data-level="17.2" data-path="spell-check.html"><a href="spell-check.html"><i class="fa fa-check"></i><b>17.2</b> R Markdown のスペルチェック</a></li>
+<li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
+<li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
+<li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
+<li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i>参考文献</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Markdown クックブック</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="verbatim-code-chunks" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> コードチャンクをそのまま (verbatim) 表示</h2>
+<p>典型的には私達はコードチャンクとインラインコードを <strong>knitr</strong> によってパースされ評価してほしいと思って書きますが, もし <strong>knitr</strong> を使ったチュートリアルを書きたいなら, <strong>knitr</strong> にパース<strong>されない</strong>コードチャンクやインラインコードを生成する必要があり, そしてチャンクヘッダの中身も掲載したいということもあるかもしれません.</p>
+<p>不運なことにコードチャンクをさらに別のバッククオートのレイヤで囲むことは出来ませんが, 代わりにチャンクヘッダに <code>`r ''`</code> を挿入することでソースコード内でコードチャンクを無効化しなければなりません. これは <strong>knitr</strong> によって, <strong>空の文字列</strong>のインラインコードであるものと評価されます. この例ではソース文書内の以下の「コードチャンク」</p>
+<pre><code>```{r, eval=TRUE}`r &#39;&#39;`
+1 + 1
+```</code></pre>
+<p>は出力時にはこのようにレンダリングされます.</p>
+<pre><code>```{r, eval=TRUE}
+1 + 1
+```</code></pre>
+<p>空の文字列で置き換えられるため, インラインコードは消え去ります. しかしこれは第1歩にすぎません. 出力時になんらかの無加工のコードを表示するには, Markdown の構文はコードブロックで包まれているべきです (スペース4つ分のインデントかバッククオートによる囲みで). 上記の出力を見たいとき, 実際のソースは以下のようになります.</p>
+<pre><code>````
+```{r, eval=TRUE}`r &#39;&#39;`
+1 + 1
+```
+````</code></pre>
+<p>なぜバッククオートが4つなのでしょうか. これは N 個のバッククオートを包むには, 少なくとも N+1 個のバッククオートを使わなければならないからです.</p>
+<div id="show-a-verbatim-inline-expression" class="section level3" number="5.6.1">
+<h3><span class="header-section-number">5.6.1</span> インライン R コードをそのまま表示</h3>
+<p>行内のコードをそのまま表示する方法はいくつかあります. 最初の方法は <code>`r</code> の直後でインラインコードを改行することです. 例えばこのように.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb94-1"><a href="verbatim-code-chunks.html#cb94-1" aria-hidden="true" tabindex="-1"></a>これは出力時にインライン R コードをそのまま表示します `<span class="in">` `</span>r</span>
+<span id="cb94-2"><a href="verbatim-code-chunks.html#cb94-2" aria-hidden="true" tabindex="-1"></a>1+1` ``.</span></code></pre></div>
+<p>これが出力文書ではこうなっているはずです.</p>
+<blockquote>
+<p>これは出力時にインライン R コードをそのまま表示します <code>`r 1+1`</code>.</p>
+</blockquote>
+<p>この小技は2つの理由で動作します. (1) Markdown パーサはしばしば単独の改行文字を単なるスペース1つとして扱う (2連続の改行は新しい段落を始めることと比べてみてください) ということと, (2) <strong>knitr</strong> は <code>`r</code> をパースするのに直後にスペース1つを要求する, つまりここにスペースがないとインラインコードとして扱われないということです.</p>
+<p>インライン R コードをそのまま表示する別の方法は, R コードを <code>knitr::inline_expr()</code> で包むことです. 例えばこのように.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb95-1"><a href="verbatim-code-chunks.html#cb95-1" aria-hidden="true" tabindex="-1"></a>これで出力時にインライン R コードがそのまま表示されます</span>
+<span id="cb95-2"><a href="verbatim-code-chunks.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="in">`` `r knitr::inline_expr(&quot;1+1&quot;)` ``</span>.</span></code></pre></div>
+<p>私 (Yihui) は2つ目の方法をお薦めします. 1つ目の方法は多かれ少なかれ Markdown 構文と <strong>knitr</strong> パーサに対するハック的なものだからです.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fig-align.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="number-lines.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/JP/content/05-formatting.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["rmarkdown-cookbook.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
