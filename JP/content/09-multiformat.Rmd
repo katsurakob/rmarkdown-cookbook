@@ -127,7 +127,7 @@ knitr::include_url('https://yihui.org')
 
 ````md
 ```{r}`r ''`
-knitr:::pandoc_to()
+knitr::pandoc_to()
 ```
 ````
 

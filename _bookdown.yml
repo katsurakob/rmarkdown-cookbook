@@ -23,4 +23,5 @@ language:
   ui:
     chapter_name: ""
 edit: "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/%s"
-
+edit: "https://github.com/yihui/rmarkdown-cookbook/edit/master/%s"
+before_chapter_script: "utils.R"

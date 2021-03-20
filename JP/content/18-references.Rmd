@@ -8,8 +8,8 @@
 '`
 
 ```{r include=FALSE, tidy=FALSE}
-# automatically create a bib database for R packages
-knitr::write_bib(c(
+# 引用パッケージの一覧
+pkgs <- c(
   .packages(), 
 'animation',
 'blastula',
@@ -25,6 +25,7 @@ knitr::write_bib(c(
 'distill',
 'downloadthis',
 'DT',
+'equatiomatic',
 'ezknitr',
 'flair',
 'flexdashboard',
@@ -83,12 +84,20 @@ knitr::write_bib(c(
 'xtable',
 'yaml',
 'ztable'
-# GH Only: 'equatiomatic', 'MonashEBSTemplates', 'plantuml', 'redoc', 'Statamarkdown', 'rmdrive'
+# GH Only: 'MonashEBSTemplates', 'plantuml', 'redoc', 'Statamarkdown', 'rmdrive'
 # LaTeX: 'float', 'framed', 'tscolorbox', 'booktabs', 'longtable', 'flafter', 'subfig', 'fancyhdr', 'xcolor', 'listings', 'titling', 'animate'
 # Bios only: 'shiny', 'leaflet', 'rolldown', 'crrri', 'projmgr', 'Rd2roxyen', 'servr', 'highr', 'mime', 'testit', 'fun', 'tufte'
 # JavaScript: 'DataTables'
-), 
-file = 'bib/packages.bib', lib.loc = c(.libPaths(), '~/R-tmp'))
+)
+# 足りないパッケージはインストール
+lapply(pkgs, function(pkg) {
+    if (system.file(package = pkg) != '') return()
+    install.packages(pkg, repos = "https://cloud.r-project.org/") 
+    }
+)
+
+# automatically create a bib database for R packages
+knitr::write_bib(pkgs, file = 'packages.bib', lib.loc = c(.libPaths(), '~/R-tmp'))
 
 # embed fonts
 if (knitr::is_latex_output()) {

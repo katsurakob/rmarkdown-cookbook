@@ -63,6 +63,7 @@ lapply(c(
 )
 # screenshot HTML widgets
 if (is.null(webshot:::find_phantom())) webshot::install_phantomjs()
+
 options(bookdown.post.latex = function(x) {
   # substitute nonbreaking spaces in \texttt{} with normal spaces
   m = gregexpr('\\\\texttt\\{[^}]+}', x)
@@ -111,6 +112,7 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 ```{asis, echo=!knitr::is_latex_output()}
 ::: {.infobox .caution}
 **注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+
 :::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>

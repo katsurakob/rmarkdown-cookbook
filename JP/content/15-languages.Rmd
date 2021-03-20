@@ -272,9 +272,21 @@ summarize
 
 ## Asymptote でグラフィックを作成する {#eng-asy}
 
+```{r include = FALSE}
+eval_asy <- function() {
+	check_not_windows <- Sys.info()['sysname'] != 'Windows'
+	check_has_asymptote <- nzchar(Sys.which("asy"))
+	check_not_ci <- is.na(Sys.getenv('CI', NA))
+	eval_asy <- check_not_windows & check_has_asymptote & check_not_ci
+	if (!eval_asy) 
+		warning("System set-up not compatible with Asymptote, so chunks with asy engine will be skipped.")
+	eval_asy
+}
+``` 
+
 Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
 
-```{asy, elevation, fig.cap='Asymptote で作成した3Dグラフィック', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
+```{asy, elevation, fig.cap='Asymptote で作成した3Dグラフィック', cache=TRUE, fig.retina=1, eval=eval_asy()}
 import graph3;
 import grid3;
 import palette;
@@ -317,7 +329,7 @@ writeLines(paste(x, y, sep = ','), 'sine.csv')
 
 それから Asymptote でこれを読み込み, データに基づいたグラフを描画し図\@ref(fig:sine-curve) に示します. 以下が `asy` コードチャンクです.
 
-```{asy, sine-curve, fig.cap='R からデータを渡し Asymptote でグラフを描く', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
+```{asy, sine-curve, fig.cap='R からデータを渡し Asymptote でグラフを描く', cache=TRUE, fig.retina=1, eval=eval_asy()}
 import graph;
 size(400,300,IgnoreAspect);
 settings.prc = false;

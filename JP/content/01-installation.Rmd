@@ -50,7 +50,7 @@ R Markdown から PDF 文書を作りたいなら, LaTeX\index{LaTeX} がイン�
 
 TinyTeX\index{LaTeX!TinyTeX} は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です^[というより, あなたがシステムの唯一のユーザーなら Linux や macOS では TinyTeX を root 権限で (つまり `sudo` で) インストール**しない**ことをお薦めします.]. TinyTeX は R パッケージの **tinytex**\index{LaTeX!tinytex} [@R-tinytex] でインストールできます.
 
-```{r eval=FALSE}
+```{r eval=!nzchar(tinytex::tinytex_root())}
 tinytex::install_tinytex()
 # TinyTeX をアンインストールするなら, tinytex::uninstall_tinytex() を実行してください
 ```

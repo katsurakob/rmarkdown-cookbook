@@ -71,6 +71,11 @@ Sys.which('pdfcrop')
 
 LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, なおかつ `pdfcrop` があなたのシステムで利用できないなら, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールすることもできます.
 
+```{r include = FALSE, eval=!tinytex:::check_installed("pdfcrop")}
+tinytex::tlmgr_install('pdfcrop')
+
+```
+
 PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの **magick** [@R-magick]\index{R パッケージ!magick}を呼び出してクロップします. この R パッケージがインストールされているか確認する必要があります. 図\@ref(fig:crop-no)はクロップされていないグラフで, 図 \@ref(fig:crop-yes)はクロップされた同じグラフです.
 
 ```{r, crop-no, crop=NULL, echo=FALSE, fig.height=4, fig.cap='クロップされていないグラフ', out.extra=if (knitr::is_latex_output()) '', resize.command='framebox'}
