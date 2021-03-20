@@ -5,10 +5,7 @@ R Markdown クックブック 日本語版
 
 このリポジトリは『R Markdown
 クックブック』翻訳版のソースコードを含んでいます. **現在,
-翻訳版は作成中です**
-
-完成版は <https://gedevan-aleksizde.github.io/rmarkdown-cookbook>
-で公開する予定です.
+翻訳版は校正中です**
 
 [![R Markdown
 Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png)](https://www.routledge.com/p/book/9780367563837)
@@ -25,7 +22,7 @@ is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 
 ## 進捗状況
 
-16章まで翻訳 (全17章 + Appendix)
+全編翻訳終了・現在校正中
 
 ## 関連リンク
 
