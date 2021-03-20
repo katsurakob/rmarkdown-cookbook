@@ -8,9 +8,15 @@ rmdja::gitbook_ja:
         <li><a href="./">R Markdown Cookbook</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+    download:
+      - ['rmarkdown-cookbook.pdf', 'PDF']
+      - ['rmarkdown-cookbook.md', 'Markdown']
+      - ['rmarkdown-cookbook.tex', 'TeX']
     sharing:
       github: yes
-      facebook: no
+      twitter: yes
+      facebook: yes
+      all: ['linkedin', 'weibo', 'instapaper', 'vk']
 rmdja::pdf_book_ja:
   includes:
     in_header: [latex/preamble.tex, latex/blackbox.tex, latex/infobox.tex]
