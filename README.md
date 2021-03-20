@@ -7,14 +7,8 @@ R Markdown クックブック 日本語版
 クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます.
 **現在, 翻訳版は校正中です**
 
-``` r
-last_update <- format(Sys.time(), '%Y/%m/%d %H:%M:%S %Z')
-last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `cat .git/refs/remotes/upstream/master`", intern = T), tryFormats = "%Y-%m-%d %H:%M:%S %z"), '%Y/%m/%d %H:%M:%S %Z')
-```
-
-最新更新時刻: 2021/03/20 23:00:23 JST 本家最終更新時刻:
-本家の更新確認時刻: [2021/02/01 20:02:05
-JST](https://github.com/yihui/rmarkdown-cookbook)
+最新更新時刻: 2021/03/21 00:47:13 JST 本家最終更新時刻: [2021/02/01
+20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)
 
 [![R Markdown
 Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png)](https://www.routledge.com/p/book/9780367563837)
