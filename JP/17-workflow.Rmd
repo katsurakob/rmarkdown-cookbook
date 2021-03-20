@@ -54,13 +54,13 @@ knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio の�
 
 ## R Markdown のスペルチェック {#spell-check}
 
-If you use the RStudio IDE\index{RStudio!spellcheck}, you can press the `F7` key or click the menu `Edit -> Check Spelling` to spell-check an Rmd document. Real-time spell checking has become available in RStudio v1.3, so you no longer need to manually trigger spell checking with this version or a later version of RStudio.
+RStudio IDE\index{RStudio!スペルチェック} を使っているなら, `F7` キーを押すかメニューの `Edit -> Check Spelling` をクリックして Rmd 文書のスペルチェックができます.  リアルタイムなスペルチェックは RStudio v1.3 で有効になったので, これ以降のバージョンならば手動でスペルチェックを動作させる必要はなくなりました.
 
-If you do not use RStudio, the **spelling** package\index{R package!spelling} [@R-spelling] has a function `spell_check_files()`, which can check the spelling of common document formats, including R Markdown. When spell checking Rmd documents, it will skip code chunks and only check ordinary text.
+RStudio を使っていないなら, **spelling** パッケージ\index{R パッケージ!spelling} [@R-spelling] には `spell_check_files()` 関数があります. これは R Markdown を含む一般的な文書フォーマットのスペルチェックができます. Rmd 文書のスペルチェック時は, コードチャンクはスキップされ平文のみチェックされます.
 
 ## `rmarkdown::render()` で R Markdown をレンダリングする {#rmarkdown-render}
 
-If you do not use RStudio or any other IDE, you need to know this fact: R Markdown documents are rendered through the function `rmarkdown::render()`\index{rmarkdown!render()}. This means you can programmatically render an R Markdown document in any R script. For example, you could render a series of reports in a `for`-loop for each state of a country:
+もしあなたが RStudio あるいは他の IDE を使用していないなら, この事実を知る必要があります. R Markdown 文書は `rmarkdown::render()`\index{rmarkdown!render()} 関数によってレンダリングされているということを. これは, あらゆる R スクリプト内でプログラミングによって R Markdown 文書をレンダリングできることを意味します. 例えば, 州ごとの一連の調査レポートを `for` ループでレンダリングできます.
 
 ```{r, eval=FALSE, tidy=FALSE}
 for (state in state.name) {
@@ -70,23 +70,22 @@ for (state in state.name) {
 }
 ```
 
-The output filename will be different for each state. You can also make use of the `state` variable in the document `input.Rmd`, e.g.,
+出力ファイル名は国ごとに異なります. `state` 変数を `input.Rmd` 文書に使うこともできます. これが例です.
 
 ````md
 ---
-title: "A report for `r knitr::inline_expr('state')`"
+title: "`r knitr::inline_expr('state')` に関するレポート"
 output: html_document
 ---
 
-The area of `r knitr::inline_expr('state')` is `r knitr::inline_expr('state.area[state.name == state]')`
-square miles.
+`r knitr::inline_expr('state')` の面積は `r knitr::inline_expr('state.area[state.name == state]')` 平方マイルである.
 ````
 
-You may read the help page `?rmarkdown::render` to know other possible arguments. Here we just want to mention two of them, i.e., the `clean` and `envir` arguments. 
+他の使用可能な引数を知るために `?rmarkdown::render` のヘルプを読むことができます. ここではそれらのうち `clean` と `envir` 引数の2つだけを紹介しようと思います.
 
-The former (`clean`) is particularly helpful for debugging when anything goes wrong with the Pandoc conversion. If you call `rmarkdown::render(..., clean = FALSE)`, all intermediate files will be preserved, including the intermediate `.md` file knitted from the `.Rmd` file. If Pandoc signals an error, you may start debugging from this `.md` file. 
+前者の `clean` は Pandoc の変換がうまくいかない時のデバッグに特に役立ちます. `rmarkdown::render(..., clean = FALSE)` を呼び出すと, `.md` ファイルを含む, `.Rmd` ファイルをから knit された全ての中間ファイルが維持されます. Pandoc がエラーを発していたらこの `.md` ファイルからデバッグを始めることもできます..
 
-The latter (`envir`) offers a way to render a document with the guarantee of an empty new environment when you call `rmarkdown::render(..., envir = new.env())`, so objects created in your code chunks will stay inside this environment, without polluting your current global environment. On the other hand, if you prefer rendering the Rmd document in a new R session so that objects in your current R session will not pollute your Rmd document, you may call `rmarkdown::render` in `xfun::Rscript_call()`, e.g.,
+後者の `envir` は `rmarkdown::render(..., envir = new.env())` を呼び出した時に, 確実に空の新しい環境で文書をレンダリングする方法を提供してくれます. よってコードチャンク内で作成されたオブジェクトはこの環境内にとどまり, あなたの現在のグローバル環境を汚染することがありません. 一方で, 現在の R セッションのオブジェクトがあなたの Rmd 文書を汚染しないように Rmd 文書を新しい R セッションでレンダリングしたいなら, この例のように  `rmarkdown::render` in `xfun::Rscript_call()` を呼び出すこともできます.
 
 ```{r, eval=FALSE, tidy=FALSE}
 xfun::Rscript_call(
@@ -95,13 +94,13 @@ xfun::Rscript_call(
 )
 ```
 
-This method is similar to clicking the `Knit` button in RStudio\index{RStudio!Knit button}, which also renders the Rmd document in a new R session. In case you need to render an Rmd document inside another Rmd document, we strongly recommend that you use this method instead of directly calling `rmarkdown::render()` in a code chunk, because `rmarkdown::render()` creates and relies on a lot of side effects internally, which may affect rendering other Rmd documents in the same R session.
+この方法は RStudio\index{RStudio!Knit ボタン} で `Knit` ボタンをクリックするのと似ています. これもまた新しい R セッションで Rmd 文書をレンダリングします. Rmd 文書を他の Rmd 文書内でレンダリングする必要がある場合は, コードチャンクで直接 `rmarkdown::render()` を呼び出す代わりにこちらの方法を使うことを強く勧めます. なぜなら `rmarkdown::render()` は内部で多くの副作用を作成し, そしてそれらに依存しており, 同じ R セッションで他の Rmd 文書をレンダリングするのに影響を及ぼすことがあるからです.
 
-The second argument of `xfun::Rscript_call()` takes a list of arguments to be passed to `rmarkdown::render`(). In fact, `xfun::Rscript_call` is a general-purpose function to call any R function (with arguments optionally) in a new R session. Please see its help page if you are interested.
+`xfun::Rscript_call()` の第2引数は `rmarkdown::render`() に渡す引数のリストを取ります. 実際のところ, `xfun::Rscript_call` は新しい R セッションで, 任意の R 関数をオプション引数付きで呼び出すための汎用的な関数です. 関心があるならヘルプページをご覧になってください.
 
-## Parameterized reports {#parameterized-reports}
+## パラメータ化されたレポート {#parameterized-reports}
 
-In Section \@ref(rmarkdown-render), we mentioned one way to render a series of reports in a `for`-loop. In fact, `rmarkdown::render()`\index{rmarkdown!render()} has an argument named `params` specifically designed for this task. You can parameterize\index{parameter} your report through this argument. When you specify parameters for a report, you can use the variable `params` in your report. For example, if you call:
+\@ref(rmarkdown-render)節では一連のレポートを `for` ループ内でレンダリングする方法の1つを紹介しました. 実際には `rmarkdown::render()`\index{rmarkdown!render()} はこのタスクのために設計された `params` という名前の引数を持っています. この引数を通じてレポートをパラメータ化することができます. レポートのパラメータを指定する時, `params` 変数をレポートに使うことが可能になります. 例えば, 以下を呼び出したとします.
 
 ```{r, eval=FALSE, tidy=FALSE}
 for (state in state.name) {
@@ -109,39 +108,39 @@ for (state in state.name) {
 }
 ```
 
-then in `input.Rmd`, the object `params` will be a list that contains the `state` variable:
+それから `input.Rmd` 内部では, オブジェクト `params` が `state` 変数を持つリストになります.
 
 ````md
 ---
-title: "A report for `r knitr::inline_expr('params$state')`"
+title: "`r knitr::inline_expr('params$state')` に関するレポート"
 output: html_document
 ---
 
-The area of `r knitr::inline_expr('params$state')` is
+`r knitr::inline_expr('params$state')` の面積は
 `r knitr::inline_expr('state.area[state.name == params$state]')`
-square miles.
+平方マイルである.
 ````
 
-Another way to specify parameters for a report is to use the YAML field `params`, e.g.,
+レポートに対してパラメータを指定する別の方法に, YAML フィールドの `params` を使うというものもあります. 例えばこのように.
 
 ```yaml
 ---
-title: Parameterized reports
+title: パラメータ化されたレポート
 output: html_document
 params:
-  state: Nebraska
+  state: ネブラスカ州
   year: 2019
   midwest: true
 ---
 ```
 
-Note that you can include as many parameters in the `params` YAML field\index{YAML!params} or the `params` argument of `rmarkdown::render()`. If both the YAML field and the argument are present, the parameter values in the argument will override the corresponding parameters in YAML. For example, when we call `rmarkdown::render(..., params = list(state = 'Iowa', year = 2018)` on the previous example that has the `params` field, `params$state` will become `Iowa` (instead of `Nebraska`) and `params$year` will become `2018` (instead of `2019`) in the R Markdown document.
+YAML の `params` フィールド\index{YAML!params}または `rmarkdown::render()` の `params` 引数と同じ数だけパラメータを含めることが可能だということに注意してください. YAML のフィールドと引数が両方存在するなら, 引数のパラメータの値が対応する YAML フィールドの値で上書きされます. 例えば先ほどの `params` フィールドを使った例で `rmarkdown::render(..., params = list(state = 'アイオワ州', year = 2018)` を呼び出した場合は, R Markdown 文書上の `params$state` は `ネブラスカ州` の代わりに `アイオワ州` に, `params$year` は `2019` の代わりに `2018` になります.
 
-When rendering the same R Markdown document to a series of reports, you need to adjust the `output_file` argument of `rmarkdown::render()`, to make sure each report has its unique filename. Otherwise, you will accidentally override certain report files. For example, you can write a function to generate a report for each state and each year:
+同じ R Markdown 文書を一連のレポート群へとレンダリングする時は, 各レポートのファイル名が一意になるように `rmarkdown::render()` の `output_file` 引数を調整する必要があります.  そうでないと, うっかりレポートファイルを上書きしてしまいます. 例えば州と年ごとにレポートを生成する関数を書くことが可能です.
 
 ```{r, eval=FALSE, tidy=FALSE}
 render_one <- function(state, year) {
-  # assuming the output format of input.Rmd is PDF
+  # input.Rmd の出力フォーマットが PDF と仮定
   rmarkdown::render(
     'input.Rmd',
     output_file = paste0(state, '-', year, '.pdf'),
@@ -151,7 +150,7 @@ render_one <- function(state, year) {
 }
 ```
 
-Then you can use nested `for`-loops to generate all reports:
+そして全てのレポートを生成するために `for` ループをネストすることができます.
 
 ```{r, eval=FALSE}
 for (state in state.name) {
@@ -161,33 +160,33 @@ for (state in state.name) {
 }
 ```
 
-At the end, you will get a series of report files like `Alabama-2000.pdf`, `Alabama-2001.pdf`, ..., `Wyoming-2019.pdf`, and `Wyoming-2020.pdf`.
+最終的に, `アラバマ州-2000.pdf`, `アラバマ州-2001.pdf`, ..., `ワイオミング州-2019.pdf`, and `ワイオミング州-2020.pdf` のように一連のレポートを得られます.
 
-For parameterized reports, you can also input parameters interactively through a graphical user interface (GUI) created from Shiny. This requires you to provide a `params` field in YAML, and **rmarkdown** will automatically create the GUI using the appropriate input widgets for each parameter (e.g., a checkbox will be provided for a Boolean parameter).
+Shiny から作成されたグラフィカルユーザーインターフェイス (GUI) を通して対話的にパラメータ化されたレポートのパラメータを入力することも可能です. これは YAML に `params` フィールドを与えることが必要で, **rmarkdown** が各パラメータに対する適切な入力ウィジェットを使用する GUI を自動的に作成してくれます. 例えばチェックボックスはブーリアン型のパラメータに対して用意されます.
 
-To start the GUI, you can call `rmarkdown::render()` with `params = 'ask'` if you do not use RStudio:
+RStudio を使用していないなら, GUI を始めるのには, `rmarkdown::render()` に `params = 'ask'` を渡して呼び出して GUI を開始することが可能です.
 
 ```{r, eval=FALSE}
 rmarkdown::render('input.Rmd', params = 'ask')
 ```
 
-If you use RStudio, you can click the menu `Knit with Parameters`\index{RStudio!Knit with Parameters} behind the `Knit` button. Figure \@ref(fig:params-shiny) shows an example GUI for parameters.
+RStudio を使用しているなら, メニューの `Knit` ボタンの中にある `Knit with Parameters`\index{RStudio!Knit with Parameters} をクリックすることが可能です. 図\@ref(fig:params-shiny)はパラメータに対する GUI の例を示しています.
 
-```{r, params-shiny, echo=FALSE, fig.cap='Knit an R Markdown document with parameters that you can input from a GUI.'}
+```{r, params-shiny, echo=FALSE, fig.cap='GUI から入力できるパラメータで R Markdown を knit する'}
 knitr::include_graphics('images/params-shiny.png', dpi = NA)
 ```
 
-For more information on parameterized reports, you may read [Chapter 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) of the _R Markdown Definitive Guide_ [@rmarkdown2018].
+パラメータ化されたレポートの詳細については, _R Markdown Definitive Guide_ [@rmarkdown2018] の [Chapter 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) を読むことができます.
 
-## Customize the `Knit` button (\*) {#custom-knit}
+## `Knit` ボタンをカスタマイズする (\*) {#custom-knit}
 
-When you click the `Knit` button in RStudio\index{RStudio!Knit button}, it will call the `rmarkdown::render()` function in a new R session and output a file of the same base name as the input file in the same directory. For example, knitting `example.Rmd` with the output format `html_document` will create an output file `example.html`.
+RStudio の `Knit` ボタン\index{RStudio!Knit button}をクリックする時, 新規の R セッション内で `rmarkdown::render()` が呼び出され, 同じディレクトリに入力ファイルと同じ基底名の出力ファイルが出力されます. 例えば出力フォーマット `html_document` で `example.Rmd` を knit すると, `example.html` というファイルが作られます.
 
-There may be situations in which we want to customize how the document is rendered. For example, perhaps we would like the rendered document to contain the current date, or would like to output the compiled report into a different directory. Although we can achieve these goals by calling `rmarkdown::render()` (see Section \@ref(rmarkdown-render)) with the appropriate `output_file` argument, it can be inconvenient to have to rely on a custom call to `rmarkdown::render()` to compile your report.
+文書がどうレンダリングされるかをカスタマイズしたいという状況もあるでしょう. 例えば今日の日付を文書に含めたり, 別のディレクトリにコンパイルした文書を出力したいといったことがたぶんあるでしょう. こういったことは適切な `output_file` 引数を付けた `rmarkdown::render()` を呼び出すことで達成可能 (\@ref(rmarkdown-render)節参照) ですが, レポートをコンパイルするのに `rmarkdown::render()` を変更して呼び出すことに頼るのは不便という可能性があります.
 
-It is possible to control the behavior of the `Knit` button by providing the `knit` field within the YAML frontmatter of your document. The field takes a function with the main argument `input` (the path to the input Rmd document) and other arguments that are currently ignored. You can either write the source code of the function directly in the `knit` field, or put the function elsewhere (e.g., in an R package) and call the function in the `knit` field. If you routinely need the custom `knit` function, we would recommend that you put it in a package, instead of repeating its source code in every single R Markdown document.
+文書の YAML フロントマターの `knit` フィールドを与えることで `Knit` ボタンの挙動を制御することが可能です. このフィールドは主要な引数 `input` を持つ関数を取ります. これは入力 Rmd 文書のパスです. 現時点では他の引数は無視されます. 関数のソースコードを直接 `knit` コードに書くことも, 他のどの場所でも, 例えば R パッケージの関数を与えて呼び出すことも可能です. カスタム `knit` 関数が日常的に必要ならば, 毎度のように R Markdown 文書に関数のソースコードを繰り返し書くのではなく, パッケージに関数を置くことをお薦めします.
 
-If you store the code directly within YAML, you must wrap the entire function in parentheses. If the source code has multiple lines, you have to indent all lines (except the first line) by at least two spaces. For example, if we want the output filename to include the date on which it is rendered, we could use the following YAML code\index{YAML!knit}:
+YAML に直接ソースコードを置くなら, 関数全体をパーレン `()` で囲まなければなりません. ソースコードが複数行になるなら, 最初の行以外の全ての行にスペース2つ分のインデントをしなければなりません. 例えば出力ファイル名にレンダリングした日付を含めたい場合, 次のような YAML コードが使用可能です\index{YAML!knit}.
 
 ```yaml
 ---
@@ -203,12 +202,12 @@ knit: (function(input, ...) {
 ---
 ``` 
 
-For example, if we knit `example.Rmd` on 2019-07-29, the output filename will be `example-2019-07-29.html`.
+例えば 2019/07/29 に `example.Rmd` を knit したなら, 出力ファイル名は `example-2019-07-29.html` となります.
 
-While the above approach looks simple and straightforward enough, embedding a function directly in your YAML may make it difficult for you to maintain it, unless the function is only to be used once with a single R Markdown document. In general, we would recommend using an R package to maintain such a function, e.g., you may create a function `knit_with_date()` in a package:
+上記のアプローチは単純で十分に分かりやすいですが, 関数が R Markdown 文書で1度限りしか使われるのでない限り, YAML に直接関数を埋め込むのは管理を難しくさせるかもしれません そこで例えばパッケージ内に `knit_with_date()` という関数を作成することができます.
 
 ```{r, eval=FALSE, tidy=FALSE}
-#' Custom Knit function for RStudio
+#' RStudio 用のカスタム knit 関数
 #'
 #' @export
 knit_with_date <- function(input, ...) {
@@ -223,65 +222,72 @@ knit_with_date <- function(input, ...) {
 }
 ```
 
-If you add the above code to a package named **myPackage**, you will be able to refer to your custom `knit` function using the following YAML setting:
-  
+上記のコードを **myPackage** という名前のパッケージに追加すれば, 次のような YAML 設定を使いカスタム `knit` 関数を参照することが可能になります.
+
 ```yaml
 ---
 knit: myPackage::knit_with_date
 ---
 ```
 
-You may refer to the help page `?rmarkdown::render` to find out more ideas on how you could customize your `knit` function behind the `Knit` button in RStudio.
+`?rmarkdown::render` のヘルプページを見れば, `Knit` ボタンの背後にある `knit` 関数をどうカスタマイズするかのさらなるアイディアを見つけることもできるでしょう.
 
-## Collaborate on Rmd documents through Google Drive {#google-drive}
 
-Based on the **googledrive** package\index{R package!googledrive} [@R-googledrive], Emily Kothe provided a few wrapper functions in the **rmdrive** package\index{R package!rmdrive}, which is currently available only on GitHub at https://github.com/ekothe/rmdrive. At the time of writing, it still lacks rich documentation, so I recommend that you try Janosch Linkersdörfer's fork instead: https://github.com/januz/rmdrive (which is based on Ben Marwick's fork---if you still have not learned GIT, you may be motivated by these examples of freely forking and improving other people's GIT repositories).
+## Google ドライブで Rmd 文書を共同編集する {#google-drive}
 
-The workflow with **rmdrive** is outlined below:
+**googledrive** パッケージ\index{R パッケージ!googledrive} [@R-googledrive] を基にして, Emily Kothe は **rmdrive** パッケージ\index{R パッケージ!rmdrive} にいくつかのラッパ関数を提供しています. パッケージは現在 GitHub の https://github.com/ekothe/rmdrive から利用可能です. 文書を書いている時点では, リッチドキュメントが不足しています. そこで私は Janosch Linkersdörfer のフォークリポジトリ https://github.com/januz/rmdrive を代わりに推奨します. こちらは Ben Marwick のフォークに基づいています. もし GIT を学んだことがないなら, 自由にフォークし他人の GIT リポジトリを改善するこれらの事例によって学ぶ気になるかもしれません.
 
-1. We assume there is a main author or contributor of the project, who is capable of using version control tools like GIT. The main author writes the initial version of the Rmd document, and uploads it to Google Drive via the `upload_rmd()` function.
+**rmdrive** のワークフローは大まかに言って以下のようになります.
 
-1. The Rmd document in Google Drive is shared with other collaborators, who can make or suggest changes in Google Document.
+1. プロジェクトの主著者かコントリビュータがいて, その人は GIT のようなバージョン管理ツールを扱う能力があると仮定します. 主著者は Rmd 文書の初期版を書き, `upload_rmd()` 関数で Google ドライブへアップグレードします.
 
-1. The main author can accept suggested changes, and download/preview the Rmd document locally via `render_rmd()`. Other collaborators can also do this by themselves if they have modified code chunks and want to see the new results.
+1. Google ドライブの Rmd 文書は他の共同編集者たちと共有され, 編集者たちは Google ドキュメント上で変更をしたり改善提案をしたりできます.
 
-1. If satisfied, the main author can commit changes to the GIT repository.
+1. 主著者は提案された変更を受け容れたり, `render_rmd()` 関数で Rmd 文書をローカルへダウンロード・プレビューしたりできます. 他の共同編集者たちもコードチャンクを修正し新たな結果を見たいならば, 自分で同様のことができます.
 
-The collaborative editing can be either synchronous or asynchronous in Google Drive. Multiple people can edit the same document at the same time, or wait for other people to finish their editing first.
+1. 満足したら主著者は GIT リポジトリに変更をコミットできます.
 
-There is also a function `udpate_rmd()` in the package, which allows you to edit the Rmd document locally, and upload the local Rmd document to Google Drive. You probably should never want to run this function, because it will completely overwrite the document in Google Drive. The main author may want to warn collaborators about this in advance. Ideally, all collaborators should only edit the document in Google Drive and not locally. It is okay to preview the edited document locally via `render_rmd()`, though (note that `render_rmd()` automatically downloads the document before rendering it).
+Google ドライブ上では共同編集作業を同期的に行うことも, 非同期的に行うことも可能です. 複数の人間が同じ文書を同時に編集することも, 先に他の人の編集が完了するまで待つことも可能です.
 
-## Organize an R Markdown project into a research website with **workflowr** {#workflowr}
+このパッケージには `update_rmd()` 関数があり, Rmd 文書をローカルで編集して, このローカルな Rmd 文書を Google ドライブへアップロードすることが可能になります. これは Google ドライブ上の文書を完全に上書きしてしまうため, おそらくこの関数を実行すべきではないです. 主著者は予め共同編集者たちにこれを警告したいと思うでしょう. 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきでない, というのが理想です. 編集された文書を `render_rmd()` 関数でローカル上で閲覧するのは大丈夫ですが (`render_rmd()` は文書をレンダリングする前に文書を自動的にダウンロードします).
 
-The **workflowr** package\index{R package!workflowr} [@R-workflowr; @workflowr2019] can help you organize a (data analysis) project with a project template\index{template!project} and the version control tool GIT. Every time you make a change to the project, you can log the change, and **workflowr** can build a website corresponding to that particular version of your project. This means that you will be able to view the full history of your analysis results. Although this package uses GIT as the backend for version control, you do not really have to be familiar with GIT. The package provides R functions that do the GIT operations under the hood, and you only need to call these R functions. Furthermore, **workflowr** automates best practices for reproducible code. Each time an R Markdown document is rendered, **workflowr** automatically sets a seed with `set.seed()`, records the session information with `sessionInfo()`, and scans for absolute file paths, etc. Please see the [package documentation](https://jdblischak.github.io/workflowr/) for how to get started and more information.
+TODO: `udpate_rmd()` はタイポ?
 
-The main author of **workflowr**, John Blischak, has also put together a non-exhaustive list of R packages and guides related to the workflow of R projects, which can be found in this GitHub repo: https://github.com/jdblischak/r-project-workflows.
 
-## Send emails based on R Markdown {#blastula-email}
+## **workflowr** で R Markdown プロジェクトを研究用サイトでまとめる {#workflowr}
 
-With the **blastula** package\index{R package!blastula}\index{email} [@R-blastula], you can render an Rmd document to the email body and send the email. To render an Rmd document to an email, the document needs to use the output format `blastula::blastula_email`, e.g.,
+**workflowr** パッケージ\index{R パッケージ!workflowr} [@R-workflowr; @workflowr2019]は (データ分析の) プロジェクトをテンプレート\index{テンプレート!プロジェクト}とバージョン管理ツールである GIT を使って体系的に編成することが可能です. プロジェクトに変更を加えるたびに, 変更の記録を残すことが可能で, **workflowr** はプロジェクトの特定のバージョンと対応するウェブサイトを構築できます. これはあなたの分析結果の履歴をすべて閲覧することが可能になることを意味します. このパッケージはバージョン管理のためバックエンドで GIT を使用していますが, 特に GIT に詳しくなる必要はありません. このパッケージは, 内部で GIT の操作を行う R の関数を提供し, あなたはこれらの関数を呼び出す必要があるだけです. そのうえ, **workflowr** は自動的に再現可能なコードへのベストプラクティスを自動化します. R Markdown 文書がレンダリングされるたびに, **workflowr** は `set.seed()` でシード値を設定, `sessionInfo()` でセッション情報を記録, そして絶対ファイルパスをスキャンする, などなど, といったことを自動的に行います.  このパッケージの導入方法と詳細は[パッケージのドキュメント](https://jdblischak.github.io/workflowr/)をご覧ください.
+
+**workflowr** の主著者である John Blischak は, R プロジェクトのワークフローと関連のあるパッケージとガイドを網羅的ではないですがリストにまとめています. これは GitHub レポジトリ https://github.com/jdblischak/r-project-workflows で見ることができます.
+
+
+## R Markdown から Eメールを送信する Send emails based on R Markdown {#blastula-email}
+
+**blastula** パッケージ\index{R パッケージ!blastula}\index{email} [@R-blastula]があれば Rmd 文書を Eメールの本文にして送信することが可能になります. Rmd 文書を Eメールへレンダリングするには, 文書に出力フォーマット `blastula::blastula_email` を使用すること必要があります.
 
 ````md
 ---
-title: Weekly Report
+title: 週次レポート
 output: blastula::blastula_email
 --- 
 
-Dear Boss,
+ボスへ
 
-Below is an analysis of the `iris` data:
+お疲れ様です.
+
+以下が `iris` データの分析になります.
 
 ```{r}`r ''`
 summary(iris)
 plot(iris[, -5])
 ```
 
-Please let me know if it is not boring enough.
+もううんざりだというのなら知らせていただきたく.
 
-Sincerely,  
-John
+よろしくお願いします
+ジョン
 ````
 
-This Rmd document should be rendered via the function `blastula::render_email()`, and the output can be passed to `blastula::smtp_send()`, which will send out the email. Note that `smtp_send()` needs an email server as well as your credentials.
+この Rmd 文書は `blastula::render_email()` 関数でレンダリングされるべきであり, 出力は `blastula::smtp_send()` に渡すことができます. これはEメールを送信する関数です. `smtp_send()` にはEメールサーバとあなたの認証が必要であることに注意してください.
 
-If you use RStudio Connect, you can find more examples at https://solutions.rstudio.com/examples/blastula-overview/, including automated, conditional, and parameterized emails.
+RStudio Connect を使用しているなら,  https://solutions.rstudio.com/examples/blastula-overview/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例を見ることができます.
