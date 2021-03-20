@@ -69,7 +69,7 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 Sys.which('pdfcrop')
 ```
 
-LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, なおかつ `pdfcrop` があなたのシステムで利用できないなら, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールするとよいでしょう.
+LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, なおかつ `pdfcrop` があなたのシステムで利用できないなら, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールすることもできます.
 
 PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの **magick** [@R-magick]\index{R パッケージ!magick}を呼び出してクロップします. この R パッケージがインストールされているか確認する必要があります. 図\@ref(fig:crop-no)はクロップされていないグラフで, 図 \@ref(fig:crop-yes)はクロップされた同じグラフです.
 
@@ -83,7 +83,7 @@ plot(cars)
 
 ## PNG のグラフを最適化する {#optipng}
 
-OptiPNG (<http://optipng.sourceforge.net>)\index{OptiPNG} プログラムをインストールしているなら, PNG 形式のグラフ画像ファイルを画質を劣化させることなく縮小するために最適化するのに使うとよいでしょう\index{チャンクフック!PNG の最適化}\index{図!PNG の最適化}.
+OptiPNG (<http://optipng.sourceforge.net>)\index{OptiPNG} プログラムをインストールしているなら, PNG 形式のグラフ画像ファイルを画質を劣化させることなく縮小するために最適化するのに使うこともできます\index{チャンクフック!PNG の最適化}\index{図!PNG の最適化}.
 
 ```{r, eval=FALSE}
 knitr::knit_hooks$set(optipng = knitr::hook_optipng)
@@ -95,7 +95,7 @@ macOS ユーザーは Homebrew (https://brew.sh) で簡単に OptiPNG をイン�
 
 ## チャンクの実行時間をレポートする {#time-chunk}
 
-**knitr** はデフォルトでは knit 処理中にテキストベースの進捗バーを提供します. より正確なチャンクの時間の情報がほしいなら, 各チャンクの時間を記録するカスタムチャンクフックを登録するとよいでしょう. これはそのようなフックの例です.
+**knitr** はデフォルトでは knit 処理中にテキストベースの進捗バーを提供します. より正確なチャンクの時間の情報がほしいなら, 各チャンクの時間を記録するカスタムチャンクフックを登録することもできます. これはそのようなフックの例です.
 
 ```{r, eval=FALSE}
 knitr::knit_hooks$set(time_it = local({
@@ -124,13 +124,13 @@ Sys.sleep(2)
 
 全てのコードチャンクで時間を表示したいなら, もちろん `knitr::opts_chunk$set(time_it = TRUE)` でグローバルに設定することができます.
 
-上記のフック関数で, チャンクオプションのより詳細な情報を出力することもできます. つまりフック関数の `options` 引数を使います. 例えば, 返り値にチャンクラベルを表示するとよいでしょう.
+上記のフック関数で, チャンクオプションのより詳細な情報を出力することもできます. つまりフック関数の `options` 引数を使います. 例えば, 返り値にチャンクラベルを表示する手もあります.
 
 ```{r, eval=FALSE}
 paste('Time for the chunk', options$label, 'to run:', res)
 ```
 
-あるいはフック関数で表示させずに記録してもよいでしょう.
+あるいはフック関数で表示させずに記録するという手もあります.
 
 ```{r, eval=FALSE}
 all_times <- list()  # 全てのチャンクの時間を保存する
@@ -155,7 +155,7 @@ knitr::knit_hooks$set(time_it = local({
 
 読者に元のチャンクヘッダのコードを表示したい時もあるかもしれません. 例えば R Markdown のチュートリアルを書いていて, チャンクの出力とその出力を生成するのに使用したチャンクオプションの両方を表示したいことがあるかもしれません. よって読者が自分で同じことをする方法を学ぶことができるというわけです.
 
-本来のチャンクオプションは実際にはチャンクオプションの `params.scr` 内に文字列として保存されています. これを知ったあなたは `params.src` を出力するチャンクフックを書くとよいでしょう. 以下はその完全な例です.
+本来のチャンクオプションは実際にはチャンクオプションの `params.scr` 内に文字列として保存されています. これを知ったあなたは `params.src` を出力するチャンクフックを書くこともできます. 以下はその完全な例です.
 
 `r import_example('chunk-wrapper.Rmd')`
 

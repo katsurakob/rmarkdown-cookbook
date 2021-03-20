@@ -33,7 +33,7 @@ vignette("lua-filters", package = "rmarkdown")
 
 ## 文書タイトルを動的に設定する {#dynamic-yaml}
 
-Rmd 文書内のどこでも, YAML メタデータの部分であっても行内 R コード (\@ref(r-code)節) を使うことができます. つまり行内 R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!動的生成}が可能ということです. 例えばこのように.
+Rmd 文書内のどこでも, YAML メタデータの部分であってもインライン R コード (\@ref(r-code)節) を使うことができます. つまりインライン R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!動的生成}が可能ということです. 例えばこのように.
 
 ```yaml
 ---
@@ -123,7 +123,9 @@ output:
 
 全く同じことを, `{.unnumbered}` を使ってもできます. 例えば `{.unnumbered #section-id}` のように, 他の属性を追加することもできます. 詳細は https://pandoc.org/MANUAL.html#extension-header_attributes を確認してください.
 
-付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図\@ref(fig:unnumbered-sections)で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています. TODO: 日本語版が出来たらスクリーンショット撮り直す.
+付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図\@ref(fig:unnumbered-sections)で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています. 
+
+TODO: 日本語版ができたらスクリーンショット撮り直す.
 
 ```{r, unnumbered-sections, echo=FALSE, fig.cap='付番された章とされていない章を示すための目次のスクリーンショット'}
 knitr::include_graphics('images/unnumbered-sections.png', dpi = NA)
@@ -135,7 +137,7 @@ knitr::include_graphics('images/unnumbered-sections.png', dpi = NA)
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-参考文献の目録\index{bibliography}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ると良いでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
+参考文献の目録\index{bibliography}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ることもできます. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
 
 ```yaml
 ---
@@ -277,7 +279,7 @@ knitr::write_bib(file = 'packages.bib')
 
 上記の例では `packages.bib` が自動で生成されたもので, 手動で変更すべきではありません. それ以外の全ての引用エントリは `references.bib` に手動で書き込むことができます.
 
-ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには,  **knitcitations** パッケージ\index{R package!knitcitations} [@R-knitcitations] を確認すると良いでしょう.
+ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには,  **knitcitations** パッケージ\index{R パッケージ!knitcitations} [@R-knitcitations] を確認することもできます.
 
 ## 文書内の相互参照 {#cross-ref}
 
@@ -309,7 +311,7 @@ knitr::include_graphics("images/bookdown-ref.png", dpi = NA)
 
 <!-- https://stackoverflow.com/questions/23449319/yaml-current-date-in-rmarkdown -->
 
-出力されたレポートに Rmd 文書がコンパイルされた日付を表示したいなら, YAML メタデータの `date` フィールド\index{YAML!date}に行内 R 評価式を追加し, 現在の日付を得るために `Sys.Date()` or `Sys.time()` 関数を使用できます.
+出力されたレポートに Rmd 文書がコンパイルされた日付を表示したいなら, YAML メタデータの `date` フィールド\index{YAML!date}にインライン R コードを追加し, 現在の日付を得るために `Sys.Date()` or `Sys.time()` 関数を使用できます.
 
 ```yaml
 date: "`r knitr::inline_expr('Sys.Date()')`"
@@ -385,7 +387,7 @@ author:
 ---
 ```
 
-特定の R Markdown テンプレートでは YAML に直接追加パラメータを指定することができます. 例えば [Distill](https://rstudio.github.io/distill/) 出力フォーマットは `url`, `affiliation`, `affiliation_url` を指定することが可能です. まずは **distill** パッケージ [@R-distill]\index{R package!distill} をインストールします.
+特定の R Markdown テンプレートでは YAML に直接追加パラメータを指定することができます. 例えば [Distill](https://rstudio.github.io/distill/) 出力フォーマットは `url`, `affiliation`, `affiliation_url` を指定することが可能です. まずは **distill** パッケージ [@R-distill]\index{R パッケージ!distill} をインストールします.
 
 ```{r, eval=FALSE}
 install.packages('distill')
@@ -443,7 +445,7 @@ output:
 
 文字列ベクトルを人間の読みやすい形で出力したいとします. 例えば `x <- c("apple", "banana", "cherry")` について, きっとあなたは `[1] "apple" "banana" "cherry"` のような R が通常プリントする形式で出力をしてほしくないでしょう. あなたは代わりに "`apple, banana, and cherry`" という文字列がほしいのではないでしょうか. 文字列ベクトルを連結して1つにまとめる R 基本関数の `paste()` があります. 例えば `paste(x, collapse = ', ')` とすれば, 出力は `"apple, banana, cherry"` となるでしょう. この方法の問題は (1) 接続詞 "and" が欠けており, (2) ベクトルの要素が2つだけの場合はコンマを使うべきでない (`"apple, banana"` ではなく `"apple and banana"` という出力になるべき) ということです.
 
-`knitr::combine_words()`\index{knitr!combine\_words()} 関数は文字列ベクトルの長さにかかわらず, 要素を連結して文にできます. 基本的に, 単語1つに対してはそのまま同じものを返し, "A and B" という2つの単語に対しては `"A and B"` と返し, 3つ以上なら `"A, B, C, ..., Y, and Z"` と言うふうに返します. この関数はさらに出力をカスタマイズするいくつかの引数を持っています. 例えば出力される単語をバッククオートで囲みたいなら, ``knitr::combine_words(x, before = '`')`` を使えば良いでしょう. 以下に他の引数についてもさらなる例を示します. これらの出力例から引数の意味がよくわからないのであれば, ヘルプページ `?knitr::combine_words` もご覧ください.
+`knitr::combine_words()`\index{knitr!combine\_words()} 関数は文字列ベクトルの長さにかかわらず, 要素を連結して文にできます. 基本的に, 単語1つに対してはそのまま同じものを返し, "A and B" という2つの単語に対しては `"A and B"` と返し, 3つ以上なら `"A, B, C, ..., Y, and Z"` というふうに返します. この関数はさらに出力をカスタマイズするいくつかの引数を持っています. 例えば出力される単語をバッククオートで囲みたいなら, ``knitr::combine_words(x, before = '`')`` を使うこともできます. 以下に他の引数についてもさらなる例を示します. これらの出力例から引数の意味がよくわからないのであれば, ヘルプページ `?knitr::combine_words` もご覧ください.
 
 ```{r, collapse=TRUE}
 v = c("apple", "banana", "cherry")
@@ -456,7 +458,7 @@ knitr::combine_words(v[1:2])  # 単語2つ
 knitr::combine_words(LETTERS[1:5])
 ```
 
-この関数は行内 R 評価式を使うときに特に使いやすいでしょう. 例えばこのように.
+この関数はインライン R コードを使うときに特に使いやすいでしょう. 例えばこのように.
 
 ```markdown
 今朝は`r v <- c("りんご", "バナナ", "さくらんぼ"); knitr::inline_expr("knitr::combine_words(v, sep = '、', and='')")`を食べた.
@@ -609,7 +611,7 @@ DiagrammeR::grViz("
 
 ## 特殊文字をエスケープする {#special-chars}
 
-Markdown 構文で特殊な意味を持つ文字がいくつかあります. これらの文字を直接使いたい場合, エスケープしなければなりません. 例えばテキストを囲むアンダースコアの組はたいていの場合テキストをイタリック体にします. イタリック体ではなく, アンダースコアをそのまま表示させたいなら, アンダースコアをエスケープする必要があります. 特殊な文字をエスケープする方法は, その直前にバックスラッシュを付けることです. 例えば「`ここは\_イタリックに\_したくない.`」というふうに. 同様に, `#` をセクションヘッダを表してほしくないなら, `\# これは見出しではない` などと書けばよいでしょう.
+Markdown 構文で特殊な意味を持つ文字がいくつかあります. これらの文字を直接使いたい場合, エスケープしなければなりません. 例えばテキストを囲むアンダースコアの組はたいていの場合テキストをイタリック体にします. イタリック体ではなく, アンダースコアをそのまま表示させたいなら, アンダースコアをエスケープする必要があります. 特殊な文字をエスケープする方法は, その直前にバックスラッシュを付けることです. 例えば「`ここは\_イタリックに\_したくない.`」というふうに. 同様に, `#` をセクションヘッダを表してほしくないなら, `\# これは見出しではない` などと書くこともできます.
 
 \@ref(linebreaks) 節で言及したように, 連続した空白文字は1つの正規スペースとして表示されます. 書いたとおりに連続した空白文字を表示させたいならば, 1つ1つにエスケープが必要です. 例えば `ソーシャル \ \ \ ディスタンス維持` というふうに. 空白がエスケープされた時, 空白は「改行しない空白」に変換されます. これは, そのスペースの位置では行が折り返されないということです. 例えば `Mr.\ Dervieux` と言うふうに. TODO: ここもしかして折返しが発生するように調整されてる?
 
@@ -664,7 +666,7 @@ labs = setdiff(labs, c("setup", "get-labels"))
 ```
 ````
 
-`knitr::all_labels()` の引数を使ってコードチャンクをフィルタリングすることもできます. 例えば `Rcpp` エンジン (`engine == "Rcpp"`) を使用した全てのコードチャンクを得て, かつ文書に表示しない (`echo = FALSE`) ようにするには `knitr::all_labels(engine == "Rcpp", echo == FALSE)` を使えば良いでしょう. どのコードチャンクを補遺に表示したいのか, 正確にコントロールしたいならば, 指定したいコードチャンクに特殊なチャンクオプション `appendix = TRUE` を使い, それらのチャンクのラベルを得るのに `ref.label = knitr::all_labels(appendix == TRUE)` を使えば良いでしょう.
+`knitr::all_labels()` の引数を使ってコードチャンクをフィルタリングすることもできます. 例えば `Rcpp` エンジン (`engine == "Rcpp"`) を使用した全てのコードチャンクを得て, かつ文書に表示しない (`echo = FALSE`) ようにするには `knitr::all_labels(engine == "Rcpp", echo == FALSE)` を使うこともできます. どのコードチャンクを補遺に表示したいのか, 正確にコントロールしたいならば, 指定したいコードチャンクに特殊なチャンクオプション `appendix = TRUE` を使い, それらのチャンクのラベルを得るのに `ref.label = knitr::all_labels(appendix == TRUE)` を使うこともできます.
 
 ## Pandoc の Lua フィルタから操作する (\*) {#lua-filters}
 
@@ -739,7 +741,7 @@ R Markdown の世界では Lua フィルタを活用しているパッケージ�
 
 本書の\@ref(lua-color)節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.
 
-Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{出力オプション!pandoc\_args} オプションで適用すると良いでしょう. 例えばこのように.
+Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{出力オプション!pandoc\_args} オプションで適用することもできます. 例えばこのように.
 
 ```yaml
 ---

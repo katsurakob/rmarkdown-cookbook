@@ -17,7 +17,7 @@ LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr
 knitr::is_html_output(excludes = 'markdown')
 ```
 
-特定の出力要素を LaTeX または HTML でのみ生成することができるのなら, これらの関数は条件つきで生成するのに使うことができます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるといいでしょうが, そういった LaTeX 環境はおそらく HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うと良いでしょう). 以下はその例です.
+特定の出力要素を LaTeX または HTML でのみ生成することができるのなら, これらの関数は条件つきで生成するのに使うことができます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境はおそらく HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
 
 `r import_example('latex-tiny.Rmd')`
 
@@ -105,7 +105,7 @@ knitr::include_url('https://yihui.org')
 
 **訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48%  と少し小さくしています.
 
-図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, \@ref(latex-subfigure)説を見るとよいでしょう. しかしサブフィギュアは LaTeX に対してのみのサポートです.
+図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, \@ref(latex-subfigure)節を見ることができます. しかしサブフィギュアは LaTeX に対してのみのサポートです.
 
 ## 生のコードを書く (\*) {#raw-content}
 
@@ -123,7 +123,7 @@ knitr::include_url('https://yihui.org')
 ```
 ````
 
-属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力を確認すればよいでしょう\index{knitr!pandoc\_toc()}.
+属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力を確認することもできます\index{knitr!pandoc\_toc()}.
 
 ````md
 ```{r}`r ''`
@@ -210,7 +210,7 @@ LaTeX 出力はこうなります.
 \end{center}
 ```
 
-HTML 出力では, ユーザーの好みで CSS によって `<div>` ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば `\newenvironment` を, 既存の環境を再定義するならば `\renewenvironment` コマンドを LaTeX 上で使うと良いでしょう. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は `style.css` や `preamble.tex` といったファイルを内に記述子, YAML オプションで読み込みます.
+HTML 出力では, ユーザーの好みで CSS によって `<div>` ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば `\newenvironment` を, 既存の環境を再定義するならば `\renewenvironment` コマンドを LaTeX 上で使うこともできます. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は `style.css` や `preamble.tex` といったファイルを内に記述子, YAML オプションで読み込みます.
 
 ```yaml
 ---
@@ -229,7 +229,9 @@ output:
 
 まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.
 
-HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくないなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか. TODO: 日本語の代替サイト
+HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくないなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか.
+
+TODO: 日本語の代替サイト
 
 ```{cat, class.source='css', engine.opts=list(file = 'css/box.css')}
 .blackbox {
@@ -410,7 +412,7 @@ Below we show more example blocks with different icons:
 :::
 
 
-代替案として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成しても良いでしょう. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
+代替案として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成することもできます. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
 
 `r import_example('awesomebox.Rmd')`
 

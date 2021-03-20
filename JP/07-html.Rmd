@@ -105,7 +105,7 @@ knitr::include_graphics("images/html-scroll.png", dpi = NA)
 
 第2の R  コードチャンクからのテキスト出力の高さも 100px です. これが出力にたいして, カスタムクラス名 `scroll-100` を割り当て, 高さの上限を 100px に定義した理由です.
 
-個別のコードブロックに対して異なる最大高さを指定したいならば, \@ref(hook-scroll)節の例を見ればよいでしょう.
+個別のコードブロックに対して異なる最大高さを指定したいならば, \@ref(hook-scroll)節の例を見ることもできます.
 
 ## 全コードブロックを折りたたみ, かついくつかは表示する {#fold-show}
 
@@ -169,7 +169,7 @@ knitr::include_graphics("images/html-tabs.png", dpi = NA)
 ## Results {.tabset .tabset-pills}
 ```
 
-デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加するとよいでしょう.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加することもできます.
 
 タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にすることができます. 例えばこのように.
 
@@ -313,7 +313,7 @@ output:
 
 HTML にあまり詳しくないなら, \@ref(html-template)節がこのオプションをより理解するのに役に立つかもしれません.
 
-`in_header` オプションを使うなら, CSS と JavaScript コードを `<head>` タグ内に挿入することができます. `before_body` を使うなら, バナーやロゴを表示するヘッダを埋め込むと良いでしょう. `after_body` を使うなら, フッタを読み込ませることができます. 例えばこのように.
+`in_header` オプションを使うなら, CSS と JavaScript コードを `<head>` タグ内に挿入することができます. `before_body` を使うなら, バナーやロゴを表示するヘッダを埋め込むこともできます. `after_body` を使うなら, フッタを読み込ませることができます. 例えばこのように.
 
 ```html
 <div class="footer">Copyright &copy; John Doe 2020</div>
@@ -353,9 +353,9 @@ HTML ファイル内読み込めるのは別の HTML 部分だけであり, 完�
 
 HTML ファイルを別の HTML 出力文書に読み込む時に問題が発生したなら, HTML ファイルに `<html>` タグが含まれていないか確認するとよいかもしれません.
 
-**rmarkdown** パッケージには `html_fragment` という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書は `html_document` フォーマットの代わりに `html_fragment` フォーマットを使うと良いでしょう.
+**rmarkdown** パッケージには `html_fragment` という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書は `html_document` フォーマットの代わりに `html_fragment` フォーマットを使うこともできます.
 
-HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら,  \@ref(child-document)節で紹介されている子文書を使うとよいでしょう.
+HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら,  \@ref(child-document)節で紹介されている子文書を使うこともできます.
 
 ## ブラウザアイコンをカスタマイズする {#favicon}
 
@@ -419,7 +419,7 @@ knitr::include_graphics(c('images/details-closed.png', 'images/details-open.png'
 
 `r import_example('details-tag.Rmd')`
 
-上記の JavaScript コードを自分で適用すればよいでしょう. ポイントは要素を `<details>` で囲むということです.
+上記の JavaScript コードを自分で適用することもできます. ポイントは要素を `<details>` で囲むということです.
 
 ```js
 document.querySelectorAll('pre:not([class])');
@@ -437,7 +437,7 @@ RStudio は R Markdown で作られた様々な種類のコンテンツをイン
 
 - [**RPubs**](https://rpubs.com) は静的な単一の R Markdown コンテンツの無料ホスティングを可能とします. RStudio IDE の `Publish` ボタンまたは `rsconnect::rpubsUpload()` 関数で簡単に公開できます. 詳細は "Getting Started" のページ (https://rpubs.com/about/getting-started) をご覧ください.
 
-- [**ShinyApps.io**](https://www.shinyapps.io) は R を実行するサーバを要求するような動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる^[R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで `runtime: shiny` または `runtime: shiny_prerendered` オプションを設定するとよいでしょう. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに `rmarkdown::run()` で文書を実行することになります. 詳しく知るには @rmarkdown2018 (Chapter 19, https://bookdown.org/yihui/rmarkdown/shiny-documents.html) をご覧ください.]インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか `rsconnect::deployApp()` 関数を使って公開できます. 詳細はユーザーガイド (https://docs.rstudio.com/shinyapps.io/) をご覧ください.
+- [**ShinyApps.io**](https://www.shinyapps.io) は R を実行するサーバを要求するような動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる^[R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで `runtime: shiny` または `runtime: shiny_prerendered` オプションを設定することもできます. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに `rmarkdown::run()` で文書を実行することになります. 詳しく知るには @rmarkdown2018 (Chapter 19, https://bookdown.org/yihui/rmarkdown/shiny-documents.html) をご覧ください.]インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか `rsconnect::deployApp()` 関数を使って公開できます. 詳細はユーザーガイド (https://docs.rstudio.com/shinyapps.io/) をご覧ください.
 
 - [**bookdown.org**](https://bookdown.org/home/about/) は **bookdown** パッケージで書かれた本の無料ホスティングを提案します. `bookdown::publish_book()` 関数であなたの書籍の静的な出力ファイルを簡単に公開できるでしょう.
 

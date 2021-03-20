@@ -10,6 +10,7 @@ bibliography:
   - bib/literature.bib
   - 'bib/literature-ja.bib'
 description: 本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう.
+site: bookdown::bookdown_site
 mainfont: "DejaVu Serif"
 mainfontoptions:
   - Scale=0.9
@@ -27,7 +28,6 @@ colorlinks: yes
 lot: yes
 lof: yes
 fontsize: 11pt
-site: bookdown::bookdown_site
 github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
@@ -94,7 +94,7 @@ original_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
 ```
 
 ---
-date: "`r original_time` (翻訳作業中の草稿)"
+date: "`r original_time`, ver. Beta (翻訳作業中の草稿)"
 ---
 
 # はじめに {-}

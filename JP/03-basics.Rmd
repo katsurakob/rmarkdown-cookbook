@@ -45,7 +45,7 @@ R スクリプトをレポートにレンダリングすると, まず `knitr::s
 
 - `#+` で始まるコメントは `knitr` チャンクヘッダとして扱われます. 例えば `#+ label, fig.width=5` というコメントを, `knitr::spin()` は R Markdown の ```` ```{r label, fig.width=5}```` というチャンクヘッダへ翻訳します.
 
-- `{{ code }}` で囲まれた R コードは R Markdown のインライン R 表現へ翻訳されます. `{{ code }}` は1行で書かなければならないことに注意してください.
+- `{{ code }}` で囲まれた R コードは R Markdown のインライン R コードへ翻訳されます. `{{ code }}` は1行で書かなければならないことに注意してください.
 
 - YAML\index{YAML} フロントマターも, R スクリプトの冒頭の roxigen コメント内に書くことができます. YAML フィールドのインデントによく気をつけてください. YAML のインデントを省くとデータ構造の表現は不正確なものに変わることがあります. 例えば `keep_tex: true` というフィールドは, 後述する例のように `pdf_document` 以下に2つ以上のスペースでインデントするべきです.
 
@@ -96,7 +96,7 @@ purl2('examples/purl.Rmd', documentation = 2)
 
 `purl = FALSE` というオプションのあるコードチャンクはこの R スクリプトから除外されることに注意してください.
 
-インライン R 表現はデフォルトでは無視されます. R スクリプトにインライン表現も含めたいなら, `knitr::purl()` を呼ぶ前に R のグローバルオプション `options(knitr.purl.inline = TRUE)` を設定する必要があります.
+インライン R コードはデフォルトでは無視されます. R スクリプトにインライン表現も含めたいなら, `knitr::purl()` を呼ぶ前に R のグローバルオプション `options(knitr.purl.inline = TRUE)` を設定する必要があります.
 
 ## R Markdown Notebook {#notebook}
 

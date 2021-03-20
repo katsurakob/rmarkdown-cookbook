@@ -417,7 +417,7 @@ output:
 
 デフォルトの LaTeX テンプレートは https://github.com/jgm/pandoc/tree/master/data/templates で見ることができます (ファイル名は `default.latex`). 自分でテンプレートを作成したい場合, このテンプレートから作りたいと思うことでしょう.
 
-Pandoc 変数の完全なリストとその意味 (`$body$` や `$title$` のような) は Pandoc マニュアルの https://pandoc.org/MANUAL.html#templates で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, **MonashEBSTemplates** パッケージ\index{R パッケージ!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates) を確認すると良いでしょう. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは `inst/rmarkdown/templates/*/resources/` ディレクトリ (`*` はテンプレート名を指します) 以下にあります. 例えば出力フォーマット `MonashEBSTemplates::memo` に対するテンプレートは YAML メタデータの変数 `branding` をモナシュ大学のブランドロゴを含むかどうかをコントロールするのに使えます. このようにテンプレート内で `if` 文を使うことでこれを実現しています.
+Pandoc 変数の完全なリストとその意味 (`$body$` や `$title$` のような) は Pandoc マニュアルの https://pandoc.org/MANUAL.html#templates で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, **MonashEBSTemplates** パッケージ\index{R パッケージ!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates) を確認することもできます. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは `inst/rmarkdown/templates/*/resources/` ディレクトリ (`*` はテンプレート名を指します) 以下にあります. 例えば出力フォーマット `MonashEBSTemplates::memo` に対するテンプレートは YAML メタデータの変数 `branding` をモナシュ大学のブランドロゴを含むかどうかをコントロールするのに使えます. このようにテンプレート内で `if` 文を使うことでこれを実現しています.
 
 ```latex
 $if(branding)$%
@@ -432,7 +432,7 @@ $endif$
 
 デフォルトでは Pandoc は LaTeX へ変換する時, 文書内の LaTeX コード\index{LaTeX!生のコード}を維持するので, Markdown 内で LaTeX コマンドや環境を使うことができます. しかし, LaTeX コードが Pandoc がパースするには複雑過ぎるときがあるかもしれず, そのような場合 Pandoc は通常の Markdown として扱います. 結果として特別な LaTeX の文字はエスケープされます. 例えばバックスラッシュ `\` は `\textbackslash{}` に変換されるかもしれません.
 
-Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, `=latex` の属性を付けると良いでしょう. 例えばこのように.
+Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, `=latex` の属性を付けることもできます. 例えばこのように.
 
 ````md
 ```{=latex}
@@ -453,7 +453,7 @@ R Markdown はきっと執筆と組版のための最善の文書フォーマッ
 
 `r import_example('knitr.Rnw')`
 
-例えば上記のファイルは `latex.Rnw` であるようにファイル名はたいてい `.Rnw`\index{LaTeX!Rnw} という拡張子がつきます. 考え方は同じですが R コードチャンクと行内 R コードを書くための構文が異なっています. R コードチャンクは `<<>>=` で始まり (チャンクオプションは括弧内に書きます), `@` で終わります. 行内 R 式は `Sexpr{}` 内に書きます.
+例えば上記のファイルは `latex.Rnw` であるようにファイル名はたいてい `.Rnw`\index{LaTeX!Rnw} という拡張子がつきます. 考え方は同じですが R コードチャンクとインライン R コードを書くための構文が異なっています. R コードチャンクは `<<>>=` で始まり (チャンクオプションは括弧内に書きます), `@` で終わります. インライン R コードは `Sexpr{}` 内に書きます.
 
 `knitr::knit()` 関数は `Rnw` 文書を出力ファイルである LaTeX (`.tex`) にコンパイルでき, それをさらに `pdflatex` といった LaTeX ツールを通して PDF にコンパイルできます. `.Rnw` から PDF を一足でコンパイルするのに `knitr::knit2pdf()`\index{knitr!knit2pdf()} を使うこともできます. RStudio を使っているならツールバーの `Compile PDF` を押すこともできます. Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, たぶんあなたは **knitr** に変更したいだろうということに注意してください (その方法はこの投稿 http://stackoverflow.com/q/27592837/559676 を確認してください).
 

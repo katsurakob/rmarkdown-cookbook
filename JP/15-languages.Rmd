@@ -2,7 +2,7 @@
 
 R Markdown は **knitr** を通して R 言語以外の多くのプログラミング言語をもサポートしています. 言語の名前は3連続のバッククオートの後のカーリーブレースの最初の単語で表現されます. 例えば ```` ```{r}```` の小文字の `r` はコードチャンクに R のコードが含まれていることを意味し, ```` ```{python}```` は Python のコードチャンクであることを表しています. この章ではあなたがあまり詳しくないであろういくつかの言語をお見せします.
 
-**knitr** では, どの言語も言語エンジンを通してサポートされています. 言語エンジンは本質的にはソースコードとコードチャンクを入力として, 出力として文字列を返す関数です. これらは `knitr::knit_engines` オブジェクトで管理されています. 既存のエンジンはこのようにして確認すると良いでしょう.
+**knitr** では, どの言語も言語エンジンを通してサポートされています. 言語エンジンは本質的にはソースコードとコードチャンクを入力として, 出力として文字列を返す関数です. これらは `knitr::knit_engines` オブジェクトで管理されています. 既存のエンジンはこのようにして確認することもできます.
 
 ```{r, eval=FALSE}
 names(knitr::knit_engines$get())
@@ -54,7 +54,7 @@ knitr::knit_engines$set(upper = function(options) {
 })
 ```
 
-ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討するとよいでしょう. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
+ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討することもできます. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
 
 > ````md
 > ```{upper}`r ''`
@@ -84,7 +84,7 @@ knitr::knit_engines$set(py = function(options) {
 
 1. 最終的な出力を生成するため, チャンクオプション・ソースコード・テキスト出力を `knitr::engine_output()`\index{knitr!engine\_output()} 関数に与えることができます. この関数は `echo = FALSE` と `results = 'hide'` のようなよく使うオプションを処理します. よってあなたはこれらの場合に注意する必要はありません.
 
-**knitr** の多くの言語エンジンはこのようにして定義されています. つまり `system2()` を使って言語に対応するコマンドを実行してます. もし技術的に詳しい話に興味があるなら, R ソースコードにはほとんどの言語エンジンが書かれているここ https://github.com/yihui/knitr/blob/master/R/engine.R を確認するとよいでしょう.
+**knitr** の多くの言語エンジンはこのようにして定義されています. つまり `system2()` を使って言語に対応するコマンドを実行してます. もし技術的に詳しい話に興味があるなら, R ソースコードにはほとんどの言語エンジンが書かれているここ https://github.com/yihui/knitr/blob/master/R/engine.R を確認することもできます.
 
 そして今や, 新しいエンジン `py` を使うことができます. 例えばこのように.
 
@@ -114,11 +114,11 @@ print("Hello Python!")
 
 いつもどおりにチャンクヘッダに `echo = FALSE` or `eval = FALSE` といったチャンクオプションを追加することができます. Python の **matplotlib** パッケージで描かれたグラフもサポートしています.
 
-R Markdown と **knitr** の Python サポートは **reticulate** パッケージ\index{R パッケージ!reticulate} [@R-reticulate] に基づいており, このパッケージの重要な機能の1つは Python と R の双方向的なコミュニケーションを可能にすることです. 例えば **reticulate** の `py` オブジェクトを介して R セッションから Python の変数にアクセスしたり作成したりするとよいでしょう.
+R Markdown と **knitr** の Python サポートは **reticulate** パッケージ\index{R パッケージ!reticulate} [@R-reticulate] に基づいており, このパッケージの重要な機能の1つは Python と R の双方向的なコミュニケーションを可能にすることです. 例えば **reticulate** の `py` オブジェクトを介して R セッションから Python の変数にアクセスしたり作成したりすることもできます.
 
 `r import_example('python.Rmd')`
 
-**reticulate** パッケージに関する詳細は, https://rstudio.github.io/reticulate/ のドキュメントを見るとよいでしょう.
+**reticulate** パッケージに関する詳細については, https://rstudio.github.io/reticulate/ のドキュメントを見ることもできます.
 
 ## `asis` エンジンでコンテンツを条件付きで実行する Execute content conditionally via the `asis` engine {#eng-asis}
 
@@ -146,7 +146,7 @@ https://xkcd.com/221/ によれば, **真の**乱数を生成しました!
 ls *.Rmd | head -n 5
 ```
 
-`bash` は R の `system2()` 関数で呼び出されていることに注意してください. `~/.bash_profile` や `~/.bash_login` のようなプロファイルにある, あなたの定義したコマンドのエイリアスや `PATH` などの環境変数は無視されます. ターミナル上でシェルを使っている時のようにこれらのプロファイルがほしいなら, `engine.opts` を介して `-l` 引数を与えるとよいでしょう. これが例です.
+`bash` は R の `system2()` 関数で呼び出されていることに注意してください. `~/.bash_profile` や `~/.bash_login` のようなプロファイルにある, あなたの定義したコマンドのエイリアスや `PATH` などの環境変数は無視されます. ターミナル上でシェルを使っている時のようにこれらのプロファイルがほしいなら, `engine.opts` を介して `-l` 引数を与えることもできます. これが例です.
 
 ````md
 ```{bash, engine.opts='-l'}`r ''`
@@ -154,7 +154,7 @@ echo $PATH
 ```
 ````
 
-`-l` 引数を全ての `bash` チャンクで有効にしたいなら, 文書の冒頭でグローバルチャンクオプションに設定するとよいでしょう.
+`-l` 引数を全ての `bash` チャンクで有効にしたいなら, 文書の冒頭でグローバルチャンクオプションに設定することもできます.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(engine.opts = list(bash = '-l'))
@@ -272,7 +272,7 @@ summarize
 
 ## Asymptote でグラフィックを作成する {#eng-asy}
 
-Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行するとよいでしょう. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
+Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
 
 ```{asy, elevation, fig.cap='Asymptote で作成した3Dグラフィック', cache=TRUE, fig.retina=1, eval=is.na(Sys.getenv('CI', NA))}
 import graph3;
