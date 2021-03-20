@@ -513,7 +513,7 @@ output: pdf_document
 <span id="cb82-17"><a href="font-color.html#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="in">  -- if no color attribute, return unchange</span></span>
 <span id="cb82-18"><a href="font-color.html#cb82-18" aria-hidden="true" tabindex="-1"></a><span class="in">  if color == nil then return el end</span></span>
 <span id="cb82-19"><a href="font-color.html#cb82-19" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb82-20"><a href="font-color.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="in">  -- tranform to &lt;span style=&quot;color: red;&quot;&gt;&lt;/span&gt;</span></span>
+<span id="cb82-20"><a href="font-color.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="in">  -- transform to &lt;span style=&quot;color: red;&quot;&gt;&lt;/span&gt;</span></span>
 <span id="cb82-21"><a href="font-color.html#cb82-21" aria-hidden="true" tabindex="-1"></a><span class="in">  if FORMAT:match &#39;html&#39; then</span></span>
 <span id="cb82-22"><a href="font-color.html#cb82-22" aria-hidden="true" tabindex="-1"></a><span class="in">    -- remove color attributes</span></span>
 <span id="cb82-23"><a href="font-color.html#cb82-23" aria-hidden="true" tabindex="-1"></a><span class="in">    el.attributes[&#39;color&#39;] = nil</span></span>
@@ -590,7 +590,7 @@ gitbook.start({
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
+"family": "serif",
 "size": 2
 },
 "edit": {

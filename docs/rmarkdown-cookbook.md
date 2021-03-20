@@ -36,8 +36,9 @@ cover-image: images/cover.png
 
 
 
+
 ---
-date: "2021/03/20 21:40:51, ver. Beta (翻訳作業中の草稿)"
+date: "2021/03/21 00:22:01 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -56,6 +57,7 @@ Xie, Dervieux, and Riederer, which is licensed under
 
 ::: {.infobox .caution}
 **注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+
 :::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
@@ -165,6 +167,7 @@ Yihui Xie
 
 <!--chapter:end:index.Rmd-->
 
+
 # 著者について {#author .unnumbered}
 
 Yihui が本書のほとんどの文を書きました. これが第一著者であることを正当化する唯一の根拠です. Christophe は全ての Github issues をまとめ, そしていくつかのセクションを書いたというはっきりした貢献があります. Emily は本来は本書の査読者でした. Yihui は彼女と長いコメントでやり取りできるほどの忍耐がないので, 自分でとてもうまく書けたと思っていたものに大量の追加注文を付けられることの苦しみを分からせるために (つまり仕返しのために) 共同著者として招待されました. いいえ, これは冗談です. 彼女のコメントはとても有意義でしたが, Yihui には提案された全ての改善案に対処する時間がなかったため, 完全に好意的な理由で彼女を招待しました.
@@ -204,6 +207,7 @@ TODO: "satRday" はタイポか?
 Emily の他の関心は読書とウェイトリフティングです. 彼女は自分で辛い料理が好きだと考えていますが, 合衆国内にしか住んだことがないため, その言葉が実際に意味するところをよく分かっていないのだと言われています.
 
 <!--chapter:end:JP/content/00-authors.Rmd-->
+
 
 \mainmatter
 
@@ -322,6 +326,7 @@ tinytex::parse_packages(
 代わりに MiKTeX\index{LaTeX!MiKTeX} を使っているなら, これも自動で足りないパッケージをインストールできます. MikTeX のインストール中に "Always install missing packages on-the-fly" の設定に必ずチェックしてください.  この設定をせずにインストールしていても, [まだ MiKTeX  Console で変更できます](https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175).
 
 <!--chapter:end:JP/content/01-installation.Rmd-->
+
 
 # コンセプトについての概論 {#conceptual-overview}
 
@@ -529,6 +534,7 @@ print(y)
 さあこの辺にしておきましょう. 本書の残りの部分で, R Markdown を最大限活用するために我々が説明した, あらゆるコンポネントを変更する方法のより具体的な例を使って, あなたの絵の下書きに色をつけることができます.
 
 <!--chapter:end:JP/content/02-overview.Rmd-->
+
 
 # 基本 {#basics}
 
@@ -741,6 +747,7 @@ editor_options:
 ```
 
 <!--chapter:end:JP/content/03-basics.Rmd-->
+
 
 # 文書の要素 {#document-elements}
 
@@ -1187,11 +1194,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年3月20日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年3月21日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 - `%Y %B`: 2021 3月
-- `%y/%m/%d`: 21/03/20
-- `%b%d (%a)`:  3月20 (土)
+- `%y/%m/%d`: 21/03/21
+- `%b%d (%a)`:  3月21 (日)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -1380,7 +1387,7 @@ TODO: quote poem だと flushrght が作られない?
 
 ## モデルを数式に変換する {#equatiomatic}
 
-Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic} (https://github.com/datalorax/equatiomatic) はRで当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
+Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic}  [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
 
 
 ```{.r .numberLines .lineAnchors}
@@ -1725,6 +1732,7 @@ output:
 
 <!--chapter:end:JP/content/04-content.Rmd-->
 
+
 # 書式 {#formatting}
 
 Markdown 言語の最大の強みは, その簡潔さが初心者にとっても読み書きを非常に簡単にさせていることです. これはオリジナルの Markdown 言語の考案者も次のようにまとめている設計原理の鍵です.
@@ -1814,7 +1822,7 @@ Span = function(el)
   -- if no color attribute, return unchange
   if color == nil then return el end
   
-  -- tranform to <span style="color: red;"></span>
+  -- transform to <span style="color: red;"></span>
   if FORMAT:match 'html' then
     -- remove color attributes
     el.attributes['color'] = nil
@@ -2269,6 +2277,7 @@ fenced `Div` についてより詳しく知りたいなら, \@ref(custom-blocks)
 **訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御することができます (\@ref(latex-variables)節参照).
 
 <!--chapter:end:JP/content/05-formatting.Rmd-->
+
 
 # LaTeX 出力 {#latex-output}
 
@@ -2794,6 +2803,7 @@ plot(rnorm(100))
 `Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも覚えておいてほしいです.
 
 <!--chapter:end:JP/content/06-latex.Rmd-->
+
 
 # HTML 出力 {#html-output}
 
@@ -3519,6 +3529,7 @@ HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対する�
 
 <!--chapter:end:JP/content/07-html.Rmd-->
 
+
 # Word {#word}
 
 R Markdown から Word 文書を生成するには, 出力フォーマット `word_document` が使えます. 文書に相互参照を含めたいなら, \@ref(cross-ref)節でも言及された `bookdown::word_document2` を検討するとよいでしょう.
@@ -3689,6 +3700,7 @@ ft <- fp_text(color = 'red', bold = TRUE)
 **officedown** についてより学ぶには, 公式ドキュメント https://davidgohel.github.io/officedown/ を確認してください.
 
 <!--chapter:end:JP/content/08-word.Rmd-->
+
 
 # 複数の出力フォーマット {#multi-formats}
 
@@ -3881,7 +3893,7 @@ plot(mpg ~ hp, data = mtcars, pch = 19)
 
 ````md
 ```{r}
-knitr:::pandoc_to()
+knitr::pandoc_to()
 ```
 ````
 
@@ -4219,6 +4231,7 @@ box_args <- function(
 **訳注**: 翻訳者の開発した **rmdja** パッケージでは, デフォルトでこの節で紹介されているようなカスタムブロックが定義されており, より簡単にアイコン付きブロックを記述できます. 詳細はこのパッケージのドキュメントをご覧ください.
 
 <!--chapter:end:JP/content/09-multiformat.Rmd-->
+
 
 # 表 {#tables}
 
@@ -5305,6 +5318,7 @@ HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう
 
 <!--chapter:end:JP/content/10-tables.Rmd-->
 
+
 # チャンクオプション {#chunk-options}
 
 図\@ref(fig:rmdworkflow)が表すように, **knitr** パッケージは R Markdown においてきわめて重要な役割を持ちます. この章と次の3つの章では **knitr** に関連するレシピをお見せします. 
@@ -6150,6 +6164,7 @@ knitr::opts_chunk$set(
 
 <!--chapter:end:JP/content/11-chunk-options.Rmd-->
 
+
 # 出力フック (\*) {#output-hooks}
 
 **knitr** パッケージによって, あなたはコードチャンクから出力されるものを各パーツ, ソースコード・テキスト出力・メッセージ・グラフといったものごとに制御しています. この制御は「出力フック」\index{出力フック}\index{output hooks|see{出力フック}} (output hook(s))によって実現されています. 出力フックは出力の各パーツを入力 (典型的には文字列ベクトルとして扱います) として, 出力文書に書き出すための文字列を返す一連の関数です. 現時点ではこのしくみを理解するのは簡単ではないでしょうが, これから説明する簡単な例を見ればこのアイディアがはっきりと理解できるものと思います. この例ではコードチャンクの出力がどのようにして **knitr** の出力フックを介してレンダリングされるかを表しています.
@@ -6642,6 +6657,7 @@ figcaption {
 
 <!--chapter:end:JP/content/12-output-hooks.Rmd-->
 
+
 # チャンクフック (\*) {#chunk-hooks}
 
 チャンクフック\index{チャンクフック}\index{chunk hook|see{チャンクフック}}はあるチャンクオプションの値が `NULL` ではないことが引き金となる関数です. チャンクフックはチャンク内でのコードの実行の範囲を越えて追加のタスクを実行する方法を提供します. 例えばグラフに後処理をしたいときがあるかもしれません (例えば\@ref(crop-plot), \@ref(optipng)節) し, コードチャンクの実行時間を記録したいかもしれません. このようなタスクはレポート内の計算や分析に必須ではないかもしれませんが, 例えばグラフを改良したり最も時間のかかっているチャンクを特定したりといった, 他の目的に対しては有用になりえます.
@@ -6741,6 +6757,8 @@ Sys.which("pdfcrop")
 ```
 
 LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, なおかつ `pdfcrop` があなたのシステムで利用できないなら, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールすることもできます.
+
+
 
 PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの **magick** [@R-magick]\index{R パッケージ!magick}を呼び出してクロップします. この R パッケージがインストールされているか確認する必要があります. 図\@ref(fig:crop-no)はクロップされていないグラフで, 図 \@ref(fig:crop-yes)はクロップされた同じグラフです.
 
@@ -6949,6 +6967,7 @@ plot3d(x, y, z, col = rainbow(1000))
 \end{figure}
 
 <!--chapter:end:JP/content/13-chunk-hooks.Rmd-->
+
 
 # その他の knitr のトリック {#knitr-misc}
 
@@ -7553,6 +7572,7 @@ mean(x)
 
 <!--chapter:end:JP/content/14-knitr-misc.Rmd-->
 
+
 # その他の言語 {#other-languages}
 
 R Markdown は **knitr** を通して R 言語以外の多くのプログラミング言語をもサポートしています. 言語の名前は3連続のバッククオートの後のカーリーブレースの最初の単語で表現されます. 例えば ```` ```{r}```` の小文字の `r` はコードチャンクに R のコードが含まれていることを意味し, ```` ```{python}```` は Python のコードチャンクであることを表しています. この章ではあなたがあまり詳しくないであろういくつかの言語をお見せします.
@@ -7961,6 +7981,8 @@ summarize
 
 ## Asymptote でグラフィックを作成する {#eng-asy}
 
+
+
 Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
 
 
@@ -8091,6 +8113,7 @@ $primary-color: #00FF00
 `sass`/`scss` コードチャンクは `sass::sass()` 関数によってコンパイルされます. 現在はチャンクオプション `engine.opts` で CSS コードの出力スタイルをカスタマイズできます. 例えば `engine.opts = list(style = "expanded")` のように. デフォルトのスタイルは "compressed" です. これが何を意味するのか自信がないなら, `?sass::sass_options` のヘルプを参照し, `output_style` 引数の項目を探してください.
 
 <!--chapter:end:JP/content/15-languages.Rmd-->
+
 
 # プロジェクトを管理する {#managing-projects}
 
@@ -8526,6 +8549,7 @@ R Markdown に基づいたウェブサイトを構築したいなら, **blogdown
 
 <!--chapter:end:JP/content/16-projects.Rmd-->
 
+
 # ワークフロー {#workflow}
 
 この章では R Markdown プロジェクトの運用のみならず個別の R Markdown 文書で作業する際の豆知識を紹介します. _R for Data Science_^[邦題『Rで学ぶデータサイエンス』] [@wickham2016] の [Chapter 30](https://r4ds.had.co.nz/r-markdown-workflow.html) も確認するとよいでしょう. ここには (R Markdown 文書を含む) 分析ノートの使用に関する豆知識が簡単に紹介されています. Nicholas Tierney も [_R Markdown for Scientists_.](https://rmd4sci.njtierney.com/workflow.html) でワークフローについて議論しています.
@@ -8779,8 +8803,6 @@ Google ドライブ上では共同編集作業を同期的に行うことも, �
 
 このパッケージには `update_rmd()` 関数があり, Rmd 文書をローカルで編集して, このローカルな Rmd 文書を Google ドライブへアップロードすることが可能になります. これは Google ドライブ上の文書を完全に上書きしてしまうため, おそらくこの関数を実行すべきではないです. 主著者は予め共同編集者たちにこれを警告したいと思うでしょう. 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきでない, というのが理想です. 編集された文書を `render_rmd()` 関数でローカル上で閲覧するのは大丈夫ですが (`render_rmd()` は文書をレンダリングする前に文書を自動的にダウンロードします).
 
-TODO: `udpate_rmd()` はタイポ?
-
 
 ## **workflowr** で R Markdown プロジェクトを研究用サイトでまとめる {#workflowr}
 
@@ -8821,6 +8843,7 @@ plot(iris[, -5])
 RStudio Connect を使用しているなら,  https://solutions.rstudio.com/examples/blastula-overview/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例を見ることができます.
 
 <!--chapter:end:JP/content/17-workflow.Rmd-->
+
 
 
 # (APPENDIX) 補遺 {-}

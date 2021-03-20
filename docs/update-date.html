@@ -469,11 +469,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb47"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb47-1"><a href="update-date.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></span></code></pre></div>
 <p>もっと人間にとって読みやすい, 特定の日次フォーマットを指定したいかもしれません. 例えば以下のようにします.</p>
 <div class="sourceCode" id="cb48"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb48-1"><a href="update-date.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%x&#39;)`&quot;</span></span></code></pre></div>
-<p>例えば 2021年3月20日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
+<p>例えば 2021年3月21日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
 <ul>
 <li><code>%Y %B</code>: 2021 3月</li>
-<li><code>%y/%m/%d</code>: 21/03/20</li>
-<li><code>%b%d (%a)</code>: 3月20 (土)</li>
+<li><code>%y/%m/%d</code>: 21/03/21</li>
+<li><code>%b%d (%a)</code>: 3月21 (日)</li>
 </ul>
 <p>表 <a href="update-date.html#tab:date-format">4.1</a> は POSIXct フォーマットの一覧です.</p>
 <table>
@@ -591,7 +591,7 @@ gitbook.start({
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
+"family": "serif",
 "size": 2
 },
 "edit": {

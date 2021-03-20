@@ -476,7 +476,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb191-9"><a href="raw-content.html#cb191-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力を確認することもできます.</p>
 <div class="sourceCode" id="cb192"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb192-1"><a href="raw-content.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb192-2"><a href="raw-content.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr:::pandoc_to()</span></span>
+<span id="cb192-2"><a href="raw-content.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::pandoc_to()</span></span>
 <span id="cb192-3"><a href="raw-content.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>生のコンテンツは特定の出力フォーマットでのみ表示されることに注意してください. 例えば生の LaTeX コンテンツは出力フォーマットが HTML の場合は無視されます.</p>
 </div>
@@ -513,7 +513,7 @@ gitbook.start({
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
+"family": "serif",
 "size": 2
 },
 "edit": {

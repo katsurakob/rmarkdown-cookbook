@@ -474,7 +474,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>Google ドライブ上では共同編集作業を同期的に行うことも, 非同期的に行うことも可能です. 複数の人間が同じ文書を同時に編集することも, 先に他の人の編集が完了するまで待つことも可能です.</p>
 <p>このパッケージには <code>update_rmd()</code> 関数があり, Rmd 文書をローカルで編集して, このローカルな Rmd 文書を Google ドライブへアップロードすることが可能になります. これは Google ドライブ上の文書を完全に上書きしてしまうため, おそらくこの関数を実行すべきではないです. 主著者は予め共同編集者たちにこれを警告したいと思うでしょう. 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきでない, というのが理想です. 編集された文書を <code>render_rmd()</code> 関数でローカル上で閲覧するのは大丈夫ですが (<code>render_rmd()</code> は文書をレンダリングする前に文書を自動的にダウンロードします).</p>
-<p>TODO: <code>udpate_rmd()</code> はタイポ?</p>
 </div>
             </section>
 
@@ -509,7 +508,7 @@ gitbook.start({
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
+"family": "serif",
 "size": 2
 },
 "edit": {

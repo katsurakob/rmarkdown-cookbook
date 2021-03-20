@@ -213,7 +213,7 @@
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/03/20 21:40:51, ver. Beta (翻訳作業中の草稿)}
+\date{2021/03/21 00:22:01 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/02/01 20:02:05 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -1616,16 +1616,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年3月20日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年3月21日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{\%Y \%B}: 2021 3月
 \item
-  \texttt{\%y/\%m/\%d}: 21/03/20
+  \texttt{\%y/\%m/\%d}: 21/03/21
 \item
-  \texttt{\%b\%d (\%a)}: 3月20 (土)
+  \texttt{\%b\%d (\%a)}: 3月21 (日)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -1847,7 +1847,7 @@ TODO: quote poem だと flushrght が作られない?
 \hypertarget{equatiomatic}{%
 \section{モデルを数式に変換する}\label{equatiomatic}}
 
-Daniel Anderson らによって開発された \textbf{equatiomatic} パッケージ\index{R パッケージ!equatiomatic} (\url{https://github.com/datalorax/equatiomatic}) はRで当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
+Daniel Anderson らによって開発された \textbf{equatiomatic} パッケージ\index{R パッケージ!equatiomatic} \autocite{R-equatiomatic} (\url{https://github.com/datalorax/equatiomatic}) は R で当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -2323,7 +2323,7 @@ R Markdown の文書を複数の出力フォーマットに対してデザイン
 \InformationTok{  {-}{-} if no color attribute, return unchange}
 \InformationTok{  if color == nil then return el end}
 \InformationTok{  }
-\InformationTok{  {-}{-} tranform to \textless{}span style="color: red;"\textgreater{}\textless{}/span\textgreater{}}
+\InformationTok{  {-}{-} transform to \textless{}span style="color: red;"\textgreater{}\textless{}/span\textgreater{}}
 \InformationTok{  if FORMAT:match \textquotesingle{}html\textquotesingle{} then}
 \InformationTok{    {-}{-} remove color attributes}
 \InformationTok{    el.attributes[\textquotesingle{}color\textquotesingle{}] = nil}
@@ -4661,7 +4661,7 @@ HTML ウィジェット (\url{https://htmlwidgets.org})\index{HTML!ウィジェ�
 \begin{Shaded}
 \begin{Highlighting}[]
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
-\InformationTok{knitr:::pandoc\_to()}
+\InformationTok{knitr::pandoc\_to()}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -10138,8 +10138,6 @@ YAML に直接ソースコードを置くなら, 関数全体をパーレン \te
 Google ドライブ上では共同編集作業を同期的に行うことも, 非同期的に行うことも可能です. 複数の人間が同じ文書を同時に編集することも, 先に他の人の編集が完了するまで待つことも可能です.
 
 このパッケージには \texttt{update\_rmd()} 関数があり, Rmd 文書をローカルで編集して, このローカルな Rmd 文書を Google ドライブへアップロードすることが可能になります. これは Google ドライブ上の文書を完全に上書きしてしまうため, おそらくこの関数を実行すべきではないです. 主著者は予め共同編集者たちにこれを警告したいと思うでしょう. 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきでない, というのが理想です. 編集された文書を \texttt{render\_rmd()} 関数でローカル上で閲覧するのは大丈夫ですが (\texttt{render\_rmd()} は文書をレンダリングする前に文書を自動的にダウンロードします).
-
-TODO: \texttt{udpate\_rmd()} はタイポ?
 
 \hypertarget{workflowr}{%
 \section{\texorpdfstring{\textbf{workflowr} で R Markdown プロジェクトを研究用サイトでまとめる}{workflowr で R Markdown プロジェクトを研究用サイトでまとめる}}\label{workflowr}}
