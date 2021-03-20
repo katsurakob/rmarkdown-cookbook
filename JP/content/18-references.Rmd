@@ -1,4 +1,4 @@
-```{r, child=if(knitr::is_latex_output()) 'JP/_knitr-options.Rmd'}
+```{r, child=if(knitr::is_latex_output()) file.path(BOOKLANG, 'content/_knitr-options.Rmd')}
 ```
 
 \backmatter

@@ -9,7 +9,7 @@ R Markdown はいくつかの異なるプロセスを合わせて文書を作成
 R Markdown 文書に対する基本的なワークフローの構造を図\@ref(fig:rmdworkflow)に示します. ステップ (矢印) と, 出力ファイルが生成される前に作成される中間ファイルを強調しています. 全ての処理は `rmarkdown::render()` 関数内で実装されています. 以降は各段階を詳細に説明します.
 
 ```{r rmdworkflow, echo = FALSE, fig.cap = "R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム", out.width='100%'}
-knitr::include_graphics("images/workflow.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/workflow.png"), dpi = NA)
 ```
 
 `.Rmd` 文書は, 文書の本来の形式です. YAML (メタデータ)\index{YAML}, テキスト (ナラティブ), コードチャンク\index{コードチャンク} を含んでいます.

@@ -99,7 +99,7 @@ LaTeX パッケージの **titling** \index{LaTeX パッケージ!titling} を�
 図\@ref(fig:latex-logo) がこの例の出力です.
 
 ```{r latex-logo, echo=FALSE, fig.cap="LaTeX の表紙ページにロゴを追加する", fig.align='center'}
-knitr::include_graphics("images/latex-logo.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/latex-logo.png"), dpi = NA)
 ```
 
 LaTeX パッケージ (**titling**) を特に要求しない代替方法として, Markdown 構文を使って `title` フィールド\index{YAML!title}に画像を挿入する方法があります. 例えばこのように.
@@ -305,7 +305,7 @@ boxplot(Sepal.Width ~ Species, data = iris)
 この出力を図\@ref(fig:latex-subfig)に示します. 簡潔さのため, 上記の例は `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"` や長いキャプションなどのチャンクオプションをいくつか省略しています.
 
 ```{r latex-subfig, fig.cap="複数の図を含む単一の figure 環境の例", echo=FALSE}
-knitr::include_graphics("images/latex-subfig.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/latex-subfig.png"), dpi = NA)
 ```
 
 ## Unicode 文字を含む文書をレンダリングする {#latex-unicode}

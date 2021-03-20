@@ -98,7 +98,7 @@ knitr::include_url('https://yihui.org')
 
 `r import_example('figures-side.Rmd')`
 
-```{r, child='examples/figures-side.Rmd', echo=FALSE, fig.dim=c(5, 4), fig.cap="横に並べた図"}
+```{r, child=file.path(BOOKLANG, 'examples/figures-side.Rmd'), echo=FALSE, fig.dim=c(5, 4), fig.cap="横に並べた図"}
 ```
 
 この単純なアプローチは PDF でも HTML 出力でも動作します.

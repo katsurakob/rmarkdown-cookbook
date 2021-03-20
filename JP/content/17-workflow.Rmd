@@ -173,7 +173,7 @@ rmarkdown::render('input.Rmd', params = 'ask')
 RStudio を使用しているなら, メニューの `Knit` ボタンの中にある `Knit with Parameters`\index{RStudio!Knit with Parameters} をクリックすることが可能です. 図\@ref(fig:params-shiny)はパラメータに対する GUI の例を示しています.
 
 ```{r, params-shiny, echo=FALSE, fig.cap='GUI から入力できるパラメータで R Markdown を knit する'}
-knitr::include_graphics('images/params-shiny.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/params-shiny.png'), dpi = NA)
 ```
 
 パラメータ化されたレポートの詳細については, _R Markdown Definitive Guide_ [@rmarkdown2018] の [Chapter 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) を読むことができます.

@@ -191,5 +191,5 @@ knitr::knit_hooks$set(time_it = local({
 この例をコンパイルすると図\@ref(fig:rgl-3d)のようなインタラクティブな3次元散布図が得られるはずです. インタラクティブなグラフは出力フォーマットが HTML の時にのみ動作することに注意してください.
 
 ```{r, rgl-3d, echo=FALSE, fig.cap='rgl パッケージから生成した3次元散布図', fig.align='center'}
-knitr::include_graphics('images/rgl-3d.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/rgl-3d.png'), dpi = NA)
 ```

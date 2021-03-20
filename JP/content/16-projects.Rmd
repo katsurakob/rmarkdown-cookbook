@@ -231,13 +231,13 @@ knitr::opts_knit$set(root.dir = '/tmp')
 RStudio を使用しているなら, 作業ディレクトリをメニュの `Tools -> Global Options -> R Markdown` からも選択できます\index{RStudio!作業ディレクトリ} (図\@ref(fig:rmd-wd)参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. "Current" オプションで R コンソールの現在の作業ディレクトリを使うか, "Project" オプションで Rmd ファイルの含まれているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.
 
 ```{r, rmd-wd, echo=FALSE, fig.cap='R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する', fig.align='center'}
-knitr::include_graphics('images/rmd-wd.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/rmd-wd.png'), dpi = NA)
 ```
 
 RStudio では, 図\@ref(fig:knit-wd)で見せるように, 個別の Rmd 文書をそれぞれ固有の作業ディレクトリで knit することもできます. "Knit Directory" を変更し "Knit" ボタンをクリックした後で, **knitr** はコードチャンクの評価に新しい作業ディレクトリを使用します. これらの全ての設定は既に言及した `knitr::opts_knit$set(root.dir = ...)` に集約されています. よってあなたがこれらの選択のいずれにも満足しないのなら, `knitr::opts_knit$set()` を使いご自分でディレクトリを指定できます.
 
 ```{r, knit-wd, echo=FALSE, fig.cap='RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する', fig.align='center'}
-knitr::include_graphics('images/knit-wd.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/knit-wd.png'), dpi = NA)
 ```
 
 作業ディレクトリに関して完全に正しい選択というものはありません. それぞれに長所と短所があります.
@@ -259,7 +259,7 @@ knitr::include_graphics('images/knit-wd.png', dpi = NA)
 うんざりさせられる作業ディレクトリ問題は相対パスに対処している時に発生した次のような疑問に端を発します. 「**何に対して相対的なの?**」と. 既に言及したように, いろいろな人がいろいろな好みを持っており, 完全に正しい回答はありません.
 
 ```{r, rmd-relative, echo=FALSE, fig.cap='RStudio 上で Rmd 文書のファイルパスを自動補完する', fig.align='center'}
-knitr::include_graphics('images/rmd-relative.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/rmd-relative.png'), dpi = NA)
 ```
 
 ## R パッケージのビネット {#package-vignette}
@@ -271,7 +271,7 @@ R パッケージの開発を経験したか, プロジェクトで自作関数�
 R Markdown でパッケージのビネットを作成するには, 最も簡単な方法は RStudio のメニュー `File -> New File -> R Markdown -> From Template`\index{RStudio!ビネットのテンプレート}を経由するものです (図\@ref(fig:package-vignette)参照). それから **rmarkdown** パッケージから "Package Vignette" を選択し, ビネットのテンプレートを得ます.  テンプレートの, タイトル・著者・その他のメタデータを変更したら, レポートの本文を書き始めることができます.
 
 ```{r, package-vignette, echo=FALSE, fig.cap='RStudio でパッケージのビネットを作成する'}
-knitr::include_graphics('images/package-vignette.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/package-vignette.png'), dpi = NA)
 ```
 
 代わりに, **usethis**\index{R パッケージ!usethis} [@R-usethis] をインストールしビネットのスケルトンを作成するのに `usethis::use_vignette()`\index{usethis!use\_vignette()} 関数を使うこともできます. 以下はパッケージのビネットの YAML フロントマターの典型的な姿です\index{YAML!ビネットのフロントマター}.
@@ -344,7 +344,7 @@ RStudio ユーザーにとって最も簡単な始め方は, 図\@ref(fig:bookdo
 RStudio を使っていないか, コンソールから作業するのが好きなら, `bookdown:::bookdown_skeleton('本のディレクトリ')` 関数を呼ぶことで同じものを生み出せます.
 
 ```{r, bookdown-project, echo=FALSE, fig.cap='RStudio で bookdown プロジェクトを作成する'}
-knitr::include_graphics('images/bookdown-project.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/bookdown-project.png'), dpi = NA)
 ```
 
 使用法を実演するために, 同じディレクトリに3つのファイルを含めた最低限の例を用意しました.

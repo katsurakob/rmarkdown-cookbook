@@ -170,7 +170,7 @@ output:
 図 \@ref(fig:wrap-text-1) は長い行のあるデフォルトの `pdf_document` 出力で, ページ余白をはみ出しています. 図\@ref(fig:wrap-text-2) は **listings** パッケージでテキストを折り返したときの PDF 出力です.
 
 ```{r, wrap-text, echo=FALSE, fig.cap=c('幅が広すぎる通常のテキスト出力', 'listings パッケージで折り返されたテキスト出力'), out.width='100%'}
-knitr::include_graphics(c('images/wrap-none.png', 'images/wrap-listings.png'), dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, c('images/wrap-none.png', 'images/wrap-listings.png')), dpi = NA)
 ```
 
 **訳注**: **listings** には多くのオプションがありますが, それだけでデフォルトのシンタックスハイライトを再現するのは難しいです. コードブロックの折返しは **knitr** の `styler` オプションである程度制御できます. Pandoc は出力ブロックをほとんど表示オプションのない `verbatim` 環境として出力し, これが問題の主な原因です. フィルタや LaTeX マクロを使うなどしてこの環境を置き換えればデフォルトのシンタックスハイライトと折返しを両立することができます.
@@ -352,7 +352,7 @@ HTML でも LaTeX でも同じようなレイアウトにしたいのなら, よ
 `r import_example('multicol.Rmd')`
 
 ```{r, multicol, echo=FALSE, fig.cap='HTML, LaTeX, Beamer で動作する二段組み', out.width='100%'}
-knitr::include_graphics('images/multicol.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/multicol.png'), dpi = NA)
 ```
 
 図\@ref(fig:multicol) がその出力です. この例では外側の `.cols` クラスを持つ `Div` と, 内側に `.col` クラスを持つ3つの `Div` を使っています. HTML 出力では, 外部 CSS ファイル `columns.css` を導入し, その中で Flexbox レイアウトを外側の `Div` に適用しているので, 内側の `Div` が横並びになります.

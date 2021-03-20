@@ -128,7 +128,7 @@ output:
 TODO: 日本語版ができたらスクリーンショット撮り直す.
 
 ```{r, unnumbered-sections, echo=FALSE, fig.cap='付番された章とされていない章を示すための目次のスクリーンショット'}
-knitr::include_graphics('images/unnumbered-sections.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), dpi = NA)
 ```
 
 節番号は漸増します. もし付番されている節の後にされていない節が挿入し, その後にさらに付番された節が開始しているなら, 節番号はそこから増加を再開します.
@@ -302,7 +302,7 @@ knitr::write_bib(file = 'packages.bib')
 この文書の出力を図 \@ref(fig:bookdown-ref) に示します. 
 
 ```{r bookdown-ref, fig.cap="R Markdown 文書内の相互参照の例", fig.align='center', echo=FALSE}
-knitr::include_graphics("images/bookdown-ref.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/bookdown-ref.png"), dpi = NA)
 ```
 
 数式, 定理, 節の見出しにも相互参照することができます. これらのタイプの参照は **bookdown** 本の 2.2, 2.6節でより説明されています.

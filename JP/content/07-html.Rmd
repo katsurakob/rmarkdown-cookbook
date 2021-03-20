@@ -66,7 +66,7 @@ Rmd 文書に CSS を適用する方法は\@ref(html-css)節を見てくださ�
 `r import_example('chunk-style.Rmd')`
 
 ```{r chunk-bg, echo=FALSE, fig.cap="Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック"}
-knitr::include_graphics("images/chunk-bg.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/chunk-bg.png"), dpi = NA)
 ```
 
 任意のクラスを使って対応する CSS ルールを定義することもできます. この場合, \@ref(html-css)節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません. 以下はその例です.
@@ -76,7 +76,7 @@ knitr::include_graphics("images/chunk-bg.png", dpi = NA)
 図\@ref(fig:chunk-border)がスタイルの出力です.
 
 ```{r chunk-border, echo=FALSE, fig.cap="明桃色の背景, 赤い太枠線をもつコードチャンク"}
-knitr::include_graphics("images/chunk-border.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/chunk-border.png"), dpi = NA)
 ```
 
 文書内の全てのコードブロックにカスタムスタイルを塩要したいなら, グローバルな **knitr** オプションで `class.source` を設定します. 例えばこのように.
@@ -98,7 +98,7 @@ knitr::opts_chunk$set(class.source='watch-out')
 `r import_example('html-scroll.Rmd')`
 
 ```{r html-scroll, echo=FALSE, fig.cap="カスタム CSS を使用したスクロール可能なコードブロック"}
-knitr::include_graphics("images/html-scroll.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/html-scroll.png"), dpi = NA)
 ```
 
 上記の例では全てのコードブロックに大域的に 300px の高さ上限を定義しています. HTML 出力時にはコードブロックが `<pre>` タグで囲まれていることを思い出してください. それから `class` 属性に `<pre>` ブロックの高さを 100px に制限します. これは CSS セレクタ `pre[class]` が意味するところです. デフォルトではテキスト出力は `<pre> </pre>` に含まれ, R コードブロックは `<pre class="r"> </pre>` に含まれます (ここで `<pre>` タグが `class` 属性を持っていることに注意してください).
@@ -160,7 +160,7 @@ HTML レポートの並列しているセクションをまとめる自然な方
 出力を図\@ref(fig:html-tabs)に示します. 実際には一度に1つのタブしか見られないことに注意してください. この図は両方のタブがみられるよう2つのスクリーンショットを連結したものです.
 
 ```{r html-tabs, echo=FALSE, fig.cap="複数のセクションをタブに"}
-knitr::include_graphics("images/html-tabs.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/html-tabs.png"), dpi = NA)
 ```
 
 タブに "pill" 効果を付けるため, さらに別の属性 `.tabset-pills` を上位レベルの見出しに追加することができます. これでタブは暗青色の背景になります.
@@ -387,7 +387,7 @@ output:
 \@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, 出力を折りたたみできるようにするのに JavaScript のトリックが使えます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
 
 ```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='details 要素でテキスト出力を囲む', out.width=if(knitr::is_latex_output()) '100%'}
-knitr::include_graphics(c('images/details-closed.png', 'images/details-open.png'), dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, c('images/details-closed.png', 'images/details-open.png')), dpi = NA)
 ```
 
 あなたがご覧になっているのが本書の HTML バージョンなら, 以下のチャンクで実際に動くのを見ることができます. PDF または印刷版を読んでいるのなら, このような対話的機能 (「詳細」ボタンを押すこと) はおそらく不可能です.

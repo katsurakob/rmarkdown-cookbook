@@ -35,7 +35,7 @@ output:
 たった今言及したように, `template.docx` は Pandoc から生成されたものでなければなりません. このテンプレートは  `word_document` 出力フォーマットを使った R Markdown 文書 からなら何でも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい種類の要素を含んでいるべきです) 作ることができます. それから `.docx` ファイルを開き, スタイルを編集します.
 
 ```{r, word-template-1, echo=FALSE, fig.cap='特定の文書要素のスタイルを見つける', out.width='100%'}
-knitr::include_graphics('images/word-template-1.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-1.png'), dpi = NA)
 ```
 
 図\@ref(fig:word-template-1)は Word の「ホーム」タブから "Styles" ウィンドウを開くと見つけられます. カーソルを文書の特定の要素上に動かすと, スタイルリストの項目が強調されます. あるタイプの要素のスタイルを変更したいならば, 強調された項目上でドロップダウンメニューをクリックして図\@ref(fig:word-template-2)のようなダイアログボックスを見ることができます.
@@ -43,7 +43,7 @@ knitr::include_graphics('images/word-template-1.png', dpi = NA)
 TODO: Word 日本語版での名称確認
 
 ```{r, word-template-2, echo=FALSE, fig.cap='Word 文書の要素のスタイルを変更する', out.width='100%'}
-knitr::include_graphics('images/word-template-2.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-2.png'), dpi = NA)
 ```
 
 スタイルの編集を終わったら, 文書を保存し (誤って上書きしないようなファイル名にしてください), 今後の Word 文書のテンプレートとして使用することができます. Pandoc が参照文書テンプレートを与えられて新しい Word 文書をレンダリングするとき, テンプレートのスタイルが読み出されそれが新しい文書に適用されます.
@@ -53,7 +53,7 @@ knitr::include_graphics('images/word-template-2.png', dpi = NA)
 要素に対するスタイル名がすぐには見つからないこともあるかもしれません. 複数のスタイルが同じ要素に適用され, それらのうち1つだけが強調されてみえることもあるかもしれません. 修正したいスタイルが実際になんであるかは, 当て推量やネット検索で解決することが求められることもあるかもしれません. 例えば "Manage Styles" ボタン (図\@ref(fig:word-template-1)のスタイルリストの下部にある, 左から3番目のボタン) をクリックし, "Tabke" スタイル (図\@ref(fig:word-table)参照) を見つけるまでに多数のスタイル名をスクロールして飛ばさなければならりません. これであなたは, 例えば枠線のなどの表のスタイルを修正できます.
 
 ```{r, word-table, echo=FALSE, fig.cap='Word 文書の表のスタイルを修正する', out.width='100%'}
-knitr::include_graphics('images/word-table.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/word-table.png'), dpi = NA)
 ```
 
 ## R Markdown と Word 間の双方向ワークフロー {#word-redoc}

@@ -371,7 +371,7 @@ thead, tfoot, tr:nth-child(even) { background: #eee; }
 ```
 
 ```{r, striped-table, fig.cap='HTML と CSS で作成したストライプ背景の表', echo=FALSE, fig.align='center', out.width='70%'}
-knitr::include_graphics('images/striped-table.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/striped-table.png'), dpi = NA)
 ```
 
 ## **kableExtra** パッケージ {#kableextra}

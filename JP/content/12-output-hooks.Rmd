@@ -214,7 +214,7 @@ options$attr.output <- c(
 ```
 
 ```{r, hook-scroll, echo=FALSE, fig.cap='チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例'}
-knitr::include_graphics('images/hook-scroll.png', dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, 'images/hook-scroll.png'), dpi = NA)
 ```
 
 `source` フックでもソースコードブロックの高さを制限する同様のトリックが使えます.
@@ -282,7 +282,7 @@ knitr::knit_hooks$set(output = hook_output)
 図\@ref(fig:hook-html5)がその出力です. この例では実際には `plot` フックを上書きしましたが, この章の他のほとんどの例ではデフォルトのフックの上にカスタムフックを構築していることに注意してください. デフォルトのフックを完全に上書きするのは, 必ず組み込まれている機能を無視したい時にだけにするべきです. 例えばこの場合の `plot` フックは `out.width ='100%'` や `fig.show = 'animate'` といったチャンクオプションの可能性を考慮していません.
 
 ```{r hook-html5, echo=FALSE, fig.cap="HTML5 figure タグ内の図"}
-knitr::include_graphics("images/hook-html5.png", dpi = NA)
+knitr::include_graphics(file.path(BOOKLANG, "images/hook-html5.png"), dpi = NA)
 ```
 
 この例はファイルパス `x` と `plot` フック\index{出力フック!plot}の活用の可能性を示すものです. 図のスタイルのカスタマイズが必要なだけなら, HTML5 タグを使わなくてもよいです. たいていの場合, デフォルトの `plot` フックはこのような HTML コードに画像を出力します.

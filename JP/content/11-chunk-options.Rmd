@@ -223,7 +223,7 @@ for (i in 1:5) warning('ここにメッセージ ', i)
 
 整形後の出力はこうなります.
 
-```{r, child='examples/tidy-opts.Rmd', results='hide'}
+```{r, child=file.path(BOOKLANG, 'examples/tidy-opts.Rmd'), results='hide'}
 ```
 
 \@ref(text-width)節ではテキストの幅を制御する方法について言及しました. ソースコードの幅を制御したいなら, `tidy = TRUE` としたときに `width.cutoff` 引数を試してみることもできます. これが例です.
@@ -232,7 +232,7 @@ for (i in 1:5) warning('ここにメッセージ ', i)
 
 出力はこうなります.
 
-```{r, child='examples/tidy-width.Rmd', results='hide'}
+```{r, child=file.path(BOOKLANG, 'examples/tidy-width.Rmd'), results='hide'}
 ```
 
 使用可能な引数を知るにはヘルプページ `?formatR::tidy_source` を読んでください. そして https://yihui.org/formatR/ で使用例とこの関数の限界を理解してください.

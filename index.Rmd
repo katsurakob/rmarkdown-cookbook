@@ -5,12 +5,9 @@ author:
   - "(著者) Dervieux, Christophe"
   - "(著者) Riederer, Emily"
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
-bibliography:
-  - bib/packages.bib
-  - bib/literature.bib
-  - 'bib/literature-ja.bib'
 description: 本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう.
 site: bookdown::bookdown_site
+booklanguage: JP
 mainfont: "DejaVu Serif"
 mainfontoptions:
   - Scale=0.9
@@ -25,6 +22,10 @@ documentclass: bxjsreport
 link-citations: yes
 colorlinks: yes
 # graphics: yes
+bibliography:
+  - bib/packages.bib
+  - bib/literature.bib
+  - 'bib/literature-ja.bib'
 lot: yes
 lof: yes
 fontsize: 11pt
@@ -91,6 +92,8 @@ source("utils.R")
 
 require(here)
 original_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
+BOOKLANG <- rmarkdown::metadata$booklanguage
+image_dir <- file.path(rmarkdown::metadata$booklanguage, "images")
 ```
 
 ---

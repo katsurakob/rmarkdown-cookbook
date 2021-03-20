@@ -26,7 +26,7 @@ x <- 5  # 円の半径
 あなたがまだ Markdown の書き方に慣れていないか, Markdown コードを書くのが気に入らないならば, RStudio\index{RStudio} ver. 1.4 には実験的ですが Markdown 文書用のビジュアルエディタがあります. これは図\@ref(fig:visual-edit)で示すように Word のような伝統的な WYSIWYG なエディタと似ていると感じるでしょう. この完全なドキュメントは https://rstudio.github.io/visual-markdown-editing/ で見ることができます.
 
 ```{r visual-edit, echo=FALSE, out.width="100%", fig.cap="RStudio のビジュアル Markdown エディタ"}
-knitr::include_graphics("images/visual-edit.png")
+knitr::include_graphics(file.path(BOOKLANG, "images/visual-edit.png"), dpi = NA)
 ```
 
 ビジュアルエディタによって, ヘッダ, 図, 表, 脚注などといった Pandoc でサポートされているほとんどあらゆる Markdown 要素を視覚的に編集できます. あなたは全ての構文を覚えなくてもよいということです. ある要素の構文を忘れた場合, RStudio ツールバー (図\@ref(fig:visual-edit)参照) を使うかキーボードショートカットを使って要素を追加したり編集したりすることになるでしょう.
@@ -59,7 +59,7 @@ R スクリプトをレポートにレンダリングすると, まず `knitr::s
 
 ```{r, class.output='md', comment='', echo=FALSE}
 xfun::raw_string(
-  knitr::spin(text = xfun::read_utf8('examples/spin.R'), knit = FALSE)
+  knitr::spin(text = xfun::read_utf8(file.path(BOOKLANG, 'examples/spin.R')), knit = FALSE)
 )
 ```
 
@@ -79,19 +79,20 @@ purl2 = function(file, ...) {
     knitr::purl, list(text = xfun::read_utf8(file), quiet = TRUE, ...)
   ))
 }
-purl2('examples/purl.Rmd')
+purl2(file.path(BOOKLANG, 'examples/purl.Rmd'))
 ```
+
 
 上記の R スクリプトでは, チャンクオプションはコメントとして書かれています. 純粋な R コードが欲しい場合, `documentation = 0` という引数を与えて `knitr::purl()` を呼ぶことになるでしょう. これで以下のような R スクリプトが生成されます.
 
 ```{r, class.output='r', comment='', echo=FALSE}
-purl2('examples/purl.Rmd', documentation = 0)
+purl2(file.path(BOOKLANG, 'examples/purl.Rmd'), documentation = 0)
 ```
 
 テキストも全て維持したい場合 `documentation = 2` 引数を使うことになるでしょう. これは以下のような R スクリプトを生成します.
 
 ```{r, class.output='r', comment='', echo=FALSE}
-purl2('examples/purl.Rmd', documentation = 2)
+purl2(file.path(BOOKLANG, 'examples/purl.Rmd'), documentation = 2)
 ```
 
 `purl = FALSE` というオプションのあるコードチャンクはこの R スクリプトから除外されることに注意してください.
