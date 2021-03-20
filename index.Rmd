@@ -63,6 +63,7 @@ lapply(c(
 )
 # screenshot HTML widgets
 if (is.null(webshot:::find_phantom())) webshot::install_phantomjs()
+
 options(bookdown.post.latex = function(x) {
   # substitute nonbreaking spaces in \texttt{} with normal spaces
   m = gregexpr('\\\\texttt\\{[^}]+}', x)
@@ -91,13 +92,15 @@ options(bookdown.post.latex = function(x) {
 source("utils.R")
 
 require(here)
-original_time <- format(Sys.time(), "%Y/%m/%d %H:%M:%S")
+
 BOOKLANG <- rmarkdown::metadata$booklanguage
 image_dir <- file.path(rmarkdown::metadata$booklanguage, "images")
+last_update <- format(Sys.time(), '%Y/%m/%d %H:%M:%S %Z')
+last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `cat .git/refs/remotes/upstream/master`", intern = T), tryFormats = "%Y-%m-%d %H:%M:%S %z"), '%Y/%m/%d %H:%M:%S %Z')
 ```
 
 ---
-date: "`r original_time`, ver. Beta (翻訳作業中の草稿)"
+date: "`r last_update`, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -111,6 +114,7 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 ```{asis, echo=!knitr::is_latex_output()}
 ::: {.infobox .caution}
 **注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+
 :::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>

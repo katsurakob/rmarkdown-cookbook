@@ -3,7 +3,9 @@ output_dir: 'docs/'
 repo: https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook
 delete_merged_file: true
 rmd_subdir: 'JP/content'
-clean: [packages.bib]
+clean:
+  - packages.bib
+  - rmarkdown-cookbook.tikzDictionary
 language:
   label:
     fig: '図 '
@@ -23,4 +25,4 @@ language:
   ui:
     chapter_name: ""
 edit: "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/%s"
-
+before_chapter_script: "utils.R"

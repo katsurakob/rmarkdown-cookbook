@@ -504,7 +504,7 @@ TODO: quote poem だと flushrght が作られない?
 
 ## モデルを数式に変換する {#equatiomatic}
 
-Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic} (https://github.com/datalorax/equatiomatic) はRで当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
+Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic}  [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
 
 ```{r, results='asis'}
 fit <- lm(mpg ~ cyl + disp, mtcars)
