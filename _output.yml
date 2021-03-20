@@ -4,7 +4,7 @@ rmdja::gitbook_ja:
   css: [css/style.css, css/box.css]
   config:
     fontsettings:
-      family: serifq
+      family: serif
     toc:
       before: |
         <li><a href="./">R Markdown Cookbook</a></li>
