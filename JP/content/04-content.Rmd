@@ -25,7 +25,7 @@ output:
 # 第二節
 ```
 
-これは Pandoc の Lua フィルタ\index{Lua フィルタ} に基づく機能です (\@ref(lua-filters) 節参照). 技術的なことに興味のある方はこのパッケージの vignettte を見てください.
+これは Pandoc の Lua フィルタ\index{Lua フィルタ} に基づく機能です (\@ref(lua-filters) 節参照). 技術的なことに興味のある方はこのパッケージのビネットを見てください.
 
 ```r
 vignette("lua-filters", package = "rmarkdown")
@@ -124,8 +124,6 @@ output:
 全く同じことを, `{.unnumbered}` を使ってもできます. 例えば `{.unnumbered #section-id}` のように, 他の属性を追加することもできます. 詳細は https://pandoc.org/MANUAL.html#extension-header_attributes を確認してください.
 
 付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図\@ref(fig:unnumbered-sections)で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています. 
-
-TODO: 日本語版ができたらスクリーンショット撮り直す.
 
 ```{r, unnumbered-sections, echo=FALSE, fig.cap='付番された章とされていない章を示すための目次のスクリーンショット'}
 knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), dpi = NA)
