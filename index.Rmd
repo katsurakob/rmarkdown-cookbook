@@ -5,7 +5,7 @@ author:
   - "(著者) Dervieux, Christophe"
   - "(著者) Riederer, Emily"
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
-description: 本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう.
+description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
 site: bookdown::bookdown_site
 booklanguage: JP
 mainfont: "DejaVu Serif"
@@ -120,19 +120,19 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
 ```
 
-R Markdown は分析とレポート作成を1つのドキュメントとして結びつけるパワフルなツールです. 2014年初頭に **rmarkdown** パッケージ [@R-rmarkdown] が誕生して以来, R Markdown はいくつかの出力フォーマットをサポートするだけの単なるパッケージから, 書籍・ブログ・科学論文・ウェブサイト, そして講義資料の作成までもサポートする拡張性と多様なエコシステムを持つパッケージへと成長を遂げました.
+R Markdown は分析とレポート作成を1つのドキュメントとして結びつけるパワフルなツールです. 2014年初頭に **rmarkdown** パッケージ [@R-rmarkdown] が誕生して以来, R Markdown はいくつかの出力フォーマットをサポートするだけの単なるパッケージから, 書籍・ブログ・科学論文・ウェブサイト, そして講義資料の作成までをもサポートする拡張性と多様なエコシステムを持つパッケージへと成長を遂げました.
 
-[*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) [@rmarkdown2018] という, ほんの数年前に書かれた情報の詰まったガイドブックがあります. これは **rmarkdown** パッケージやその他の拡張パッケージの組み込みフォーマットのリファレンスを詳説しています. しかし読者や出版社から, どうやって作りたい内容を実現できるのかを見つけるまでが大変なので, より実践的で, 面白く役に立つ小規模な使用例を豊富に掲載したものがあればというコメントをいただきました (言い換えるなら, 前書は無機質すぎるということです). これが本書の生まれた経緯です.
+[*R Markdown: The Definitive Guide*](https://bookdown.org/yihui/rmarkdown/) [@rmarkdown2018] という, ほんの数年前に書かれた情報の詰まったガイドブックがあります. これは **rmarkdown** パッケージやその他の拡張パッケージの組み込みフォーマットのリファレンスを詳説しています. しかし読者や出版社から, 作りたい内容を実現できるのかを見つけるまでが大変なので, より実践的で, 面白く役に立つ小規模な使用例を豊富に掲載したものがあればいいのに, というコメントをいただきました (言い換えるなら, 前書は無機質すぎるということです). これが本書の生まれた経緯です.
 
 公式ドキュメントが存在するにも関わらず, R Markdown のユーザーは有名な Q&A フォーラム『スタック・オーバーフロー』でしょっちゅう助けを求めています. 本書の執筆時点では, [`r-markdown` タグのついた質問](https://stackoverflow.com/questions/tagged/r-markdown) が 6,000 件以上ありました. あなたが探すべき問題が何であるか特定していないと, この膨大な件数の中ではフォーラムを利用するのが難しくなります. よって R Markdown を使ってできること, そしてどうすればできるか, の可能性の全てを把握することが難しいものとなるかもしれません. 本書の狙いはスタック・オーバーフローやその他のオンラインリソース (ブログの投稿やチュートリアル) から有名な質問を取り上げ, 多くのユーザーが毎日こぞって検索している問題に対して最新のソリューションを提供することです. 実際, 本書で扱うトピックを決めるのに役立つよう, 第二著者の Christophe はスタックオーバーフローの日々の最も人気のある投稿をスクレイピングする R Markdown のダッシュボートを作成しました. 幸運にも, 我々のクックブックはこれらの人気の投稿を含むことでより一層役に立つものになったに違いありません.
 
-本書は R Markdown 文書の機能をどう活用するかの多くの例を掲載しています. クックブックとして, このガイドは R Markdown をより効率よく使いたい, そして R Markdown の力をより知りたい新規または初心者ユーザーにおすすめです.
+本書は R Markdown 文書の機能を活用する多くの例を掲載しています. クックブックとしてこのガイドは,  R Markdown をより効率よく使いたい, そして R Markdown の力をもっと知りたい新規または初心者ユーザーにおすすめです.
 
 ## 本書の読み方 {-#How-to-read-this-book}
 
-本書は R Markdown の基礎を理解している読者におすすめです. *R Markdown: The Definitive Guide* [@rmarkdown2018] の [Chapter 2](https://bookdown.org/yihui/rmarkdown/basics.html) は R Markdown の基礎を解説しており, 新規ユーザーが読むのにおすすめです. たとえば, 本書では Markdown の構文はカバーしていませんので, 読者が他の手段でそれを学んでいる想定です. 特に, 最低でも一度は [Pandoc の完全なマニュアル](https://pandoc.org/MANUAL.html)^[訳注: 完全ではありませんが, 日本語訳が公開されています. https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html] に目を通すことを強くお薦めします. このマニュアルはかなり長大ですが, 金脈のようなものでもあります. 全てを覚えておかなくともよいですが, Markdown の機能をどう応用できるか知っていればとても役に立つでしょう. 多くの人々が3連続バッククォートを verbatim なコードブロックに書こうとして失敗したり, 子要素を持つリストを作ろうとして失敗したりするのを, [私は数え切れないほど見てきました](https://yihui.org/en/2018/11/hard-markdown/). マニュアルに書いてある Markdown の構文を全て読まなければ, 「`N` 連続バッククォートに対して外側に `N + 1` 連続でバッククォートを書く」「子要素を表現するには適切なインデントを」といったことにきっとあなたは気づかないままでしょう.
+本書は R Markdown の基礎を理解している読者におすすめです. *R Markdown: The Definitive Guide* [@rmarkdown2018] の [Chapter 2](https://bookdown.org/yihui/rmarkdown/basics.html) は R Markdown の基礎を解説しており, 新規ユーザーが読むのにおすすめです. たとえば, 本書では Markdown の構文はカバーしていませんので, 読者が他の手段でそれを学んでいる想定です. 特に, 最低でも一度は [Pandoc の完全なマニュアル](https://pandoc.org/MANUAL.html)^[訳注: 完全ではありませんが, 日本語訳が公開されています. https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html] に目を通すことを強くお薦めします. このマニュアルはかなり長大ですが, 金の鉱脈のようなものでもあります. 全てを覚えなくてもかまいませんが, Markdown の機能をどう応用できるかを知っていればとても役に立つでしょう. 多くの人々が3連続バッククォートを verbatim なコードブロックに書こうとして失敗したり, 子要素を持つリストを作ろうとして失敗したりするのを, [私は数え切れないほど見てきました](https://yihui.org/en/2018/11/hard-markdown/). マニュアルに書いてある Markdown の構文を全て読まなければ, 「`N` 連続バッククォートに対して外側に `N + 1` 連続でバッククォートを書く」「子要素を表現するには適切なインデントをつける」といったことに, きっと気づかないままでしょう.
 
-このクックブックは R Markdown の技術的なリファレンスを網羅することを意図したものではありません. 本書は既存の資料に対する補足となることを目的としています. よって, さらに詳細な情報を知るために読者は以下のような本を参考にすることになるでしょう.
+このクックブックは R Markdown の技術的なリファレンスを網羅することを意図したものではありません. 本書はこれまでにある資料に対する補足となることを目的としています. よって読者は, さらに詳細な情報を知るために以下のような本を参考にすればよいでしょう.
 
 - *R Markdown: The Definitive Guide* [@rmarkdown2018] は **rmarkdown** パッケージやその他いくつかの拡張パッケージでの R Markdown の出力フォーマットに関する技術的資料です.
 
@@ -141,19 +141,19 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 - *Dynamic Documents with R and knitr* [@knitr2015] は **knitr** パッケージ [@R-knitr] の網羅的な入門書です (補足しますと, R Markdown は **knitr** パッケージのサポートする文書形式の1つにすぎません). 短縮版を読みたい場合, Karl Broman による最小限のチュートリアル ["knitr in a knutshell"](https://kbroman.org/knitr_knutshell/) が役に立つでしょう. **訳注**: これらは日本語訳が存在しませんが, Yihui 氏によるドキュメント *[knitr
 Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/knitr/)* の日本語訳は既に用意してあります^[https://gedevan-aleksizde.github.io/knitr-doc-ja/].
 
-- *bookdown: Authoring Books and Technical Documents with R Markdown* [@bookdown2016] は **bookdown** パッケージ [@R-bookdown] の公式ドキュメントとして書かれた小規模な書籍です. **bookdown** パッケージは長大なフォーマットのドキュメントを R Markdown で簡単に書くために設計されました.
+- *bookdown: Authoring Books and Technical Documents with R Markdown* [@bookdown2016] は **bookdown** パッケージ [@R-bookdown] の公式ドキュメントとして書かれた小冊子です. **bookdown** パッケージは長大なフォーマットのドキュメントを R Markdown で簡単に書くために設計されました.
 
 - *blogdown: Creating Websites with R Markdown* [@blogdown2017] は **blogdown** パッケージ [@R-blogdown] によって R Markdown でウェブサイトを作成する方法を紹介してます.
 
 関連性に応じて本書は既存の参考資料を紹介します. それとは別に, R Markdown の公式ウェブサイトにも役立つ情報が多く含まれています: https://rmarkdown.rstudio.com
 
-本書は最初から順に読む必要はありません. 以降の各章はそれより前の章よりも難解になることはありません. 各章と各セクションのうち, 他よりも発展的と思われるものに対しては, タイトルにアスタリスク (`*`) を付けています. R Markdown でやりたい具体的なタスクがあるとき, あるいは目次に目を通していたら興味のある箇所が見つかった, という使い方が最も効率的な読み方でしょう. いくつかの箇所で相互参照を免れないところがありますが, 用例集を理解するのに必要な予備知識を参照するつもりです.
+本書は最初から順に読む必要はありません. 以降の各章はそれより前の章よりも難解になることはありません. 各章と各セクションのうち, 他よりも発展的と思われるものに対しては, タイトルにアスタリスク (`*`) を付けています. R Markdown でやりたい具体的なタスクがあるとき, あるいは目次に目を通していたら興味のある箇所が見つかった, という使い方が最も効率的な読み方でしょう. いくつかの箇所で相互参照を免れないところがありますが, 用例集を理解するのに必要な予備知識への参照のつもりです.
 
 自分で用例集に挑戦したいならば, 本書の完全なソースコードと用例集は Github の https://github.com/yihui/rmarkdown-cookbook で自由に見ることができます^[訳注: この日本語版のソースコードは https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook で見られます. 用例集はさらに `JP/examples` と辿ることで見つかります.]. 本書の電子書籍版をお読みの場合, 掲載されているコードをお好きなテキストエディタにコピー&ペーストして実行することになるでしょう.
 
 ## 本書の構成 {-#Structure-of-the-book}
 
-本書はそれぞれ単独のコンセプトを実演するため, 小規模な「レシピ」に細分化されています. \@ref(installation) 章では必要なソフトウェアツールのインストール方法を紹介しています. \@ref(conceptual-overview) 章では R Markdown のコンセプトを概観します. \@ref(basics) 章では R Markdown の基本的な構成要素を紹介し, R Markdown 文書と R スクリプトの変換方法を紹介します. \@ref(document-elements) 章では, 改ページ, 参考文献リストの掲載, 番号付きの図, アニメーション, ダイアグラムといった文書の要素を作成する方法の話をします. \@ref(formatting) 章では図の大きさやアラインメントといった文書の整形方法を紹介します. \@ref(latex-output) 章では LaTeX/PDF のみ出力したい場合に使える豆知識と小ワザを紹介します. 同様に \@ref(html-output) 章では HTML ユーザーに対して,  \@ref(word) 章では Word ユーザーに対して豆知識や小ワザを紹介します. 同時に複数の出力フォーマットで生成したい場合 (しょっちゅう小技を駆使します), \@ref(multi-formats) 章の記述が役に立つでしょう. \@ref(tables) 章は, 正直に言えば私が最も気に入らなかった箇所ですが, 私は多くのユーザーが表の作成方法を本当に欲していることを理解しています. 私はゴテゴテした装飾過多な表の専門家ではありませんが, その役に立つパッケージのリストを知ることはできるでしょう. \@ref(chunk-options) 章では, あなたがまだ知らないであろう **knitr** のチャンクオプションのいくつかの応用をお教えします. \@ref(output-hooks), \@ref(chunk-hooks) 章は **knitr** の出力とカスタムフック関数の挙動をうまく扱えるようになることの偉大さをお教えしますので, 少し発展的ですがこれまたとても役に立つはずです.  \@ref(knitr-misc) 章ではいろいろな **knitr** の小ワザを紹介します. \@ref(other-languages) 章では R Markdown で他のプログラミング言語を扱う例をお見せします. そう, R Markdown は R のためだけのものではありません. また, **knitr** がまだサポートしていない新しい言語でも動作させる方法も紹介します. \@ref(managing-projects) 章は R Markdown とプロジェクトを関連付けて管理するための豆知識を紹介します. \@ref(workflow) はあなたのワークフローを改善する豆知識をいくつか提示します.
+本書はそれぞれ単独のコンセプトを実演するため, 小規模な「レシピ」に細分化されています. \@ref(installation) 章では必要なソフトウェアツールのインストール方法を紹介しています. \@ref(conceptual-overview) 章では R Markdown のコンセプトを概観します. \@ref(basics) 章では R Markdown の基本的な構成要素を紹介し, R Markdown 文書と R スクリプトの変換方法を紹介します. \@ref(document-elements) 章では, 改ページ, 参考文献リストの掲載, 番号付きの図, アニメーション, ダイアグラムといった文書の要素を作成する方法の話をします. \@ref(formatting) 章では図の大きさやアラインメントといった文書の整形方法を紹介します. \@ref(latex-output) 章では LaTeX/PDF のみ出力したい場合に使える豆知識と小ワザを紹介します. 同様に \@ref(html-output) 章では HTML ユーザーに対して,  \@ref(word) 章では Word ユーザーに対して豆知識や小ワザを紹介します. 同時に複数の出力フォーマットで生成したい場合 (しょっちゅう小技を駆使します), \@ref(multi-formats) 章の記述が役に立つでしょう. \@ref(tables) 章は, 正直に言えば私が最も気に入らなかった箇所ですが, 私は多くのユーザーが表の作成方法を本当に欲していることを理解しています. 私はゴテゴテした装飾過多な表の専門家ではありませんが, その役に立つパッケージのリストを知ることはできるでしょう. \@ref(chunk-options) 章では, あなたがまだ知らないであろう **knitr** のチャンクオプションのいくつかの応用をお教えします. \@ref(output-hooks), \@ref(chunk-hooks) 章は **knitr** の出力とカスタムフック関数の挙動をうまく扱えるようになることのすばらしさをお教えしますので, 少し発展的ですがこれまたとても役に立つはずです.  \@ref(knitr-misc) 章ではいろいろな **knitr** の小ワザを紹介します. \@ref(other-languages) 章では R Markdown で他のプログラミング言語を扱う例をお見せします. そう, R Markdown は R のためだけのものではありません. また, **knitr** がまだサポートしていない新しい言語でも動作させる方法も紹介します. \@ref(managing-projects) 章は R Markdown とプロジェクトを関連付けて管理するための豆知識を紹介します. \@ref(workflow) はあなたのワークフローを改善する豆知識をいくつか提示します.
 
 本書のレシピはそれぞれ独立した項目になっているので, あなたに決まった目的がなくてもこれらの中から適当に取り上げて読むことができます.
 
@@ -167,19 +167,19 @@ xfun::session_info(c(
 ), dependencies = FALSE)
 ```
 
-上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (`>` や `+`) を付けたりしません. またテキスト出力は2連続ハッシュ `##` でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: **rmarkdown**) で表記し, 本文中のコードやファイルネームはタイプライタフォントで表記します (例: `knitr::knit('foo.Rmd')`). 関数名の末尾には括弧を付けます (例: `blogdown::serve_site()`). 二重コロン演算子 `::` はパッケージのオブジェクトへのアクセスを意味します.
+上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (`>` や `+`) を付けたりしません. またテキスト出力は2連続ハッシュ `##` でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: **rmarkdown**) で表記し, 本文中のコードやファイル名はタイプライタフォントで表記します (例: `knitr::knit('foo.Rmd')`). 関数名の末尾には括弧を付けます (例: `blogdown::serve_site()`). 二重コロン演算子 `::` はパッケージのオブジェクトへのアクセスを意味します.
 
 "Rmd" は R Markdown のファイル拡張子名であり, 本書では R markdown の略称としても使用します.
 
 ## 謝辞 {-#acknowledgments}
 
-常のこととして, 初めに本書の執筆作業の自由を与えていただいた雇用主である RStudio 社に感謝の意を表します. 執筆作業が始まってから, 上司である Tareef Kawaf との毎週のミーティング当初15分から5分に削減され, それから完全になくなりました. 私は複数の友人から所属先で耐えられないほど多くのミーティングがあり, 時間の浪費になっていると聞いていました. 集中力の維持の観点から, 最近友人の一人は「5分間 Slack をミュートすることができるかもしれないが, **1日中**ミュートできるものか?」と嘆きました「もちろんできる!」と私は答えました. 私は1ヶ月でも好きなだけ Slack をミュートできるようになったようです. 誤解しないでください --- Tareef や同僚が邪魔だという意味ではありません. 皆の提供してくれた自由がどれだけ価値あることかを伝えたいだけです.
+いつものことですが, まず本書の執筆作業の自由を与えていただいた雇用主である RStudio 社に感謝の意を表します. 執筆作業が始まってから, 上司である Tareef Kawaf との毎週のミーティング当初15分から5分に削減され, それから完全になくなりました. 私は複数の友人から所属先で耐えられないほど多くのミーティングがあり, 時間の浪費になっていると聞いていました. 集中力の維持の観点から, 最近ある友人は「5分間 Slack をミュートすることができるかもしれないが, **1日中**ミュートできないのか?」と嘆きました「もちろんできる!」と私は答えました. 私は1ヶ月でも好きなだけ Slack をミュートできるようになったようです. 誤解しないでください --- Tareef や同僚が邪魔だという意味ではありません. 皆の提供してくれた自由がどれだけ価値あることかを伝えたいだけです.
 
-*R Markdown Definitive Guide* を刊行したのち, このクックブックを執筆することを思いつきましたが, アイディアはまだ貧弱でした. 困難で高く付く作業でした. 最初に [Michael Harper's](http://mikeyharper.uk) の後押しがなければ, この作業にまじめに取り組むことはなかったでしょう. Christophe Dervieux は助けが必要なときにいつも近くにいました. 彼の R と R Markdown のスキルにより作成されたダッシュボード ( **flexdashboard** パッケージによるもの) は人々が興味を持つであろうもの, 役に立つであろうトピックを本書に記載する助けになりました. 同時に多数の Github issues を手伝ってくれたため, 最小限の再現例も添付してないバグ報告と格闘する時間を執筆作業に割くことができました. 同様に,  Martin Schmelzer, Marcel Schilling, Ralf Stubner をはじめ数名がスタック・オーバーフロー上の R Markdown の質問に答えるのを手伝ってくれました. おそらく意図してのことではないと思いますが, 彼らの努力は私の多くの持ち時間を節約してくれました. 最近のスタック・オーバーフローでは Johannes Friedrich の活動が注意を引きます. これまでに何度か, スタック・オーバーフローの質問を開いたら彼がもう回答していた, ということがありました.
+*R Markdown Definitive Guide* を刊行したのち, このクックブックを執筆することを思いつきましたが, アイディアはまだ貧弱でした. 困難で高く付く作業でした. 最初に [Michael Harper](http://mikeyharper.uk) の後押しがなければ, この作業にまじめに取り組むことはなかったでしょう. Christophe Dervieux は助けが必要なときにいつも近くにいました. 彼の R と R Markdown のスキルにより作成されたダッシュボード ( **flexdashboard** パッケージによるもの) は人々が興味を持つであろうもの, 役に立つであろうトピックを本書に記載する助けになりました. 同時に多数の Github issues を手伝ってくれたため, 最小限の再現例も添付してないバグ報告と格闘する時間を執筆作業に割くことができました. 同様に,  Martin Schmelzer, Marcel Schilling, Ralf Stubner をはじめ数名がスタック・オーバーフロー上の R Markdown の質問に答えるのを手伝ってくれました. おそらく意図してのことではないと思いますが, 彼らの努力は私の多くの持ち時間を節約してくれました. 最近のスタック・オーバーフローでは Johannes Friedrich の活動が注意を引きます. これまでに何度か, スタック・オーバーフローの質問を開いたら彼がもう回答していた, ということがありました.
 
 \@ref(table-other) 節では David Keyes が私を救ってくれました. 私は彼のことをあまり知りませんでしたが, 表を作成するためのパッケージをいくつか紹介する [すばらしいブログ記事](https://rfortherestofus.com/2019/11/how-to-make-beautiful-tables-in-r/)を彼が書いていたおかげで助かりました. Holtz Yan の [R Markdown の豆知識に関する投稿](https://holtzy.github.io/Pimp-my-rmd/),  Nicholas Tierney の本 _[R Markdown for Scientists](https://rmd4sci.njtierney.com)_ Maëlle Salmon の [R Markdown の講座](https://github.com/maelle/rmd_course_isglobal), Jennifer Thompson の [R Markdown の講座](https://github.com/jenniferthompson/RepResearchRMarkdown), Emi Tanaka の [R Markdown のワークショップ](https://github.com/emitanaka/combine2019), Alison Hill の [R Markdown ワークショップ](https://arm.rbind.io) (私も講師の1人です), Alison Hill と Emi Tanaka's [R Markdown のワークショップ](https://ysc-rmarkdown.netlify.app) といったそれ以外のオンライン上の資料もまた, たいへん助けになりました.
 
-Maria Bekker-Nielsen Dunbar, Nathan Eastwood, Johannes Friedrich, Krishnakumar Gopalakrishnan, Xiangyun Huang, Florian Kohrt, Romain Lesur, Jiaxiang Li, Song Li, Ulrik Lyngs, Matt Small, Jake Stephen, Atsushi Yasumoto, Hao Zhu, John Zobolas といった人々がプルリクエストを送ったり, issues を埋めたりして多くの人が本書の Github リポジトリに貢献してくれました. 本書の素晴らしい表紙絵は [Allison Horst によってデザインされ](https://github.com/yihui/rmarkdown-cookbook/issues/180), 全体のデザインは Kevin Craig によって完成されました.
+Maria Bekker-Nielsen Dunbar, Nathan Eastwood, Johannes Friedrich, Krishnakumar Gopalakrishnan, Xiangyun Huang, Florian Kohrt, Romain Lesur, Jiaxiang Li, Song Li, Ulrik Lyngs, Matt Small, Jake Stephen, Atsushi Yasumoto, Hao Zhu, John Zobolas といった方々がプルリクエストを送ったり, issues を埋めたりして多くの方が本書の Github リポジトリに貢献してくれました. 本書の素晴らしい表紙絵は [Allison Horst によってデザインされ](https://github.com/yihui/rmarkdown-cookbook/issues/180), 全体のデザインは Kevin Craig によって完成されました.
 
 本書の当初のアイディアの一部は 2018年の RaukR Summer School で **knitr** のあまり知られていない機能について  のリモート講演で生まれたものでした. 視聴者は **knitr** の機能についてレシピ形式のような手短な入門を好んでいるようでした. 私を招待していただいた, Marcin Kierczak と Sebastian Dilorenzo をはじめとするサマースクールのオーガナイザたちに感謝したいです. Genentech と [DahShu.](http://dahshu.org) でものちに同様の講演を行いました. 招待していただいた Michael Lawrence と Yuqing Zhang, そしてフィードバックをくれた視聴者のみなさんにも感謝したいです. Paul Johnson からは2020年刊の _The American Statistician_ に掲載された _R Markdown: The Definitive Guide_ に対するとても有意義な批評をいただきました. 彼がこの本には詳細な例が欠けていると批判してくれたため, この「決定版ガイド」は十分に決定的とはいえないことになりました. 彼の論評には心から称賛と賛意を送ります. この新しいクックブックがこの溝を埋めてくれることを願います.
 
@@ -187,9 +187,9 @@ Maria Bekker-Nielsen Dunbar, Nathan Eastwood, Johannes Friedrich, Krishnakumar G
 
 John は原稿へのフィードバックのために数名の査読を用意してくれました. 実質的に9人の偉大な査読を得ることになりました. 彼らの1人は共同著者として迎えられれば良かったのにと思うほど偉大でした! 9人の査読との作業は膨大でしたが, 間違いなく苦労に見合った価値がありました. Carl Boettiger, John Blischak, Sharla Gelfand, Johannes Friedrich, Atsushi Yasumoto, そして残りの匿名の査読たちの有意義なフィードバックに感謝の意を送りたいと思います.
 
-本書の最後のパートの作業は私の昔なじみの友人, Dong Guo と Qian Jia が引っ越した後の空き家 (ネット回線なし!) で行いました. 私が疲労困憊しとにかく静かな環境を必要としていた時, 家を一時的なオフィスとして使わせてくれた彼らに感謝します. 彼らに別れを告げるのは悲しいです. 私が, この本を, 彼らの家で, 仕上げられたというのは, 両親とかわいらしい娘をふくむ彼らの家族との良い思い出となるでしょう.
+本書の最後のパートの作業は私の昔なじみの友人, Dong Guo と Qian Jia が引っ越した後の空き家 (ネット回線なし!) で行いました. 私が疲労困憊しとにかく静かな環境を必要としていた時, 家を一時的なオフィスとして使わせてくれた彼らに感謝します. 彼らに別れを告げるのは悲しいです. 私にとって, この本を彼らの家で仕上げられたことは, 両親とかわいらしい娘のいる彼ら家族とともに良き思い出となるでしょう.
 
-最後に, COVID-19 のパンデミックの下で自宅での2人の小さな「超役に立つ同僚」 (5歳と3歳)に感謝するという, このユニークな機会を絶対に逃せません. もし2人がいなければ, 5ヶ月は早く刊行できたでしょう. 今となっては託児所 (Small Miracle) の先生が懐かしいですし, 料金もきっと高くはないと感じています...
+最後に絶対に逃せないユニークなこととしては, COVID-19 のパンデミックの下で自宅にいた2人の小さな「超役に立つ同僚」 (5歳と3歳)に感謝することです. もし2人がいなければ, 5ヶ月は早く刊行できたでしょう. 今となっては託児所 (Small Miracle) の先生が懐かしいですし, 料金もきっと高くはないと感じています...
 
 ::: {.flushright data-latex=""}
 Yihui Xie
