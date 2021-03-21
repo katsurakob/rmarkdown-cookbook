@@ -5,20 +5,20 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Yihui Xie | R Markdown クックブック</title>
-  <meta name="description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Yihui Xie | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
   <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Yihui Xie | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は各種ツールを最大限活用するのに役立つような, あまり知られていない小技やトリックの簡潔で実践的な例を紹介します. 本書を読んだ後には, あなたは R Markdown 文書がどのようにプレーンテキストから変換され, 処理の各ステップステップのほとんど全てでどうカスタマイズするかを理解しているでしょう. 例えば, どうやって R コードから動的にコンテンツを作成するか, どうやって他の文書やチャンでコードを参照するか, どうやってカスタマイズしたテンプレートでフォーマットを制御する, コードをちょっと調整するにはどうすればいいか, 複数のプログラミング原語を分析に組み込むにはどうすればいいか, といったことをあなたは学ぶでしょう." />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
@@ -468,7 +468,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>彼は2つの本を書いています, <em>Dynamic Documents with knitr</em> <span class="citation">(<a href="参考文献.html#ref-knitr2015" role="doc-biblioref">Xie 2015</a>)</span>, と <em>bookdown: Authoring Books and Technical Documents with R Markdown</em> <span class="citation">(<a href="参考文献.html#ref-bookdown2016" role="doc-biblioref">Xie 2016</a>)</span>, です. そして2つの本の共著者です, <em>blogdown: Creating Websites with R Markdown</em> <span class="citation">(<a href="参考文献.html#ref-blogdown2017" role="doc-biblioref">Xie, Hill, and Thomas 2017</a>)</span>, と <em>R Markdown: The Definitive Guide</em> <span class="citation">(<a href="参考文献.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> です.</p>
 <p>2006年, 彼は Capital of Statistics (<a href="https://cosx.org" class="uri">https://cosx.org</a>) を設立しました. これは中国国内の大きな統計学のオンラインコミュニティに成長しました. 彼はまた 2008年に Chinese R conference を開始し, 以降, 中国での R カンファレンスの企画に関わってきました. アイオワ州立大学での PhD のトレーニングの間に, 彼は学部で Vince Sposito Statistical Computing Award (2011年) と Snedecor Award (2012)<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>を受賞しました.</p>
 <p>彼はたいていの場合, twitter のメッセージを週に1度確認します (<a href="https://twitter.com/xieyihui" class="uri">https://twitter.com/xieyihui</a>). ほとんどの時間, 彼は Github (<a href="https://github.com/yihui" class="uri">https://github.com/yihui</a>) で見かけることができます.</p>
-<p>彼には4つの趣味があります. 読むこと, 書くこと (ほとんどはブログ), 料理, そしてバドミントンをすることです. 彼は実際食べるより料理する方に関心があります. 食べるのに我慢できないほど好きな料理はそう多くなく, 辛い料理が数少ない一例です. 料理がさらに楽しくなったので, レストランに行くことがまれになっています. レストランに行って「料理はどれくらい辛くしたらよろしいでしょうか」と訊かれれば彼はたいてい「シェフができる限界まで辛くして」と答えます.</p>
+<p>彼には4つの趣味があります. 読むこと, 書くこと (ほとんどはブログ), 料理, そしてバドミントンをすることです. 彼は実際食べるより料理する方に関心があります. 食べるのを我慢できないほど好きな料理はそう多くありませんが, その一例は激辛料理でしょう. 料理がさらに楽しくなったので, レストランに行くことがまれになっています. レストランに行って「料理はどれくらい辛くしたらよろしいでしょうか」と訊かれれば, 彼はたいてい「シェフができる限界まで辛くして」と答えます.</p>
 </div>
 <div class="footnotes">
 <hr />
