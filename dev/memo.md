@@ -15,7 +15,7 @@
   git remote add upstream git@github.com:yihui/rmarkdown-cookbook.git
   ```
 
-* Windows の動作は確認していません (誤字修正だけならたぶん不要)
+* Windows の動作は確認していません
 
 
 ## ワークフロー
