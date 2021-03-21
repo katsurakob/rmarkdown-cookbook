@@ -43,6 +43,7 @@
 
 ### ターム・要注意単語の訳語
 
+* developer advocate - 日本語訳が決まってない新しい概念. また職位でもあるので固有名詞として扱う?
 * 多用される助動詞 may - 「することもできます」程度にする. おそらく should や can より強制力や信念の弱いニュアンス?
   * can は区別がつくようすこしひねった文言にする?
 * plot, image, figure, etc.: 文脈に応じて「図」「グラフ」の2通りに訳し分ける?
@@ -64,9 +65,6 @@
 * base R graphics/grid graphics - この場合の base/grid ってパッケージ名?
 * "in the wild" のニュアンス (Ch.16)
 
-## 設定変更 TODO
-* EN/JP に分けたので相対パスをまとめて変更したい
-
 ## 組版 TODO
 
 * kranz は欧文なので和文にするしかない
@@ -78,10 +76,9 @@
 * 索引の漢字の読み指定が必要
 * TODO: 15章の最後が日本語だとわかりにくいので適当なフリーフォントを探す
 
-## cookbook に足りない話
+## cookbook に足りない話 (やや細かい話)
 
 * pdf に svg を (knitr::include_graphics で) 埋め込む方法
 * Fenced Div で二段組にすべきか
-  + 特に beamer の場合は latex コードを直接埋め込むこともできる.
-  
-* .Rmarkdown にすると RStudio は認識するが bookdown が勝手に読み込むことはない https://github.com/rstudio/blogdown/issues/97#issuecomment-307931024
+  + 特に beamer の場合は latex コードを直接埋め込むこともできる.  
+* .Rmarkdown にすると RStudio は認識するが bookdown が勝手に読み込むことはない https://github.com/rstudio/blogdown/issues/97#issuecomment-307931024 root ディレクトリと bookdown デフォルト挙動の問題
