@@ -1,0 +1,21 @@
+# 翻訳者情報 {#translators .unnumbered}
+
+## 片桐智志 (Katagiri, Satoshi) {-}
+
+山田工業所の中華鍋 (両手鍋) を使用しています. 私も四川料理のような辛いものは好きです.
+
+I use a southern-style wok. I also like spicy dishes like Sichuan cuisine.
+
+## 謝辞 {-}
+
+加えて, 日本語版の修正提案に協力していただいた方を以下にクレジットします. R Markdown クックブックなので R を使って機械的に掲載してみます.
+
+```{r contributors, results="asis"}
+contributors <- rbind(
+  read.csv(textConnection(system("git shortlog -s master JP", intern = T)), header = F, sep = "\t"),
+  read.csv(textConnection(system("git shortlog -s work JP", intern = T)), header = F, sep = "\t")
+)
+contributors <- aggregate(contributors[, 1], by = list(contributors$V2), sum)
+contributors <- subset(contributors, !charmatch(contributors$Group.1, c("Katagiri, Satoshi", "S-Katagiri"), F))
+cat(paste0("[", contributors[order(contributors$x), ]$Group.1, "](", "https://github.com/", contributors[order(contributors$x), ]$Group.1, ")"), sep = ", ")
+```

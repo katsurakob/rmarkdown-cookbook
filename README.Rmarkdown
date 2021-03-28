@@ -7,7 +7,9 @@ output:
 
 ## About this
 
-このリポジトリは『[R Markdown クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます. **現在, 翻訳版は校正中です**
+このリポジトリは『[R Markdown クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます.
+
+現在, 翻訳版は**公開中** (一部校正中) です
 
 ```{r, echo=F}
 last_update <- format(Sys.time(), '%Y/%m/%d %H:%M:%S %Z')
@@ -25,7 +27,8 @@ This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Derv
 
 ## 進捗状況
 
-全編翻訳終了・現在校正中
+
+全編翻訳終了・**公開中**現在校正中
 
 ## 関連リンク
 
