@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="word-redoc" class="section level2" number="8.2">
 <h2><span class="header-section-number">8.2</span> R Markdown と Word 間の双方向ワークフロー</h2>
 <p>R Markdown から Word 文書を生成するのは簡単ですが, 一方で Word 文書を編集して手動の変更を元の R Markdown 文書に反映しなければならないとき, 特に苦痛となるかもしれません. 幸いにも Noam Ross がこの問題に対して有望な解決策を提示しています. <strong>redoc</strong> パッケージ (<a href="https://github.com/noamross/redoc" class="uri">https://github.com/noamross/redoc</a>) は Word 文書を生成し, 文書を校正してから R Markdown に再度変換することを可能にします. この原稿を書いている現時点 (2020年6月) では <strong>redoc</strong> パッケージはまだ試験的であり, さらに不運なことに, 彼は開発を中止しています. どちらにせよこれを試して見たいなら, GitHub からインストールすることができます.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="word-redoc.html#cb176-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;noamross/redoc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="word-redoc.html#cb177-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;noamross/redoc&quot;</span>)</span></code></pre></div>
 <p>パッケージがインストールされたら, 出力フォーマット <code>redoc::redoc</code> を使うこともできます.</p>
-<div class="sourceCode" id="cb177"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb177-1"><a href="word-redoc.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb177-2"><a href="word-redoc.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> redoc::redoc</span></span>
-<span id="cb177-3"><a href="word-redoc.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb178-1"><a href="word-redoc.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb178-2"><a href="word-redoc.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> redoc::redoc</span></span>
+<span id="cb178-3"><a href="word-redoc.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>この出力フォーマットは実質的に元の Rmd 文書を保存している Word 文書を生成するので, Word 文書を Rmd に変換して戻すこともできます. Word 上で追跡された変更箇所は CriticMarkup 構文 (<a href="http://criticmarkup.com" class="uri">http://criticmarkup.com</a>) で書かれたテキストへ変換されます 例えば <code>{++ 重要 ++}</code> はテキストに「重要」という単語が挿入されたことを表現しています.</p>
 <p><code>redoc::dedoc()</code> 関数で <code>redoc::redoc</code> で生成された Word 文書を Rmd に変換できます. 例えば <code>redoc::dedoc("file.docx")</code> は <code>file.Rmd</code> を生成します. この処理では Word 上で追跡された変更箇所を <code>track_changes</code> 引数でどう対処するか決めることができます. 例えば変更を受け入れるか破棄するか, 追跡された変更箇所を CriticMarkup に変換するかなどです. 追跡された変更箇所が完全に失われてしまわないように, <code>track_changes = 'criticmarkup'</code> を使うことを推奨します.</p>
 <p>Word 文書を編集する時, R Markdown のコードチャンクやインライン R コードで自動生成されて<strong>いない</strong>箇所を編集すると想定されています. 例えばコードチャンク内で <code>knitr::kable()</code> を使って自動生成された表は編集してはなりません. そのような変更は <code>dedoc()</code> で Word から Rmd に変換する際に失われます. コードチャンクで自動生成された出力を誤って編集することを避けるために, <code>redoc::redoc</code> フォーマットの <code>highlight_outputs</code> オプションを <code>true</code>に設定してください. これは自動出力を Word 上で強調表示することを意味します (背景色で強調表示します). あなたの共同編集者には Word 文書上の強調表示された箇所に触れないよう伝えるべきでしょう.</p>

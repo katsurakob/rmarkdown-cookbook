@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,19 +471,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</h2>
 <p>RStudio IDE は特定のバージョンの Pandoc を同梱しているため, RStudio IDE を使用する場合は自分で Pandoc をインストールする必要はありません. しかし同梱されたバージョンが最新でないことはよくありますし, 必要なバージョンでないかもしれません. 別の Pandoc を自分でインストールすることができます. ほとんどの RStudio ユーザーは同梱されたバージョンを使用しているでしょうから, このバージョンの Pandoc は R Markdown での徹底的なテストを乗り越えていることを覚えておいてください. 異なるバージョン (特に新しいバージョン) を使う場合, 他の R Markdown ユーザーや開発者が解決できない問題にぶつかるかもしれません.</p>
 <p>Pandoc のサイトに, プラットフォームごとの Pandoc のインストール方法の詳細なインストラクション <a href="https://pandoc.org/installing.html" class="uri">https://pandoc.org/installing.html</a> があります. 特定のバージョンを使うために Pandoc を自分でインストールしたのなら, <code>rmarkdown::find_pandoc()</code> 関数を呼び出して <strong>rmarkdown</strong> パッケージにそのことを知らせることになるでしょう. 例えば以下のように.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb4-1"><a href="install-pandoc.html#cb4-1"></a><span class="co"># 特定のバージョンを検索</span></span>
-<span id="cb4-2"><a href="install-pandoc.html#cb4-2"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">version =</span> <span class="st">&quot;2.9.1&quot;</span>)</span>
-<span id="cb4-3"><a href="install-pandoc.html#cb4-3"></a></span>
-<span id="cb4-4"><a href="install-pandoc.html#cb4-4"></a><span class="co"># 特定のディレクトリから検索</span></span>
-<span id="cb4-5"><a href="install-pandoc.html#cb4-5"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">dir =</span> <span class="st">&quot;~/Downloads/Pandoc&quot;</span>)</span>
-<span id="cb4-6"><a href="install-pandoc.html#cb4-6"></a></span>
-<span id="cb4-7"><a href="install-pandoc.html#cb4-7"></a><span class="co"># 以前発見した Pandoc を無視して再検索する</span></span>
-<span id="cb4-8"><a href="install-pandoc.html#cb4-8"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">cache =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb5-1"><a href="install-pandoc.html#cb5-1"></a><span class="co"># 特定のバージョンを検索</span></span>
+<span id="cb5-2"><a href="install-pandoc.html#cb5-2"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">version =</span> <span class="st">&quot;2.9.1&quot;</span>)</span>
+<span id="cb5-3"><a href="install-pandoc.html#cb5-3"></a></span>
+<span id="cb5-4"><a href="install-pandoc.html#cb5-4"></a><span class="co"># 特定のディレクトリから検索</span></span>
+<span id="cb5-5"><a href="install-pandoc.html#cb5-5"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">dir =</span> <span class="st">&quot;~/Downloads/Pandoc&quot;</span>)</span>
+<span id="cb5-6"><a href="install-pandoc.html#cb5-6"></a></span>
+<span id="cb5-7"><a href="install-pandoc.html#cb5-7"></a><span class="co"># 以前発見した Pandoc を無視して再検索する</span></span>
+<span id="cb5-8"><a href="install-pandoc.html#cb5-8"></a>rmarkdown<span class="sc">::</span><span class="fu">find_pandoc</span>(<span class="at">cache =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>上記のコードチャンクのように, Pandoc のバージョンを特定する方法はいくつかあります. デフォルトでは <code>rmarkdown::find_pandoc()</code> はお使いのシステムの最新の Pandoc を発見しようとします. 発見できたなら, バージョン情報はキャッシュされ <code>cache = FALSE</code> でキャッシュは無効化されます. <code>pandoc</code> 実行ファイルの発見されるであろうディレクトリがどこにある可能性があるかは, ヘルプページの <code>?rmarkdown::find_pandoc</code> を見てください.</p>
 <p>この関数は Rmd 文書内でも外部でも呼び出される可能性があります. あなたのコンピュータにインストールした特定のバージョンの Pandoc で Rmd 文書をコンパイルしたい場合, この関数を文書内のチャンクのどれかで呼び出すことになるでしょう. 例えばセットアップ用のチャンクで以下のように.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb5-1"><a href="install-pandoc.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb5-2"><a href="install-pandoc.html#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="in">rmarkdown::find_pandoc(version = &#39;2.9.1&#39;)</span></span>
-<span id="cb5-3"><a href="install-pandoc.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb6-1"><a href="install-pandoc.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb6-2"><a href="install-pandoc.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in">rmarkdown::find_pandoc(version = &#39;2.9.1&#39;)</span></span>
+<span id="cb6-3"><a href="install-pandoc.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
             </section>
 

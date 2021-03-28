@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -474,34 +479,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>使用法を実演するために, 同じディレクトリに3つのファイルを含めた最低限の例を用意しました.</p>
-<div class="sourceCode" id="cb480"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb480-1"><a href="bookdown.html#cb480-1" aria-hidden="true" tabindex="-1"></a>directory</span>
-<span id="cb480-2"><a href="bookdown.html#cb480-2" aria-hidden="true" tabindex="-1"></a>  |- index.Rmd</span>
-<span id="cb480-3"><a href="bookdown.html#cb480-3" aria-hidden="true" tabindex="-1"></a>  |- 01-導入.Rmd</span>
-<span id="cb480-4"><a href="bookdown.html#cb480-4" aria-hidden="true" tabindex="-1"></a>  |- 02-分析.Rmd</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb481-1"><a href="bookdown.html#cb481-1" aria-hidden="true" tabindex="-1"></a>directory</span>
+<span id="cb481-2"><a href="bookdown.html#cb481-2" aria-hidden="true" tabindex="-1"></a>  |- index.Rmd</span>
+<span id="cb481-3"><a href="bookdown.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  |- 01-導入.Rmd</span>
+<span id="cb481-4"><a href="bookdown.html#cb481-4" aria-hidden="true" tabindex="-1"></a>  |- 02-分析.Rmd</span></code></pre></div>
 <p>以下に各ファイルの中身とそれぞれの役目を示します.</p>
 <ul>
 <li><p><strong>index.Rmd</strong>:</p>
-<div class="sourceCode" id="cb481"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb481-1"><a href="bookdown.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb481-2"><a href="bookdown.html#cb481-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;最低限の bookdown プロジェクト&quot;</span></span>
-<span id="cb481-3"><a href="bookdown.html#cb481-3" aria-hidden="true" tabindex="-1"></a><span class="an">site:</span><span class="co"> bookdown::bookdown_site</span></span>
-<span id="cb481-4"><a href="bookdown.html#cb481-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> bookdown::gitbook</span></span>
-<span id="cb481-5"><a href="bookdown.html#cb481-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb481-6"><a href="bookdown.html#cb481-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb481-7"><a href="bookdown.html#cb481-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># はじめに {-}</span></span>
-<span id="cb481-8"><a href="bookdown.html#cb481-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb481-9"><a href="bookdown.html#cb481-9" aria-hidden="true" tabindex="-1"></a>なにか書く</span></code></pre></div></li>
+<div class="sourceCode" id="cb482"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb482-1"><a href="bookdown.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb482-2"><a href="bookdown.html#cb482-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;最低限の bookdown プロジェクト&quot;</span></span>
+<span id="cb482-3"><a href="bookdown.html#cb482-3" aria-hidden="true" tabindex="-1"></a><span class="an">site:</span><span class="co"> bookdown::bookdown_site</span></span>
+<span id="cb482-4"><a href="bookdown.html#cb482-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> bookdown::gitbook</span></span>
+<span id="cb482-5"><a href="bookdown.html#cb482-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb482-6"><a href="bookdown.html#cb482-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-7"><a href="bookdown.html#cb482-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># はじめに {-}</span></span>
+<span id="cb482-8"><a href="bookdown.html#cb482-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-9"><a href="bookdown.html#cb482-9" aria-hidden="true" tabindex="-1"></a>なにか書く</span></code></pre></div></li>
 </ul>
 <p>最初のファイルは典型的には <code>index.Rmd</code> と呼ばれます. YAML フロントマターを与える唯一の Rmd ファイルとなるべきです. また, 単一の Rmd ファイルをレンダリングするのではなく, 全ての Rmd ファイルをビルドするために <strong>bookdown</strong> を使うことを <strong>rmarkdown</strong> に知らせるための特殊な YAML フィールド, <code>site: bookdown::bookdown_site</code> を含むべきです. <code>bookdown::gitbook</code> ・ <code>bookdown::pdf_book</code> ・ <code>bookdown::word_document2</code> ・ <code>bookdown::epub_book</code> といった <strong>bookdown</strong> 出力フォーマットをいずれも使うことができます.</p>
 <p>次の2つの Rmd ファイルは2つの章になります.</p>
 <ul>
 <li><p><strong>01-導入.Rmd:</strong></p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb482-1"><a href="bookdown.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第1章</span></span>
-<span id="cb482-2"><a href="bookdown.html#cb482-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb482-3"><a href="bookdown.html#cb482-3" aria-hidden="true" tabindex="-1"></a>これは第1章です.</span></code></pre></div></li>
-<li><p><strong>02-分析.Rmd</strong>:</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb483-1"><a href="bookdown.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第2章</span></span>
+<div class="sourceCode" id="cb483"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb483-1"><a href="bookdown.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第1章</span></span>
 <span id="cb483-2"><a href="bookdown.html#cb483-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb483-3"><a href="bookdown.html#cb483-3" aria-hidden="true" tabindex="-1"></a>これは第2章です.</span></code></pre></div></li>
+<span id="cb483-3"><a href="bookdown.html#cb483-3" aria-hidden="true" tabindex="-1"></a>これは第1章です.</span></code></pre></div></li>
+<li><p><strong>02-分析.Rmd</strong>:</p>
+<div class="sourceCode" id="cb484"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb484-1"><a href="bookdown.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第2章</span></span>
+<span id="cb484-2"><a href="bookdown.html#cb484-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-3"><a href="bookdown.html#cb484-3" aria-hidden="true" tabindex="-1"></a>これは第2章です.</span></code></pre></div></li>
 </ul>
 <p>これらの Rmd ファイルをレンダリングするために, <code>rmarkdown::render()</code> の代わりに <code>bookdown::render_book('index.Rmd')</code> を呼ぶべきです. その内部では, デフォルトでは <strong>bookdown</strong> が全ての Rmd ファイルを1つの Rmd に結合し, コンパイルします. ファイルは名前順に結合されます. 上記の例でファイル名の頭に数字を付けたのはそれが理由です.</p>
 <p><strong>bookdown</strong> プロジェクトをカスタマイズすることができる設定は多くあります. <strong>bookdown</strong> のより包括的な概要として, <strong>rmarkdown</strong> 本 <span class="citation">(<a href="参考文献.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の Chapter 18 を読むこともできます. 完全なドキュメントは <strong>bookdown</strong> 本 <span class="citation">(<a href="参考文献.html#ref-bookdown2016" role="doc-biblioref">Xie 2016</a>)</span> になります.</p>

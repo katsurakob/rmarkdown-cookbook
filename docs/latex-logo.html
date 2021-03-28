@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,31 +471,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.3</span> 表紙ページにロゴを置く</h2>
 <!-- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf -->
 <p>LaTeX パッケージの <strong>titling</strong>  を表題ブロックを画像に変更するのに使うとができます. 以下は R ロゴ (<code>logo.jpg</code>) を表紙に配置する方法の例の全容です. 画像は LaTeX のサポートする形式 (例えば <code>jpg</code>, <code>png</code>, <code>pdf</code>) ならなんでも使えます.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb114-1"><a href="latex-logo.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb114-2"><a href="latex-logo.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> LaTeX のタイトルにロゴを追加する</span></span>
-<span id="cb114-3"><a href="latex-logo.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Michael Harper</span></span>
-<span id="cb114-4"><a href="latex-logo.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2018/12/7</span></span>
-<span id="cb114-5"><a href="latex-logo.html#cb114-5" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb114-6"><a href="latex-logo.html#cb114-6" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
-<span id="cb114-7"><a href="latex-logo.html#cb114-7" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb114-8"><a href="latex-logo.html#cb114-8" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
-<span id="cb114-9"><a href="latex-logo.html#cb114-9" aria-hidden="true" tabindex="-1"></a><span class="an">header-includes:</span></span>
-<span id="cb114-10"><a href="latex-logo.html#cb114-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - \usepackage{titling}</span></span>
-<span id="cb114-11"><a href="latex-logo.html#cb114-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - \pretitle{\begin{center}</span></span>
-<span id="cb114-12"><a href="latex-logo.html#cb114-12" aria-hidden="true" tabindex="-1"></a><span class="co">    \includegraphics[width=2in,height=2in]{logo.jpg}\LARGE\\}</span></span>
-<span id="cb114-13"><a href="latex-logo.html#cb114-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - \posttitle{\end{center}}</span></span>
-<span id="cb114-14"><a href="latex-logo.html#cb114-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb114-15"><a href="latex-logo.html#cb114-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-16"><a href="latex-logo.html#cb114-16" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 改ページを含めることもできます. これで文書を強制的に2ページ目から始めさせます. --&gt;</span></span>
-<span id="cb114-17"><a href="latex-logo.html#cb114-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-18"><a href="latex-logo.html#cb114-18" aria-hidden="true" tabindex="-1"></a>\newpage</span>
-<span id="cb114-19"><a href="latex-logo.html#cb114-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-20"><a href="latex-logo.html#cb114-20" aria-hidden="true" tabindex="-1"></a>ここからあなたのレポート</span>
-<span id="cb114-21"><a href="latex-logo.html#cb114-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb114-22"><a href="latex-logo.html#cb114-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb114-23"><a href="latex-logo.html#cb114-23" aria-hidden="true" tabindex="-1"></a><span class="in"># R ロゴをカレントディレクトリにコピー</span></span>
-<span id="cb114-24"><a href="latex-logo.html#cb114-24" aria-hidden="true" tabindex="-1"></a><span class="in">file.copy(file.path(R.home(&quot;doc&quot;), &quot;html&quot;, &quot;logo.jpg&quot;), &#39;.&#39;)</span></span>
-<span id="cb114-25"><a href="latex-logo.html#cb114-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb115-1"><a href="latex-logo.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb115-2"><a href="latex-logo.html#cb115-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> LaTeX のタイトルにロゴを追加する</span></span>
+<span id="cb115-3"><a href="latex-logo.html#cb115-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> Michael Harper</span></span>
+<span id="cb115-4"><a href="latex-logo.html#cb115-4" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 2018/12/7</span></span>
+<span id="cb115-5"><a href="latex-logo.html#cb115-5" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb115-6"><a href="latex-logo.html#cb115-6" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
+<span id="cb115-7"><a href="latex-logo.html#cb115-7" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb115-8"><a href="latex-logo.html#cb115-8" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
+<span id="cb115-9"><a href="latex-logo.html#cb115-9" aria-hidden="true" tabindex="-1"></a><span class="an">header-includes:</span></span>
+<span id="cb115-10"><a href="latex-logo.html#cb115-10" aria-hidden="true" tabindex="-1"></a><span class="co">  - \usepackage{titling}</span></span>
+<span id="cb115-11"><a href="latex-logo.html#cb115-11" aria-hidden="true" tabindex="-1"></a><span class="co">  - \pretitle{\begin{center}</span></span>
+<span id="cb115-12"><a href="latex-logo.html#cb115-12" aria-hidden="true" tabindex="-1"></a><span class="co">    \includegraphics[width=2in,height=2in]{logo.jpg}\LARGE\\}</span></span>
+<span id="cb115-13"><a href="latex-logo.html#cb115-13" aria-hidden="true" tabindex="-1"></a><span class="co">  - \posttitle{\end{center}}</span></span>
+<span id="cb115-14"><a href="latex-logo.html#cb115-14" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb115-15"><a href="latex-logo.html#cb115-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-16"><a href="latex-logo.html#cb115-16" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 改ページを含めることもできます. これで文書を強制的に2ページ目から始めさせます. --&gt;</span></span>
+<span id="cb115-17"><a href="latex-logo.html#cb115-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-18"><a href="latex-logo.html#cb115-18" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb115-19"><a href="latex-logo.html#cb115-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-20"><a href="latex-logo.html#cb115-20" aria-hidden="true" tabindex="-1"></a>ここからあなたのレポート</span>
+<span id="cb115-21"><a href="latex-logo.html#cb115-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb115-22"><a href="latex-logo.html#cb115-22" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb115-23"><a href="latex-logo.html#cb115-23" aria-hidden="true" tabindex="-1"></a><span class="in"># R ロゴをカレントディレクトリにコピー</span></span>
+<span id="cb115-24"><a href="latex-logo.html#cb115-24" aria-hidden="true" tabindex="-1"></a><span class="in">file.copy(file.path(R.home(&quot;doc&quot;), &quot;html&quot;, &quot;logo.jpg&quot;), &#39;.&#39;)</span></span>
+<span id="cb115-25"><a href="latex-logo.html#cb115-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="latex-logo.html#fig:latex-logo">6.1</a> がこの例の出力です.</p>
 <div class="figure" style="text-align: center"><span id="fig:latex-logo"></span>
 <img src="JP/images/latex-logo.png" alt="LaTeX の表紙ページにロゴを追加する"  />
@@ -499,9 +504,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>LaTeX パッケージ (<strong>titling</strong>) を特に要求しない代替方法として, Markdown 構文を使って <code>title</code> フィールドに画像を挿入する方法があります. 例えばこのように.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb115-1"><a href="latex-logo.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb115-2"><a href="latex-logo.html#cb115-2" aria-hidden="true" tabindex="-1"></a>  ![](logo.jpg){width=1in}  </span>
-<span id="cb115-3"><a href="latex-logo.html#cb115-3" aria-hidden="true" tabindex="-1"></a>  LaTeX のタイトルにロゴを追加する</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb116-1"><a href="latex-logo.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb116-2"><a href="latex-logo.html#cb116-2" aria-hidden="true" tabindex="-1"></a>  ![](logo.jpg){width=1in}  </span>
+<span id="cb116-3"><a href="latex-logo.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  LaTeX のタイトルにロゴを追加する</span></code></pre></div>
 <p>この場合, 最初の例のように YAML フロントマターの <code>header-includes</code> フィールドは不要になります. 例からは見えませんが, <code>![](logo.jpg){width=1in}</code> の末尾にスペースが2つあることに注意してください. これは Markdown では改行を意味します(<a href="linebreaks.html#linebreaks">4.12</a>節参照). 改行がない場合画像とタイトルは同じ行に現れてしまい, きっとそれはあなたの意図するものではないでしょう.</p>
 </div>
             </section>

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,44 +471,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">14.5</span> 以前のコードチャンクのグラフを修正する</h2>
 <p><strong>knitr</strong> はデフォルトでは, コードチャンクごとに新規にグラフィックデバイスを開いてグラフを記録しています. これは1つ問題を起こしています. グラフィックデバイスが既に閉じられているため, 以前のコードチャンクで作成されたグラフを簡単には修正できないという問題です. base グラフィックにとって, これはたいていの場合で問題となります. なお <strong>ggplot2</strong> <span class="citation">(<a href="参考文献.html#ref-R-ggplot2" role="doc-biblioref">Wickham, Chang, et al. 2020</a>)</span> のような grid ベースのグラフィックは, グラフを R オブジェクトとして保存できるので当てはまりません. 例えばあるコードチャンクでグラフを描き, 後でグラフに線を描き足したいなら, R は高水準グラフがまだ作られていないというエラーを示すので, 線を描き足すことができません.</p>
 <p>全てのコードチャンクでグラフィックデバイスを開いたままにしたいなら, 文書の冒頭で <strong>knitr</strong> パッケージのオプションである  を設定します.</p>
-<div class="sourceCode" id="cb398"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb398-1"><a href="global-device.html#cb398-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">global.device =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb399-1"><a href="global-device.html#cb399-1"></a>knitr<span class="sc">::</span>opts_knit<span class="sc">$</span><span class="fu">set</span>(<span class="at">global.device =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p>より頻繁に使われる <code>opts_chunk</code> ではなく <code>opts_knit</code> が使われていることに注意してください. 例は Stack Overflow の <a href="https://stackoverflow.com/q/17502050" class="uri">https://stackoverflow.com/q/17502050</a> という投稿で見ることもできます.</p>
 <p>グローバルなグラフィックデバイスを必要としなくなった時は, オプションを <code>FALSE</code> に設定できます. これは完全な例です.</p>
-<div class="sourceCode" id="cb399"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb399-1"><a href="global-device.html#cb399-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb399-2"><a href="global-device.html#cb399-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;グラフの保存にグローバルグラフィックデバイスを使用する&quot;</span></span>
-<span id="cb399-3"><a href="global-device.html#cb399-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb399-4"><a href="global-device.html#cb399-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-5"><a href="global-device.html#cb399-5" aria-hidden="true" tabindex="-1"></a>まず, グローバルグラフィックデバイスを有効にします.</span>
-<span id="cb399-6"><a href="global-device.html#cb399-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-7"><a href="global-device.html#cb399-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb399-8"><a href="global-device.html#cb399-8" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(global.device = TRUE)</span></span>
-<span id="cb399-9"><a href="global-device.html#cb399-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb399-10"><a href="global-device.html#cb399-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-11"><a href="global-device.html#cb399-11" aria-hidden="true" tabindex="-1"></a>グラフを描画します.</span>
-<span id="cb399-12"><a href="global-device.html#cb399-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-13"><a href="global-device.html#cb399-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb399-14"><a href="global-device.html#cb399-14" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, 0.1, 0.1))</span></span>
-<span id="cb399-15"><a href="global-device.html#cb399-15" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb399-16"><a href="global-device.html#cb399-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb399-17"><a href="global-device.html#cb399-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-18"><a href="global-device.html#cb399-18" aria-hidden="true" tabindex="-1"></a>以前のコードチャンクのグラフに線を追加します.</span>
-<span id="cb399-19"><a href="global-device.html#cb399-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-20"><a href="global-device.html#cb399-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb399-21"><a href="global-device.html#cb399-21" aria-hidden="true" tabindex="-1"></a><span class="in">fit &lt;- lm(dist ~ speed, data = cars)</span></span>
-<span id="cb399-22"><a href="global-device.html#cb399-22" aria-hidden="true" tabindex="-1"></a><span class="in">abline(fit)</span></span>
-<span id="cb399-23"><a href="global-device.html#cb399-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb399-24"><a href="global-device.html#cb399-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-25"><a href="global-device.html#cb399-25" aria-hidden="true" tabindex="-1"></a>グローバルデバイスを切ります.</span>
-<span id="cb399-26"><a href="global-device.html#cb399-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-27"><a href="global-device.html#cb399-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb399-28"><a href="global-device.html#cb399-28" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(global.device = FALSE)</span></span>
-<span id="cb399-29"><a href="global-device.html#cb399-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb399-30"><a href="global-device.html#cb399-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-31"><a href="global-device.html#cb399-31" aria-hidden="true" tabindex="-1"></a>別のグラフを描画します.</span>
-<span id="cb399-32"><a href="global-device.html#cb399-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb399-33"><a href="global-device.html#cb399-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb399-34"><a href="global-device.html#cb399-34" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure, type = &#39;b&#39;)</span></span>
-<span id="cb399-35"><a href="global-device.html#cb399-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb400"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb400-1"><a href="global-device.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb400-2"><a href="global-device.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;グラフの保存にグローバルグラフィックデバイスを使用する&quot;</span></span>
+<span id="cb400-3"><a href="global-device.html#cb400-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb400-4"><a href="global-device.html#cb400-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-5"><a href="global-device.html#cb400-5" aria-hidden="true" tabindex="-1"></a>まず, グローバルグラフィックデバイスを有効にします.</span>
+<span id="cb400-6"><a href="global-device.html#cb400-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-7"><a href="global-device.html#cb400-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb400-8"><a href="global-device.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(global.device = TRUE)</span></span>
+<span id="cb400-9"><a href="global-device.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb400-10"><a href="global-device.html#cb400-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-11"><a href="global-device.html#cb400-11" aria-hidden="true" tabindex="-1"></a>グラフを描画します.</span>
+<span id="cb400-12"><a href="global-device.html#cb400-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-13"><a href="global-device.html#cb400-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb400-14"><a href="global-device.html#cb400-14" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, 0.1, 0.1))</span></span>
+<span id="cb400-15"><a href="global-device.html#cb400-15" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb400-16"><a href="global-device.html#cb400-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb400-17"><a href="global-device.html#cb400-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-18"><a href="global-device.html#cb400-18" aria-hidden="true" tabindex="-1"></a>以前のコードチャンクのグラフに線を追加します.</span>
+<span id="cb400-19"><a href="global-device.html#cb400-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-20"><a href="global-device.html#cb400-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb400-21"><a href="global-device.html#cb400-21" aria-hidden="true" tabindex="-1"></a><span class="in">fit &lt;- lm(dist ~ speed, data = cars)</span></span>
+<span id="cb400-22"><a href="global-device.html#cb400-22" aria-hidden="true" tabindex="-1"></a><span class="in">abline(fit)</span></span>
+<span id="cb400-23"><a href="global-device.html#cb400-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb400-24"><a href="global-device.html#cb400-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-25"><a href="global-device.html#cb400-25" aria-hidden="true" tabindex="-1"></a>グローバルデバイスを切ります.</span>
+<span id="cb400-26"><a href="global-device.html#cb400-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-27"><a href="global-device.html#cb400-27" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb400-28"><a href="global-device.html#cb400-28" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(global.device = FALSE)</span></span>
+<span id="cb400-29"><a href="global-device.html#cb400-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb400-30"><a href="global-device.html#cb400-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-31"><a href="global-device.html#cb400-31" aria-hidden="true" tabindex="-1"></a>別のグラフを描画します.</span>
+<span id="cb400-32"><a href="global-device.html#cb400-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb400-33"><a href="global-device.html#cb400-33" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb400-34"><a href="global-device.html#cb400-34" aria-hidden="true" tabindex="-1"></a><span class="in">plot(pressure, type = &#39;b&#39;)</span></span>
+<span id="cb400-35"><a href="global-device.html#cb400-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
             </section>
 

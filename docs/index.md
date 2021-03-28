@@ -38,7 +38,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/03/21 16:38:37 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: [2021/03/21 15:35:19 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/03/28 12:05:46 JST, ver. 0.9 (一部未校正), 本家の更新確認時刻: [2021/03/21 16:15:28 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -124,7 +124,7 @@ xfun::session_info(c(
 ## 
 ## Package version:
 ##   bookdown_0.21 knitr_1.31    rmarkdown_2.7
-##   rmdja_0.4.3   xfun_0.20    
+##   rmdja_0.4.4   xfun_0.20    
 ## 
 ## Pandoc version: 2.11.2
 ```
@@ -198,6 +198,37 @@ Emily は頻繁に Twitter (https://twitter.com/emilyriederer) や自分のブ�
 Emily の他の関心は読書とウェイトリフティングです. 彼女は自分で辛い料理が好きだと考えていますが, 合衆国内にしか住んだことがないため, その言葉が実際に意味するところをよく分かっていないのだと言われています.
 
 <!--chapter:end:JP/content/00-authors.Rmd-->
+
+
+# 翻訳者情報 {#translators .unnumbered}
+
+## 片桐智志 (Katagiri, Satoshi) {-}
+
+山田工業所の中華鍋 (両手鍋) を使用しています. 私も四川料理のような辛いものは好きです.
+
+I use a southern-style wok. I also like spicy dishes like Sichuan cuisine.
+
+## 謝辞 {-}
+
+加えて, 日本語版の修正提案に協力していただいた方を以下にクレジットします. R Markdown クックブックなので R を使って機械的に掲載してみます.
+
+
+```{.r .numberLines .lineAnchors}
+contributors <- rbind(read.csv(textConnection(system("git shortlog -s master JP", 
+  intern = T)), header = F, sep = "\t"), read.csv(textConnection(system("git shortlog -s work JP", 
+  intern = T)), header = F, sep = "\t"))
+contributors <- aggregate(contributors[, 1], by = list(contributors$V2), 
+  sum)
+contributors <- subset(contributors, !charmatch(contributors$Group.1, 
+  c("Katagiri, Satoshi", "S-Katagiri"), F))
+cat(paste0("[", contributors[order(contributors$x), ]$Group.1, 
+  "](", "https://github.com/", contributors[order(contributors$x), 
+    ]$Group.1, ")"), sep = ", ")
+```
+
+[nnawata](https://github.com/nnawata)
+
+<!--chapter:end:JP/content/001-translators.Rmd-->
 
 
 \mainmatter
@@ -1169,11 +1200,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年3月21日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年3月28日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 - `%Y %B`: 2021 3月
-- `%y/%m/%d`: 21/03/21
-- `%b%d (%a)`:  3月21 (日)
+- `%y/%m/%d`: 21/03/28
+- `%b%d (%a)`:  3月28 (日)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 

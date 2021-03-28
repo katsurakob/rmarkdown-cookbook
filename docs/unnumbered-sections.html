@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,13 +470,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="unnumbered-sections" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> 番号のない節</h2>
 <p>ほとんどの出力フォーマットは <code>number_sections</code> オプションをサポートしています. これは <code>true</code> を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="unnumbered-sections.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb31-2"><a href="unnumbered-sections.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb31-3"><a href="unnumbered-sections.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb31-4"><a href="unnumbered-sections.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb31-5"><a href="unnumbered-sections.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb32-1"><a href="unnumbered-sections.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb32-2"><a href="unnumbered-sections.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb32-3"><a href="unnumbered-sections.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb32-4"><a href="unnumbered-sections.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb32-5"><a href="unnumbered-sections.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">number_sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 <p>特定の節に番号を付けたくないならば, <code>number_sections</code> オプションは <code>true</code> のままにして, その節のヘッダの直後に <code>{-}</code> を加えます. 例えばこのように.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb32-1"><a href="unnumbered-sections.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># この節には番号がつきません {-}</span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb33-1"><a href="unnumbered-sections.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># この節には番号がつきません {-}</span></span></code></pre></div>
 <p>全く同じことを, <code>{.unnumbered}</code> を使ってもできます. 例えば <code>{.unnumbered #section-id}</code> のように, 他の属性を追加することもできます. 詳細は <a href="https://pandoc.org/MANUAL.html#extension-header_attributes" class="uri">https://pandoc.org/MANUAL.html#extension-header_attributes</a> を確認してください.</p>
 <p>付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図<a href="unnumbered-sections.html#fig:unnumbered-sections">4.1</a>で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています.</p>
 <div class="figure" style="text-align: center"><span id="fig:unnumbered-sections"></span>

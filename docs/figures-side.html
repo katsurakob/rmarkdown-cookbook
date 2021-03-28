@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="figures-side" class="section level2" number="9.4">
 <h2><span class="header-section-number">9.4</span> 複数の図を横並びに</h2>
 <p><code>fig.show="hold"</code> と <code>out.width</code> option オプションを併用して複数の図を並べることができます. 以下の例では <code>out.width="48%"</code> を設定し, 出力は図<a href="figures-side.html#fig:figures-side">9.2</a>になります.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb190-1"><a href="figures-side.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, figures-side, fig.show=&quot;hold&quot;, out.width=&quot;48%&quot;}</span></span>
-<span id="cb190-2"><a href="figures-side.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .1, .1))</span></span>
-<span id="cb190-3"><a href="figures-side.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb190-4"><a href="figures-side.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mpg ~ hp, data = mtcars, pch = 19)</span></span>
-<span id="cb190-5"><a href="figures-side.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb191-1"><a href="figures-side.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, figures-side, fig.show=&quot;hold&quot;, out.width=&quot;48%&quot;}</span></span>
+<span id="cb191-2"><a href="figures-side.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .1, .1))</span></span>
+<span id="cb191-3"><a href="figures-side.html#cb191-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb191-4"><a href="figures-side.html#cb191-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mpg ~ hp, data = mtcars, pch = 19)</span></span>
+<span id="cb191-5"><a href="figures-side.html#cb191-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:figures-side"></span>
 <img src="rmarkdown-cookbook_files/figure-html/figures-side-1.png" alt="横に並べた図" width="48%" /><img src="rmarkdown-cookbook_files/figure-html/figures-side-2.png" alt="横に並べた図" width="48%" />
 <p class="caption">

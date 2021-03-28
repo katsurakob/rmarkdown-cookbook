@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,21 +470,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="embed-file" class="section level2" number="7.8">
 <h2><span class="header-section-number">7.8</span> HTML 出力に好きなファイルを埋め込む</h2>
 <p><a href="embed-rmd.html#embed-rmd">7.7</a>節で言及したように, HTML出力には Rmd ソース文書のコピーを埋め込めます. Rmd ファイル単体ではレポートを再現するのに不十分な場合もあるかもしれません. 例えばレポートに外部のデータファイルが必要かもしれません. HTML 出力ファイルに好きなファイルを埋め込んでくれる一連の関数が <strong>xfun</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-xfun" role="doc-biblioref">Xie 2021d</a>)</span> にあります. これらの関数を使うために, 以下の R パッケージを用意しておきます.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb155-1"><a href="embed-file.html#cb155-1"></a>xfun<span class="sc">::</span><span class="fu">pkg_load2</span>(<span class="fu">c</span>(<span class="st">&quot;htmltools&quot;</span>, <span class="st">&quot;mime&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb156-1"><a href="embed-file.html#cb156-1"></a>xfun<span class="sc">::</span><span class="fu">pkg_load2</span>(<span class="fu">c</span>(<span class="st">&quot;htmltools&quot;</span>, <span class="st">&quot;mime&quot;</span>))</span></code></pre></div>
 <p>これで1つ以上のファイルやディレクトリを HTML 出力に埋め込むのに, コードチャンク内で <code>xfun::embed_file()</code>, <code>xfun::embed_files()</code>, <code>xfun::embed_dir()</code> を使えます. 例えばこのように.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb156-1"><a href="embed-file.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
-<span id="cb156-2"><a href="embed-file.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="in"># a single file</span></span>
-<span id="cb156-3"><a href="embed-file.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_file(&#39;source.Rmd&#39;)</span></span>
-<span id="cb156-4"><a href="embed-file.html#cb156-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-5"><a href="embed-file.html#cb156-5" aria-hidden="true" tabindex="-1"></a><span class="in"># multiple files</span></span>
-<span id="cb156-6"><a href="embed-file.html#cb156-6" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_files(c(&#39;source.Rmd&#39;, &#39;data.csv&#39;))</span></span>
-<span id="cb156-7"><a href="embed-file.html#cb156-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb156-8"><a href="embed-file.html#cb156-8" aria-hidden="true" tabindex="-1"></a><span class="in"># a directory</span></span>
-<span id="cb156-9"><a href="embed-file.html#cb156-9" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_dir(&#39;data/&#39;, text = &#39;Download full data&#39;)</span></span>
-<span id="cb156-10"><a href="embed-file.html#cb156-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb157-1"><a href="embed-file.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r echo=FALSE}</span></span>
+<span id="cb157-2"><a href="embed-file.html#cb157-2" aria-hidden="true" tabindex="-1"></a><span class="in"># a single file</span></span>
+<span id="cb157-3"><a href="embed-file.html#cb157-3" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_file(&#39;source.Rmd&#39;)</span></span>
+<span id="cb157-4"><a href="embed-file.html#cb157-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-5"><a href="embed-file.html#cb157-5" aria-hidden="true" tabindex="-1"></a><span class="in"># multiple files</span></span>
+<span id="cb157-6"><a href="embed-file.html#cb157-6" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_files(c(&#39;source.Rmd&#39;, &#39;data.csv&#39;))</span></span>
+<span id="cb157-7"><a href="embed-file.html#cb157-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb157-8"><a href="embed-file.html#cb157-8" aria-hidden="true" tabindex="-1"></a><span class="in"># a directory</span></span>
+<span id="cb157-9"><a href="embed-file.html#cb157-9" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::embed_dir(&#39;data/&#39;, text = &#39;Download full data&#39;)</span></span>
+<span id="cb157-10"><a href="embed-file.html#cb157-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>プログラミング的にファイルのリストを与えることもできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb157-1"><a href="embed-file.html#cb157-1"></a><span class="co"># embed all Rmd and csv files</span></span>
-<span id="cb157-2"><a href="embed-file.html#cb157-2"></a>xfun<span class="sc">::</span><span class="fu">embed_files</span>(<span class="fu">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;[.](Rmd|csv)$&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb158-1"><a href="embed-file.html#cb158-1"></a><span class="co"># embed all Rmd and csv files</span></span>
+<span id="cb158-2"><a href="embed-file.html#cb158-2"></a>xfun<span class="sc">::</span><span class="fu">embed_files</span>(<span class="fu">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;[.](Rmd|csv)$&quot;</span>))</span></code></pre></div>
 <p>複数のファイルに対し, これらの関数はまず zip ファイルに圧縮してから, この zip ファイルを埋め込みます. これらの関数はリンクを返し, 読者は HTML ページのリンクをクリックして埋め込んだファイルをダウンロードすることができます.</p>
 <p>ヘルプページ <code>?xfun::embed_file</code> またはブログ投稿 <a href="https://yihui.org/en/2018/07/embed-file/" class="uri">https://yihui.org/en/2018/07/embed-file/</a> でこれらの関数のより詳細な技術的情報を学ぶことができます. 同様のアイディアにより, <strong>downloadthis</strong> package <span class="citation">(<a href="参考文献.html#ref-R-downloadthis" role="doc-biblioref">Mattioni Maturana 2020</a>)</span> はダウンロードボタンを実装したことでユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.</p>
 </div>

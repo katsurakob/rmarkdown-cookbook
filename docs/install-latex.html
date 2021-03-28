@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,9 +471,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.2</span> PDF レポートの作成に LaTeX (TinyTeX) をインストールする</h2>
 <p>R Markdown から PDF 文書を作りたいなら, LaTeX がインストール済みである必要があります. 伝統的な選択肢として MiKTeX, MacTeX, そして TeX Live がありますが, R Markdown ユーザーに対しては <a href="https://yihui.org/tinytex/">TinyTeX</a> のインストールを推奨します.</p>
 <p>TinyTeX は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. TinyTeX は R パッケージの <strong>tinytex</strong> <span class="citation">(<a href="参考文献.html#ref-R-tinytex" role="doc-biblioref">Xie 2021c</a>)</span> でインストールできます.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb6-1"><a href="install-latex.html#cb6-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
-<span id="cb6-2"><a href="install-latex.html#cb6-2"></a><span class="co"># TinyTeX をアンインストールするなら,</span></span>
-<span id="cb6-3"><a href="install-latex.html#cb6-3"></a><span class="co"># tinytex::uninstall_tinytex() を実行してください</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb7-1"><a href="install-latex.html#cb7-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
+<span id="cb7-2"><a href="install-latex.html#cb7-2"></a><span class="co"># TinyTeX をアンインストールするなら,</span></span>
+<span id="cb7-3"><a href="install-latex.html#cb7-3"></a><span class="co"># tinytex::uninstall_tinytex() を実行してください</span></span></code></pre></div>
 <p>“<strong>tinytex</strong>” は R パッケージのことを指し, “TinyTeX” は LaTeX ディストリビューションを指すことに注意してください. TinyTeX を使う利点は2つあります.</p>
 <ol style="list-style-type: decimal">
 <li><p>TinyTeX は (他の LaTeX ディストリビューションと比べて) 軽量であり, クロスプラットフォームでありポータブルです. 例えば USB ドライブや他のポータブルデバイスに TinyTeX のコピーを保存し, 同じオペレーティングシステムの別のコンピュータで使用することができます.</p></li>

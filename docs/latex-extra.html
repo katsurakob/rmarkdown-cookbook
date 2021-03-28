@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -469,23 +474,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="loading-latex-packages" class="section level3" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> LaTeX パッケージを読み込む</h3>
 <p><code>pdf_document</code> の YAML での設定 <code>extra_dependencies</code> オプション を使って追加の LaTeX パッケージを読み込めます. 中間ファイルの LaTeX 出力文書で読み込む LaTeX パッケージのリストを与えることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb116-1"><a href="latex-extra.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb116-2"><a href="latex-extra.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;追加 LaTeX パッケージを使う&quot;</span></span>
-<span id="cb116-3"><a href="latex-extra.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb116-4"><a href="latex-extra.html#cb116-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb116-5"><a href="latex-extra.html#cb116-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></span>
-<span id="cb116-6"><a href="latex-extra.html#cb116-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb117-1"><a href="latex-extra.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb117-2"><a href="latex-extra.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;追加 LaTeX パッケージを使う&quot;</span></span>
+<span id="cb117-3"><a href="latex-extra.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb117-4"><a href="latex-extra.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb117-5"><a href="latex-extra.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></span>
+<span id="cb117-6"><a href="latex-extra.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>パッケージ読み込み時のオプションを指定する必要があるなら, 第2のレベルを加えてオプションをリストとして与えられます. 例えばこのように.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb117-1"><a href="latex-extra.html#cb117-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb117-2"><a href="latex-extra.html#cb117-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb117-3"><a href="latex-extra.html#cb117-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span></span>
-<span id="cb117-4"><a href="latex-extra.html#cb117-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">caption</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></span>
-<span id="cb117-5"><a href="latex-extra.html#cb117-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hyperref</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></span>
-<span id="cb117-6"><a href="latex-extra.html#cb117-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">lmodern</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb118-1"><a href="latex-extra.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb118-2"><a href="latex-extra.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb118-3"><a href="latex-extra.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span></span>
+<span id="cb118-4"><a href="latex-extra.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">caption</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></span>
+<span id="cb118-5"><a href="latex-extra.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hyperref</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></span>
+<span id="cb118-6"><a href="latex-extra.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">lmodern</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span></code></pre></div>
 <p>LaTeX に慣れた人にとっては, これは以下の LaTeX コードと同じです.</p>
-<div class="sourceCode" id="cb118"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb118-1"><a href="latex-extra.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </span>
-<span id="cb118-2"><a href="latex-extra.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</span>
-<span id="cb118-3"><a href="latex-extra.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\userpackage</span>{lmodern}</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb119-1"><a href="latex-extra.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </span>
+<span id="cb119-2"><a href="latex-extra.html#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</span>
+<span id="cb119-3"><a href="latex-extra.html#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\userpackage</span>{lmodern}</span></code></pre></div>
 <p><a href="latex-preamble.html#latex-preamble">6.1</a>節で紹介した <code>includes</code> 引数に対し <code>extra_dependencies</code> 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.</p>
 </div>
 <div id="example-packages" class="section level3" number="6.4.2">

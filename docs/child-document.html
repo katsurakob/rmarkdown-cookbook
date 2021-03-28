@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,53 +470,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="child-document" class="section level2" number="16.4">
 <h2><span class="header-section-number">16.4</span> 子文書 (*)</h2>
 <p>R Markdown 文書が長過ぎると思った時は, 短い文書に分割して, チャンクオプション <code>child</code> を使って子文書としてメインの文書に読み込ませることもできます. <code>child</code> オプションは子文書のファイルパスの文字列ベクトルを取ります. 例えばこのように.</p>
-<div class="sourceCode" id="cb468"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb468-1"><a href="child-document.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, child=c(&#39;one.Rmd&#39;, &#39;two.Rmd&#39;)}</span></span>
-<span id="cb468-2"><a href="child-document.html#cb468-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb469-1"><a href="child-document.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, child=c(&#39;one.Rmd&#39;, &#39;two.Rmd&#39;)}</span></span>
+<span id="cb469-2"><a href="child-document.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><strong>knitr</strong> のチャンクオプションは任意の R コードから値を取ることができるので, <code>child</code> オプションの応用の1つとしても文書の読み込みの条件付けがあります. 例えばあなたのレポートに, 上司が関心を持たなそうな技術的な詳細を含む補足文書があるなら, この付録をレポートに含むかどうかを制御する変数を使うこともできます.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb469-1"><a href="child-document.html#cb469-1" aria-hidden="true" tabindex="-1"></a>あなたのボスにレポートを読ませるなら <span class="in">`BOSS_MODE`</span> と <span class="in">`TRUE`</span> に変える</span>
-<span id="cb469-2"><a href="child-document.html#cb469-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb469-3"><a href="child-document.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb469-4"><a href="child-document.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="in">BOSS_MODE &lt;- FALSE</span></span>
-<span id="cb469-5"><a href="child-document.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb469-6"><a href="child-document.html#cb469-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb469-7"><a href="child-document.html#cb469-7" aria-hidden="true" tabindex="-1"></a>条件付きで補遺を読み込む</span>
-<span id="cb469-8"><a href="child-document.html#cb469-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb469-9"><a href="child-document.html#cb469-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, child=if (!BOSS_MODE) &#39;appendix.Rmd&#39;}</span></span>
-<span id="cb469-10"><a href="child-document.html#cb469-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb470"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb470-1"><a href="child-document.html#cb470-1" aria-hidden="true" tabindex="-1"></a>あなたのボスにレポートを読ませるなら <span class="in">`BOSS_MODE`</span> と <span class="in">`TRUE`</span> に変える</span>
+<span id="cb470-2"><a href="child-document.html#cb470-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-3"><a href="child-document.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb470-4"><a href="child-document.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="in">BOSS_MODE &lt;- FALSE</span></span>
+<span id="cb470-5"><a href="child-document.html#cb470-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb470-6"><a href="child-document.html#cb470-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-7"><a href="child-document.html#cb470-7" aria-hidden="true" tabindex="-1"></a>条件付きで補遺を読み込む</span>
+<span id="cb470-8"><a href="child-document.html#cb470-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb470-9"><a href="child-document.html#cb470-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, child=if (!BOSS_MODE) &#39;appendix.Rmd&#39;}</span></span>
+<span id="cb470-10"><a href="child-document.html#cb470-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>あるいはまだ始まってないフットボールの試合の速報レポートを書いているなら, 試合結果に応じて異なる子文書を読み込むようにすることもできます. 例えば <code>child = if (winner == 'ブラジル') 'ブラジル.Rmd' else 'ドイツ.Rmd'</code> のように. これで試合 (ここではドイツ対ブラジル) が終わり次第すぐに, レポートを提出できます.</p>
 <p>子文書をコンパイルする別の方法として, <code>knitr::knit_child()</code> 関数があります. この関数は R コードチャンクまたはインライン R コードの内部で呼び出すことができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb470-1"><a href="child-document.html#cb470-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
-<span id="cb470-2"><a href="child-document.html#cb470-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- knitr::knit_child(&#39;child.Rmd&#39;, quiet = TRUE)</span></span>
-<span id="cb470-3"><a href="child-document.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="in">cat(res, sep = &#39;\n&#39;)</span></span>
-<span id="cb470-4"><a href="child-document.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb471-1"><a href="child-document.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
+<span id="cb471-2"><a href="child-document.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- knitr::knit_child(&#39;child.Rmd&#39;, quiet = TRUE)</span></span>
+<span id="cb471-3"><a href="child-document.html#cb471-3" aria-hidden="true" tabindex="-1"></a><span class="in">cat(res, sep = &#39;\n&#39;)</span></span>
+<span id="cb471-4"><a href="child-document.html#cb471-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>knit_child()</code> 関数は knit された子文書の文字列ベクトルを返します. これは <code>cat()</code> とチャンクオプション <code>results = "asis"</code> を使ってメインの文書に還元することができます.</p>
 <p>テンプレートとして子文書を使うこともできますし, 毎回異なるパラメータを与えつつ <code>knit_child()</code> 何度も呼び出すこともできます. 以下の例では <code>mpg</code> を従属変数として, そして <code>mtcars</code> データの残りの変数を説明変数として使って回帰分析を実行しています.</p>
-<div class="sourceCode" id="cb471"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb471-1"><a href="child-document.html#cb471-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
-<span id="cb471-2"><a href="child-document.html#cb471-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- lapply(setdiff(names(mtcars), &#39;mpg&#39;), function(x) {</span></span>
-<span id="cb471-3"><a href="child-document.html#cb471-3" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_child(text = c(</span></span>
-<span id="cb471-4"><a href="child-document.html#cb471-4" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;## &quot;`r x`&quot; への回帰&#39;,</span></span>
-<span id="cb471-5"><a href="child-document.html#cb471-5" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;&#39;,</span></span>
-<span id="cb471-6"><a href="child-document.html#cb471-6" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;```{r}&#39;,</span></span>
-<span id="cb471-7"><a href="child-document.html#cb471-7" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;lm(mpg ~ ., data = mtcars[, c(&quot;mpg&quot;, x)])&#39;,</span></span>
-<span id="cb471-8"><a href="child-document.html#cb471-8" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;```&#39;,</span></span>
-<span id="cb471-9"><a href="child-document.html#cb471-9" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;&#39;</span></span>
-<span id="cb471-10"><a href="child-document.html#cb471-10" aria-hidden="true" tabindex="-1"></a><span class="in">  ), envir = environment(), quiet = TRUE)</span></span>
-<span id="cb471-11"><a href="child-document.html#cb471-11" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb471-12"><a href="child-document.html#cb471-12" aria-hidden="true" tabindex="-1"></a><span class="in">cat(unlist(res), sep = &#39;\n&#39;)</span></span>
-<span id="cb471-13"><a href="child-document.html#cb471-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb472-1"><a href="child-document.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
+<span id="cb472-2"><a href="child-document.html#cb472-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- lapply(setdiff(names(mtcars), &#39;mpg&#39;), function(x) {</span></span>
+<span id="cb472-3"><a href="child-document.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_child(text = c(</span></span>
+<span id="cb472-4"><a href="child-document.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;## &quot;`r x`&quot; への回帰&#39;,</span></span>
+<span id="cb472-5"><a href="child-document.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;&#39;,</span></span>
+<span id="cb472-6"><a href="child-document.html#cb472-6" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;```{r}&#39;,</span></span>
+<span id="cb472-7"><a href="child-document.html#cb472-7" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;lm(mpg ~ ., data = mtcars[, c(&quot;mpg&quot;, x)])&#39;,</span></span>
+<span id="cb472-8"><a href="child-document.html#cb472-8" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;```&#39;,</span></span>
+<span id="cb472-9"><a href="child-document.html#cb472-9" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;&#39;</span></span>
+<span id="cb472-10"><a href="child-document.html#cb472-10" aria-hidden="true" tabindex="-1"></a><span class="in">  ), envir = environment(), quiet = TRUE)</span></span>
+<span id="cb472-11"><a href="child-document.html#cb472-11" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb472-12"><a href="child-document.html#cb472-12" aria-hidden="true" tabindex="-1"></a><span class="in">cat(unlist(res), sep = &#39;\n&#39;)</span></span>
+<span id="cb472-13"><a href="child-document.html#cb472-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>上記の例を自己完結的なものにするために, <code>knit_child()</code> にファイルを入力するのではなく <code>text</code> 引数に R Markdown コンテンツを渡しました. もちろんファイルにコンテンツを書き出し, <code>knit_child()</code> にファイルパスを渡すこともできます. 例えば以下の例では <code>template.Rmd</code> という名前のファイルに保存しています.</p>
-<div class="sourceCode" id="cb472"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb472-1"><a href="child-document.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## &quot;`r x`&quot; への回帰</span></span>
-<span id="cb472-2"><a href="child-document.html#cb472-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb472-3"><a href="child-document.html#cb472-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb472-4"><a href="child-document.html#cb472-4" aria-hidden="true" tabindex="-1"></a><span class="in">lm(mpg ~ ., data = mtcars[, c(&quot;mpg&quot;, x)])</span></span>
-<span id="cb472-5"><a href="child-document.html#cb472-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb473-1"><a href="child-document.html#cb473-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## &quot;`r x`&quot; への回帰</span></span>
+<span id="cb473-2"><a href="child-document.html#cb473-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb473-3"><a href="child-document.html#cb473-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb473-4"><a href="child-document.html#cb473-4" aria-hidden="true" tabindex="-1"></a><span class="in">lm(mpg ~ ., data = mtcars[, c(&quot;mpg&quot;, x)])</span></span>
+<span id="cb473-5"><a href="child-document.html#cb473-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>そして代わりにファイルを knit します.</p>
-<div class="sourceCode" id="cb473"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb473-1"><a href="child-document.html#cb473-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">setdiff</span>(<span class="fu">names</span>(mtcars), <span class="st">&#39;mpg&#39;</span>), <span class="cf">function</span>(x) {</span>
-<span id="cb473-2"><a href="child-document.html#cb473-2"></a>  knitr<span class="sc">::</span><span class="fu">knit_child</span>(</span>
-<span id="cb473-3"><a href="child-document.html#cb473-3"></a>    <span class="st">&#39;template.Rmd&#39;</span>, <span class="at">envir =</span> <span class="fu">environment</span>(), <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
-<span id="cb473-4"><a href="child-document.html#cb473-4"></a>  )</span>
-<span id="cb473-5"><a href="child-document.html#cb473-5"></a>})</span>
-<span id="cb473-6"><a href="child-document.html#cb473-6"></a><span class="fu">cat</span>(<span class="fu">unlist</span>(res), <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb474-1"><a href="child-document.html#cb474-1"></a>res <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">setdiff</span>(<span class="fu">names</span>(mtcars), <span class="st">&#39;mpg&#39;</span>), <span class="cf">function</span>(x) {</span>
+<span id="cb474-2"><a href="child-document.html#cb474-2"></a>  knitr<span class="sc">::</span><span class="fu">knit_child</span>(</span>
+<span id="cb474-3"><a href="child-document.html#cb474-3"></a>    <span class="st">&#39;template.Rmd&#39;</span>, <span class="at">envir =</span> <span class="fu">environment</span>(), <span class="at">quiet =</span> <span class="cn">TRUE</span></span>
+<span id="cb474-4"><a href="child-document.html#cb474-4"></a>  )</span>
+<span id="cb474-5"><a href="child-document.html#cb474-5"></a>})</span>
+<span id="cb474-6"><a href="child-document.html#cb474-6"></a><span class="fu">cat</span>(<span class="fu">unlist</span>(res), <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span></code></pre></div>
 </div>
             </section>
 

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,19 +470,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="html-widgets" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> HTML ウィジェットを表示する</h2>
 <p>HTML ウィジェット (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>) は典型例で言えばインタラクティブな JavaScript アプリケーションで, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit するなら, このようなエラーメッセージが返ってくるかもしれません.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb187-1"><a href="html-widgets.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="an">Error:</span><span class="co"> Functions that produce HTML output found in document</span></span>
-<span id="cb187-2"><a href="html-widgets.html#cb187-2" aria-hidden="true" tabindex="-1"></a>targeting X output. Please change the output type of this</span>
-<span id="cb187-3"><a href="html-widgets.html#cb187-3" aria-hidden="true" tabindex="-1"></a>document to HTML. Alternatively, you can allow HTML output in</span>
-<span id="cb187-4"><a href="html-widgets.html#cb187-4" aria-hidden="true" tabindex="-1"></a>non-HTML formats by adding this option to the YAML front-matter</span>
-<span id="cb187-5"><a href="html-widgets.html#cb187-5" aria-hidden="true" tabindex="-1"></a>of your rmarkdown file:</span>
-<span id="cb187-6"><a href="html-widgets.html#cb187-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-7"><a href="html-widgets.html#cb187-7" aria-hidden="true" tabindex="-1"></a>  always_allow_html: yes</span>
-<span id="cb187-8"><a href="html-widgets.html#cb187-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-9"><a href="html-widgets.html#cb187-9" aria-hidden="true" tabindex="-1"></a>Note however that the HTML output will not be visible in</span>
-<span id="cb187-10"><a href="html-widgets.html#cb187-10" aria-hidden="true" tabindex="-1"></a>non-HTML formats.</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb188-1"><a href="html-widgets.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="an">Error:</span><span class="co"> Functions that produce HTML output found in document</span></span>
+<span id="cb188-2"><a href="html-widgets.html#cb188-2" aria-hidden="true" tabindex="-1"></a>targeting X output. Please change the output type of this</span>
+<span id="cb188-3"><a href="html-widgets.html#cb188-3" aria-hidden="true" tabindex="-1"></a>document to HTML. Alternatively, you can allow HTML output in</span>
+<span id="cb188-4"><a href="html-widgets.html#cb188-4" aria-hidden="true" tabindex="-1"></a>non-HTML formats by adding this option to the YAML front-matter</span>
+<span id="cb188-5"><a href="html-widgets.html#cb188-5" aria-hidden="true" tabindex="-1"></a>of your rmarkdown file:</span>
+<span id="cb188-6"><a href="html-widgets.html#cb188-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-7"><a href="html-widgets.html#cb188-7" aria-hidden="true" tabindex="-1"></a>  always_allow_html: yes</span>
+<span id="cb188-8"><a href="html-widgets.html#cb188-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb188-9"><a href="html-widgets.html#cb188-9" aria-hidden="true" tabindex="-1"></a>Note however that the HTML output will not be visible in</span>
+<span id="cb188-10"><a href="html-widgets.html#cb188-10" aria-hidden="true" tabindex="-1"></a>non-HTML formats.</span></code></pre></div>
 <p>上記のエラーメッセージの方法よりも良い解決法が存在しますが, 追加のパッケージが絡んできます. R に <strong>webshot</strong> パッケージ<span class="citation">(<a href="参考文献.html#ref-R-webshot" role="doc-biblioref">Chang 2019</a>)</span> をインストールし, さらに PhantomJS をインストールしてください.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb188-1"><a href="html-widgets.html#cb188-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</span>
-<span id="cb188-2"><a href="html-widgets.html#cb188-2"></a>webshot<span class="sc">::</span><span class="fu">install_phantomjs</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb189-1"><a href="html-widgets.html#cb189-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</span>
+<span id="cb189-2"><a href="html-widgets.html#cb189-2"></a>webshot<span class="sc">::</span><span class="fu">install_phantomjs</span>()</span></code></pre></div>
 <p>それから HTML ウィジェットつきの Rmd 文書を非 HTML フォーマットで knit すれば, HTML ウィジェットは静的なスクリーンショットとして表示されます. スクリーンショットは <strong>knitr</strong> によって自動的に作られます. <strong>bookdown</strong> 本の <a href="https://bookdown.org/yihui/bookdown/html-widgets.html">Section 2.10</a> に, スクリーンショットの詳しい操作方法が書かれています.</p>
 </div>
             </section>

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,31 +472,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
 <p>HTML レポートの並列しているセクションをまとめる自然な方法の1つは, タブセットを使うことです. これは読者がページをスクロールして戻したり進めたりするかわりに, タブのタイトルをクリックすることで異なるセクションの内容を閲覧することを可能にします.</p>
 <p>セクションをタブにするために, タブに変換する見出しより1レベル上の見出しにクラス属性 <code>.tabset</code> を追加できます. 例えばレベル2の見出しに <code>.tabset</code> を追加するとそれ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb151-1"><a href="html-tabs.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb151-2"><a href="html-tabs.html#cb151-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 内容をタブにまとめる</span></span>
-<span id="cb151-3"><a href="html-tabs.html#cb151-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb151-4"><a href="html-tabs.html#cb151-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb151-5"><a href="html-tabs.html#cb151-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-6"><a href="html-tabs.html#cb151-6" aria-hidden="true" tabindex="-1"></a><span class="in">`html_document`</span> 出力で並列するセクションをタブにできます.</span>
-<span id="cb151-7"><a href="html-tabs.html#cb151-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-8"><a href="html-tabs.html#cb151-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 結果 {.tabset}</span></span>
-<span id="cb151-9"><a href="html-tabs.html#cb151-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-10"><a href="html-tabs.html#cb151-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### グラフ</span></span>
-<span id="cb151-11"><a href="html-tabs.html#cb151-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-12"><a href="html-tabs.html#cb151-12" aria-hidden="true" tabindex="-1"></a>このセクションでは散布図を表示します.</span>
-<span id="cb151-13"><a href="html-tabs.html#cb151-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-14"><a href="html-tabs.html#cb151-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.dim=c(5, 3)}</span></span>
-<span id="cb151-15"><a href="html-tabs.html#cb151-15" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .5, .1))</span></span>
-<span id="cb151-16"><a href="html-tabs.html#cb151-16" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mpg ~ hp, data = mtcars, pch = 19)</span></span>
-<span id="cb151-17"><a href="html-tabs.html#cb151-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb151-18"><a href="html-tabs.html#cb151-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-19"><a href="html-tabs.html#cb151-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### 表</span></span>
-<span id="cb151-20"><a href="html-tabs.html#cb151-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-21"><a href="html-tabs.html#cb151-21" aria-hidden="true" tabindex="-1"></a>このタブではデータを表示します.</span>
-<span id="cb151-22"><a href="html-tabs.html#cb151-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb151-23"><a href="html-tabs.html#cb151-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb151-24"><a href="html-tabs.html#cb151-24" aria-hidden="true" tabindex="-1"></a><span class="in">head(mtcars)</span></span>
-<span id="cb151-25"><a href="html-tabs.html#cb151-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb152-1"><a href="html-tabs.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb152-2"><a href="html-tabs.html#cb152-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 内容をタブにまとめる</span></span>
+<span id="cb152-3"><a href="html-tabs.html#cb152-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb152-4"><a href="html-tabs.html#cb152-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb152-5"><a href="html-tabs.html#cb152-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-6"><a href="html-tabs.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="in">`html_document`</span> 出力で並列するセクションをタブにできます.</span>
+<span id="cb152-7"><a href="html-tabs.html#cb152-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-8"><a href="html-tabs.html#cb152-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 結果 {.tabset}</span></span>
+<span id="cb152-9"><a href="html-tabs.html#cb152-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-10"><a href="html-tabs.html#cb152-10" aria-hidden="true" tabindex="-1"></a><span class="fu">### グラフ</span></span>
+<span id="cb152-11"><a href="html-tabs.html#cb152-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-12"><a href="html-tabs.html#cb152-12" aria-hidden="true" tabindex="-1"></a>このセクションでは散布図を表示します.</span>
+<span id="cb152-13"><a href="html-tabs.html#cb152-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-14"><a href="html-tabs.html#cb152-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.dim=c(5, 3)}</span></span>
+<span id="cb152-15"><a href="html-tabs.html#cb152-15" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .5, .1))</span></span>
+<span id="cb152-16"><a href="html-tabs.html#cb152-16" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mpg ~ hp, data = mtcars, pch = 19)</span></span>
+<span id="cb152-17"><a href="html-tabs.html#cb152-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb152-18"><a href="html-tabs.html#cb152-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-19"><a href="html-tabs.html#cb152-19" aria-hidden="true" tabindex="-1"></a><span class="fu">### 表</span></span>
+<span id="cb152-20"><a href="html-tabs.html#cb152-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-21"><a href="html-tabs.html#cb152-21" aria-hidden="true" tabindex="-1"></a>このタブではデータを表示します.</span>
+<span id="cb152-22"><a href="html-tabs.html#cb152-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-23"><a href="html-tabs.html#cb152-23" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb152-24"><a href="html-tabs.html#cb152-24" aria-hidden="true" tabindex="-1"></a><span class="in">head(mtcars)</span></span>
+<span id="cb152-25"><a href="html-tabs.html#cb152-25" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>出力を図<a href="html-tabs.html#fig:html-tabs">7.4</a>に示します. 実際には一度に1つのタブしか見られないことに注意してください. この図は両方のタブがみられるよう2つのスクリーンショットを連結したものです.</p>
 <div class="figure" style="text-align: center"><span id="fig:html-tabs"></span>
 <img src="JP/images/html-tabs.png" alt="複数のセクションをタブに"  />
@@ -500,19 +505,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>タブに “pill” 効果を付けるため, さらに別の属性 <code>.tabset-pills</code> を上位レベルの見出しに追加することができます. これでタブは暗青色の背景になります.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb152-1"><a href="html-tabs.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results {.tabset .tabset-pills}</span></span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb153-1"><a href="html-tabs.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results {.tabset .tabset-pills}</span></span></code></pre></div>
 <p>デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに <code>.active</code> 属性を追加することもできます.</p>
 <p>タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にすることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb153-1"><a href="html-tabs.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results {.tabset}</span></span>
-<span id="cb153-2"><a href="html-tabs.html#cb153-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-3"><a href="html-tabs.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tab One</span></span>
-<span id="cb153-4"><a href="html-tabs.html#cb153-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-5"><a href="html-tabs.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tab Two</span></span>
-<span id="cb153-6"><a href="html-tabs.html#cb153-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-7"><a href="html-tabs.html#cb153-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## {-}</span></span>
-<span id="cb153-8"><a href="html-tabs.html#cb153-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb153-9"><a href="html-tabs.html#cb153-9" aria-hidden="true" tabindex="-1"></a>上記のように番号なし (<span class="in">`{-}`</span>) で空のセクション見出しがあれば,</span>
-<span id="cb153-10"><a href="html-tabs.html#cb153-10" aria-hidden="true" tabindex="-1"></a>タブセットを終了しさらなる段落を続けることができます.</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb154-1"><a href="html-tabs.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Results {.tabset}</span></span>
+<span id="cb154-2"><a href="html-tabs.html#cb154-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-3"><a href="html-tabs.html#cb154-3" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tab One</span></span>
+<span id="cb154-4"><a href="html-tabs.html#cb154-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-5"><a href="html-tabs.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### Tab Two</span></span>
+<span id="cb154-6"><a href="html-tabs.html#cb154-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-7"><a href="html-tabs.html#cb154-7" aria-hidden="true" tabindex="-1"></a><span class="fu">## {-}</span></span>
+<span id="cb154-8"><a href="html-tabs.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="html-tabs.html#cb154-9" aria-hidden="true" tabindex="-1"></a>上記のように番号なし (<span class="in">`{-}`</span>) で空のセクション見出しがあれば,</span>
+<span id="cb154-10"><a href="html-tabs.html#cb154-10" aria-hidden="true" tabindex="-1"></a>タブセットを終了しさらなる段落を続けることができます.</span></code></pre></div>
 </div>
             </section>
 

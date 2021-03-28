@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,88 +471,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.8</span> 多段組み (*)</h2>
 <p>Pandoc の Markdown はスライドに対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは <strong>knitr</strong> の issue <a href="https://github.com/yihui/knitr/issues/1743" class="uri">https://github.com/yihui/knitr/issues/1743</a> での Atsushi Yasumoto の解決策に着想を得ました.</p>
 <p>HTML 要素を CSS を使って並べて表示するのは比較的簡単なので, この方法は HTML 出力のみ考慮する必要があるならかなり簡単です. コードチャンクのテキスト出力を並べるだけならば, もっと簡単になります. 以下は1つ目の例です.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb102-1"><a href="multi-column.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb102-2"><a href="multi-column.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb102-3"><a href="multi-column.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb102-4"><a href="multi-column.html#cb102-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb102-5"><a href="multi-column.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r attr.source=&quot;style=&#39;display:inline-block;&#39;&quot;, collapse=TRUE}</span></span>
-<span id="cb102-6"><a href="multi-column.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="in">1:10  # 1 から 10 の数列</span></span>
-<span id="cb102-7"><a href="multi-column.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="in">10:1  # その逆順</span></span>
-<span id="cb102-8"><a href="multi-column.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>CSS 属性 <code>display: inline-block;</code>  はコードブロックの出力 (つまり HTML タグの <code>&lt;pre&gt;</code> です) をインライン要素として表示すべきという意味です. デフォルトではこれらのブロックはブロックレベル要素 (つまり <code>display: block;</code>) として表示され, 行を丸ごと占有します. チャンクオプション <code>collapse = TRUE</code> はテキスト出力を R ソースコードブロックと結合することを意味するので, ソースとテキスト出力が同じ <code>&lt;pre&gt;</code> ブロックに配置されます.</p>
-<p>HTML 出力時に任意の順で横に並べたい場合, Pandoc の <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code>.</a> を使うことができます. “Div” は HTML タグの <code>&lt;div&gt;</code> に由来しますが, 任意のブロックやコンテナと解釈できます. <code>Div</code> の開始と終了は は3つ以上のコロン (例: <code>:::</code>) です. より多くのコロンの <code>Div</code> は, よりコロンの少ない <code>Div</code> を含むことができます. fanced <code>Div</code> の重要で有用な機能は, これに属性を付与できるということです. 例えば CSS 属性 <code>display: flex;</code> を外側のコンテナに適用できるので, 内側のコンテナは横並びに配置されます.</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb103-1"><a href="multi-column.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb103-2"><a href="multi-column.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
 <span id="cb103-3"><a href="multi-column.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb103-4"><a href="multi-column.html#cb103-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-5"><a href="multi-column.html#cb103-5" aria-hidden="true" tabindex="-1"></a>:::: {style=&quot;display: flex;&quot;}</span>
-<span id="cb103-6"><a href="multi-column.html#cb103-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-7"><a href="multi-column.html#cb103-7" aria-hidden="true" tabindex="-1"></a>::: {}</span>
-<span id="cb103-8"><a href="multi-column.html#cb103-8" aria-hidden="true" tabindex="-1"></a>ここは **最初の** Div です.</span>
-<span id="cb103-9"><a href="multi-column.html#cb103-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-10"><a href="multi-column.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-11"><a href="multi-column.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="in">str(iris)</span></span>
-<span id="cb103-12"><a href="multi-column.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-13"><a href="multi-column.html#cb103-13" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb103-14"><a href="multi-column.html#cb103-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-15"><a href="multi-column.html#cb103-15" aria-hidden="true" tabindex="-1"></a>::: {}</span>
-<span id="cb103-16"><a href="multi-column.html#cb103-16" aria-hidden="true" tabindex="-1"></a>こっちは右側に配置されるブロックです.</span>
-<span id="cb103-17"><a href="multi-column.html#cb103-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-18"><a href="multi-column.html#cb103-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb103-19"><a href="multi-column.html#cb103-19" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
-<span id="cb103-20"><a href="multi-column.html#cb103-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb103-21"><a href="multi-column.html#cb103-21" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb103-22"><a href="multi-column.html#cb103-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb103-23"><a href="multi-column.html#cb103-23" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
+<span id="cb103-5"><a href="multi-column.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r attr.source=&quot;style=&#39;display:inline-block;&#39;&quot;, collapse=TRUE}</span></span>
+<span id="cb103-6"><a href="multi-column.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="in">1:10  # 1 から 10 の数列</span></span>
+<span id="cb103-7"><a href="multi-column.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="in">10:1  # その逆順</span></span>
+<span id="cb103-8"><a href="multi-column.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>CSS 属性 <code>display: inline-block;</code>  はコードブロックの出力 (つまり HTML タグの <code>&lt;pre&gt;</code> です) をインライン要素として表示すべきという意味です. デフォルトではこれらのブロックはブロックレベル要素 (つまり <code>display: block;</code>) として表示され, 行を丸ごと占有します. チャンクオプション <code>collapse = TRUE</code> はテキスト出力を R ソースコードブロックと結合することを意味するので, ソースとテキスト出力が同じ <code>&lt;pre&gt;</code> ブロックに配置されます.</p>
+<p>HTML 出力時に任意の順で横に並べたい場合, Pandoc の <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code>.</a> を使うことができます. “Div” は HTML タグの <code>&lt;div&gt;</code> に由来しますが, 任意のブロックやコンテナと解釈できます. <code>Div</code> の開始と終了は は3つ以上のコロン (例: <code>:::</code>) です. より多くのコロンの <code>Div</code> は, よりコロンの少ない <code>Div</code> を含むことができます. fanced <code>Div</code> の重要で有用な機能は, これに属性を付与できるということです. 例えば CSS 属性 <code>display: flex;</code> を外側のコンテナに適用できるので, 内側のコンテナは横並びに配置されます.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb104-1"><a href="multi-column.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb104-2"><a href="multi-column.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb104-3"><a href="multi-column.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb104-4"><a href="multi-column.html#cb104-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-5"><a href="multi-column.html#cb104-5" aria-hidden="true" tabindex="-1"></a>:::: {style=&quot;display: flex;&quot;}</span>
+<span id="cb104-6"><a href="multi-column.html#cb104-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-7"><a href="multi-column.html#cb104-7" aria-hidden="true" tabindex="-1"></a>::: {}</span>
+<span id="cb104-8"><a href="multi-column.html#cb104-8" aria-hidden="true" tabindex="-1"></a>ここは **最初の** Div です.</span>
+<span id="cb104-9"><a href="multi-column.html#cb104-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-10"><a href="multi-column.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb104-11"><a href="multi-column.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="in">str(iris)</span></span>
+<span id="cb104-12"><a href="multi-column.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb104-13"><a href="multi-column.html#cb104-13" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb104-14"><a href="multi-column.html#cb104-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-15"><a href="multi-column.html#cb104-15" aria-hidden="true" tabindex="-1"></a>::: {}</span>
+<span id="cb104-16"><a href="multi-column.html#cb104-16" aria-hidden="true" tabindex="-1"></a>こっちは右側に配置されるブロックです.</span>
+<span id="cb104-17"><a href="multi-column.html#cb104-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-18"><a href="multi-column.html#cb104-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb104-19"><a href="multi-column.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
+<span id="cb104-20"><a href="multi-column.html#cb104-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb104-21"><a href="multi-column.html#cb104-21" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb104-22"><a href="multi-column.html#cb104-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-23"><a href="multi-column.html#cb104-23" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
 <p>上記の例では外側の <code>Div</code> (<code>::::</code>) は2つの <code>Div</code> (<code>:::</code>) を含んでいます. この中にさらに <code>Div</code> を追加することもできます. とても強力な CSS 属性 <code>display: flex;</code> (CSS Flexbox) についてもっと知るためには <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="uri">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a> というガイドを読むこともできます. CSS グリッド (<code>display: grid;</code>) はもっと強力で, 上記の例にも使えます. もし試してみたいなら, <code>display: flex;</code> を <code>display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;</code> に置き換えてみてください. グリッドレイアウトについてより知りたいのなら, <a href="https://css-tricks.com/snippets/css/complete-guide-grid/" class="uri">https://css-tricks.com/snippets/css/complete-guide-grid/</a> のガイドを見てください.</p>
 <p>HTML でも LaTeX でも同じようなレイアウトにしたいのなら, よりトリッキーになります. 以下に HTML, LaTeX そして Beamer で動作する用例の全容を示します.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb104-1"><a href="multi-column.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb104-2"><a href="multi-column.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb104-3"><a href="multi-column.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document: </span></span>
-<span id="cb104-4"><a href="multi-column.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb104-5"><a href="multi-column.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="co">    keep_tex: true</span></span>
-<span id="cb104-6"><a href="multi-column.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
-<span id="cb104-7"><a href="multi-column.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: columns.tex</span></span>
-<span id="cb104-8"><a href="multi-column.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: </span></span>
-<span id="cb104-9"><a href="multi-column.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="co">    css: columns.css</span></span>
-<span id="cb104-10"><a href="multi-column.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="co">  beamer_presentation: </span></span>
-<span id="cb104-11"><a href="multi-column.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="co">    keep_tex: true</span></span>
-<span id="cb104-12"><a href="multi-column.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb104-13"><a href="multi-column.html#cb104-13" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
-<span id="cb104-14"><a href="multi-column.html#cb104-14" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: columns.tex</span></span>
-<span id="cb104-15"><a href="multi-column.html#cb104-15" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> &quot;`r if(knitr::opts_knit$get(&#39;rmarkdown.pandoc.to&#39;) == &#39;beamer&#39;) &#39;beamer&#39; else &#39;ltjsarticle&#39;`&quot;</span></span>
-<span id="cb104-16"><a href="multi-column.html#cb104-16" aria-hidden="true" tabindex="-1"></a><span class="an">mainfont:</span><span class="co"> &#39;Noto Sans CJK JP&#39;</span></span>
-<span id="cb104-17"><a href="multi-column.html#cb104-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb104-18"><a href="multi-column.html#cb104-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-19"><a href="multi-column.html#cb104-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># 二段組み</span></span>
-<span id="cb104-20"><a href="multi-column.html#cb104-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-21"><a href="multi-column.html#cb104-21" aria-hidden="true" tabindex="-1"></a>以下は 3つの子要素の Div を横並びに持つ Div コンテナです. 中央の Div は空で, 左右の Div の間に空白を作るためだけに存在します.</span>
-<span id="cb104-22"><a href="multi-column.html#cb104-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-23"><a href="multi-column.html#cb104-23" aria-hidden="true" tabindex="-1"></a>:::::: {.cols data-latex=&quot;&quot;}</span>
-<span id="cb104-24"><a href="multi-column.html#cb104-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-25"><a href="multi-column.html#cb104-25" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.55\textwidth}&quot;}</span>
-<span id="cb104-26"><a href="multi-column.html#cb104-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, fig.width=5, fig.height=4}</span></span>
-<span id="cb104-27"><a href="multi-column.html#cb104-27" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .2, .1))</span></span>
-<span id="cb104-28"><a href="multi-column.html#cb104-28" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19)</span></span>
-<span id="cb104-29"><a href="multi-column.html#cb104-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb104-30"><a href="multi-column.html#cb104-30" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb104-31"><a href="multi-column.html#cb104-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-32"><a href="multi-column.html#cb104-32" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.05\textwidth}&quot;}</span>
-<span id="cb104-33"><a href="multi-column.html#cb104-33" aria-hidden="true" tabindex="-1"></a>\ </span>
-<span id="cb104-34"><a href="multi-column.html#cb104-34" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 段どうしのセパレータとして機能するだけの空の Div (空白入り) --&gt;</span></span>
-<span id="cb104-35"><a href="multi-column.html#cb104-35" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb104-36"><a href="multi-column.html#cb104-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-37"><a href="multi-column.html#cb104-37" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.4\textwidth}&quot;}</span>
-<span id="cb104-38"><a href="multi-column.html#cb104-38" aria-hidden="true" tabindex="-1"></a>左側の図は <span class="in">`cars`</span> データを表しています.</span>
-<span id="cb104-39"><a href="multi-column.html#cb104-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-40"><a href="multi-column.html#cb104-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-41"><a href="multi-column.html#cb104-41" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; いろはにほへと ちりぬるを</span></span>
-<span id="cb104-42"><a href="multi-column.html#cb104-42" aria-hidden="true" tabindex="-1"></a><span class="at">わかよたれそ つねならむ</span></span>
-<span id="cb104-43"><a href="multi-column.html#cb104-43" aria-hidden="true" tabindex="-1"></a><span class="at">うゐのおくやま けふこえて</span></span>
-<span id="cb104-44"><a href="multi-column.html#cb104-44" aria-hidden="true" tabindex="-1"></a><span class="at">あさきゆめみし ゑひもせす</span></span>
-<span id="cb104-45"><a href="multi-column.html#cb104-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb104-46"><a href="multi-column.html#cb104-46" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb104-47"><a href="multi-column.html#cb104-47" aria-hidden="true" tabindex="-1"></a>::::::</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb105-1"><a href="multi-column.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb105-2"><a href="multi-column.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb105-3"><a href="multi-column.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document: </span></span>
+<span id="cb105-4"><a href="multi-column.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb105-5"><a href="multi-column.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="co">    keep_tex: true</span></span>
+<span id="cb105-6"><a href="multi-column.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
+<span id="cb105-7"><a href="multi-column.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: columns.tex</span></span>
+<span id="cb105-8"><a href="multi-column.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: </span></span>
+<span id="cb105-9"><a href="multi-column.html#cb105-9" aria-hidden="true" tabindex="-1"></a><span class="co">    css: columns.css</span></span>
+<span id="cb105-10"><a href="multi-column.html#cb105-10" aria-hidden="true" tabindex="-1"></a><span class="co">  beamer_presentation: </span></span>
+<span id="cb105-11"><a href="multi-column.html#cb105-11" aria-hidden="true" tabindex="-1"></a><span class="co">    keep_tex: true</span></span>
+<span id="cb105-12"><a href="multi-column.html#cb105-12" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb105-13"><a href="multi-column.html#cb105-13" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
+<span id="cb105-14"><a href="multi-column.html#cb105-14" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: columns.tex</span></span>
+<span id="cb105-15"><a href="multi-column.html#cb105-15" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> &quot;`r if(knitr::opts_knit$get(&#39;rmarkdown.pandoc.to&#39;) == &#39;beamer&#39;) &#39;beamer&#39; else &#39;ltjsarticle&#39;`&quot;</span></span>
+<span id="cb105-16"><a href="multi-column.html#cb105-16" aria-hidden="true" tabindex="-1"></a><span class="an">mainfont:</span><span class="co"> &#39;Noto Sans CJK JP&#39;</span></span>
+<span id="cb105-17"><a href="multi-column.html#cb105-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb105-18"><a href="multi-column.html#cb105-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-19"><a href="multi-column.html#cb105-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># 二段組み</span></span>
+<span id="cb105-20"><a href="multi-column.html#cb105-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-21"><a href="multi-column.html#cb105-21" aria-hidden="true" tabindex="-1"></a>以下は 3つの子要素の Div を横並びに持つ Div コンテナです. 中央の Div は空で, 左右の Div の間に空白を作るためだけに存在します.</span>
+<span id="cb105-22"><a href="multi-column.html#cb105-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-23"><a href="multi-column.html#cb105-23" aria-hidden="true" tabindex="-1"></a>:::::: {.cols data-latex=&quot;&quot;}</span>
+<span id="cb105-24"><a href="multi-column.html#cb105-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-25"><a href="multi-column.html#cb105-25" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.55\textwidth}&quot;}</span>
+<span id="cb105-26"><a href="multi-column.html#cb105-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, fig.width=5, fig.height=4}</span></span>
+<span id="cb105-27"><a href="multi-column.html#cb105-27" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .2, .1))</span></span>
+<span id="cb105-28"><a href="multi-column.html#cb105-28" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19)</span></span>
+<span id="cb105-29"><a href="multi-column.html#cb105-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb105-30"><a href="multi-column.html#cb105-30" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb105-31"><a href="multi-column.html#cb105-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-32"><a href="multi-column.html#cb105-32" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.05\textwidth}&quot;}</span>
+<span id="cb105-33"><a href="multi-column.html#cb105-33" aria-hidden="true" tabindex="-1"></a>\ </span>
+<span id="cb105-34"><a href="multi-column.html#cb105-34" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- 段どうしのセパレータとして機能するだけの空の Div (空白入り) --&gt;</span></span>
+<span id="cb105-35"><a href="multi-column.html#cb105-35" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb105-36"><a href="multi-column.html#cb105-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-37"><a href="multi-column.html#cb105-37" aria-hidden="true" tabindex="-1"></a>::: {.col data-latex=&quot;{0.4\textwidth}&quot;}</span>
+<span id="cb105-38"><a href="multi-column.html#cb105-38" aria-hidden="true" tabindex="-1"></a>左側の図は <span class="in">`cars`</span> データを表しています.</span>
+<span id="cb105-39"><a href="multi-column.html#cb105-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-40"><a href="multi-column.html#cb105-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-41"><a href="multi-column.html#cb105-41" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; いろはにほへと ちりぬるを</span></span>
+<span id="cb105-42"><a href="multi-column.html#cb105-42" aria-hidden="true" tabindex="-1"></a><span class="at">わかよたれそ つねならむ</span></span>
+<span id="cb105-43"><a href="multi-column.html#cb105-43" aria-hidden="true" tabindex="-1"></a><span class="at">うゐのおくやま けふこえて</span></span>
+<span id="cb105-44"><a href="multi-column.html#cb105-44" aria-hidden="true" tabindex="-1"></a><span class="at">あさきゆめみし ゑひもせす</span></span>
+<span id="cb105-45"><a href="multi-column.html#cb105-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb105-46"><a href="multi-column.html#cb105-46" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb105-47"><a href="multi-column.html#cb105-47" aria-hidden="true" tabindex="-1"></a>::::::</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:multicol"></span>
 <img src="JP/images/multicol.png" alt="HTML, LaTeX, Beamer で動作する二段組み"  />
 <p class="caption">
@@ -555,25 +560,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>図<a href="multi-column.html#fig:multicol">5.3</a> がその出力です. この例では外側の <code>.cols</code> クラスを持つ <code>Div</code> と, 内側に <code>.col</code> クラスを持つ3つの <code>Div</code> を使っています. HTML 出力では, 外部 CSS ファイル <code>columns.css</code> を導入し, その中で Flexbox レイアウトを外側の <code>Div</code> に適用しているので, 内側の <code>Div</code> が横並びになります.</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb105-1"><a href="multi-column.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.cols</span> {<span class="kw">display</span>: flex<span class="op">;</span> }</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb106-1"><a href="multi-column.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.cols</span> {<span class="kw">display</span>: flex<span class="op">;</span> }</span></code></pre></div>
 <p>LaTeX 出力 (<code>pdf_document</code>) では, LaTeX プリアンブルで LaTeX 環境 <code>cols</code> と <code>col</code> で定義するための <code>columns.tex</code> に含まれているダーティーハックについて解説せねばなりません.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb106-1"><a href="multi-column.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\newenvironment</span>{cols}[1][]{}{}</span>
-<span id="cb106-2"><a href="multi-column.html#cb106-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-3"><a href="multi-column.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\newenvironment</span>{col}[1]{<span class="kw">\begin</span>{<span class="ex">minipage</span>}{#1}<span class="fu">\ignorespaces</span>}{<span class="co">%</span></span>
-<span id="cb106-4"><a href="multi-column.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">minipage</span>}</span>
-<span id="cb106-5"><a href="multi-column.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\ifhmode\unskip\fi</span></span>
-<span id="cb106-6"><a href="multi-column.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\aftergroup\useignorespacesandallpars</span>}</span>
-<span id="cb106-7"><a href="multi-column.html#cb106-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-8"><a href="multi-column.html#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\def\useignorespacesandallpars</span>#1<span class="fu">\ignorespaces\fi</span>{<span class="co">%</span></span>
-<span id="cb106-9"><a href="multi-column.html#cb106-9" aria-hidden="true" tabindex="-1"></a>#1<span class="fu">\fi\ignorespacesandallpars</span>}</span>
-<span id="cb106-10"><a href="multi-column.html#cb106-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb106-11"><a href="multi-column.html#cb106-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatletter</span></span>
-<span id="cb106-12"><a href="multi-column.html#cb106-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\def\ignorespacesandallpars</span>{<span class="co">%</span></span>
-<span id="cb106-13"><a href="multi-column.html#cb106-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\@ifnextchar\par</span></span>
-<span id="cb106-14"><a href="multi-column.html#cb106-14" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\expandafter\ignorespacesandallpars\@gobble</span>}<span class="co">%</span></span>
-<span id="cb106-15"><a href="multi-column.html#cb106-15" aria-hidden="true" tabindex="-1"></a>    {}<span class="co">%</span></span>
-<span id="cb106-16"><a href="multi-column.html#cb106-16" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb106-17"><a href="multi-column.html#cb106-17" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb107-1"><a href="multi-column.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\newenvironment</span>{cols}[1][]{}{}</span>
+<span id="cb107-2"><a href="multi-column.html#cb107-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-3"><a href="multi-column.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\newenvironment</span>{col}[1]{<span class="kw">\begin</span>{<span class="ex">minipage</span>}{#1}<span class="fu">\ignorespaces</span>}{<span class="co">%</span></span>
+<span id="cb107-4"><a href="multi-column.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">minipage</span>}</span>
+<span id="cb107-5"><a href="multi-column.html#cb107-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\ifhmode\unskip\fi</span></span>
+<span id="cb107-6"><a href="multi-column.html#cb107-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\aftergroup\useignorespacesandallpars</span>}</span>
+<span id="cb107-7"><a href="multi-column.html#cb107-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-8"><a href="multi-column.html#cb107-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\def\useignorespacesandallpars</span>#1<span class="fu">\ignorespaces\fi</span>{<span class="co">%</span></span>
+<span id="cb107-9"><a href="multi-column.html#cb107-9" aria-hidden="true" tabindex="-1"></a>#1<span class="fu">\fi\ignorespacesandallpars</span>}</span>
+<span id="cb107-10"><a href="multi-column.html#cb107-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb107-11"><a href="multi-column.html#cb107-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatletter</span></span>
+<span id="cb107-12"><a href="multi-column.html#cb107-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\def\ignorespacesandallpars</span>{<span class="co">%</span></span>
+<span id="cb107-13"><a href="multi-column.html#cb107-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\@ifnextchar\par</span></span>
+<span id="cb107-14"><a href="multi-column.html#cb107-14" aria-hidden="true" tabindex="-1"></a>    {<span class="fu">\expandafter\ignorespacesandallpars\@gobble</span>}<span class="co">%</span></span>
+<span id="cb107-15"><a href="multi-column.html#cb107-15" aria-hidden="true" tabindex="-1"></a>    {}<span class="co">%</span></span>
+<span id="cb107-16"><a href="multi-column.html#cb107-16" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb107-17"><a href="multi-column.html#cb107-17" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatother</span></span></code></pre></div>
 <p>主に Pandoc が LaTeX 出力では <code>Div</code> に対していつも段落を改めており, この改段を除去しなければならないという理由のため, <code>col</code> 環境は特に複雑です. そうしないと <code>Div</code> を横並びにすることはできません. このハックは <a href="https://tex.stackexchange.com/q/179016/9128" class="uri">https://tex.stackexchange.com/q/179016/9128</a> から借用しました.</p>
 <p>Beamer 出力でも <code>columns.tex</code> で同じハックを適用しています. Pandoc は <code>::: {.columns}</code>, <code>::: {.column}</code>, <code>::: {.incremental}</code> といった<a href="https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc">スライドショー</a>用の特別な <code>Div</code> を提供していることに注意してください. これらは特別な意味を持つため, この節で言及されたような方法で <code>Div</code> を LaTeX 環境を変換しようとするなら, これらのタイプの <code>Div</code> を<strong>使わない</strong>ように注意しなければなりません. <code>columns</code> または <code>column</code> ではなく, <code>cols</code>, <code>col</code> という名前の <code>Div</code> タイプを使ったのはこれが理由です.</p>
 <p>fenced <code>Div</code> についてより詳しく知りたいなら, <a href="custom-blocks.html#custom-blocks">9.6</a>節を見てください.</p>

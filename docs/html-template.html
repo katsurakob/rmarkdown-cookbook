@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,49 +470,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="html-template" class="section level2" number="7.9">
 <h2><span class="header-section-number">7.9</span> カスタム HTML テンプレートを使う (*)</h2>
 <p>既に<a href="latex-template.html#latex-template">6.10</a>節では LaTeX テンプレートについて話しました. Pandoc が Markdown を HTML へ変換するに際しカスタム HTML テンプレート を指定することもできます. 以下は簡単なテンプレートの例です.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb158-1"><a href="html-template.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb158-2"><a href="html-template.html#cb158-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span></span>
-<span id="cb158-3"><a href="html-template.html#cb158-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>$title$<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb158-4"><a href="html-template.html#cb158-4" aria-hidden="true" tabindex="-1"></a>    $for(css)$</span>
-<span id="cb158-5"><a href="html-template.html#cb158-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb158-6"><a href="html-template.html#cb158-6" aria-hidden="true" tabindex="-1"></a>    $endfor$</span>
-<span id="cb158-7"><a href="html-template.html#cb158-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/head&gt;</span></span>
-<span id="cb158-8"><a href="html-template.html#cb158-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
-<span id="cb158-9"><a href="html-template.html#cb158-9" aria-hidden="true" tabindex="-1"></a>  $body$</span>
-<span id="cb158-10"><a href="html-template.html#cb158-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
-<span id="cb158-11"><a href="html-template.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb159-1"><a href="html-template.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb159-2"><a href="html-template.html#cb159-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span></span>
+<span id="cb159-3"><a href="html-template.html#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>$title$<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb159-4"><a href="html-template.html#cb159-4" aria-hidden="true" tabindex="-1"></a>    $for(css)$</span>
+<span id="cb159-5"><a href="html-template.html#cb159-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb159-6"><a href="html-template.html#cb159-6" aria-hidden="true" tabindex="-1"></a>    $endfor$</span>
+<span id="cb159-7"><a href="html-template.html#cb159-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb159-8"><a href="html-template.html#cb159-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
+<span id="cb159-9"><a href="html-template.html#cb159-9" aria-hidden="true" tabindex="-1"></a>  $body$</span>
+<span id="cb159-10"><a href="html-template.html#cb159-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb159-11"><a href="html-template.html#cb159-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>テンプレートに <code>$title$</code>, <code>$body$</code> といったいくつかの変数が含まれているのがわかるでしょう. Pandoc 変数の完全なリストとそれぞれの意味については <a href="https://pandoc.org/MANUAL.html#templates" class="uri">https://pandoc.org/MANUAL.html#templates</a> で検索することができます.</p>
 <p>テンプレートによってあなたは HTML 出力をカスタマイズする究極の力を得ることになります. 例えば好きな CSS スタイルシートや JavaScript コード, あるいはライブラリを <code>&lt;head&gt;</code> 内で読み込ませたりできます. あるいは文書が下書きか, 最終稿かを示すブーリアン変数 <code>draft</code> も使えます.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb159-1"><a href="html-template.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb159-2"><a href="html-template.html#cb159-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb159-3"><a href="html-template.html#cb159-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.logo</span> {</span>
-<span id="cb159-4"><a href="html-template.html#cb159-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">float</span>: <span class="dv">right</span><span class="op">;</span></span>
-<span id="cb159-5"><a href="html-template.html#cb159-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb159-6"><a href="html-template.html#cb159-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
-<span id="cb159-7"><a href="html-template.html#cb159-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
-<span id="cb159-8"><a href="html-template.html#cb159-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-9"><a href="html-template.html#cb159-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb159-10"><a href="html-template.html#cb159-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb159-11"><a href="html-template.html#cb159-11" aria-hidden="true" tabindex="-1"></a>$if(draft)$</span>
-<span id="cb159-12"><a href="html-template.html#cb159-12" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- use draft.png to show that this is a draft --&gt;</span></span>
-<span id="cb159-13"><a href="html-template.html#cb159-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/draft.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Draft mode&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb159-14"><a href="html-template.html#cb159-14" aria-hidden="true" tabindex="-1"></a>$else$</span>
-<span id="cb159-15"><a href="html-template.html#cb159-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- insert the formal logo if this is final --&gt;</span></span>
-<span id="cb159-16"><a href="html-template.html#cb159-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/logo.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Final version&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb159-17"><a href="html-template.html#cb159-17" aria-hidden="true" tabindex="-1"></a>$endif$</span>
-<span id="cb159-18"><a href="html-template.html#cb159-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
-<span id="cb159-19"><a href="html-template.html#cb159-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb159-20"><a href="html-template.html#cb159-20" aria-hidden="true" tabindex="-1"></a>$body$</span>
-<span id="cb159-21"><a href="html-template.html#cb159-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb160"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb160-1"><a href="html-template.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb160-2"><a href="html-template.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb160-3"><a href="html-template.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.logo</span> {</span>
+<span id="cb160-4"><a href="html-template.html#cb160-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">float</span>: <span class="dv">right</span><span class="op">;</span></span>
+<span id="cb160-5"><a href="html-template.html#cb160-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb160-6"><a href="html-template.html#cb160-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/style&gt;</span></span>
+<span id="cb160-7"><a href="html-template.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb160-8"><a href="html-template.html#cb160-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-9"><a href="html-template.html#cb160-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb160-10"><a href="html-template.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb160-11"><a href="html-template.html#cb160-11" aria-hidden="true" tabindex="-1"></a>$if(draft)$</span>
+<span id="cb160-12"><a href="html-template.html#cb160-12" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- use draft.png to show that this is a draft --&gt;</span></span>
+<span id="cb160-13"><a href="html-template.html#cb160-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/draft.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Draft mode&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb160-14"><a href="html-template.html#cb160-14" aria-hidden="true" tabindex="-1"></a>$else$</span>
+<span id="cb160-15"><a href="html-template.html#cb160-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- insert the formal logo if this is final --&gt;</span></span>
+<span id="cb160-16"><a href="html-template.html#cb160-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/logo.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Final version&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb160-17"><a href="html-template.html#cb160-17" aria-hidden="true" tabindex="-1"></a>$endif$</span>
+<span id="cb160-18"><a href="html-template.html#cb160-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
+<span id="cb160-19"><a href="html-template.html#cb160-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb160-20"><a href="html-template.html#cb160-20" aria-hidden="true" tabindex="-1"></a>$body$</span>
+<span id="cb160-21"><a href="html-template.html#cb160-21" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span></code></pre></div>
 <p>すると Rmd 文書の YAML メタデータ内で <code>draft</code> 変数に <code>true</code> または <code>false</code> を設定できます. 例えばこのように.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb160-1"><a href="html-template.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb160-2"><a href="html-template.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;An Important Report&quot;</span></span>
-<span id="cb160-3"><a href="html-template.html#cb160-3" aria-hidden="true" tabindex="-1"></a><span class="fu">draft</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb160-4"><a href="html-template.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb161"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb161-1"><a href="html-template.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb161-2"><a href="html-template.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;An Important Report&quot;</span></span>
+<span id="cb161-3"><a href="html-template.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="fu">draft</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb161-4"><a href="html-template.html#cb161-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>テンプレートを Rmd 文書に適用するのに, テンプレートをファイルに保存し, <code>html_document</code> の <code>template</code> オプションにファイルパスを与えることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb161-1"><a href="html-template.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb161-2"><a href="html-template.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb161-3"><a href="html-template.html#cb161-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> my-template.html</span></span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb162-1"><a href="html-template.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb162-2"><a href="html-template.html#cb162-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb162-3"><a href="html-template.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> my-template.html</span></span></code></pre></div>
 <p><strong>rmarkdown</strong> パッケージは Pandoc のデフォルトテンプレートとは異なるカスタム HTML テンプレートをパッケージ内で読み込んで使用しています. Pandoc のデフォルトを使うには <code>template: null</code> で指定できます.</p>
 </div>
             </section>

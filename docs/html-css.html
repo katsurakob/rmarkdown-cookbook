@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,21 +472,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>HTML 文書の外観をカスタマイズしようと思うのなら, CSS と JavaScript を少しでも勉強することを強く勧めます. <strong>blogdown</strong> 本 <span class="citation">(<a href="参考文献.html#ref-blogdown2017" role="doc-biblioref">Xie, Hill, and Thomas 2017</a>)</span> の <a href="https://bookdown.org/yihui/blogdown/website-basics.html">Appendix B</a> には HTML, CSS, JavaScript の簡単なチュートリアルがあります.</p>
 <p>CSS のセレクタと優先度のルールを理解することは初心者にとっては極めて重要です. さもなければ自分のカスタム CSS が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).</p>
 <p>Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, <code>css</code> オプション を使うことができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb139-1"><a href="html-css.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb139-2"><a href="html-css.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb139-3"><a href="html-css.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;style.css&quot;</span></span></code></pre></div>
-<p>複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使うことになるでしょう.</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb140-1"><a href="html-css.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb140-2"><a href="html-css.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb140-3"><a href="html-css.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;style-1.css&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;style-2.css&quot;</span><span class="kw">]</span></span></code></pre></div>
+<span id="cb140-3"><a href="html-css.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;style.css&quot;</span></span></code></pre></div>
+<p>複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使うことになるでしょう.</p>
+<div class="sourceCode" id="cb141"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb141-1"><a href="html-css.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb141-2"><a href="html-css.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb141-3"><a href="html-css.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;style-1.css&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;style-2.css&quot;</span><span class="kw">]</span></span></code></pre></div>
 <p>あるいは, Rmd 文書に 直接 CSS のルールを埋め込むのに, <code>css</code> コードチャンク を使うこともできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb141-1"><a href="html-css.html#cb141-1" aria-hidden="true" tabindex="-1"></a>We embed a <span class="in">`css`</span> code chunk here.</span>
-<span id="cb141-2"><a href="html-css.html#cb141-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb141-3"><a href="html-css.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb141-4"><a href="html-css.html#cb141-4" aria-hidden="true" tabindex="-1"></a><span class="in">p {</span></span>
-<span id="cb141-5"><a href="html-css.html#cb141-5" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 32px;</span></span>
-<span id="cb141-6"><a href="html-css.html#cb141-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb141-7"><a href="html-css.html#cb141-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb142-1"><a href="html-css.html#cb142-1" aria-hidden="true" tabindex="-1"></a>We embed a <span class="in">`css`</span> code chunk here.</span>
+<span id="cb142-2"><a href="html-css.html#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb142-3"><a href="html-css.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb142-4"><a href="html-css.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="in">p {</span></span>
+<span id="cb142-5"><a href="html-css.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 32px;</span></span>
+<span id="cb142-6"><a href="html-css.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb142-7"><a href="html-css.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>チャンクオプション <code>echo = FALSE</code> は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む <code>&lt;style&gt;</code> タグは HTML 出力ファイルにも生成されます.</p>
 </div>
             </section>

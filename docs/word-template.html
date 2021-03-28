@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="word-template" class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> カスタム Word テンプレート</h2>
 <p>Word テンプレート文書で定義されたスタイルを R Markdown で新たに生成された Word 文書に適用することができます. テンプレート文書は「スタイル参照文書」 “style reference document” とも呼ばれています. ポイントは, 最初はこのテンプレート文書 Pandoc から作成し, それからスタイル定義を変更しなければならないということです. それからこのテンプレートファイルのパスを <code>word_document</code> の <code>reference_docx</code> オプションに与えてください. 例えばこのように.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb175-1"><a href="word-template.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb175-2"><a href="word-template.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb175-3"><a href="word-template.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">word_document</span><span class="kw">:</span></span>
-<span id="cb175-4"><a href="word-template.html#cb175-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">reference_docx</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;template.docx&quot;</span></span>
-<span id="cb175-5"><a href="word-template.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb176-1"><a href="word-template.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb176-2"><a href="word-template.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb176-3"><a href="word-template.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">word_document</span><span class="kw">:</span></span>
+<span id="cb176-4"><a href="word-template.html#cb176-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">reference_docx</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;template.docx&quot;</span></span>
+<span id="cb176-5"><a href="word-template.html#cb176-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>たった今言及したように, <code>template.docx</code> は Pandoc から生成されたものでなければなりません. このテンプレートは <code>word_document</code> 出力フォーマットを使った R Markdown 文書 からなら何でも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい種類の要素を含んでいるべきです) 作ることができます. それから <code>.docx</code> ファイルを開き, スタイルを編集します.</p>
 <div class="figure" style="text-align: center"><span id="fig:word-template-1"></span>
 <img src="JP/images/word-template-1.png" alt="特定の文書要素のスタイルを見つける"  />

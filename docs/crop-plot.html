@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="crop-plot" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> グラフをクロップする</h2>
 <p>チャンクフック<code>knitr::hook_pdfcrop()</code> は PDF やその他の種類の画像ファイルをクロップするのに使うことができます. つまりグラフから余分な余白を削除します. これを有効にするには, コードチャンク内で <code>knit_hooks$set()</code> を使って設定し, 対応するチャンクオプションをオンにしてください. これが例です.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb373-1"><a href="crop-plot.html#cb373-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
 <p>それからグラフをクロップするコードチャンクで, チャンクオプション <code>crop = TRUE</code> を使うことができます.</p>
 <p>フック関数 <code>hook_pdfcrop()</code> は PDF ファイルをクロップするために内部プログラム <code>pdfcrop</code> を呼び出します. このプログラムはよく LaTeX の配布パッケージに同梱されています (例えば TeX Live や MikTeX). あなたのシステムでこれが使用可能かはこのようにして確認できます.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
-<span id="cb374-2"><a href="crop-plot.html#cb374-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb375-1"><a href="crop-plot.html#cb375-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
+<span id="cb375-2"><a href="crop-plot.html#cb375-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
 <pre><code>##                  pdfcrop 
 ## &quot;/usr/local/bin/pdfcrop&quot;</code></pre>
 <p>LaTeX 配布パッケージの TinyTeX (<a href="install-latex.html#install-latex">1.2</a>節参照) を使っていて, なおかつ <code>pdfcrop</code> があなたのシステムで利用できないなら, <code>tinytex::tlmgr_install('pdfcrop')</code> でインストールすることもできます.</p>

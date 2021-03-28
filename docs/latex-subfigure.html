@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,27 +472,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>複数の画像を1つの画像環境に含めたいときがあるかもしれません. 複数の画像を1つの環境に並べ, それぞれのサブキャプションを与えることで, 複数の図 (サブ図) をまとめることが達成できます.
 Sometimes you may want to include multiple images in a single figure environment. Sub-figures allow us to achieve this by arranging multiple images within a single environment and providing each with its own sub-caption.</p>
 <p>図をまとめるには LaTeX パッケージの <strong>subfig</strong> が必要です. <code>pdf_document</code> 出力の YAML オプションの <code>extra_dependencies</code> で読み込ませることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb125-1"><a href="latex-subfigure.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb125-2"><a href="latex-subfigure.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb125-3"><a href="latex-subfigure.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb125-4"><a href="latex-subfigure.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></span>
-<span id="cb125-5"><a href="latex-subfigure.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb126-1"><a href="latex-subfigure.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb126-2"><a href="latex-subfigure.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb126-3"><a href="latex-subfigure.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb126-4"><a href="latex-subfigure.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></span>
+<span id="cb126-5"><a href="latex-subfigure.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>コードチャンクからの全てのプロットを並べるために, チャンクオプション <code>fig.cap</code> (環境全体のキャプション) と <code>fig.subcap</code> (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の選択のために, 以下のような選択肢も使用できます.</p>
 <ul>
 <li><p><code>fig.ncol</code>: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これは複数の行に分けられます.</p></li>
 <li><p><code>out.width</code>: 個別のグラフの出力幅です. 通常はこれを <code>100%</code> を列の数で割ったものに設定しますが. 例えば2つグラフがあるなら, <code>out.width</code> は <code>50%</code> 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.</p></li>
 </ul>
 <p>以下は具体例の1つです.</p>
-<div class="sourceCode" id="cb126"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb126-1"><a href="latex-subfigure.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb126-2"><a href="latex-subfigure.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb126-3"><a href="latex-subfigure.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb126-4"><a href="latex-subfigure.html#cb126-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></span>
-<span id="cb126-5"><a href="latex-subfigure.html#cb126-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb127"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb127-1"><a href="latex-subfigure.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.cap=&#39;Figure 1&#39;, fig.subcap=c(&#39;(a)&#39;, &#39;(b)&#39;, &#39;(c)&#39;)}</span></span>
-<span id="cb127-2"><a href="latex-subfigure.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
-<span id="cb127-3"><a href="latex-subfigure.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19)</span></span>
-<span id="cb127-4"><a href="latex-subfigure.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(Sepal.Width ~ Species, data = iris)</span></span>
-<span id="cb127-5"><a href="latex-subfigure.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb127-1"><a href="latex-subfigure.html#cb127-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb127-2"><a href="latex-subfigure.html#cb127-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb127-3"><a href="latex-subfigure.html#cb127-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb127-4"><a href="latex-subfigure.html#cb127-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;subfig&quot;</span></span>
+<span id="cb127-5"><a href="latex-subfigure.html#cb127-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb128"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb128-1"><a href="latex-subfigure.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.cap=&#39;Figure 1&#39;, fig.subcap=c(&#39;(a)&#39;, &#39;(b)&#39;, &#39;(c)&#39;)}</span></span>
+<span id="cb128-2"><a href="latex-subfigure.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
+<span id="cb128-3"><a href="latex-subfigure.html#cb128-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19)</span></span>
+<span id="cb128-4"><a href="latex-subfigure.html#cb128-4" aria-hidden="true" tabindex="-1"></a><span class="in">boxplot(Sepal.Width ~ Species, data = iris)</span></span>
+<span id="cb128-5"><a href="latex-subfigure.html#cb128-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この出力を図<a href="latex-subfigure.html#fig:latex-subfig">6.2</a>に示します. 簡潔さのため, 上記の例は <code>fig.ncol = 2</code>, <code>out.width = "50%"</code>, <code>fig.align = "center"</code> や長いキャプションなどのチャンクオプションをいくつか省略しています.</p>
 <div class="figure" style="text-align: center"><span id="fig:latex-subfig"></span>
 <img src="JP/images/latex-subfig.png" alt="複数の図を含む単一の figure 環境の例"  />

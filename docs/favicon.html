@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,12 +472,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><a href="include-html.html#include-html">7.10</a>節では <code>html_document</code> フォーマットの <code>includes</code> オプションで追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました. このテクニックはファビコンというカスタムブラウザアイコンを HTML 出力に追加することに使えます.</p>
 <p>ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (<a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a>) を開いてブラウザのタブを見ると, 小さな R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.</p>
 <p>HTML 文書にファビコンを追加するには, 以下のコードをカスタムヘッダファイル (<a href="include-html.html#include-html">7.10</a>節で言及したように, <code>header.html</code> といった名前のファイル) を追加します.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb166-1"><a href="favicon.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;{ファビコン画像ファイルへのパス}&quot;</span> <span class="kw">/&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb167-1"><a href="favicon.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;{ファビコン画像ファイルへのパス}&quot;</span> <span class="kw">/&gt;</span></span></code></pre></div>
 <p>YAML メタデータを使って, このファイルを文書の <code>&lt;head&gt;</code> 内に挿入できることを思い出してください.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb167-1"><a href="favicon.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb167-2"><a href="favicon.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb167-3"><a href="favicon.html#cb167-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb167-4"><a href="favicon.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb168-1"><a href="favicon.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb168-2"><a href="favicon.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb168-3"><a href="favicon.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb168-4"><a href="favicon.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span></code></pre></div>
 <p><code>&lt;link&gt;</code> の <code>href</code> 属性に与えたパスは他のアセット (例えば画像やデータ・セット) を参照するときと同じように, 相対パス構造を前提とすべきです. 使用する画像は, 最も小さい正方形の PNG ファイルがよく機能します. 典型的なウェブブラウザは画像を 16 x 16 ピクセルの領域に表示するため, シンプルなデザインがより良いということに留意してください.</p>
 <p>あなたの文書を表示するそれぞれのブラウザやプラットフォームは特定のレイアウトに対して最適な解像度のバージョンを使用します. ファビコンセットとより複雑な HTML ヘッダのコードを生成するのに, <a href="https://realfavicongenerator.net" class="uri">https://realfavicongenerator.net</a> といったサービスを使うとよいかもしれません. このサービスは現在 <strong>pkgdown</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-pkgdown" role="doc-biblioref">Wickham and Hesselberth 2020</a>)</span> の <code>pkgdown::build_favicon()</code> 関数で R パッケージロゴのセットを作り出すのに使用されています.</p>
 </div>

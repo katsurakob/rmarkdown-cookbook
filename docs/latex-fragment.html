@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,9 +471,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.8</span> LaTeX のコードフラグメントを生成する</h2>
 <p>もし純粋な LaTeX 文書で作業しているのなら, R Markdown はそれでもやはり便利だと感じているかもしれません. R Markdown で書いて, 文書を他の LaTeX 文書に読み込める LaTeX のコード片 (フラグメント) に変換したほうが便利なこともあるかもしれません.</p>
 <p>Rmd 文書を LaTeX にレンダリングするとき, <code>\documentclass{}</code>, <code>\begin{body}</code>, <code>\end{body}</code> を含む完全な LaTeX 文書が生成されます. フラグメントはこの完全な文書の主に本文の部分です. LaTeX フラグメントをレンダリングするのに, <code>latex_fragment</code> 出力フォーマットが使えます. 例えばこのように.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb131-1"><a href="latex-fragment.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb131-2"><a href="latex-fragment.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> latex_fragment</span></span>
-<span id="cb131-3"><a href="latex-fragment.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb132-1"><a href="latex-fragment.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb132-2"><a href="latex-fragment.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> latex_fragment</span></span>
+<span id="cb132-3"><a href="latex-fragment.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>これは <code>.tex</code> ファイルをレンダリングします. 例えば <code>foo.Rmd</code> は <code>foo.tex</code> にレンダリングされ, 別の LaTeX 文書で <code>\input{foo.tex}</code> を使うことでフラグメントを読み込めます.</p>
 </div>
             </section>

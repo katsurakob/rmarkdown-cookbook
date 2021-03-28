@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,22 +471,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> 改ページ (改段) を挿入する</h2>
 <p>改ページしたい場合, <code>\newpage</code> を文書に挿入できます.<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> これは LaTeX コマンドですが, <strong>rmarkdown</strong> パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a></p>
 <p>例えば以下のように.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb25-1"><a href="pagebreaks.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-2"><a href="pagebreaks.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Breaking pages</span></span>
-<span id="cb25-3"><a href="pagebreaks.html#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb25-4"><a href="pagebreaks.html#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document: default</span></span>
-<span id="cb25-5"><a href="pagebreaks.html#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">  word_document: default</span></span>
-<span id="cb25-6"><a href="pagebreaks.html#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: default</span></span>
-<span id="cb25-7"><a href="pagebreaks.html#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="co">  odt_document: default</span></span>
-<span id="cb25-8"><a href="pagebreaks.html#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb25-9"><a href="pagebreaks.html#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="pagebreaks.html#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第一節</span></span>
-<span id="cb25-11"><a href="pagebreaks.html#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-12"><a href="pagebreaks.html#cb25-12" aria-hidden="true" tabindex="-1"></a>\newpage</span>
-<span id="cb25-13"><a href="pagebreaks.html#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-14"><a href="pagebreaks.html#cb25-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第二節</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb26-1"><a href="pagebreaks.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="pagebreaks.html#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Breaking pages</span></span>
+<span id="cb26-3"><a href="pagebreaks.html#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb26-4"><a href="pagebreaks.html#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document: default</span></span>
+<span id="cb26-5"><a href="pagebreaks.html#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">  word_document: default</span></span>
+<span id="cb26-6"><a href="pagebreaks.html#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: default</span></span>
+<span id="cb26-7"><a href="pagebreaks.html#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co">  odt_document: default</span></span>
+<span id="cb26-8"><a href="pagebreaks.html#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-9"><a href="pagebreaks.html#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="pagebreaks.html#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第一節</span></span>
+<span id="cb26-11"><a href="pagebreaks.html#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="pagebreaks.html#cb26-12" aria-hidden="true" tabindex="-1"></a>\newpage</span>
+<span id="cb26-13"><a href="pagebreaks.html#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="pagebreaks.html#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第二節</span></span></code></pre></div>
 <p>これは Pandoc の Lua フィルタ に基づく機能です (<a href="lua-filters.html#lua-filters">4.20</a> 節参照). 技術的なことに興味のある方はこのパッケージのビネットを見てください.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pagebreaks.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;lua-filters&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rmarkdown&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="pagebreaks.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">&quot;lua-filters&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rmarkdown&quot;</span>)</span></code></pre></div>
 </div>
 <div class="footnotes">
 <hr />

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,47 +470,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="opts-render" class="section level2" number="11.17">
 <h2><span class="header-section-number">11.17</span> チャンク内のオブジェクト表示をカスタマイズする (*)</h2>
 <p>デフォルトではコードチャンク内のオブジェクトは <code>knitr::knit_print()</code> 関数を通して表示され, これは概ね base R の <code>print()</code> と同じです. <code>knit_print()</code> 関数は S3 ジェネリック関数であり, あなたが自分で S3 メソッドを登録することで機能を拡張できることを意味します. 以下は <code>knitr::kable()</code> でデータフレームを表として自動的に表示する方法の例を示しています.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb328-1"><a href="opts-render.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb328-2"><a href="opts-render.html#cb328-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> データフレームの表示にカスタム `knit_print` メソッドを使う</span></span>
-<span id="cb328-3"><a href="opts-render.html#cb328-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb328-4"><a href="opts-render.html#cb328-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-5"><a href="opts-render.html#cb328-5" aria-hidden="true" tabindex="-1"></a>初めに <span class="in">`knit_print`</span> メソッドを定義して登録します.</span>
-<span id="cb328-6"><a href="opts-render.html#cb328-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-7"><a href="opts-render.html#cb328-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb328-8"><a href="opts-render.html#cb328-8" aria-hidden="true" tabindex="-1"></a><span class="in">knit_print.data.frame = function(x, ...) {</span></span>
-<span id="cb328-9"><a href="opts-render.html#cb328-9" aria-hidden="true" tabindex="-1"></a><span class="in">  res = paste(c(&quot;&quot;, &quot;&quot;, knitr::kable(x)), collapse = &quot;\n&quot;)</span></span>
-<span id="cb328-10"><a href="opts-render.html#cb328-10" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::asis_output(res)</span></span>
-<span id="cb328-11"><a href="opts-render.html#cb328-11" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb328-12"><a href="opts-render.html#cb328-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-13"><a href="opts-render.html#cb328-13" aria-hidden="true" tabindex="-1"></a><span class="in">registerS3method(</span></span>
-<span id="cb328-14"><a href="opts-render.html#cb328-14" aria-hidden="true" tabindex="-1"></a><span class="in">  &quot;knit_print&quot;, &quot;data.frame&quot;, knit_print.data.frame,</span></span>
-<span id="cb328-15"><a href="opts-render.html#cb328-15" aria-hidden="true" tabindex="-1"></a><span class="in">  envir = asNamespace(&quot;knitr&quot;)</span></span>
-<span id="cb328-16"><a href="opts-render.html#cb328-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb328-17"><a href="opts-render.html#cb328-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb328-18"><a href="opts-render.html#cb328-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-19"><a href="opts-render.html#cb328-19" aria-hidden="true" tabindex="-1"></a>これでデータフレームに対するカスタム表示メソッドをテストできます. もはや <span class="in">`knitr::kable()`</span> を明示的に呼ぶ必要がないことに注意してください.</span>
-<span id="cb328-20"><a href="opts-render.html#cb328-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-21"><a href="opts-render.html#cb328-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb328-22"><a href="opts-render.html#cb328-22" aria-hidden="true" tabindex="-1"></a><span class="in">head(iris)</span></span>
-<span id="cb328-23"><a href="opts-render.html#cb328-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb328-24"><a href="opts-render.html#cb328-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb328-25"><a href="opts-render.html#cb328-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb328-26"><a href="opts-render.html#cb328-26" aria-hidden="true" tabindex="-1"></a><span class="in">head(mtcars)</span></span>
-<span id="cb328-27"><a href="opts-render.html#cb328-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb329-1"><a href="opts-render.html#cb329-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb329-2"><a href="opts-render.html#cb329-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> データフレームの表示にカスタム `knit_print` メソッドを使う</span></span>
+<span id="cb329-3"><a href="opts-render.html#cb329-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb329-4"><a href="opts-render.html#cb329-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-5"><a href="opts-render.html#cb329-5" aria-hidden="true" tabindex="-1"></a>初めに <span class="in">`knit_print`</span> メソッドを定義して登録します.</span>
+<span id="cb329-6"><a href="opts-render.html#cb329-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-7"><a href="opts-render.html#cb329-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb329-8"><a href="opts-render.html#cb329-8" aria-hidden="true" tabindex="-1"></a><span class="in">knit_print.data.frame = function(x, ...) {</span></span>
+<span id="cb329-9"><a href="opts-render.html#cb329-9" aria-hidden="true" tabindex="-1"></a><span class="in">  res = paste(c(&quot;&quot;, &quot;&quot;, knitr::kable(x)), collapse = &quot;\n&quot;)</span></span>
+<span id="cb329-10"><a href="opts-render.html#cb329-10" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::asis_output(res)</span></span>
+<span id="cb329-11"><a href="opts-render.html#cb329-11" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb329-12"><a href="opts-render.html#cb329-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-13"><a href="opts-render.html#cb329-13" aria-hidden="true" tabindex="-1"></a><span class="in">registerS3method(</span></span>
+<span id="cb329-14"><a href="opts-render.html#cb329-14" aria-hidden="true" tabindex="-1"></a><span class="in">  &quot;knit_print&quot;, &quot;data.frame&quot;, knit_print.data.frame,</span></span>
+<span id="cb329-15"><a href="opts-render.html#cb329-15" aria-hidden="true" tabindex="-1"></a><span class="in">  envir = asNamespace(&quot;knitr&quot;)</span></span>
+<span id="cb329-16"><a href="opts-render.html#cb329-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb329-17"><a href="opts-render.html#cb329-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb329-18"><a href="opts-render.html#cb329-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-19"><a href="opts-render.html#cb329-19" aria-hidden="true" tabindex="-1"></a>これでデータフレームに対するカスタム表示メソッドをテストできます. もはや <span class="in">`knitr::kable()`</span> を明示的に呼ぶ必要がないことに注意してください.</span>
+<span id="cb329-20"><a href="opts-render.html#cb329-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-21"><a href="opts-render.html#cb329-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb329-22"><a href="opts-render.html#cb329-22" aria-hidden="true" tabindex="-1"></a><span class="in">head(iris)</span></span>
+<span id="cb329-23"><a href="opts-render.html#cb329-23" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb329-24"><a href="opts-render.html#cb329-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb329-25"><a href="opts-render.html#cb329-25" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb329-26"><a href="opts-render.html#cb329-26" aria-hidden="true" tabindex="-1"></a><span class="in">head(mtcars)</span></span>
+<span id="cb329-27"><a href="opts-render.html#cb329-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>knit_print()</code> 関数の詳細は <strong>knitr</strong> パッケージのビネットから学ぶことができます.</p>
-<div class="sourceCode" id="cb329"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb329-1"><a href="opts-render.html#cb329-1"></a><span class="fu">vignette</span>(<span class="st">&quot;knit_print&quot;</span>, <span class="at">package =</span> <span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb330-1"><a href="opts-render.html#cb330-1"></a><span class="fu">vignette</span>(<span class="st">&quot;knit_print&quot;</span>, <span class="at">package =</span> <span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
 <p><strong>printr</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-printr" role="doc-biblioref">Xie 2021b</a>)</span> はいくつかの R オブジェクトを可能な範囲で自動的に表として表示する S3 メソッドをいくつか提供します. コードチャンクで <code>library(printr)</code> を実行するだけで十分で, 全てのメソッドが自動的に登録されます.</p>
 <p>このテクニックがとても上級者向けだと感じたなら, <code>html_document</code> や <code>pdf_document</code> のような R Markdown の出力フォーマットに <code>df_print</code> オプションを与えてください. これでデータフレームの表示に関する挙動をカスタマイズできます. 例えばデータフレームを <code>knitr::kable()</code> で表示したいなら, このようにオプションを設定することもできます.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb330-1"><a href="opts-render.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb330-2"><a href="opts-render.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb330-3"><a href="opts-render.html#cb330-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb330-4"><a href="opts-render.html#cb330-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">df_print</span><span class="kw">:</span><span class="at"> kable</span></span>
-<span id="cb330-5"><a href="opts-render.html#cb330-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb331-1"><a href="opts-render.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb331-2"><a href="opts-render.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb331-3"><a href="opts-render.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb331-4"><a href="opts-render.html#cb331-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">df_print</span><span class="kw">:</span><span class="at"> kable</span></span>
+<span id="cb331-5"><a href="opts-render.html#cb331-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>出力フォーマットが <code>df_print</code> をサポートするかどうか, そしてもしそうなら使用可能な値が何であるかの判断は, 出力フォーマット関数のヘルプページを見てください.</p>
 <p>実際には, <code>render</code> チャンクオプションで <code>knit_print()</code> 関数を完全に置き換えることができます. このオプションはオブジェクトを表示する任意の関数を取ることができます. 例えば <strong>pander</strong> パッケージ を使用するオブジェクトを表示したいなら, チャンクオプション <code>render</code> に <code>pander::pander()</code> を設定することもできます.</p>
-<div class="sourceCode" id="cb331"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb331-1"><a href="opts-render.html#cb331-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, render=pander::pander}</span></span>
-<span id="cb331-2"><a href="opts-render.html#cb331-2" aria-hidden="true" tabindex="-1"></a><span class="in">iris</span></span>
-<span id="cb331-3"><a href="opts-render.html#cb331-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb332-1"><a href="opts-render.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, render=pander::pander}</span></span>
+<span id="cb332-2"><a href="opts-render.html#cb332-2" aria-hidden="true" tabindex="-1"></a><span class="in">iris</span></span>
+<span id="cb332-3"><a href="opts-render.html#cb332-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>render</code> オプションによって, あなたは R オブジェクトの表示方法に対する完全なる自由を手に入れるでしょう.</p>
 </div>
             </section>

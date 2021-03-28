@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,27 +470,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rgl-3d" class="section level2" number="13.5">
 <h2><span class="header-section-number">13.5</span> rgl によるインタラクティブな3次元グラフを埋め込む</h2>
 <p><strong>rgl</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-rgl" role="doc-biblioref">Adler and Murdoch 2021</a>)</span> はインタラクティブな3次元グラフを生成するのに使うことができます. WebGL 形式で保存されているなら, これらのグラフはインタラクティブになります. これはフック関数 <code>rgl::hook_webgl()</code> を使うことで可能になります. 以下の例は <strong>rgl</strong> と <strong>knitr</strong> で 3次元グラフをインタラクティブ性を保ったまま保存できるようにする方法を示しています.</p>
-<div class="sourceCode" id="cb386"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb386-1"><a href="rgl-3d.html#cb386-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb386-2"><a href="rgl-3d.html#cb386-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> rgl で3次元グラフを埋め込む</span></span>
-<span id="cb386-3"><a href="rgl-3d.html#cb386-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb386-4"><a href="rgl-3d.html#cb386-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb386-5"><a href="rgl-3d.html#cb386-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-6"><a href="rgl-3d.html#cb386-6" aria-hidden="true" tabindex="-1"></a>**rgl** を保存するフック関数を用意する.</span>
-<span id="cb386-7"><a href="rgl-3d.html#cb386-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-8"><a href="rgl-3d.html#cb386-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup}</span></span>
-<span id="cb386-9"><a href="rgl-3d.html#cb386-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(rgl)</span></span>
-<span id="cb386-10"><a href="rgl-3d.html#cb386-10" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(webgl = hook_webgl)</span></span>
-<span id="cb386-11"><a href="rgl-3d.html#cb386-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb386-12"><a href="rgl-3d.html#cb386-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-13"><a href="rgl-3d.html#cb386-13" aria-hidden="true" tabindex="-1"></a>フックを有効にした後で, チャンクオプション <span class="in">`webgl = TRUE`</span> で</span>
-<span id="cb386-14"><a href="rgl-3d.html#cb386-14" aria-hidden="true" tabindex="-1"></a>この3次元グラフが動作するかを確認してください.</span>
-<span id="cb386-15"><a href="rgl-3d.html#cb386-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb386-16"><a href="rgl-3d.html#cb386-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-rgl, webgl=TRUE}</span></span>
-<span id="cb386-17"><a href="rgl-3d.html#cb386-17" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- sort(rnorm(1000))</span></span>
-<span id="cb386-18"><a href="rgl-3d.html#cb386-18" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- rnorm(1000)</span></span>
-<span id="cb386-19"><a href="rgl-3d.html#cb386-19" aria-hidden="true" tabindex="-1"></a><span class="in">z &lt;- rnorm(1000) + atan2(x,y)</span></span>
-<span id="cb386-20"><a href="rgl-3d.html#cb386-20" aria-hidden="true" tabindex="-1"></a><span class="in">plot3d(x, y, z, col = rainbow(1000))</span></span>
-<span id="cb386-21"><a href="rgl-3d.html#cb386-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb387"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb387-1"><a href="rgl-3d.html#cb387-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb387-2"><a href="rgl-3d.html#cb387-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> rgl で3次元グラフを埋め込む</span></span>
+<span id="cb387-3"><a href="rgl-3d.html#cb387-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb387-4"><a href="rgl-3d.html#cb387-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb387-5"><a href="rgl-3d.html#cb387-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb387-6"><a href="rgl-3d.html#cb387-6" aria-hidden="true" tabindex="-1"></a>**rgl** を保存するフック関数を用意する.</span>
+<span id="cb387-7"><a href="rgl-3d.html#cb387-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb387-8"><a href="rgl-3d.html#cb387-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup}</span></span>
+<span id="cb387-9"><a href="rgl-3d.html#cb387-9" aria-hidden="true" tabindex="-1"></a><span class="in">library(rgl)</span></span>
+<span id="cb387-10"><a href="rgl-3d.html#cb387-10" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(webgl = hook_webgl)</span></span>
+<span id="cb387-11"><a href="rgl-3d.html#cb387-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb387-12"><a href="rgl-3d.html#cb387-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb387-13"><a href="rgl-3d.html#cb387-13" aria-hidden="true" tabindex="-1"></a>フックを有効にした後で, チャンクオプション <span class="in">`webgl = TRUE`</span> で</span>
+<span id="cb387-14"><a href="rgl-3d.html#cb387-14" aria-hidden="true" tabindex="-1"></a>この3次元グラフが動作するかを確認してください.</span>
+<span id="cb387-15"><a href="rgl-3d.html#cb387-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb387-16"><a href="rgl-3d.html#cb387-16" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-rgl, webgl=TRUE}</span></span>
+<span id="cb387-17"><a href="rgl-3d.html#cb387-17" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- sort(rnorm(1000))</span></span>
+<span id="cb387-18"><a href="rgl-3d.html#cb387-18" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- rnorm(1000)</span></span>
+<span id="cb387-19"><a href="rgl-3d.html#cb387-19" aria-hidden="true" tabindex="-1"></a><span class="in">z &lt;- rnorm(1000) + atan2(x,y)</span></span>
+<span id="cb387-20"><a href="rgl-3d.html#cb387-20" aria-hidden="true" tabindex="-1"></a><span class="in">plot3d(x, y, z, col = rainbow(1000))</span></span>
+<span id="cb387-21"><a href="rgl-3d.html#cb387-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この例をコンパイルすると図<a href="rgl-3d.html#fig:rgl-3d">13.3</a>のようなインタラクティブな3次元散布図が得られるはずです. インタラクティブなグラフは出力フォーマットが HTML の時にのみ動作することに注意してください.</p>
 <div class="figure" style="text-align: center"><span id="fig:rgl-3d"></span>
 <img src="JP/images/rgl-3d.png" alt="rgl パッケージから生成した3次元散布図"  />

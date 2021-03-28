@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,31 +470,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="install-latex-pkgs" class="section level2" number="1.3">
 <h2><span class="header-section-number">1.3</span> 足りない LaTeX パッケージをインストールする</h2>
 <p>文書を LaTeX を通して PDF にコンパイルしたい時, これらのようなエラーに遭遇するかもしれません.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb7-1"><a href="install-latex-pkgs.html#cb7-1" aria-hidden="true" tabindex="-1"></a>! LaTeX Error: File `ocgbase.sty&#39; not found.</span>
-<span id="cb7-2"><a href="install-latex-pkgs.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="install-latex-pkgs.html#cb7-3" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: pdflatex (file 8r.enc):</span>
-<span id="cb7-4"><a href="install-latex-pkgs.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  cannot open encoding file for reading</span>
-<span id="cb7-5"><a href="install-latex-pkgs.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="install-latex-pkgs.html#cb7-6" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: /usr/local/bin/pdflatex (file tcrm0700):</span>
-<span id="cb7-7"><a href="install-latex-pkgs.html#cb7-7" aria-hidden="true" tabindex="-1"></a>  Font tcrm0700 at 600 not found</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb8-1"><a href="install-latex-pkgs.html#cb8-1" aria-hidden="true" tabindex="-1"></a>! LaTeX Error: File `ocgbase.sty&#39; not found.</span>
+<span id="cb8-2"><a href="install-latex-pkgs.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="install-latex-pkgs.html#cb8-3" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: pdflatex (file 8r.enc):</span>
+<span id="cb8-4"><a href="install-latex-pkgs.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  cannot open encoding file for reading</span>
+<span id="cb8-5"><a href="install-latex-pkgs.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="install-latex-pkgs.html#cb8-6" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: /usr/local/bin/pdflatex (file tcrm0700):</span>
+<span id="cb8-7"><a href="install-latex-pkgs.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  Font tcrm0700 at 600 not found</span></code></pre></div>
 <p><a href="install-latex.html#install-latex">1.2</a> 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. <strong>tinytex</strong> <span class="citation">(<a href="参考文献.html#ref-R-tinytex" role="doc-biblioref">Xie 2021c</a>)</span> が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, <code>tinytex::parse_install()</code> で足りない LaTex パッケージをインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, <a href="https://ctan.org" class="uri">https://ctan.org</a>) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, <code>.log</code> という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の <code>text</code> 引数に与えることができます. どちらの方法でも動作するはずです.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb8-1"><a href="install-latex-pkgs.html#cb8-1"></a><span class="co"># ログファイルが filename.log だとする</span></span>
-<span id="cb8-2"><a href="install-latex-pkgs.html#cb8-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
-<span id="cb8-3"><a href="install-latex-pkgs.html#cb8-3"></a></span>
-<span id="cb8-4"><a href="install-latex-pkgs.html#cb8-4"></a><span class="co"># または `text` 引数を使う</span></span>
-<span id="cb8-5"><a href="install-latex-pkgs.html#cb8-5"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(</span>
-<span id="cb8-6"><a href="install-latex-pkgs.html#cb8-6"></a>  <span class="at">text =</span> <span class="st">&quot;! LaTeX Error: File `ocgbase.sty&#39; not found.&quot;</span></span>
-<span id="cb8-7"><a href="install-latex-pkgs.html#cb8-7"></a>)</span>
-<span id="cb8-8"><a href="install-latex-pkgs.html#cb8-8"></a><span class="co"># &quot;ocgx2&quot; パッケージがインストールされる</span></span></code></pre></div>
-<p>TinyTeX を使わない場合, <strong>tinytex</strong> パッケージはやはりエラーログから LaTeX パッケージ名を解決しようとします. <code>tinytex::parse_packages()</code> を例えばこのように使用してください.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb9-1"><a href="install-latex-pkgs.html#cb9-1"></a><span class="co"># ログファイル名が filename.log だったとする</span></span>
-<span id="cb9-2"><a href="install-latex-pkgs.html#cb9-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_packages</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb9-1"><a href="install-latex-pkgs.html#cb9-1"></a><span class="co"># ログファイルが filename.log だとする</span></span>
+<span id="cb9-2"><a href="install-latex-pkgs.html#cb9-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
 <span id="cb9-3"><a href="install-latex-pkgs.html#cb9-3"></a></span>
 <span id="cb9-4"><a href="install-latex-pkgs.html#cb9-4"></a><span class="co"># または `text` 引数を使う</span></span>
-<span id="cb9-5"><a href="install-latex-pkgs.html#cb9-5"></a>tinytex<span class="sc">::</span><span class="fu">parse_packages</span>(</span>
+<span id="cb9-5"><a href="install-latex-pkgs.html#cb9-5"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(</span>
 <span id="cb9-6"><a href="install-latex-pkgs.html#cb9-6"></a>  <span class="at">text =</span> <span class="st">&quot;! LaTeX Error: File `ocgbase.sty&#39; not found.&quot;</span></span>
 <span id="cb9-7"><a href="install-latex-pkgs.html#cb9-7"></a>)</span>
-<span id="cb9-8"><a href="install-latex-pkgs.html#cb9-8"></a><span class="co"># &quot;ocgx2&quot; と返ってくるはず</span></span></code></pre></div>
+<span id="cb9-8"><a href="install-latex-pkgs.html#cb9-8"></a><span class="co"># &quot;ocgx2&quot; パッケージがインストールされる</span></span></code></pre></div>
+<p>TinyTeX を使わない場合, <strong>tinytex</strong> パッケージはやはりエラーログから LaTeX パッケージ名を解決しようとします. <code>tinytex::parse_packages()</code> を例えばこのように使用してください.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb10-1"><a href="install-latex-pkgs.html#cb10-1"></a><span class="co"># ログファイル名が filename.log だったとする</span></span>
+<span id="cb10-2"><a href="install-latex-pkgs.html#cb10-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_packages</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
+<span id="cb10-3"><a href="install-latex-pkgs.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="install-latex-pkgs.html#cb10-4"></a><span class="co"># または `text` 引数を使う</span></span>
+<span id="cb10-5"><a href="install-latex-pkgs.html#cb10-5"></a>tinytex<span class="sc">::</span><span class="fu">parse_packages</span>(</span>
+<span id="cb10-6"><a href="install-latex-pkgs.html#cb10-6"></a>  <span class="at">text =</span> <span class="st">&quot;! LaTeX Error: File `ocgbase.sty&#39; not found.&quot;</span></span>
+<span id="cb10-7"><a href="install-latex-pkgs.html#cb10-7"></a>)</span>
+<span id="cb10-8"><a href="install-latex-pkgs.html#cb10-8"></a><span class="co"># &quot;ocgx2&quot; と返ってくるはず</span></span></code></pre></div>
 <p>パッケージ名が判明したら, あなたの LaTeX ディストリビューションのパッケージマネージャでインストールすることができます.</p>
 <p>代わりに MiKTeX を使っているなら, これも自動で足りないパッケージをインストールできます. MikTeX のインストール中に “Always install missing packages on-the-fly” の設定に必ずチェックしてください. この設定をせずにインストールしていても, <a href="https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175">まだ MiKTeX Console で変更できます</a>.</p>
 

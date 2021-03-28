@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,8 +472,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <!-- https://stackoverflow.com/questions/25329375/creating-a-footer-for-every-page-using-r-markdown -->
 <!-- https://tex.stackexchange.com/questions/139139/adding-headers-and-footers-using-pandoc -->
 <p>LaTeX パッケージの <strong>fancyhdr</strong> は文書のヘッダとフッタをカスタマイズするいくつかのコマンドを提供します. より完全なガイドとして, <a href="https://ctan.org/pkg/fancyhdr" class="uri">https://ctan.org/pkg/fancyhdr</a> の完全版ドキュメントを参照してください. 最初に, パッケージを読み込みます. それからヘッダのスタイルを変えます. 例えばこのように.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb132-1"><a href="latex-header.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
-<span id="cb132-2"><a href="latex-header.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb133-1"><a href="latex-header.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
+<span id="cb133-2"><a href="latex-header.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span></code></pre></div>
 <p>このパッケージは異なる3つのインターフェースを提示しますが, ここでは <code>\fancyhead</code> と <code>\fancyfoot</code> コマンドを使います. 形式を決める構文は <code>\fancyhead[selectors]{output text}</code> で, ここでカスタマイズしたいヘッダの部分がどこかをセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.</p>
 <ul>
 <li><strong>E</strong> 偶数ページ</li>
@@ -487,14 +492,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>\rightmark</code>: 大文字で現在のトップレベル構造に次ぐレベルの名前と番号.</li>
 </ul>
 <p>以下は LaTeX コードの例で, <a href="latex-preamble.html#latex-preamble">6.1</a>節で紹介した方法でプリアンブルに書き加えることができます.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb133-1"><a href="latex-header.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
-<span id="cb133-2"><a href="latex-header.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span>
-<span id="cb133-3"><a href="latex-header.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="co">% ヘッダ中央</span></span>
-<span id="cb133-4"><a href="latex-header.html#cb133-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[CO,CE]{Your Document Header}</span>
-<span id="cb133-5"><a href="latex-header.html#cb133-5" aria-hidden="true" tabindex="-1"></a><span class="co">% フッタ中央</span></span>
-<span id="cb133-6"><a href="latex-header.html#cb133-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}</span>
-<span id="cb133-7"><a href="latex-header.html#cb133-7" aria-hidden="true" tabindex="-1"></a><span class="co">% 偶数ページ左と奇数ページ右にページ番号</span></span>
-<span id="cb133-8"><a href="latex-header.html#cb133-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb134-1"><a href="latex-header.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">fancyhdr</span>}</span>
+<span id="cb134-2"><a href="latex-header.html#cb134-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\pagestyle</span>{fancy}</span>
+<span id="cb134-3"><a href="latex-header.html#cb134-3" aria-hidden="true" tabindex="-1"></a><span class="co">% ヘッダ中央</span></span>
+<span id="cb134-4"><a href="latex-header.html#cb134-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyhead</span>[CO,CE]{Your Document Header}</span>
+<span id="cb134-5"><a href="latex-header.html#cb134-5" aria-hidden="true" tabindex="-1"></a><span class="co">% フッタ中央</span></span>
+<span id="cb134-6"><a href="latex-header.html#cb134-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[CO,CE]{And this is a fancy footer}</span>
+<span id="cb134-7"><a href="latex-header.html#cb134-7" aria-hidden="true" tabindex="-1"></a><span class="co">% 偶数ページ左と奇数ページ右にページ番号</span></span>
+<span id="cb134-8"><a href="latex-header.html#cb134-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\fancyfoot</span>[LE,RO]{<span class="fu">\thepage</span>}</span></code></pre></div>
 <!-- https://stackoverflow.com/questions/30922602/creating-a-footer-for-every-page-including-first-using-r-markdown -->
 <p>デフォルトではヘッダとフッタは PDF 文書の最初のページには表示されません. 表示にもフッタを表示したいなら, もう1行 <code>\fancypagestyle{plain}{\pagestyle{fancy}}</code> を追加しなければなりません.</p>
 </div>

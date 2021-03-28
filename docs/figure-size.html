@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -468,15 +473,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>R コードチャンクで生成されないグラフや画像は, 2通りの方法で掲載できます.</p>
 <ul>
 <li><p>Markdown 構文 <code>![キャプション](画像ファイルパス)</code> を使う. この場合は <code>width</code>, <code>height</code> 属性でサイズを設定できます 例えばこのように.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb89-1"><a href="figure-size.html#cb89-1" aria-hidden="true" tabindex="-1"></a>次のパラグラフに画像を掲載する.</span>
-<span id="cb89-2"><a href="figure-size.html#cb89-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb89-3"><a href="figure-size.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="al">![良い画像](なんとか.png)</span>{width=50%}</span></code></pre></div></li>
-<li><p>コードチャンクで <strong>knitr</strong> 関数 <code>knitr::include_graphics()</code> を使う. そのチャンクで <code>out.width</code> と <code>out.height</code> といったオプションを設定することもできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb90-1"><a href="figure-size.html#cb90-1" aria-hidden="true" tabindex="-1"></a>R function を使って外部画像ファイルを掲載します</span>
+<div class="sourceCode" id="cb90"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb90-1"><a href="figure-size.html#cb90-1" aria-hidden="true" tabindex="-1"></a>次のパラグラフに画像を掲載する.</span>
 <span id="cb90-2"><a href="figure-size.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb90-3"><a href="figure-size.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, out.width=&quot;50%&quot;, fig.cap=&quot;良い画像&quot;}</span></span>
-<span id="cb90-4"><a href="figure-size.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics(&quot;なんとか.png&quot;)</span></span>
-<span id="cb90-5"><a href="figure-size.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
+<span id="cb90-3"><a href="figure-size.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="al">![良い画像](なんとか.png)</span>{width=50%}</span></code></pre></div></li>
+<li><p>コードチャンクで <strong>knitr</strong> 関数 <code>knitr::include_graphics()</code> を使う. そのチャンクで <code>out.width</code> と <code>out.height</code> といったオプションを設定することもできます. 例えばこのように.</p>
+<div class="sourceCode" id="cb91"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb91-1"><a href="figure-size.html#cb91-1" aria-hidden="true" tabindex="-1"></a>R function を使って外部画像ファイルを掲載します</span>
+<span id="cb91-2"><a href="figure-size.html#cb91-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb91-3"><a href="figure-size.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, out.width=&quot;50%&quot;, fig.cap=&quot;良い画像&quot;}</span></span>
+<span id="cb91-4"><a href="figure-size.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::include_graphics(&quot;なんとか.png&quot;)</span></span>
+<span id="cb91-5"><a href="figure-size.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
 </ul>
 <p>上記の例では幅 <code>50%</code> が使われており, 画像コンテナの半分の幅にすることを意味します (もし画像がページの子要素ではなく, ページに直接含まれていると仮定すると, これはページ幅の半分を意味します). 特定の出力フォーマットに対してのみ画像を生成することが分かっているのなら, 単位を特定することもできます. たとえば出力フォーマットが HTML なら <code>300px</code> と書けるでしょう.</p>
 </div>

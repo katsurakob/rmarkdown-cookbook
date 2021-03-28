@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -468,16 +473,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>デフォルトでは <strong>knitr</strong> は低水準作図関数による中間グラフはそれより前のグラフを修正するのに使います. 全ての低水準作図による変更が反映された最後のグラフのみが表示されます.
 By default, <strong>knitr</strong> does not show the intermediate plots when a series of low-level plotting functions are used to modify a previous plot. Only the last plot on which all low-level plotting changes have been made is shown.</p>
 <p>特に教育目的では, 中間グラフを表示することが有用になりえます. 低水準作図による変更を保存するために, チャンクオプション <code>fig.keep = 'low'</code> を設定することができます. 例えば 図<a href="low-plots.html#fig:low-plots-1">11.3</a>, <a href="low-plots.html#fig:low-plots-2">11.4</a>は <code>fig.keep = 'low'</code> のオプションを設定した同一のコードチャンク由来ですが, 2つのコードチャンクから生成されたように見えます. さらに異なる図のキャプションを, チャンクオプション <code>fig.cap = c('...の散布図', '... に回帰直線を追加')</code> で割り当てています.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb326-1"><a href="low-plots.html#cb326-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb326-2"><a href="low-plots.html#cb326-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="low-plots.html#cb327-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb327-2"><a href="low-plots.html#cb327-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-1"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-1.png" alt="cars データの散布図."  />
 <p class="caption">
 図 11.3: cars データの散布図.
 </p>
 </div>
-<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="low-plots.html#cb327-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb327-2"><a href="low-plots.html#cb327-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb328-1"><a href="low-plots.html#cb328-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb328-2"><a href="low-plots.html#cb328-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-2.png" alt="既にある散布図に回帰曲線を追加"  />
 <p class="caption">

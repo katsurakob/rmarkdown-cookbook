@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,31 +470,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="latex-variables" class="section level2" number="6.2">
 <h2><span class="header-section-number">6.2</span> LaTeX 出力の Pandoc オプション</h2>
 <p>LaTeX 出力に対してデフォルトの Pandoc を使うなら, PDF 出力の文書の見た目を調整するいくつかのオプションがあります. いくつかのオプションの例を以下に挙げていきます. 完全なリストは <a href="https://pandoc.org/MANUAL.html#variables-for-latex" class="uri">https://pandoc.org/MANUAL.html#variables-for-latex</a> で見ることができます.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb110-1"><a href="latex-variables.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
-<span id="cb110-2"><a href="latex-variables.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="fu">classoption</span><span class="kw">:</span></span>
-<span id="cb110-3"><a href="latex-variables.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> twocolumn</span></span>
-<span id="cb110-4"><a href="latex-variables.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> landscape</span></span>
-<span id="cb110-5"><a href="latex-variables.html#cb110-5" aria-hidden="true" tabindex="-1"></a><span class="fu">papersize</span><span class="kw">:</span><span class="at"> a5</span></span>
-<span id="cb110-6"><a href="latex-variables.html#cb110-6" aria-hidden="true" tabindex="-1"></a><span class="fu">linestretch</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
-<span id="cb110-7"><a href="latex-variables.html#cb110-7" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 12pt</span></span>
-<span id="cb110-8"><a href="latex-variables.html#cb110-8" aria-hidden="true" tabindex="-1"></a><span class="fu">links-as-notes</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb111-1"><a href="latex-variables.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">documentclass</span><span class="kw">:</span><span class="at"> book</span></span>
+<span id="cb111-2"><a href="latex-variables.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">classoption</span><span class="kw">:</span></span>
+<span id="cb111-3"><a href="latex-variables.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> twocolumn</span></span>
+<span id="cb111-4"><a href="latex-variables.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> landscape</span></span>
+<span id="cb111-5"><a href="latex-variables.html#cb111-5" aria-hidden="true" tabindex="-1"></a><span class="fu">papersize</span><span class="kw">:</span><span class="at"> a5</span></span>
+<span id="cb111-6"><a href="latex-variables.html#cb111-6" aria-hidden="true" tabindex="-1"></a><span class="fu">linestretch</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
+<span id="cb111-7"><a href="latex-variables.html#cb111-7" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 12pt</span></span>
+<span id="cb111-8"><a href="latex-variables.html#cb111-8" aria-hidden="true" tabindex="-1"></a><span class="fu">links-as-notes</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
 <p>あなたが LaTeX にある程度詳しいなら, これらのオプションの意味は明らかでしょう. <code>documentclass</code> オプション は, 例えば <code>article</code>, <code>book</code>, <code>report</code> などの文書クラスを設定します. <code>classoption</code> は文書クラスに与えるオプションのリストで, 例えば二段組の文書を作りたいなら <code>twocolumn</code> オプション,<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a>, 横置きレイアウトにするなら <code>landscape</code> オプション (デフォルトでは縦置き (portrait) レイアウト) があります. <code>papersize</code> オプションは <code>a4</code>, <code>paper</code>, <code>a5</code> といった用紙サイズを設定します. <code>linestretch</code> オプションは行間を設定します. <code>fontsize</code> オプションはフォントサイズを <code>10pt</code>, <code>11pt</code>, <code>12pt</code> というふうに設定します. <code>links-as-notes</code> オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.</p>
 <p>フォントの変更は少しトリッキーです. どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで大抵の場合デフォルトである <code>pdflatex</code> を使っているのなら<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>, 読み込む LaTeX フォントパッケージを選択するために <code>fontfamily</code> オプションを使ってください. 例えばこのように.</p>
-<div class="sourceCode" id="cb111"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb111-1"><a href="latex-variables.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fontfamily</span><span class="kw">:</span><span class="at"> accanthis</span></span>
-<span id="cb111-2"><a href="latex-variables.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb111-3"><a href="latex-variables.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb111-4"><a href="latex-variables.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> pdflatex</span></span></code></pre></div>
-<p>これで文書に <a href="https://tug.org/FontCatalogue/accanthis/">Accanthis</a> フォントが使われます. 他の多数の LaTeX フォントパッケージのリストは You may see <a href="https://tug.org/FontCatalogue/" class="uri">https://tug.org/FontCatalogue/</a> で見ることができます. LaTeX ディストリビューションに TinyTeX をお使いで, フォントパッケージがインストールされていないならば, 文書がコンパイルされる際に自動でインストールされるはずです(<a href="install-latex.html#install-latex">1.2</a>節参照).</p>
-<p>LaTeX エンジンに <code>xelatex</code> または <code>lualatex</code> を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプション <code>mainfont</code>, <code>sansfont</code>, <code>monofont</code> はメインのフォント, サンセリフ体, そしてタイプライタ体のフォントをそれぞれ指定するのに使えます.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> 例えばこのように.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb112-1"><a href="latex-variables.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Arial</span></span>
+<div class="sourceCode" id="cb112"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb112-1"><a href="latex-variables.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fontfamily</span><span class="kw">:</span><span class="at"> accanthis</span></span>
 <span id="cb112-2"><a href="latex-variables.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb112-3"><a href="latex-variables.html#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb112-4"><a href="latex-variables.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
+<span id="cb112-4"><a href="latex-variables.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> pdflatex</span></span></code></pre></div>
+<p>これで文書に <a href="https://tug.org/FontCatalogue/accanthis/">Accanthis</a> フォントが使われます. 他の多数の LaTeX フォントパッケージのリストは You may see <a href="https://tug.org/FontCatalogue/" class="uri">https://tug.org/FontCatalogue/</a> で見ることができます. LaTeX ディストリビューションに TinyTeX をお使いで, フォントパッケージがインストールされていないならば, 文書がコンパイルされる際に自動でインストールされるはずです(<a href="install-latex.html#install-latex">1.2</a>節参照).</p>
+<p>LaTeX エンジンに <code>xelatex</code> または <code>lualatex</code> を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプション <code>mainfont</code>, <code>sansfont</code>, <code>monofont</code> はメインのフォント, サンセリフ体, そしてタイプライタ体のフォントをそれぞれ指定するのに使えます.<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a> 例えばこのように.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb113-1"><a href="latex-variables.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Arial</span></span>
+<span id="cb113-2"><a href="latex-variables.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb113-3"><a href="latex-variables.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb113-4"><a href="latex-variables.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
 <p>Beamer の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にいくつか追加オプションを提供してくれています. それらは <a href="https://pandoc.org/MANUAL.html#variables-for-beamer-slides" class="uri">https://pandoc.org/MANUAL.html#variables-for-beamer-slides</a> で確認できます. 例えば <code>institute</code> オプションで著者の所属機関を指定することができます.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb113-1"><a href="latex-variables.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb113-2"><a href="latex-variables.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> beamer_presentation</span></span>
-<span id="cb113-3"><a href="latex-variables.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="fu">institute</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ハッカーの大学&quot;</span></span>
-<span id="cb113-4"><a href="latex-variables.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb114-1"><a href="latex-variables.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb114-2"><a href="latex-variables.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> beamer_presentation</span></span>
+<span id="cb114-3"><a href="latex-variables.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="fu">institute</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ハッカーの大学&quot;</span></span>
+<span id="cb114-4"><a href="latex-variables.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 </div>
 <div class="footnotes">
 <hr />

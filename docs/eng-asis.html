@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,15 +470,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="eng-asis" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> <code>asis</code> エンジンでコンテンツを条件付きで実行する Execute content conditionally via the <code>asis</code> engine</h2>
 <p>その名が示すとおり, <code>asis</code> エンジンはチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション <code>echo</code> によりチャンクの内容の表示を決定します. <code>echo = FALSE</code> の時はチャンクは隠されます. 以下は簡単な例です.</p>
-<div class="sourceCode" id="cb439"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb439-1"><a href="eng-asis.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb439-2"><a href="eng-asis.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="in">getRandomNumber &lt;- function() {</span></span>
-<span id="cb439-3"><a href="eng-asis.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="in">  sample(1:6, 1)</span></span>
-<span id="cb439-4"><a href="eng-asis.html#cb439-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb439-5"><a href="eng-asis.html#cb439-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb439-6"><a href="eng-asis.html#cb439-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb439-7"><a href="eng-asis.html#cb439-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{asis, echo = getRandomNumber() == 4}</span></span>
-<span id="cb439-8"><a href="eng-asis.html#cb439-8" aria-hidden="true" tabindex="-1"></a><span class="in">https://xkcd.com/221/ によれば, **真の**乱数を生成しました!</span></span>
-<span id="cb439-9"><a href="eng-asis.html#cb439-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb440-1"><a href="eng-asis.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb440-2"><a href="eng-asis.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="in">getRandomNumber &lt;- function() {</span></span>
+<span id="cb440-3"><a href="eng-asis.html#cb440-3" aria-hidden="true" tabindex="-1"></a><span class="in">  sample(1:6, 1)</span></span>
+<span id="cb440-4"><a href="eng-asis.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb440-5"><a href="eng-asis.html#cb440-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb440-6"><a href="eng-asis.html#cb440-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb440-7"><a href="eng-asis.html#cb440-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{asis, echo = getRandomNumber() == 4}</span></span>
+<span id="cb440-8"><a href="eng-asis.html#cb440-8" aria-hidden="true" tabindex="-1"></a><span class="in">https://xkcd.com/221/ によれば, **真の**乱数を生成しました!</span></span>
+<span id="cb440-9"><a href="eng-asis.html#cb440-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>asis</code> チャンク内のテキストは条件式 <code>getRandomNumber() == 4</code> が (ランダムに) 真であるならば表示されます.</p>
 </div>
             </section>

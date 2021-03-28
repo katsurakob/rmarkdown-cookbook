@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,16 +472,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p></p>
 <p>技術的にはこの節は少し発展的ですが, Markdown の内容が Pandoc 抽象構文木 (AST) にどのように翻訳されるかを一度学べば, Lua というプログラミング言語を使ってどのような Markdown の要素も操作する力を得ることになります.</p>
 <p>基本として, Pandoc は Markdown ファイルを読み取り, その内容が AST にパースされます. Pandoc はこの AST をLua スクリプトを使って修正することを可能にします. AST の意味するものを示すため, 以下のような簡単な Markdown ファイル (<code>ast.md</code>) を使います.</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode numberSource md numberLines lineAnchors"><code class="sourceCode markdown"><span id="cb71-1"><a href="lua-filters.html#cb71-1"></a><span class="fu">## 第1節</span></span>
-<span id="cb71-2"><a href="lua-filters.html#cb71-2"></a></span>
-<span id="cb71-3"><a href="lua-filters.html#cb71-3"></a>Hello world!</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource md numberLines lineAnchors"><code class="sourceCode markdown"><span id="cb72-1"><a href="lua-filters.html#cb72-1"></a><span class="fu">## 第1節</span></span>
+<span id="cb72-2"><a href="lua-filters.html#cb72-2"></a></span>
+<span id="cb72-3"><a href="lua-filters.html#cb72-3"></a>Hello world!</span></code></pre></div>
 <p>このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後ファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb72-1"><a href="lua-filters.html#cb72-1"></a><span class="ex">pandoc</span> -f markdown -t json -o ast.json ast.md</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb73-1"><a href="lua-filters.html#cb73-1"></a><span class="ex">pandoc</span> -f markdown -t json -o ast.json ast.md</span></code></pre></div>
 <p>そして JSON ファイルを R に読み込み, データ構造を書き出します.</p>
 <p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type,” <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb73-1"><a href="lua-filters.html#cb73-1"></a>xfun<span class="sc">:::</span><span class="fu">tree</span>(</span>
-<span id="cb73-2"><a href="lua-filters.html#cb73-2"></a>  jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&#39;ast.json&#39;</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb73-3"><a href="lua-filters.html#cb73-3"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb74-1"><a href="lua-filters.html#cb74-1"></a>xfun<span class="sc">:::</span><span class="fu">tree</span>(</span>
+<span id="cb74-2"><a href="lua-filters.html#cb74-2"></a>  jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&#39;ast.json&#39;</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb74-3"><a href="lua-filters.html#cb74-3"></a>)</span></code></pre></div>
 <pre><code>List of 3
  |-blocks            :List of 2
  |  |-:List of 2
@@ -508,23 +513,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  |-meta              : Named list()</code></pre>
 <p>あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1増やす, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.</p>
 <p>最初に <code>raise-header.lua</code> という名前の Lua スクリプトファイルを作ります. これには <code>Header</code> という名前の関数が含まれており, “Header” タイプの要素を修正したいということを意味しています (一般に, あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode numberSource lua numberLines lineAnchors"><code class="sourceCode lua"><span id="cb75-1"><a href="lua-filters.html#cb75-1"></a><span class="kw">function</span> Header<span class="op">(</span>el<span class="op">)</span></span>
-<span id="cb75-2"><a href="lua-filters.html#cb75-2"></a>  <span class="co">-- 見出しのレベルは要素の持つ &#39;level&#39; 属性でアクセスできます.</span></span>
-<span id="cb75-3"><a href="lua-filters.html#cb75-3"></a>  <span class="co">-- 後述の Pandoc ドキュメントを見てください.</span></span>
-<span id="cb75-4"><a href="lua-filters.html#cb75-4"></a>  <span class="cf">if</span> <span class="op">(</span>el<span class="op">.</span>level <span class="op">&lt;=</span> <span class="dv">1</span><span class="op">)</span> <span class="cf">then</span></span>
-<span id="cb75-5"><a href="lua-filters.html#cb75-5"></a>    <span class="fu">error</span><span class="op">(</span><span class="st">&quot;h1 のレベルを上げる方法がわかりません&quot;</span><span class="op">)</span></span>
-<span id="cb75-6"><a href="lua-filters.html#cb75-6"></a>  <span class="cf">end</span></span>
-<span id="cb75-7"><a href="lua-filters.html#cb75-7"></a>  el<span class="op">.</span>level <span class="op">=</span> el<span class="op">.</span>level <span class="op">-</span> <span class="dv">1</span></span>
-<span id="cb75-8"><a href="lua-filters.html#cb75-8"></a>  <span class="cf">return</span> el</span>
-<span id="cb75-9"><a href="lua-filters.html#cb75-9"></a><span class="kw">end</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode numberSource lua numberLines lineAnchors"><code class="sourceCode lua"><span id="cb76-1"><a href="lua-filters.html#cb76-1"></a><span class="kw">function</span> Header<span class="op">(</span>el<span class="op">)</span></span>
+<span id="cb76-2"><a href="lua-filters.html#cb76-2"></a>  <span class="co">-- 見出しのレベルは要素の持つ &#39;level&#39; 属性でアクセスできます.</span></span>
+<span id="cb76-3"><a href="lua-filters.html#cb76-3"></a>  <span class="co">-- 後述の Pandoc ドキュメントを見てください.</span></span>
+<span id="cb76-4"><a href="lua-filters.html#cb76-4"></a>  <span class="cf">if</span> <span class="op">(</span>el<span class="op">.</span>level <span class="op">&lt;=</span> <span class="dv">1</span><span class="op">)</span> <span class="cf">then</span></span>
+<span id="cb76-5"><a href="lua-filters.html#cb76-5"></a>    <span class="fu">error</span><span class="op">(</span><span class="st">&quot;h1 のレベルを上げる方法がわかりません&quot;</span><span class="op">)</span></span>
+<span id="cb76-6"><a href="lua-filters.html#cb76-6"></a>  <span class="cf">end</span></span>
+<span id="cb76-7"><a href="lua-filters.html#cb76-7"></a>  el<span class="op">.</span>level <span class="op">=</span> el<span class="op">.</span>level <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb76-8"><a href="lua-filters.html#cb76-8"></a>  <span class="cf">return</span> el</span>
+<span id="cb76-9"><a href="lua-filters.html#cb76-9"></a><span class="kw">end</span></span></code></pre></div>
 <p>そしてこのスクリプト Pandoc の <code>--lua-filter</code> 引数に与えることができます. 例えばこうです.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb76-1"><a href="lua-filters.html#cb76-1"></a><span class="ex">pandoc</span> -t markdown --atx-headers <span class="kw">\</span></span>
-<span id="cb76-2"><a href="lua-filters.html#cb76-2"></a>  <span class="ex">--lua-filter</span>=raise-header.lua ast.md</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb77-1"><a href="lua-filters.html#cb77-1"></a><span class="ex">pandoc</span> -t markdown --atx-headers <span class="kw">\</span></span>
+<span id="cb77-2"><a href="lua-filters.html#cb77-2"></a>  <span class="ex">--lua-filter</span>=raise-header.lua ast.md</span></code></pre></div>
 <pre><code># 第1節
 
 Hello world!</code></pre>
 <p><code>## Section One</code> を <code># Section One</code> へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, なんでこんなふうに単に正規表現を使って <code>##</code> を <code>#</code> に置き換えないのかと思うかも知れません.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb78-1"><a href="lua-filters.html#cb78-1"></a><span class="fu">gsub</span>(<span class="st">&quot;^##&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="fu">readLines</span>(<span class="st">&quot;ast.md&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb79-1"><a href="lua-filters.html#cb79-1"></a><span class="fu">gsub</span>(<span class="st">&quot;^##&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="fu">readLines</span>(<span class="st">&quot;ast.md&quot;</span>))</span></code></pre></div>
 <p>例えば <code>##</code> が R コード内でコメントに使われていたら, と言うふうに, 正規表現はほとんど常に例外があるため, たいていの場合で, 構造化された文書を操作するのにロバストな手段ではありません. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.</p>
 <p>Pandoc の Lua フィルタに関する追加ドキュメントが <a href="https://pandoc.org/lua-filters.html" class="uri">https://pandoc.org/lua-filters.html</a> にあり, ここで多くの例を見つけることができます. GitHub リポジトリ <a href="https://github.com/pandoc/lua-filters" class="uri">https://github.com/pandoc/lua-filters</a> のコミュニティで書かれたフィルタを見つけることもできます.</p>
 <p>R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは <code>inst/</code> ディレクトリにあります)</p>
@@ -535,12 +540,12 @@ Hello world!</code></pre>
 </ul>
 <p>本書の<a href="font-color.html#lua-color">5.1.2</a>節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.</p>
 <p>Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの <code>pandoc_args</code> オプションで適用することもできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb79-1"><a href="lua-filters.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb79-2"><a href="lua-filters.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb79-3"><a href="lua-filters.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb79-4"><a href="lua-filters.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span></span>
-<span id="cb79-5"><a href="lua-filters.html#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --lua-filter=raise-header.lua</span></span>
-<span id="cb79-6"><a href="lua-filters.html#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb80-1"><a href="lua-filters.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb80-2"><a href="lua-filters.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb80-3"><a href="lua-filters.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb80-4"><a href="lua-filters.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span></span>
+<span id="cb80-5"><a href="lua-filters.html#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> --lua-filter=raise-header.lua</span></span>
+<span id="cb80-6"><a href="lua-filters.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

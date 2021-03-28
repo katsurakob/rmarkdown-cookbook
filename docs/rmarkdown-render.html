@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,25 +470,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="rmarkdown-render" class="section level2" number="17.3">
 <h2><span class="header-section-number">17.3</span> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</h2>
 <p>もしあなたが RStudio あるいは他の IDE を使用していないなら, この事実を知る必要があります. R Markdown 文書は <code>rmarkdown::render()</code> 関数によってレンダリングされているということを. これは, あらゆる R スクリプト内でプログラミングによって R Markdown 文書をレンダリングできることを意味します. 例えば, 州ごとの一連の調査レポートを <code>for</code> ループでレンダリングできます.</p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb484-1"><a href="rmarkdown-render.html#cb484-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
-<span id="cb484-2"><a href="rmarkdown-render.html#cb484-2"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
-<span id="cb484-3"><a href="rmarkdown-render.html#cb484-3"></a>    <span class="st">&#39;input.Rmd&#39;</span>, <span class="at">output_file =</span> <span class="fu">paste0</span>(state, <span class="st">&#39;.html&#39;</span>)</span>
-<span id="cb484-4"><a href="rmarkdown-render.html#cb484-4"></a>  )</span>
-<span id="cb484-5"><a href="rmarkdown-render.html#cb484-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb485"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb485-1"><a href="rmarkdown-render.html#cb485-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
+<span id="cb485-2"><a href="rmarkdown-render.html#cb485-2"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb485-3"><a href="rmarkdown-render.html#cb485-3"></a>    <span class="st">&#39;input.Rmd&#39;</span>, <span class="at">output_file =</span> <span class="fu">paste0</span>(state, <span class="st">&#39;.html&#39;</span>)</span>
+<span id="cb485-4"><a href="rmarkdown-render.html#cb485-4"></a>  )</span>
+<span id="cb485-5"><a href="rmarkdown-render.html#cb485-5"></a>}</span></code></pre></div>
 <p>出力ファイル名は国ごとに異なります. <code>state</code> 変数を <code>input.Rmd</code> 文書に使うこともできます. これが例です.</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb485-1"><a href="rmarkdown-render.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb485-2"><a href="rmarkdown-render.html#cb485-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`r state` に関するレポート&quot;</span></span>
-<span id="cb485-3"><a href="rmarkdown-render.html#cb485-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb485-4"><a href="rmarkdown-render.html#cb485-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb485-5"><a href="rmarkdown-render.html#cb485-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-6"><a href="rmarkdown-render.html#cb485-6" aria-hidden="true" tabindex="-1"></a><span class="in">`r state`</span> の面積は <span class="in">`r state.area[state.name == state]`</span> 平方マイルである.</span></code></pre></div>
+<div class="sourceCode" id="cb486"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb486-1"><a href="rmarkdown-render.html#cb486-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb486-2"><a href="rmarkdown-render.html#cb486-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`r state` に関するレポート&quot;</span></span>
+<span id="cb486-3"><a href="rmarkdown-render.html#cb486-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb486-4"><a href="rmarkdown-render.html#cb486-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb486-5"><a href="rmarkdown-render.html#cb486-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb486-6"><a href="rmarkdown-render.html#cb486-6" aria-hidden="true" tabindex="-1"></a><span class="in">`r state`</span> の面積は <span class="in">`r state.area[state.name == state]`</span> 平方マイルである.</span></code></pre></div>
 <p>他の使用可能な引数を知るために <code>?rmarkdown::render</code> のヘルプを読むことができます. ここではそれらのうち <code>clean</code> と <code>envir</code> 引数の2つだけを紹介しようと思います.</p>
 <p>前者の <code>clean</code> は Pandoc の変換がうまくいかない時のデバッグに特に役立ちます. <code>rmarkdown::render(..., clean = FALSE)</code> を呼び出すと, <code>.md</code> ファイルを含む, <code>.Rmd</code> ファイルをから knit された全ての中間ファイルが維持されます. Pandoc がエラーを発していたらこの <code>.md</code> ファイルからデバッグを始めることもできます..</p>
 <p>後者の <code>envir</code> は <code>rmarkdown::render(..., envir = new.env())</code> を呼び出した時に, 確実に空の新しい環境で文書をレンダリングする方法を提供してくれます. よってコードチャンク内で作成されたオブジェクトはこの環境内にとどまり, あなたの現在のグローバル環境を汚染することがありません. 一方で, 現在の R セッションのオブジェクトがあなたの Rmd 文書を汚染しないように Rmd 文書を新しい R セッションでレンダリングしたいなら, この例のように <code>rmarkdown::render</code> in <code>xfun::Rscript_call()</code> を呼び出すこともできます.</p>
-<div class="sourceCode" id="cb486"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb486-1"><a href="rmarkdown-render.html#cb486-1"></a>xfun<span class="sc">::</span><span class="fu">Rscript_call</span>(</span>
-<span id="cb486-2"><a href="rmarkdown-render.html#cb486-2"></a>  rmarkdown<span class="sc">::</span>render,</span>
-<span id="cb486-3"><a href="rmarkdown-render.html#cb486-3"></a>  <span class="fu">list</span>(<span class="at">input =</span> <span class="st">&#39;my-file.Rmd&#39;</span>, <span class="at">output_format =</span> <span class="st">&#39;pdf_document&#39;</span>)</span>
-<span id="cb486-4"><a href="rmarkdown-render.html#cb486-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb487-1"><a href="rmarkdown-render.html#cb487-1"></a>xfun<span class="sc">::</span><span class="fu">Rscript_call</span>(</span>
+<span id="cb487-2"><a href="rmarkdown-render.html#cb487-2"></a>  rmarkdown<span class="sc">::</span>render,</span>
+<span id="cb487-3"><a href="rmarkdown-render.html#cb487-3"></a>  <span class="fu">list</span>(<span class="at">input =</span> <span class="st">&#39;my-file.Rmd&#39;</span>, <span class="at">output_format =</span> <span class="st">&#39;pdf_document&#39;</span>)</span>
+<span id="cb487-4"><a href="rmarkdown-render.html#cb487-4"></a>)</span></code></pre></div>
 <p>この方法は RStudio で <code>Knit</code> ボタンをクリックするのと似ています. これもまた新しい R セッションで Rmd 文書をレンダリングします. Rmd 文書を他の Rmd 文書内でレンダリングする必要がある場合は, コードチャンクで直接 <code>rmarkdown::render()</code> を呼び出す代わりにこちらの方法を使うことを強く勧めます. なぜなら <code>rmarkdown::render()</code> は内部で多くの副作用を作成し, そしてそれらに依存しており, 同じ R セッションで他の Rmd 文書をレンダリングするのに影響を及ぼすことがあるからです.</p>
 <p><code>xfun::Rscript_call()</code> の第2引数は <code>rmarkdown::render</code>() に渡す引数のリストを取ります. 実際のところ, <code>xfun::Rscript_call</code> は新しい R セッションで, 任意の R 関数をオプション引数付きで呼び出すための汎用的な関数です. 関心があるならヘルプページをご覧になってください.</p>
 </div>

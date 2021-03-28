@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,10 +470,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="source-script" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> 外部の R スクリプトを実行する</h2>
 <p>あなたの R Markdown 文書に大量のコードがあるなら, コードをいくらか外部 R スクリプトに配置し, <code>source()</code> か <code>sys.source()</code> 経由で実行することを検討するとよいかもしれません. 例えばこのように.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb460-1"><a href="source-script.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb460-2"><a href="source-script.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;your-script.R&quot;, local = knitr::knit_global())</span></span>
-<span id="cb460-3"><a href="source-script.html#cb460-3" aria-hidden="true" tabindex="-1"></a><span class="in"># または sys.source(&quot;your-script.R&quot;, envir = knitr::knit_global())</span></span>
-<span id="cb460-4"><a href="source-script.html#cb460-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb461-1"><a href="source-script.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb461-2"><a href="source-script.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;your-script.R&quot;, local = knitr::knit_global())</span></span>
+<span id="cb461-3"><a href="source-script.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="in"># または sys.source(&quot;your-script.R&quot;, envir = knitr::knit_global())</span></span>
+<span id="cb461-4"><a href="source-script.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>コードが適正な環境, つまり <code>knitr::knit_global()</code> で評価されることを確実にするため, <code>sys.source()</code> の <code>envir</code> 引数または <code>source()</code> の <code>local</code> 引数を明示的に使うことをお薦めします. これらのデフォルトの値は適切な環境名でないことがあるかもしれません. あなたは間違った環境で変数を作成し, その後のチャンクでオブジェクトが見つからないことに驚くということになるかもしれないのです.</p>
 <p>次に, R Markdown 文書では, これらのスクリプトで作成された, データや関数といったオブジェクトを使うことができます. これは R Markdown 文書を簡潔にするだけでなく, R コードの開発をより便利にする効果もあります. 例えば R コードのデバッグはしばしば, R Markdown よりピュアな R スクリプトでやるほうが簡単です.</p>
 <p>出力を一切表示させずにスクリプトの実行のみをしたいので, 上記の例では <code>include = FALSE</code> を使っていることに注意してください. 出力が欲しいのであればこのチャンクオプションを削除するか, <a href="hide-one.html#hide-one">11.7</a>節で紹介した, 異なる種類の出力を選択的に隠したり表示したりするオプションを使用することもできます.</p>

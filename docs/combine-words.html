@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,23 +471,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.11</span> 単語をコンマ区切りで結合する</h2>
 <p>文字列ベクトルを人間の読みやすい形で出力したいとします. 例えば <code>x &lt;- c("apple", "banana", "cherry")</code> について, きっとあなたは <code>[1] "apple" "banana" "cherry"</code> のような R が通常プリントする形式で出力をしてほしくないでしょう. あなたは代わりに “<code>apple, banana, and cherry</code>” という文字列がほしいのではないでしょうか. 文字列ベクトルを連結して1つにまとめる R 基本関数の <code>paste()</code> があります. 例えば <code>paste(x, collapse = ', ')</code> とすれば, 出力は <code>"apple, banana, cherry"</code> となるでしょう. この方法の問題は (1) 接続詞 “and” が欠けており, (2) ベクトルの要素が2つだけの場合はコンマを使うべきでない (<code>"apple, banana"</code> ではなく <code>"apple and banana"</code> という出力になるべき) ということです.</p>
 <p><code>knitr::combine_words()</code> 関数は文字列ベクトルの長さにかかわらず, 要素を連結して文にできます. 基本的に, 単語1つに対してはそのまま同じものを返し, “A and B” という2つの単語に対しては <code>"A and B"</code> と返し, 3つ以上なら <code>"A, B, C, ..., Y, and Z"</code> というふうに返します. この関数はさらに出力をカスタマイズするいくつかの引数を持っています. 例えば出力される単語をバッククオートで囲みたいなら, <code>knitr::combine_words(x, before = '`')</code> を使うこともできます. 以下に他の引数についてもさらなる例を示します. これらの出力例から引数の意味がよくわからないのであれば, ヘルプページ <code>?knitr::combine_words</code> もご覧ください.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb58-1"><a href="combine-words.html#cb58-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
-<span id="cb58-2"><a href="combine-words.html#cb58-2"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v)</span>
-<span id="cb58-3"><a href="combine-words.html#cb58-3"></a><span class="do">## apple, banana, and cherry</span></span>
-<span id="cb58-4"><a href="combine-words.html#cb58-4"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">before =</span> <span class="st">&quot;`&quot;</span>, <span class="at">after =</span> <span class="st">&quot;&#39;&quot;</span>)</span>
-<span id="cb58-5"><a href="combine-words.html#cb58-5"></a><span class="do">## `apple&#39;, `banana&#39;, and `cherry&#39;</span></span>
-<span id="cb58-6"><a href="combine-words.html#cb58-6"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">sep =</span> <span class="st">&quot;、&quot;</span>, <span class="at">and =</span> <span class="st">&quot;そして&quot;</span>)</span>
-<span id="cb58-7"><a href="combine-words.html#cb58-7"></a><span class="do">## apple、banana、そしてcherry</span></span>
-<span id="cb58-8"><a href="combine-words.html#cb58-8"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">sep =</span> <span class="st">&quot; / &quot;</span>, <span class="at">and =</span> <span class="st">&quot;&quot;</span>)</span>
-<span id="cb58-9"><a href="combine-words.html#cb58-9"></a><span class="do">## apple / banana / cherry</span></span>
-<span id="cb58-10"><a href="combine-words.html#cb58-10"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v[<span class="dv">1</span>])  <span class="co"># 単語1つ</span></span>
-<span id="cb58-11"><a href="combine-words.html#cb58-11"></a><span class="do">## apple</span></span>
-<span id="cb58-12"><a href="combine-words.html#cb58-12"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  <span class="co"># 単語2つ</span></span>
-<span id="cb58-13"><a href="combine-words.html#cb58-13"></a><span class="do">## apple and banana</span></span>
-<span id="cb58-14"><a href="combine-words.html#cb58-14"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
-<span id="cb58-15"><a href="combine-words.html#cb58-15"></a><span class="do">## A, B, C, D, and E</span></span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb59-1"><a href="combine-words.html#cb59-1"></a>v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;apple&quot;</span>, <span class="st">&quot;banana&quot;</span>, <span class="st">&quot;cherry&quot;</span>)</span>
+<span id="cb59-2"><a href="combine-words.html#cb59-2"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v)</span>
+<span id="cb59-3"><a href="combine-words.html#cb59-3"></a><span class="do">## apple, banana, and cherry</span></span>
+<span id="cb59-4"><a href="combine-words.html#cb59-4"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">before =</span> <span class="st">&quot;`&quot;</span>, <span class="at">after =</span> <span class="st">&quot;&#39;&quot;</span>)</span>
+<span id="cb59-5"><a href="combine-words.html#cb59-5"></a><span class="do">## `apple&#39;, `banana&#39;, and `cherry&#39;</span></span>
+<span id="cb59-6"><a href="combine-words.html#cb59-6"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">sep =</span> <span class="st">&quot;、&quot;</span>, <span class="at">and =</span> <span class="st">&quot;そして&quot;</span>)</span>
+<span id="cb59-7"><a href="combine-words.html#cb59-7"></a><span class="do">## apple、banana、そしてcherry</span></span>
+<span id="cb59-8"><a href="combine-words.html#cb59-8"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v, <span class="at">sep =</span> <span class="st">&quot; / &quot;</span>, <span class="at">and =</span> <span class="st">&quot;&quot;</span>)</span>
+<span id="cb59-9"><a href="combine-words.html#cb59-9"></a><span class="do">## apple / banana / cherry</span></span>
+<span id="cb59-10"><a href="combine-words.html#cb59-10"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v[<span class="dv">1</span>])  <span class="co"># 単語1つ</span></span>
+<span id="cb59-11"><a href="combine-words.html#cb59-11"></a><span class="do">## apple</span></span>
+<span id="cb59-12"><a href="combine-words.html#cb59-12"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(v[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])  <span class="co"># 単語2つ</span></span>
+<span id="cb59-13"><a href="combine-words.html#cb59-13"></a><span class="do">## apple and banana</span></span>
+<span id="cb59-14"><a href="combine-words.html#cb59-14"></a>knitr<span class="sc">::</span><span class="fu">combine_words</span>(LETTERS[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb59-15"><a href="combine-words.html#cb59-15"></a><span class="do">## A, B, C, D, and E</span></span></code></pre></div>
 <p>この関数はインライン R コードを使うときに特に使いやすいでしょう. 例えばこのように.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb59-1"><a href="combine-words.html#cb59-1" aria-hidden="true" tabindex="-1"></a>今朝は<span class="in">`r knitr::combine_words(v, sep = &#39;、&#39;, and=&#39;&#39;)`</span>を食べた.</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb60-1"><a href="combine-words.html#cb60-1" aria-hidden="true" tabindex="-1"></a>今朝は<span class="in">`r knitr::combine_words(v, sep = &#39;、&#39;, and=&#39;&#39;)`</span>を食べた.</span></code></pre></div>
 </div>
             </section>
 

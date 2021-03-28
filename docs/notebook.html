@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,15 +470,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="notebook" class="section level2" number="3.5">
 <h2><span class="header-section-number">3.5</span> R Markdown Notebook</h2>
 <p><em>R Markdown Definitive Guide</em> <span class="citation">(<a href="参考文献.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の <a href="https://bookdown.org/yihui/rmarkdown/compile.html">Section 2.2</a> で言及したように, Rmd 文書をコンパイルする方法はいくつかあります. その1つは <code>html_notebook</code> という出力形式で R Markdown Notebook を使うことです. 例えば以下のように.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb23-1"><a href="notebook.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb23-2"><a href="notebook.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> An R Markdown Notebook</span></span>
-<span id="cb23-3"><a href="notebook.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_notebook</span></span>
-<span id="cb23-4"><a href="notebook.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="notebook.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb24-2"><a href="notebook.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> An R Markdown Notebook</span></span>
+<span id="cb24-3"><a href="notebook.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_notebook</span></span>
+<span id="cb24-4"><a href="notebook.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>RStudio でこの出力形式を使うと, ツールバー上の <code>knit</code> ボタンが <code>Preview</code> ボタンになります.</p>
 <p>notebook を使う主な利点は Rmd 文書を<strong>同じRセッションで繰り返し</strong>作業できることです. コードチャンクにある緑色の矢印ボタンを押すことでチャンクを個別に随時実行し, エディタ上でテキストやグラフの出力を見ることができます. ツールバー上の <code>Preview</code> ボタンを押せば Rmd 文書は, あなたが既に実行したコードチャンクの出力を含む HTML 出力の文書へのみレンダリングされます. <code>Preview</code> ボタンは一切のコードチャンクを実行しません. これと比較して, 他の出力形式を使い <code>knit</code> ボタンを押せば RStudio は文書全体をコンパイルする (つまり全てのコードチャンクが一気に実行されます) ために R セッションを新規で立ち上げます. これはたいてい, より時間がかかります.</p>
 <p>コードチャンクを個別に実行した時に出力が表示されるという RStudio のデフォルトの挙動が気に入らないなら, <code>Tools -&gt; Global Options -&gt; R Markdown</code> から “Show output inline for all R Markdown documents” というオプションのチェックを外すことができます. 以降は, コードチャンクを実行すると出力はソースエディタ内ではなく R コンソールに表示されます. このオプションは YAML メタデータで個別の Rmd 文書ごとに設定できます. このように.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb24-1"><a href="notebook.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">editor_options</span><span class="kw">:</span></span>
-<span id="cb24-2"><a href="notebook.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chunk_output_type</span><span class="kw">:</span><span class="at"> console</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb25-1"><a href="notebook.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">editor_options</span><span class="kw">:</span></span>
+<span id="cb25-2"><a href="notebook.html#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">chunk_output_type</span><span class="kw">:</span><span class="at"> console</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

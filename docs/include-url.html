@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="include-url" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> Web ページの埋め込み</h2>
 <p><strong>webshot</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-webshot" role="doc-biblioref">Chang 2019</a>)</span> と PhantomJS をインストール (<a href="html-widgets.html#html-widgets">9.2</a>説参照)していれば, <code>knitr::include_url()</code> でどんな web ページも出力文書に埋め込むことができます. コードチャンク内でこの関数に URL を与えれば, 出力フォーマットが HTML ならば <code>&lt;iframe&gt;</code> (インラインフレーム) が生成され, 他のパッケージならばスクリーンショットが埋め込まれます. 例えば図<a href="include-url.html#fig:include-url">9.1</a>は, 本書のオンライン版を読んでいるなら私の個人サイトが, それ以外なら代わりに静的なスクリーンショットが現れているはずです.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb189-1"><a href="include-url.html#cb189-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">&quot;https://yihui.org&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb190-1"><a href="include-url.html#cb190-1"></a>knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">&quot;https://yihui.org&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:include-url"></span>
 <iframe src="https://yihui.org" width="100%" height="400px">
 </iframe>

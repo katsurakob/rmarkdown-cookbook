@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -468,22 +473,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>チャンクオプションの <code>class.source</code> と <code>class.output</code> を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名の文字列ベクトルを取ります (<a href="attr-output.html#attr-output">11.13</a>節参照). 例えば <code>class.source = "important"</code> は出力時にコードチャンクを含む HTML 要素に <code>important</code> というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.</p>
 <p>デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワークを読み込みます. Bootstrap は <code>"bg-primary"</code>, <code>"bg-success"</code>, <code>"bg-info"</code>, <code>"bg-warning"</code>, <code>"bg-danger"</code> といったいくつかの <a href="https://getbootstrap.com/docs/3.4/css/#helper-classes">背景に対する CSS クラス</a> が定義済みのため, コードと出力の外観の変更を容易にしてくれます.</p>
 <p>以下はチャンクオプション <code>class.source = "bg-danger"</code> と <code>class.output = "bg-warning"</code> を使った例で, その出力は図<a href="chunk-styling.html#fig:chunk-bg">7.1</a>で見られます.</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb143-1"><a href="chunk-styling.html#cb143-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb143-2"><a href="chunk-styling.html#cb143-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクのスタイルを変更する</span></span>
-<span id="cb143-3"><a href="chunk-styling.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb143-4"><a href="chunk-styling.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb143-5"><a href="chunk-styling.html#cb143-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-6"><a href="chunk-styling.html#cb143-6" aria-hidden="true" tabindex="-1"></a>データフレームの一部を取りだすとき, 必ずしもデータフレームが返されるとは限りません. 例えば2つの列を取りだすなら, データフレームを得ますが, 1つの列を取り出そうとするときは, ベクトルを得ます.</span>
-<span id="cb143-7"><a href="chunk-styling.html#cb143-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-8"><a href="chunk-styling.html#cb143-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source=&quot;bg-danger&quot;, class.output=&quot;bg-warning&quot;}</span></span>
-<span id="cb143-9"><a href="chunk-styling.html#cb143-9" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
-<span id="cb143-10"><a href="chunk-styling.html#cb143-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb143-11"><a href="chunk-styling.html#cb143-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-12"><a href="chunk-styling.html#cb143-12" aria-hidden="true" tabindex="-1"></a>常に確実にデータフレームを得るようにするには, <span class="in">`drop = FALSE`</span> 引数を使わなければなりません. ここで, チャンクオプション <span class="in">`class.source = &quot;bg-success&quot;`</span> を使います.</span>
-<span id="cb143-13"><a href="chunk-styling.html#cb143-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb143-14"><a href="chunk-styling.html#cb143-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r df-drop-ok, class.source=&quot;bg-success&quot;}</span></span>
-<span id="cb143-15"><a href="chunk-styling.html#cb143-15" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;, drop = FALSE]</span></span>
-<span id="cb143-16"><a href="chunk-styling.html#cb143-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb144-1"><a href="chunk-styling.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb144-2"><a href="chunk-styling.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクのスタイルを変更する</span></span>
+<span id="cb144-3"><a href="chunk-styling.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb144-4"><a href="chunk-styling.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb144-5"><a href="chunk-styling.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-6"><a href="chunk-styling.html#cb144-6" aria-hidden="true" tabindex="-1"></a>データフレームの一部を取りだすとき, 必ずしもデータフレームが返されるとは限りません. 例えば2つの列を取りだすなら, データフレームを得ますが, 1つの列を取り出そうとするときは, ベクトルを得ます.</span>
+<span id="cb144-7"><a href="chunk-styling.html#cb144-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-8"><a href="chunk-styling.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source=&quot;bg-danger&quot;, class.output=&quot;bg-warning&quot;}</span></span>
+<span id="cb144-9"><a href="chunk-styling.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
+<span id="cb144-10"><a href="chunk-styling.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb144-11"><a href="chunk-styling.html#cb144-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-12"><a href="chunk-styling.html#cb144-12" aria-hidden="true" tabindex="-1"></a>常に確実にデータフレームを得るようにするには, <span class="in">`drop = FALSE`</span> 引数を使わなければなりません. ここで, チャンクオプション <span class="in">`class.source = &quot;bg-success&quot;`</span> を使います.</span>
+<span id="cb144-13"><a href="chunk-styling.html#cb144-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb144-14"><a href="chunk-styling.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r df-drop-ok, class.source=&quot;bg-success&quot;}</span></span>
+<span id="cb144-15"><a href="chunk-styling.html#cb144-15" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;, drop = FALSE]</span></span>
+<span id="cb144-16"><a href="chunk-styling.html#cb144-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:chunk-bg"></span>
 <img src="JP/images/chunk-bg.png" alt="Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック"  />
 <p class="caption">
@@ -491,26 +496,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>任意のクラスを使って対応する CSS ルールを定義することもできます. この場合, <a href="html-css.html#html-css">7.1</a>節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません. 以下はその例です.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb144-1"><a href="chunk-styling.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb144-2"><a href="chunk-styling.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクにカスタムクラスを割り当てる</span></span>
-<span id="cb144-3"><a href="chunk-styling.html#cb144-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb144-4"><a href="chunk-styling.html#cb144-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb144-5"><a href="chunk-styling.html#cb144-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-6"><a href="chunk-styling.html#cb144-6" aria-hidden="true" tabindex="-1"></a>まず <span class="in">`watch-out`</span> というクラスにいくつか CSSを ルールを定義します.</span>
-<span id="cb144-7"><a href="chunk-styling.html#cb144-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-8"><a href="chunk-styling.html#cb144-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb144-9"><a href="chunk-styling.html#cb144-9" aria-hidden="true" tabindex="-1"></a><span class="in">.watch-out {</span></span>
-<span id="cb144-10"><a href="chunk-styling.html#cb144-10" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: lightpink;</span></span>
-<span id="cb144-11"><a href="chunk-styling.html#cb144-11" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 3px solid red;</span></span>
-<span id="cb144-12"><a href="chunk-styling.html#cb144-12" aria-hidden="true" tabindex="-1"></a><span class="in">  font-weight: bold;</span></span>
-<span id="cb144-13"><a href="chunk-styling.html#cb144-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb144-14"><a href="chunk-styling.html#cb144-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb144-15"><a href="chunk-styling.html#cb144-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-16"><a href="chunk-styling.html#cb144-16" aria-hidden="true" tabindex="-1"></a>それからチャンクオプション <span class="in">`class.source`</span> で <span class="in">`watch-out`</span> クラスをコードチャンクに割り当てます.</span>
-<span id="cb144-17"><a href="chunk-styling.html#cb144-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb144-18"><a href="chunk-styling.html#cb144-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source=&quot;watch-out&quot;}</span></span>
-<span id="cb144-19"><a href="chunk-styling.html#cb144-19" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
-<span id="cb144-20"><a href="chunk-styling.html#cb144-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb145-1"><a href="chunk-styling.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb145-2"><a href="chunk-styling.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクにカスタムクラスを割り当てる</span></span>
+<span id="cb145-3"><a href="chunk-styling.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb145-4"><a href="chunk-styling.html#cb145-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb145-5"><a href="chunk-styling.html#cb145-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-6"><a href="chunk-styling.html#cb145-6" aria-hidden="true" tabindex="-1"></a>まず <span class="in">`watch-out`</span> というクラスにいくつか CSSを ルールを定義します.</span>
+<span id="cb145-7"><a href="chunk-styling.html#cb145-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-8"><a href="chunk-styling.html#cb145-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb145-9"><a href="chunk-styling.html#cb145-9" aria-hidden="true" tabindex="-1"></a><span class="in">.watch-out {</span></span>
+<span id="cb145-10"><a href="chunk-styling.html#cb145-10" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: lightpink;</span></span>
+<span id="cb145-11"><a href="chunk-styling.html#cb145-11" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 3px solid red;</span></span>
+<span id="cb145-12"><a href="chunk-styling.html#cb145-12" aria-hidden="true" tabindex="-1"></a><span class="in">  font-weight: bold;</span></span>
+<span id="cb145-13"><a href="chunk-styling.html#cb145-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb145-14"><a href="chunk-styling.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb145-15"><a href="chunk-styling.html#cb145-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-16"><a href="chunk-styling.html#cb145-16" aria-hidden="true" tabindex="-1"></a>それからチャンクオプション <span class="in">`class.source`</span> で <span class="in">`watch-out`</span> クラスをコードチャンクに割り当てます.</span>
+<span id="cb145-17"><a href="chunk-styling.html#cb145-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb145-18"><a href="chunk-styling.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source=&quot;watch-out&quot;}</span></span>
+<span id="cb145-19"><a href="chunk-styling.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
+<span id="cb145-20"><a href="chunk-styling.html#cb145-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="chunk-styling.html#fig:chunk-border">7.2</a>がスタイルの出力です.</p>
 <div class="figure" style="text-align: center"><span id="fig:chunk-border"></span>
 <img src="JP/images/chunk-border.png" alt="明桃色の背景, 赤い太枠線をもつコードチャンク"  />
@@ -519,7 +524,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>文書内の全てのコードブロックにカスタムスタイルを塩要したいなら, グローバルな <strong>knitr</strong> オプションで <code>class.source</code> を設定します. 例えばこのように.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb145-1"><a href="chunk-styling.html#cb145-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">class.source =</span> <span class="st">&quot;watch-out&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb146-1"><a href="chunk-styling.html#cb146-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">class.source =</span> <span class="st">&quot;watch-out&quot;</span>)</span></code></pre></div>
 <p>複数のクラスをコードブロックに適用できます. 例えば <code>class.source = c("important", "warning")</code> でコードブロックに “important” と “warning” という2つのクラスを持たせられます.</p>
 <p>コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, <strong>flair</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-flair" role="doc-biblioref">Bodwin and Glanz 2020</a>)</span> の使用を検討してもよいかもしれません. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.</p>
 </div>

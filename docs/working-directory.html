@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -468,9 +473,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>よく分からない時は, <code>getwd()</code> をコードチャンクに追加して文書をコンパイルし, <code>getwd()</code> の出力を確認することができます.</p>
 <p>時には他のディレクトリを作業ディレクトリとして使いたいかもしれません. たいていの場合は作業ディレクトリの変更方法は <code>setwd()</code> ですが, <code>setwd()</code> は R Markdown あるいは他の <strong>knitr</strong> ソース文書では一貫性がないことに注意してください. これは <code>setwd()</code> が現在のコードチャンクに対して動作し, 作業ディレクトリはこのコードチャンクが評価された後に元に戻ることを意味します.</p>
 <p>全てのコードチャンクに対して作業ディレクトリを変更したい場合, 文書の冒頭の <code>setup</code> コードチャンクでこのように設定することもできます.</p>
-<div class="sourceCode" id="cb476"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb476-1"><a href="working-directory.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb476-2"><a href="working-directory.html#cb476-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
-<span id="cb476-3"><a href="working-directory.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb477"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb477-1"><a href="working-directory.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb477-2"><a href="working-directory.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
+<span id="cb477-3"><a href="working-directory.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>これは以降の全てのコードチャンクの作業ディレクトリを変更します.</p>
 <p>RStudio を使用しているなら, 作業ディレクトリをメニュの <code>Tools -&gt; Global Options -&gt; R Markdown</code> からも選択できます (図<a href="working-directory.html#fig:rmd-wd">16.1</a>参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. “Current” オプションで R コンソールの現在の作業ディレクトリを使うか, “Project” オプションで Rmd ファイルの含まれているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.</p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-wd"></span>

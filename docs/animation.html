@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,11 +470,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="animation" class="section level2" number="4.14">
 <h2><span class="header-section-number">4.14</span> 複数の R プロットからアニメーションを作成する</h2>
 <p>1つのコードチャンクで一連のプロットを生成したとき, これらを結合し1つのアニメーションを生成できます. 出力フォーマットが HTML なら, これは簡単です. <strong>gifski</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-gifski" role="doc-biblioref">Ooms 2018</a>)</span> をインストールし, チャンクオプション <code>animation.hook = "gifski"</code> 設定するだけです. 図<a href="animation.html#fig:pacman">4.3</a> はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb64-1"><a href="animation.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, animation.hook=&quot;gifski&quot;}</span></span>
-<span id="cb64-2"><a href="animation.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:2) {</span></span>
-<span id="cb64-3"><a href="animation.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="in">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></span>
-<span id="cb64-4"><a href="animation.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb64-5"><a href="animation.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb65-1"><a href="animation.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, animation.hook=&quot;gifski&quot;}</span></span>
+<span id="cb65-2"><a href="animation.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:2) {</span></span>
+<span id="cb65-3"><a href="animation.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="in">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></span>
+<span id="cb65-4"><a href="animation.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb65-5"><a href="animation.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:pacman"></span>
 <img src="rmarkdown-cookbook_files/figure-html/pacman-.gif" alt="パックマンのアニメーション"  />
 <p class="caption">
@@ -478,20 +483,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図<a href="animation.html#fig:pacman">4.3</a> が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.</p>
 <p>PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの <a href="https://ctan.org/pkg/animate"><strong>animate</strong></a> を読み込む必要があります (方法は<a href="latex-extra.html#latex-extra">6.4</a>節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. それからチャンクオプション <code>fig.show = "animate"</code> で <strong>animate</strong> パッケージ を使いアニメーションを作成できるようにします. 以下はその例です.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb65-1"><a href="animation.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb65-2"><a href="animation.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> PDF でのアニメーション</span></span>
-<span id="cb65-3"><a href="animation.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb65-4"><a href="animation.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
-<span id="cb65-5"><a href="animation.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="co">    extra_dependencies: animate</span></span>
-<span id="cb65-6"><a href="animation.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb65-7"><a href="animation.html#cb65-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-8"><a href="animation.html#cb65-8" aria-hidden="true" tabindex="-1"></a>以下のアニメーションは Acrobat Reader でのみ見ることができます.</span>
-<span id="cb65-9"><a href="animation.html#cb65-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb65-10"><a href="animation.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.show=&#39;animate&#39;}</span></span>
-<span id="cb65-11"><a href="animation.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:2) {</span></span>
-<span id="cb65-12"><a href="animation.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="in">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></span>
-<span id="cb65-13"><a href="animation.html#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb65-14"><a href="animation.html#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb66-1"><a href="animation.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb66-2"><a href="animation.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> PDF でのアニメーション</span></span>
+<span id="cb66-3"><a href="animation.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb66-4"><a href="animation.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
+<span id="cb66-5"><a href="animation.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="co">    extra_dependencies: animate</span></span>
+<span id="cb66-6"><a href="animation.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb66-7"><a href="animation.html#cb66-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-8"><a href="animation.html#cb66-8" aria-hidden="true" tabindex="-1"></a>以下のアニメーションは Acrobat Reader でのみ見ることができます.</span>
+<span id="cb66-9"><a href="animation.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="animation.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.show=&#39;animate&#39;}</span></span>
+<span id="cb66-11"><a href="animation.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:2) {</span></span>
+<span id="cb66-12"><a href="animation.html#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="in">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></span>
+<span id="cb66-13"><a href="animation.html#cb66-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb66-14"><a href="animation.html#cb66-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>アニメーションのイメージフレーム間の表示間隔はチャンクオプション <code>interval</code> で設定できます. デフォルトでは <code>interval = 1</code> (つまり1秒) です.</p>
 <p>R パッケージ <strong>animation</strong> <span class="citation">(<a href="参考文献.html#ref-R-animation" role="doc-biblioref">Xie 2018</a>)</span> には, 統計的計算の方法やアイディアを表現するアニメーションの例がいくつか入っています. <strong>gganimate</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-gganimate" role="doc-biblioref">Pedersen and Robinson 2020</a>)</span> は <strong>ggplot2</strong> <span class="citation">(<a href="参考文献.html#ref-R-ggplot2" role="doc-biblioref">Wickham, Chang, et al. 2020</a>)</span> に基づいた滑らかなアニメーションの作成を可能にします. どちらも R Markdown で動作します.</p>
 </div>

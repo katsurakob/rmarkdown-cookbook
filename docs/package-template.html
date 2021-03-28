@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -480,8 +485,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>代わりに自分のテンプレートを手動で準備したいなら, <code>inst/rmarkdown/templates</code> のサブディレクトリに作成してください. このディレクトリ内に, 少なくとも2つのファイルを保存する必要があります.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>template.yaml</code> という名前のファイル. これは RStudio IDE に, 人間が判読できるテンプレートの名称といった基本的なメタデータを与えます. 最低でも, このファイルは <code>name</code> と <code>description</code> フィールドを持っているべきです. 例えばこのように.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb479-1"><a href="package-template.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
-<span id="cb479-2"><a href="package-template.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
+<div class="sourceCode" id="cb480"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb480-1"><a href="package-template.html#cb480-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
+<span id="cb480-2"><a href="package-template.html#cb480-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
 <p>テンプレートが選択された時に新しいディレクトリを作成してほしいなら, <code>create_dir: true</code> を含めることもできます. 例えば <a href="https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml"><strong>learnr</strong> パッケージのテンプレート</a>は <code>create_dir: true</code> を設定しており, 一方で <a href="https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml"><strong>flexdashboard</strong> パッケージのテンプレート</a> はデフォルトの <code>create_dir: false</code> を使用しています. 様々なユーザの意図に気付くために, これらのテンプレートを RStudio で開いてみることもできます.</p></li>
 <li><p><code>skeleton/skeleton.Rmd</code> 内保存された R Markdown 文書ファイル. これは R Markdown 文書に挿入したいものを含めることができます.</p></li>
 </ol>

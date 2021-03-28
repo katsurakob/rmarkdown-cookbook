@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -470,12 +475,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="floating-environment" class="section level3" number="6.5.1">
 <h3><span class="header-section-number">6.5.1</span> フロート環境</h3>
 <p>LaTeX ではデフォルトではキャプションのある図は <code>figure</code> 環境で生成されます. 例えば Pandoc は以下の画像を含む Markdown コードを…,</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb119-1"><a href="figure-placement.html#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="al">![This is a figure.](images/cool.jpg)</span></span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb120-1"><a href="figure-placement.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="al">![This is a figure.](images/cool.jpg)</span></span></code></pre></div>
 <p>こう変換します.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb120-1"><a href="figure-placement.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}</span>
-<span id="cb120-2"><a href="figure-placement.html#cb120-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>{<span class="ex">images/cool.jpg</span>}</span>
-<span id="cb120-3"><a href="figure-placement.html#cb120-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{This is a figure.}</span>
-<span id="cb120-4"><a href="figure-placement.html#cb120-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">figure</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb121-1"><a href="figure-placement.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}</span>
+<span id="cb121-2"><a href="figure-placement.html#cb121-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>{<span class="ex">images/cool.jpg</span>}</span>
+<span id="cb121-3"><a href="figure-placement.html#cb121-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{This is a figure.}</span>
+<span id="cb121-4"><a href="figure-placement.html#cb121-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">figure</span>}</span></code></pre></div>
 <p><code>figure</code> 環境はフロート環境です. フロートの詳細な説明は <a href="https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions" class="uri">https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions</a> で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白におさめられないと, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても, 次のページ全てを占有します. この挙動は, <code>\begin{figure}[b]</code> のように, <code>\begin{figure}</code>の後のブラケット内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.</p>
 <ul>
 <li><code>h</code>: フロートを<strong>ここ</strong> (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.</li>
@@ -490,20 +495,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="prevent-figures-from-floating" class="section level3" number="6.5.2">
 <h3><span class="header-section-number">6.5.2</span> 図がフロートするのを防ぐ</h3>
 <p>多くのユーザは初めに, 伝統的なワードプロセッサの挙動を再現できるよう, 文書内を図が移動するのを防ぎたくなります. これを実現するには, まず LaTeX パッケージの <strong>float</strong> を読み込まなければなりません. YAML に以下の記述を含めることでできます.</p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb121-1"><a href="figure-placement.html#cb121-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb121-2"><a href="figure-placement.html#cb121-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb121-3"><a href="figure-placement.html#cb121-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb122-1"><a href="figure-placement.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb122-2"><a href="figure-placement.html#cb122-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb122-3"><a href="figure-placement.html#cb122-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;float&quot;</span><span class="kw">]</span></span></code></pre></div>
 <p>チャンクオプション <code>fig.pos</code> をフロートの挙動を制御するのに使えます. オプションの値 <code>!H</code> は文書でのいかなる移動も防ぎます. 以下の行を　R Markdown 文書の最初のコードチャンクに書くことで, 全てのチャンクがこの設定を持つように, これをデフォルトの挙動にすることもできます.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb122-1"><a href="figure-placement.html#cb122-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.pos =</span> <span class="st">&quot;!H&quot;</span>, <span class="at">out.extra =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb123-1"><a href="figure-placement.html#cb123-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.pos =</span> <span class="st">&quot;!H&quot;</span>, <span class="at">out.extra =</span> <span class="st">&quot;&quot;</span>)</span></code></pre></div>
 <p>一般論として, LaTeX の図のフロートを強制的にやめさせることをおすすめしません. よくある要望なので, 本書にこの解決策を盛り込んだのですが,<a href="#fn23" class="footnote-ref" id="fnref23"><sup>23</sup></a> LaTeX が図をフロートできないときにはいくつかの深刻な副作用が発生することがあります.</p>
 </div>
 <div id="force-floats-forward" class="section level3" number="6.5.3">
 <h3><span class="header-section-number">6.5.3</span> フロートを後回しに強制する</h3>
 <!-- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text -->
 <p>全てのフロートを固定するよう強制することに代わる方法は, テキスト上でフロートが後回しになるよう強制することです. これは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうというよくある問題を排除できます. こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの <strong>flafter</strong> を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb123-1"><a href="figure-placement.html#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb123-2"><a href="figure-placement.html#cb123-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb123-3"><a href="figure-placement.html#cb123-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb124-1"><a href="figure-placement.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb124-2"><a href="figure-placement.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb124-3"><a href="figure-placement.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;flafter&quot;</span><span class="kw">]</span></span></code></pre></div>
 </div>
 <div id="latex-配置ルールを調整する" class="section level3" number="6.5.4">
 <h3><span class="header-section-number">6.5.4</span> LaTeX 配置ルールを調整する (*)</h3>
@@ -556,13 +561,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>LaTeX に図を動かさないよう努力してもらうために, これらの設定を変えることができます. LaTeX プリアンブルファイルに, 1ページのテキストの最小量を減らすような以下のコードを追加し, フロートが収まる余地を増やさせることができます.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb124-1"><a href="figure-placement.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\topfraction</span>}{.85}</span>
-<span id="cb124-2"><a href="figure-placement.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\bottomfraction</span>}{.7}</span>
-<span id="cb124-3"><a href="figure-placement.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\textfraction</span>}{.15}</span>
-<span id="cb124-4"><a href="figure-placement.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\floatpagefraction</span>}{.66}</span>
-<span id="cb124-5"><a href="figure-placement.html#cb124-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{topnumber}{3}</span>
-<span id="cb124-6"><a href="figure-placement.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{bottomnumber}{3}</span>
-<span id="cb124-7"><a href="figure-placement.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{totalnumber}{4}</span></code></pre></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb125-1"><a href="figure-placement.html#cb125-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\topfraction</span>}{.85}</span>
+<span id="cb125-2"><a href="figure-placement.html#cb125-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\bottomfraction</span>}{.7}</span>
+<span id="cb125-3"><a href="figure-placement.html#cb125-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\textfraction</span>}{.15}</span>
+<span id="cb125-4"><a href="figure-placement.html#cb125-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\floatpagefraction</span>}{.66}</span>
+<span id="cb125-5"><a href="figure-placement.html#cb125-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{topnumber}{3}</span>
+<span id="cb125-6"><a href="figure-placement.html#cb125-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{bottomnumber}{3}</span>
+<span id="cb125-7"><a href="figure-placement.html#cb125-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\setcounter</span>{totalnumber}{4}</span></code></pre></div>
 <p>これらの記述を <code>.tex</code> ファイルに追加したら, <a href="latex-preamble.html#latex-preamble">6.1</a>節で紹介した方法で LaTeX 文書のプリアンブルで読み込ませることができます.</p>
 </div>
 </div>

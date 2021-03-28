@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,35 +471,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.3</span> テキスト出力の幅を制御する</h2>
 <p>R コードから表示されたテキスト出力の幅が広すぎることがたまにあります. 出力文書のページ幅が固定 (例えば PDF 文書) ならばテキスト出力がページ余白をはみ出すことがあります. その例が図<a href="text-width.html#fig:wrap-text-1">5.1</a>です.</p>
 <p>R グローバルオプションの <code>width</code> は R 関数からのテキスト出力の印字幅を制御するのに使うことができます. デフォルトが大きすぎるなら, 値を小さくしてみてください. このオプションは典型的には, おおまかに1行ごとの文字数を表しています (東アジア言語は例外です). 例えばこのように.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb85-1"><a href="text-width.html#cb85-1" aria-hidden="true" tabindex="-1"></a>このチャンクの出力は幅広すぎる</span>
-<span id="cb85-2"><a href="text-width.html#cb85-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-3"><a href="text-width.html#cb85-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb85-4"><a href="text-width.html#cb85-4" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 300)</span></span>
-<span id="cb85-5"><a href="text-width.html#cb85-5" aria-hidden="true" tabindex="-1"></a><span class="in">matrix(runif(100), ncol = 20)</span></span>
-<span id="cb85-6"><a href="text-width.html#cb85-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb85-7"><a href="text-width.html#cb85-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-8"><a href="text-width.html#cb85-8" aria-hidden="true" tabindex="-1"></a>このチャンクの出力のほうが良い</span>
-<span id="cb85-9"><a href="text-width.html#cb85-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb85-10"><a href="text-width.html#cb85-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb85-11"><a href="text-width.html#cb85-11" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 60)</span></span>
-<span id="cb85-12"><a href="text-width.html#cb85-12" aria-hidden="true" tabindex="-1"></a><span class="in">matrix(runif(100), ncol = 20)</span></span>
-<span id="cb85-13"><a href="text-width.html#cb85-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb86-1"><a href="text-width.html#cb86-1" aria-hidden="true" tabindex="-1"></a>このチャンクの出力は幅広すぎる</span>
+<span id="cb86-2"><a href="text-width.html#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="text-width.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb86-4"><a href="text-width.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 300)</span></span>
+<span id="cb86-5"><a href="text-width.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="in">matrix(runif(100), ncol = 20)</span></span>
+<span id="cb86-6"><a href="text-width.html#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb86-7"><a href="text-width.html#cb86-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-8"><a href="text-width.html#cb86-8" aria-hidden="true" tabindex="-1"></a>このチャンクの出力のほうが良い</span>
+<span id="cb86-9"><a href="text-width.html#cb86-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-10"><a href="text-width.html#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb86-11"><a href="text-width.html#cb86-11" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 60)</span></span>
+<span id="cb86-12"><a href="text-width.html#cb86-12" aria-hidden="true" tabindex="-1"></a><span class="in">matrix(runif(100), ncol = 20)</span></span>
+<span id="cb86-13"><a href="text-width.html#cb86-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>全ての R 関数が <code>width</code> オプションを尊重しているわけではありません. このオプションが動作しないなら, 唯一の選択は長いテキスト行を折り返しすることです. 実際これは <code>html_document</code> 出力フォーマットのデフォルトの挙動です. あなたの使っている HTML 出力フォーマットが長い行の折返しをしないのなら, 以下の CSS コード を適用してみてください (解説は<a href="html-css.html#html-css">7.1</a>節を参照).</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb86-1"><a href="text-width.html#cb86-1" aria-hidden="true" tabindex="-1"></a>pre code {</span>
-<span id="cb86-2"><a href="text-width.html#cb86-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="dv">pre-wrap</span><span class="op">;</span></span>
-<span id="cb86-3"><a href="text-width.html#cb86-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb87-1"><a href="text-width.html#cb87-1" aria-hidden="true" tabindex="-1"></a>pre code {</span>
+<span id="cb87-2"><a href="text-width.html#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">white-space</span>: <span class="dv">pre-wrap</span><span class="op">;</span></span>
+<span id="cb87-3"><a href="text-width.html#cb87-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>PDF 出力では, 行の折返しはよりトリッキーになります. 解決策の1つは, Pandoc 引数の <code>--listing</code> を使うことで有効になる LaTeX パッケージの <strong>listings</strong> を使うことです. そうしたなら, このパッケージに対するオプションを設定しなければならず, またその設定コードは外部 LaTeX ファイルに含めることができます (方法は<a href="latex-preamble.html#latex-preamble">6.1</a>節参照) 例えばこのように.</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb87-1"><a href="text-width.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb87-2"><a href="text-width.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb87-3"><a href="text-width.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb87-4"><a href="text-width.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span><span class="at"> --listings</span></span>
-<span id="cb87-5"><a href="text-width.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb87-6"><a href="text-width.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> preamble.tex</span></span>
-<span id="cb87-7"><a href="text-width.html#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb88-1"><a href="text-width.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb88-2"><a href="text-width.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb88-3"><a href="text-width.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb88-4"><a href="text-width.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">pandoc_args</span><span class="kw">:</span><span class="at"> --listings</span></span>
+<span id="cb88-5"><a href="text-width.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb88-6"><a href="text-width.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> preamble.tex</span></span>
+<span id="cb88-7"><a href="text-width.html#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p><code>preamble.tex</code> 内では, <strong>listings</strong> パッケージのオプションを設定しています.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb88-1"><a href="text-width.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\lstset</span>{</span>
-<span id="cb88-2"><a href="text-width.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  breaklines=true</span>
-<span id="cb88-3"><a href="text-width.html#cb88-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb89-1"><a href="text-width.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="fu">\lstset</span>{</span>
+<span id="cb89-2"><a href="text-width.html#cb89-2" aria-hidden="true" tabindex="-1"></a>  breaklines=true</span>
+<span id="cb89-3"><a href="text-width.html#cb89-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><strong>listings</strong> によるコードブロックの見た目が気に入らないなら, <code>\lstset{}</code> で他の <strong>listings</strong> オプションを設定することができます. 例えば <code>basicstyle=\ttfamily</code> でフォントファミリを変更できます. このパッケージのより詳細な情報はドキュメント <a href="https://ctan.org/pkg/listings" class="uri">https://ctan.org/pkg/listings</a> で見つけることができます.</p>
 <p>図 <a href="text-width.html#fig:wrap-text-1">5.1</a> は長い行のあるデフォルトの <code>pdf_document</code> 出力で, ページ余白をはみ出しています. 図<a href="text-width.html#fig:wrap-text-2">5.2</a> は <strong>listings</strong> パッケージでテキストを折り返したときの PDF 出力です.</p>
 <div class="figure" style="text-align: center"><span id="fig:wrap-text-1"></span>

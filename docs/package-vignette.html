@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -474,15 +479,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>代わりに, <strong>usethis</strong> <span class="citation">(<a href="参考文献.html#ref-R-usethis" role="doc-biblioref">Wickham and Bryan 2020</a>)</span> をインストールしビネットのスケルトンを作成するのに <code>usethis::use_vignette()</code> 関数を使うこともできます. 以下はパッケージのビネットの YAML フロントマターの典型的な姿です.</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb478-1"><a href="package-vignette.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb478-2"><a href="package-vignette.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットのタイトル&quot;</span></span>
-<span id="cb478-3"><a href="package-vignette.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットの著者&quot;</span></span>
-<span id="cb478-4"><a href="package-vignette.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rmarkdown::html_vignette</span></span>
-<span id="cb478-5"><a href="package-vignette.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span><span class="kw">: </span><span class="ch">&gt;</span></span>
-<span id="cb478-6"><a href="package-vignette.html#cb478-6" aria-hidden="true" tabindex="-1"></a>  %\VignetteIndexEntry{ビネットのタイトル}</span>
-<span id="cb478-7"><a href="package-vignette.html#cb478-7" aria-hidden="true" tabindex="-1"></a>  %\VignetteEngine{knitr::rmarkdown}</span>
-<span id="cb478-8"><a href="package-vignette.html#cb478-8" aria-hidden="true" tabindex="-1"></a>  %\VignetteEncoding{UTF-8}</span>
-<span id="cb478-9"><a href="package-vignette.html#cb478-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb479-1"><a href="package-vignette.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb479-2"><a href="package-vignette.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットのタイトル&quot;</span></span>
+<span id="cb479-3"><a href="package-vignette.html#cb479-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットの著者&quot;</span></span>
+<span id="cb479-4"><a href="package-vignette.html#cb479-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rmarkdown::html_vignette</span></span>
+<span id="cb479-5"><a href="package-vignette.html#cb479-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span><span class="kw">: </span><span class="ch">&gt;</span></span>
+<span id="cb479-6"><a href="package-vignette.html#cb479-6" aria-hidden="true" tabindex="-1"></a>  %\VignetteIndexEntry{ビネットのタイトル}</span>
+<span id="cb479-7"><a href="package-vignette.html#cb479-7" aria-hidden="true" tabindex="-1"></a>  %\VignetteEngine{knitr::rmarkdown}</span>
+<span id="cb479-8"><a href="package-vignette.html#cb479-8" aria-hidden="true" tabindex="-1"></a>  %\VignetteEncoding{UTF-8}</span>
+<span id="cb479-9"><a href="package-vignette.html#cb479-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p><code>title</code> フィールドと <code>\VignetteIndexEntry{}</code> コマンドの両方で, ビネットのタイトルを変更する必要があることに注意してください. 上記のビネット情報の他にも, パッケージの <code>DESCRIPTION</code> ファイルにさらに2つ必要なことがあります.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>DESCRIPTION</code> ファイルに <code>VignetteBuilder: knitr</code> を指定する.</p></li>

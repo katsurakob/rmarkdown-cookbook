@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,51 +470,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="hide-one" class="section level2" number="11.7">
 <h2><span class="header-section-number">11.7</span> コード, テキスト出力, メッセージ, グラフを隠す</h2>
 <p>デフォルトでは, <strong>knitr</strong> はコードチャンクから, ソースコード・テキスト出力・メッセージ・警告・エラー・グラフといった可能な全ての出力を表示します. これらに対応するコードチャンクを使い, 個別に隠すことができます.</p>
-<div class="sourceCode" id="cb289"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb289-1"><a href="hide-one.html#cb289-1" aria-hidden="true" tabindex="-1"></a>ソースコードを隠す.</span>
-<span id="cb289-2"><a href="hide-one.html#cb289-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-3"><a href="hide-one.html#cb289-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE}</span></span>
-<span id="cb289-4"><a href="hide-one.html#cb289-4" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb289-5"><a href="hide-one.html#cb289-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb289-6"><a href="hide-one.html#cb289-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-7"><a href="hide-one.html#cb289-7" aria-hidden="true" tabindex="-1"></a>テキスト出力を隠す. <span class="in">`results = FALSE`</span> を使うのも可.</span>
-<span id="cb289-8"><a href="hide-one.html#cb289-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-9"><a href="hide-one.html#cb289-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results=&#39;hide&#39;}</span></span>
-<span id="cb289-10"><a href="hide-one.html#cb289-10" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;テキスト出力はあなたには見えない.&quot;)</span></span>
-<span id="cb289-11"><a href="hide-one.html#cb289-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb289-12"><a href="hide-one.html#cb289-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-13"><a href="hide-one.html#cb289-13" aria-hidden="true" tabindex="-1"></a>メッセージを隠す.</span>
-<span id="cb289-14"><a href="hide-one.html#cb289-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-15"><a href="hide-one.html#cb289-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
-<span id="cb289-16"><a href="hide-one.html#cb289-16" aria-hidden="true" tabindex="-1"></a><span class="in">message(&quot;このメッセージはあなたには見えない.&quot;)</span></span>
-<span id="cb289-17"><a href="hide-one.html#cb289-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb289-18"><a href="hide-one.html#cb289-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-19"><a href="hide-one.html#cb289-19" aria-hidden="true" tabindex="-1"></a>警告メッセージを隠す.</span>
-<span id="cb289-20"><a href="hide-one.html#cb289-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-21"><a href="hide-one.html#cb289-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning=FALSE}</span></span>
-<span id="cb289-22"><a href="hide-one.html#cb289-22" aria-hidden="true" tabindex="-1"></a><span class="in"># 警告を発生させるが抑制される</span></span>
-<span id="cb289-23"><a href="hide-one.html#cb289-23" aria-hidden="true" tabindex="-1"></a><span class="in">1:2 + 1:3</span></span>
-<span id="cb289-24"><a href="hide-one.html#cb289-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb289-25"><a href="hide-one.html#cb289-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-26"><a href="hide-one.html#cb289-26" aria-hidden="true" tabindex="-1"></a>グラフを隠す.</span>
-<span id="cb289-27"><a href="hide-one.html#cb289-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-28"><a href="hide-one.html#cb289-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.show=&#39;hide&#39;}</span></span>
-<span id="cb289-29"><a href="hide-one.html#cb289-29" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb289-30"><a href="hide-one.html#cb289-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb289-31"><a href="hide-one.html#cb289-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb289-32"><a href="hide-one.html#cb289-32" aria-hidden="true" tabindex="-1"></a>上記のチャンクではグラフが生成されることに注意してください. 出力に表示しなくするだけです.</span></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb290-1"><a href="hide-one.html#cb290-1" aria-hidden="true" tabindex="-1"></a>ソースコードを隠す.</span>
+<span id="cb290-2"><a href="hide-one.html#cb290-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-3"><a href="hide-one.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE}</span></span>
+<span id="cb290-4"><a href="hide-one.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb290-5"><a href="hide-one.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb290-6"><a href="hide-one.html#cb290-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-7"><a href="hide-one.html#cb290-7" aria-hidden="true" tabindex="-1"></a>テキスト出力を隠す. <span class="in">`results = FALSE`</span> を使うのも可.</span>
+<span id="cb290-8"><a href="hide-one.html#cb290-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-9"><a href="hide-one.html#cb290-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, results=&#39;hide&#39;}</span></span>
+<span id="cb290-10"><a href="hide-one.html#cb290-10" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;テキスト出力はあなたには見えない.&quot;)</span></span>
+<span id="cb290-11"><a href="hide-one.html#cb290-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb290-12"><a href="hide-one.html#cb290-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-13"><a href="hide-one.html#cb290-13" aria-hidden="true" tabindex="-1"></a>メッセージを隠す.</span>
+<span id="cb290-14"><a href="hide-one.html#cb290-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-15"><a href="hide-one.html#cb290-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, message=FALSE}</span></span>
+<span id="cb290-16"><a href="hide-one.html#cb290-16" aria-hidden="true" tabindex="-1"></a><span class="in">message(&quot;このメッセージはあなたには見えない.&quot;)</span></span>
+<span id="cb290-17"><a href="hide-one.html#cb290-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb290-18"><a href="hide-one.html#cb290-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-19"><a href="hide-one.html#cb290-19" aria-hidden="true" tabindex="-1"></a>警告メッセージを隠す.</span>
+<span id="cb290-20"><a href="hide-one.html#cb290-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-21"><a href="hide-one.html#cb290-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, warning=FALSE}</span></span>
+<span id="cb290-22"><a href="hide-one.html#cb290-22" aria-hidden="true" tabindex="-1"></a><span class="in"># 警告を発生させるが抑制される</span></span>
+<span id="cb290-23"><a href="hide-one.html#cb290-23" aria-hidden="true" tabindex="-1"></a><span class="in">1:2 + 1:3</span></span>
+<span id="cb290-24"><a href="hide-one.html#cb290-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb290-25"><a href="hide-one.html#cb290-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-26"><a href="hide-one.html#cb290-26" aria-hidden="true" tabindex="-1"></a>グラフを隠す.</span>
+<span id="cb290-27"><a href="hide-one.html#cb290-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-28"><a href="hide-one.html#cb290-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.show=&#39;hide&#39;}</span></span>
+<span id="cb290-29"><a href="hide-one.html#cb290-29" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb290-30"><a href="hide-one.html#cb290-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb290-31"><a href="hide-one.html#cb290-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-32"><a href="hide-one.html#cb290-32" aria-hidden="true" tabindex="-1"></a>上記のチャンクではグラフが生成されることに注意してください. 出力に表示しなくするだけです.</span></code></pre></div>
 <p><strong>knitr</strong> に関するよくある質問の1つは, パッケージ読み込み時のメッセージを隠す方法です. 例えば <code>library(tidyverse)</code> や <code>library(ggplot2)</code> を使ったとき, いくつかの読み込みメッセージが現れます. このようなメッセージはチャンクオプション <code>message = FALSE</code> で抑制することもできます.</p>
 <p>インデックスによってこれらの要素を表示したり隠したり選択することも出来ます. 以下の例では, ソースコードの4つ目と5つ目の式を表示し, 最初の2つのメッセージと2つ目と3つ目の警告を隠しています. コメントも式1つとして数えられることに注意してください.</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb290-1"><a href="hide-one.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=c(4, 5), message=c(1, 2), warning=2:3}</span></span>
-<span id="cb290-2"><a href="hide-one.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 乱数 N(0, 1) を生成する方法の1つ</span></span>
-<span id="cb290-3"><a href="hide-one.html#cb290-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- qnorm(runif(10))</span></span>
-<span id="cb290-4"><a href="hide-one.html#cb290-4" aria-hidden="true" tabindex="-1"></a><span class="in"># だが rnorm() を使うほうが実用的</span></span>
-<span id="cb290-5"><a href="hide-one.html#cb290-5" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(10)</span></span>
-<span id="cb290-6"><a href="hide-one.html#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="in">x</span></span>
-<span id="cb290-7"><a href="hide-one.html#cb290-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-8"><a href="hide-one.html#cb290-8" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:5) message(&#39;ここにメッセージ &#39;, i)</span></span>
-<span id="cb290-9"><a href="hide-one.html#cb290-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-10"><a href="hide-one.html#cb290-10" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:5) warning(&#39;ここにメッセージ &#39;, i)</span></span>
-<span id="cb290-11"><a href="hide-one.html#cb290-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb291-1"><a href="hide-one.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=c(4, 5), message=c(1, 2), warning=2:3}</span></span>
+<span id="cb291-2"><a href="hide-one.html#cb291-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 乱数 N(0, 1) を生成する方法の1つ</span></span>
+<span id="cb291-3"><a href="hide-one.html#cb291-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- qnorm(runif(10))</span></span>
+<span id="cb291-4"><a href="hide-one.html#cb291-4" aria-hidden="true" tabindex="-1"></a><span class="in"># だが rnorm() を使うほうが実用的</span></span>
+<span id="cb291-5"><a href="hide-one.html#cb291-5" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(10)</span></span>
+<span id="cb291-6"><a href="hide-one.html#cb291-6" aria-hidden="true" tabindex="-1"></a><span class="in">x</span></span>
+<span id="cb291-7"><a href="hide-one.html#cb291-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-8"><a href="hide-one.html#cb291-8" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:5) message(&#39;ここにメッセージ &#39;, i)</span></span>
+<span id="cb291-9"><a href="hide-one.html#cb291-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb291-10"><a href="hide-one.html#cb291-10" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:5) warning(&#39;ここにメッセージ &#39;, i)</span></span>
+<span id="cb291-11"><a href="hide-one.html#cb291-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>負のインデックスを使用することもできます. 例えば <code>echo = -2</code> は出力部のソースコードの2つ目の式を排除します.</p>
 <p>同様に, <code>fig.keep</code> オプションに対してインデックスを使うことでどのグラフを表示あるいは隠すかを選ぶこともできます. 例えば <code>fig.keep = 1:2</code> は最初の2つのグラフを残すことを意味します. このオプションにはいくつかのショートカットがあります. <code>fig.keep = "first"</code> は最初のグラフのみを残し, <code>fig.keep = "last"</code> は最後のグラフのみを残し, <code>fig.keep = "none"</code> は全てのグラフを破棄します. 2つのオプション <code>fig.keep = "none"</code> と <code>fig.show = "hide"</code> は異なることに注意してください. 前者はそもそも画像ファイルを生成しませんが, 後者はグラフを生成し隠すだけです.</p>
 <p><code>html_document</code> 出力のソースコードブロックに対して, <code>echo = FALSE</code> で完全に省略したくないというならば, ページ上でブロックを折りたたみ, ユーザーが展開ボタンを押して展開させるようにできる方法を書いた<a href="fold-show.html#fold-show">7.5</a>節を見ると良いかもしれません.</p>

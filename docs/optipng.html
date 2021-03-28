@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="optipng" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> PNG のグラフを最適化する</h2>
 <p>OptiPNG (<a href="http://optipng.sourceforge.net" class="uri">http://optipng.sourceforge.net</a>) プログラムをインストールしているなら, PNG 形式のグラフ画像ファイルを画質を劣化させることなく縮小するために最適化するのに使うこともできます.</p>
-<div class="sourceCode" id="cb376"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb376-1"><a href="optipng.html#cb376-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">optipng =</span> knitr<span class="sc">::</span>hook_optipng)</span></code></pre></div>
+<div class="sourceCode" id="cb377"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb377-1"><a href="optipng.html#cb377-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">optipng =</span> knitr<span class="sc">::</span>hook_optipng)</span></code></pre></div>
 <p>このフックを設定した後で, OPtiPNG へのコマンドライン引数を通すのにチャンクオプション <code>optipng</code>を使うことができます (例えば <code>optipng = '-o7'</code>). コマンドライン引数はオプションなので, フックを有効にするために <code>optipng = ''</code> とだけ書くことも可能です. 使用可能な引数を知るには OptiPNG のウェブサイト上にあるユーザーマニュアルを見てください.</p>
 <p>macOS ユーザーは Homebrew (<a href="https://brew.sh" class="uri">https://brew.sh</a>) で簡単に OptiPNG をインストールできます (<code>brew install optipng</code>).</p>
 </div>

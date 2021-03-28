@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,11 +472,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>図<a href="rmarkdown-process.html#fig:rmdworkflow">2.1</a>が表すように, <strong>knitr</strong> パッケージは R Markdown においてきわめて重要な役割を持ちます. この章と次の3つの章では <strong>knitr</strong> に関連するレシピをお見せします.</p>
 <p>R のチャンクを処理する際には, <strong>knitr</strong> の挙動を微調整するのに 50 のチャンクオプション (chunk options) が使われる可能性があります. 完全なリストは <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a> のオンラインドキュメントをご覧ください.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a></p>
 <p>続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いという事実を覚えてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで <code>knitr::opts_chunk$set()</code> を呼び出してください. たいていは文書の中で最初のチャンクオプションです. 例えばこのように.</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb277-1"><a href="chunk-options.html#cb277-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb277-2"><a href="chunk-options.html#cb277-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
-<span id="cb277-3"><a href="chunk-options.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="in">  comment = &quot;#&gt;&quot;, echo = FALSE, fig.width = 6</span></span>
-<span id="cb277-4"><a href="chunk-options.html#cb277-4" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb277-5"><a href="chunk-options.html#cb277-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb278"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb278-1"><a href="chunk-options.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb278-2"><a href="chunk-options.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
+<span id="cb278-3"><a href="chunk-options.html#cb278-3" aria-hidden="true" tabindex="-1"></a><span class="in">  comment = &quot;#&gt;&quot;, echo = FALSE, fig.width = 6</span></span>
+<span id="cb278-4"><a href="chunk-options.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb278-5"><a href="chunk-options.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <div class="footnotes">
 <hr />

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,95 +470,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="write-bib" class="section level2" number="4.6">
 <h2><span class="header-section-number">4.6</span> R パッケージの引用を生成する</h2>
 <p>R パッケージを引用するには, base R の <code>citation()</code> を使うことができます. BibTeX 用の引用エントリを生成したいなら, <code>citation()</code> の返り値を <code>toBibtex()</code> を与えることができます. 例えばこうです.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb40-1"><a href="write-bib.html#cb40-1"></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>(<span class="st">&quot;xaringan&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb41"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb41-1"><a href="write-bib.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{,</span>
-<span id="cb41-2"><a href="write-bib.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {xaringan: Presentation Ninja},</span>
-<span id="cb41-3"><a href="write-bib.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
-<span id="cb41-4"><a href="write-bib.html#cb41-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2020},</span>
-<span id="cb41-5"><a href="write-bib.html#cb41-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.19},</span>
-<span id="cb41-6"><a href="write-bib.html#cb41-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=xaringan},</span>
-<span id="cb41-7"><a href="write-bib.html#cb41-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb41-1"><a href="write-bib.html#cb41-1"></a><span class="fu">toBibtex</span>(<span class="fu">citation</span>(<span class="st">&quot;xaringan&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb42-1"><a href="write-bib.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{,</span>
+<span id="cb42-2"><a href="write-bib.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {xaringan: Presentation Ninja},</span>
+<span id="cb42-3"><a href="write-bib.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
+<span id="cb42-4"><a href="write-bib.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2020},</span>
+<span id="cb42-5"><a href="write-bib.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.19},</span>
+<span id="cb42-6"><a href="write-bib.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=xaringan},</span>
+<span id="cb42-7"><a href="write-bib.html#cb42-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>toBibtex()</code> で生成されたエントリを使うには, 出力を <code>.bib</code> ファイルにコピーし, 引用キーを追加しなければなりません (例えば <code>@Manual{,</code> の部分を <code>@Manual{R-xaringan,</code> と書き換える). これは <code>knitr::write_bib()</code> 関数によって自動化できます. この関数は引用エントリを生成し, 自動的にキーを加えてファイルに書き込みます. 例えばこのようにします.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb42-1"><a href="write-bib.html#cb42-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb43-1"><a href="write-bib.html#cb43-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
 <p>第1引数はパッケージ名の文字列ベクトルで, 第2引数は <code>.bib</code> ファイルのパスであるべきです. 上記の例では, <code>.packages()</code> は現在の R セッションが読み込んでいる全てのパッケージ名を返します. これらのパッケージのいずれかが更新された (例えば著者, タイトル, 年, あるいはバージョンが変更された) とき, <code>write_bib()</code> は自動的に <code>.bib</code> を更新できます.</p>
 <p>引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの <code>DESCRIPTION</code> ファイルをもとに生成したもので, もう1つは, もしパッケージに <code>CITATION</code> ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが <code>R-(パッケージ名)</code> という形式になり (例えば <code>R-knitr</code>), 後者のタイプはパッケージ名と公開年を結合したものがキーとなります (例: <code>knitr2015</code>). もし複数のエントリが同一年にあるなら, 接尾文字が追加されます. 例えば <code>knitr2015a</code> と <code>knitr2015b</code> のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプはしばしば論文や書籍のようなパッケージと関連のある出版物として扱われます.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb43-1"><a href="write-bib.html#cb43-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>), <span class="at">width =</span> <span class="dv">60</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb44-1"><a href="write-bib.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">knitr</span>,</span>
-<span id="cb44-2"><a href="write-bib.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {knitr: A General-Purpose Package for Dynamic</span>
-<span id="cb44-3"><a href="write-bib.html#cb44-3" aria-hidden="true" tabindex="-1"></a>    Report Generation in R},</span>
-<span id="cb44-4"><a href="write-bib.html#cb44-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
-<span id="cb44-5"><a href="write-bib.html#cb44-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
-<span id="cb44-6"><a href="write-bib.html#cb44-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 1.31},</span>
-<span id="cb44-7"><a href="write-bib.html#cb44-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://yihui.org/knitr/},</span>
-<span id="cb44-8"><a href="write-bib.html#cb44-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-9"><a href="write-bib.html#cb44-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-10"><a href="write-bib.html#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">rmarkdown</span>,</span>
-<span id="cb44-11"><a href="write-bib.html#cb44-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {rmarkdown: Dynamic Documents for R},</span>
-<span id="cb44-12"><a href="write-bib.html#cb44-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {JJ Allaire and Yihui Xie and Jonathan McPherson</span>
-<span id="cb44-13"><a href="write-bib.html#cb44-13" aria-hidden="true" tabindex="-1"></a>    and Javier Luraschi and Kevin Ushey and Aron Atkins</span>
-<span id="cb44-14"><a href="write-bib.html#cb44-14" aria-hidden="true" tabindex="-1"></a>    and Hadley Wickham and Joe Cheng and Winston Chang and</span>
-<span id="cb44-15"><a href="write-bib.html#cb44-15" aria-hidden="true" tabindex="-1"></a>    Richard Iannone},</span>
-<span id="cb44-16"><a href="write-bib.html#cb44-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
-<span id="cb44-17"><a href="write-bib.html#cb44-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 2.7},</span>
-<span id="cb44-18"><a href="write-bib.html#cb44-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=rmarkdown},</span>
-<span id="cb44-19"><a href="write-bib.html#cb44-19" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-20"><a href="write-bib.html#cb44-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-21"><a href="write-bib.html#cb44-21" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">knitr2015</span>,</span>
-<span id="cb44-22"><a href="write-bib.html#cb44-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Dynamic Documents with {R} and knitr},</span>
-<span id="cb44-23"><a href="write-bib.html#cb44-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
-<span id="cb44-24"><a href="write-bib.html#cb44-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
-<span id="cb44-25"><a href="write-bib.html#cb44-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
-<span id="cb44-26"><a href="write-bib.html#cb44-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2015},</span>
-<span id="cb44-27"><a href="write-bib.html#cb44-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">edition</span> = {2nd},</span>
-<span id="cb44-28"><a href="write-bib.html#cb44-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 978-1498716963},</span>
-<span id="cb44-29"><a href="write-bib.html#cb44-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://yihui.org/knitr/},</span>
-<span id="cb44-30"><a href="write-bib.html#cb44-30" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-31"><a href="write-bib.html#cb44-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-32"><a href="write-bib.html#cb44-32" aria-hidden="true" tabindex="-1"></a><span class="va">@InCollection</span>{<span class="ot">knitr2014</span>,</span>
-<span id="cb44-33"><a href="write-bib.html#cb44-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">booktitle</span> = {Implementing Reproducible Computational</span>
-<span id="cb44-34"><a href="write-bib.html#cb44-34" aria-hidden="true" tabindex="-1"></a>    Research},</span>
-<span id="cb44-35"><a href="write-bib.html#cb44-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">editor</span> = {Victoria Stodden and Friedrich Leisch and Roger</span>
-<span id="cb44-36"><a href="write-bib.html#cb44-36" aria-hidden="true" tabindex="-1"></a>    D. Peng},</span>
-<span id="cb44-37"><a href="write-bib.html#cb44-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {knitr: A Comprehensive Tool for Reproducible</span>
-<span id="cb44-38"><a href="write-bib.html#cb44-38" aria-hidden="true" tabindex="-1"></a>    Research in {R}},</span>
-<span id="cb44-39"><a href="write-bib.html#cb44-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
-<span id="cb44-40"><a href="write-bib.html#cb44-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
-<span id="cb44-41"><a href="write-bib.html#cb44-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2014},</span>
-<span id="cb44-42"><a href="write-bib.html#cb44-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 978-1466561595},</span>
-<span id="cb44-43"><a href="write-bib.html#cb44-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {http://www.crcpress.com/product/isbn/</span>
-<span id="cb44-44"><a href="write-bib.html#cb44-44" aria-hidden="true" tabindex="-1"></a>    9781466561595},</span>
-<span id="cb44-45"><a href="write-bib.html#cb44-45" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-46"><a href="write-bib.html#cb44-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-47"><a href="write-bib.html#cb44-47" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">rmarkdown2018</span>,</span>
-<span id="cb44-48"><a href="write-bib.html#cb44-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {R Markdown: The Definitive Guide},</span>
-<span id="cb44-49"><a href="write-bib.html#cb44-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie and J.J. Allaire and Garrett</span>
-<span id="cb44-50"><a href="write-bib.html#cb44-50" aria-hidden="true" tabindex="-1"></a>    Grolemund},</span>
-<span id="cb44-51"><a href="write-bib.html#cb44-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
-<span id="cb44-52"><a href="write-bib.html#cb44-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
-<span id="cb44-53"><a href="write-bib.html#cb44-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2018},</span>
-<span id="cb44-54"><a href="write-bib.html#cb44-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 9781138359338},</span>
-<span id="cb44-55"><a href="write-bib.html#cb44-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://bookdown.org/yihui/rmarkdown},</span>
-<span id="cb44-56"><a href="write-bib.html#cb44-56" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-57"><a href="write-bib.html#cb44-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-58"><a href="write-bib.html#cb44-58" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">rmarkdown2020</span>,</span>
-<span id="cb44-59"><a href="write-bib.html#cb44-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {R Markdown Cookbook},</span>
-<span id="cb44-60"><a href="write-bib.html#cb44-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie and Christophe Dervieux and Emily</span>
-<span id="cb44-61"><a href="write-bib.html#cb44-61" aria-hidden="true" tabindex="-1"></a>    Riederer},</span>
-<span id="cb44-62"><a href="write-bib.html#cb44-62" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
-<span id="cb44-63"><a href="write-bib.html#cb44-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
-<span id="cb44-64"><a href="write-bib.html#cb44-64" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2020},</span>
-<span id="cb44-65"><a href="write-bib.html#cb44-65" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 9780367563837},</span>
-<span id="cb44-66"><a href="write-bib.html#cb44-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://bookdown.org/yihui/rmarkdown-cookbook},</span>
-<span id="cb44-67"><a href="write-bib.html#cb44-67" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb44-1"><a href="write-bib.html#cb44-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>), <span class="at">width =</span> <span class="dv">60</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb45-1"><a href="write-bib.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">knitr</span>,</span>
+<span id="cb45-2"><a href="write-bib.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {knitr: A General-Purpose Package for Dynamic</span>
+<span id="cb45-3"><a href="write-bib.html#cb45-3" aria-hidden="true" tabindex="-1"></a>    Report Generation in R},</span>
+<span id="cb45-4"><a href="write-bib.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
+<span id="cb45-5"><a href="write-bib.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
+<span id="cb45-6"><a href="write-bib.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 1.31},</span>
+<span id="cb45-7"><a href="write-bib.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://yihui.org/knitr/},</span>
+<span id="cb45-8"><a href="write-bib.html#cb45-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-9"><a href="write-bib.html#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="write-bib.html#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">rmarkdown</span>,</span>
+<span id="cb45-11"><a href="write-bib.html#cb45-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {rmarkdown: Dynamic Documents for R},</span>
+<span id="cb45-12"><a href="write-bib.html#cb45-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {JJ Allaire and Yihui Xie and Jonathan McPherson</span>
+<span id="cb45-13"><a href="write-bib.html#cb45-13" aria-hidden="true" tabindex="-1"></a>    and Javier Luraschi and Kevin Ushey and Aron Atkins</span>
+<span id="cb45-14"><a href="write-bib.html#cb45-14" aria-hidden="true" tabindex="-1"></a>    and Hadley Wickham and Joe Cheng and Winston Chang and</span>
+<span id="cb45-15"><a href="write-bib.html#cb45-15" aria-hidden="true" tabindex="-1"></a>    Richard Iannone},</span>
+<span id="cb45-16"><a href="write-bib.html#cb45-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
+<span id="cb45-17"><a href="write-bib.html#cb45-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 2.7},</span>
+<span id="cb45-18"><a href="write-bib.html#cb45-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=rmarkdown},</span>
+<span id="cb45-19"><a href="write-bib.html#cb45-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-20"><a href="write-bib.html#cb45-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-21"><a href="write-bib.html#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">knitr2015</span>,</span>
+<span id="cb45-22"><a href="write-bib.html#cb45-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Dynamic Documents with {R} and knitr},</span>
+<span id="cb45-23"><a href="write-bib.html#cb45-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
+<span id="cb45-24"><a href="write-bib.html#cb45-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
+<span id="cb45-25"><a href="write-bib.html#cb45-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
+<span id="cb45-26"><a href="write-bib.html#cb45-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2015},</span>
+<span id="cb45-27"><a href="write-bib.html#cb45-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">edition</span> = {2nd},</span>
+<span id="cb45-28"><a href="write-bib.html#cb45-28" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 978-1498716963},</span>
+<span id="cb45-29"><a href="write-bib.html#cb45-29" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://yihui.org/knitr/},</span>
+<span id="cb45-30"><a href="write-bib.html#cb45-30" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-31"><a href="write-bib.html#cb45-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-32"><a href="write-bib.html#cb45-32" aria-hidden="true" tabindex="-1"></a><span class="va">@InCollection</span>{<span class="ot">knitr2014</span>,</span>
+<span id="cb45-33"><a href="write-bib.html#cb45-33" aria-hidden="true" tabindex="-1"></a>  <span class="dt">booktitle</span> = {Implementing Reproducible Computational</span>
+<span id="cb45-34"><a href="write-bib.html#cb45-34" aria-hidden="true" tabindex="-1"></a>    Research},</span>
+<span id="cb45-35"><a href="write-bib.html#cb45-35" aria-hidden="true" tabindex="-1"></a>  <span class="dt">editor</span> = {Victoria Stodden and Friedrich Leisch and Roger</span>
+<span id="cb45-36"><a href="write-bib.html#cb45-36" aria-hidden="true" tabindex="-1"></a>    D. Peng},</span>
+<span id="cb45-37"><a href="write-bib.html#cb45-37" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {knitr: A Comprehensive Tool for Reproducible</span>
+<span id="cb45-38"><a href="write-bib.html#cb45-38" aria-hidden="true" tabindex="-1"></a>    Research in {R}},</span>
+<span id="cb45-39"><a href="write-bib.html#cb45-39" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
+<span id="cb45-40"><a href="write-bib.html#cb45-40" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
+<span id="cb45-41"><a href="write-bib.html#cb45-41" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2014},</span>
+<span id="cb45-42"><a href="write-bib.html#cb45-42" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 978-1466561595},</span>
+<span id="cb45-43"><a href="write-bib.html#cb45-43" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {http://www.crcpress.com/product/isbn/</span>
+<span id="cb45-44"><a href="write-bib.html#cb45-44" aria-hidden="true" tabindex="-1"></a>    9781466561595},</span>
+<span id="cb45-45"><a href="write-bib.html#cb45-45" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-46"><a href="write-bib.html#cb45-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-47"><a href="write-bib.html#cb45-47" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">rmarkdown2018</span>,</span>
+<span id="cb45-48"><a href="write-bib.html#cb45-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {R Markdown: The Definitive Guide},</span>
+<span id="cb45-49"><a href="write-bib.html#cb45-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie and J.J. Allaire and Garrett</span>
+<span id="cb45-50"><a href="write-bib.html#cb45-50" aria-hidden="true" tabindex="-1"></a>    Grolemund},</span>
+<span id="cb45-51"><a href="write-bib.html#cb45-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
+<span id="cb45-52"><a href="write-bib.html#cb45-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
+<span id="cb45-53"><a href="write-bib.html#cb45-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2018},</span>
+<span id="cb45-54"><a href="write-bib.html#cb45-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 9781138359338},</span>
+<span id="cb45-55"><a href="write-bib.html#cb45-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://bookdown.org/yihui/rmarkdown},</span>
+<span id="cb45-56"><a href="write-bib.html#cb45-56" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb45-57"><a href="write-bib.html#cb45-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-58"><a href="write-bib.html#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">rmarkdown2020</span>,</span>
+<span id="cb45-59"><a href="write-bib.html#cb45-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {R Markdown Cookbook},</span>
+<span id="cb45-60"><a href="write-bib.html#cb45-60" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie and Christophe Dervieux and Emily</span>
+<span id="cb45-61"><a href="write-bib.html#cb45-61" aria-hidden="true" tabindex="-1"></a>    Riederer},</span>
+<span id="cb45-62"><a href="write-bib.html#cb45-62" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Chapman and Hall/CRC},</span>
+<span id="cb45-63"><a href="write-bib.html#cb45-63" aria-hidden="true" tabindex="-1"></a>  <span class="dt">address</span> = {Boca Raton, Florida},</span>
+<span id="cb45-64"><a href="write-bib.html#cb45-64" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2020},</span>
+<span id="cb45-65"><a href="write-bib.html#cb45-65" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {ISBN 9780367563837},</span>
+<span id="cb45-66"><a href="write-bib.html#cb45-66" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://bookdown.org/yihui/rmarkdown-cookbook},</span>
+<span id="cb45-67"><a href="write-bib.html#cb45-67" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>ファイルパスの引数がないと, <code>knitr::write_bib()</code> は上記の例のように引用エントリをコンソールに出力します.</p>
 <p><code>write_bib()</code> は既存の文献目録ファイルを上書きするように設計されていることに注意してください. 文献目録に手動で他のエントリを追加したい場合, 2つ目の <code>.bib</code> ファイルを作成して, この例のように <code>bibliography</code> フィールドで参照してください.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb45-1"><a href="write-bib.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb45-2"><a href="write-bib.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> [packages.bib, references.bib]</span></span>
-<span id="cb45-3"><a href="write-bib.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb45-4"><a href="write-bib.html#cb45-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-5"><a href="write-bib.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb45-6"><a href="write-bib.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::write_bib(file = &#39;packages.bib&#39;)</span></span>
-<span id="cb45-7"><a href="write-bib.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb46-1"><a href="write-bib.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb46-2"><a href="write-bib.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> [packages.bib, references.bib]</span></span>
+<span id="cb46-3"><a href="write-bib.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb46-4"><a href="write-bib.html#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-5"><a href="write-bib.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb46-6"><a href="write-bib.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::write_bib(file = &#39;packages.bib&#39;)</span></span>
+<span id="cb46-7"><a href="write-bib.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>上記の例では <code>packages.bib</code> が自動で生成されたもので, 手動で変更すべきではありません. それ以外の全ての引用エントリは <code>references.bib</code> に手動で書き込むことができます.</p>
 <p>ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには, <strong>knitcitations</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-knitcitations" role="doc-biblioref">Boettiger 2021</a>)</span> を確認することもできます.</p>
 </div>

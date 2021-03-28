@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,27 +471,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">11.14</span> グラフに後処理をかける (*)</h2>
 <p>コードチャンクでグラフが生成された後, チャンクオプション <code>fig.process</code> によってグラフに後処理をかけることが出来ます. これはファイルパスを引数にとり, 生成された画像ファイルのパスを返す関数であるべきです. この関数はオプションで第2引数 <code>option</code> を取ることができ, これには現在のチャンクのオプションのリストが与えられます.</p>
 <p>R のロゴをグラフに埋め込むために, とても強力な <strong>magick</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-magick" role="doc-biblioref">Ooms 2021</a>)</span> を使用する例を以下にお見せします. このパッケージに詳しくないなら, オンラインドキュメントか, 豊富な使用例を含むパッケージのヴィネットをを読むことをお薦めします. 初めに, 関数 <code>add_logo()</code> を定義します. <code>add_logo()</code>:</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb320-1"><a href="fig-process.html#cb320-1"></a>add_logo <span class="ot">&lt;-</span> <span class="cf">function</span>(path, options) {</span>
-<span id="cb320-2"><a href="fig-process.html#cb320-2"></a>  <span class="co"># コードチャンクで作成された画像</span></span>
-<span id="cb320-3"><a href="fig-process.html#cb320-3"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(path)</span>
-<span id="cb320-4"><a href="fig-process.html#cb320-4"></a>  <span class="co"># R のロゴ</span></span>
-<span id="cb320-5"><a href="fig-process.html#cb320-5"></a>  logo <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">&quot;doc&quot;</span>), <span class="st">&quot;html&quot;</span>, <span class="st">&quot;logo.jpg&quot;</span>)</span>
-<span id="cb320-6"><a href="fig-process.html#cb320-6"></a>  logo <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(logo)</span>
-<span id="cb320-7"><a href="fig-process.html#cb320-7"></a>  <span class="co"># デフォルトの重心は `northwest` (左上) で,</span></span>
-<span id="cb320-8"><a href="fig-process.html#cb320-8"></a>  <span class="co"># ユーザーはチャンクオプション `magick.gravity` で変更できる</span></span>
-<span id="cb320-9"><a href="fig-process.html#cb320-9"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(g <span class="ot">&lt;-</span> options<span class="sc">$</span>magick.gravity)) </span>
-<span id="cb320-10"><a href="fig-process.html#cb320-10"></a>    g <span class="ot">&lt;-</span> <span class="st">&quot;northwest&quot;</span></span>
-<span id="cb320-11"><a href="fig-process.html#cb320-11"></a>  <span class="co"># ロゴを画像に追加する</span></span>
-<span id="cb320-12"><a href="fig-process.html#cb320-12"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_composite</span>(img, logo, <span class="at">gravity =</span> g)</span>
-<span id="cb320-13"><a href="fig-process.html#cb320-13"></a>  <span class="co"># 新しい画像を書き出す</span></span>
-<span id="cb320-14"><a href="fig-process.html#cb320-14"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path)</span>
-<span id="cb320-15"><a href="fig-process.html#cb320-15"></a>  path</span>
-<span id="cb320-16"><a href="fig-process.html#cb320-16"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb321-1"><a href="fig-process.html#cb321-1"></a>add_logo <span class="ot">&lt;-</span> <span class="cf">function</span>(path, options) {</span>
+<span id="cb321-2"><a href="fig-process.html#cb321-2"></a>  <span class="co"># コードチャンクで作成された画像</span></span>
+<span id="cb321-3"><a href="fig-process.html#cb321-3"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(path)</span>
+<span id="cb321-4"><a href="fig-process.html#cb321-4"></a>  <span class="co"># R のロゴ</span></span>
+<span id="cb321-5"><a href="fig-process.html#cb321-5"></a>  logo <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">&quot;doc&quot;</span>), <span class="st">&quot;html&quot;</span>, <span class="st">&quot;logo.jpg&quot;</span>)</span>
+<span id="cb321-6"><a href="fig-process.html#cb321-6"></a>  logo <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(logo)</span>
+<span id="cb321-7"><a href="fig-process.html#cb321-7"></a>  <span class="co"># デフォルトの重心は `northwest` (左上) で,</span></span>
+<span id="cb321-8"><a href="fig-process.html#cb321-8"></a>  <span class="co"># ユーザーはチャンクオプション `magick.gravity` で変更できる</span></span>
+<span id="cb321-9"><a href="fig-process.html#cb321-9"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(g <span class="ot">&lt;-</span> options<span class="sc">$</span>magick.gravity)) </span>
+<span id="cb321-10"><a href="fig-process.html#cb321-10"></a>    g <span class="ot">&lt;-</span> <span class="st">&quot;northwest&quot;</span></span>
+<span id="cb321-11"><a href="fig-process.html#cb321-11"></a>  <span class="co"># ロゴを画像に追加する</span></span>
+<span id="cb321-12"><a href="fig-process.html#cb321-12"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_composite</span>(img, logo, <span class="at">gravity =</span> g)</span>
+<span id="cb321-13"><a href="fig-process.html#cb321-13"></a>  <span class="co"># 新しい画像を書き出す</span></span>
+<span id="cb321-14"><a href="fig-process.html#cb321-14"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path)</span>
+<span id="cb321-15"><a href="fig-process.html#cb321-15"></a>  path</span>
+<span id="cb321-16"><a href="fig-process.html#cb321-16"></a>}</span></code></pre></div>
 <p>基本的にこの関数は R のグラフのパスをとり, R のロゴを追加し, 元画像のパスに新しい画像を保存します. デフォルトでは, ロゴはグラフの左上 (northwest) の隅に追加されますが, ユーザーはカスタムチャンクオプション <code>magick.gravity</code> で位置をカスタマイズできます. このオプション名は任意に決められます.</p>
 <p>では上記の処理関数を <code>fig.process = add_logo</code> と <code>magick.gravity = "northwest"</code> オプションで以下のコードチャンクに適用します. よってロゴは右上の隅に追加されます. 実際の出力は図<a href="fig-process.html#fig:magick-logo">11.1</a>になります.</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb321-1"><a href="fig-process.html#cb321-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb321-2"><a href="fig-process.html#cb321-2"></a><span class="fu">hist</span>(faithful<span class="sc">$</span>eruptions, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
-<span id="cb321-3"><a href="fig-process.html#cb321-3"></a>  <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb322-1"><a href="fig-process.html#cb322-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb322-2"><a href="fig-process.html#cb322-2"></a><span class="fu">hist</span>(faithful<span class="sc">$</span>eruptions, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb322-3"><a href="fig-process.html#cb322-3"></a>  <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:magick-logo"></span>
 <img src="rmarkdown-cookbook_files/figure-html/magick-logo-1.png" alt="チャンクオプション fig.process でグラフに R のロゴを追加する"  />
 <p class="caption">
@@ -495,15 +500,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>あなたが <strong>magick</strong> パッケージにより詳しくなったら, R のグラフに後処理をするための, より創造的で有用なアイディアを思いつくことでしょう.</p>
 <p>最後に, <code>fig.process</code> オプションのもう1つの応用例をお見せします. 以下の <code>pdf2png()</code> 関数は PDF 画像を PNG に変換します. <a href="graphical-device.html#graphical-device">11.15</a>節ではグラフの生成のために <code>tikz</code> グラフィックデバイスを使用する例を見せました. この方法の問題は, デバイスが PDF を生成することで, LaTeX でない出力の文書に対しては機能しないということです. チャンクオプション <code>dev = "tikz"</code> と <code>fig.process = pdf2png</code> で, グラフの PNG 版を図<a href="graphical-device.html#fig:dev-tikz">11.2</a>に示すことができます.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb322-1"><a href="fig-process.html#cb322-1"></a>pdf2png <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
-<span id="cb322-2"><a href="fig-process.html#cb322-2"></a>  <span class="co"># LaTeX でない出力に対してのみ変換する</span></span>
-<span id="cb322-3"><a href="fig-process.html#cb322-3"></a>  <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_latex_output</span>()) </span>
-<span id="cb322-4"><a href="fig-process.html#cb322-4"></a>    <span class="fu">return</span>(path)</span>
-<span id="cb322-5"><a href="fig-process.html#cb322-5"></a>  path2 <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">with_ext</span>(path, <span class="st">&quot;png&quot;</span>)</span>
-<span id="cb322-6"><a href="fig-process.html#cb322-6"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read_pdf</span>(path)</span>
-<span id="cb322-7"><a href="fig-process.html#cb322-7"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path2, <span class="at">format =</span> <span class="st">&quot;png&quot;</span>)</span>
-<span id="cb322-8"><a href="fig-process.html#cb322-8"></a>  path2</span>
-<span id="cb322-9"><a href="fig-process.html#cb322-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb323-1"><a href="fig-process.html#cb323-1"></a>pdf2png <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
+<span id="cb323-2"><a href="fig-process.html#cb323-2"></a>  <span class="co"># LaTeX でない出力に対してのみ変換する</span></span>
+<span id="cb323-3"><a href="fig-process.html#cb323-3"></a>  <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_latex_output</span>()) </span>
+<span id="cb323-4"><a href="fig-process.html#cb323-4"></a>    <span class="fu">return</span>(path)</span>
+<span id="cb323-5"><a href="fig-process.html#cb323-5"></a>  path2 <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">with_ext</span>(path, <span class="st">&quot;png&quot;</span>)</span>
+<span id="cb323-6"><a href="fig-process.html#cb323-6"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read_pdf</span>(path)</span>
+<span id="cb323-7"><a href="fig-process.html#cb323-7"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path2, <span class="at">format =</span> <span class="st">&quot;png&quot;</span>)</span>
+<span id="cb323-8"><a href="fig-process.html#cb323-8"></a>  path2</span>
+<span id="cb323-9"><a href="fig-process.html#cb323-9"></a>}</span></code></pre></div>
 </div>
             </section>
 

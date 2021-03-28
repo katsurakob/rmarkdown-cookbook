@@ -213,7 +213,7 @@
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/03/21 16:39:12 JST, ver. Beta (翻訳作業中の草稿), 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/03/21 15:35:19 JST}}
+\date{2021/03/28 12:06:22 JST, ver. 0.9 (一部未校正), 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/03/21 16:15:28 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -441,7 +441,7 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 ## 
 ## Package version:
 ##   bookdown_0.21 knitr_1.31    rmarkdown_2.7
-##   rmdja_0.4.3   xfun_0.20    
+##   rmdja_0.4.4   xfun_0.20    
 ## 
 ## Pandoc version: 2.11.2
 \end{verbatim}
@@ -520,6 +520,41 @@ Emily Riederer は消費者金融業界でデータサイエンスの仕事を�
 Emily は頻繁に Twitter (\url{https://twitter.com/emilyriederer}) や自分のブログ (\url{https://emily.rbind.io}) で R について議論し, プロジェクトを共有します. その中には GitHub (\url{https://github.com/emilyriederer}) にある \textbf{projmgr} パッケージも含まれます. rOpenSci のパッケージレビュアーとしても活動し, さらに satRday Chicago R conference の発起メンバーの一人でもあります.
 
 Emily の他の関心は読書とウェイトリフティングです. 彼女は自分で辛い料理が好きだと考えていますが, 合衆国内にしか住んだことがないため, その言葉が実際に意味するところをよく分かっていないのだと言われています.
+
+\hypertarget{translators}{%
+\chapter*{翻訳者情報}\label{translators}}
+\addcontentsline{toc}{chapter}{翻訳者情報}
+
+\hypertarget{ux7247ux6850ux667aux5fd7-katagiri-satoshi}{%
+\section*{片桐智志 (Katagiri, Satoshi)}\label{ux7247ux6850ux667aux5fd7-katagiri-satoshi}}
+\addcontentsline{toc}{section}{片桐智志 (Katagiri, Satoshi)}
+
+山田工業所の中華鍋 (両手鍋) を使用しています. 私も四川料理のような辛いものは好きです.
+
+I use a southern-style wok. I also like spicy dishes like Sichuan cuisine.
+
+\hypertarget{ux8b1dux8f9e}{%
+\section*{謝辞}\label{ux8b1dux8f9e}}
+\addcontentsline{toc}{section}{謝辞}
+
+加えて, 日本語版の修正提案に協力していただいた方を以下にクレジットします. R Markdown クックブックなので R を使って機械的に掲載してみます.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s master JP"}\NormalTok{, }
+  \AttributeTok{intern =}\NormalTok{ T)), }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{), }\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s work JP"}\NormalTok{, }
+  \AttributeTok{intern =}\NormalTok{ T)), }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{))}
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(contributors[, }\DecValTok{1}\NormalTok{], }\AttributeTok{by =} \FunctionTok{list}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{V2), }
+\NormalTok{  sum)}
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(contributors, }\SpecialCharTok{!}\FunctionTok{charmatch}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }
+  \FunctionTok{c}\NormalTok{(}\StringTok{"Katagiri, Satoshi"}\NormalTok{, }\StringTok{"S{-}Katagiri"}\NormalTok{), F))}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"["}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x), ]}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }
+  \StringTok{"]("}\NormalTok{, }\StringTok{"https://github.com/"}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x), }
+\NormalTok{    ]}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }\StringTok{")"}\NormalTok{), }\AttributeTok{sep =} \StringTok{", "}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\href{https://github.com/nnawata}{nnawata}
 
 \mainmatter
 
@@ -1612,16 +1647,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年3月21日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年3月28日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{\%Y \%B}: 2021 3月
 \item
-  \texttt{\%y/\%m/\%d}: 21/03/21
+  \texttt{\%y/\%m/\%d}: 21/03/28
 \item
-  \texttt{\%b\%d (\%a)}: 3月21 (日)
+  \texttt{\%b\%d (\%a)}: 3月28 (日)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.

@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,39 +471,39 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">15.2</span> Python コードの実行と双方向処理</h2>
 <p>あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と <strong>knitr</strong> はなんと Python をサポートしています.</p>
 <p>Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ <code></code>{python}```` を使うことができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb437-1"><a href="eng-python.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb437-2"><a href="eng-python.html#cb437-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;Hello Python!&quot;)</span></span>
-<span id="cb437-3"><a href="eng-python.html#cb437-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb438-1"><a href="eng-python.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb438-2"><a href="eng-python.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;Hello Python!&quot;)</span></span>
+<span id="cb438-3"><a href="eng-python.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>いつもどおりにチャンクヘッダに <code>echo = FALSE</code> or <code>eval = FALSE</code> といったチャンクオプションを追加することができます. Python の <strong>matplotlib</strong> パッケージで描かれたグラフもサポートしています.</p>
 <p>R Markdown と <strong>knitr</strong> の Python サポートは <strong>reticulate</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-reticulate" role="doc-biblioref">Ushey, Allaire, and Tang 2020</a>)</span> に基づいており, このパッケージの重要な機能の1つは Python と R の双方向的なコミュニケーションを可能にすることです. 例えば <strong>reticulate</strong> の <code>py</code> オブジェクトを介して R セッションから Python の変数にアクセスしたり作成したりすることもできます.</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb438-1"><a href="eng-python.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup}</span></span>
-<span id="cb438-2"><a href="eng-python.html#cb438-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(reticulate)</span></span>
-<span id="cb438-3"><a href="eng-python.html#cb438-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb438-4"><a href="eng-python.html#cb438-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-5"><a href="eng-python.html#cb438-5" aria-hidden="true" tabindex="-1"></a>Python セッションで変数 <span class="in">`x`</span> を作成する</span>
-<span id="cb438-6"><a href="eng-python.html#cb438-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-7"><a href="eng-python.html#cb438-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb438-8"><a href="eng-python.html#cb438-8" aria-hidden="true" tabindex="-1"></a><span class="in">x = [1, 2, 3]</span></span>
-<span id="cb438-9"><a href="eng-python.html#cb438-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb438-10"><a href="eng-python.html#cb438-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-11"><a href="eng-python.html#cb438-11" aria-hidden="true" tabindex="-1"></a>R コードチャンクで Python 変数 <span class="in">`x`</span> にアクセスする</span>
-<span id="cb438-12"><a href="eng-python.html#cb438-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-13"><a href="eng-python.html#cb438-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb438-14"><a href="eng-python.html#cb438-14" aria-hidden="true" tabindex="-1"></a><span class="in">py$x</span></span>
-<span id="cb438-15"><a href="eng-python.html#cb438-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb438-16"><a href="eng-python.html#cb438-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-17"><a href="eng-python.html#cb438-17" aria-hidden="true" tabindex="-1"></a>R を使って Python セッションで新しい変数 <span class="in">`y`</span> を作成し,</span>
-<span id="cb438-18"><a href="eng-python.html#cb438-18" aria-hidden="true" tabindex="-1"></a><span class="in">`y`</span> にデータフレームを与える</span>
-<span id="cb438-19"><a href="eng-python.html#cb438-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-20"><a href="eng-python.html#cb438-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb438-21"><a href="eng-python.html#cb438-21" aria-hidden="true" tabindex="-1"></a><span class="in">py$y &lt;- head(cars)</span></span>
-<span id="cb438-22"><a href="eng-python.html#cb438-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb438-23"><a href="eng-python.html#cb438-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-24"><a href="eng-python.html#cb438-24" aria-hidden="true" tabindex="-1"></a>Python で変数 <span class="in">`y`</span> を表示する</span>
-<span id="cb438-25"><a href="eng-python.html#cb438-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb438-26"><a href="eng-python.html#cb438-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb438-27"><a href="eng-python.html#cb438-27" aria-hidden="true" tabindex="-1"></a><span class="in">print(y)</span></span>
-<span id="cb438-28"><a href="eng-python.html#cb438-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb439-1"><a href="eng-python.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup}</span></span>
+<span id="cb439-2"><a href="eng-python.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(reticulate)</span></span>
+<span id="cb439-3"><a href="eng-python.html#cb439-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb439-4"><a href="eng-python.html#cb439-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-5"><a href="eng-python.html#cb439-5" aria-hidden="true" tabindex="-1"></a>Python セッションで変数 <span class="in">`x`</span> を作成する</span>
+<span id="cb439-6"><a href="eng-python.html#cb439-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-7"><a href="eng-python.html#cb439-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb439-8"><a href="eng-python.html#cb439-8" aria-hidden="true" tabindex="-1"></a><span class="in">x = [1, 2, 3]</span></span>
+<span id="cb439-9"><a href="eng-python.html#cb439-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb439-10"><a href="eng-python.html#cb439-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-11"><a href="eng-python.html#cb439-11" aria-hidden="true" tabindex="-1"></a>R コードチャンクで Python 変数 <span class="in">`x`</span> にアクセスする</span>
+<span id="cb439-12"><a href="eng-python.html#cb439-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-13"><a href="eng-python.html#cb439-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb439-14"><a href="eng-python.html#cb439-14" aria-hidden="true" tabindex="-1"></a><span class="in">py$x</span></span>
+<span id="cb439-15"><a href="eng-python.html#cb439-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb439-16"><a href="eng-python.html#cb439-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-17"><a href="eng-python.html#cb439-17" aria-hidden="true" tabindex="-1"></a>R を使って Python セッションで新しい変数 <span class="in">`y`</span> を作成し,</span>
+<span id="cb439-18"><a href="eng-python.html#cb439-18" aria-hidden="true" tabindex="-1"></a><span class="in">`y`</span> にデータフレームを与える</span>
+<span id="cb439-19"><a href="eng-python.html#cb439-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-20"><a href="eng-python.html#cb439-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb439-21"><a href="eng-python.html#cb439-21" aria-hidden="true" tabindex="-1"></a><span class="in">py$y &lt;- head(cars)</span></span>
+<span id="cb439-22"><a href="eng-python.html#cb439-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb439-23"><a href="eng-python.html#cb439-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-24"><a href="eng-python.html#cb439-24" aria-hidden="true" tabindex="-1"></a>Python で変数 <span class="in">`y`</span> を表示する</span>
+<span id="cb439-25"><a href="eng-python.html#cb439-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb439-26"><a href="eng-python.html#cb439-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb439-27"><a href="eng-python.html#cb439-27" aria-hidden="true" tabindex="-1"></a><span class="in">print(y)</span></span>
+<span id="cb439-28"><a href="eng-python.html#cb439-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><strong>reticulate</strong> パッケージに関する詳細については, <a href="https://rstudio.github.io/reticulate/" class="uri">https://rstudio.github.io/reticulate/</a> のドキュメントを見ることもできます.</p>
 </div>
             </section>

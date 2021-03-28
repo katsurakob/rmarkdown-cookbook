@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -467,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>チャンクフックはあるチャンクオプションの値が <code>NULL</code> ではないことが引き金となる関数です. チャンクフックはチャンク内でのコードの実行の範囲を越えて追加のタスクを実行する方法を提供します. 例えばグラフに後処理をしたいときがあるかもしれません (例えば<a href="crop-plot.html#crop-plot">13.1</a>, <a href="optipng.html#optipng">13.2</a>節) し, コードチャンクの実行時間を記録したいかもしれません. このようなタスクはレポート内の計算や分析に必須ではないかもしれませんが, 例えばグラフを改良したり最も時間のかかっているチャンクを特定したりといった, 他の目的に対しては有用になりえます.</p>
 <p>例えばコンソールになんらかの情報を表示したりというように, チャンクフックを純粋に副作用のために使うことができますし, あるいは返り値が文字列であれば, 出力文書にこの値を書き出すように作ることもできます.</p>
 <p>出力フック (<a href="output-hooks.html#output-hooks">12</a>章参照)のように, チャンクフックは <code>knitr::knit_hooks</code> オブジェクトにて登録されます. 出力フックの名前は <strong>knitr</strong> によって予約されているので, カスタムチャンクフックに使ってはならないことに注意してください.</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb366-1"><a href="chunk-hooks.html#cb366-1"></a><span class="fu">names</span>(knitr<span class="sc">:::</span>.default.hooks)</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb367-1"><a href="chunk-hooks.html#cb367-1"></a><span class="fu">names</span>(knitr<span class="sc">:::</span>.default.hooks)</span></code></pre></div>
 <pre><code>##  [1] &quot;source&quot;          &quot;output&quot;         
 ##  [3] &quot;warning&quot;         &quot;message&quot;        
 ##  [5] &quot;error&quot;           &quot;plot&quot;           
@@ -475,25 +480,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [9] &quot;text&quot;            &quot;evaluate.inline&quot;
 ## [11] &quot;evaluate&quot;        &quot;document&quot;</code></pre>
 <p>チャンクフックは同じ名前のチャンクオプションと関連付けられています. 例えば <code>greet</code> という名前のチャンクフックを登録できます.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb368-1"><a href="chunk-hooks.html#cb368-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">greet =</span> <span class="cf">function</span>(before) {</span>
-<span id="cb368-2"><a href="chunk-hooks.html#cb368-2"></a>  <span class="cf">if</span> (before) </span>
-<span id="cb368-3"><a href="chunk-hooks.html#cb368-3"></a>    <span class="st">&quot;Hello!&quot;</span> <span class="cf">else</span> <span class="st">&quot;Bye!&quot;</span></span>
-<span id="cb368-4"><a href="chunk-hooks.html#cb368-4"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb369-1"><a href="chunk-hooks.html#cb369-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">greet =</span> <span class="cf">function</span>(before) {</span>
+<span id="cb369-2"><a href="chunk-hooks.html#cb369-2"></a>  <span class="cf">if</span> (before) </span>
+<span id="cb369-3"><a href="chunk-hooks.html#cb369-3"></a>    <span class="st">&quot;Hello!&quot;</span> <span class="cf">else</span> <span class="st">&quot;Bye!&quot;</span></span>
+<span id="cb369-4"><a href="chunk-hooks.html#cb369-4"></a>})</span></code></pre></div>
 <p>この後すぐにフック関数の引数について説明します. まずは以下のチャンクでチャンクオプション <code>greet = TRUE</code> を設定してみます.</p>
-<div class="sourceCode" id="cb369"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb369-1"><a href="chunk-hooks.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, greet=TRUE}</span></span>
-<span id="cb369-2"><a href="chunk-hooks.html#cb369-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb369-3"><a href="chunk-hooks.html#cb369-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb370"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb370-1"><a href="chunk-hooks.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, greet=TRUE}</span></span>
+<span id="cb370-2"><a href="chunk-hooks.html#cb370-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb370-3"><a href="chunk-hooks.html#cb370-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>するとチャンクの前に “Hello!” という文字が現れ, 以下のチャンクの出力部の後に “Bye!” という文字が現れます. これは両者が文字列だからです.</p>
 <blockquote>
 <p>Hello!</p>
-<div class="sourceCode" id="cb370"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb370-1"><a href="chunk-hooks.html#cb370-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb371"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb371-1"><a href="chunk-hooks.html#cb371-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>Bye!</p>
 </blockquote>
 <p>チャンクフック関数は <code>before</code> ・ <code>options</code> ・ <code>envir</code> ・ <code>name</code> の4つの引数を取ることができます. 言い換えるならこのような形式にすることができます.</p>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="chunk-hooks.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(before, options, envir, name) {</span>
-<span id="cb372-2"><a href="chunk-hooks.html#cb372-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb372-3"><a href="chunk-hooks.html#cb372-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb373-1"><a href="chunk-hooks.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(before, options, envir, name) {</span>
+<span id="cb373-2"><a href="chunk-hooks.html#cb373-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb373-3"><a href="chunk-hooks.html#cb373-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>4つの引数はすべて任意です. 4, 3, 2, 1つ, あるいは引数がなくとも可能です. 上記の例では <code>before</code> 引数1つだけを使っています. これらの引数の意味はこのようなものです.</p>
 <ul>
 <li><p><code>before</code>: チャンクフックが現在, 実行される前か後かです. チャンクフックはコードチャンクごとに2度実行される, つまり直前に1度 <code>hook(before = TRUE)</code> が, 直後に <code>hook(before = FALSE)</code> が実行されることに注意してください.</p></li>

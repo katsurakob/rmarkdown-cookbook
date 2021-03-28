@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,72 +470,72 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="hook-scroll" class="section level2" number="12.3">
 <h2><span class="header-section-number">12.3</span> スクロール可能なテキスト出力</h2>
 <p><a href="html-scroll.html#html-scroll">7.4</a>節ではコードブロックとテキスト出力ブロックの高さを CSS で制限する方法を紹介しました. 実際には, チャンクオプション <code>attr.source</code> と <code>attr.output</code> で <code>style</code> 属性を Markdown のコードブロックに追加するというより簡単な方法があります(これらのオプションの説明は<a href="attr-output.html#attr-output">11.13</a>節参照). 例えば, このようなコードに対してチャンクオプション <code>attr.output</code> を使います.</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb354-1"><a href="hook-scroll.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output=&#39;style=&quot;max-height: 100px;&quot;&#39;}</span></span>
-<span id="cb354-2"><a href="hook-scroll.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="in">1:300</span></span>
-<span id="cb354-3"><a href="hook-scroll.html#cb354-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb355-1"><a href="hook-scroll.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.output=&#39;style=&quot;max-height: 100px;&quot;&#39;}</span></span>
+<span id="cb355-2"><a href="hook-scroll.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="in">1:300</span></span>
+<span id="cb355-3"><a href="hook-scroll.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>Markdown 出力はこうなります.</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb355-1"><a href="hook-scroll.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb355-2"><a href="hook-scroll.html#cb355-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">300</span></span>
-<span id="cb355-3"><a href="hook-scroll.html#cb355-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb355-4"><a href="hook-scroll.html#cb355-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb355-5"><a href="hook-scroll.html#cb355-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{style=&quot;max-height: 100px;&quot;}</span></span>
-<span id="cb355-6"><a href="hook-scroll.html#cb355-6" aria-hidden="true" tabindex="-1"></a><span class="in">##   [1]   1   2   3   4   5   6   7   8   9  10</span></span>
-<span id="cb355-7"><a href="hook-scroll.html#cb355-7" aria-hidden="true" tabindex="-1"></a><span class="in">##  [11]  11  12  13  14  15  16  17  18  19  20</span></span>
-<span id="cb355-8"><a href="hook-scroll.html#cb355-8" aria-hidden="true" tabindex="-1"></a><span class="in">##  ... ...</span></span>
-<span id="cb355-9"><a href="hook-scroll.html#cb355-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb356-1"><a href="hook-scroll.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb356-2"><a href="hook-scroll.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">300</span></span>
+<span id="cb356-3"><a href="hook-scroll.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb356-4"><a href="hook-scroll.html#cb356-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-5"><a href="hook-scroll.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{style=&quot;max-height: 100px;&quot;}</span></span>
+<span id="cb356-6"><a href="hook-scroll.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="in">##   [1]   1   2   3   4   5   6   7   8   9  10</span></span>
+<span id="cb356-7"><a href="hook-scroll.html#cb356-7" aria-hidden="true" tabindex="-1"></a><span class="in">##  [11]  11  12  13  14  15  16  17  18  19  20</span></span>
+<span id="cb356-8"><a href="hook-scroll.html#cb356-8" aria-hidden="true" tabindex="-1"></a><span class="in">##  ... ...</span></span>
+<span id="cb356-9"><a href="hook-scroll.html#cb356-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>そして, テキスト出力ブロックは Pandoc によって HTML へと変換されます.</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb356-1"><a href="hook-scroll.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;max-height: 100px;&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb356-2"><a href="hook-scroll.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>##   [1]   1   2   3   4   5   6   7   8   9  10</span>
-<span id="cb356-3"><a href="hook-scroll.html#cb356-3" aria-hidden="true" tabindex="-1"></a>##  [11]  11  12  13  14  15  16  17  18  19  20</span>
-<span id="cb356-4"><a href="hook-scroll.html#cb356-4" aria-hidden="true" tabindex="-1"></a>##  ... ...<span class="kw">&lt;/code&gt;</span></span>
-<span id="cb356-5"><a href="hook-scroll.html#cb356-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb357-1"><a href="hook-scroll.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;max-height: 100px;&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb357-2"><a href="hook-scroll.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>##   [1]   1   2   3   4   5   6   7   8   9  10</span>
+<span id="cb357-3"><a href="hook-scroll.html#cb357-3" aria-hidden="true" tabindex="-1"></a>##  [11]  11  12  13  14  15  16  17  18  19  20</span>
+<span id="cb357-4"><a href="hook-scroll.html#cb357-4" aria-hidden="true" tabindex="-1"></a>##  ... ...<span class="kw">&lt;/code&gt;</span></span>
+<span id="cb357-5"><a href="hook-scroll.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
 <p>Pandoc の fenced code blocks についてより詳しく学ぶには, <a href="https://pandoc.org/MANUAL.html#fenced-code-blocks" class="uri">https://pandoc.org/MANUAL.html#fenced-code-blocks</a> のマニュアルを読んでください.</p>
 <p><code>attr.source</code> と <code>attr.output</code> オプションによって個別のコードチャンクに対して最大の高さを指定することができます. しかしこの構文は少しばかり野暮ったく, CSS と Pandoc の Markdown 構文をより理解する必要があります. 以下にカスタムチャンクオプション <code>max.height</code> と連動するカスタム <code>output</code> フックの例を示します. よって <code>attr.output = 'style="max-height: 100px;"'</code> の代わりに <code>max.height = "100px"</code> のようなオプションを設定する必要があります. この例では <code>x</code> 引数には手を付けず, <code>options</code> 引数のみを操作しています.</p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb357-1"><a href="hook-scroll.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb357-2"><a href="hook-scroll.html#cb357-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> スクロール可能なコードブロック</span></span>
-<span id="cb357-3"><a href="hook-scroll.html#cb357-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
-<span id="cb357-4"><a href="hook-scroll.html#cb357-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: </span></span>
-<span id="cb357-5"><a href="hook-scroll.html#cb357-5" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight: tango</span></span>
-<span id="cb357-6"><a href="hook-scroll.html#cb357-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb357-7"><a href="hook-scroll.html#cb357-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-8"><a href="hook-scroll.html#cb357-8" aria-hidden="true" tabindex="-1"></a>チャンクオプション <span class="in">`max.height`</span> が設定されている時, テキスト出力に <span class="in">`style`</span> 属性を追加するような <span class="in">`output`</span> フックを設定します.</span>
-<span id="cb357-9"><a href="hook-scroll.html#cb357-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-10"><a href="hook-scroll.html#cb357-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb357-11"><a href="hook-scroll.html#cb357-11" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 60)</span></span>
-<span id="cb357-12"><a href="hook-scroll.html#cb357-12" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
-<span id="cb357-13"><a href="hook-scroll.html#cb357-13" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_output &lt;- knitr::knit_hooks$get(&#39;output&#39;)</span></span>
-<span id="cb357-14"><a href="hook-scroll.html#cb357-14" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(output = function(x, options) {</span></span>
-<span id="cb357-15"><a href="hook-scroll.html#cb357-15" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!is.null(options$max.height)) options$attr.output &lt;- c(</span></span>
-<span id="cb357-16"><a href="hook-scroll.html#cb357-16" aria-hidden="true" tabindex="-1"></a><span class="in">      options$attr.output,</span></span>
-<span id="cb357-17"><a href="hook-scroll.html#cb357-17" aria-hidden="true" tabindex="-1"></a><span class="in">      sprintf(&#39;style=&quot;max-height: %s;&quot;&#39;, options$max.height)</span></span>
-<span id="cb357-18"><a href="hook-scroll.html#cb357-18" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
-<span id="cb357-19"><a href="hook-scroll.html#cb357-19" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_output(x, options)</span></span>
-<span id="cb357-20"><a href="hook-scroll.html#cb357-20" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb357-21"><a href="hook-scroll.html#cb357-21" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb357-22"><a href="hook-scroll.html#cb357-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb357-23"><a href="hook-scroll.html#cb357-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-24"><a href="hook-scroll.html#cb357-24" aria-hidden="true" tabindex="-1"></a><span class="in">`max.height`</span> がない場合, 出力の全体が表示されます. 例えば...,</span>
-<span id="cb357-25"><a href="hook-scroll.html#cb357-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-26"><a href="hook-scroll.html#cb357-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb357-27"><a href="hook-scroll.html#cb357-27" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
-<span id="cb357-28"><a href="hook-scroll.html#cb357-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb357-29"><a href="hook-scroll.html#cb357-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-30"><a href="hook-scroll.html#cb357-30" aria-hidden="true" tabindex="-1"></a>ここで <span class="in">`max.height`</span> に <span class="in">`100px`</span> を設定します. この高さは 100px を超えているので, テキスト出力にスクロールバーが現れます.</span>
-<span id="cb357-31"><a href="hook-scroll.html#cb357-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-32"><a href="hook-scroll.html#cb357-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, max.height=&#39;100px&#39;}</span></span>
-<span id="cb357-33"><a href="hook-scroll.html#cb357-33" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
-<span id="cb357-34"><a href="hook-scroll.html#cb357-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb357-35"><a href="hook-scroll.html#cb357-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-36"><a href="hook-scroll.html#cb357-36" aria-hidden="true" tabindex="-1"></a>原則として <span class="in">`max.height`</span> オプションは <span class="in">`attr.output`</span> オプションに変換されます. <span class="in">`attr.output`</span> が既に設定されていたとしても動作します. つまり <span class="in">`attr.output`</span> オプションは上書きされません. 例えば <span class="in">`.numberLines`</span> 属性を付けてテキスト出力の端に行番号を表示させてみます.</span>
-<span id="cb357-37"><a href="hook-scroll.html#cb357-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb357-38"><a href="hook-scroll.html#cb357-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, max.height=&#39;100px&#39;, attr.output=&#39;.numberLines&#39;}</span></span>
-<span id="cb357-39"><a href="hook-scroll.html#cb357-39" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
-<span id="cb357-40"><a href="hook-scroll.html#cb357-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb358-1"><a href="hook-scroll.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb358-2"><a href="hook-scroll.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> スクロール可能なコードブロック</span></span>
+<span id="cb358-3"><a href="hook-scroll.html#cb358-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
+<span id="cb358-4"><a href="hook-scroll.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document: </span></span>
+<span id="cb358-5"><a href="hook-scroll.html#cb358-5" aria-hidden="true" tabindex="-1"></a><span class="co">    highlight: tango</span></span>
+<span id="cb358-6"><a href="hook-scroll.html#cb358-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb358-7"><a href="hook-scroll.html#cb358-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-8"><a href="hook-scroll.html#cb358-8" aria-hidden="true" tabindex="-1"></a>チャンクオプション <span class="in">`max.height`</span> が設定されている時, テキスト出力に <span class="in">`style`</span> 属性を追加するような <span class="in">`output`</span> フックを設定します.</span>
+<span id="cb358-9"><a href="hook-scroll.html#cb358-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-10"><a href="hook-scroll.html#cb358-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb358-11"><a href="hook-scroll.html#cb358-11" aria-hidden="true" tabindex="-1"></a><span class="in">options(width = 60)</span></span>
+<span id="cb358-12"><a href="hook-scroll.html#cb358-12" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
+<span id="cb358-13"><a href="hook-scroll.html#cb358-13" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_output &lt;- knitr::knit_hooks$get(&#39;output&#39;)</span></span>
+<span id="cb358-14"><a href="hook-scroll.html#cb358-14" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(output = function(x, options) {</span></span>
+<span id="cb358-15"><a href="hook-scroll.html#cb358-15" aria-hidden="true" tabindex="-1"></a><span class="in">    if (!is.null(options$max.height)) options$attr.output &lt;- c(</span></span>
+<span id="cb358-16"><a href="hook-scroll.html#cb358-16" aria-hidden="true" tabindex="-1"></a><span class="in">      options$attr.output,</span></span>
+<span id="cb358-17"><a href="hook-scroll.html#cb358-17" aria-hidden="true" tabindex="-1"></a><span class="in">      sprintf(&#39;style=&quot;max-height: %s;&quot;&#39;, options$max.height)</span></span>
+<span id="cb358-18"><a href="hook-scroll.html#cb358-18" aria-hidden="true" tabindex="-1"></a><span class="in">    )</span></span>
+<span id="cb358-19"><a href="hook-scroll.html#cb358-19" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_output(x, options)</span></span>
+<span id="cb358-20"><a href="hook-scroll.html#cb358-20" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb358-21"><a href="hook-scroll.html#cb358-21" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb358-22"><a href="hook-scroll.html#cb358-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb358-23"><a href="hook-scroll.html#cb358-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-24"><a href="hook-scroll.html#cb358-24" aria-hidden="true" tabindex="-1"></a><span class="in">`max.height`</span> がない場合, 出力の全体が表示されます. 例えば...,</span>
+<span id="cb358-25"><a href="hook-scroll.html#cb358-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-26"><a href="hook-scroll.html#cb358-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb358-27"><a href="hook-scroll.html#cb358-27" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
+<span id="cb358-28"><a href="hook-scroll.html#cb358-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb358-29"><a href="hook-scroll.html#cb358-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-30"><a href="hook-scroll.html#cb358-30" aria-hidden="true" tabindex="-1"></a>ここで <span class="in">`max.height`</span> に <span class="in">`100px`</span> を設定します. この高さは 100px を超えているので, テキスト出力にスクロールバーが現れます.</span>
+<span id="cb358-31"><a href="hook-scroll.html#cb358-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-32"><a href="hook-scroll.html#cb358-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, max.height=&#39;100px&#39;}</span></span>
+<span id="cb358-33"><a href="hook-scroll.html#cb358-33" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
+<span id="cb358-34"><a href="hook-scroll.html#cb358-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb358-35"><a href="hook-scroll.html#cb358-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-36"><a href="hook-scroll.html#cb358-36" aria-hidden="true" tabindex="-1"></a>原則として <span class="in">`max.height`</span> オプションは <span class="in">`attr.output`</span> オプションに変換されます. <span class="in">`attr.output`</span> が既に設定されていたとしても動作します. つまり <span class="in">`attr.output`</span> オプションは上書きされません. 例えば <span class="in">`.numberLines`</span> 属性を付けてテキスト出力の端に行番号を表示させてみます.</span>
+<span id="cb358-37"><a href="hook-scroll.html#cb358-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb358-38"><a href="hook-scroll.html#cb358-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, max.height=&#39;100px&#39;, attr.output=&#39;.numberLines&#39;}</span></span>
+<span id="cb358-39"><a href="hook-scroll.html#cb358-39" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
+<span id="cb358-40"><a href="hook-scroll.html#cb358-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="hook-scroll.html#fig:hook-scroll">12.1</a>がその出力です. チャンクオプション <code>attr.output</code> のある最後のコードチャンクでは, <code>max.height</code> によって生成された <code>style</code> 属性を既存の属性に結合することで, 既存の属性を尊重しているので, <code>max.height</code> は上書きされないことに注意してください.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb358-1"><a href="hook-scroll.html#cb358-1"></a>options<span class="sc">$</span>attr.output <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb358-2"><a href="hook-scroll.html#cb358-2"></a>  options<span class="sc">$</span>attr.output,</span>
-<span id="cb358-3"><a href="hook-scroll.html#cb358-3"></a>  <span class="fu">sprintf</span>(<span class="st">&#39;style=&quot;max-height: %s;&quot;&#39;</span>, options<span class="sc">$</span>max.height)</span>
-<span id="cb358-4"><a href="hook-scroll.html#cb358-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb359-1"><a href="hook-scroll.html#cb359-1"></a>options<span class="sc">$</span>attr.output <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb359-2"><a href="hook-scroll.html#cb359-2"></a>  options<span class="sc">$</span>attr.output,</span>
+<span id="cb359-3"><a href="hook-scroll.html#cb359-3"></a>  <span class="fu">sprintf</span>(<span class="st">&#39;style=&quot;max-height: %s;&quot;&#39;</span>, options<span class="sc">$</span>max.height)</span>
+<span id="cb359-4"><a href="hook-scroll.html#cb359-4"></a>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:hook-scroll"></span>
 <img src="JP/images/hook-scroll.png" alt="チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例"  />
 <p class="caption">

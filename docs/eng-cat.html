@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,14 +470,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="eng-cat" class="section level2" number="15.6">
 <h2><span class="header-section-number">15.6</span> <code>cat</code> エンジンでチャンクをファイルに書き出す</h2>
 <p>コードチャンクの内容を外部ファイルに書き出し, 以降の他のコードチャンクで使用するのは時には有用である可能性があります. もちろん, <code>writeLines()</code> のような R の関数で行っても良いですが, 内容が比較的長かったり, 特殊な文字が含まれていたり, <code>writeLines()</code> に渡したい文字列がごちゃごちゃしたりしているかもしれません. 以下は 長い文字列を <code>my-file.txt</code> に書き出す例です.</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb445-1"><a href="eng-cat.html#cb445-1"></a><span class="fu">writeLines</span>(<span class="st">&quot;これは長い文字列です.</span></span>
-<span id="cb445-2"><a href="eng-cat.html#cb445-2"></a><span class="st">複数行にわたります. ダブルクオート </span><span class="sc">\&quot;\&quot;</span><span class="st"> は</span></span>
-<span id="cb445-3"><a href="eng-cat.html#cb445-3"></a><span class="st">忘れずにエスケープしてください. </span></span>
-<span id="cb445-4"><a href="eng-cat.html#cb445-4"></a><span class="st">ですが &#39;シングルクオート&#39; は大丈夫です.</span></span>
-<span id="cb445-5"><a href="eng-cat.html#cb445-5"></a><span class="st">バックスラッシュがいくつ必要か考えるときにあなたが</span></span>
-<span id="cb445-6"><a href="eng-cat.html#cb445-6"></a><span class="st">正気を失わないでいられることを願います.</span></span>
-<span id="cb445-7"><a href="eng-cat.html#cb445-7"></a><span class="st">例えば, &#39;</span><span class="sc">\t</span><span class="st">&#39; なのか `</span><span class="sc">\\</span><span class="st">t` なのか &#39;</span><span class="sc">\\\\</span><span class="st">t&#39; なのか?&quot;</span>, </span>
-<span id="cb445-8"><a href="eng-cat.html#cb445-8"></a>  <span class="at">con =</span> <span class="st">&quot;my-file.txt&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb446-1"><a href="eng-cat.html#cb446-1"></a><span class="fu">writeLines</span>(<span class="st">&quot;これは長い文字列です.</span></span>
+<span id="cb446-2"><a href="eng-cat.html#cb446-2"></a><span class="st">複数行にわたります. ダブルクオート </span><span class="sc">\&quot;\&quot;</span><span class="st"> は</span></span>
+<span id="cb446-3"><a href="eng-cat.html#cb446-3"></a><span class="st">忘れずにエスケープしてください. </span></span>
+<span id="cb446-4"><a href="eng-cat.html#cb446-4"></a><span class="st">ですが &#39;シングルクオート&#39; は大丈夫です.</span></span>
+<span id="cb446-5"><a href="eng-cat.html#cb446-5"></a><span class="st">バックスラッシュがいくつ必要か考えるときにあなたが</span></span>
+<span id="cb446-6"><a href="eng-cat.html#cb446-6"></a><span class="st">正気を失わないでいられることを願います.</span></span>
+<span id="cb446-7"><a href="eng-cat.html#cb446-7"></a><span class="st">例えば, &#39;</span><span class="sc">\t</span><span class="st">&#39; なのか `</span><span class="sc">\\</span><span class="st">t` なのか &#39;</span><span class="sc">\\\\</span><span class="st">t&#39; なのか?&quot;</span>, </span>
+<span id="cb446-8"><a href="eng-cat.html#cb446-8"></a>  <span class="at">con =</span> <span class="st">&quot;my-file.txt&quot;</span>)</span></code></pre></div>
 <p>R 4.0.0 以降では <code>r"()"</code> 内での生の文字列 (<code>?Quotes</code> のヘルプ参照) がサポートされ始めたので, 特殊文字のルールを全て覚える必要はなくなり, この問題は大いに緩和されました. 生の文字列があってもなお, チャンク内で長い文字列を明示的にファイルに書き出すことは読者の注意力を少しばかり削ぐ可能性があります.</p>
 <p><strong>knitr</strong> の <code>cat</code> エンジンは, 例えばバックスラッシュのリテラルが必要な時は, 二重バックスラッシュが必要といった, R の文字列ルールを一切考えることなく, コードチャンクの内容の表示かつ/または外部ファイルへの書き出しの方法を提供してくれます.</p>
 <p>チャンクの内容をファイルに書き出すには, チャンクオプション <code>engine.opts</code> にファイルパスを指定してください. 例えば <code>engine.opts = list(file = 'path/to/file')</code> のように. この内部では, <code>engine.opts</code> で指定された値のリストが <code>base::cat()</code> に渡されます. そして <code>file</code> は <code>base::cat()</code> の引数の1つです.</p>
@@ -481,82 +486,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">15.6.1</span> CSS ファイルへ書き込む</h3>
 <p><a href="chunk-styling.html#chunk-styling">7.3</a>節でお見せしたように, 要素を CSS でスタイル設定するために <code>css</code> コードチャンクを Rmd 文書に埋め込むことができます. 別の方法として, カスタム CSS ファイルを, <code>html_document</code> のようないくつかの R Markdown 出力フォーマットで有効な <code>css</code> オプションを介して Pandoc に渡す方法もあります. <code>cat</code> エンジンはこの CSS ファイルを Rmd から書き込むのに使用できます.</p>
 <p>以下の例は文書のチャンクから <code>custom.css</code> ファイルを生成し, そのファイルパスを <code>html_document</code> フォーマットの <code>ccs</code> オプションに渡す方法を示しています.</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb446-1"><a href="eng-cat.html#cb446-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb446-2"><a href="eng-cat.html#cb446-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;コードチャンクから CSS ファイルを作成する&quot;</span></span>
-<span id="cb446-3"><a href="eng-cat.html#cb446-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb446-4"><a href="eng-cat.html#cb446-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document:</span></span>
-<span id="cb446-5"><a href="eng-cat.html#cb446-5" aria-hidden="true" tabindex="-1"></a><span class="co">    css: custom.css</span></span>
-<span id="cb446-6"><a href="eng-cat.html#cb446-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb446-7"><a href="eng-cat.html#cb446-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb446-8"><a href="eng-cat.html#cb446-8" aria-hidden="true" tabindex="-1"></a>以下のチャンクは <span class="in">`custom.css`</span> へ書き込まれ, ファイルは</span>
-<span id="cb446-9"><a href="eng-cat.html#cb446-9" aria-hidden="true" tabindex="-1"></a>Pandoc の変換時に使われます.</span>
-<span id="cb446-10"><a href="eng-cat.html#cb446-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb446-11"><a href="eng-cat.html#cb446-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts = list(file = &quot;my_custom.css&quot;)}</span></span>
-<span id="cb446-12"><a href="eng-cat.html#cb446-12" aria-hidden="true" tabindex="-1"></a><span class="in">h2 {</span></span>
-<span id="cb446-13"><a href="eng-cat.html#cb446-13" aria-hidden="true" tabindex="-1"></a><span class="in">  color: blue;</span></span>
-<span id="cb446-14"><a href="eng-cat.html#cb446-14" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb446-15"><a href="eng-cat.html#cb446-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb446-16"><a href="eng-cat.html#cb446-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb446-17"><a href="eng-cat.html#cb446-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## そしてこの見出しは青くなります</span></span></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb447-1"><a href="eng-cat.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb447-2"><a href="eng-cat.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;コードチャンクから CSS ファイルを作成する&quot;</span></span>
+<span id="cb447-3"><a href="eng-cat.html#cb447-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb447-4"><a href="eng-cat.html#cb447-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document:</span></span>
+<span id="cb447-5"><a href="eng-cat.html#cb447-5" aria-hidden="true" tabindex="-1"></a><span class="co">    css: custom.css</span></span>
+<span id="cb447-6"><a href="eng-cat.html#cb447-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb447-7"><a href="eng-cat.html#cb447-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-8"><a href="eng-cat.html#cb447-8" aria-hidden="true" tabindex="-1"></a>以下のチャンクは <span class="in">`custom.css`</span> へ書き込まれ, ファイルは</span>
+<span id="cb447-9"><a href="eng-cat.html#cb447-9" aria-hidden="true" tabindex="-1"></a>Pandoc の変換時に使われます.</span>
+<span id="cb447-10"><a href="eng-cat.html#cb447-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-11"><a href="eng-cat.html#cb447-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts = list(file = &quot;my_custom.css&quot;)}</span></span>
+<span id="cb447-12"><a href="eng-cat.html#cb447-12" aria-hidden="true" tabindex="-1"></a><span class="in">h2 {</span></span>
+<span id="cb447-13"><a href="eng-cat.html#cb447-13" aria-hidden="true" tabindex="-1"></a><span class="in">  color: blue;</span></span>
+<span id="cb447-14"><a href="eng-cat.html#cb447-14" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb447-15"><a href="eng-cat.html#cb447-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb447-16"><a href="eng-cat.html#cb447-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb447-17"><a href="eng-cat.html#cb447-17" aria-hidden="true" tabindex="-1"></a><span class="fu">## そしてこの見出しは青くなります</span></span></code></pre></div>
 <p><code>css</code> コードチャンクのアプローチとこのアプローチの唯一の違いは, 前者が CSS コードをその場に書き込む, つまりコードチャンクのあるまさにその場所に書き込み, そしてそこは出力文書の <code>&lt;body&gt;</code> タグの内側ですが, 後者は CSS を出力文書の <code>&lt;head&gt;</code> の領域に書き込みます. 出力文書の見た目に実用上の違いは一切生じません.</p>
 </div>
 <div id="latex-コードをプリアンブルに含める" class="section level3" number="15.6.2">
 <h3><span class="header-section-number">15.6.2</span> LaTeX コードをプリアンブルに含める</h3>
 <p><a href="latex-preamble.html#latex-preamble">6.1</a>節では, LaTeX コードをプリアンブルに追加する方法を紹介しました. これには 外部の <code>.tex</code> ファイルが必要でした. このファイルもまた Rmd から生成することができます. これがその例です.</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb447-1"><a href="eng-cat.html#cb447-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb447-2"><a href="eng-cat.html#cb447-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;チャンクから .tex ファイルを作成する&quot;</span></span>
-<span id="cb447-3"><a href="eng-cat.html#cb447-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Jane Doe&quot;</span></span>
-<span id="cb447-4"><a href="eng-cat.html#cb447-4" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
-<span id="cb447-5"><a href="eng-cat.html#cb447-5" aria-hidden="true" tabindex="-1"></a><span class="an">classoption:</span><span class="co"> twoside</span></span>
-<span id="cb447-6"><a href="eng-cat.html#cb447-6" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
-<span id="cb447-7"><a href="eng-cat.html#cb447-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
-<span id="cb447-8"><a href="eng-cat.html#cb447-8" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb447-9"><a href="eng-cat.html#cb447-9" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
-<span id="cb447-10"><a href="eng-cat.html#cb447-10" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: preamble.tex</span></span>
-<span id="cb447-11"><a href="eng-cat.html#cb447-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb447-12"><a href="eng-cat.html#cb447-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-13"><a href="eng-cat.html#cb447-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># どのように動作するか</span></span>
-<span id="cb447-14"><a href="eng-cat.html#cb447-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-15"><a href="eng-cat.html#cb447-15" aria-hidden="true" tabindex="-1"></a>出力する PDF のヘッダとフッタを定義するために</span>
-<span id="cb447-16"><a href="eng-cat.html#cb447-16" aria-hidden="true" tabindex="-1"></a>コードチャンクを <span class="in">`preamble.tex`</span> に書き出しましょう.</span>
-<span id="cb447-17"><a href="eng-cat.html#cb447-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-18"><a href="eng-cat.html#cb447-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts=list(file = &#39;preamble.tex&#39;)}</span></span>
-<span id="cb447-19"><a href="eng-cat.html#cb447-19" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{fancyhdr}</span></span>
-<span id="cb447-20"><a href="eng-cat.html#cb447-20" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{lipsum}</span></span>
-<span id="cb447-21"><a href="eng-cat.html#cb447-21" aria-hidden="true" tabindex="-1"></a><span class="in">\pagestyle{fancy}</span></span>
-<span id="cb447-22"><a href="eng-cat.html#cb447-22" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyhead[CO,CE]{これは fancy header}</span></span>
-<span id="cb447-23"><a href="eng-cat.html#cb447-23" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyfoot[CO,CE]{そしてこれは fancy footer}</span></span>
-<span id="cb447-24"><a href="eng-cat.html#cb447-24" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyfoot[LE,RO]{\thepage}</span></span>
-<span id="cb447-25"><a href="eng-cat.html#cb447-25" aria-hidden="true" tabindex="-1"></a><span class="in">\fancypagestyle{plain}{\pagestyle{fancy}}</span></span>
-<span id="cb447-26"><a href="eng-cat.html#cb447-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb447-27"><a href="eng-cat.html#cb447-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-28"><a href="eng-cat.html#cb447-28" aria-hidden="true" tabindex="-1"></a>\lipsum<span class="co">[</span><span class="ot">1-15</span><span class="co">]</span></span>
-<span id="cb447-29"><a href="eng-cat.html#cb447-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-30"><a href="eng-cat.html#cb447-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># さらに適当なコンテンツ</span></span>
-<span id="cb447-31"><a href="eng-cat.html#cb447-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb447-32"><a href="eng-cat.html#cb447-32" aria-hidden="true" tabindex="-1"></a>\lipsum<span class="co">[</span><span class="ot">16-30</span><span class="co">]</span></span></code></pre></div>
+<div class="sourceCode" id="cb448"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb448-1"><a href="eng-cat.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb448-2"><a href="eng-cat.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;チャンクから .tex ファイルを作成する&quot;</span></span>
+<span id="cb448-3"><a href="eng-cat.html#cb448-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;Jane Doe&quot;</span></span>
+<span id="cb448-4"><a href="eng-cat.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
+<span id="cb448-5"><a href="eng-cat.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="an">classoption:</span><span class="co"> twoside</span></span>
+<span id="cb448-6"><a href="eng-cat.html#cb448-6" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
+<span id="cb448-7"><a href="eng-cat.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
+<span id="cb448-8"><a href="eng-cat.html#cb448-8" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb448-9"><a href="eng-cat.html#cb448-9" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
+<span id="cb448-10"><a href="eng-cat.html#cb448-10" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: preamble.tex</span></span>
+<span id="cb448-11"><a href="eng-cat.html#cb448-11" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb448-12"><a href="eng-cat.html#cb448-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-13"><a href="eng-cat.html#cb448-13" aria-hidden="true" tabindex="-1"></a><span class="fu"># どのように動作するか</span></span>
+<span id="cb448-14"><a href="eng-cat.html#cb448-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-15"><a href="eng-cat.html#cb448-15" aria-hidden="true" tabindex="-1"></a>出力する PDF のヘッダとフッタを定義するために</span>
+<span id="cb448-16"><a href="eng-cat.html#cb448-16" aria-hidden="true" tabindex="-1"></a>コードチャンクを <span class="in">`preamble.tex`</span> に書き出しましょう.</span>
+<span id="cb448-17"><a href="eng-cat.html#cb448-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-18"><a href="eng-cat.html#cb448-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts=list(file = &#39;preamble.tex&#39;)}</span></span>
+<span id="cb448-19"><a href="eng-cat.html#cb448-19" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{fancyhdr}</span></span>
+<span id="cb448-20"><a href="eng-cat.html#cb448-20" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{lipsum}</span></span>
+<span id="cb448-21"><a href="eng-cat.html#cb448-21" aria-hidden="true" tabindex="-1"></a><span class="in">\pagestyle{fancy}</span></span>
+<span id="cb448-22"><a href="eng-cat.html#cb448-22" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyhead[CO,CE]{これは fancy header}</span></span>
+<span id="cb448-23"><a href="eng-cat.html#cb448-23" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyfoot[CO,CE]{そしてこれは fancy footer}</span></span>
+<span id="cb448-24"><a href="eng-cat.html#cb448-24" aria-hidden="true" tabindex="-1"></a><span class="in">\fancyfoot[LE,RO]{\thepage}</span></span>
+<span id="cb448-25"><a href="eng-cat.html#cb448-25" aria-hidden="true" tabindex="-1"></a><span class="in">\fancypagestyle{plain}{\pagestyle{fancy}}</span></span>
+<span id="cb448-26"><a href="eng-cat.html#cb448-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb448-27"><a href="eng-cat.html#cb448-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-28"><a href="eng-cat.html#cb448-28" aria-hidden="true" tabindex="-1"></a>\lipsum<span class="co">[</span><span class="ot">1-15</span><span class="co">]</span></span>
+<span id="cb448-29"><a href="eng-cat.html#cb448-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-30"><a href="eng-cat.html#cb448-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># さらに適当なコンテンツ</span></span>
+<span id="cb448-31"><a href="eng-cat.html#cb448-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb448-32"><a href="eng-cat.html#cb448-32" aria-hidden="true" tabindex="-1"></a>\lipsum<span class="co">[</span><span class="ot">16-30</span><span class="co">]</span></span></code></pre></div>
 <p>上記の <code>cat</code> コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の <code>cat</code> コードチャンクにオプション <code>engine.opts = list(file = 'preamble.tex', append = TRUE)</code> と <code>code = sprintf('\\fancyfoot[LO,RE]{%s}'</code> を付けることで <code>preamble.tex</code> に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した <code>engine.opts</code> が <code>base::cat()</code> に渡されるということを思い出してください. つまり <code>append = TRUE</code> は <code>cat()</code> に渡されます. そして チャンクオプション <code>code</code> はこの後の<a href="option-code.html#option-code">16.2</a>節を読めば理解できるでしょう.</p>
 </div>
 <div id="yaml-データをファイルに書き込みつつ表示する" class="section level3" number="15.6.3">
 <h3><span class="header-section-number">15.6.3</span> YAML データをファイルに書き込みつつ表示する</h3>
 <p><code>cat</code> コードチャンクの中身はデフォルトでは出力文書に表示されません. 中身を書き出した後で表示もしたいならば, チャンクオプション <code>class.source</code> に言語名を指定してください. 言語名はシンタックスハイライトに使われます. 以下の例では, 言語名を <code>yaml</code> に指定しています.</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb448-1"><a href="eng-cat.html#cb448-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts=list(file=&#39;demo.yml&#39;), class.source=&#39;yaml&#39;}</span></span>
-<span id="cb448-2"><a href="eng-cat.html#cb448-2" aria-hidden="true" tabindex="-1"></a><span class="in">a:</span></span>
-<span id="cb448-3"><a href="eng-cat.html#cb448-3" aria-hidden="true" tabindex="-1"></a><span class="in">  aa: &quot;something&quot;</span></span>
-<span id="cb448-4"><a href="eng-cat.html#cb448-4" aria-hidden="true" tabindex="-1"></a><span class="in">  bb: 1</span></span>
-<span id="cb448-5"><a href="eng-cat.html#cb448-5" aria-hidden="true" tabindex="-1"></a><span class="in">b:</span></span>
-<span id="cb448-6"><a href="eng-cat.html#cb448-6" aria-hidden="true" tabindex="-1"></a><span class="in">  aa: &quot;something else&quot;</span></span>
-<span id="cb448-7"><a href="eng-cat.html#cb448-7" aria-hidden="true" tabindex="-1"></a><span class="in">  bb: 2</span></span>
-<span id="cb448-8"><a href="eng-cat.html#cb448-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb449-1"><a href="eng-cat.html#cb449-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{cat, engine.opts=list(file=&#39;demo.yml&#39;), class.source=&#39;yaml&#39;}</span></span>
+<span id="cb449-2"><a href="eng-cat.html#cb449-2" aria-hidden="true" tabindex="-1"></a><span class="in">a:</span></span>
+<span id="cb449-3"><a href="eng-cat.html#cb449-3" aria-hidden="true" tabindex="-1"></a><span class="in">  aa: &quot;something&quot;</span></span>
+<span id="cb449-4"><a href="eng-cat.html#cb449-4" aria-hidden="true" tabindex="-1"></a><span class="in">  bb: 1</span></span>
+<span id="cb449-5"><a href="eng-cat.html#cb449-5" aria-hidden="true" tabindex="-1"></a><span class="in">b:</span></span>
+<span id="cb449-6"><a href="eng-cat.html#cb449-6" aria-hidden="true" tabindex="-1"></a><span class="in">  aa: &quot;something else&quot;</span></span>
+<span id="cb449-7"><a href="eng-cat.html#cb449-7" aria-hidden="true" tabindex="-1"></a><span class="in">  bb: 2</span></span>
+<span id="cb449-8"><a href="eng-cat.html#cb449-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>その出力を以下に表示し, そしてファイル <code>demo.yml</code> としても生成します.</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode numberSource yaml yaml numberLines lineAnchors"><code class="sourceCode yaml"><span id="cb449-1"><a href="eng-cat.html#cb449-1"></a><span class="fu">a</span><span class="kw">:</span></span>
-<span id="cb449-2"><a href="eng-cat.html#cb449-2"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something&quot;</span></span>
-<span id="cb449-3"><a href="eng-cat.html#cb449-3"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb449-4"><a href="eng-cat.html#cb449-4"></a><span class="fu">b</span><span class="kw">:</span></span>
-<span id="cb449-5"><a href="eng-cat.html#cb449-5"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something else&quot;</span></span>
-<span id="cb449-6"><a href="eng-cat.html#cb449-6"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb450"><pre class="sourceCode numberSource yaml yaml numberLines lineAnchors"><code class="sourceCode yaml"><span id="cb450-1"><a href="eng-cat.html#cb450-1"></a><span class="fu">a</span><span class="kw">:</span></span>
+<span id="cb450-2"><a href="eng-cat.html#cb450-2"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something&quot;</span></span>
+<span id="cb450-3"><a href="eng-cat.html#cb450-3"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb450-4"><a href="eng-cat.html#cb450-4"></a><span class="fu">b</span><span class="kw">:</span></span>
+<span id="cb450-5"><a href="eng-cat.html#cb450-5"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something else&quot;</span></span>
+<span id="cb450-6"><a href="eng-cat.html#cb450-6"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div>
 <p>ファイル <code>demo.yml</code> が実際に生成されたことを示すには, <strong>yaml</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-yaml" role="doc-biblioref">Stephens et al. 2020</a>)</span> で読み込んでみることができます.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb450-1"><a href="eng-cat.html#cb450-1"></a>xfun<span class="sc">::</span><span class="fu">tree</span>(yaml<span class="sc">::</span><span class="fu">read_yaml</span>(<span class="st">&quot;demo.yml&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb451-1"><a href="eng-cat.html#cb451-1"></a>xfun<span class="sc">::</span><span class="fu">tree</span>(yaml<span class="sc">::</span><span class="fu">read_yaml</span>(<span class="st">&quot;demo.yml&quot;</span>))</span></code></pre></div>
 <pre><code>## List of 2
 ##  |-a:List of 2
 ##  |  |-aa: chr &quot;something&quot;

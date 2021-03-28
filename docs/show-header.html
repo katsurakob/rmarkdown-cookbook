@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -466,54 +471,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">13.4</span> 出力にチャンクヘッダを表示する</h2>
 <p>読者に元のチャンクヘッダのコードを表示したい時もあるかもしれません. 例えば R Markdown のチュートリアルを書いていて, チャンクの出力とその出力を生成するのに使用したチャンクオプションの両方を表示したいことがあるかもしれません. よって読者が自分で同じことをする方法を学ぶことができるというわけです.</p>
 <p>本来のチャンクオプションは実際にはチャンクオプションの <code>params.scr</code> 内に文字列として保存されています. これを知ったあなたは <code>params.src</code> を出力するチャンクフックを書くこともできます. 以下はその完全な例です.</p>
-<div class="sourceCode" id="cb381"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb381-1"><a href="show-header.html#cb381-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb381-2"><a href="show-header.html#cb381-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 出力にチャンクヘッダを表示する</span></span>
-<span id="cb381-3"><a href="show-header.html#cb381-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb381-4"><a href="show-header.html#cb381-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-5"><a href="show-header.html#cb381-5" aria-hidden="true" tabindex="-1"></a>本来のチャンクヘッダとフッタの内側にチャンクを出力する</span>
-<span id="cb381-6"><a href="show-header.html#cb381-6" aria-hidden="true" tabindex="-1"></a><span class="in">`wrapper`</span> という名前のチャンクフックを用意します.</span>
-<span id="cb381-7"><a href="show-header.html#cb381-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-8"><a href="show-header.html#cb381-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb381-9"><a href="show-header.html#cb381-9" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(wrapper = function(before, options) {</span></span>
-<span id="cb381-10"><a href="show-header.html#cb381-10" aria-hidden="true" tabindex="-1"></a><span class="in">  # 本来のチャンクはインデントされる</span></span>
-<span id="cb381-11"><a href="show-header.html#cb381-11" aria-hidden="true" tabindex="-1"></a><span class="in">  if (is.null(indent &lt;- options$indent)) indent &lt;- &#39;&#39;</span></span>
-<span id="cb381-12"><a href="show-header.html#cb381-12" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb381-13"><a href="show-header.html#cb381-13" aria-hidden="true" tabindex="-1"></a><span class="in">  # wrapper=TRUE オプションを隠す</span></span>
-<span id="cb381-14"><a href="show-header.html#cb381-14" aria-hidden="true" tabindex="-1"></a><span class="in">  opts &lt;- gsub(&#39;, wrapper=TRUE&#39;, &#39;&#39;, options$params.src)</span></span>
-<span id="cb381-15"><a href="show-header.html#cb381-15" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
-<span id="cb381-16"><a href="show-header.html#cb381-16" aria-hidden="true" tabindex="-1"></a><span class="in">  if (before) {</span></span>
-<span id="cb381-17"><a href="show-header.html#cb381-17" aria-hidden="true" tabindex="-1"></a><span class="in">    # ヘッダを追加する</span></span>
-<span id="cb381-18"><a href="show-header.html#cb381-18" aria-hidden="true" tabindex="-1"></a><span class="in">    sprintf(&#39;\n\n%s````\n```{r,%s}\n````\n&#39;, indent, opts)</span></span>
-<span id="cb381-19"><a href="show-header.html#cb381-19" aria-hidden="true" tabindex="-1"></a><span class="in">  } else {</span></span>
-<span id="cb381-20"><a href="show-header.html#cb381-20" aria-hidden="true" tabindex="-1"></a><span class="in">    # フッタを追加する</span></span>
-<span id="cb381-21"><a href="show-header.html#cb381-21" aria-hidden="true" tabindex="-1"></a><span class="in">    sprintf(&#39;\n\n%s````\n```\n````\n&#39;, indent)</span></span>
-<span id="cb381-22"><a href="show-header.html#cb381-22" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb381-23"><a href="show-header.html#cb381-23" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb381-24"><a href="show-header.html#cb381-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb381-25"><a href="show-header.html#cb381-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-26"><a href="show-header.html#cb381-26" aria-hidden="true" tabindex="-1"></a>ここでチャンクオプション <span class="in">`wrapper=TRUE`</span>  でフックを適用します. <span class="in">`wrapper=TRUE`</span> をヘッダの最後に置くことと, 正確に <span class="in">`wrapper=TRUE`</span> でなければならず, 上記で呼び出されている <span class="in">`gsub()`</span> を修正しない限り, 例えば <span class="in">`wrapper=T`</span> はダメで,  コンマとスペースの後に続けなければならないことも忘れないでください.</span>
-<span id="cb381-27"><a href="show-header.html#cb381-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-28"><a href="show-header.html#cb381-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-label, collapse=TRUE, wrapper=TRUE}</span></span>
-<span id="cb381-29"><a href="show-header.html#cb381-29" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb381-30"><a href="show-header.html#cb381-30" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb381-31"><a href="show-header.html#cb381-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb381-32"><a href="show-header.html#cb381-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-33"><a href="show-header.html#cb381-33" aria-hidden="true" tabindex="-1"></a>本来のチャンクヘッダが出力に現れるはずです. フックはチャンクがインデントされていても動作するはずです. これが例です.</span>
-<span id="cb381-34"><a href="show-header.html#cb381-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-35"><a href="show-header.html#cb381-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>箇条書きその1</span>
-<span id="cb381-36"><a href="show-header.html#cb381-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-37"><a href="show-header.html#cb381-37" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r, eval=TRUE, wrapper=TRUE}</span></span>
-<span id="cb381-38"><a href="show-header.html#cb381-38" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
-<span id="cb381-39"><a href="show-header.html#cb381-39" aria-hidden="true" tabindex="-1"></a><span class="in">  ```</span></span>
-<span id="cb381-40"><a href="show-header.html#cb381-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb381-41"><a href="show-header.html#cb381-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>もう1つ箇条書き</span></code></pre></div>
+<div class="sourceCode" id="cb382"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb382-1"><a href="show-header.html#cb382-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb382-2"><a href="show-header.html#cb382-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 出力にチャンクヘッダを表示する</span></span>
+<span id="cb382-3"><a href="show-header.html#cb382-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb382-4"><a href="show-header.html#cb382-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-5"><a href="show-header.html#cb382-5" aria-hidden="true" tabindex="-1"></a>本来のチャンクヘッダとフッタの内側にチャンクを出力する</span>
+<span id="cb382-6"><a href="show-header.html#cb382-6" aria-hidden="true" tabindex="-1"></a><span class="in">`wrapper`</span> という名前のチャンクフックを用意します.</span>
+<span id="cb382-7"><a href="show-header.html#cb382-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-8"><a href="show-header.html#cb382-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb382-9"><a href="show-header.html#cb382-9" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_hooks$set(wrapper = function(before, options) {</span></span>
+<span id="cb382-10"><a href="show-header.html#cb382-10" aria-hidden="true" tabindex="-1"></a><span class="in">  # 本来のチャンクはインデントされる</span></span>
+<span id="cb382-11"><a href="show-header.html#cb382-11" aria-hidden="true" tabindex="-1"></a><span class="in">  if (is.null(indent &lt;- options$indent)) indent &lt;- &#39;&#39;</span></span>
+<span id="cb382-12"><a href="show-header.html#cb382-12" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb382-13"><a href="show-header.html#cb382-13" aria-hidden="true" tabindex="-1"></a><span class="in">  # wrapper=TRUE オプションを隠す</span></span>
+<span id="cb382-14"><a href="show-header.html#cb382-14" aria-hidden="true" tabindex="-1"></a><span class="in">  opts &lt;- gsub(&#39;, wrapper=TRUE&#39;, &#39;&#39;, options$params.src)</span></span>
+<span id="cb382-15"><a href="show-header.html#cb382-15" aria-hidden="true" tabindex="-1"></a><span class="in">  </span></span>
+<span id="cb382-16"><a href="show-header.html#cb382-16" aria-hidden="true" tabindex="-1"></a><span class="in">  if (before) {</span></span>
+<span id="cb382-17"><a href="show-header.html#cb382-17" aria-hidden="true" tabindex="-1"></a><span class="in">    # ヘッダを追加する</span></span>
+<span id="cb382-18"><a href="show-header.html#cb382-18" aria-hidden="true" tabindex="-1"></a><span class="in">    sprintf(&#39;\n\n%s````\n```{r,%s}\n````\n&#39;, indent, opts)</span></span>
+<span id="cb382-19"><a href="show-header.html#cb382-19" aria-hidden="true" tabindex="-1"></a><span class="in">  } else {</span></span>
+<span id="cb382-20"><a href="show-header.html#cb382-20" aria-hidden="true" tabindex="-1"></a><span class="in">    # フッタを追加する</span></span>
+<span id="cb382-21"><a href="show-header.html#cb382-21" aria-hidden="true" tabindex="-1"></a><span class="in">    sprintf(&#39;\n\n%s````\n```\n````\n&#39;, indent)</span></span>
+<span id="cb382-22"><a href="show-header.html#cb382-22" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb382-23"><a href="show-header.html#cb382-23" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb382-24"><a href="show-header.html#cb382-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb382-25"><a href="show-header.html#cb382-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-26"><a href="show-header.html#cb382-26" aria-hidden="true" tabindex="-1"></a>ここでチャンクオプション <span class="in">`wrapper=TRUE`</span>  でフックを適用します. <span class="in">`wrapper=TRUE`</span> をヘッダの最後に置くことと, 正確に <span class="in">`wrapper=TRUE`</span> でなければならず, 上記で呼び出されている <span class="in">`gsub()`</span> を修正しない限り, 例えば <span class="in">`wrapper=T`</span> はダメで,  コンマとスペースの後に続けなければならないことも忘れないでください.</span>
+<span id="cb382-27"><a href="show-header.html#cb382-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-28"><a href="show-header.html#cb382-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-label, collapse=TRUE, wrapper=TRUE}</span></span>
+<span id="cb382-29"><a href="show-header.html#cb382-29" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb382-30"><a href="show-header.html#cb382-30" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb382-31"><a href="show-header.html#cb382-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb382-32"><a href="show-header.html#cb382-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-33"><a href="show-header.html#cb382-33" aria-hidden="true" tabindex="-1"></a>本来のチャンクヘッダが出力に現れるはずです. フックはチャンクがインデントされていても動作するはずです. これが例です.</span>
+<span id="cb382-34"><a href="show-header.html#cb382-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-35"><a href="show-header.html#cb382-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>箇条書きその1</span>
+<span id="cb382-36"><a href="show-header.html#cb382-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-37"><a href="show-header.html#cb382-37" aria-hidden="true" tabindex="-1"></a>  <span class="in">```{r, eval=TRUE, wrapper=TRUE}</span></span>
+<span id="cb382-38"><a href="show-header.html#cb382-38" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
+<span id="cb382-39"><a href="show-header.html#cb382-39" aria-hidden="true" tabindex="-1"></a><span class="in">  ```</span></span>
+<span id="cb382-40"><a href="show-header.html#cb382-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb382-41"><a href="show-header.html#cb382-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>もう1つ箇条書き</span></code></pre></div>
 <p>基本的に, <code>```{r, }</code> 内に <code>options$params.src</code> から取り出したチャンクヘッダ入れることで元のヘッダを再現しています. そこでこの行を1組の4連続バッククオートで囲んでいるので, 出力時にはそのまま表示されます. 本来のコードチャンクはインデントされるかもしれない (例: 箇条書き内にネストされている場合), 適切にインデントを追加することも必要になります. これはチャンクオプション <code>options$indent</code> に保存されています.</p>
 <p>上記の例の最後の, 箇条書き内の出力はこのようになります.</p>
 <blockquote>
 <ul>
 <li><p>箇条書きその1</p>
 <pre><code>```{r, eval=TRUE}</code></pre>
-<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb383-1"><a href="show-header.html#cb383-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb384-1"><a href="show-header.html#cb384-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <pre><code>```</code></pre></li>
 <li><p>もう1つ箇条書き</p></li>

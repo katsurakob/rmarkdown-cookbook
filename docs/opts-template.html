@@ -162,6 +162,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<ul>
+<li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
+<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
 <li class="chapter" data-level="1.1" data-path="install-pandoc.html"><a href="install-pandoc.html"><i class="fa fa-check"></i><b>1.1</b> RStudio IDE にバンドルされていないバージョンの Pandoc を使う</a></li>
@@ -465,21 +470,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="opts-template" class="section level2" number="14.6">
 <h2><span class="header-section-number">14.6</span> グループ化したチャンクオプションを保存し再利用する (*)</h2>
 <p>いくつかのチャンクオプションを頻繁に使うのなら, それらを1つのグループとして保存し, 以降はグループ名を書くだけで再利用できるようにするとよいかもしれません. これは <code>knitr::opts_template$set(name = list(options))</code> で実行できます. それからこのグループ名をチャンクオプション <code>opts.label</code> で参照することで使用できます. 例えばこのように.</p>
-<div class="sourceCode" id="cb400"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb400-1"><a href="opts-template.html#cb400-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb400-2"><a href="opts-template.html#cb400-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_template$set(fullwidth = list(</span></span>
-<span id="cb400-3"><a href="opts-template.html#cb400-3" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.width = 10, fig.height = 6,</span></span>
-<span id="cb400-4"><a href="opts-template.html#cb400-4" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.retina = 2, out.width = &#39;100%&#39;</span></span>
-<span id="cb400-5"><a href="opts-template.html#cb400-5" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
-<span id="cb400-6"><a href="opts-template.html#cb400-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb400-7"><a href="opts-template.html#cb400-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb400-8"><a href="opts-template.html#cb400-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;}</span></span>
-<span id="cb400-9"><a href="opts-template.html#cb400-9" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb400-10"><a href="opts-template.html#cb400-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb401"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb401-1"><a href="opts-template.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb401-2"><a href="opts-template.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_template$set(fullwidth = list(</span></span>
+<span id="cb401-3"><a href="opts-template.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.width = 10, fig.height = 6,</span></span>
+<span id="cb401-4"><a href="opts-template.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.retina = 2, out.width = &#39;100%&#39;</span></span>
+<span id="cb401-5"><a href="opts-template.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
+<span id="cb401-6"><a href="opts-template.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb401-7"><a href="opts-template.html#cb401-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb401-8"><a href="opts-template.html#cb401-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;}</span></span>
+<span id="cb401-9"><a href="opts-template.html#cb401-9" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb401-10"><a href="opts-template.html#cb401-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>opts.label = 'fullwidth'</code> とすると, <strong>knitr</strong> は knitr::opts_template` から一連のチャンクオプションを読み込み, 現在のチャンクに適用します. これはタイピングの労力を削減できます. チャンクオプションを文書全体で使用しなければならないならば, グローバルに設定すべきでしょう (<a href="chunk-options.html#chunk-options">11</a>章参照).</p>
 <p><code>opts.label</code> から読み込んだオプションを上書きすることもできます. 例えば以下のチャンクで <code>fig.height = 7</code> を設定したなら, 実際の値は <code>6</code> でなく <code>7</code> になります.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb401-1"><a href="opts-template.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;, fig.height=7}</span></span>
-<span id="cb401-2"><a href="opts-template.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb401-3"><a href="opts-template.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb402"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb402-1"><a href="opts-template.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;, fig.height=7}</span></span>
+<span id="cb402-2"><a href="opts-template.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb402-3"><a href="opts-template.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>オプションのグループは好きな数だけ保存できます. 例えば <code>knitr::opts_template$set(group1 = list(...), group2 = list(...))</code> のように.</p>
 </div>
             </section>
