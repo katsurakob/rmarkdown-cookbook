@@ -386,8 +386,7 @@ PDF 出力に対しては, 以前の例で定義した `blackbox` 環境を基�
   }
 ```
 
-以下に, 異なるアイコンでブロックを示します.
-Below we show more example blocks with different icons:
+以下に, 様々なアイコンを付けたブロックを掲載します.
 
 ::: {.infobox .warning data-latex="{warning}"}
 **注意!**
