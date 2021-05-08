@@ -18,9 +18,7 @@ Markdown 言語の最大の強みは, その簡潔さが初心者にとっても
 
 こういった機能があなたの努力に見合うかどうかはあなたの判断に委ねます. Markdown は,「自然界」はプレーンテキストからなり, (見た目上の) 面白さを欲求して**作為**すべきではない, というストア派哲学をいくらか反映しています. いずれにせよ, この章では R Markdown 文書の見た目や要素のスタイルをカスタマイズをどうやればできるかの豆知識をいくつか提示します.
 
-Markdown 言語の基礎のリマインダが必要ならば, https://www.rstudio.com/resources/cheatsheets/ にある R Markdown チートシートには基本構文の概観がうまく盛り込まれています.
-
-TODO: 翻訳版がないか確認
+Markdown 言語の基礎のリマインダが必要ならば, https://www.rstudio.com/resources/cheatsheets/ にある R Markdown チートシート^[**訳注**: 同ページで日本語版も公開されています.]には基本構文の概観がうまく盛り込まれています.
 
 ## フォント色 {#font-color}
 <!-- https://stackoverflow.com/questions/29067541/rmarkdown-how-to-change-the-font-color -->
