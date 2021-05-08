@@ -21,9 +21,13 @@ rmdja::gitbook_ja:
       all: ['linkedin', 'weibo', 'instapaper', 'vk']
 rmdja::pdf_book_ja:
   includes:
-    in_header: [latex/preamble.tex, latex/blackbox.tex, latex/infobox.tex]
+    in_header: 
+      - latex/preamble.tex
+      - latex/blackbox.tex
+#      - latex/infobox.tex
     before_body: latex/before_body.tex
     after_body: latex/after_body.tex
+  block_style: tcolorbox
   keep_tex: yes
   keep_md: yes
   fig_crop: false
@@ -33,4 +37,5 @@ rmdja::pdf_book_ja:
   toc_unnumbered: no
   toc_appendix: yes
   highlight_bw: yes
+  extra_dependencies: dirtree
   quote_footer: ["\\VA{", "}{}"]

@@ -21,7 +21,6 @@ jamonofont: "Ricty"
 documentclass: bxjsreport
 link-citations: yes
 colorlinks: yes
-# graphics: yes
 bibliography:
   - bib/packages.bib
   - bib/literature.bib
@@ -105,18 +104,15 @@ date: "`r last_update`, ver. 0.9 (一部未校正), 本家の更新確認時刻:
 
 # はじめに {-}
 
-```{block, type="rmdtip"}
-本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja) で提供されています. オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
-
-This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
-```
-
-```{asis, echo=!knitr::is_latex_output()}
-::: {.infobox .caution}
+:::{.infobox .caution data-latex="{caution}"}
 **注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
 
+オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
+
+This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 :::
 
+```{asis eval=knitr::is_html_output()}
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
 ```
 

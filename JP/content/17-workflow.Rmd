@@ -32,20 +32,20 @@ ks_mac <- function(letters, cmd = TRUE, opt = TRUE, shift = FALSE, enter = FALSE
 ```{r shortcuts, echo = FALSE}
 keyboard_table <- tibble::tribble(
   ~ "Task"             , ~ "Windows & Linux"                    , ~ "macOS",
-  "Insert R chunk"            , ks_win("I")                            , ks_mac("I"),
-  "Preview HTML"              , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
-  "Knitr document (knitr)"    , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
-  "Compile Notebook"          , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
-  "Compile PDF"               , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
-  "Run all chunks above"      , ks_win("P")                            , ks_mac("P"),
-  "Run current chunk"         , ks_win("C")                            , ks_mac("C"),
-  "Run current chunk"         , ks_win("Enter", TRUE, FALSE, TRUE)     , ks_mac("Enter", TRUE, FALSE, TRUE),
-  "Run next chunk"            , ks_win("N")                            , ks_mac("N"),
-  "Run all chunks"            , ks_win("R")                            , ks_mac("R"),
-  "Go to next chunk/title"    , ks_win("PgDown", alt = FALSE)          , ks_mac("PgDown", opt = FALSE),
-  "Go to previous chunk/title", ks_win("PgUp", alt = FALSE)            , ks_mac("PgUp", opt = FALSE),
-  "Show/hide document outline", ks_win("O", TRUE, FALSE, TRUE)         , ks_mac("O", TRUE, FALSE, TRUE),
-  "Build book, website, ..."  , ks_win("B", TRUE, FALSE, TRUE)         , ks_mac("B", TRUE, FALSE, TRUE)
+  "R チャンクを挿入"          , ks_win("I")                            , ks_mac("I"),
+  "HTML をプレビュー"         , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
+  "文書を knit する (knitr)"    , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
+  "Notebook をコンパイル"     , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
+  "PDF をコンパイル"          , ks_win("K", alt = FALSE, shift = TRUE) , ks_mac("K", opt = FALSE, shift = TRUE),
+  "ここから上のチャンクをすべて実行" , ks_win("P")                            , ks_mac("P"),
+  "このチャンクを実行"        , ks_win("C")                            , ks_mac("C"),
+  "このチャンクを実行"        , ks_win("Enter", TRUE, FALSE, TRUE)     , ks_mac("Enter", TRUE, FALSE, TRUE),
+  "次のチャンクを実行"        , ks_win("N")                            , ks_mac("N"),
+  "全てのチャンクを実行"      , ks_win("R")                            , ks_mac("R"),
+  "次のチャンクかタイトルへ移動", ks_win("PgDown", alt = FALSE)          , ks_mac("PgDown", opt = FALSE),
+  "前のチャンクかタイトルへ移動", ks_win("PgUp", alt = FALSE)            , ks_mac("PgUp", opt = FALSE),
+  "文書のアウトラインを表示/隠す", ks_win("O", TRUE, FALSE, TRUE)         , ks_mac("O", TRUE, FALSE, TRUE),
+  "本, ウェブサイトその他のビルド"  , ks_win("B", TRUE, FALSE, TRUE)         , ks_mac("B", TRUE, FALSE, TRUE)
 )
 knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio のキーボード・ショートカット", booktabs = TRUE)
 ```
