@@ -52,6 +52,7 @@
 * inline R expression - 「インライン (行内) R 評価式」だと堅苦しすぎるので「インライン (R) コード」する
   * 12章で expressions と (line of) codes の違いに言及している記述に出会ってしまった ...
 * Section X/Chapter X - X節, X章?. section header のときはこれらの総称として「セクション」と表現する
+* conditional function - 9章のみ登場. `knitr::is_html_output()` 等のことを指していると思われる. ここでしか使われないので用語として扱わず「条件付けのための関数」 と表現する.
 
 以下, まだはっきり決めてない
 
