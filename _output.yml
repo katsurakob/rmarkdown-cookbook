@@ -37,4 +37,5 @@ rmdja::pdf_book_ja:
   toc_unnumbered: no
   toc_appendix: yes
   highlight_bw: yes
+  extra_dependencies: dirtree
   quote_footer: ["\\VA{", "}{}"]

@@ -33,9 +33,7 @@ for (i in 1:2) {
 ```
 ````
 
-これらの条件付き関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
-
-TODO: conditional functions をなんと呼ぶのが良いか
+これらの条件付けのための関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
 
 ````md
 ```{r, eval=knitr::is_html_output(), echo=FALSE}`r ''`
@@ -229,9 +227,8 @@ output:
 
 まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.
 
-HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか.
+HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか^[**訳注**: このサイト相当の日本語のサイトを翻訳者は知らないので Moziila のサイトなどを参考にしてください https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics (一部未翻訳のページもあるかもしれません)].
 
-TODO: 日本語の代替サイト
 
 ```{cat, class.source='css', engine.opts=list(file = 'css/box.css')}
 .blackbox {
@@ -299,18 +296,31 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
 
 カスタムボックス内に画像を含めることで, より注意を引く見た目に作ることができます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 次の例は, このようなディレクトリ構造で動作させるという前提です. これは本書を作成するために使ったものを簡略化したものです.
 
-```text
-directory/
-├── your-report.Rmd
-├── style.css
-├── preamble.tex
-└── images/ 
-      └── ├── important.png
-          ├── note.png
-          └── caution.png
+```{=latex}
+\dirtree{%
+.1 directory/.
+.2 your-report.Rmd.
+.2 style.css.
+.2 preamble.tex.
+.2 images/.
+.3 important.png.
+.3 note.png.
+.3 caution.png.
+.3 ....
+}
+```
+```{asis echo=!knitr::is_latex_output()}
+* `directory/`
+    * `your-report.Rmd`
+    * `style.css`
+    * `preamble.tex`
+    * `images/`
+        * `important.png`
+        * `note.png`
+        * `caution.png`
+        * `...`
 ```
 
-<!-- TODO: PDF だと上記が崩れる -->
 
 どのように動作するか説明する前に, この例のソースコードと出力を示します.
 
