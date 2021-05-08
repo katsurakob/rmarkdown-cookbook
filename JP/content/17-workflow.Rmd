@@ -4,7 +4,7 @@
 
 ## RStudio のキーボード・ショートカットを使う {#rstudio-shortcuts}
 
-R・ **rmarkdown** パッケージ・Pandoc がインストールされているかぎり, R Markdown のフォーマットはあなたの選ぶどんなテキストエディタでも使用できます. しかし, RStudio\index{RStudio!キーボード・ショートカット}は R Markdownと深く統合されているので, 円滑に R Markdown と作業できます.
+R・ **rmarkdown** パッケージ・Pandoc がインストールされているかぎり, R Markdown のフォーマットはあなたの選ぶどんなテキストエディタでも使用できます. しかし, RStudio\index{RStudio!きーぼーど@キーボード・ショートカット}は R Markdownと深く統合されているので, 円滑に R Markdown と作業できます.
 
 あらゆる IDE (統合開発環境) のように, RStudio にはキーボード・ショートカットがあります. 完全な一覧はメニューの `Tools -> Keyboard Shortcuts Help` で見られます. R Markdown に関連する最も便利なショートカットを表\@ref(tab:shortcuts)にまとめました.
 
@@ -54,7 +54,7 @@ knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio の�
 
 ## R Markdown のスペルチェック {#spell-check}
 
-RStudio IDE\index{RStudio!スペルチェック} を使っているなら, `F7` キーを押すかメニューの `Edit -> Check Spelling` をクリックして Rmd 文書のスペルチェックができます.  リアルタイムなスペルチェックは RStudio v1.3 で有効になったので, これ以降のバージョンならば手動でスペルチェックを動作させる必要はなくなりました.
+RStudio IDE\index{RStudio!すぺるちぇっく@スペルチェック} を使っているなら, `F7` キーを押すかメニューの `Edit -> Check Spelling` をクリックして Rmd 文書のスペルチェックができます.  リアルタイムなスペルチェックは RStudio v1.3 で有効になったので, これ以降のバージョンならば手動でスペルチェックを動作させる必要はなくなりました.
 
 RStudio を使っていないなら, **spelling** パッケージ\index{R パッケージ!spelling} [@R-spelling] には `spell_check_files()` 関数があります. これは R Markdown を含む一般的な文書フォーマットのスペルチェックができます. Rmd 文書のスペルチェック時は, コードチャンクはスキップされ平文のみチェックされます.
 
@@ -180,7 +180,7 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/params-shiny.png'), dpi = NA
 
 ## `Knit` ボタンをカスタマイズする (\*) {#custom-knit}
 
-RStudio の `Knit` ボタン\index{RStudio!Knit button}をクリックする時, 新規の R セッション内で `rmarkdown::render()` が呼び出され, 同じディレクトリに入力ファイルと同じ基底名の出力ファイルが出力されます. 例えば出力フォーマット `html_document` で `example.Rmd` を knit すると, `example.html` というファイルが作られます.
+RStudio の `Knit` ボタン\index{RStudio!Knit ボタン}をクリックする時, 新規の R セッション内で `rmarkdown::render()` が呼び出され, 同じディレクトリに入力ファイルと同じ基底名の出力ファイルが出力されます. 例えば出力フォーマット `html_document` で `example.Rmd` を knit すると, `example.html` というファイルが作られます.
 
 文書がどうレンダリングされるかをカスタマイズしたいという状況もあるでしょう. 例えば今日の日付を文書に含めたり, 別のディレクトリにコンパイルした文書を出力したいといったことがたぶんあるでしょう. こういったことは適切な `output_file` 引数を付けた `rmarkdown::render()` を呼び出すことで達成可能 (\@ref(rmarkdown-render)節参照) ですが, レポートをコンパイルするのに `rmarkdown::render()` を変更して呼び出すことに頼るのは不便という可能性があります.
 
@@ -254,7 +254,7 @@ Google ドライブ上では共同編集作業を同期的に行うことも, �
 
 ## **workflowr** で R Markdown プロジェクトを研究用サイトでまとめる {#workflowr}
 
-**workflowr** パッケージ\index{R パッケージ!workflowr} [@R-workflowr; @workflowr2019]は (データ分析の) プロジェクトをテンプレート\index{テンプレート!プロジェクト}とバージョン管理ツールである GIT を使って体系的に編成することが可能です. プロジェクトに変更を加えるたびに, 変更の記録を残すことが可能で, **workflowr** はプロジェクトの特定のバージョンと対応するウェブサイトを構築できます. これはあなたの分析結果の履歴をすべて閲覧することが可能になることを意味します. このパッケージはバージョン管理のためバックエンドで GIT を使用していますが, 特に GIT に詳しくなる必要はありません. このパッケージは, 内部で GIT の操作を行う R の関数を提供し, あなたはこれらの関数を呼び出す必要があるだけです. そのうえ, **workflowr** は自動的に再現可能なコードへのベストプラクティスを自動化します. R Markdown 文書がレンダリングされるたびに, **workflowr** は `set.seed()` でシード値を設定, `sessionInfo()` でセッション情報を記録, そして絶対ファイルパスをスキャンする, などなど, といったことを自動的に行います.  このパッケージの導入方法と詳細は[パッケージのドキュメント](https://jdblischak.github.io/workflowr/)をご覧ください.
+**workflowr** パッケージ\index{R パッケージ!workflowr} [@R-workflowr; @workflowr2019]は (データ分析の) プロジェクトをテンプレート\index{てんぷれーと@テンプレート!プロジェクト}とバージョン管理ツールである GIT を使って体系的に編成することが可能です. プロジェクトに変更を加えるたびに, 変更の記録を残すことが可能で, **workflowr** はプロジェクトの特定のバージョンと対応するウェブサイトを構築できます. これはあなたの分析結果の履歴をすべて閲覧することが可能になることを意味します. このパッケージはバージョン管理のためバックエンドで GIT を使用していますが, 特に GIT に詳しくなる必要はありません. このパッケージは, 内部で GIT の操作を行う R の関数を提供し, あなたはこれらの関数を呼び出す必要があるだけです. そのうえ, **workflowr** は自動的に再現可能なコードへのベストプラクティスを自動化します. R Markdown 文書がレンダリングされるたびに, **workflowr** は `set.seed()` でシード値を設定, `sessionInfo()` でセッション情報を記録, そして絶対ファイルパスをスキャンする, などなど, といったことを自動的に行います.  このパッケージの導入方法と詳細は[パッケージのドキュメント](https://jdblischak.github.io/workflowr/)をご覧ください.
 
 **workflowr** の主著者である John Blischak は, R プロジェクトのワークフローと関連のあるパッケージとガイドを網羅的ではないですがリストにまとめています. これは GitHub レポジトリ https://github.com/jdblischak/r-project-workflows で見ることができます.
 
