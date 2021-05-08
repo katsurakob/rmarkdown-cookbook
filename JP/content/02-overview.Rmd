@@ -14,11 +14,11 @@ knitr::include_graphics(file.path(BOOKLANG, "images/workflow.png"), dpi = NA)
 
 `.Rmd` 文書は, 文書の本来の形式です. YAML (メタデータ)\index{YAML}, テキスト (ナラティブ), コードチャンク\index{こーどちゃんく@コードチャンク} を含んでいます.
 
-最初に **knitr**\index{knitr} [@R-knitr] の `knit()` 関数が `.Rmd` ファイルに埋め込まれた全てのコードを実行し, 出力文書に出力コードを表示します. 全ての結果は, 一時的に作られた `.md` ファイルに含まれるよう, 適切なマークアップ言語へと変換されます.
+最初に **knitr**\index{knitr} [@R-knitr] の `knit()` 関数が `.Rmd` ファイルに埋め込まれた全てのコードを実行し, 出力文書に出力コードを表示します. 全ての結果は, 一時的に作られた `.md` ファイルに含まれるよう, 適正なマークアップ言語へと変換されます.
 
-その後 `.md` ファイルは, あるマークアップ言語のファイルから別のものへと変換するための多用途なツールである Pandoc\index{Pandoc} によって処理されます. 文書の YAML フロントマターで指定されたパラメータ (例: `title`, `author`, `date`) を取得し, 文書を `output` パラメータで指定された出力形式 (HTML へ出力する `html_document` のような) へ変換します.
+その後 `.md` ファイルは, あるマークアップ言語のファイルから別のものへと変換するための多用途なツールである Pandoc\index{Pandoc} によって処理されます. Pandoc は文書の YAML フロントマターで指定された何らかのパラメータ (例: `title`, `author`, `date`) を受け取り, 文書を `output` パラメータで指定された出力フォーマット (HTML へ出力する `html_document` のような) へ変換します.
 
-出力形式が PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの `.md` を もう一つの中間ファイル `.tex` に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. \@ref(install-latex) 節で話したように, **rmarkdown** パッケージは **tinytex** パッケージ @R-tinytex] の `latexmk()` 関数を呼び出し, これが次々に LaTeX を呼び出して `.tex` をコンパイルし `.pdf` にします.
+出力形式が PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの `.md` を もう一つの中間ファイル `.tex` に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. \@ref(install-latex) 節で話したように, **rmarkdown** パッケージは **tinytex** パッケージ [@R-tinytex] の `latexmk()` 関数を呼び出し, これが次々に LaTeX を呼び出して `.tex` をコンパイルし `.pdf` にします.
 
 簡潔にまとめると, `rmarkdown::render()` = `knitr::knit()` + Pandoc (PDF の場合のみ + LaTeX) ということです.
 
@@ -48,9 +48,9 @@ output: html_document
 ---
 ```
 
-上の場合,  `title`, `author` フィールドは Pandoc によって処理され, テンプレートの変数の値がセットされます. デフォルトのテンプレートでは, `title` と `author` の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの [YAML metadata block.](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) に関するセクションで見られます.^[**訳注**: 日本語訳での対応箇所はこちら: https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks]
+上記の場合,  `title`, `author` フィールドは Pandoc によって処理され, テンプレートの変数の値が設定されます. デフォルトのテンプレートでは, `title` と `author` の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの [YAML metadata block.](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) に関するセクションで見られます.^[**訳注**: 日本語訳での対応箇所はこちら: https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks]
 
-対照的に `output` フィールドは **rmarkdown** に使われ, レンダリング処理の中で出力フォーマット関数 `rmarkdown::html_document()` に適用されます. `output` に指定した出力フォーマットに引数をあたえることで, その先のレンダリング処理に影響させることができます. 例えばこのように書きます.
+対照的に `output` フィールドは **rmarkdown** によるレンダリング処理中に出力フォーマット関数 `rmarkdown::html_document()` に適用されます. `output` に指定した出力フォーマットに引数を与えることで, 以降のレンダリング処理に影響させることができます. 例えばこのように書きます.
 
 ```yaml
 output:
@@ -78,7 +78,7 @@ params:
 
 ナラティブ (物語術) としてのテキスト要素は YAML メタデータやコードチャンクよりは理解が簡単でしょう. 典型的には, これはテキストエディタで書いているような感覚でしょう. しかし Markdown コンテンツは, どのようにコンテンツが作られるか, そこからどうやって文書の構造が作られるか, の両方に関して, 単純なテキストよりも強力で面白いものに違いありません.
 
-世のナラティブの多くは人の手で書かれていますが, 多くの R Markdown 文書では、用いられているコードと分析を参照しようとします. この理由として, \@ref(document-elements) 章において, コードがテキストの一部を生成するのを助ける様々な方法が示されています. 例えば、単語を結合してリストにしたり (\@ref(combine-words)節), 参考文献リストを書いたり (\@ref(bibliography)節)といった方法です. この変換は `.Rmd` から `.md` への変換と同様に **knitr**\index{knitr} で制御されます.
+世のナラティブの多くは人の手で書かれていますが, 多くの R Markdown 文書では、用いられているコードと分析を参照しようとします. この理由として, \@ref(document-elements) 章において, コードがテキストの一部を生成するのを助ける様々な方法が実演されています. 例えば、単語を結合してリストにしたり (\@ref(combine-words)節), 参考文献リストを書いたり (\@ref(bibliography)節)といった方法です. この変換は `.Rmd` から `.md` への変換と同様に **knitr**\index{knitr} で制御されます.
 
 Markdown のテキストは文書に構造を与えることもできます. Markdown の構文をこの場で復習するには紙面が足りませんが,^[Markdown の復習には, 代わりに, https://bookdown.org/yihui/bookdown/markdown-syntax.html をご覧になってください.] 特に関連深い概念の1つとしてセクション見出しがあります. これは 1つ以上の, 対応したレベルの数のハッシュ (`#`) で表現されます. 例えば, 以下のように.
 
@@ -194,7 +194,7 @@ nomnoml::nomnoml(
 
 **rmarkdown** で R Markdown 文書をレンダリングする処理は **knitr** で `.Rmd` を `.md` で変換する処理, それから (典型的には) Pandoc で `.md` を望む出力に変換する処理で構成されます.
 
-`.Rmd` から `.md` への変換のステップではレポート内の全てのコードの実行と「翻訳」を取り扱うことから, 「コンテンツ」への変更はほぼ, **knitr** が翻訳するコードで `.Rmd` を編集する作業に絡んできます. これらのステップ全体を操作するツールには **knitr** チャンクオプションおよびフックがあります.
+`.Rmd` から `.md` への変換のステップではレポート内の全てのコードの実行と「翻訳」を取り扱うことから, ここでの「コンテンツ」への変更はほぼ, `.Rmd` のうち **knitr** が翻訳するコードを編集する作業に絡んできます. これらのステップ全体を操作するツールには **knitr** チャンクオプションおよびフックがあります.
 
 `.md` はフォーマットされていないプレーンテキストです. ここで Pandoc が登場し, HTML や PDF, Word といった最終的な出力フォーマットへ変換されます. この流れに沿って構造とスタイルを付与します. この処理では スタイルシート (CSS), 生 LaTeX または HTML コード, Pandoc テンプレート, Lua フィルタといった様々なツールが助けになります. R Markdown 文書の入れ子構造を理解し, よく考えて識別子とクラスを使うことで, これらのツールを取捨選択して出力の目標となる箇所に応用することができます.
 
