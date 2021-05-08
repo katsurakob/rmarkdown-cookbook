@@ -97,7 +97,7 @@ lapply(pkgs, function(pkg) {
 )
 
 # automatically create a bib database for R packages
-knitr::write_bib(pkgs, file = 'packages.bib', lib.loc = c(.libPaths(), '~/R-tmp'))
+knitr::write_bib(pkgs, file = 'bib/packages.bib', lib.loc = c(.libPaths(), '~/R-tmp'))
 
 # embed fonts
 if (knitr::is_latex_output()) {
