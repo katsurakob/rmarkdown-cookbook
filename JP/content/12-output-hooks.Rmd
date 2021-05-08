@@ -119,7 +119,7 @@ if (TRUE) { # SECRET!!
 c("1 + 1", "if (TRUE) { # SECRET!!\n  1:10\n}")
 ```
 
-R 評価式ではなく行を隠したいなら, `x` を行ごとに分割しなければなりません. `xfun::split_lines()`\index{xfun!split\_lines()} の使用を検討するとよいでしょう. フック関数の本体はこうなります.
+R 評価式ではなく行単位で隠したいなら, `x` を行ごとに分割しなければなりません. `xfun::split_lines()`\index{xfun!split\_lines()} の使用を検討するとよいでしょう. フック関数の本体はこうなります.
 
 ```{r, eval=FALSE}
 x <- xfun::split_lines(x)  # 個別の行に分割する
