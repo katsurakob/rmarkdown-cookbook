@@ -1,6 +1,6 @@
 # HTML 出力 {#html-output}
 
-LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら修正できます. HTML 出力における有用ながらもシンプルな CSS と JavaScript のトリックは LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
+LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら修正できます. HTML 出力における有用ながらもシンプルな CSS と JavaScript の小ワザは LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
 
 この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった,  R Markdown の HTML 出力を向上するテクニックを紹介します.
 In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
@@ -384,7 +384,7 @@ output:
 
 ## 折りたたみ要素 `<details>` を使う {#details-tag}
 
-\@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, 出力を折りたたみできるようにするのに JavaScript のトリックが使えます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
+\@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, 出力を折りたたみできるようにするのに JavaScript の小ワザが使えます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
 
 ```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='details 要素でテキスト出力を囲む', out.width=if(knitr::is_latex_output()) '100%'}
 knitr::include_graphics(file.path(BOOKLANG, c('images/details-closed.png', 'images/details-open.png')), dpi = NA)

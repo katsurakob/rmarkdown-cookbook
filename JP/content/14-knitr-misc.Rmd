@@ -1,6 +1,6 @@
-# その他の knitr のトリック {#knitr-misc}
+# その他の knitr の小ワザ {#knitr-misc}
 
-チャンクオプション(\@ref(chunk-options)章)・出力フック(\@ref(output-hooks)章)・チャンクフック ( \@ref(chunk-hooks)章) にとどまらず, 他にも役に立つ関数やトリックが **knitr**\index{knitr}にはあります. この章では, コードチャンクの再利用, knit の早期終了, グラフの配置場所のカスタマイズの方法などといったトリックを紹介します.
+チャンクオプション(\@ref(chunk-options)章)・出力フック(\@ref(output-hooks)章)・チャンクフック ( \@ref(chunk-hooks)章) にとどまらず, 他にも役に立つ関数やトリックが **knitr**\index{knitr}にはあります. この章では, コードチャンクの再利用, knit の早期終了, グラフの配置場所のカスタマイズの方法などといった小ワザを紹介します.
 
 ## コードチャンクを再利用する {#reuse-chunks}
 

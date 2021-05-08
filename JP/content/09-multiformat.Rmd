@@ -23,7 +23,7 @@ knitr::is_html_output(excludes = 'markdown')
 
 上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{ちゃんくおぷしょん@チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
 
-\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
+\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回の小ワザを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
 
 ````md
 ```{r animation.hook=if (knitr::is_html_output()) 'gifski'}`r ''`

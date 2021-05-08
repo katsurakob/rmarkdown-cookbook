@@ -20,7 +20,7 @@ LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっていま�
 
 プリアンブルになにか追加したい時, `pdf_document`\index{しゅつりょくおぷしょん@出力オプション!includes} `include` を使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. これらは1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
 
-例えば以下はテキスト内のハイパーリンクを脚注に変えるトリックです. PDF 出力された文書が紙に印刷されたものだと, 読者は紙面のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注の URL を見ることはできるのでこのトリックは役に立ちます. このトリックはテキストと URL の両方を表示します.
+例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. PDF 出力された文書が紙に印刷されたものだと, 読者は紙面のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注の URL を見ることはできるのでこのトリックは役に立ちます. この小ワザはテキストと URL の両方を表示します.
 
 ```tex
 % あなたはレンダリング前に \href のコピーを保存したいかもしれない
@@ -37,7 +37,7 @@ output:
       in_header: "preamble.tex"
 ```
 
-このトリックは実際には自分で実装しなくてもよく, Pandoc のデフォルトのテンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true``\index{YAML!links-as-notes}にすることで簡単にできます.
+この小ワザは実際には自分で実装しなくてもよく, Pandoc のデフォルトのテンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true``\index{YAML!links-as-notes}にすることで簡単にできます.
 
 
 コードをプリアンブルに追加する別の方法は,  YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接与えることです. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown 文書1つの内部に全てを含められることです. しかしあなたのレポートを複数の出力フォーマットに生成しなければならないなら, `includes` を使う方法をお薦めします. `header-includes` は無条件であり, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. 比較として, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
