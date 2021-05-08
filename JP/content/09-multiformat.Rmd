@@ -245,7 +245,7 @@ HTML 出力に対しては, CSS ファイル内でそのルールを定義しま
 
 LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パッケージ!framed} を基にして `blackbox` という名前で黒い背景色と白い文字色の新しい環境を作成します.
 
-```{cat, class.source='latex', engine.opts=list(file = 'latex/blackbox.tex')}
+```{cat, class.source='latex'}
 \usepackage{color}
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
