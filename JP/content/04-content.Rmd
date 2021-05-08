@@ -496,9 +496,13 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 > --- 山部赤人
 > :::
 
-TODO: quote poem だと flushrght が作られない?
 
 時に「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. 「コーディング」という行為にこだわりすぎないでください.
+
+:::{.infobox .caution data-latex"{caution}"}
+上記の例では, 最終行の出典の右寄せができません. これは Pandoc の fenced `Div` blocks の機能を使用しています. (\@ref(custom-blocks)節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください.
+:::
+
 
 ## モデルを数式に変換する {#equatiomatic}
 
