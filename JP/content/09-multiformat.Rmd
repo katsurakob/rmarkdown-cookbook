@@ -21,7 +21,7 @@ knitr::is_html_output(excludes = 'markdown')
 
 `r import_example('latex-tiny.Rmd')`
 
-上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
+上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{ちゃんくおぷしょん@チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
 
 \@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
 
@@ -92,7 +92,7 @@ knitr::include_url('https://yihui.org')
 
 ## 複数の図を横並びに {#figures-side}
 
-`fig.show="hold"`\index{チャンクオプション!fig.show} と `out.width` option\index{チャンクオプション!out.width} オプションを併用して複数の図を並べることができます. 以下の例では `out.width="48%"` を設定し, 出力は図\@ref(fig:figures-side)になります.
+`fig.show="hold"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} と `out.width` option\index{ちゃんくおぷしょん@チャンクオプション!out.width} オプションを併用して複数の図を並べることができます. 以下の例では `out.width="48%"` を設定し, 出力は図\@ref(fig:figures-side)になります.
 
 `r import_example('figures-side.Rmd')`
 

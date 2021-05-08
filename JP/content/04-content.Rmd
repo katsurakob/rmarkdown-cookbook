@@ -4,7 +4,7 @@
 
 ## 改ページ (改段) を挿入する {#pagebreaks}
 
-改ページしたい場合\index{改行}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
+改ページしたい場合\index{かいぎょう@改行}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
 
 例えば以下のように.
 
@@ -65,7 +65,7 @@ title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * sha
 
 上記の例では, 変数 `share` を作成してから文書のタイトルを追加しています. Pandoc は文書内に YAML セクションをいくつ書いても読み込む (そして全てマージする) ことができるため, この例が動作します. 
 
-タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!パラメータ|see {パラメータ}}\index{パラメータ}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
+タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!パラメータ|see {パラメータ}}\index{ぱらめーた@パラメータ}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
 
 ```yaml
 ---
@@ -105,7 +105,7 @@ smtp_send(
 
 ## 番号のない節 {#unnumbered-sections}
 
-ほとんどの出力フォーマットは `number_sections`\index{出力オプション!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
+ほとんどの出力フォーマットは `number_sections`\index{しゅつりょくおぷしょん@出力オプション!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
 
 ```yaml
 output:
@@ -135,7 +135,7 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), d
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-参考文献の目録\index{bibliography}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ることもできます. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
+参考文献の目録\index{さんこうぶんけん@参考文献}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ることもできます. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
 
 ```yaml
 ---
@@ -162,7 +162,7 @@ bibliography: references.bib
 
 ### 引用スタイルの変更 {#changing-citation-style}
 
-デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{引用}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
+デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{いんよう@引用}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
 
 ```yaml
 ---
@@ -283,7 +283,7 @@ knitr::write_bib(file = 'packages.bib')
 
 <!--https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables-->
 
-相互参照\index{crossreference} はあなたの文書を通して読者を誘導するのに役に立つ方法であり, R Markdown ではこれを自動的に行なえます. これは **bookdown**  本の [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) で既に説明されていますが, 以下で簡潔な説明をします.
+相互参照\index{そうごさんしょう@相互参照} はあなたの文書を通して読者を誘導するのに役に立つ方法であり, R Markdown ではこれを自動的に行なえます. これは **bookdown**  本の [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) で既に説明されていますが, 以下で簡潔な説明をします.
 
 相互参照を使用するにあたって, 以下が必要になります.
 
@@ -291,7 +291,7 @@ knitr::write_bib(file = 'packages.bib')
 
 - **図 (または表) に対するキャプション**: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 
-- **ラベルの設定されたコードチャンク**:\index{code chunk!label} チャンクによって生成された図を参照するための識別子を提供してくれます.
+- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@コードチャンク!らべる@ラベル} チャンクによって生成された図を参照するための識別子を提供してくれます.
 
 これらの条件が合わさって初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照するものの環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
 
@@ -437,7 +437,7 @@ output:
     base_format: rticles::jss_article
 ```
 
-**bookdown** 出力フォーマット関数のヘルプページを読んで, `base_format` 引数\index{出力オプション!base\_format}があるかどうか確認してみてください (例: `?bookdown::html_document2`). 
+**bookdown** 出力フォーマット関数のヘルプページを読んで, `base_format` 引数\index{しゅつりょくおぷしょん@出力オプション!base\_format}があるかどうか確認してみてください (例: `?bookdown::html_document2`). 
 
 ## 単語をコンマ区切りで結合する {#combine-words}
 
@@ -464,7 +464,7 @@ knitr::combine_words(LETTERS[1:5])
 
 ## 複数の改行コードを維持する {#linebreaks}
 
-Markdown ユーザは, verbatim 環境 (コードブロック) 以外の場所では空白\index{改行} (改行コード含む) は大抵の場合意味を持たないことに気づき, 驚くでしょう. 2つ以上のスペースはスペース1つと同じであり, 改行1つはスペース1つと同じです. LaTeX や HTML を使ったことがあるなら, これらの言語と同じルールであるため驚くことはないかもしれません.
+Markdown ユーザは, verbatim 環境 (コードブロック) 以外の場所では空白\index{かいぎょう@改行} (改行コード含む) は大抵の場合意味を持たないことに気づき, 驚くでしょう. 2つ以上のスペースはスペース1つと同じであり, 改行1つはスペース1つと同じです. LaTeX や HTML を使ったことがあるなら, これらの言語と同じルールであるため驚くことはないかもしれません.
 
 Markdown では, 空白行はしばしば段落などの要素の分離に使われます. 新しい段落に入らずに改行をするには, 末尾にスペース2つを追加しなければなりません. 特に詩や歌詞を引用したいときなど, 複数回改行したいときもあるかもしれません. 各行の末尾にスペース2つを手動で書き加えるのはうんざりする作業です. `blogdown:::quote_poem()`\index{blogdown!quote\_poem()} はこの作業を自動でやってくれます. 例えばこのように.
 
@@ -516,13 +516,13 @@ equatiomatic::extract_eq(fit)
 equatiomatic::extract_eq(fit, use_coefs = TRUE)
 ```
 
-実際の数式を表示するには, チャンクオプション `results = "asis"`\index{チャンクオプション!results} (オプションの意味は\@ref(results-asis)節参照) が必要です. そうしないと, テキスト出力がそのまま表示されてしまいます.
+実際の数式を表示するには, チャンクオプション `results = "asis"`\index{ちゃんくおぷしょん@チャンクオプション!results} (オプションの意味は\@ref(results-asis)節参照) が必要です. そうしないと, テキスト出力がそのまま表示されてしまいます.
 
 このパッケージについてより詳しく知りたいならば, ドキュメントを読み, Github 上での開発状況を追ってください.
 
 ## 複数の R プロットからアニメーションを作成する {#animation}
 
-1つのコードチャンクで一連のプロットを生成したとき, これらを結合し1つのアニメーション\index{アニメーション}を生成できます. 出力フォーマットが HTML なら, これは簡単です. **gifski** パッケージ\index{R パッケージ!gifski} [@R-gifski] をインストールし, チャンクオプション `animation.hook = "gifski"`\index{チャンクオプション!animation.hook} 設定するだけです. 図\@ref(fig:pacman) はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.
+1つのコードチャンクで一連のプロットを生成したとき, これらを結合し1つのアニメーション\index{あにめーしょん@アニメーション}を生成できます. 出力フォーマットが HTML なら, これは簡単です. **gifski** パッケージ\index{R パッケージ!gifski} [@R-gifski] をインストールし, チャンクオプション `animation.hook = "gifski"`\index{ちゃんくおぷしょん@チャンクオプション!animation.hook} 設定するだけです. 図\@ref(fig:pacman) はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.
 
 ````md
 ```{r, animation.hook="gifski"}`r ''`
@@ -541,17 +541,17 @@ for (i in 1:2) {
 
 アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\@ref(fig:pacman) が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
-PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に,  Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. それからチャンクオプション `fig.show = "animate"`\index{チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします. 以下はその例です.
+PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に,  Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. それからチャンクオプション `fig.show = "animate"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします. 以下はその例です.
 
 `r import_example('latex-animation.Rmd')`
 
-アニメーションのイメージフレーム間の表示間隔はチャンクオプション `interval`\index{チャンクオプション!interval} で設定できます. デフォルトでは `interval = 1` (つまり1秒) です.
+アニメーションのイメージフレーム間の表示間隔はチャンクオプション `interval`\index{ちゃんくおぷしょん@チャンクオプション!interval} で設定できます. デフォルトでは `interval = 1` (つまり1秒) です.
 
 R パッケージ **animation**\index{R パッケージ!animation} [@R-animation]  には, 統計的計算の方法やアイディアを表現するアニメーションの例がいくつか入っています. **gganimate** パッケージ\index{R パッケージ!gganimate} [@R-gganimate] は **ggplot2**\index{R パッケージ!gglot2} [@R-ggplot2] に基づいた滑らかなアニメーションの作成を可能にします. どちらも R Markdown で動作します.
 
 ## ダイアグラムを作成する {#diagrams}
 
-ダイアグラム\index{図!ダイアグラムの作成}やフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接管理することができます.
+ダイアグラム\index{ず@図!だいあぐらむのさくせい@ダイアグラムの作成}やフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接管理することができます.
 
 R ではいくつかのパッケージが使用可能ですが, その中で **DiagrammeR**\index{R パッケージ!DiagrammeR} [@R-DiagrammeR] とその他いくつかを最後に簡単に解説します. 完全なデモは https://rich-iannone.github.io/DiagrammeR/ で見ることができます. この節では基本的な使用法とダイアグラム内で R コードを使う方法を紹介します.
 
@@ -621,17 +621,17 @@ Markdown 構文で特殊な意味を持つ文字がいくつかあります. こ
 
 <!-- https://stackoverflow.com/questions/17046518/comment-out-text-in-r-markdown -->
 
-ソース文書内のテキストを最終的な出力文書に表示させないようコメントアウト\index{コメント}するのはとても便利です.  この用途のため, HTML の構文である `<!-- ここにコメント -->` を使えます. コメントはどの出力形式にも表示されません.
+ソース文書内のテキストを最終的な出力文書に表示させないようコメントアウト\index{こめんと@コメント}するのはとても便利です.  この用途のため, HTML の構文である `<!-- ここにコメント -->` を使えます. コメントはどの出力形式にも表示されません.
 
 コメントは1行でも, 複数行にも広げられます. これは草稿を書くのに便利でしょう.
 
 <!-- TODO: これでコードチャンクをコメントでき, knitr によって実行されるのも防ぐことができる (今は不可). -->
 
-RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボードショートカット\index{RStudio!コメントのショートカット} `Ctrl + Shift + C` (MacOS なら`Command + Shift + C`) を使えます.
+RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボードショートカット\index{RStudio!こめんとのしょーとかっと@コメントのショートカット} `Ctrl + Shift + C` (MacOS なら`Command + Shift + C`) を使えます.
 
 ## 目次から見出しを省略する {#toc-unlisted}
 
-目次に特定のセクションの見出しを表示させたくないなら, 見出しに2つのクラスを追加できます. `unlisted`\index{クラス!unlisted} と `unnumbered`\index{クラス!unnumbered} です. 例えばこのように
+目次に特定のセクションの見出しを表示させたくないなら, 見出しに2つのクラスを追加できます. `unlisted`\index{くらす@クラス!unlisted} と `unnumbered`\index{くらす@クラス!unnumbered} です. 例えばこのように
 
 ```md
 # 見出し {.unlisted .unnumbered}
@@ -641,9 +641,9 @@ RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボ
 
 ## 全てのコードを補遺に置く (\*) {#code-appendix}
 
-対象読者がレポートを読む時, 計算の詳細に強く関心があるのでない限り, あなたはレポートにソースコードブロックを表示させたくないかもしれません. この用途で, チャンクオプション `echo = FALSE`\index{チャンクオプション!echo} を設定してソースコードを隠し, 読者がプログラムコードで気が散らないようにすることができます. しかしそれでも, ソースコードは再現可能性のある研究のために重要です. 読者はレポートを読み終わった後に計算の正しさを検証したいと思うかも知れません. この場合, 本文中の全てのコードブロックをまとめ, 文書の末尾 (例えば補遺として) に表示するというのは良い考えでしょう.
+対象読者がレポートを読む時, 計算の詳細に強く関心があるのでない限り, あなたはレポートにソースコードブロックを表示させたくないかもしれません. この用途で, チャンクオプション `echo = FALSE`\index{ちゃんくおぷしょん@チャンクオプション!echo} を設定してソースコードを隠し, 読者がプログラムコードで気が散らないようにすることができます. しかしそれでも, ソースコードは再現可能性のある研究のために重要です. 読者はレポートを読み終わった後に計算の正しさを検証したいと思うかも知れません. この場合, 本文中の全てのコードブロックをまとめ, 文書の末尾 (例えば補遺として) に表示するというのは良い考えでしょう.
 
-チャンクオプションの `ref.label`\index{チャンクオプション!ref.label} と `knitr::all_labels()`\index{knitr!all\_labels()} 関数を使い, 文書内の全てのコードチャンクを取り出して1つのコードチャンクにまとめる簡単な方法があります. 例えばこのように.
+チャンクオプションの `ref.label`\index{ちゃんくおぷしょん@チャンクオプション!ref.label} と `knitr::all_labels()`\index{knitr!all\_labels()} 関数を使い, 文書内の全てのコードチャンクを取り出して1つのコードチャンクにまとめる簡単な方法があります. 例えばこのように.
 
 ````md
 # 補遺: 本稿で使ったコード全文
@@ -654,7 +654,7 @@ RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボ
 
 チャンクオプション `ref.label` について詳しく知らないならば, \@ref(ref-label)節を読んでください.
 
-`knitr::all_labels()` 関数は文書内の全てのチャンクラベルを返すため, `ref.label = knitr::all_labels()` は全てのソースコードチャンクを回収しこのチャンクに持ってくることを意味します. チャンクオプション `echo = TRUE` (コードを表示させる) と `eval = FALSE`\index{チャンクオプション!eval} (全てのコードはすでに実行されているため, このコードチャンクは実行してはいけません) を付与すれば, 1つのコードチャンクに全てのソースコードのコピーを表示させられます.
+`knitr::all_labels()` 関数は文書内の全てのチャンクラベルを返すため, `ref.label = knitr::all_labels()` は全てのソースコードチャンクを回収しこのチャンクに持ってくることを意味します. チャンクオプション `echo = TRUE` (コードを表示させる) と `eval = FALSE`\index{ちゃんくおぷしょん@チャンクオプション!eval} (全てのコードはすでに実行されているため, このコードチャンクは実行してはいけません) を付与すれば, 1つのコードチャンクに全てのソースコードのコピーを表示させられます.
 
 `ref.label` は任意のチャンクラベルの文字列ベクトルであるため, 補遺に表示するコードチャンクを一部だけにするようにラベルをフィルタリングできます. 以下はその例 ([Ariel Muldoon](https://yihui.org/en/2018/09/code-appendix/) によるものです) として `setup` と `get-labels` というラベルを排除しています.
 
@@ -743,7 +743,7 @@ R Markdown の世界では Lua フィルタを活用しているパッケージ�
 
 本書の\@ref(lua-color)節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.
 
-Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{出力オプション!pandoc\_args} オプションで適用することもできます. 例えばこのように.
+Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{しゅつりょくおぷしょん@出力オプション!pandoc\_args} オプションで適用することもできます. 例えばこのように.
 
 ```yaml
 ---

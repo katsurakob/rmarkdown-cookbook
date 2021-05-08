@@ -23,11 +23,11 @@ Markdown 言語の基礎のリマインダが必要ならば, https://www.rstudi
 ## フォント色 {#font-color}
 <!-- https://stackoverflow.com/questions/29067541/rmarkdown-how-to-change-the-font-color -->
 
-Markdown 構文にはテキストの色\index{フォント色}を変更する方法は組み込まれていません. HTML と LaTeX の構文で単語の書式を変更できます.
+Markdown 構文にはテキストの色\index{ふぉんといろ@フォント色}を変更する方法は組み込まれていません. HTML と LaTeX の構文で単語の書式を変更できます.
 
 - HTML では, テキストを `<span>` タグで囲み CSS で色を設定します. 例えば `<span style="color: red;">text</span>`\index{CSS プロパティ!color} というふうに.
 
-- PDF では, LaTeX コマンドの `\textcolor{}{}` が使えます. これには LaTeX パッケージの **xcolor**\index{LaTeX package!xcolor} が必要で, Pandoc のデフォルトの LaTex テンプレートに含まれています.
+- PDF では, LaTeX コマンドの `\textcolor{}{}` が使えます. これには LaTeX パッケージの **xcolor**\index{LaTeX パッケージ!xcolor} が必要で, Pandoc のデフォルトの LaTex テンプレートに含まれています.
 
 PDF でテキストの色を変更する例として, 以下のようなものを挙げます.
 
@@ -74,7 +74,7 @@ colorize = function(x, color){
 <!-- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 -->
 <!-- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks -->
 
-\@ref(linebreaks)節で話したように, Markdown では空白文字はしばしば意味をなさなくなります. Markdown はまた, デフォルトでインデントの空白を無視します. しかしいくつかの場合ではインデントを維持できます. 例えば詩や演説文などです. これらの状況では垂直線 (`|`) で始まる罫線ブロックを使うことができます. 改行\index{改行}と行頭のスペースは出力でも維持されます. 例えばこのように^[Claus Ekstrøm: https://yihui.org/en/2018/06/xaringan-math-limerick/ 作のリメリックです.]
+\@ref(linebreaks)節で話したように, Markdown では空白文字はしばしば意味をなさなくなります. Markdown はまた, デフォルトでインデントの空白を無視します. しかしいくつかの場合ではインデントを維持できます. 例えば詩や演説文などです. これらの状況では垂直線 (`|`) で始まる罫線ブロックを使うことができます. 改行\index{かいぎょう@改行}と行頭のスペースは出力でも維持されます. 例えばこのように^[Claus Ekstrøm: https://yihui.org/en/2018/06/xaringan-math-limerick/ 作のリメリックです.]
 
 ```md
 | When dollars appear it's a sign
@@ -143,7 +143,7 @@ pre code {
 }
 ```
 
-PDF 出力では, 行の折返しはよりトリッキーになります. 解決策の1つは, Pandoc 引数の `--listing` を使うことで有効になる LaTeX パッケージの **listings**\index{LaTeX パッケージ!listings} を使うことです. そうしたなら, このパッケージに対するオプションを設定しなければならず, またその設定コードは外部 LaTeX ファイルに含めることができます (方法は\@ref(latex-preamble)節参照) 例えば\index{出力オプション!includes}このように.
+PDF 出力では, 行の折返しはよりトリッキーになります. 解決策の1つは, Pandoc 引数の `--listing` を使うことで有効になる LaTeX パッケージの **listings**\index{LaTeX パッケージ!listings} を使うことです. そうしたなら, このパッケージに対するオプションを設定しなければならず, またその設定コードは外部 LaTeX ファイルに含めることができます (方法は\@ref(latex-preamble)節参照) 例えば\index{しゅつりょくおぷしょん@出力オプション!includes}このように.
 
 ```yaml
 ---
@@ -175,7 +175,7 @@ knitr::include_graphics(file.path(BOOKLANG, c('images/wrap-none.png', 'images/wr
 
 ## グラフ・画像のサイズを制御する {#figure-size}
 
-R が作成するグラフのサイズ\index{図!サイズ}はチャンクオプション`fig.width` \index{チャンクオプション!fig.with} と `fig.height` \index{チャンクオプション!fig.height}でインチ単位で制御できます. 同様に `fig.dim` オプション \index{チャンクオプション!fig.dim}に長さ2のベクトルで幅と高さを指定できます. 例えば `fig.dim = c(8, 6)` は `fig.width = 8` と `fig.height = 6` を指定したのと同じです. これらのオプションはグラフの物理的なサイズを設定し, さらに `out.width`\index{チャンクオプション!out.width} と `out.height`\index{チャンクオプション!out.height}を使い出力時に異なるサイズで, 例えば `out.width = "50%"` のように表示することが出来ます.
+R が作成するグラフのサイズ\index{ず@図!さいず@サイズ}はチャンクオプション`fig.width` \index{ちゃんくおぷしょん@チャンクオプション!fig.with} と `fig.height` \index{ちゃんくおぷしょん@チャンクオプション!fig.height}でインチ単位で制御できます. 同様に `fig.dim` オプション \index{ちゃんくおぷしょん@チャンクオプション!fig.dim}に長さ2のベクトルで幅と高さを指定できます. 例えば `fig.dim = c(8, 6)` は `fig.width = 8` と `fig.height = 6` を指定したのと同じです. これらのオプションはグラフの物理的なサイズを設定し, さらに `out.width`\index{ちゃんくおぷしょん@チャンクオプション!out.width} と `out.height`\index{ちゃんくおぷしょん@チャンクオプション!out.height}を使い出力時に異なるサイズで, 例えば `out.width = "50%"` のように表示することが出来ます.
 
 R コードチャンクで生成されないグラフや画像は, 2通りの方法で掲載できます.
 
@@ -201,7 +201,7 @@ R コードチャンクで生成されないグラフや画像は, 2通りの方
 
 ## 図のアラインメント {#fig-align}
 
-チャンクオプション `fig.align`\index{チャンクオプション!fig.align} は図のアラインメントを指定します. 例えば `fig.align = 'center'` で中央揃え, あるいは `fig.align = 'right'` で右揃えができます. このオプションは HTML と LaTeX 出力の両方で機能しますが, 他の出力フォーマット (残念ですが Word といったものは) では機能しないかもしれません. R コードチャンクで描画されたグラフも, `knitr::include_graphics()`\index{knitr!include\_graphics()} で取り込まれた外部イメージに対しても機能します.
+チャンクオプション `fig.align`\index{ちゃんくおぷしょん@チャンクオプション!fig.align} は図のアラインメントを指定します. 例えば `fig.align = 'center'` で中央揃え, あるいは `fig.align = 'right'` で右揃えができます. このオプションは HTML と LaTeX 出力の両方で機能しますが, 他の出力フォーマット (残念ですが Word といったものは) では機能しないかもしれません. R コードチャンクで描画されたグラフも, `knitr::include_graphics()`\index{knitr!include\_graphics()} で取り込まれた外部イメージに対しても機能します.
 
 ## コードチャンクをそのまま (verbatim) 表示 {#verbatim-code-chunks}
 
@@ -262,7 +262,7 @@ cat("````
 
 ## コードブロックに行番号を表示する (\*) {#number-lines}
 
-`attr.source = ".numberLines"`\index{チャンクオプション!attr.source} でソースコードブロックにも行番号を付けることも, `attr.output = ".numberLines"`\index{チャンクオプション!attr.output} でテキスト出力ブロックに行番号を付けることもできます (これらのオプションの詳細は\@ref(attr-output)節参照). 例えばこのように.
+`attr.source = ".numberLines"`\index{ちゃんくおぷしょん@チャンクオプション!attr.source} でソースコードブロックにも行番号を付けることも, `attr.output = ".numberLines"`\index{ちゃんくおぷしょん@チャンクオプション!attr.output} でテキスト出力ブロックに行番号を付けることもできます (これらのオプションの詳細は\@ref(attr-output)節参照). 例えばこのように.
 
 ````md
 ```{r, attr.source='.numberLines'}`r ''`
@@ -282,7 +282,7 @@ if (TRUE) {
 }
 ```
 
-HTML 出力では, Pandoc が提供するシンタックスハイライト\index{シンタックスハイライト} のテーマ\index{出力オプション!highlight} を選ぶ必要があることに注意してください. これは出力フォーマットの `highlight` オプションを `default` や `textmate` にすべきではないということを意味します. ヘルプページ `?rmarkdown::html_document` でこのオプションの他の値の一覧を見ることができます. 例えばこう設定できます.
+HTML 出力では, Pandoc が提供するシンタックスハイライト\index{しんたっくすはいらいと@シンタックスハイライト} のテーマ\index{しゅつりょくおぷしょん@出力オプション!highlight} を選ぶ必要があることに注意してください. これは出力フォーマットの `highlight` オプションを `default` や `textmate` にすべきではないということを意味します. ヘルプページ `?rmarkdown::html_document` でこのオプションの他の値の一覧を見ることができます. 例えばこう設定できます.
 
 ```yaml
 output:

@@ -11,7 +11,7 @@ HTML 文書の外観をカスタマイズしようと思うのなら, CSS と Ja
 
 CSS のセレクタと優先度のルールを理解することは初心者にとっては極めて重要です. さもなければ自分のカスタム CSS\index{CSS} が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).
 
-Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, `css` オプション\index{出力オプション!css} を使うことができます. 例えばこのように.
+Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, `css` オプション\index{しゅつりょくおぷしょん@出力オプション!css} を使うことができます. 例えばこのように.
 
 ```yaml
 output:
@@ -27,7 +27,7 @@ output:
     css: ["style-1.css", "style-2.css"]
 ```
 
-あるいは, Rmd 文書に 直接 CSS のルールを埋め込むのに, `css` コードチャンク\index{言語エンジン!css} を使うこともできます. 例えばこのように.
+あるいは, Rmd 文書に 直接 CSS のルールを埋め込むのに, `css` コードチャンク\index{げんごえんじん@言語エンジン!css} を使うこともできます. 例えばこのように.
 
 ````md
 We embed a `css` code chunk here.
@@ -39,7 +39,7 @@ p {
 ```
 ````
 
-チャンクオプション `echo = FALSE`\index{チャンクオプション!echo} は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む `<style>` タグは HTML 出力ファイルにも生成されます.
+チャンクオプション `echo = FALSE`\index{ちゃんくおぷしょん@チャンクオプション!echo} は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む `<style>` タグは HTML 出力ファイルにも生成されます.
 
 ## セクションヘッダを中央揃えにする {#center-heading}
 
@@ -57,9 +57,9 @@ Rmd 文書に CSS を適用する方法は\@ref(html-css)節を見てくださ�
 
 <!-- https://stackoverflow.com/questions/41030477/changing-chunk-background-color-in-rmarkdown -->
 
-チャンクオプションの `class.source`\index{チャンクオプション!class.source} と `class.output`\index{チャンクオプション!class.output} を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名\index{クラス!カスタムクラス}の文字列ベクトルを取ります (\@ref(attr-output)節参照). 例えば `class.source = "important"` は出力時にコードチャンクを含む HTML 要素に `important` というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.^[CSS ではクラスは先頭にピリオド (`.`) を付けるため, この場合はルールは `.important` から始まります.] このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.
+チャンクオプションの `class.source`\index{ちゃんくおぷしょん@チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名\index{くらす@クラス!カスタムクラス}の文字列ベクトルを取ります (\@ref(attr-output)節参照). 例えば `class.source = "important"` は出力時にコードチャンクを含む HTML 要素に `important` というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.^[CSS ではクラスは先頭にピリオド (`.`) を付けるため, この場合はルールは `.important` から始まります.] このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.
 
-デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワーク\index{Bootstrap}を読み込みます. Bootstrap は `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`,  `"bg-danger"` \index{クラス!Bootstrap クラス}\index{クラス!bg-primary}\index{クラス!bg-success}\index{クラス!bg-info}\index{クラス!bg-warning}\index{クラス!bg-danger}といったいくつかの [背景に対する CSS クラス](https://getbootstrap.com/docs/3.4/css/#helper-classes) が定義済みのため, コードと出力の外観の変更を容易にしてくれます.
+デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワーク\index{Bootstrap}を読み込みます. Bootstrap は `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`,  `"bg-danger"` \index{くらす@クラス!Bootstrap クラス}\index{くらす@クラス!bg-primary}\index{くらす@クラス!bg-success}\index{くらす@クラス!bg-info}\index{くらす@クラス!bg-warning}\index{くらす@クラス!bg-danger}といったいくつかの [背景に対する CSS クラス](https://getbootstrap.com/docs/3.4/css/#helper-classes) が定義済みのため, コードと出力の外観の変更を容易にしてくれます.
 
 以下はチャンクオプション `class.source = "bg-danger"` と `class.output = "bg-warning"` を使った例で, その出力は図\@ref(fig:chunk-bg)で見られます.
 
@@ -91,7 +91,7 @@ knitr::opts_chunk$set(class.source='watch-out')
 
 ## コードブロックをスクロール可能にする (\*) {#html-scroll}
 
-大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したいかもしれません. そうしないとページはとてつもなく長くなり, それらを細かく読む気のない読者に読み飛ばしづらくなるかもしれません. この問題の解決法は複数あります. `html_document` フォーマットの `code_folding` オプション\index{出力オプション!code\_folding}を使うというのがその1つです. このオプションは出力文書のコードブロックを折りたたみ, また読者はボタンを押して展開することができます (詳細は\@ref(fold-show)節).
+大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したいかもしれません. そうしないとページはとてつもなく長くなり, それらを細かく読む気のない読者に読み飛ばしづらくなるかもしれません. この問題の解決法は複数あります. `html_document` フォーマットの `code_folding` オプション\index{しゅつりょくおぷしょん@出力オプション!code\_folding}を使うというのがその1つです. このオプションは出力文書のコードブロックを折りたたみ, また読者はボタンを押して展開することができます (詳細は\@ref(fold-show)節).
 
 他の可能性としてはコードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの `max-height`\index{CSS プロパティ!max-height} と `overflow-y`\index{CSS プロパティ!overflow-y} で実現できます. 以下はその使用例の全容で, 出力は図\@ref(fig:html-scroll)になります.
 
@@ -153,7 +153,7 @@ output:
 
 HTML レポートの並列しているセクションをまとめる自然な方法の1つは, タブセットを使うことです. これは読者がページをスクロールして戻したり進めたりするかわりに, タブのタイトルをクリックすることで異なるセクションの内容を閲覧することを可能にします.
 
-セクションをタブにするために, タブに変換する見出しより1レベル上の見出しにクラス属性 `.tabset`\index{tabset} を追加できます. 例えばレベル2の見出しに `.tabset` を追加するとそれ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.
+セクションをタブにするために, タブに変換する見出しより1レベル上の見出しにクラス属性 `.tabset`\index{くらす@クラス!tabset} を追加できます. 例えばレベル2の見出しに `.tabset` を追加するとそれ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.
 
 `r import_example('html-tabs.Rmd')`
 
@@ -188,7 +188,7 @@ knitr::include_graphics(file.path(BOOKLANG, "images/html-tabs.png"), dpi = NA)
 
 ## Rmd ソースファイルを HTML に埋め込む {#embed-rmd}
 
-HTML 出力ページを共有するとき, Rmd ソースファイルもほしいかもしれません. 例えば Rmd ソースを変更し, 自分自身でレポートをコンパイルしたいかもしれません. Rmd ソースファイルのコピーを HTML に埋め込むにはオプション `code_download`\index{出力オプション!code\_download} を使うことができます.
+HTML 出力ページを共有するとき, Rmd ソースファイルもほしいかもしれません. 例えば Rmd ソースを変更し, 自分自身でレポートをコンパイルしたいかもしれません. Rmd ソースファイルのコピーを HTML に埋め込むにはオプション `code_download`\index{しゅつりょくおぷしょん@出力オプション!code\_download} を使うことができます.
 
 ```yaml
 output:
@@ -234,7 +234,7 @@ xfun::embed_files(list.files('.', '[.](Rmd|csv)$'))
 
 ## カスタム HTML テンプレートを使う (\*) {#html-template}
 
-既に\@ref(latex-template)節では LaTeX テンプレートについて話しました. Pandoc が Markdown を HTML へ変換するに際しカスタム HTML テンプレート \index{テンプレート!HTML}を指定することもできます. 以下は簡単なテンプレートの例です.
+既に\@ref(latex-template)節では LaTeX テンプレートについて話しました. Pandoc が Markdown を HTML へ変換するに際しカスタム HTML テンプレート \index{てんぷれーと@テンプレート!HTML}を指定することもできます. 以下は簡単なテンプレートの例です.
 
 ```html
 <html>
@@ -287,7 +287,7 @@ draft: true
 ---
 ```
 
-テンプレートを Rmd 文書に適用するのに, テンプレートをファイルに保存し, `html_document` の `template` オプション\index{出力オプション!template}にファイルパスを与えることができます. 例えばこのように.
+テンプレートを Rmd 文書に適用するのに, テンプレートをファイルに保存し, `html_document` の `template` オプション\index{しゅつりょくおぷしょん@出力オプション!template}にファイルパスを与えることができます. 例えばこのように.
 
 
 ```yaml
@@ -300,7 +300,7 @@ output:
 
 ## 既存の HTML ファイルの内容を読み込む (\*) {#include-html}
 
-`html_document` フォーマット (あるいはこのオプションをサポートしている他のフォーマット) の `includes` オプション\index{出力オプション!includes} があれば, 既存の HTML ファイルの本文を HTML 出力文書の3箇所のどこかで読み込むことができます. それらは `<head>`, `<body>` の開始時点, そして `</body>` の末尾です.
+`html_document` フォーマット (あるいはこのオプションをサポートしている他のフォーマット) の `includes` オプション\index{しゅつりょくおぷしょん@出力オプション!includes} があれば, 既存の HTML ファイルの本文を HTML 出力文書の3箇所のどこかで読み込むことができます. それらは `<head>`, `<body>` の開始時点, そして `</body>` の末尾です.
 
 ```yaml
 output:
@@ -359,7 +359,7 @@ HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませ
 
 ## ブラウザアイコンをカスタマイズする {#favicon}
 
-\@ref(include-html)節では `html_document` フォーマットの `includes` オプションで追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました.  このテクニックはファビコン\index{図!ファビコン}というカスタムブラウザアイコンを HTML 出力に追加することに使えます.
+\@ref(include-html)節では `html_document` フォーマットの `includes` オプションで追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました.  このテクニックはファビコン\index{ず@図!ふぁびこん@ファビコン}というカスタムブラウザアイコンを HTML 出力に追加することに使えます.
 
 ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (https://cran.r-project.org) を開いてブラウザのタブを見ると, 小さな  R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.
 
@@ -369,7 +369,7 @@ HTML 文書にファビコンを追加するには, 以下のコードをカス�
 <link rel="shortcut icon" href="{ファビコン画像ファイルへのパス}" />
 ```
 
-YAML メタデータ\index{出力オプション!includes}を使って, このファイルを文書の `<head>` 内に挿入できることを思い出してください.
+YAML メタデータ\index{しゅつりょくおぷしょん@出力オプション!includes}を使って, このファイルを文書の `<head>` 内に挿入できることを思い出してください.
 
 ```yaml
 output:
@@ -465,7 +465,7 @@ HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対する�
 
 - 可能ならば HTML 出力文書に Rmd ソース文書を同梱するようにする (例えば\@ref(embed-rmd)節でその方法の1つを実演しています). HTML 文書にアクセシビリティがない場合, 視覚障害者は Rmd ソースから内容を理解できるかもしれませんし, ソースを修正することもできるかもしれません.
 
-- テキスト情報をグラフに与える. 2014年の useR! カンファレンスで, 私は Jonathan からこの問題を個人的に教えてもらいました. web ページ上の画像の `alt` 属性\index{図!alt text}の重要さを私は初めて理解しました.
+- テキスト情報をグラフに与える. 2014年の useR! カンファレンスで, 私は Jonathan からこの問題を個人的に教えてもらいました. web ページ上の画像の `alt` 属性\index{ず@図!だいたいてきすと@代替テキスト}の重要さを私は初めて理解しました.
     
     この問題を理解するために, まずは web ページの画像が HTML タグ `<img />` によって生成されることを知らなければなりません. このタグは `src` 属性を持ち, 画像ファイルのソースの場所を指定しています. 例えば `<img src="foo_figures/image.png" />` のように. 視力のある読者はこの画像を見ることができますが, スクリーンリーダは画像を読むことが出来ないため, 視覚障害者には描かれていることを知るのは難しいです, 特にラスタ画像の場合は (SVG のようなベクタ画像は多少ましかもしれません). この場合テキストでのヒントを与えると, スクリーンリーダは読み上げることができるので便利です. このテキストでのヒントは画像の代替 (alternate) テキストを意味する `alt` 属性で与えることできます.
     

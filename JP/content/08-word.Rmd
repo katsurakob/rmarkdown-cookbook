@@ -22,7 +22,7 @@ output:
 
 ## カスタム Word テンプレート {#word-template}
 
-Word テンプレート文書\index{テンプレート!Word}で定義されたスタイルを R Markdown で新たに生成された Word 文書に適用することができます. テンプレート文書は「スタイル参照文書」 "style reference document" とも呼ばれています. ポイントは, 最初はこのテンプレート文書 Pandoc から作成し, それからスタイル定義を変更しなければならないということです. それからこのテンプレートファイルのパスを `word_document`\index{出力オプション!reference\_docx} の `reference_docx` オプションに与えてください. 例えばこのように.
+Word テンプレート文書\index{てんぷれーと@テンプレート!Word}で定義されたスタイルを R Markdown で新たに生成された Word 文書に適用することができます. テンプレート文書は「スタイル参照文書」 "style reference document" とも呼ばれています. ポイントは, 最初はこのテンプレート文書 Pandoc から作成し, それからスタイル定義を変更しなければならないということです. それからこのテンプレートファイルのパスを `word_document`\index{しゅつりょくおぷしょん@出力オプション!reference\_docx} の `reference_docx` オプションに与えてください. 例えばこのように.
 
 ```yaml
 ---
