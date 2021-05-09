@@ -10,20 +10,20 @@ R Markdown の主な利点は1つのソースから複数種類の出力フォ�
 
 ## LaTeX か HTML か {#latex-html}
 
-LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} 関数は出力フォーマットが LaTeX かどうか (Pandoc 出力フォーマットの `latex` および `beamer`) を教えてくれます. 同様に `knitr::is_html_output`\index{knitr!is\_html\_output()} 関数は出力フォーマットが HTML かどうか教えてくれます. デフォルトでは Pandoc 出力フォーマットのうち `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, そして `slidy` が HTML 出力とみなされます.  です. ある Pandoc 出力が HTML であると思えないなら, そのフォーマットを除外するために, 例えばこのように `excludes` 引数を使えます.
+LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} 関数は出力フォーマットが LaTeX かどうか (Pandoc 出力フォーマットの `latex` および `beamer`) を教えてくれます. 同様に `knitr::is_html_output`\index{knitr!is\_html\_output()} 関数は出力フォーマットが HTML かどうか教えてくれます. デフォルトでは Pandoc 出力フォーマットのうち `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, そして `slidy` が HTML 出力とみなされます. ある Pandoc 出力が HTML であると思えないなら, そのフォーマットを除外するために, 例えばこのように `excludes` 引数を使えます.
 
 ```{r, collapse=TRUE}
 # markdown を HTML として扱わない
 knitr::is_html_output(excludes = 'markdown')
 ```
 
-ある出力要素が LaTeX または HTML のみで生成されるのなら, これらの関数を条件つきで生成できるように使えます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境は HTML 出力では役に立たないでしょうから, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
+ある出力要素が LaTeX または HTML のみで生成されるのなら, これらの関数を条件つきで生成できるように使えます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境は HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
 
 `r import_example('latex-tiny.Rmd')`
 
 上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
 
-第\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. 第\@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
+\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
 
 ````md
 ```{r animation.hook=if (knitr::is_html_output()) 'gifski'}`r ''`
@@ -34,8 +34,6 @@ for (i in 1:2) {
 ````
 
 これらの条件付き関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
-
-TODO: conditional functions をなんと呼ぶのが良いか　← 場合分けの関数？
 
 ````md
 ```{r, eval=knitr::is_html_output(), echo=FALSE}`r ''`
@@ -90,7 +88,7 @@ knitr::include_url('https://yihui.org')
 
 `out.width` や `fig.cap` といった図に関連するほとんどのチャンクオプションが `knitr::include_url()` でも機能します.
 
-サーバ上で Shiny アプリを公開しているなら,  `knitr::include_app()`\index{knitr!include\_app()} を使えばこれを文書に含めることができます. これは `include_url()` と同じように動作します. **bookdown** 本 [@bookdown2016] の [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) には `include_app()` と `include_url()` に関する詳細な話が書かれています.
+サーバ上で Shiny アプリを公開しているなら, `knitr::include_app()`\index{knitr!include\_app()} を使えばこれを文書に含めることができます. これは `include_url()` と同じように動作します. **bookdown** 本 [@bookdown2016] の [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) には `include_app()` と `include_url()` に関する詳細な話が書かれています.
 
 ## 複数の図を横並びに {#figures-side}
 
@@ -103,13 +101,13 @@ knitr::include_url('https://yihui.org')
 
 この単純なアプローチは PDF でも HTML 出力でも動作します.
 
-**訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48%  と少し小さくしています.
+**訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48% と少し小さくしています.
 
-図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, 第\@ref(latex-subfigure)節を見てください. しかしサブフィギュアは LaTeX 出力に対してのみサポートされているので気をつけてください.
+図の内部に複数のプロットがあり, サブ図を使いたいなら, \@ref(latex-subfigure)節を見てください. しかしサブ図は LaTeX 出力に対してのみサポートされているので気をつけてください.
 
 ## 生のコードを書く (\*) {#raw-content}
 
-第\@ref(raw-latex)節で紹介したテクニックは実に広く使えます. いかに複雑な生のコードであっても Markdown 内で「生の」コンテンツとして保護するよう指定できます. 例えば HTML を直接書いたなら, `=html` 属性を使用することができます.
+\@ref(raw-latex)節で紹介したテクニックは実に広く使えます. いかに複雑な生のコードであっても Markdown 内で「生の」コンテンツとして保護するよう指定できます. 例えば HTML を直接書いたなら, `=html` 属性を使用することができます.
 
 ````md
 ```{=html}
@@ -223,7 +221,7 @@ output:
 ---
 ```
 
-次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. さらなる使用例としては, 第\@ref(multi-column)節に, 多段組みレイアウト内で複数ブロックを並べるものがあります.
+次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. さらなる使用例としては, \@ref(multi-column)節に, 多段組みレイアウト内で複数ブロックを並べるものがあります.
 
 ### 影付きブロックを追加する {#block-shaded}
 
@@ -260,7 +258,7 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
  {\end{shaded}}
 ```
 
-本書で **framed** パッケージを使うのはこれがかなり軽量だからですが, このパッケージは色付きで角の丸い枠を描画することができません. それを実現するには, より洗練された LaTeX パッケージである **tcolorblox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX パッケージ!tcolorbox}が必要ですが,  影付きボックスを作るためのとても柔軟な一連のオプションがあります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.
+本書で **framed** パッケージを使うのはこれがかなり軽量だからですが, このパッケージは色付きで角の丸い枠を描画することができません. それを実現するには, より洗練された LaTeX パッケージである **tcolorblox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX パッケージ!tcolorbox}が必要です. このパッケージには影付きボックスを作るためのとても柔軟な一連のオプションがあります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.
 
 ```tex
 \usepackage{tcolorbox}
@@ -411,8 +409,7 @@ Below we show more example blocks with different icons:
 この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
 
-
-代わりになる方法として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成することもできます. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
+代替案として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成することもできます. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
 
 `r import_example('awesomebox.Rmd')`
 
