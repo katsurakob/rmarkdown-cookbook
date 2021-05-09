@@ -23,7 +23,7 @@ _R Markdown Definitive Guide_ [@rmarkdown2018] の  [Section 2.7](https://bookdo
 
 ## カスタム言語エンジンを登録する (\*) {#custom-engine}
 
-`knitr::knit_engines$set()`\index{knitr!knit\_engines} でカスタム言語エンジン\index{言語エンジン!カスタム}を登録できます. これは関数を入力として受け容れます. これが例です.
+`knitr::knit_engines$set()`\index{knitr!knit\_engines} でカスタム言語エンジン\index{げんごえんじん@言語エンジン!カスタム}を登録できます. これは関数を入力として受け容れます. これが例です.
 
 ```{r, eval=FALSE}
 knitr::knit_engines$set(foo = function(options) {
@@ -54,7 +54,7 @@ knitr::knit_engines$set(upper = function(options) {
 })
 ```
 
-ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討することもできます. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
+ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{ちゃんくおぷしょん@チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{ちゃんくおぷしょん@チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討することもできます. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
 
 > ````md
 > ```{upper}`r ''`
@@ -102,7 +102,7 @@ knitr::knit_engines$set(py = function(options) {
 
 ## Python コードの実行と双方向処理 {#eng-python}
 
-あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と **knitr** はなんと Python\index{言語エンジン!python}\index{Python} をサポートしています.
+あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と **knitr** はなんと Python\index{げんごえんじん@言語エンジン!python}\index{Python} をサポートしています.
 
 Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ``` ```{python}```` を使うことができます. 例えばこのように.
 
@@ -122,7 +122,7 @@ R Markdown と **knitr** の Python サポートは **reticulate** パッケー�
 
 ## `asis` エンジンでコンテンツを条件付きで実行する Execute content conditionally via the `asis` engine {#eng-asis}
 
-その名が示すとおり, `asis` エンジン\index{言語エンジン!asis}はチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション `echo` によりチャンクの内容の表示を決定します. `echo = FALSE` の時はチャンクは隠されます. 以下は簡単な例です.
+その名が示すとおり, `asis` エンジン\index{げんごえんじん@言語エンジン!asis}はチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション `echo` によりチャンクの内容の表示を決定します. `echo = FALSE` の時はチャンクは隠されます. 以下は簡単な例です.
 
 ````md
 ```{r}`r ''`
@@ -140,7 +140,7 @@ https://xkcd.com/221/ によれば, **真の**乱数を生成しました!
 
 ## シェルスクリプトを実行する {#eng-bash}
 
-あなたが好んでいるシェルに応じて, `bash` ・ `sh` ・ `zsh` エンジン\index{言語エンジン!bash}\index{言語エンジン!sh}\index{言語エンジン!zsh}でシェルスクリプトを実行できます. 以下はチャンクヘッダ ```` ```{bash}```` を使った `bash` の例です.
+あなたが好んでいるシェルに応じて, `bash` ・ `sh` ・ `zsh` エンジン\index{げんごえんじん@言語エンジン!bash}\index{げんごえんじん@言語エンジン!sh}\index{げんごえんじん@言語エンジン!zsh}でシェルスクリプトを実行できます. 以下はチャンクヘッダ ```` ```{bash}```` を使った `bash` の例です.
 
 ```{bash}
 ls *.Rmd | head -n 5
@@ -160,11 +160,11 @@ echo $PATH
 knitr::opts_chunk$set(engine.opts = list(bash = '-l'))
 ```
 
-チャンクオプション `engine.opts`\index{チャンクオプション!engine.opts} に文字列ベクトルとして他の引数を `bash` に与えることもできます.
+チャンクオプション `engine.opts`\index{ちゃんくおぷしょん@チャンクオプション!engine.opts} に文字列ベクトルとして他の引数を `bash` に与えることもできます.
 
 ## D3 で可視化する {#d3}
 
-R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで `r2d3()` 関数を呼び出すか, `d3` エンジンindex{言語!D3}\index{D3}\index{図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は `d3` エンジンで棒グラフを描く例です.
+R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで `r2d3()` 関数を呼び出すか, `d3` エンジン\index{げんごえんじん@言語エンジン!D3}\index{D3}\index{ず図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は `d3` エンジンで棒グラフを描く例です.
 
 `r import_example('d3.Rmd')`
 
@@ -185,15 +185,15 @@ con = "my-file.txt")
 
 R 4.0.0 以降では `r"()"` 内での生の文字列 (`?Quotes` のヘルプ参照) がサポートされ始めたので, 特殊文字のルールを全て覚える必要はなくなり, この問題は大いに緩和されました. 生の文字列があってもなお, チャンク内で長い文字列を明示的にファイルに書き出すことは読者の注意力を少しばかり削ぐ可能性があります.
 
-**knitr** の `cat` エンジン\index{言語エンジン!cat}は, 例えばバックスラッシュのリテラルが必要な時は, 二重バックスラッシュが必要といった, R の文字列ルールを一切考えることなく, コードチャンクの内容の表示かつ/または外部ファイルへの書き出しの方法を提供してくれます.
+**knitr** の `cat` エンジン\index{げんごえんじん@言語エンジン!cat}は, 例えばバックスラッシュのリテラルが必要な時は, 二重バックスラッシュが必要といった, R の文字列ルールを一切考えることなく, コードチャンクの内容の表示かつ/または外部ファイルへの書き出しの方法を提供してくれます.
 
-チャンクの内容をファイルに書き出すには, チャンクオプション `engine.opts`\index{チャンクオプション!engine.opts} にファイルパスを指定してください. 例えば `engine.opts = list(file = 'path/to/file')` のように. この内部では, `engine.opts` で指定された値のリストが `base::cat()` に渡されます. そして `file` は `base::cat()` の引数の1つです.
+チャンクの内容をファイルに書き出すには, チャンクオプション `engine.opts`\index{ちゃんくおぷしょん@チャンクオプション!engine.opts} にファイルパスを指定してください. 例えば `engine.opts = list(file = 'path/to/file')` のように. この内部では, `engine.opts` で指定された値のリストが `base::cat()` に渡されます. そして `file` は `base::cat()` の引数の1つです.
 
 次に, `cat` エンジンの使い方の詳しい説明のため3つの例を提示します.
 
 ### CSS ファイルへ書き込む
 
-\@ref(chunk-styling)節でお見せしたように, 要素を CSS\index{CSS} でスタイル設定するために `css` コードチャンク\index{言語エンジン!css}を Rmd 文書に埋め込むことができます. 別の方法として, カスタム CSS ファイルを, `html_document` のようないくつかの R Markdown 出力フォーマットで有効な `css` オプションを介して Pandoc に渡す方法もあります. `cat` エンジンはこの CSS ファイルを Rmd から書き込むのに使用できます.
+\@ref(chunk-styling)節でお見せしたように, 要素を CSS\index{CSS} でスタイル設定するために `css` コードチャンク\index{げんごえんじん@言語エンジン!css}を Rmd 文書に埋め込むことができます. 別の方法として, カスタム CSS ファイルを, `html_document` のようないくつかの R Markdown 出力フォーマットで有効な `css` オプションを介して Pandoc に渡す方法もあります. `cat` エンジンはこの CSS ファイルを Rmd から書き込むのに使用できます.
 
 以下の例は文書のチャンクから `custom.css` ファイルを生成し, そのファイルパスを `html_document` フォーマットの `ccs` オプションに渡す方法を示しています.
 
@@ -247,7 +247,7 @@ unlink('demo.yml')
 
 ## SAS コードを実行する {#eng-sas}
 
-あなたは `sas` エンジン\index{言語エンジン!SAS} で SAS (https://www.sas.com) を実行するかもしれません. あなたの環境変数 `PATH` に SAS の実行ファイルがあることを確認するか, (`PATH` の意味を知らないなら) チャンクオプション `engine.path`\index{チャンクオプション!engine.path} に実行ファイルのフルパスを与える必要があります. 例えば `engine.path = "C:\\Program Files\\SASHome\\x86\\SASFoundation\\9.3\\sas.exe"` のように. 以下は "Hello World" を表示する例です.
+あなたは `sas` エンジン\index{げんごえんじん@言語エンジン!SAS} で SAS (https://www.sas.com) を実行するかもしれません. あなたの環境変数 `PATH` に SAS の実行ファイルがあることを確認するか, (`PATH` の意味を知らないなら) チャンクオプション `engine.path`\index{ちゃんくおぷしょん@チャンクオプション!engine.path} に実行ファイルのフルパスを与える必要があります. 例えば `engine.path = "C:\\Program Files\\SASHome\\x86\\SASFoundation\\9.3\\sas.exe"` のように. 以下は "Hello World" を表示する例です.
 
 ````md
 ```{sas}`r ''`
@@ -259,7 +259,7 @@ run;
 
 ## Stata コードを実行する {#eng-stata}
 
-Stata をインストールしているなら, `stata` エンジン\index{言語エンジン!stata}で Stata のコードを実行できます. `stata` 実行ファイルが環境変数 `PATH` から見つけられないかぎり, チャンクオプション `engine.path`\index{チャンクオプション!engine.path} を介して実行ファイルのフルパスを指定する必要があります. 例えば `engine.path = "C:/Program Files (x86)/Stata15/StataSE-64.exe"` のように. 以下は簡単な例です.
+Stata をインストールしているなら, `stata` エンジン\index{げんごえんじん@言語エンジン!stata}で Stata のコードを実行できます. `stata` 実行ファイルが環境変数 `PATH` から見つけられないかぎり, チャンクオプション `engine.path`\index{ちゃんくおぷしょん@チャンクオプション!engine.path} を介して実行ファイルのフルパスを指定する必要があります. 例えば `engine.path = "C:/Program Files (x86)/Stata15/StataSE-64.exe"` のように. 以下は簡単な例です.
 
 ````md
 ```{stata}`r ''`
@@ -284,7 +284,7 @@ eval_asy <- function() {
 }
 ``` 
 
-Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
+Asymptote (https://asymptote.sourceforge.io) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) `asy` エンジン\index{Asymptote}\index{げんごえんじん@言語エンジン!asy}を使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ https://github.com/vectorgraphics/asymptote からコピーした例で, 出力を図\@ref(fig:elevation)に示します.
 
 ```{asy, elevation, fig.cap='Asymptote で作成した3Dグラフィック', cache=TRUE, fig.retina=1, eval=eval_asy()}
 import graph3;
@@ -362,7 +362,7 @@ unlink('sine.csv')
 
 Sass (https://sass-lang.com) は CSS を拡張した言語\index{CSS!Sass}\index{Sass}で, 基本的な CSS で行っていた のよりはるかに柔軟な方法でルールを作成できます. これを学ぶことに関心があるなら, 公式ドキュメントを見てください.
 
-R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン,  `sass`\index{言語エンジン!sass} and `scss`\index{言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが  ```` ```{scss}```` である `scss` コードチャンクです.
+R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン,  `sass`\index{げんごえんじん@言語エンジン!sass} and `scss`\index{げんごえんじん@言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが  ```` ```{scss}```` である `scss` コードチャンクです.
 
 ```{scss}
 $font-stack: "HGS創英角ﾎﾟｯﾌﾟ体", "Comic Sans MS", cursive, sans-serif;

@@ -2,9 +2,9 @@
 
 # **knitr** のチャンク及びパッケージオプション {#full-options}
 
-```{block2, type="rmdtip"}
+:::{.infobox .tip data-latex="{tip}"}
 この付録は https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html で公開されているものと同一です.
-```
+:::
 
 ```{r, echo=FALSE, results='asis'}
 # retrieve md from knitr's website; I have cloned the website repo locally, so
