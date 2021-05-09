@@ -4,9 +4,7 @@
 
 ## 改ページ (改段) を挿入する {#pagebreaks}
 
-改ページしたい場合\index{かいぎょう@改行}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの出力時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
-
-例えば以下のように.
+改ページしたい場合\index{かいぎょう@改行}, `\newpage` を文書に挿入できます.^[**訳注**: 正確には `\newpage` コマンドは改「段」です. 二段組の場合, 次の段に改めるため, 必ずページを改めるわけではありません.] これは LaTeX コマンドですが, **rmarkdown** パッケージは LaTeX 出力フォーマットでも, 以下のような HTML, Word, ODT などのいくつかの非 LaTeX 出力フォーマットでも認識することができます.^[HTML 出力では, 改ページは HTML ページの印刷時のみ意味をなし, それ以外では HTML は単一の連続したページになるため, 改ページを見ることはありません.]
 
 ```md
 ---
@@ -33,7 +31,7 @@ vignette("lua-filters", package = "rmarkdown")
 
 ## 文書タイトルを動的に設定する {#dynamic-yaml}
 
-Rmd 文書内のどこでも, YAML メタデータの部分であってもインライン R コード (\@ref(r-code)節) を使うことができます. つまりインライン R コードによって文書のタイトルなどの YAML メタデータの動的生成\index{YAML!動的生成}が可能ということです. 例えばこのように.
+インライン R コード (\@ref(r-code)節)は, Rmd 文書内のどこでも, YAML メタデータの部分であっても, 使うことができます. つまり次の例のように, インライン R コードによって文書のタイトルなどの YAML メタデータを動的に生成\index{YAML!動的生成}できるということです.
 
 ```yaml
 ---
@@ -41,7 +39,7 @@ title: "自動車 `r knitr::inline_expr('nrow(mtcars)')` 台の分析"
 ---
 ```
 
-タイトルが以降の文書内で作成される R の変数に依存する場合, 以下の例のようにその後に YAML セクションを書いて `title` フィールドを加えることになるでしょう. 
+文書タイトルが後の文書内で作成される R の変数に依存する場合, 以下の例のように変数の後にくる YAML セクションに `title` フィールドを書き加えることができます. 
 
 ````md
 ---
@@ -63,7 +61,7 @@ title: "我々の市場シェアは今や `r knitr::inline_expr('round(100 * sha
 これはとても `r knitr::inline_expr('if(share > 0.8) "喜ばしい" else "悲しい"')` ことです.
 ````
 
-上記の例では, 変数 `share` を作成してから文書のタイトルを追加しています. Pandoc は文書内に YAML セクションをいくつ書いても読み込む (そして全てマージする) ことができるため, この例が動作します. 
+上記の例では, 変数 `share` を生成してから文書のタイトルを追加しています. このような場合であってもうまくいくのは, Pandoc は文書内に YAML セクションをいくつ書いても読み込み, そして全てをマージすることができるためです. 
 
 タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポート\index{YAML!パラメータ|see {パラメータ}}\index{ぱらめーた@パラメータ}から動的に生成することができます (\@ref(parameterized-reports) 節参照). 例えばこのように.
 
@@ -75,13 +73,13 @@ params:
   doc_title: "デフォルトのタイトル"
 ---
 ```
-タイトルが動的なパラメータなら, タイトルだけ異なるレポートのまとまりを簡単に生成できます.
+タイトルを動的なパラメータにしておくと, タイトルだけ異なるレポートを簡単に一括で生成できます.
 
 この節ではタイトルを例にしましたが, このアイディアは YAML セクションのどのメタデータのフィールドにも適用可能です.
 
 ## R コード内で文書メタデータにアクセスする {#document-metadata}
 
-Rmd 文書をコンパイルする際に, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に保存されます. 例えば `rmarkdown::metadata$title` は文書のタイトルを与えます. YAML メタデータに与えられた情報をハードコードしなくてすむように, この `metadata` オブジェクトを R コード内で使うことができます. 例えば  **blastula** パッケージ [@R-blastula]\index{R パッケージ!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
+Rmd 文書をコンパイルする際には, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に格納されます. 例えば `rmarkdown::metadata$title` には文書のタイトルが与えられます. この `metadata` オブジェクトは R コード内で使うことができるので,　YAML メタデータに与えられた情報をハードコードしなくてすみます. 例えば以下のように  **blastula** パッケージ [@R-blastula]\index{R パッケージ!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
 
 ````md
 ---
@@ -105,7 +103,7 @@ smtp_send(
 
 ## 番号のない節 {#unnumbered-sections}
 
-ほとんどの出力フォーマットは `number_sections`\index{しゅつりょくおぷしょん@出力オプション!number\_sections} オプションをサポートしています. これは `true` を設定すれば節への付番を有効にできるオプションです. 例えば以下のように.
+ほとんどの出力フォーマットは `number_sections`\index{しゅつりょくおぷしょん@出力オプション!number\_sections} オプションをサポートしています. これを `true` に設定すれば, 以下の例のように節への番号付けを有効にできます. 
 
 ```yaml
 output:
@@ -123,19 +121,19 @@ output:
 
 全く同じことを, `{.unnumbered}` を使ってもできます. 例えば `{.unnumbered #section-id}` のように, 他の属性を追加することもできます. 詳細は https://pandoc.org/MANUAL.html#extension-header_attributes を確認してください.
 
-付番されてない節はしばしば記述に追加の情報を与えるのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文では含まれないため付番されていません. 図\@ref(fig:unnumbered-sections)で見られるように, 実際の本文は付番されていない章2つの後から始まり, 本文の章は付番されています. 
+付番されていない節は記述に特記情報を追加するのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文ではないため付番されていません. 図\@ref(fig:unnumbered-sections)を見ればわかるように, 実際の本文は番号の付いていない2つの章の後から始まり, 本文の章は付番されています. 
 
 ```{r, unnumbered-sections, echo=FALSE, fig.cap='付番された章とされていない章を示すための目次のスクリーンショット'}
 knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), dpi = NA)
 ```
 
-節番号は漸増します. もし付番されている節の後にされていない節が挿入し, その後にさらに付番された節が開始しているなら, 節番号はそこから増加を再開します.
+節番号は1つづつ増えます. もし付番した節の後に付番されていない節を挿入し, その後さらに付番した節が始まると, 節番号は再び増加していきます.
 
 ## 参考文献と引用 {#bibliography}
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-参考文献の目録\index{さんこうぶんけん@参考文献}を出力文書に含める方法の概観として, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見ることもできます. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えば BibTeX データベースが `*.bib` という拡張子の付いたプレーンテキストとして与えられているなら, このようにします.
+参考文献目録\index{さんこうぶんけん@bibliography}を出力文書に含める方法の概要は, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
 
 ```yaml
 ---
@@ -144,7 +142,7 @@ bibliography: references.bib
 ---
 ```
 
-そしてこのファイルに文献アイテムがこのようなエントリで含まれています.
+この BibTeX データベースは `*.bib` という拡張子の付いたプレーンテキストとして与えられ, ファイルに文献アイテムがこのようなエントリで含まれています.
 
 ```bibtex
 @Manual{R-base,
@@ -158,11 +156,11 @@ bibliography: references.bib
 }
 ```
 
-文書内 `@key` という構文で文献アイテムを直接引用することができます. `key` の部分エントリの最初の行にある引用キーです. 上記の例なら `@R-base` です. 括弧で囲んで引用したいなら, `[@key]` を使います. 複数のエントリを同時に引用するなら, `[@key-1; @key-2; @key-3]` のようにセミコロンでキーを区切ります. 著者名を表示しないのなら, `[-@R-base]` のように `@` の前にマイナス記号を付けます.
+文書内では `@key` という構文で文献アイテムを直接引用することができます. `key` 部分はエントリの最初の行にある引用キーのことです. 上記の例なら `@R-base` です. 括弧で囲んで引用したいなら, `[@key]` を使います. 複数のエントリを同時に引用するなら, `[@key-1; @key-2; @key-3]` のようにセミコロンでキーを区切ります. 著者名を表示しないのなら, `[-@R-base]` のように `@` の前にマイナス記号を付けます.
 
 ### 引用スタイルの変更 {#changing-citation-style}
 
-デフォルトでは Pandoc は Chicago 式の著者名-出版年形式の引用\index{いんよう@引用}スタイルと参考文献スタイルを使います. 他のスタイルを使うには, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 例えばこのように.
+Pandoc は Chicago 式の著者名-出版年形式の引用\index{いんよう@引用}スタイルと参考文献スタイルをデフォルトで使います. 他のスタイルを使うには, 例えば例のように, メタデータフィールド\index{YAML!csl}の `csl` で CSL (Citation Style Language) ファイルを指定します. 
 
 ```yaml
 ---
@@ -174,7 +172,7 @@ csl: biomed-central.csl
 
 必要としているフォーマットを見つけるには, [Zotero Style Repository,](https://www.zotero.org/styles) を使うことをおすすめします. これは必要なスタイルの検索とダウンロードが簡単にできます.
 
-CSL ファイルはカスタマイズされたフォーマット要件に合うようにを修正できます. 例えば "et al." の前に表示する著者の人数を変更できます. これは https://editor.citationstyles.org で使用できるようなビジュアルエディタを使って簡単にできます.
+CSL ファイルは個別のフォーマット要件に合うようにを修正できます. 例えば "et al." の前に表示する著者の人数を変更して短縮できます. これは https://editor.citationstyles.org にあるようなビジュアルエディタを使って簡単にできます.
 
 ### 引用していない文献を参考文献に追加する {#add-an-item-to-a-bibliography-without-using-it}
 
@@ -205,7 +203,7 @@ nocite: '@*'
 <!-- https://stackoverflow.com/questions/41532707/include-rmd-appendix-after-references/42258998#42258998 -->
 <!-- https://stackoverflow.com/questions/16427637/pandoc-insert-appendix-after-bibliography -->
 
-デフォルトでは参考文献は文書全体の最後に掲載されます. しかし参考文献一覧の後に追加のテキストを置きたいこともあるでしょう. 一番よくあるのは文書に補遺 (appendix) を含めたいときです. 以下に示すように, `<div id="refs"></div>` を使うことで参考文献一覧の位置を矯正できます.
+デフォルトでは参考文献は文書全体の最後に掲載されます. しかし参考文献一覧の後に追加のテキストを置きたいこともあるでしょう. 一番よくあるのは文書に補遺 (appendix) を含めたいときです. 以下に示すように, `<div id="refs"></div>` を使うことで参考文献一覧の位置を強制変更できます.
 
 ```md
 # 参考文献
@@ -217,7 +215,7 @@ nocite: '@*'
 
 `<div>` は HTML タグですが, この方法は PDF など他の出力フォーマットでも機能します.
 
-**bookdown** パッケージ [@R-bookdown] を使うことで, 補遺の開始前に [special header](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers) `# (APPENDIX) Appendix {-}` の挿入が可能となり さらに改善できます. 例えば以下のように.
+さらによい方法としては以下の例のように **bookdown** パッケージ [@R-bookdown] を使い, 補遺の開始前に [special header](https://bookdown.org/yihui/bookdown/markdown-extensions-by-bookdown.html#special-headers) `# (APPENDIX) Appendix {-}` が挿入できます. 
 
 ```md
 # 参考文献
@@ -255,7 +253,7 @@ knitr::write_bib(c(
 
 第1引数はパッケージ名の文字列ベクトルで, 第2引数は `.bib` ファイルのパスであるべきです. 上記の例では, `.packages()` は現在の R セッションが読み込んでいる全てのパッケージ名を返します. これらのパッケージのいずれかが更新された (例えば著者, タイトル, 年, あるいはバージョンが変更された) とき, `write_bib()` は自動的に `.bib` を更新できます.
 
-引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの `DESCRIPTION` ファイルをもとに生成したもので, もう1つは, もしパッケージに `CITATION` ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが `R-(パッケージ名)` という形式になり (例えば `R-knitr`), 後者のタイプはパッケージ名と公開年を結合したものがキーとなります (例: `knitr2015`). もし複数のエントリが同一年にあるなら, 接尾文字が追加されます. 例えば  `knitr2015a` と `knitr2015b` のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプはしばしば論文や書籍のようなパッケージと関連のある出版物として扱われます.
+引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの `DESCRIPTION` ファイルをもとに生成したもので, もう1つは, もしパッケージに `CITATION` ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが `R-(パッケージ名)` という形式 (例えば `R-knitr`) になり, 後者のタイプはパッケージ名と公開年を結合したもの (例: `knitr2015`) がキーとなります . 同じ年に複数のエントリがあるときは, 接尾文字が追加されます. 例えば  `knitr2015a` と `knitr2015b` のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプは論文や書籍のようなパッケージと関連する出版物といったものが多いです.
 
 ```{r, warning=FALSE, comment='', class.output='bibtex'}
 knitr::write_bib(c('knitr', 'rmarkdown'), width = 60)
@@ -275,9 +273,9 @@ knitr::write_bib(file = 'packages.bib')
 ```
 ````
 
-上記の例では `packages.bib` が自動で生成されたもので, 手動で変更すべきではありません. それ以外の全ての引用エントリは `references.bib` に手動で書き込むことができます.
+上記の例では `packages.bib` は自動で生成されたものなので, 手動で変更すべきではありません. それ以外の全ての引用エントリは `references.bib` に手動で書き込むことができます.
 
-ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには,  **knitcitations** パッケージ\index{R パッケージ!knitcitations} [@R-knitcitations] を確認することもできます.
+ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献で動的に引用を生成するには,  **knitcitations** パッケージ\index{R パッケージ!knitcitations} [@R-knitcitations] を見てください.
 
 ## 文書内の相互参照 {#cross-ref}
 
@@ -291,9 +289,9 @@ knitr::write_bib(file = 'packages.bib')
 
 - **図 (または表) に対するキャプション**: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 
-- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@コードチャンク!らべる@ラベル} チャンクによって生成された図を参照するための識別子を提供してくれます.
+- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@code chunk!label} チャンクが生成した図を参照する識別子を提供してくれます.
 
-これらの条件が合わさって初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照するものの環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
+これらの条件が整って初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照される環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
 
 `r import_example('cross-ref.Rmd')`
 
@@ -303,7 +301,7 @@ knitr::write_bib(file = 'packages.bib')
 knitr::include_graphics(file.path(BOOKLANG, "images/bookdown-ref.png"), dpi = NA)
 ```
 
-数式, 定理, 節の見出しにも相互参照することができます. これらのタイプの参照は **bookdown** 本の 2.2, 2.6節でより説明されています.
+数式, 定理, 節の見出しにも相互参照することができます. これらのタイプの参照の方法は **bookdown** 本の 2.2, 2.6節でより詳しく説明されています.
 
 ## 日付を自動的に更新する {#update-date}
 
@@ -345,7 +343,7 @@ Table: (\#tab:date-format) Rにおける日付と時刻のフォーマット
 |%y   |下2桁表記の年                 |%Y   |4桁表記の年                                   |
 |%z   |GMT からのオフセット          |%Z   |タイムゾーン (文字表記)                       |
 
-最後に, 説明的なテキストを日付に含めたいかもしれないときのことを書いておきます. このように Rコードの前に「最終コンパイル日」のような何らかの文を追加することができます.
+最後に, 説明文を日付に含めたいときのことを書いておきます. このように Rコードの前に「最終コンパイル日」のような何らかの文を追加することができます.
 
 ```yaml
 date: "最終コンパイル日 `r knitr::inline_expr("format(Sys.time(), '%Y/%m/%d')")`"
@@ -385,7 +383,7 @@ author:
 ---
 ```
 
-特定の R Markdown テンプレートでは YAML に直接追加パラメータを指定することができます. 例えば [Distill](https://rstudio.github.io/distill/) 出力フォーマットは `url`, `affiliation`, `affiliation_url` を指定することが可能です. まずは **distill** パッケージ [@R-distill]\index{R パッケージ!distill} をインストールします.
+特定の R Markdown テンプレートを使うと YAML に追加パラメータを直接指定できます. 例えば [Distill](https://rstudio.github.io/distill/) 出力フォーマットは `url`, `affiliation`, `affiliation_url` を指定することが可能です. まずは **distill** パッケージ [@R-distill]\index{R パッケージ!distill} をインストールします.
 
 ```{r, eval=FALSE}
 install.packages('distill')
@@ -427,9 +425,9 @@ plot(mpg ~ hp, mtcars)
 ```
 ````
 
-\@ref(cross-ref) 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています.  `html_document2` いがいにも, `pdf_document2`, `word_document2` といった他の出力に対する同様のフォーマット関数もあります.
+\@ref(cross-ref) 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています.  `html_document2` の他にも, `pdf_document2`, `word_document2` といった他の出力に対する同様のフォーマット関数もあります.
 
-**bookdown** 以外の R Markdown 出力フォーマットにもこの機能を追加できます. 鍵はこれらが **bookdown** 出力フォーマットの「基本フォーマット」であることです. 例えば, `rticles::jss_article` フォーマットで図に付番と相互参照をするために以下が使えます.
+**bookdown** 以外の R Markdown 出力フォーマットにもこの機能を追加できます. 鍵となるのはこれらが **bookdown** 出力フォーマットの「基本フォーマット」であることです. 例えば, `rticles::jss_article` フォーマットで図に付番と相互参照をするために以下が使えます.
 
 ```yaml
 output:
@@ -441,7 +439,7 @@ output:
 
 ## 単語をコンマ区切りで結合する {#combine-words}
 
-文字列ベクトルを人間の読みやすい形で出力したいとします. 例えば `x <- c("apple", "banana", "cherry")` について, きっとあなたは `[1] "apple" "banana" "cherry"` のような R が通常プリントする形式で出力をしてほしくないでしょう. あなたは代わりに "`apple, banana, and cherry`" という文字列がほしいのではないでしょうか. 文字列ベクトルを連結して1つにまとめる R 基本関数の `paste()` があります. 例えば `paste(x, collapse = ', ')` とすれば, 出力は `"apple, banana, cherry"` となるでしょう. この方法の問題は (1) 接続詞 "and" が欠けており, (2) ベクトルの要素が2つだけの場合はコンマを使うべきでない (`"apple, banana"` ではなく `"apple and banana"` という出力になるべき) ということです.
+文字列ベクトルを人間の読みやすい形で出力したいとします. 例えば `x <- c("apple", "banana", "cherry")` について, きっとあなたは `[1] "apple" "banana" "cherry"` のような R が通常ベクトルを出力する形式は好まず, 代わりに "`apple, banana, and cherry`" という文字列がほしいのではないでしょうか. R 基本関数には文字列ベクトルを連結して1つにまとめる `paste()` があります. 例えば `paste(x, collapse = ', ')` とすれば, 出力は `"apple, banana, cherry"` となるでしょう. この方法の困ったところは (1) 接続詞 "and" が欠けており, (2) ベクトルの要素が2つだけの場合はコンマを使うべきでない (`"apple, banana"` ではなく `"apple and banana"` という出力になるべき) ということです.
 
 `knitr::combine_words()`\index{knitr!combine\_words()} 関数は文字列ベクトルの長さにかかわらず, 要素を連結して文にできます. 基本的に, 単語1つに対してはそのまま同じものを返し, "A and B" という2つの単語に対しては `"A and B"` と返し, 3つ以上なら `"A, B, C, ..., Y, and Z"` というふうに返します. この関数はさらに出力をカスタマイズするいくつかの引数を持っています. 例えば出力される単語をバッククオートで囲みたいなら, ``knitr::combine_words(x, before = '`')`` を使うこともできます. 以下に他の引数についてもさらなる例を示します. これらの出力例から引数の意味がよくわからないのであれば, ヘルプページ `?knitr::combine_words` もご覧ください.
 
@@ -497,7 +495,7 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 > :::
 
 
-時に「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. 「コーディング」という行為にこだわりすぎないでください.
+たまに「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. コーディング中毒にならないようにしましょう.
 
 :::{.infobox .caution data-latex"{caution}"}
 **訳注** 上記の例では, 最終行の出典の右寄せができません. これは Pandoc の fenced `Div` blocks の機能を使用しています. (\@ref(custom-blocks)節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください.
@@ -506,7 +504,7 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 
 ## モデルを数式に変換する {#equatiomatic}
 
-Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic}  [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示する, 便利な自動化の手段を提供します. 簡単な例を以下に示します.
+Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic}  [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示するための便利な自動化された手段です. 簡単な例を以下に示します.
 
 ```{r, results='asis'}
 fit <- lm(mpg ~ cyl + disp, mtcars)
@@ -522,7 +520,7 @@ equatiomatic::extract_eq(fit, use_coefs = TRUE)
 
 ## 複数の R プロットからアニメーションを作成する {#animation}
 
-1つのコードチャンクで一連のプロットを生成したとき, これらを結合し1つのアニメーション\index{あにめーしょん@アニメーション}を生成できます. 出力フォーマットが HTML なら, これは簡単です. **gifski** パッケージ\index{R パッケージ!gifski} [@R-gifski] をインストールし, チャンクオプション `animation.hook = "gifski"`\index{ちゃんくおぷしょん@チャンクオプション!animation.hook} 設定するだけです. 図\@ref(fig:pacman) はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.
+1つのコードチャンクで連続したプロットを生成したとき, これらを結合して1つのアニメーション\index{あにめーしょん@アニメーション}を生成できます. 出力フォーマットが HTML なら, これは簡単です. **gifski** パッケージ\index{R パッケージ!gifski} [@R-gifski] をインストールし, チャンクオプション `animation.hook = "gifski"`\index{ちゃんくおぷしょん@チャンクオプション!animation.hook} 設定するだけです. 図\@ref(fig:pacman) はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.
 
 ````md
 ```{r, animation.hook="gifski"}`r ''`
@@ -551,7 +549,7 @@ R パッケージ **animation**\index{R パッケージ!animation} [@R-animation
 
 ## ダイアグラムを作成する {#diagrams}
 
-ダイアグラム\index{ず@図!だいあぐらむのさくせい@ダイアグラムの作成}やフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接管理することができます.
+ダイアグラム\index{ず@図!だいあぐらむのさくせい@ダイアグラムの作成}やフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接取り扱うほうが簡単です.
 
 R ではいくつかのパッケージが使用可能ですが, その中で **DiagrammeR**\index{R パッケージ!DiagrammeR} [@R-DiagrammeR] とその他いくつかを最後に簡単に解説します. 完全なデモは https://rich-iannone.github.io/DiagrammeR/ で見ることができます. この節では基本的な使用法とダイアグラム内で R コードを使う方法を紹介します.
 
@@ -559,7 +557,7 @@ R ではいくつかのパッケージが使用可能ですが, その中で **D
 
 **DiagrammeR** はいくつかの異なるグラフ言語を使ってグラフを作成する方法を提供します. この節では Graphviz の例を提示しますが,^[あなたのバックグラウンド次第では, この節は **DiagrammeR** に対する偏った解説になるかもしれません. このパッケージに興味があるなら, パッケージの公式ドキュメントをご覧ください.] **DiagrammeR** は純粋に R コードだけでグラフを作ることもできます.
 
-RStudio IDE は Graphviz (`.gv`) および mermaid (`.mmd`) ファイルをネイティブにサポートしています. これらのタイプのファイルを RStudio で編集すると, シンタックスハイライトされるという利点があります. RStudio のツールバーの "Preview" ボタンをクリックすると, ダイアグラムをプレビューすることができます. 図\@ref(fig:diagram-profit) は, 4つのステップを表す矩形で構成された, フローチャートの単純な例です. これは以下のコードで生成されています.
+RStudio IDE は Graphviz (`.gv`) および mermaid (`.mmd`) ファイルをネイティブにサポートしています. これらのタイプのファイルを RStudio で編集すると, シンタックスハイライトされるという利点があります. RStudio のツールバーの "Preview" ボタンをクリックすると, ダイアグラムをプレビューすることができます. 図\@ref(fig:diagram-profit) は, 4つのステップを表す４つの矩形で構成された, フローチャートの単純な例です. これは以下のコードで生成されています.
 
 ```{r diagram-profit, fig.align='center', fig.cap="プログラマの絵空事を表したダイアグラム", fig.dim=c(3, 6), out.width="100%"}
 DiagrammeR::grViz("digraph {
@@ -568,7 +566,7 @@ DiagrammeR::grViz("digraph {
   node [shape = rectangle]        
   rec1 [label = 'ステップ 1. 起床する']
   rec2 [label = 'ステップ 2. コードを書く']
-  rec3 [label =  'ステップ 3. ???']
+  rec3 [label = 'ステップ 3. ???']
   rec4 [label = 'ステップ 4. 収入を得る']
   
   # ノードIDでエッジを定義
@@ -577,11 +575,11 @@ DiagrammeR::grViz("digraph {
   height = 500)
 ```
 
-ノードの形状, 色, 線のタイプを定義したり, パラメータを追加したりといったことができる拡張的な操作も用意されています.
+ノードの形状, 色, 線のタイプを定義したり, パラメータを追加したりできる拡張的な操作も用意されています.
 
 ### 図にパラメータを追加する {#adding-parameters-to-plots}
 
-Graphviz の置換機能は可読性を損なうことなく, R コードを Graphviz のグラフ設定に混ぜ込むことができます. `@@` を伴う置換を指定すれば, そこに置換される有効な R 評価式が確実にあるようにせねばなりません.   評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. `@@` という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図\@ref(fig:diagram-params)はダイアグラムへの R コードの埋め込みと評価の例です.
+Graphviz の置換機能は可読性を損なうことなく, R コードを Graphviz のグラフ設定に混ぜ込むことができます. `@@` を伴う置換を指定するには, そこに置換されるのは有効な R 評価式であることを確実にせねばなりません.   評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. `@@` という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図\@ref(fig:diagram-params)はダイアグラムへの R コードの埋め込みと評価の例です.
 
 ```{r diagram-params, fig.cap="R から入力されたパラメータを使用したダイアグラム", fig.dim=c(6, 1), out.width="100%", crop=TRUE}
 DiagrammeR::grViz("
@@ -609,7 +607,7 @@ DiagrammeR::grViz("
 
 ### その他のダイアグラム作成パッケージ {#other-packages-for-making-diagrams}
 
-ダイアグラム作成に使えるパッケージとして, **nomnoml** [@R-nomnoml], **diagram** [@R-diagram], **dagitty** [@R-dagitty], **ggdag** [@R-ggdag], **plantuml** (https://github.com/rkrug/plantuml) といったものを確かめることになるかもしません.
+ダイアグラム作成に使えるパッケージとして, **nomnoml** [@R-nomnoml], **diagram** [@R-diagram], **dagitty** [@R-dagitty], **ggdag** [@R-ggdag], **plantuml** (https://github.com/rkrug/plantuml) といったものも見ておくとよいでしょう.
 
 ## 特殊文字をエスケープする {#special-chars}
 
@@ -627,7 +625,7 @@ Markdown 構文で特殊な意味を持つ文字がいくつかあります. こ
 
 <!-- TODO: これでコードチャンクをコメントでき, knitr によって実行されるのも防ぐことができる (今は不可). -->
 
-RStudio を使うなら, 1行丸ごとコメントアウトするのにキーボードショートカット\index{RStudio!こめんとのしょーとかっと@コメントのショートカット} `Ctrl + Shift + C` (MacOS なら`Command + Shift + C`) を使えます.
+RStudio を使っているなら, 1行丸ごとコメントアウトするのにキーボードショートカット\index{RStudio!こめんとのしょーとかっと@コメントのショートカット} `Ctrl + Shift + C` (MacOS なら`Command + Shift + C`) を使えます.
 
 ## 目次から見出しを省略する {#toc-unlisted}
 
@@ -668,7 +666,7 @@ labs = setdiff(labs, c("setup", "get-labels"))
 ```
 ````
 
-`knitr::all_labels()` の引数を使ってコードチャンクをフィルタリングすることもできます. 例えば `Rcpp` エンジン (`engine == "Rcpp"`) を使用した全てのコードチャンクを得て, かつ文書に表示しない (`echo = FALSE`) ようにするには `knitr::all_labels(engine == "Rcpp", echo == FALSE)` を使うこともできます. どのコードチャンクを補遺に表示したいのか, 正確にコントロールしたいならば, 指定したいコードチャンクに特殊なチャンクオプション `appendix = TRUE` を使い, それらのチャンクのラベルを得るのに `ref.label = knitr::all_labels(appendix == TRUE)` を使うこともできます.
+`knitr::all_labels()` の引数を使ってコードチャンクをフィルタリングできます. 例えば `Rcpp` エンジン (`engine == "Rcpp"`) を使用した全てのコードチャンクを得て, かつ文書に表示しない (`echo = FALSE`) ようにするには `knitr::all_labels(engine == "Rcpp", echo == FALSE)` を使えます. どのコードチャンクを補遺に表示したいのか, 正確にコントロールしたいならば, 指定したいコードチャンクに特殊なチャンクオプション `appendix = TRUE` を使い, それらのチャンクのラベルを得るのに `ref.label = knitr::all_labels(appendix == TRUE)` を使えます.
 
 ## Pandoc の Lua フィルタから操作する (\*) {#lua-filters}
 
@@ -684,7 +682,7 @@ labs = setdiff(labs, c("setup", "get-labels"))
 Hello world!
 ```
 
-このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後ファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.
+このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後にファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.
 
 ```{sh}
 pandoc -f markdown -t json -o ast.json ast.md
@@ -700,7 +698,7 @@ xfun:::tree(
 )
 ```
 
-あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1増やす, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
+あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
 
 最初に `raise-header.lua` という名前の Lua スクリプトファイルを作ります. これには `Header` という名前の関数が含まれており, "Header" タイプの要素を修正したいということを意味しています (一般に,  あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).
 
@@ -723,17 +721,17 @@ pandoc -t markdown --atx-headers \
   --lua-filter=raise-header.lua ast.md
 ```
 
-`## Section One` を `# Section One` へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, なんでこんなふうに単に正規表現を使って `##` を `#` に置き換えないのかと思うかも知れません.
+`## Section One` を `# Section One` へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, どうして次のように単に正規表現を使って `##` を `#` に置き換えないのかと思うことでしょう.
 
 ```{r, eval=FALSE}
 gsub('^##', '#', readLines('ast.md'))
 ```
 
-例えば `##` が R コード内でコメントに使われていたら, と言うふうに, 正規表現はほとんど常に例外があるため, たいていの場合で, 構造化された文書を操作するのにロバストな手段ではありません. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.
+たいていの場合, 構造化された文書を操作するのに正規表現はロバストな手段ではありません.  例えば `##` が R コード内でコメントに使われているというように, ほぼいつも例外があるためです.  AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.
 
 Pandoc の Lua フィルタに関する追加ドキュメントが https://pandoc.org/lua-filters.html にあり, ここで多くの例を見つけることができます. GitHub リポジトリ https://github.com/pandoc/lua-filters のコミュニティで書かれたフィルタを見つけることもできます.
 
-R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは `inst/` ディレクトリにあります)
+R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは `inst/` ディレクトリにあります).
 
 - **rmarkdown** パッケージ (https://github.com/rstudio/rmarkdown) は改行 (\@ref(pagebreaks)節参照) を挿入するフィルタとカスタムブロック (\@ref(custom-blocks)節参照)を生成するフィルタを含んでいます.
 
@@ -743,7 +741,7 @@ R Markdown の世界では Lua フィルタを活用しているパッケージ�
 
 本書の\@ref(lua-color)節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.
 
-Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{しゅつりょくおぷしょん@出力オプション!pandoc\_args} オプションで適用することもできます. 例えばこのように.
+Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの `pandoc_args`\index{しゅつりょくおぷしょん@出力オプション!pandoc\_args} オプションを次の例のように適用することもできます.
 
 ```yaml
 ---

@@ -1,17 +1,17 @@
 # HTML 出力 {#html-output}
 
-LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら修正できます. HTML 出力における有用ながらもシンプルな CSS と JavaScript の小ワザは LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
+LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら変えることができます. CSS と JavaScript の小ワザは, HTML 出力においては有用ながらもシンプルですが、LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
 
-この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった,  R Markdown の HTML 出力を向上するテクニックを紹介します.
+この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった, R Markdown の HTML 出力を向上するテクニックを紹介します.
 In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
 
 ## カスタム CSS を適用する {#html-css}
 
-HTML 文書の外観をカスタマイズしようと思うのなら, CSS と JavaScript を少しでも勉強することを強く勧めます. **blogdown** 本 [@blogdown2017] の [Appendix B](https://bookdown.org/yihui/blogdown/website-basics.html) には HTML, CSS, JavaScript の簡単なチュートリアルがあります.
+HTML 文書の外観をカスタマイズしようと思うのなら, CSS と JavaScript を少しでも勉強することを強くお勧めします. **blogdown** 本 [@blogdown2017] の [Appendix B](https://bookdown.org/yihui/blogdown/website-basics.html) には HTML, CSS, JavaScript の簡単なチュートリアルがあります.
 
-CSS のセレクタと優先度のルールを理解することは初心者にとっては極めて重要です. さもなければ自分のカスタム CSS\index{CSS} が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).
+初心者にとっては, CSS のセレクタと優先度のルールを理解することは極めて重要です. さもなければ自分のカスタム CSS\index{CSS} が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).
 
-Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, `css` オプション\index{しゅつりょくおぷしょん@出力オプション!css} を使うことができます. 例えばこのように.
+Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, 次の例のような `css` オプション\index{しゅつりょくおぷしょん@出力オプション!css} を使うことができます. 
 
 ```yaml
 output:
@@ -19,7 +19,7 @@ output:
     css: "style.css"
 ```
 
-複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使うことになるでしょう.
+複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使います.
 
 ```yaml
 output:
@@ -27,10 +27,10 @@ output:
     css: ["style-1.css", "style-2.css"]
 ```
 
-あるいは, Rmd 文書に 直接 CSS のルールを埋め込むのに, `css` コードチャンク\index{げんごえんじん@言語エンジン!css} を使うこともできます. 例えばこのように.
+あるいは, `css` コードチャンク\index{げんごえんじん@言語エンジン!css} を使って, Rmd 文書に 直接 CSS のルールを埋め込むこともできます. 例えばこのように.
 
 ````md
-We embed a `css` code chunk here.
+ここに `css` コードチャンクを埋め込む.
 
 ```{css, echo=FALSE}`r ''`
 p {
@@ -39,11 +39,11 @@ p {
 ```
 ````
 
-チャンクオプション `echo = FALSE`\index{ちゃんくおぷしょん@チャンクオプション!echo} は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む `<style>` タグは HTML 出力ファイルにも生成されます.
+チャンクオプション `echo = FALSE`\index{ちゃんくおぷしょん@チャンクオプション!echo} は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む `<style>` タグは HTML 出力ファイルには生成されます.
 
 ## セクションヘッダを中央揃えにする {#center-heading}
 
-\@ref(html-css)節で言及した応用方法のように, CSS を見出しのアラインメント調整\index{CSS プロパティ!text-align}に使うことができます. 例えば以下のような CSS コードを使ってレベル1から3の見出しを中央揃えにしたいかもしれません.
+\@ref(html-css)節で言及した応用方法のように, CSS を見出しのアラインメント\index{CSS プロパティ!text-align}に使うことができます. 例えば以下のような CSS コードを使って, レベル1から3の見出しを中央揃えにできます.
 
 ```css
 h1, h2, h3 {
@@ -57,9 +57,9 @@ Rmd 文書に CSS を適用する方法は\@ref(html-css)節を見てくださ�
 
 <!-- https://stackoverflow.com/questions/41030477/changing-chunk-background-color-in-rmarkdown -->
 
-チャンクオプションの `class.source`\index{ちゃんくおぷしょん@チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名\index{くらす@クラス!カスタムクラス}の文字列ベクトルを取ります (\@ref(attr-output)節参照). 例えば `class.source = "important"` は出力時にコードチャンクを含む HTML 要素に `important` というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.^[CSS ではクラスは先頭にピリオド (`.`) を付けるため, この場合はルールは `.important` から始まります.] このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.
+チャンクオプションの `class.source`\index{ちゃんくおぷしょん@チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使えば, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名\index{くらす@クラス!カスタムクラス}の文字列ベクトルを取ります (\@ref(attr-output)節参照). 例えば `class.source = "important"` は, コードチャンクを含んでいる HTML 要素が出力される時に `important` というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.^[CSS ではクラスは先頭にピリオド (`.`) を付けるため, この場合はルールは `.important` から始まります.] このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.
 
-デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワーク\index{Bootstrap}を読み込みます. Bootstrap は `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`,  `"bg-danger"` \index{くらす@クラス!Bootstrap クラス}\index{くらす@クラス!bg-primary}\index{くらす@クラス!bg-success}\index{くらす@クラス!bg-info}\index{くらす@クラス!bg-warning}\index{くらす@クラス!bg-danger}といったいくつかの [背景に対する CSS クラス](https://getbootstrap.com/docs/3.4/css/#helper-classes) が定義済みのため, コードと出力の外観の変更を容易にしてくれます.
+R Markdown の HTML 出力は, デフォルトで, Bootstrap フレームワーク\index{Bootstrap}を読み込みます. Bootstrap は `"bg-primary"`, `"bg-success"`, `"bg-info"`, `"bg-warning"`, `"bg-danger"` \index{くらす@クラス!Bootstrap クラス}\index{くらす@クラス!bg-primary}\index{くらす@クラス!bg-success}\index{くらす@クラス!bg-info}\index{くらす@クラス!bg-warning}\index{くらす@クラス!bg-danger}といったいくつかの [背景に対する CSS クラス](https://getbootstrap.com/docs/3.4/css/#helper-classes) が定義済みのため, コードと出力の外観の変更を容易にしてくれます.
 
 以下はチャンクオプション `class.source = "bg-danger"` と `class.output = "bg-warning"` を使った例で, その出力は図\@ref(fig:chunk-bg)で見られます.
 
@@ -73,27 +73,27 @@ knitr::include_graphics(file.path(BOOKLANG, "images/chunk-bg.png"), dpi = NA)
 
 `r import_example('chunk-custom.Rmd')`
 
-図\@ref(fig:chunk-border)がスタイルの出力です.
+図\@ref(fig:chunk-border)が出力されたスタイルです.
 
 ```{r chunk-border, echo=FALSE, fig.cap="明桃色の背景, 赤い太枠線をもつコードチャンク"}
 knitr::include_graphics(file.path(BOOKLANG, "images/chunk-border.png"), dpi = NA)
 ```
 
-文書内の全てのコードブロックにカスタムスタイルを塩要したいなら, グローバルな **knitr** オプションで `class.source` を設定します. 例えばこのように.
+文書内の全てのコードブロックにカスタムスタイルを適用したいなら, グローバルな **knitr** オプションで `class.source` を設定します. 例えばこのように.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(class.source='watch-out')
 ```
 
-複数のクラスをコードブロックに適用できます. 例えば `class.source = c("important", "warning")` でコードブロックに "important" と "warning" という2つのクラスを持たせられます.
+複数のクラスをコードブロックに適用できます. 例えば `class.source = c("important", "warning")` でコードブロックに "important" と "warning" という2つのクラスを持たせることができます.
 
-コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, **flair** パッケージ\index{R パッケージ!flair} [@R-flair] の使用を検討してもよいかもしれません. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.
+コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, **flair** パッケージ\index{R パッケージ!flair} [@R-flair] の使用を検討するとよいでしょう. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.
 
 ## コードブロックをスクロール可能にする (\*) {#html-scroll}
 
-大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したいかもしれません. そうしないとページはとてつもなく長くなり, それらを細かく読む気のない読者に読み飛ばしづらくなるかもしれません. この問題の解決法は複数あります. `html_document` フォーマットの `code_folding` オプション\index{しゅつりょくおぷしょん@出力オプション!code\_folding}を使うというのがその1つです. このオプションは出力文書のコードブロックを折りたたみ, また読者はボタンを押して展開することができます (詳細は\@ref(fold-show)節).
+大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したほうがよいでしょう. そうしないとページはとてつもなく長くなり, コードやテキストの出力を細かく読む気のない人が読み飛ばしづらくなります. この問題の解決法は複数あります. 一つは, `html_document` フォーマットの `code_folding` オプション\index{しゅつりょくおぷしょん@出力オプション!code\_folding}を使います. このオプションは文書のコードブロックを折りたたんで出力し, 読者はボタンを押して折りたたみを展開することができます (詳細は\@ref(fold-show)節).
 
-他の可能性としてはコードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの `max-height`\index{CSS プロパティ!max-height} と `overflow-y`\index{CSS プロパティ!overflow-y} で実現できます. 以下はその使用例の全容で, 出力は図\@ref(fig:html-scroll)になります.
+他の解決法としては, コードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの `max-height`\index{CSS プロパティ!max-height} と `overflow-y`\index{CSS プロパティ!overflow-y} で実現できます. 以下はその使用例の全容で, 出力は図\@ref(fig:html-scroll)になります.
 
 `r import_example('html-scroll.Rmd')`
 
@@ -101,15 +101,15 @@ knitr::opts_chunk$set(class.source='watch-out')
 knitr::include_graphics(file.path(BOOKLANG, "images/html-scroll.png"), dpi = NA)
 ```
 
-上記の例では全てのコードブロックに大域的に 300px の高さ上限を定義しています. HTML 出力時にはコードブロックが `<pre>` タグで囲まれていることを思い出してください. それから `class` 属性に `<pre>` ブロックの高さを 100px に制限します. これは CSS セレクタ `pre[class]` が意味するところです. デフォルトではテキスト出力は `<pre> </pre>` に含まれ, R コードブロックは `<pre class="r"> </pre>` に含まれます (ここで `<pre>` タグが `class` 属性を持っていることに注意してください).
+上記の例では全てのコードブロックに大域的に 300px の高さの上限を定義しています. HTML 出力時にはコードブロックが `<pre>` タグで囲まれていることを思い出してください. それから `class` 属性を用いて `<pre>` ブロックの高さを 100px に制限します. これは CSS セレクタ `pre[class]` が意味するところです. デフォルトではテキスト出力は `<pre> </pre>` に含まれ, R コードブロックは `<pre class="r"> </pre>` に含まれます ( `<pre>` タグが `class` 属性を持っていることに注意).
 
-第2の R  コードチャンクからのテキスト出力の高さも 100px です. これが出力にたいして, カスタムクラス名 `scroll-100` を割り当て, 高さの上限を 100px に定義した理由です.
+２つ目の R コードチャンクからのテキスト出力の高さも 100px です. これは出力に対して, カスタムクラス名 `scroll-100` を割り当て, 高さの上限を 100px に定義したためです.
 
-個別のコードブロックに対して異なる最大高さを指定したいならば, \@ref(hook-scroll)節の例を見ることもできます.
+個別のコードブロックに対して異なる最大の高さを指定したいならば, \@ref(hook-scroll)節の例を見てください.
 
 ## 全コードブロックを折りたたみ, かついくつかは表示する {#fold-show}
 
-出力文書に書かれたコードブロックが読者に嫌がられるおそれがあるなら, はじめは折りたたんでおくという選択をするとよいかもしれません. 読者はボタンを押して表示を選ぶことができます.
+出力文書に書かれたコードブロックが読者に嫌がられるおそれがあるなら, はじめは折りたたんでおくという選択がいいでしょう. 読者はボタンを押して表示を選ぶことができます.
 
 ```yaml
 output:
@@ -117,7 +117,7 @@ output:
     code_folding: hide
 ```
 
-全てのコードブロックを最初から展開することもできます (よって読者は折りたたむことを選べます).
+全てのコードブロックを最初から展開しておくこともできます (よって読者は折りたたみもできます).
 
 ```yaml
 output:
@@ -125,11 +125,11 @@ output:
     code_folding: show
 ```
 
-最初から全てのコードブロックを折りたたんだなら, チャンクオプション `class.source = "fold-show"` を使い特定のブロックを展開だけを最初から展開させておくこともできます. このように.
+最初から全てのコードブロックを折りたたむなら, 特定のブロックだけチャンクオプション `class.source = "fold-show"` を使い最初から展開させておくこともできます. このように.
 
 `r import_example('fold-show.Rmd')`
 
-反対のこともできます. つまり, 最初から全てのコードブロックを表示するもののそれらの一部は表示させます. 例えばこのように.
+反対のこともできます. つまり, 最初から全てのコードブロックを表示するものの, 一部を非表示にします. 例えばこのように.
 
 ````md
 ---
@@ -151,9 +151,9 @@ output:
 
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
 
-HTML レポートの並列しているセクションをまとめる自然な方法の1つは, タブセットを使うことです. これは読者がページをスクロールして戻したり進めたりするかわりに, タブのタイトルをクリックすることで異なるセクションの内容を閲覧することを可能にします.
+HTML レポートで並列しているセクションをうまくまとめるには,　タブセット\index{たぶせっと@タブセット|see{tabset}}が自然な方法として使えます. これは読者がページをスクロールして戻したり進めたりするかわりに, タブのタイトルをクリックすることで異なるセクションの内容を閲覧することを可能にします.
 
-セクションをタブにするために, タブに変換する見出しより1レベル上の見出しにクラス属性 `.tabset`\index{くらす@クラス!tabset} を追加できます. 例えばレベル2の見出しに `.tabset` を追加するとそれ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.
+セクションをタブにするには, タブに変換する見出しより1レベル上の見出しにクラス属性 `.tabset`\index{くらす@くらす!tabset} を追加します. 例えばレベル2の見出しに `.tabset` を追加すると, それ以降のレベル3の見出しが全てタブに変換されます. 以下は用例の全容です.
 
 `r import_example('html-tabs.Rmd')`
 
@@ -169,9 +169,9 @@ knitr::include_graphics(file.path(BOOKLANG, "images/html-tabs.png"), dpi = NA)
 ## Results {.tabset .tabset-pills}
 ```
 
-デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加することもできます.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加できます.
 
-タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にすることができます. 例えばこのように.
+タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にします. 例えばこのように.
 
 ```md
 ## Results {.tabset}
@@ -188,7 +188,7 @@ knitr::include_graphics(file.path(BOOKLANG, "images/html-tabs.png"), dpi = NA)
 
 ## Rmd ソースファイルを HTML に埋め込む {#embed-rmd}
 
-HTML 出力ページを共有するとき, Rmd ソースファイルもほしいかもしれません. 例えば Rmd ソースを変更し, 自分自身でレポートをコンパイルしたいかもしれません. Rmd ソースファイルのコピーを HTML に埋め込むにはオプション `code_download`\index{しゅつりょくおぷしょん@出力オプション!code\_download} を使うことができます.
+他の人とHTML 出力ページを共有するとき, Rmd ソースファイルもほしいかもしれません. 例えば 自分自身で Rmd ソースを変更し, レポートをコンパイルしたいかもしれません. オプション `code_download`\index{しゅつりょくおぷしょん@出力オプション!code\_download} を使えば, Rmd ソースファイルのコピーを HTML に埋め込むことができます.
 
 ```yaml
 output:
@@ -196,17 +196,17 @@ output:
     code_download: true
 ```
 
-オプションが有効になると, HTML 出力ページはダウンロードボタンを持ち, 読者はそのボタンを押してソースファイルのダウンロードができます.
+オプションを有効にすると, HTML 出力ページにはダウンロードボタンが現れ, 読者はそのボタンを押してソースファイルのダウンロードができます.
 
 ## HTML 出力に好きなファイルを埋め込む {#embed-file}
 
-\@ref(embed-rmd)節で言及したように, HTML出力には Rmd ソース文書のコピーを埋め込めます. Rmd ファイル単体ではレポートを再現するのに不十分な場合もあるかもしれません. 例えばレポートに外部のデータファイルが必要かもしれません. HTML 出力ファイルに好きなファイルを埋め込んでくれる一連の関数が **xfun** パッケージ\index{R パッケージ!xfun} [@R-xfun] にあります. これらの関数を使うために, 以下の R パッケージを用意しておきます.
+\@ref(embed-rmd)節で言及したように, HTML出力には Rmd ソース文書のコピーを埋め込めます. Rmd ファイル単体ではレポートを再現するのに不十分なこともあります. 例えばレポートに外部のデータファイルが必要かもしれません. HTML 出力ファイルに好きなファイルを埋め込んでくれる一連の関数が **xfun** パッケージ\index{R パッケージ!xfun} [@R-xfun] にあります. これらの関数を使うために, 以下の R パッケージを用意しておきます.
 
 ```{r, eval=FALSE}
 xfun::pkg_load2(c('htmltools', 'mime'))
 ```
 
-これで1つ以上のファイルやディレクトリを HTML 出力に埋め込むのに, コードチャンク内で `xfun::embed_file()`\index{xfun!embed\_file()}, `xfun::embed_files()`\index{xfun!embed\_files()}, `xfun::embed_dir()`\index{xfun!embed\_dir()}  を使えます. 例えばこのように.
+これにより, コードチャンク内で `xfun::embed_file()`\index{xfun!embed\_file()}, `xfun::embed_files()`\index{xfun!embed\_files()}, `xfun::embed_dir()`\index{xfun!embed\_dir()} のどれかを使って, 1つ以上のファイルやディレクトリを HTML 出力に埋め込めます. 例えばこのように.
 
 ````md
 ```{r echo=FALSE}`r ''`
@@ -228,13 +228,13 @@ xfun::embed_dir('data/', text = 'Download full data')
 xfun::embed_files(list.files('.', '[.](Rmd|csv)$'))
 ```
 
-複数のファイルに対し, これらの関数はまず zip ファイルに圧縮してから, この zip ファイルを埋め込みます. これらの関数はリンクを返し, 読者は HTML ページのリンクをクリックして埋め込んだファイルをダウンロードすることができます.
+複数のファイルに対しては, これらの関数はまず zip ファイルに圧縮してから, その zip ファイルを埋め込みます. これらの関数はリンクを返し, 読者は HTML ページのリンクをクリックして埋め込んだファイルをダウンロードすることができます.
 
-ヘルプページ `?xfun::embed_file` またはブログ投稿 https://yihui.org/en/2018/07/embed-file/ でこれらの関数のより詳細な技術的情報を学ぶことができます. 同様のアイディアにより,  **downloadthis** package\index{R パッケージ!downloadthis} [@R-downloadthis] はダウンロードボタンを実装したことでユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.
+これらの関数のより詳細な技術的情報は, ヘルプページ `?xfun::embed_file` またはブログ投稿 https://yihui.org/en/2018/07/embed-file/ で学ぶことができます. 同様のアイディアにより, **downloadthis** package\index{R パッケージ!downloadthis} [@R-downloadthis] はダウンロードボタンを実装したことで, ユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.
 
 ## カスタム HTML テンプレートを使う (\*) {#html-template}
 
-既に\@ref(latex-template)節では LaTeX テンプレートについて話しました. Pandoc が Markdown を HTML へ変換するに際しカスタム HTML テンプレート \index{てんぷれーと@テンプレート!HTML}を指定することもできます. 以下は簡単なテンプレートの例です.
+既に\@ref(latex-template)節で LaTeX テンプレートについて話しました. カスタム HTML テンプレート \index{てんぷれーと@テンプレート!HTML}を指定すると, Pandoc が Markdown を HTML へと変換できます. 以下は簡単なテンプレートの例です.
 
 ```html
 <html>
@@ -250,9 +250,9 @@ xfun::embed_files(list.files('.', '[.](Rmd|csv)$'))
 </html>
 ```
 
-テンプレートに `$title$`, `$body$` といったいくつかの変数が含まれているのがわかるでしょう. Pandoc 変数の完全なリストとそれぞれの意味については https://pandoc.org/MANUAL.html#templates で検索することができます.
+テンプレートに `$title$`, `$body$` といったいくつかの変数が含まれているのがわかるでしょう. Pandoc 変数の完全なリストとそれぞれの意味については https://pandoc.org/MANUAL.html#templates で検索できます.
 
-テンプレートによってあなたは HTML 出力をカスタマイズする究極の力を得ることになります. 例えば好きな CSS スタイルシートや JavaScript コード, あるいはライブラリを `<head>` 内で読み込ませたりできます. あるいは文書が下書きか, 最終稿かを示すブーリアン変数 `draft` も使えます.
+テンプレートによってあなたは HTML 出力をカスタマイズする究極の力を得ることになります. 例えば好きな CSS スタイルシートや JavaScript コード, あるいはライブラリを `<head>` 内で読み込ませたりできます. あるいは次のように, 文書が下書きか最終稿かを示すブーリアン変数 `draft` も使えます.
 
 ```html
 <head>
@@ -278,7 +278,7 @@ $body$
 </body>
 ```
 
-すると Rmd 文書の YAML メタデータ内で `draft` 変数に  `true` または `false` を設定できます. 例えばこのように.
+すると Rmd 文書の YAML メタデータ内で `draft` 変数に `true` または `false` を設定できます. 例えばこのように.
 
 ```yaml
 ---
@@ -287,7 +287,7 @@ draft: true
 ---
 ```
 
-テンプレートを Rmd 文書に適用するのに, テンプレートをファイルに保存し, `html_document` の `template` オプション\index{しゅつりょくおぷしょん@出力オプション!template}にファイルパスを与えることができます. 例えばこのように.
+テンプレートを Rmd 文書に適用するためには, テンプレートをファイルに保存した上で, `html_document` の `template` オプション\index{しゅつりょくおぷしょん@出力オプション!template}にファイルパスを与えます. 例えばこのように.
 
 
 ```yaml
@@ -296,11 +296,11 @@ output:
     template: my-template.html
 ```
 
-**rmarkdown** パッケージは Pandoc のデフォルトテンプレートとは異なるカスタム HTML テンプレートをパッケージ内で読み込んで使用しています. Pandoc のデフォルトを使うには `template: null` で指定できます.
+**rmarkdown** パッケージに同梱したカスタム HTML テンプレートを読み込んで使用しており, これは Pandoc のデフォルトテンプレートとは異なります. Pandoc のデフォルトを使うには `template: null` で指定できます.
 
 ## 既存の HTML ファイルの内容を読み込む (\*) {#include-html}
 
-`html_document` フォーマット (あるいはこのオプションをサポートしている他のフォーマット) の `includes` オプション\index{しゅつりょくおぷしょん@出力オプション!includes} があれば, 既存の HTML ファイルの本文を HTML 出力文書の3箇所のどこかで読み込むことができます. それらは `<head>`, `<body>` の開始時点, そして `</body>` の末尾です.
+`html_document` フォーマット (あるいはこのオプションをサポートしている他のフォーマット) の `includes` オプション\index{しゅつりょくおぷしょん@出力オプション!includes} があれば, 既存の HTML ファイルの本文を 出力する HTML 文書内の３箇所のいずれかに読み込むことができます. それらは <head> タグ内部, <body> の前, そして本文の後でかつ </body> の直前です.
 
 ```yaml
 output:
@@ -319,7 +319,7 @@ HTML にあまり詳しくないなら, \@ref(html-template)節がこのオプ�
 <div class="footer">Copyright &copy; John Doe 2020</div>
 ```
 
-外部 HTML ファイルの内容を本文の好きな位置で読み込みたいときもあるかもしれません. これは `htmltools::includeHTML()` を使えば可能です. HTML ファイルパスをこの関数に与えます. 関数はこのファイルを読み込み, 出力文書にたいしてこのファイルの中身を書き込みます. \@ref(raw-content)節で使用したようなテクニックをを使っても良いかもしれません. 例えばこのように.
+外部 HTML ファイルの内容を本文の好きな位置に読み込みたいときもあるでしょう. これは `htmltools::includeHTML()` を使えば可能です. HTML ファイルパスをこの関数に与えます. 関数はこのファイルを読み込み, 出力文書にたいしてこのファイルの中身を書き込みます. \@ref(raw-content)節で使用したようなテクニックをを使っても良いかもしれません. 例えばこのように.
 
 `````md
 ````{=html}
@@ -329,7 +329,7 @@ xfun::file_string('file.html')
 ````
 `````
 
-HTML ファイル内読み込めるのは別の HTML 部分だけであり, 完全なHTMLファイルを読み込んではならないことに注意してください. 完全な HTML ファイルとは `<html>` タグを含むものであり, これは他の `<html>` タグ内に埋め込むことができません. 以下は HTML 文書に別の完全な HTML 文書が 埋め込まれた場合の無効な HTML 文書です.
+HTML ファイル内に読み込めるのは別の HTML の一部分だけであり, HTMLファイルそのものを読み込んではならないことに注意してください. 完全な HTML ファイルとは `<html>` タグを含むものであり, これは他の `<html>` タグ内に埋め込むことができません. 以下は HTML 文書に別の完全な HTML 文書が 埋め込まれた場合の無効な HTML 文書です.
 
 ```html
 <html>
@@ -351,17 +351,17 @@ HTML ファイル内読み込めるのは別の HTML 部分だけであり, 完�
 </html>
 ```
 
-HTML ファイルを別の HTML 出力文書に読み込む時に問題が発生したなら, HTML ファイルに `<html>` タグが含まれていないか確認するとよいかもしれません.
+HTML ファイルを別の HTML 出力文書に読み込む時に問題が発生したなら, HTML ファイルに `<html>` タグが含まれていないか確認するとよいでしょう.
 
-**rmarkdown** パッケージには `html_fragment` という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書は `html_document` フォーマットの代わりに `html_fragment` フォーマットを使うこともできます.
+**rmarkdown** パッケージには `html_fragment` という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書の出力には 通常用いる`html_document` フォーマットの代わりに `html_fragment` フォーマットを使うとよいでしょう.
 
-HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら,  \@ref(child-document)節で紹介されている子文書を使うこともできます.
+HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら, \@ref(child-document)節で紹介されている子文書を使うこともできます.
 
 ## ブラウザアイコンをカスタマイズする {#favicon}
 
-\@ref(include-html)節では `html_document` フォーマットの `includes` オプションで追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました.  このテクニックはファビコン\index{ず@図!ふぁびこん@ファビコン}というカスタムブラウザアイコンを HTML 出力に追加することに使えます.
+\@ref(include-html)節では `html_document` フォーマットの `includes` オプションを使って, 追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました. このテクニックはファビコン\index{ず@図!ふぁびこん@ファビコン}というカスタムブラウザアイコンを HTML 出力に追加することにも使えます.
 
-ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (https://cran.r-project.org) を開いてブラウザのタブを見ると, 小さな  R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.
+ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (https://cran.r-project.org) を開いてブラウザのタブを見ると, 小さな R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.
 
 HTML 文書にファビコンを追加するには, 以下のコードをカスタムヘッダファイル (\@ref(include-html)節で言及したように, `header.html` といった名前のファイル) を追加します.
 
@@ -369,7 +369,7 @@ HTML 文書にファビコンを追加するには, 以下のコードをカス�
 <link rel="shortcut icon" href="{ファビコン画像ファイルへのパス}" />
 ```
 
-YAML メタデータ\index{しゅつりょくおぷしょん@出力オプション!includes}を使って, このファイルを文書の `<head>` 内に挿入できることを思い出してください.
+YAML メタデータ\index{しゅつりょくおぷしょん@出力オプション!includes}を使って, このファイルを文書の `<head>` 領域に挿入できることを思い出してください.
 
 ```yaml
 output:
@@ -378,25 +378,25 @@ output:
       in_header: header.html
 ```
 
-`<link>` の `href` 属性に与えたパスは他のアセット (例えば画像やデータ・セット) を参照するときと同じように, 相対パス構造を前提とすべきです. 使用する画像は, 最も小さい正方形の PNG ファイルがよく機能します. 典型的なウェブブラウザは画像を 16 x 16 ピクセルの領域に表示するため, シンプルなデザインがより良いということに留意してください.
+`<link>` の `href` 属性に与えるパスは, 他のアセット (例えば画像やデータ・セット) を参照するときと同じように, 相対パス構造を前提とすべきです. 使用する画像は, 最も小さい正方形の PNG ファイルがよく機能します. 典型的なウェブブラウザは画像を 16 x 16 ピクセルの領域に表示するため, シンプルなデザインがより良いということに留意してください.
 
-あなたの文書を表示するそれぞれのブラウザやプラットフォームは特定のレイアウトに対して最適な解像度のバージョンを使用します.  ファビコンセットとより複雑な HTML ヘッダのコードを生成するのに, https://realfavicongenerator.net といったサービスを使うとよいかもしれません. このサービスは現在 **pkgdown** パッケージ [@R-pkgdown] の `pkgdown::build_favicon()` 関数で R パッケージロゴのセットを作り出すのに使用されています.
+あなたの文書を表示する各種のブラウザやプラットフォームが, 特定のレイアウトに対して最適な解像度のバージョンのアイコンを用いるようにしたいのであれば, https://realfavicongenerator.net といったサービスを使って, ファビコンセットとやや複雑な HTML ヘッダのコードを生成するとよいでしょう. このサービスは現在 **pkgdown** パッケージ [@R-pkgdown] の `pkgdown::build_favicon()` 関数で R パッケージロゴからファビコンセットを作り出すのに使用されています.
 
 ## 折りたたみ要素 `<details>` を使う {#details-tag}
 
-\@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, 出力を折りたたみできるようにするのに JavaScript の小ワザが使えます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
+\@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, JavaScript の小ワザが使えれば出力を折りたたみできます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
 
 ```{r, details-tag, echo=FALSE, fig.show='hold', fig.cap='details 要素でテキスト出力を囲む', out.width=if(knitr::is_latex_output()) '100%'}
 knitr::include_graphics(file.path(BOOKLANG, c('images/details-closed.png', 'images/details-open.png')), dpi = NA)
 ```
 
-あなたがご覧になっているのが本書の HTML バージョンなら, 以下のチャンクで実際に動くのを見ることができます. PDF または印刷版を読んでいるのなら, このような対話的機能 (「詳細」ボタンを押すこと) はおそらく不可能です.
+あなたがご覧になっているのが本書の HTML バージョンなら, 以下のチャンクで実際に動くのを見ることができます. PDF または印刷版を読んでいるのなら, このような対話的機能 (「詳細」ボタンを押すこと) はもちろん不可能です.
 
 ```{r}
 1:100
 ```
 
-以下は出力ブロックを検出し, それを `<details>` タグで囲む JavaScript コードを読み込ませた Rmd 文書の完全なソースです. 
+以下の Rmd 文書は, 出力ブロックを検出しそれを `<details>` タグで囲む JavaScript コードを読み込ませた, 完全なソースです. 
 
 ```{js, echo=FALSE, include=knitr::is_html_output()}
 (function() {
@@ -429,7 +429,7 @@ CSS セレクタの `pre:not([class])` は `class` 属性のない全ての `<pr
 
 ## HTML 出力を Web で共有する {#html-share}
 
-R Markdown を HTML ファイルにレンダリングするということの魅力的な側面の1つは, これらのファイルをとても簡単にインターネットでホストし他のウェブサイトと同様に共有できるということです. この節では貴方の作成した HTML\index{HTML ホスティング} 文書を共有するオプションを簡単に要約します.
+R Markdown を HTML ファイルにレンダリングする魅力的な側面の1つは, これらのファイルをとても簡単にインターネットでホストし, 他のウェブサイトと同様に共有できるということです. この節ではあなたの作成した HTML\index{HTML ホスティング} 文書を共有するオプションを簡単に要約します.
 
 ### R 特化のサービス {#r-specific-services}
 
@@ -437,41 +437,41 @@ RStudio は R Markdown で作られた様々な種類のコンテンツをイン
 
 - [**RPubs**](https://rpubs.com) は静的な単一の R Markdown コンテンツの無料ホスティングを可能とします. RStudio IDE の `Publish` ボタンまたは `rsconnect::rpubsUpload()` 関数で簡単に公開できます. 詳細は "Getting Started" のページ (https://rpubs.com/about/getting-started) をご覧ください.
 
-- [**ShinyApps.io**](https://www.shinyapps.io) は R を実行するサーバを要求するような動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる^[R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで `runtime: shiny` または `runtime: shiny_prerendered` オプションを設定することもできます. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに `rmarkdown::run()` で文書を実行することになります. 詳しく知るには @rmarkdown2018 (Chapter 19, https://bookdown.org/yihui/rmarkdown/shiny-documents.html) をご覧ください.]インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか `rsconnect::deployApp()` 関数を使って公開できます. 詳細はユーザーガイド (https://docs.rstudio.com/shinyapps.io/) をご覧ください.
+- [**ShinyApps.io**](https://www.shinyapps.io) は R を実行するサーバを要する動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる^[R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで `runtime: shiny` または `runtime: shiny_prerendered` オプションを設定することもできます. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに `rmarkdown::run()` で文書を実行することになります. 詳しく知るには @rmarkdown2018 (Chapter 19, https://bookdown.org/yihui/rmarkdown/shiny-documents.html) をご覧ください.]インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか `rsconnect::deployApp()` 関数を使って公開できます. 詳細はユーザーガイド (https://docs.rstudio.com/shinyapps.io/) をご覧ください.
 
 - [**bookdown.org**](https://bookdown.org/home/about/) は **bookdown** パッケージで書かれた本の無料ホスティングを提案します. `bookdown::publish_book()` 関数であなたの書籍の静的な出力ファイルを簡単に公開できるでしょう.
 
-- [**RStudio Connect**](https://rstudio.com/products/connect/) は組織団体が自前のサーバで動作させるような企業向け製品です. で作成された広範な種類のコンテンツ (R Markdown 文書, Shiny アプリケーション, API など) を文書レベルでのアクセス制御, 閲覧履歴などといった機能を使いセキュアな環境でホストできます. コンテンツは RStudio Connect に手動でアップロードするか, **rsconnect** パッケージか, または git ベースのデプロイによって公開できます.
+- [**RStudio Connect**](https://rstudio.com/products/connect/) は組織団体が自前のサーバで動作させるような企業向け製品です. 作成された広範な種類のコンテンツ (R Markdown 文書, Shiny アプリケーション, API など) を文書レベルでのアクセス制御, 閲覧履歴などといった機能を使いセキュアな環境でホストできます. コンテンツは RStudio Connect に手動でアップロードするか, **rsconnect** パッケージか, または git ベースのデプロイによって公開できます.
 
 ### Static website services {#static-website-services}
 
 端的に言うなら, 単純な静的ウェブサイトは数個の HTML ファイル (典型的にはホームページである `index.html`), JavaScript, CSS ファイル, そして画像などの追加のコンテンツで構成されます. 一連のファイルは web サーバにそのままホストし, web ブラウザに表示させることができます.
 
-R Markdown が HTML 出力フォーマットでレンダリングされた場合, その結果は静的なウェブサイトとして扱われます. ウェブサイトは単一のスタンドアロンな HTML ファイル (デフォルトオプション `self_contained: true` を使った場合に得られます) から, ファイルのセット, **blogdown** パッケージ (静的なウェブサイトジェネレータに依存しています) に基づいたウェブサイトのような洗練されたプロジェクトまで複雑さの点で多岐に及びます. より詳しく知りたいなら,  **blogdown** 本 [@blogdown2017] の [Section 2.1 on Static Sites](https://bookdown.org/yihui/blogdown/static-sites.html) を見てください.
+R Markdown が HTML 出力フォーマットでレンダリングされた場合, その結果は静的なウェブサイトとして扱われます. ウェブサイトは単一のスタンドアロンな HTML ファイル (デフォルトオプション `self_contained: true` を使った場合に得られます) から, ファイルのセット, **blogdown** パッケージ (静的なウェブサイトジェネレータに依存しています) に基づいたウェブサイトのような洗練されたプロジェクトまで複雑さの点で多岐に及びます. より詳しく知りたいなら, **blogdown** 本 [@blogdown2017] の [Section 2.1 on Static Sites](https://bookdown.org/yihui/blogdown/static-sites.html) を見てください.
 
 結論として, あなたは R 特化のサービスに加え, 多くの無料で使用可能な静的ウェブサイトホスティングサービスを使って HTML 文書をホストできるでしょう. R コミュニティでのよくある選択としては以下があります.
 
-- [**GitHub Pages**](https://pages.github.com) は Github リポジトリから Markdown と HTML コンテンツをそのまま公開する場合は特に簡単です. main ブランチのルートの `doc` ディレクトリか, あるいは `gh-pages` ブランチからコンテンツをホストすることを指定することになるでしょう. 新しいコンテンツの公開は git でリポジトリに新しい HTML ファイルをプッシュするだけで可能です.
+- [**GitHub Pages**](https://pages.github.com) は Github リポジトリから Markdown と HTML コンテンツをそのまま公開する場合は特に簡単です. main ブランチのルートか, main ブランチの`docs/` ディレクトリ, あるいは特定の `gh-pages` ブランチからコンテンツをホストすることを指定することになるでしょう. 新しいコンテンツの公開は git でリポジトリに新しい HTML ファイルをプッシュするだけで可能です.
 
-- [**GitLab Pages**](https://docs.gitlab.com/ce/user/project/pages/) は GitHub Pages と類似の機能を GitLab リポジトリに対して提案します. GitLab はリポジトリの `public` ディレクトリに保存されたコンテンツをデプロイします. コンテンツをビルドし公開するには, 指示のため `.gitlab-ci.yml` という YAML ファイルを与えなければなりませんが, GitLab は多くの便利なテンプレートを提供してくれます. レンダリングされた HTML コンテンツをホストする例として, https://gitlab.com/pages/plain-html/-/tree/master をご覧ください.
+- [**GitLab Pages**](https://docs.gitlab.com/ce/user/project/pages/) は GitHub Pages と類似の機能を GitLab リポジトリに対して提案します. GitLab はリポジトリの `public/` ディレクトリに保存されたコンテンツをデプロイします. コンテンツをビルドし公開するには, `.gitlab-ci.yml` という YAML ファイルで指示を与えなければなりませんが, GitLab は多くの便利なテンプレートを提供してくれます. レンダリングされた HTML コンテンツをホストする例として, https://gitlab.com/pages/plain-html/-/tree/master をご覧ください.
 
 - [**Netlify**](https://www.netlify.com) は静的な web コンテンツをビルドしデプロイするプラットフォームです. **blogdown** と **pkgdown** で作成された web コンテンツに対する選択としてはよく知られていますが, これはあらゆる種類の HTML ファイルをホスティングできます. 公開方法として, ドラッグ・アンド・ドロップ, コマンドライン, あるいは GitHub および GitLab レポジトリから自動公開するといったいくつもの選択があります. 加えて, プルリクエストから web サイトをプレビューするといった多くの役立つ機能も提案されています. 詳細は Netlify のドキュメント (https://docs.netlify.com) や RStudio webinar ["Sharing on Short Notice"](https://rstudio.com/resources/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown/) をご覧ください.
 
 ## HTML ページのアクセシビリティを向上させる {#html-accessibility}
 
-HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対するアクセシビリティ\index{HTML!アクセシビリティ}をもたせることは重要です. こういた読者はしばしば, 文書を視覚的に読み上げる代わりにスクリーンリーダ (音声読み上げソフト) といった**聞く**ための, 特殊なツールを使います. 大抵はスクリーンリーダはテキストを読み上げることができるだけで, (ラスタ) 画像を読み上げられません. つまりあなたはスクリーンリーダに十分なヒントを与える必要があるということです. 良いニュースは, 少々の労力であなたの文書のアクセシビリティをかなり向上できるということです. Jonathan Godfrey が R Markdown 文書のアクセシビリティのためのいくつかのヒントを https://r-resources.massey.ac.nz/rmarkdown/ で記事にしています.^[JooYoung Seo も, 視覚障害を持つ人の手助けになる R パッケージを https://jooyoungseo.com/post/ds4blind/ で紹介しています. これは R Markdown と直接関係しませんが, 視覚障害者がどうグラフを読み取っているのかを学ぶのに役に立つでしょう.] この記事に基づいて, 本書の読者にとっての利便性になるいくつかのヒントを以下に提示します.
+HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対するアクセシビリティ\index{HTML!アクセシビリティ}をもたせることは重要です. たいていの場合、こういった読者は文書を視覚的に読む代わりに, スクリーンリーダ (音声読み上げソフト) といった**聞く**ための特殊なツールを使います. 通常はスクリーンリーダはテキストを読み上げることができるだけで, (ラスタ) 画像を読み上げられません. つまりあなたはスクリーンリーダに十分なテキストでヒントを与える必要があるということです. 良いニュースは, わずかな労力があればあなたの文書のアクセシビリティを格段に向上できるということです. Jonathan Godfrey が R Markdown 文書のアクセシビリティのためのいくつかのヒントを https://r-resources.massey.ac.nz/rmarkdown/ で記事にしています.^[JooYoung Seo も, 視覚障害を持つ人の手助けになる R パッケージを https://jooyoungseo.com/post/ds4blind/ で紹介しています. これは R Markdown と直接関係しませんが, 視覚障害者がどうグラフを読み取っているのかを学ぶのに役に立つでしょう.] この記事に基づいて, 本書の読者にとっての利便性になるいくつかのヒントを以下に提示します.
 
 - HTML 文書はしばしば PDF よりアクセシビリティが優れている.
 
 - 可能ならば HTML 出力文書に Rmd ソース文書を同梱するようにする (例えば\@ref(embed-rmd)節でその方法の1つを実演しています). HTML 文書にアクセシビリティがない場合, 視覚障害者は Rmd ソースから内容を理解できるかもしれませんし, ソースを修正することもできるかもしれません.
 
-- テキスト情報をグラフに与える. 2014年の useR! カンファレンスで, 私は Jonathan からこの問題を個人的に教えてもらいました. web ページ上の画像の `alt` 属性\index{ず@図!だいたいてきすと@代替テキスト}の重要さを私は初めて理解しました.
+- グラフのタグにテキストで情報を含ませる. 2014年の useR! カンファレンスで, 私は Jonathan からこの問題を個人的に教えてもらいました. web ページ上の画像の `alt` 属性\index{ず@図!だいたいてきすと@代替テキスト}の大切さを, 私は初めて理解しました.
     
-    この問題を理解するために, まずは web ページの画像が HTML タグ `<img />` によって生成されることを知らなければなりません. このタグは `src` 属性を持ち, 画像ファイルのソースの場所を指定しています. 例えば `<img src="foo_figures/image.png" />` のように. 視力のある読者はこの画像を見ることができますが, スクリーンリーダは画像を読むことが出来ないため, 視覚障害者には描かれていることを知るのは難しいです, 特にラスタ画像の場合は (SVG のようなベクタ画像は多少ましかもしれません). この場合テキストでのヒントを与えると, スクリーンリーダは読み上げることができるので便利です. このテキストでのヒントは画像の代替 (alternate) テキストを意味する `alt` 属性で与えることできます.
+    この問題を理解するために, まずは web ページの画像が HTML タグ `<img />` によって生成されることを知らなければなりません. このタグは `src` 属性を持ち, 画像ファイルのソースの場所を指定しています. 例えば `<img src="foo_figures/image.png" />` のように. 視力のある読者はこの画像を見ることができますが, 視覚障害者には描かれていることを知るのは難しいのです. それはスクリーンリーダは, 特にラスタ画像の場合, 画像を読むことが出来ないためです (SVG のようなベクタ画像は多少ましかもしれませんが). この場合テキストでのヒントを与えると, スクリーンリーダは読み上げることができるので便利です. このテキストでのヒントは画像の代替 (alternate) テキストを意味する `alt` 属性で与えることできます.
     
-    R Markdown のコードチャンクから生成された画像の場合は, もしチャンクオプション `fig.cap` (つまり 画像のキャプション, figure caption) 設定されているなら `alt` 属性はここから生成されます. 代わりに Markdown 構文 `![]()` を使って画像を挿入することもできます. 画像パスをパーレン `()` 内に入力し, `alt` テキストをブラケット `[]` 内に入力, 例えば `![テキスト情報](パス/image.png)` のように.
+    R Markdown のコードチャンクから生成された画像の場合は, もしチャンクオプション `fig.cap` (つまり 画像のキャプション, figure caption) が設定されているなら `alt` 属性はここから生成されます. 代わりに Markdown 構文 `![]()` を使って画像を挿入することもできます. 画像パスをパーレン `()` 内に入力し, `alt` テキストをブラケット `[]` 内に入力, 例えば `![テキスト情報](パス/image.png)` のように.
 
-    `alt` テキストは視力のある読者にとっては HTML ページ上に表示されません. しかし画像にキャプションや代替テキストを与えた場合, `rmarkdown::html_document` フォーマットはデフォルトでキャプション要素を表示します. もし実際にキャプションを表示させたくないなら, このように `fig_caption` をオフにすることができます.  
+    `alt` テキストは視覚のある読者にとっては HTML ページ上に表示されません. しかし画像にキャプションや代替テキストを与えた場合, `rmarkdown::html_document` フォーマットはデフォルトでキャプション要素を表示します. もし実際にキャプションを表示させたくないなら, このように `fig_caption` をオフにすることができます.
     
     ```yaml
     output:
@@ -481,16 +481,16 @@ HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対する�
     
     このケースでは `alt` 属性はまだ生成されますが, 表示されることはありません.
 
-- 画像の代わりに LaTeX 構文を使って数学的なコンテンツを書く (例: `$ $`, あるいは `$$ $$`). デフォルトでは, R Markdown は数学的なコンテンツのレンダリングに MathJax ライブラリを使い, 結果としてスクリーンリーダが読み上げられるものになります.
+- 数学的なコンテンツを書くには画像の代わりに LaTeX 構文を使う (例: `$ $`, あるいは `$$ $$`). デフォルトでは, R Markdown は数学的なコンテンツのレンダリングに MathJax ライブラリを使い, 結果としてスクリーンリーダが読み上げられるものになります.
 
 - チャンクオプション `comment = ""` を設定してコードチャンクのテキスト出力の行頭の `##` を除く (\@ref(opts-comment)節参照).
 
-我々はアクセシビリティの専門家ではありませんので, 詳細は元の記事を読むことをお薦めします.
+我々はアクセシビリティの専門家ではありませんので, 詳細を知りたければ元の記事を読むことをお薦めします.
 
 ## ハードコア HTML ユーザー向けの話 (\*) {#html-hardcore}
 
-\@ref(latex-hardcore)節では, あなたが Markdown のシンプルさのためにその制約が強すぎると感じているなら, Markdown の代わりに純粋な LaTeX 文書にコードチャンクを埋め込むことができる, という話をしました. 同様にあなたが直接 HTML コードを書くことに慣れていて快適さを感じるなら, HTML にコードチャンクを混ぜ合わせることもまた可能です. そのような文書は慣習的に `.Rhtml` というファイル拡張子を持ちます\index{HTML!Rhtml}.
+\@ref(latex-hardcore)節では, Markdown がシンプルであるがゆえにその制約が強すぎると感じるときは, Markdown の代わりに純粋な LaTeX 文書にコードチャンクを埋め込むことができる, という話をしました. 同様に, 直接 HTML コードを書くことに慣れていて快適さを感じるなら, HTML にコードチャンクを混ぜ合わせることもまた可能です. そのような文書は慣習的に `.Rhtml` というファイル拡張子を持ちます\index{HTML!Rhtml}.
 
-`Rhtml` 文書では, コードチャンクは `<!--begin.rcode` と `end.rcode-->` の間に埋め込まれ, インライン R コードは `<!--rinline -->` 内に埋め込まれます. 以下は `Rhtml` 全体の例です. これを `test.Rhtml` というファイル名で保存し, コンパイルには `knitr::knit("test.Rhtml")` を使うことができます. 出力は 1つの HTML (`.html`) ファイルになります. RStudio では, ツールバーの `Knit` ボタンを押すことでもコンパイルできます.
+`Rhtml` 文書では, コードチャンクは `<!--begin.rcode` と `end.rcode-->` の間に埋め込まれ, インライン R コードは `<!--rinline -->` 内に埋め込まれます. 以下は `Rhtml` 全体の例です. これを `test.Rhtml` というファイル名で保存し, `knitr::knit("test.Rhtml")` を使ってコンパイルできます. 出力は 1つの HTML (`.html`) ファイルになります. RStudio では, ツールバーの `Knit` ボタンを押すことでもコンパイルできます.
 
 `r import_example('knitr.Rhtml')`
