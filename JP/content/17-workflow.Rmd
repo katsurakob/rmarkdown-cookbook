@@ -56,7 +56,7 @@ knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio の�
 
 RStudio IDE\index{RStudio!すぺるちぇっく@スペルチェック} を使っているなら, `F7` キーを押すかメニューの `Edit -> Check Spelling` をクリックして Rmd 文書のスペルチェックができます.  リアルタイムなスペルチェックは RStudio v1.3 で有効になったので, これ以降のバージョンならば手動でスペルチェックを動作させる必要はなくなりました.
 
-RStudio を使っていないなら, **spelling** パッケージ\index{R パッケージ!spelling} [@R-spelling] には `spell_check_files()` 関数があります. これは R Markdown を含む一般的な文書フォーマットのスペルチェックができます. Rmd 文書のスペルチェック時は, コードチャンクはスキップされ平文のみチェックされます.
+RStudio を使っていないなら, **spelling** パッケージ\index{R パッケージ!spelling} [@R-spelling] には `spell_check_files()` 関数があります. これは R Markdown を含む一般的な文書フォーマットのスペルチェックができます. Rmd 文書のスペルチェック時は, コードチャンクはスキップされテキストのみチェックされます.
 
 ## `rmarkdown::render()` で R Markdown をレンダリングする {#rmarkdown-render}
 
