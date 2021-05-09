@@ -55,28 +55,29 @@ TODO: 出力形式/出力フォーマット表記が混在しているので統�
   * 12章で expressions と (line of) codes の違いに言及している記述に出会ってしまった ...
 * Section X/Chapter X - X節, X章?. section header のときはこれらの総称として「セクション」と表現する
 * conditional function - 9章のみ登場. `knitr::is_html_output()` 等のことを指していると思われる. ここでしか使われないので用語として扱わず「条件付けのための関数」 と表現する.
+* tips/trick/hack - それぞれ「豆知識」「小ワザ」「裏ワザ」小ワザとかはくだけすぎ?
+* raw content/text/verbatim - raw content - プレーンテキストでいいか. verbatim は?
+* LaTeX distribution - ---配布パッケージで良くない?
 
 以下, まだはっきり決めてない
 
 * subfigure - 「サブフィギュア」はわかりにくい...
 * full example - ...
 * fenced code block: 単に「コードブロック」として, 文脈に応じて何かを囲んでいるというニュアンスの修飾語句を付ける?
-* tips/trick/hack - それぞれ「豆知識」「小ワザ」「裏ワザ」小ワザとかはくだけすぎ?
-* raw content/text/verbatim - 平文? 生の文?
-* 行内で R コードを書く時 `=` の前後にスペース入れたり入れなかったりは意味があるのか? (1箇所だけ意味が変わる用例がある)
-* LaTeX distribution - ---配布パッケージで良くない?
+* 行内で R コードを書く時 `=` の前後にスペース入れたり入れなかったりは意味があるのか? (1箇所だけ明らかに挙動が変わる用例がある)
+
 * base R graphics/grid graphics - この場合の base/grid ってパッケージ名?
 * "in the wild" のニュアンス (Ch.16)
 
 ## 組版 TODO
 
 * kranz は欧文なので和文にするしかない
-* 今は bxjs だが完成したら ltjs にする
-  * ltjsreport には `\frontmatter` が定義されていない?
+* ~~今は bxjs だが完成したら ltjs にする~~ lualatex で bxjsreport にする
+  * ~~ltjsreport には `\frontmatter` が定義されていない?~~
 * いろいろと欧文向けのマクロ設定をしているようなので確認
   * キャプションだけ左揃えになっている?
 * subsubsection で2桁になるとインデントが狂ってる
-* 索引の漢字の読み指定が必要
+* ~~索引の漢字の読み指定が必要~~
 * TODO: 15章の最後が日本語だとわかりにくいので適当なフリーフォントを探す
 
 ## cookbook に足りない話 (やや細かい話)
