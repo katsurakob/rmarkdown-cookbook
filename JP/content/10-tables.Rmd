@@ -99,7 +99,7 @@ knitr::kable(iris2, align = 'lccrr')
 knitr::kable(iris2, caption = '表のキャプションの例')
 ```
 
-第\@ref(cross-ref)節で言及したように, 出力フォーマットが **bookdown** パッケージ由来のものであれば, キャプションのある表を相互参照することができます.
+\@ref(cross-ref)節で言及したように, 出力フォーマットが **bookdown** パッケージ由来のものであれば, キャプションのある表を相互参照することができます.
 
 ### 数値列を整形する {#format-numeric-columns}
 
@@ -129,7 +129,7 @@ knitr::kable(d, digits = 3, format.args = list(big.mark = ',', scientific = FALS
 
 ### 欠損値を表示する {#display-missing-values}
 
-デフォルトでは欠損値 (`NA`) は表の上で `NA` という文字で表示されます. これを R のグローバルオプション `knitr.kable.NA`  で他の値に置き換えたり何も表示させない, つまり `NA` を空白にする, といったことができます. 例えば以下の2つ目の表では `NA` を空白に置き換え, 3つ目の表で `**` で表示しています.
+デフォルトでは欠損値 (`NA`) は表の上で `NA` という文字で表示されます. これを R のグローバルオプション `knitr.kable.NA` で他の値に置き換えたり何も表示させない, つまり `NA` を空白にする, といったことができます. 例えば以下の2つ目の表では `NA` を空白に置き換え, 3つ目の表で `**` で表示しています.
 
 ```{r}
 d[rbind(c(1, 1), c(2, 3), c(3, 2))] = NA
@@ -162,7 +162,7 @@ knitr::kable(d, escape = FALSE)
 knitr::kable(d, format = 'latex', escape = TRUE)
 ```
 
-LaTeX で他によく知られた特殊文字として, `#`, `%`, `&`, `{`, `}` があります. HTML のよく知られた特殊文字は `&`, `<`, `>` そして `"` です. `escape = FALSE` で表を生成する際には, 正しい方法で特殊文字を使うよう注意深くなるべきです. とてもよくある失敗として, LaTeX で `escape = FALSE` を使いつつ,   `%` や `_` が特殊文字であると気づかずに表の列名やキャプションに含んでしまうというものがあります.
+LaTeX で他によく知られた特殊文字として, `#`, `%`, `&`, `{`, `}` があります. HTML のよく知られた特殊文字は `&`, `<`, `>` そして `"` です. `escape = FALSE` で表を生成する際には, 正しい方法で特殊文字を使うよう注意深くなるべきです. とてもよくある失敗として, LaTeX で `escape = FALSE` を使いつつ, `%` や `_` が特殊文字であると気づかずに表の列名やキャプションに含んでしまうというものがあります.
 
 特殊文字のエスケープの方法を正しく知っている自信がないなら **knitr** には2つのヘルパー内部関数があります. 以下はその例です\index{knitr!escape\_latex()}\index{knitr!escape\_html()}.
 
@@ -275,13 +275,13 @@ Mazda RX4 Wag        21.0     6    160   110
 
 ### LaTeX の表をカスタマイズする (\*) {#customize-latex-tables}
 
-必要なのが LaTeX の出力のみなら, さらにいくつか `kable()` の特別オプションがあります. これらは HTML 等, 他の種類のフォーマットでは無視されることに注意してください. 表のフォーマットオプションをグローバルに設定 (第\@ref(kable-formats)節参照) していない限り, この節の例では `kable()` の `format` 引数を明示的に使わなければなりません.
+必要なのが LaTeX の出力のみなら, さらにいくつか `kable()` のオプションがあります. これらは HTML 等, 他の種類のフォーマットでは無視されることに注意してください. 表のフォーマットオプションをグローバルに設定 (\@ref(kable-formats)節参照) していない限り, この節の例では `kable()` の `format` 引数を明示的に使わなければなりません.
 
 ```{r, eval=FALSE}
 knitr::kable(iris2, format = 'latex', booktabs = TRUE)
 ```
 
-表のキャプションを設定 (第\@ref(kable-caption)節参照) している場合, `kable()` は表を `table` 環境で囲みます. つまりこうなります.
+表のキャプションを設定 (\@ref(kable-caption)節参照) している場合, `kable()` は表を `table` 環境で囲みます. つまりこうなります.
 
 ```latex
 \begin{table}
@@ -307,7 +307,7 @@ knitr::kable(cars[1:2, ], format = 'latex', table.envir = 'table', position = '!
 knitr::kable(iris2, caption = '長い長いキャプション', caption.short = '短いキャプション')
 ```
 
-キャプションの短縮形は LaTeX 上で `\caption[]{}` コマンドの角カッコ (`[]`) 内に与えられ, ほとんどの場合は PDF 出力文書の中の表一覧でよく使用されます. 短縮形がない場合は, キャプション全文が表示されます.
+キャプションの短縮形は LaTeX 上では `\caption[]{}` コマンドのブラケット (`[]`) 内に与えられ, ほとんどの場合は出力された PDF の表一覧で使用されます. 短縮形がない場合は, キャプション全文が表示されます.
 
 出版物レベルのクオリティで作表するための LaTeX パッケージ [**booktabs**](https://ctan.org/pkg/booktabs)\index{LaTeX パッケージ!booktabs} に詳しいなら, この例のように `booktabs = TRUE` を設定できます.
 
@@ -316,7 +316,7 @@ iris3 = head(iris, 10)
 knitr::kable(iris3, format = 'latex', booktabs = TRUE)
 ```
 
-R Markdown で **booktabs** のような LaTeX パッケージが追加で必要なら, YAML で宣言しなければならないことを忘れないでください (やり方は第\@ref(latex-extra)節参照).
+R Markdown で **booktabs** のような LaTeX パッケージが追加で必要なら, YAML で宣言しなければならないことを忘れないでください (やり方は\@ref(latex-extra)節参照).
 
 引数 `booktabs` が `TRUE` か `FALSE` (デフォルト) であるかに依存して表の外見は変わります.
 
@@ -344,7 +344,7 @@ table 環境に含まれた場合, つまり表にキャプションを設定し
 
 <!-- https://stackoverflow.com/questions/24254552/knitr-style-table-with-css -->
 
-`knitr::kable(format = "html")` で生成した表をカスタマイズしたいなら,  前節で紹介した共通の引数の他に, 1つだけ `table.attr` という特別な引数があります. この引数で任意の属性を `<table>` タグに追加することができます. 例えばこのように.
+`knitr::kable(format = "html")` で生成した表をカスタマイズしたいなら, 前節で紹介した共通の引数の他に, 1つだけ `table.attr` という特別な引数があります. この引数で任意の属性を `<table>` タグに追加することができます. 例えばこのように.
 
 ```{r, render=kat, comment='', class.output='html'}
 knitr::kable(mtcars[1:2, 1:2], table.attr = 'class="striped"', format = "html")
@@ -378,9 +378,9 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/striped-table.png'), dpi = N
 
 ## **kableExtra** パッケージ {#kableextra}
 
-**kableExtra** package [@R-kableExtra]\index{R パッケージ!kableExtra}は `knitr::kable()` (第\@ref(kable)節参照) を使用して作成した表の基本機能を拡張するために設計されました. `knitr::kable()` はシンプルな設計なので (これは Yihui が怠け者であるという意味にとるのはご随意に！), 他のパッケージで見られるような機能の多くが決定的に失われてしまっています. そして **kableExtra** はこのギャップを完全に埋めてくれます. **kableExtra** について最も驚異することは, 表のほとんどの機能, 例えば, 図\@ref(fig:striped-table)のようなストライプ背景の表をつくるなどが HTML でも PDF でも動作することです. 
+**kableExtra** package [@R-kableExtra]\index{R パッケージ!kableExtra}は `knitr::kable()` (\@ref(kable)節参照) を使用して作成した表の基本機能を拡張するために設計されました. `knitr::kable()` はシンプルな設計なので (これは Yihui が怠け者であるという意味にとるのはご随意に！), 他のパッケージで見られるような機能の多くが決定的に失われてしまっています. そして **kableExtra** はこのギャップを完全に埋めてくれます. **kableExtra** について最も驚異することは, 表のほとんどの機能, 例えば, 図\@ref(fig:striped-table)のようなストライプ背景の表をつくるなどが HTML でも PDF でも動作することです. 
 
-このパッケージはいつものように CRAN からインストールできますし, GitHub  (https://github.com/haozhu233/kableExtra) から開発版をインストールすることもできます.
+このパッケージはいつものように CRAN からインストールできますし, GitHub (https://github.com/haozhu233/kableExtra) から開発版をインストールすることもできます.
 
 ```{r, eval=FALSE}
 # install from CRAN
@@ -390,7 +390,7 @@ install.packages("kableExtra")
 remotes::install_github("haozhu233/kableExtra")
 ```
 
-内容を広げたドキュメントが https://haozhu233.github.io/kableExtra/  にあり,  `kable()` の出力を HTML や LaTeX 出力でカスタマイズする方法について多くの使用例が掲載されています. 我々としてはご自分でドキュメントを読むことをおすすめし, ここではひと握りの例だけを提示します.
+発展的なドキュメントが https://haozhu233.github.io/kableExtra/ にあり, `kable()` の出力を HTML や LaTeX 出力でどうカスタマイズするかについて多くの使用例が掲載されています. 我々としてはご自分でドキュメントを読むことをおすすめし, ここでは一部の例だけを提示します.
 
 **kableExtra** パッケージはパイプ演算子 `%>%` を前面に出しています. `kable()` の出力に **kableExtra** のスタイル関数を接続することができます. 例えばこのように.
 
@@ -463,17 +463,17 @@ HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう
 
 ## その他の表作成パッケージ {#table-other}
 
-多くの作表用 R パッケージがあります\index{R パッケージ!作表パッケージ}. `kable()` (\@ref(kable)節) と**kableExtra** (\@ref(kableextra)節)  を紹介した)主な理由は他のパッケージより良いからではなく, 私がこれらにのみ詳しかったからです.^[平たく言うと, 自分では表を全く使いませんから, 洗練された表を作る方法を学ぶ強いモチベーションがありませんでした.] 存在は知っていますがあまり詳しくないパッケージを次に列挙します.^[**訳注**: これらの差異について, 翻訳者も自身の作成したドキュメントでいくらか言及しています https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html] ご自分で確認し, 目的に最も合っているものを決めることができます.
+多くの作表用 R パッケージがあります\index{R パッケージ!作表パッケージ}. `kable()` (\@ref(kable)節) と**kableExtra** (\@ref(kableextra)節) を紹介した)主な理由は他のパッケージより良いからではなく, 私がこれらにのみ詳しかったからです.^[平たく言うと, 自分では表を全く使いませんから, 洗練された表を作る方法を学ぶ強いモチベーションがありませんでした.] 存在は知っていますがあまり詳しくないパッケージを次に列挙します.^[**訳注**: これらの差異について, 翻訳者も自身の作成したドキュメントでいくらか言及しています https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html] ご自分で確認し, 目的に最も合っているものを決めることができます.
 
-- **flextable** [@R-flextable] と **huxtable** [@R-huxtable]: 幅広い種類の出力フォーマットをサポートするパッケージを探しているなら, **flextable** と **huxtable** が最善の2つの選択です. HTML, LaTeX. そして Office フォーマットを全てサポートし, よく使われる表の機能  (例えば条件付き書式とか) のほとんどをサポートしています. **flextable** の詳細は https://davidgohel.github.io/flextable/ で, **huxtable** のドキュメントは https://hughjonesd.github.io/huxtable/ で見られます.
+- **flextable** [@R-flextable] と **huxtable** [@R-huxtable]: 幅広い種類の出力フォーマットをサポートするパッケージを探しているなら, **flextable** と **huxtable** が最善の2つの選択です. HTML, LaTeX. そして Office フォーマットを全てサポートし, よく使われる表の機能 (例えば条件付き書式とか) のほとんどをサポートしています. **flextable** の詳細は https://davidgohel.github.io/flextable/ で, **huxtable** のドキュメントは https://hughjonesd.github.io/huxtable/ で見られます.
 
-- **gt** [@R-gt]: 表のヘッダ, (題名・副題), 列のラベル, 表の本体, 行グループのラベル, 表のフッタといった異なる表のパーツをまとめて表を構成することができます. 数字のフォーマットを指定したり, セルの背景色に影をつけたりもできます. 現在は **gt** は主に HTML 出力をサポートしています.^[LaTeX や Word といった他の出力フォーマットへのサポートが必要ならば, **gtsummary** パッケージ [@R-gtsummary] はとても有望な **gt** を下地に拡張しています. https://github.com/ddsjoberg/gtsummary]  詳細は https://gt.rstudio.com で見られます.
+- **gt** [@R-gt]: 表のヘッダ, (題名・副題), 列のラベル, 表の本体, 行グループのラベル, 表のフッタといった異なる表のパーツをまとめて表を構成することができます. 数字のフォーマットを指定したり, セルの背景色に影をつけたりもできます. 現在は **gt** は主に HTML 出力をサポートしています.^[LaTeX や Word といった他の出力フォーマットへのサポートが必要ならば, **gtsummary** パッケージ [@R-gtsummary] はとても有望な **gt** を下地に拡張しています. https://github.com/ddsjoberg/gtsummary] 詳細は https://gt.rstudio.com で見られます.
 
 - **formattable** [@R-formattable]: `percent()`, `accounting()` といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. **gt** のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの https://github.com/renkun-ken/formattable で見ることができます.
 
 - **DT** [@R-DT]: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみサポートしているため, 独立した節を設けて紹介したりはしません. **DT** は JavaScript ライブラリの **DataTables** を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. **DT** はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの **DaataTables** の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ https://github.com/rstudio/DT を見てください.
 
-- **reactable** [@R-reactable]: **DT** と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で **DT** より優れているようです. もし **reactable** が 2015年時点で存在していれば, 私は **DT** を開発していなかったと思います. と言いつつも,  **reactable** は**DT** にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント https://glin.github.io/reactable/ を読み, どちらが目的に合ったものかを知ることもできるでしょう.
+- **reactable** [@R-reactable]: **DT** と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で **DT** より優れているようです. もし **reactable** が 2015年時点で存在していれば, 私は **DT** を開発していなかったと思います. と言いつつも, **reactable** は**DT** にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント https://glin.github.io/reactable/ を読み, どちらが目的に合ったものかを知ることもできるでしょう.
 
 - **rhandsontable** [@R-rhandsontable]: これも **DT** と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには https://jrowen.github.io/rhandsontable/ を見てください.
 
