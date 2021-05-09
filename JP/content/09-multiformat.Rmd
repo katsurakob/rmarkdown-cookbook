@@ -4,26 +4,26 @@ R Markdown の主な利点は1つのソースから複数種類の出力フォ�
 
 コードチャンクの出力を全ての出力フォーマットに対応させるのは時には難題になることがあります. 例えばたった1つの CSS ルール (`img { border-radius: 50%; }`) で HTML 出力に対して円の画像を作成するのは非常に単純ですが, LaTeX 出力ではこれとそのまま同じようにはいきません. 典型的には Tikz グラフィックスに関係する問題になります.
 
-単に出力要素が出力フォーマットの全てに対して動作しないこともあります. 例えば **gifski** パッケージ [@R-gifski] (\@ref(animation)節参照) で GIF アニメを簡単に作ることができ, これは HTML 出力では完璧に動作しますが, LaTeX 出力に埋め込んだものは追加の GIF ファイルの処理と LaTeX パッケージなしでは不可能です.
+ある出力要素がすべての出力フォーマットに対して動作するわけではありません. 例えば **gifski** パッケージ [@R-gifski] (\@ref(animation)節参照) で GIF アニメを簡単に作ることができ, これは HTML 出力では完璧に動作しますが, LaTeX 出力に埋め込んだものは追加の GIF ファイルの処理と LaTeX パッケージなしでは不可能です.
 
 この章では複数のフォーマットで動作する例を少しだけ提示します. ある機能が特定の出力フォーマットでのみ有効なら, その出力形式に基づいて条件付きで有効・無効にする方法を提示します.
 
 ## LaTeX か HTML か {#latex-html}
 
-LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} 関数は出力フォーマットが LaTeX かどうか (Pandoc 出力フォーマットの `latex` および `beamer`) を教えてくれます. 同様に `knitr::is_html_output`\index{knitr!is\_html\_output()} 関数は出力フォーマットが HTML かどうか教えてくれます. デフォルトでは Pandoc 出力フォーマットのうち `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, そして `slidy` が HTML 出力とみなされます.  です. ある Pandoc 出力が HTML であると思えないなら, そのフォーマットを除外するために, 例えばこのように `excludes` 引数を使えます.
+LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr::is_latex_output()`\index{knitr!is\_latex\_output()} 関数は出力フォーマットが LaTeX かどうか (Pandoc 出力フォーマットの `latex` および `beamer`) を教えてくれます. 同様に `knitr::is_html_output`\index{knitr!is\_html\_output()} 関数は出力フォーマットが HTML かどうか教えてくれます. デフォルトでは Pandoc 出力フォーマットのうち `markdown`, `epub`, `html`, `html4`, `html5`, `revealjs`, `s5`, `slideous`, そして `slidy` が HTML 出力とみなされます. ある Pandoc 出力が HTML であると思えないなら, そのフォーマットを除外するために, 例えばこのように `excludes` 引数を使えます.
 
 ```{r, collapse=TRUE}
 # markdown を HTML として扱わない
 knitr::is_html_output(excludes = 'markdown')
 ```
 
-特定の出力要素を LaTeX または HTML でのみ生成することができるのなら, これらの関数は条件つきで生成するのに使うことができます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境はおそらく HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
+ある出力要素が LaTeX または HTML のみで生成されるのなら, これらの関数を条件つきで生成できるように使えます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境は HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
 
 `r import_example('latex-tiny.Rmd')`
 
-上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
+上記の例でのポイントはチャンクオプション `include = knitr::is_latex_output()`\index{ちゃんくおぷしょん@チャンクオプション!include} です. `\begin{tiny} \end{tiny}` 環境は出力フォーマットが LaTeX の場合のみ含まれます. この例の2つの表は出力が LaTeX でない場合は同じ見た目になるでしょう.
 
-\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回のトリックを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
+\@ref(font-color)節では HTML と LaTeX 出力のテキストの色を変更する関数を使用しました. \@ref(animation)節では, アニメーションの例を提示しました. これにも今回の小ワザを使うことができます. HTML 出力に対してアニメーションを生成し, LaTeX 出力に対しては静止画を生成するコードチャンクはこのようになります.
 
 ````md
 ```{r animation.hook=if (knitr::is_html_output()) 'gifski'}`r ''`
@@ -33,9 +33,7 @@ for (i in 1:2) {
 ```
 ````
 
-これらの条件付き関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
-
-TODO: conditional functions をなんと呼ぶのが良いか
+これらの条件付けのための関数はどこでも使えます. 他のチャンクオプションにも使えます (例えばチャンクの評価に条件を付けるため `eval` に使うなど) し, あるいはこの例のように R コード内にも使えます.
 
 ````md
 ```{r, eval=knitr::is_html_output(), echo=FALSE}`r ''`
@@ -51,7 +49,7 @@ if (knitr::is_latex_output()) {
 
 ## HTML ウィジェットを表示する {#html-widgets}
 
-HTML ウィジェット (<https://htmlwidgets.org>)\index{HTML!ウィジェット} は典型例で言えばインタラクティブな JavaScript アプリケーションで, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit するなら, このようなエラーメッセージが返ってくるかもしれません.
+HTML ウィジェット (<https://htmlwidgets.org>)\index{HTML!ウィジェット} はインタラクティブな JavaScript アプリケーションの典型で, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit すると, このようなエラーメッセージが返ってくるでしょう.
 
 ```md
 Error: Functions that produce HTML output found in document
@@ -66,7 +64,7 @@ Note however that the HTML output will not be visible in
 non-HTML formats.
 ```
 
-上記のエラーメッセージの方法よりも良い解決法が存在しますが, 追加のパッケージが絡んできます. R に **webshot** パッケージ[@R-webshot]\index{R パッケージ!webshot} をインストールし, さらに PhantomJS\index{PhantomJS} をインストールしてください.
+上記のエラーメッセージに示された解決法よりも良い方法があるのですが, 追加のパッケージが絡んできます. R に **webshot** パッケージ[@R-webshot]\index{R パッケージ!webshot} をインストールし, さらに PhantomJS\index{PhantomJS} をインストールしてください.
 
 ```{r, eval=FALSE}
 install.packages('webshot')
@@ -90,11 +88,11 @@ knitr::include_url('https://yihui.org')
 
 `out.width` や `fig.cap` といった図に関連するほとんどのチャンクオプションが `knitr::include_url()` でも機能します.
 
-サーバ上で Shiny アプリを公開しているなら, これを文書に含めるために `knitr::include_app()`\index{knitr!include\_app()} を使うことができます. これは `include_url()` と同じように動作します. **bookdown** 本 [@bookdown2016] の [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) には `include_app()` と `include_url()` に関する詳細な話が書かれています.
+サーバ上で Shiny アプリを公開しているなら, `knitr::include_app()`\index{knitr!include\_app()} を使えばこれを文書に含めることができます. これは `include_url()` と同じように動作します. **bookdown** 本 [@bookdown2016] の [Section 2.11](https://bookdown.org/yihui/bookdown/web-pages-and-shiny-apps.html) には `include_app()` と `include_url()` に関する詳細な話が書かれています.
 
 ## 複数の図を横並びに {#figures-side}
 
-`fig.show="hold"`\index{チャンクオプション!fig.show} と `out.width` option\index{チャンクオプション!out.width} オプションを併用して複数の図を並べることができます. 以下の例では `out.width="48%"` を設定し, 出力は図\@ref(fig:figures-side)になります.
+`fig.show="hold"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} と `out.width` option\index{ちゃんくおぷしょん@チャンクオプション!out.width} オプションを併用して複数の図を並べることができます. 以下の例では `out.width="48%"` を設定し, 出力は図\@ref(fig:figures-side)になります.
 
 `r import_example('figures-side.Rmd')`
 
@@ -103,13 +101,13 @@ knitr::include_url('https://yihui.org')
 
 この単純なアプローチは PDF でも HTML 出力でも動作します.
 
-**訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48%  と少し小さくしています.
+**訳注**: この方法は, PDF では必ず横並びになるとは限りません. 余白にはみ出す大きさならば, 自動で折り返されます. これは LaTeX 側の文書スタイルの設定にも依存し, 多くの場合は欧文と和文でよく使われるレイアウトが異なることが原因です. よって, ここでは原著とは異なり画像サイズを 48% と少し小さくしています.
 
-図の内部に複数のプロットがあり, サブフィギュアを使いたいなら, \@ref(latex-subfigure)節を見ることができます. しかしサブフィギュアは LaTeX に対してのみのサポートです.
+図の内部に複数のプロットがあり, サブ図を使いたいなら, \@ref(latex-subfigure)節を見てください. しかしサブ図は LaTeX 出力に対してのみサポートされているので気をつけてください.
 
 ## 生のコードを書く (\*) {#raw-content}
 
-\@ref(raw-latex)節で紹介したテクニックは実に汎用的なものです. たどんな複雑な生のコードであっても Markdown 内で「生の」コンテンツとして指定すれば保護されます. 例えば HTML を直接書いたなら, `=html` 属性を使用することができます.
+\@ref(raw-latex)節で紹介したテクニックは実に広く使えます. いかに複雑な生のコードであっても Markdown 内で「生の」コンテンツとして保護するよう指定できます. 例えば HTML を直接書いたなら, `=html` 属性を使用することができます.
 
 ````md
 ```{=html}
@@ -123,7 +121,7 @@ knitr::include_url('https://yihui.org')
 ```
 ````
 
-属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力を確認することもできます\index{knitr!pandoc\_toc()}.
+属性名は Pandoc 出力の名前です. 出力フォーマット名を知りたいなら, Rmd 内で以下のコードチャンクの出力をみてください\index{knitr!pandoc\_toc()}.
 
 ````md
 ```{r}`r ''`
@@ -136,7 +134,7 @@ knitr::pandoc_to()
 ## カスタムブロック (\*) {#custom-blocks}
 <!-- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown -->
 
-**bookdown** 本の [2.7節](https://bookdown.org/yihui/bookdown/custom-blocks.html) では, どうすれば R Markdown でブロックの見た目をカスタマイズできるかを話しました. これはレポートや本の中で, 読者があなたの著作の中の要点を確実に取りせるようにコンテンツを目立たせるための, 便利な方法になりうるでしょう. これらのブロックをどう使うかの例として, 次のようなものがあります.
+**bookdown** 本の [2.7節](https://bookdown.org/yihui/bookdown/custom-blocks.html) では, どうすれば R Markdown でブロックの見た目をカスタマイズできるかを話しました. これはレポートや本の中でコンテンツを目立たせる便利な方法で, 読者があなたの著作の中の要点を確実に取りせるようにできます. これらのブロックの使い方の例として, 次のようなものがあります.
 
 - あなたの分析コードを実行する前に, ユーザが最新のパッケージを使用しているか確認するための警告メッセージを表示する.
 - ソースコードのある GitHub リポジトリへのリンクを文書の冒頭に追加する.
@@ -146,7 +144,7 @@ knitr::pandoc_to()
 
 ### 構文 {#block-syntax}
 
-カスタムブロックの構文は Pandoc の [fenced `Div` blocks](https://pandoc.org/MANUAL.html#divs-and-spans) に基づいています. `Div` ブロック\index{Div}はとても強力ですが1つだけ問題があります. これはおもに HTML 出力に対して動作し, LaTeX 出力に対しては動作しないことです.
+カスタムブロックの構文は Pandoc の [fenced `Div` blocks](https://pandoc.org/MANUAL.html#divs-and-spans) に基づいています. `Div` ブロック\index{Div}はとても強力ですが1つだけ問題があります. これはおもに HTML 出力に対して動作しますが, LaTeX 出力に対しては動作しないことです.
 
 バージョン 1.16 以降の **rmarkdown** パッケージは `Div` ブロックを HTML と LaTeX どちらに対しても変換するようになりました. HTML 出力に対してはブロックの全ての属性が `<div>` タグの属性になります. 例えば `Div` は ID (`#` の後のに続くもの), 1つまたは複数のクラス (クラス名は `.` の後に書かれるものです), そしてそれ以外の属性を持ちます. 以下の `Div` ブロック,
 
@@ -164,7 +162,7 @@ Hello **world**!
 </div>
 ```
 
-LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, `data-latex`\index{Div!LaTeXとの互換性} と名付けた属性を `Div` ブロックに与えるべきです. これは環境に対する引数になります. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で `verbatim` 環境を使用します. これは引数を必要としません.
+LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, `Div` ブロックに `data-latex`\index{Div!LaTeXとの互換性} と名付けた属性を与え, 環境の引数としましょう. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で `verbatim` 環境を使用します. これは引数を必要としません.
 
 ````md
 ::: {.verbatim data-latex=""}
@@ -188,7 +186,7 @@ LaTeX 出力はこうなります.
 </div>
 ```
 
-2つ目の例は `center` と `minipage` 環境を使い, ページ幅の半分の大きさの中央揃えしたボックス内にテキストを表示しています.
+2つ目の例では `center` と `minipage` 環境を使い, ページ幅の半分の大きさに中央揃えしたボックス内にテキストを表示しています.
 
 ```md
 :::: {.center data-latex=""}
@@ -200,7 +198,7 @@ LaTeX 出力はこうなります.
 ::::
 ```
 
-`center` ブロックの中に `minipage` ブロックをネストしていることに注意してください. 親ブロックに子ブロックを入れるには, さらに1つ余分にコロンが必要です. 上記の例では `center` ブロックに4つのコロンを使用していますが, 5個以上書くことも可能です. 2つのブロックは以下の LaTeX コードに変換されます.
+`center` ブロックの中に `minipage` ブロックをネストしていることに注意してください. 親ブロックに子ブロックを入れるには, さらにコロンが必要です. 上記の例では `center` ブロックに4つのコロンを使用していますが, 5個以上書くことも可能です. 2つのブロックは以下の LaTeX コードに変換されます.
 
 ```tex
 \begin{center}
@@ -210,7 +208,7 @@ LaTeX 出力はこうなります.
 \end{center}
 ```
 
-HTML 出力では, ユーザーの好みで CSS によって `<div>` ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば `\newenvironment` を, 既存の環境を再定義するならば `\renewenvironment` コマンドを LaTeX 上で使うこともできます. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は `style.css` や `preamble.tex` といったファイルを内に記述子, YAML オプションで読み込みます.
+HTML 出力では, ユーザーの好みで CSS によって `<div>` ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば `\newenvironment` を, 既存の環境を再定義するならば `\renewenvironment` コマンドを LaTeX 上で使うこともできます. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は `style.css` や `preamble.tex` といったファイルを内に記述して, YAML オプションで読み込みます.
 
 ```yaml
 ---
@@ -223,15 +221,13 @@ output:
 ---
 ```
 
-次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. \@ref(multi-column)節にさらなる使用例として, 多段組みレイアウト内で複数ブロックを並べるものがあります.
+次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. さらなる使用例としては, \@ref(multi-column)節に, 多段組みレイアウト内で複数ブロックを並べるものがあります.
 
 ### 影付きブロックを追加する {#block-shaded}
 
 まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.
 
-HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくないなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか.
-
-TODO: 日本語の代替サイト
+HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか^[**訳注**: このサイト相当の日本語のサイトを翻訳者は知らないので Moziila のサイトなどを参考にしてください https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics (一部未翻訳のページもあるかもしれません)].
 
 ```{cat, class.source='css', engine.opts=list(file = 'css/box.css')}
 .blackbox {
@@ -246,9 +242,9 @@ TODO: 日本語の代替サイト
 }
 ```
 
-LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パッケージ!framed} を基にして `blackbox` という名前で黒い背景色と白い文字色の新しい環境を作成します.
+LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パッケージ!framed} を基にして `blackbox` という名前で新しい環境を作成し, 黒い背景色と白い文字色にします.
 
-```{cat, class.source='latex', engine.opts=list(file = 'latex/blackbox.tex')}
+```{cat, class.source='latex'}
 \usepackage{color}
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
@@ -260,7 +256,7 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
  {\end{shaded}}
 ```
 
-本書で **framed** パッケージを使うのはこれがかなり軽量だからですが, このパッケージは角の丸い枠を描画することができません. それを実現するには, 影付きボックスを作るためのとても柔軟な一連のオプションを持つ, より洗練された LaTeX パッケージである **tcolorblox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX パッケージ!tcolorbox}が必要になります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.
+本書で **framed** パッケージを使うのはこれがかなり軽量だからですが, このパッケージは色付きで角の丸い枠を描画することができません. それを実現するには, より洗練された LaTeX パッケージである **tcolorblox** (<https://ctan.org/pkg/tcolorbox>)\index{LaTeX パッケージ!tcolorbox}が必要です. このパッケージには影付きボックスを作るためのとても柔軟な一連のオプションがあります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.
 
 ```tex
 \usepackage{tcolorbox}
@@ -297,20 +293,35 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
 
 ### アイコンを加える {#block-image}
 
-カスタムボックス内に画像を含めることで, より注意を引く見た目に作ることができます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 次の例は, このようなディレクトリ構造で動作させるという前提です. これは本書を作成するために使ったものを簡略化したものです.
+カスタムボックス内に画像を含めることで, より見た目で注意を引く作りにできます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 以下に続く例では, 次のようなディレクトリ構造で動作させるという前提にしています. これは本書を作成するために使ったものを簡略化したものです.
 
-```text
-directory/
-├── your-report.Rmd
-├── style.css
-├── preamble.tex
-└── images/ 
-      └── ├── important.png
-          ├── note.png
-          └── caution.png
+```{=latex}
+\dirtree{%
+.1 directory/.
+.2 your-report.Rmd.
+.2 style.css.
+.2 preamble.tex.
+.2 images/.
+.3 important.png.
+.3 note.png.
+.3 caution.png.
+.3 ....
+}
+```
+```{asis echo=!knitr::is_latex_output()}
+* `directory/`
+    * `your-report.Rmd`
+    * `style.css`
+    * `preamble.tex`
+    * `images/`
+        * `important.png`
+        * `note.png`
+        * `caution.png`
+        * `...`
 ```
 
-どのように動作するか説明する前に, この例のソースコードと出力を示します.
+
+全体がどのように動作するかを説明する前に, この例のソースコードと出力をお見せしましょう.
 
 ```md
 ::: {.infobox .caution data-latex="{caution}"}
@@ -344,7 +355,7 @@ HTML 出力では, CSS の `background-image`\index{CSS プロパティ!backgrou
 }
 ```
 
-ブロックに `.infobox` と `.caution` という2つのクラス名を使用していることに注意してください. `infobox` クラスは色付きの外枠のある影付きボックスを定義するのに使用し, `caution` クラスは画像を入れるために使用されています. 2つのクラスを使用する利点は影付きボックスの設定を繰り返すことなく, いろいろなアイコンの付いたブロックを定義できるということです. `warning` のボックスが必要ならば, `.infobox` のルールを繰り返し書くことなく, 以下のように定義するだけで十分です.
+ブロックに `.infobox` と `.caution` という2つのクラス名を使用していることに注意してください. `infobox` クラスは色付きの外枠のある影付きボックスを定義するのに使用し, `caution` クラスは画像を入れるために使用されています. 2つのクラスを使用する利点は影付きボックスの設定を繰り返すことなく, いろいろなアイコンの付いたブロックを定義できるということです. 例えば, `warning` のボックスが必要ならば, `.infobox` のルールを繰り返し書くことなく, 以下のように定義するだけで十分です.
 
 ```css
 .warning {
@@ -384,8 +395,7 @@ PDF 出力に対しては, 以前の例で定義した `blackbox` 環境を基�
   }
 ```
 
-以下に, 異なるアイコンでブロックを示します.
-Below we show more example blocks with different icons:
+以下に, 様々なアイコンを付けたブロックを掲載します.
 
 ::: {.infobox .warning data-latex="{warning}"}
 **注意!**
@@ -410,7 +420,6 @@ Below we show more example blocks with different icons:
 
 この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!
 :::
-
 
 代替案として, LaTeX パッケージの [**awesomebox**](https://ctan.org/pkg/awesomebox)\index{LaTeX パッケージ!awesomebox} を使って PDF にアイコン付きのボックスを生成することもできます. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.
 

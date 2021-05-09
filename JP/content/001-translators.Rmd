@@ -1,12 +1,14 @@
 # 翻訳者情報 {#translators .unnumbered}
 
+この日本語版ページ, および PDF ファイルを作成した人間の情報です.
+
 ## 片桐智志 (Katagiri, Satoshi) {-}
 
 山田工業所の中華鍋 (両手鍋) を使用しています. 私も四川料理のような辛いものは好きです.
 
 I use a southern-style wok. I also like spicy dishes like Sichuan cuisine.
 
-## 謝辞 {-}
+## 翻訳協力者への謝辞 {-}
 
 加えて, 日本語版の修正提案に協力していただいた方を以下にクレジットします. R Markdown クックブックなので R を使って機械的に掲載してみます.
 
