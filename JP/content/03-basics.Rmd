@@ -2,7 +2,7 @@
 
 この章では, R Markdown の重要な概念をいくつか提示します. まず「平文」「コード」という R Markdown の基本的なコンポネントを紹介します. 次に, R Markdown 文書をどう R スクリプトへ変換するか, あるいはその逆はどうするかを提示します.
 
-もっと基本的な話を求める方は, _R Markdown Definitive Guide_ [@rmarkdown2018] の第2章を見てください.
+もっと基本的な話を求める方は, _R Markdown Definitive Guide_ [@rmarkdown2018] の2章を見てください.
 
 ## コードチャンクとインライン R コード {#r-code}
 
@@ -17,19 +17,19 @@ x <- 5  # 円の半径
 その面積は `r knitr::inline_expr('pi * x^2')` である.
 ````
 
-通常、コードチャンクは ```` ```{}````  で始まり,  ```` ``` ```` で終わります. コードチャンク内ではコードを何行でも書いてかまいません. インライン R コードは `` `r ` `` という構文を使って文書のナラティブの中に埋め込まれます. 上記の例ではコードチャンク内で円の半径として変数 `x` を定義し, 次のパラグラフでこの円の面積を計算しています.
+通常、コードチャンクは ```` ```{}```` で始まり, ```` ``` ```` で終わります. コードチャンク内ではコードを何行でも書いてかまいません. インライン R コードは `` `r ` `` という構文を使って文書のナラティブの中に埋め込まれます. 上記の例ではコードチャンク内で円の半径として変数 `x` を定義し, 次のパラグラフでこの円の面積を計算しています.
 
-チャンクオプションを通してコードチャンクの挙動と出力をカスタマイズできます (オプションは波カッコ `{}` 内に与えます). 例のいくつかは第\@ref(chunk-options)章で見つかるでしょう. コードチャンクに別のプログラミング言語のコードを書くこともできます (第\@ref(other-languages) 章を見てください).
+チャンクオプションを通してコードチャンクの挙動と出力をカスタマイズできます (オプションはカーリー・ブレイス `{}` 内に与えます). 例のいくつかは\@ref(chunk-options)章で見つかるでしょう. コードチャンクに別のプログラミング言語のコードを書くこともできます (\@ref(other-languages) 章を見てください).
 
 ## RStudio のビジュアルエディタで R Markdown を書く {#rstudio-visual}
 
-まだ Markdown の書き方に慣れていないか, Markdown コードを書きたくなければ, RStudio\index{RStudio} ver. 1.4 には実験的ですが Markdown 文書用のビジュアルエディタがあります. これは図\@ref(fig:visual-edit)で示すように Word のような伝統的な WYSIWYG なエディタと似ていると感じるでしょう. この完全なドキュメントは https://rstudio.github.io/visual-markdown-editing/ で見ることができます.
+あなたがまだ Markdown の書き方に慣れていないか, Markdown コードを書きたくなければ, RStudio\index{RStudio} ver. 1.4 には実験的ですが Markdown 文書用のビジュアルエディタがあります. これは図\@ref(fig:visual-edit)で示すように Word のような伝統的な WYSIWYG なエディタと似ていると感じるでしょう. この完全なドキュメントは https://rstudio.github.io/visual-markdown-editing/ で見ることができます.
 
 ```{r visual-edit, echo=FALSE, out.width="100%", fig.cap="RStudio のビジュアル Markdown エディタ"}
 knitr::include_graphics(file.path(BOOKLANG, "images/visual-edit.png"), dpi = NA)
 ```
 
-ビジュアルエディタによって, ヘッダ, 図, 表, 脚注などといった Pandoc でサポートされているほとんどあらゆる Markdown 要素を視覚的に編集できます. 全ての構文を覚えなくてもよいのです. ある要素の構文を忘れた場合, RStudio ツールバー (図\@ref(fig:visual-edit)参照) を使うかキーボードショートカットを使って, 要素を追加したり編集したりできます.
+ビジュアルエディタによって, ヘッダ, 図, 表, 脚注などといった Pandoc でサポートされているほとんどあらゆる Markdown 要素を視覚的に編集できます. あなたは全ての構文を覚えなくてもよいのです. ある要素の構文を忘れた場合, RStudio ツールバー (図\@ref(fig:visual-edit)参照) を使うかキーボードショートカットを使って, 要素を追加したり編集したりできます.
 
 既に Markdown に熟練しているなら, ツールバーの一番右端のボタンを右クリックしてソースモードとビジュアルモードを切り替えられるので, 文書をソースモードのままで書くこともできます.
 
@@ -43,7 +43,7 @@ R スクリプトをレポートにレンダリングすると, まず `knitr::s
 
 - Roxygen コメントは平文として扱われます. roxygen コメントは `#'` で始まる R のコメントで, レポートにナラティブを書くのに役立ちます. コメント内ではあらゆる Markdown 構文を使うことができます.
 
-- `#+` で始まるコメントは `knitr` のチャンクヘッダとして扱われます. 例えば, `knitr::spin()` は  `#+ label, fig.width=5` というコメントを, R Markdown の ```` ```{r label, fig.width=5}```` というチャンクヘッダへ翻訳します.
+- `#+` で始まるコメントは `knitr` のチャンクヘッダとして扱われます. 例えば, `knitr::spin()` は `#+ label, fig.width=5` というコメントを, R Markdown の ```` ```{r label, fig.width=5}```` というチャンクヘッダへ翻訳します.
 
 - `{{ code }}` で囲まれた R コードは R Markdown のインライン R コードへ翻訳されます. `{{ code }}` は1行で書かなければならないことに注意してください.
 
@@ -59,15 +59,15 @@ R スクリプトをレポートにレンダリングすると, まず `knitr::s
 
 ```{r, class.output='md', comment='', echo=FALSE}
 xfun::raw_string(
-  knitr::spin(text = xfun::read_utf8(file.path(BOOKLANG, 'examples/spin.R')), knit = FALSE)
+ knitr::spin(text = xfun::read_utf8(file.path(BOOKLANG, 'examples/spin.R')), knit = FALSE)
 )
 ```
 
-このレポート生成方法は, 主に R スクリプトを使って作業していて多くのナラティブを必要としないときに, 特に役立つでしょう. レポートの中でテキストの割合が高いなら, 全てのテキストを  roxygen コメントに入れなくてもいい R Markdown がより良い選択でしょう. 
+このレポート生成方法は, 主に R スクリプトを使って作業していて多くのナラティブを必要としないときに, 特に役立つでしょう. レポートの中でテキストの割合が高いなら, 全てのテキストを roxygen コメントに入れなくてもいい R Markdown がより良い選択でしょう. 
 
 ## Markdown から R script への変換 {#purl}
 
-R Markdown から全ての R コードを取り出したい時は,  `knitr::purl()`\index{knitr!purl()} 関数を呼ぶことができます. 以下は `purl.Rmd` というファイル名の簡単な Rmd の例です.
+R Markdown から全ての R コードを取り出したい時は, `knitr::purl()`\index{knitr!purl()} 関数を呼ぶことができます. 以下は `purl.Rmd` というファイル名の簡単な Rmd の例です.
 
 `r import_example('purl.Rmd')`
 
@@ -83,7 +83,7 @@ purl2(file.path(BOOKLANG, 'examples/purl.Rmd'))
 ```
 
 
-上記の R スクリプトでは, チャンクオプションがコメントとして書かれています. 純粋な R コードが欲しい場合,  `knitr::purl()` を `documentation = 0` という引数を与えて呼ぶば、以下のような R スクリプトが生成されます.
+上記の R スクリプトでは, チャンクオプションがコメントとして書かれています. 純粋な R コードが欲しい場合, `knitr::purl()` を `documentation = 0` という引数を与えて呼べば、以下のような R スクリプトが生成されます.
 
 ```{r, class.output='r', comment='', echo=FALSE}
 purl2(file.path(BOOKLANG, 'examples/purl.Rmd'), documentation = 0)
