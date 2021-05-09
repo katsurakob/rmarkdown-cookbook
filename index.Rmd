@@ -99,7 +99,7 @@ last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `
 ```
 
 ---
-date: "`r last_update`, ver. 0.9 (一部未校正), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.1 (Word 関連の動作確認未完), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
