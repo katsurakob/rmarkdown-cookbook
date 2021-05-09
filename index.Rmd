@@ -109,6 +109,8 @@ date: "`r last_update`, ver. 0.9 (一部未校正), 本家の更新確認時刻:
 
 オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
 
+本翻訳版に関するご意見は[こちら](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new)で受け付けています. また, Web 版は上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は[翻訳メモ](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md)の内容を確認してからしていただけると助かります.
+
 This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 :::
 
