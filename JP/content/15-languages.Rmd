@@ -32,7 +32,7 @@ knitr::knit_engines$set(foo = function(options) {
 })
 ```
 
-これは `foot` エンジンを登録し, ```` ```{foo}```` で始まるコードチャンクを使えるようになります.
+これは `foo` エンジンを登録し, ```` ```{foo}```` で始まるコードチャンクを使えるようになります.
 
 エンジン関数は1つの引数 `options` を取り, これはコードチャンクのオプションのリストです. `options$code` にある文字列ベクトルとして, チャンクのソースコードにアクセスできます. 例えば, このコードチャンクに対して考えます.
 
@@ -66,7 +66,7 @@ knitr::knit_engines$set(upper = function(options) {
 > Hello, **knitr** engines!
 > ```
 
-次に, `py` という名前のもう1つの Python エンジン^[実用的には組み込みの `python` エンジンをを使うべきです. これは **reticulate** パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (\@ref(eng-python)節参照).]の例を紹介します. このエンジンは単純に R の `system2()` 関数から `python` コマンドを呼び出すことで実装しています.
+次に, `py` という名前のもう1つの Python エンジン^[実用的には組み込みの `python` エンジンを使うべきです. これは **reticulate** パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (\@ref(eng-python)節参照).]の例を紹介します. このエンジンは単純に R の `system2()` 関数から `python` コマンドを呼び出すことで実装しています.
 
 ```{r, tidy=FALSE}
 knitr::knit_engines$set(py = function(options) {
@@ -104,7 +104,7 @@ knitr::knit_engines$set(py = function(options) {
 
 あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と **knitr** はなんと Python\index{げんごえんじん@言語エンジン!python}\index{Python} をサポートしています.
 
-Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ``` ```{python}```` を使うことができます. 例えばこのように.
+Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ```` ```{python}```` を使うことができます. 例えばこのように.
 
 ````md
 ```{python}`r ''`
@@ -207,7 +207,7 @@ R 4.0.0 以降では `r"()"` 内での生の文字列 (`?Quotes` のヘルプ参
 
 `r import_example("cat-latex.Rmd")`
 
-上記の `cat` コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の `cat` コードチャンクにオプション `engine.opts = list(file = 'preamble.tex', append = TRUE)` と `code = sprintf('\\fancyfoot[LO,RE]{%s}'` を付けることで `preamble.tex` に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した `engine.opts` が `base::cat()` に渡されるということを思い出してください. つまり `append = TRUE` は `cat()` に渡されます. そして チャンクオプション `code` はこの後の\@ref(option-code)節を読めば理解できるでしょう.
+上記の `cat` コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の `cat` コードチャンクにオプション `engine.opts = list(file = 'preamble.tex', append = TRUE)` と `code = sprintf('\\fancyfoot[LO,RE]{%s}', rmarkdown::metadata$author)` を付けることで `preamble.tex` に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した `engine.opts` が `base::cat()` に渡されるということを思い出してください. つまり `append = TRUE` は `cat()` に渡されます. そして チャンクオプション `code` はこの後の\@ref(option-code)節を読めば理解できるでしょう.
 
 ### YAML データをファイルに書き込みつつ表示する
 
