@@ -20,7 +20,7 @@ LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっていま�
 
 プリアンブルになにか追加したい時, `pdf_document` の\index{出力オプション!includes} `includes` オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. いずれも1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
 
-例えば以下はテキスト内のハイパーリンクを脚注に変える小技です. この小技が役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小技はテキストと URL の両方を表示します.
+例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. この小ワザが役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小ワザはテキストと URL の両方を表示します.
 
 ```tex
 % あなたはレンダリング前に \href のコピーを保存したいかもしれない
@@ -37,10 +37,10 @@ output:
       in_header: "preamble.tex"
 ```
 
-この小技に限れば、実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true` \index{YAML!links-as-notes}にすることで簡単にできます.
+この小ワザに限れば、実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true` \index{YAML!links-as-notes}にすることで簡単にできます.
 
 
-別の方法でコードをプリアンブルに追加するには, YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接コードを与えることです. 第\@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットに生成したいのなら, やはり `includes` を使う方法をお薦めします. `header-includes` は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
+コードをプリアンブルに追加する別の方法として, YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接コードを与えることができます. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットで生成したいのなら, やはり `includes` を使う方法をお薦めします. `header-includes` は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
 
 ## LaTeX 出力の Pandoc オプション {#latex-variables}
 
@@ -70,7 +70,7 @@ output:
 
 これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので https://tug.org/FontCatalogue/  を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
 
-LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: rmdja では YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
+LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: **rmdja** パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
 
 ```yaml
 mainfont: Arial
@@ -150,7 +150,7 @@ output:
 \userpackage{lmodern}
 ```
 
-第\@ref(latex-preamble)節で紹介した `includes` 引数よりも `extra_dependencies` 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.
+\@ref(latex-preamble)節で紹介した `includes` 引数よりも `extra_dependencies` 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.
 
 ### パッケージの例 {#example-packages}
 
@@ -184,8 +184,7 @@ LaTeX ではデフォルトではキャプションのある図は `figure` 環�
 \end{figure}
 ```
 
-`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions_ で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白に収まらないときには, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後の角カッコ内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
-TODO: 確認：原文は上はイタリックになっていましたが、URLのあとのタイトルだけをイタリックにする意図であったと考え、以降のイタリックを外しました。@nnawata
+`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白に収まらないときには, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後の角カッコ内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
 
 - `h`: フロートを**ここ** (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.
 - `t`: そのページの**先頭** (top) に配置します.
@@ -218,7 +217,7 @@ knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 
 <!-- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text -->
 
-全てのフロートを固定するよう強制する方法の代わりに, テキストの後ろにフロートが回るよう強制することです. これはよくある問題を排除できます. 関連するテキストが現れるよりも前に図がページの先頭に現れてしまうということですが、こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
+全てのフロートを固定するよう強制する代わりに, テキストの後ろにフロートが回るよう強制する方法があります. これはよくある問題を排除できます. 問題とは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうということで, こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
 
 ```yaml
 output: 
@@ -228,7 +227,7 @@ output:
 
 ### LaTeX 配置ルールを調整する (\*)
 
-LaTeX のフロート配置パラメータの初期値は, あなたにとっては全体的な「理にかなった」配置を邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
+LaTeX のフロート配置パラメータの初期値は, あなたにとっては「理にかなった」配置を全体的に邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
 
 ```{r float-default, echo = FALSE}
 floatOpts <- data.frame(
@@ -261,13 +260,13 @@ LaTeX に図を動かさないよう努力してもらうために, これらの
 \setcounter{totalnumber}{4}
 ```
 
-これらの記述を `.tex` ファイルに追加したら, 第\@ref(latex-preamble)節で紹介した方法で LaTeX 文書のプリアンブルで読み込ませることができます.
+これらの記述を `.tex` ファイルに追加したら, \@ref(latex-preamble)節で紹介した方法で LaTeX 文書のプリアンブルで読み込ませることができます.
 
 ## LaTeX で複数の図をまとめる {#latex-subfigure}
 
-複数の画像を1つの画像環境に含めたいときがあるかもしれません. Sub-figures\index{figure!sub-figures} を使って, 複数の画像を1つの環境に配置しそれぞれに副題を与えることで, 複数の図 (サブ図) をまとめる\index{図!複数の図をまとめる}ことができます.
+複数の画像を1つの画像環境に含めたいときがあるかもしれません. Sub-figures\index{figure!sub-figures} を使って, 複数の画像を1つの環境に配置しそれぞれに副題を与えることで, サブ図 (複数の図) をまとめる\index{図!複数の図をまとめる}ことができます.
 
-複数図をまとめるには LaTeX パッケージの **subfig**\index{LaTeX package!subfig} が必要です. `pdf_document` 出力の YAML オプションの `extra_dependencies`\index{output option!extra\_dependencies} で読み込ませることができます. 例としては.
+複数の図をまとめるには LaTeX パッケージの **subfig**\index{LaTeX package!subfig} が必要です. `pdf_document` 出力の YAML オプションの `extra_dependencies`\index{output option!extra\_dependencies} で読み込ませることができます. 例としては.
 
 ```yaml
 ---
@@ -280,7 +279,7 @@ output:
 あるコードチャンクからの全てのプロットを並べるためには, チャンクオプション `fig.cap`\index{チャンクオプション!fig.cap} (環境全体のキャプション)  と `fig.subcap`\index{チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の出力を得るためには, 以下のような選択肢も使用できます.
 
 
-- `fig.ncol`\index{チャンクオプション!fig.ncol}: 複数図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これを使って複数の行に分けられます.
+- `fig.ncol`\index{チャンクオプション!fig.ncol}: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これを使って複数の行に分けられます.
 
 - `out.width`\index{チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定します. 例えば2つグラフがあるなら,  `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
 
@@ -360,7 +359,7 @@ LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は�
 \pagestyle{fancy}
 ```
 
-このパッケージは異なる3つのインターフェースを提示しますが, ここでは `\fancyhead` と `\fancyfoot` コマンドを使います. 形式を決める構文は `\fancyhead[selectors]{output text}` で, カスタマイズしたいヘッダの箇所をセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.
+このパッケージは異なる3つのインターフェースを提示します. ここでは `\fancyhead` と `\fancyfoot` コマンドを使います. 形式を決める構文は `\fancyhead[selectors]{output text}` で, カスタマイズしたいヘッダの箇所をセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.
 
 - **E** 偶数ページ
 - **O** 奇数ページ
@@ -377,7 +376,7 @@ LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は�
 - `\leftmark`: 大文字で現在のトップレベル構造の名前と番号.
 - `\rightmark`: 大文字で現在のトップレベル構造に次ぐレベルの名前と番号.
 
-以下は LaTeX コードの例で, 第\@ref(latex-preamble)節で紹介した方法でプリアンブルに書き加えることができます.
+以下は LaTeX コードの例で, \@ref(latex-preamble)節で紹介した方法でプリアンブルに書き加えることができます.
 
 ```latex
 \usepackage{fancyhdr}
@@ -407,7 +406,7 @@ $body$
 
 `$body$` の値は Markdown ドキュメントの本文から生成された LaTeX コードです. 例えば Markdown で本文が `Hello **world**!` ならば, `$body$` の値は `Hello \textbf{world}!` となります.
 
-第\@ref(latex-preamble), 第\@ref(latex-variables), 第\@ref(latex-extra)節で紹介した LaTeX のカスタマイズ方法だけでは不十分なら, 代わりにカスタムテンプレートを使ってみてください. テンプレートはその内部に任意の LaTeX コードを使うことが可能なので, はるかに柔軟です. テンプレートを使うには, `pdf_document` の `template` オプション\index{出力オプション!template} にテンプレートのパスを含めます.
+\@ref(latex-preamble), \@ref(latex-variables), \@ref(latex-extra)節で紹介した LaTeX のカスタマイズ方法だけでは不十分なら, 代わりにカスタムテンプレートを使ってみてください. テンプレートはその内部に任意の LaTeX コードを使うことが可能なので, はるかに柔軟です. テンプレートを使うには, `pdf_document` の `template` オプション\index{出力オプション!template} にテンプレートのパスを含めます.
 
 ```yaml
 output:
@@ -457,4 +456,4 @@ R Markdown はきっと執筆と組版のための最善の文書フォーマッ
 
 `knitr::knit()` 関数は `Rnw` 文書を出力ファイルである LaTeX (`.tex`) にコンパイルでき, それをさらに `pdflatex` といった LaTeX ツールを通して PDF にコンパイルできます. `.Rnw` から PDF を一足飛びでコンパイルするのに `knitr::knit2pdf()`\index{knitr!knit2pdf()} を使うこともできます. RStudio を使っているならツールバーの `Compile PDF` を押すこともできます. 注意してほしいのは, Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, これを **knitr** に変更することです (その方法はこの投稿 http://stackoverflow.com/q/27592837/559676 を確認してください).
 
-`Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも思い出してください.
+`Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも覚えておいてください.
