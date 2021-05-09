@@ -1,8 +1,8 @@
 # LaTeX 出力 {#latex-output}
 
-多くの著者にとって作品の主な出力は PDF レポートで, この出力では強力な LaTex のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX レンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
+多くの著作者にとって作品の主な出力は PDF レポートですが, この出力では強力な LaTex のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX テンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
 
-ただし, 始める前に注意しておきたいことがあります.R Markdown の恩恵の1つは単一のソース文書から複数のフォーマットの文書を生成できるということです. あなたの作品を単一の出力に対して仕立て上げるこにとよって, その出力フォーマット単体の見た目やパフォーマンスは向上するかもしれませんが, それはこの移植性を犠牲にすることでもあります. この問題は LaTeX に限ったことでなく. 他の出力フォーマットでも同様です.
+ただし, 始める前に注意しておきたいことがあります. R Markdown の恩恵の1つは単一のソース文書から複数のフォーマットの文書を生成できるということです. あなたの作品を単一の出力に対して仕立て上げるこにとよって, その出力フォーマット単体の見た目やパフォーマンスは向上するかもしれませんが, それはこの移植性を犠牲にすることでもあります. この問題は LaTeX に限ったことでなく. 他の出力フォーマットでも同様です.
 
 ## プリアンブルに LaTeX コードを追加する {#latex-preamble}
 
@@ -16,11 +16,11 @@ LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっていま�
 \end{document}
 ```
 
-これは文書クラスを `\documentclass{}` で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして `\begin{document}` の後で文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.
+これは文書クラスを `\documentclass{}` で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして `\begin{document}` に続いて文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.
 
-プリアンブルになにか追加したい時, `pdf_document`\index{しゅつりょくおぷしょん@出力オプション!includes} `include` を使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. これらは1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
+プリアンブルになにか追加したい時, `pdf_document` の\index{しゅつりょくおぷしょん@出力オプション!includes} `includes` オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. いずれも1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
 
-例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. PDF 出力された文書が紙に印刷されたものだと, 読者は紙面のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注の URL を見ることはできるのでこのトリックは役に立ちます. この小ワザはテキストと URL の両方を表示します.
+例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. この小ワザが役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小ワザはテキストと URL の両方を表示します.
 
 ```tex
 % あなたはレンダリング前に \href のコピーを保存したいかもしれない
@@ -28,7 +28,7 @@ LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっていま�
 \renewcommand{\href}[2]{#2\footnote{\url{#1}}}
 ```
 
-あるファイル名 , 例えば `preamble.tex` 内に上記のコードを保存できます. それからプリアンブルにこれを読み込んでください.
+上記のコードを任意のファイル名（例えば `preamble.tex` ） に保存してから, プリアンブルに読み込んでください.
 
 ```yaml
 output:
@@ -37,14 +37,13 @@ output:
       in_header: "preamble.tex"
 ```
 
-この小ワザは実際には自分で実装しなくてもよく, Pandoc のデフォルトのテンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true``\index{YAML!links-as-notes}にすることで簡単にできます.
+この小ワザに限れば、実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true` \index{YAML!links-as-notes}にすることで簡単にできます.
 
-
-コードをプリアンブルに追加する別の方法は,  YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接与えることです. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown 文書1つの内部に全てを含められることです. しかしあなたのレポートを複数の出力フォーマットに生成しなければならないなら, `includes` を使う方法をお薦めします. `header-includes` は無条件であり, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. 比較として, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
+コードをプリアンブルに追加する別の方法として, YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接コードを与えることができます. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットで生成したいのなら, やはり `includes` を使う方法をお薦めします. `header-includes` は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
 
 ## LaTeX 出力の Pandoc オプション {#latex-variables}
 
-LaTeX 出力に対してデフォルトの Pandoc を使うなら, PDF 出力の文書の見た目を調整するいくつかのオプションがあります. いくつかのオプションの例を以下に挙げていきます. 完全なリストは https://pandoc.org/MANUAL.html#variables-for-latex で見ることができます.
+LaTeX 出力に対してデフォルトの Pandoc テンプレートを使うなら, PDF 出力の文書の見た目を調整するオプションが何種類もあります. そのうちいくつかの例を以下に挙げておきます. 完全なリストは https://pandoc.org/MANUAL.html#variables-for-latex で見ることができます.
 
 ```yaml
 documentclass: book
@@ -57,9 +56,9 @@ fontsize: 12pt
 links-as-notes: true
 ```
 
-あなたが LaTeX にある程度詳しいなら, これらのオプションの意味は明らかでしょう. `documentclass` オプション\index{YAML!documentclass} は, 例えば `article`, `book`, `report` などの文書クラスを設定します. `classoption` は文書クラスに与えるオプションのリストで, 例えば二段組の文書を作りたいなら `twocolumn` オプション,^[このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに `\onecolumn` コマンドを挿入することになるでしょう. 二段組モードを続けたいなら `\twocolumn` を挿入します.], 横置きレイアウトにするなら `landscape` オプション (デフォルトでは縦置き (portrait) レイアウト) があります. `papersize`\index{YAML!papersize} オプションは `a4`, `paper`, `a5` といった用紙サイズを設定します. `linestretch`\index{YAML!linestretch} オプションは行間を設定します. `fontsize`\index{YAML!fontsize} オプションはフォントサイズを `10pt`, `11pt`, `12pt` というふうに設定します. `links-as-notes` オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
+あなたが LaTeX をある程度ご存知なら, これらのオプションの意味は明らかでしょう. `documentclass` オプション\index{YAML!documentclass} は, 例えば `article`, `book`, `report` などの文書クラスを設定します. `classoption` は文書クラスに与えたいオプションをリストにしたもので, 例えば二段組の文書を作りたいなら `twocolumn` オプション,^[このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに `\onecolumn` コマンドを挿入することになるでしょう. 二段組モードを続けたいなら `\twocolumn` を挿入します.], 横置きレイアウトにするなら `landscape` オプション (デフォルトでは縦置き (portrait) レイアウト) があります. `papersize`\index{YAML!papersize} オプションは `a4`, `paper`, `a5` といった用紙サイズを設定します. `linestretch`\index{YAML!linestretch} オプションは行間を設定します. `fontsize`\index{YAML!fontsize} オプションはフォントサイズを `10pt`, `11pt`, `12pt` というふうに設定します. `links-as-notes` オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
 
-フォントの変更は少しトリッキーです. どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで大抵の場合デフォルトである `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.], 読み込む LaTeX フォントパッケージを選択するために  `fontfamily` オプションを使ってください. 例えばこのように.
+フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.],  `fontfamily` オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
 
 ```yaml
 fontfamily: accanthis
@@ -68,9 +67,9 @@ output:
     latex_engine: pdflatex
 ```
 
-これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他の多数の LaTeX フォントパッケージのリストは You may see https://tug.org/FontCatalogue/  で見ることができます. LaTeX ディストリビューションに TinyTeX をお使いで, フォントパッケージがインストールされていないならば,   文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
+これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので https://tug.org/FontCatalogue/  を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
 
-LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプション `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} はメインのフォント, サンセリフ体, そしてタイプライタ体のフォントをそれぞれ指定するのに使えます.^[**訳注**: rmdja では YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
+LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: **rmdja** パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
 
 ```yaml
 mainfont: Arial
@@ -79,7 +78,7 @@ output:
     latex_engine: xelatex
 ```
 
-Beamer \index{Beamer}の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にいくつか追加オプションを提供してくれています. それらは https://pandoc.org/MANUAL.html#variables-for-beamer-slides で確認できます. 例えば `institute` オプション\index{YAML!institute}で著者の所属機関を指定することができます.
+Beamer \index{Beamer}の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にオプションをいくつか追加提供しています. それらは https://pandoc.org/MANUAL.html#variables-for-beamer-slides で確認できます. 例えば `institute` オプション\index{YAML!institute}で著者の所属機関を指定することができます.
 
 ```yaml
 ---
@@ -92,11 +91,11 @@ institute: "ハッカーの大学"
 
 <!-- https://stackoverflow.com/questions/29389149/add-image-in-title-page-of-rmarkdown-pdf -->
 
-LaTeX パッケージの **titling** \index{LaTeX パッケージ!titling} を表題ブロックを画像に変更\index{ず@図!ひょうしぺーじ@表紙ページ}するのに使うとができます. 以下は R ロゴ (`logo.jpg`) を表紙に配置する方法の例の全容です. 画像は LaTeX のサポートする形式 (例えば `jpg`, `png`, `pdf`) ならなんでも使えます.
+LaTeX パッケージの **titling** \index{LaTeX パッケージ!titling} は表題ブロックを画像に変更\index{ず@図!ひょうしぺーじ@表紙ページ}するのに使えます. 以下は R ロゴ (`logo.jpg`) を表紙に配置する方法の全容を示したものです. 画像は LaTeX のサポートする形式 (例えば `jpg`, `png`, `pdf`) ならなんでも使えます.
 
 `r import_example('latex-logo.Rmd')`
 
-図\@ref(fig:latex-logo) がこの例の出力です.
+図\@ref(fig:latex-logo) がこの出力例です.
 
 ```{r latex-logo, echo=FALSE, fig.cap="LaTeX の表紙ページにロゴを追加する", fig.align='center'}
 knitr::include_graphics(file.path(BOOKLANG, "images/latex-logo.png"), dpi = NA)
@@ -110,17 +109,17 @@ title: |
   LaTeX のタイトルにロゴを追加する
 ```
 
-この場合, 最初の例のように YAML フロントマターの `header-includes` フィールドは不要になります. 例からは見えませんが, `![](logo.jpg){width=1in}` の末尾にスペースが2つあることに注意してください. これは Markdown では改行を意味します(\@ref(linebreaks)節参照). 改行がない場合画像とタイトルは同じ行に現れてしまい, きっとそれはあなたの意図するものではないでしょう.
+この場合, 最初の例にあった YAML フロントマターの `header-includes` フィールドは不要になります. 例からは見えませんが, `![](logo.jpg){width=1in}` の末尾にスペースが2つあることに注意してください. これは Markdown では改行を意味します(\@ref(linebreaks)節参照). 改行がない場合画像とタイトルは同じ行に現れてしまい, あなたの意図するものではないはずです.
 
 ## LaTeX パッケージを追加で読み込む {#latex-extra}
 
 <!-- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 -->
 
-追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて **kableExtra**\index{R パッケージ!kableExtra} [@R-kableExtra]  のようないくつかのパッケージは R パッケージの関数を提供するために LaTeX に依存しているかもしれません. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.
+追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて **kableExtra**\index{R パッケージ!kableExtra} [@R-kableExtra]  のようないくつかのパッケージでは R パッケージの関数が LaTeX に依存して機能するものもあります. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.
 
 ### LaTeX パッケージを読み込む {#loading-latex-packages}
 
-`pdf_document` の YAML での設定 `extra_dependencies` オプション\index{しゅつりょくおぷしょん@出力オプション!extra\_dependencies} を使って追加の LaTeX パッケージを読み込めます. 中間ファイルの LaTeX 出力文書で読み込む LaTeX パッケージ\index{LaTeX パッケージ}のリストを与えることができます. 例えばこのように.
+`pdf_document` の YAML 設定で `extra_dependencies` オプション\index{しゅつりょくおぷしょん@出力オプション!extra\_dependencies} を使って追加の LaTeX パッケージを読み込めます. これにより中間出力の LaTeX 文書で読み込むべき LaTeX パッケージ\index{LaTeX パッケージ}のリストを与えることができます. 例えばこのように.
 
 ```yaml
 ---
@@ -142,7 +141,7 @@ output:
       lmodern: null
 ```
 
-LaTeX に慣れた人にとっては, これは以下の LaTeX コードと同じです.
+これは, LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.
 
 ```tex
 \usepackage[labelfont={bf}]{caption} 
@@ -150,11 +149,11 @@ LaTeX に慣れた人にとっては, これは以下の LaTeX コードと同�
 \userpackage{lmodern}
 ```
 
-\@ref(latex-preamble)節で紹介した `includes` 引数に対し `extra_dependencies` 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.
+\@ref(latex-preamble)節で紹介した `includes` 引数よりも `extra_dependencies` 引数を使う利点は, 外部ファイルを読み込む必要がないため, Rmd 文書が自己完結的になりうるということです.
 
 ### パッケージの例 {#example-packages}
 
-LaTeX には広範なコミュニティがあり [Comprehensive TeX Archive Network](https://ctan.org) (CTAN) 全体には 4,000 種類以上のパッケージがあります. ここにレポートに使えるかもしれない LaTeX パッケージの例をいくつか挙げます.
+LaTeX には広範なコミュニティがあり [Comprehensive TeX Archive Network](https://ctan.org) (CTAN) 全体には 4,000 種類以上のパッケージがあります. ここにレポートづくりに使えるかもしれない LaTeX パッケージの例をいくつか挙げます.
 
 - [pdfpages](https://ctan.org/pkg/pdfpages): あなたの文書内に, 別の外部 PDF 文書からページを丸ごと持ってきて埋め込むことができます.
 - [caption](https://ctan.org/pkg/caption): キャプションのサブタイトルを変更します. 例えば図のタイトルをイタリックや太字にできます.
@@ -165,7 +164,7 @@ LaTeX には広範なコミュニティがあり [Comprehensive TeX Archive Netw
 <!-- https://stackoverflow.com/questions/16626462/figure-position-in-markdown-when-converting-to-pdf-with-knitr-and-pandoc/17648350#17648350 -->
 <!-- Some of the solutions adapted from https://texfaq.org/FAQ-floats. Link left here for future reference -->
 
-LaTeX に共通の不満点の1つは図表の位置\index{ず@図!いち@位置}です. Microsoft Word のような図がユーザーの指定した場所にそのまま置かれるワードプロセッサと違い, LaTeX は特定の組版ルールに反しないように図を配置しようとします. そうなると図はテキストで参照した場所から浮動 (フロート) するかもしれません. この節では (図などの) フロート環境がどう機能し, その挙動をカスタマイズするためにどうオプションを与えるかについての予備知識を解説します.
+LaTeX に共通の不満点の1つは図表の配置\index{ず@図!いち@位置}です. Microsoft Word のような図がユーザーの指定した場所にそのまま置かれるワードプロセッサと違い, LaTeX は特定の組版ルールに反しないように図を配置しようとします. そうなると図はテキストで参照した場所から浮動 (フロート) するかもしれません. この節では (図などの) フロート環境がどう機能するかについての背景情報と, その挙動をカスタマイズするためにどうオプションを与えればよいか解説します.
 
 ### フロート環境 {#floating-environment}
 
@@ -184,16 +183,16 @@ LaTeX ではデフォルトではキャプションのある図は `figure` 環�
 \end{figure}
 ```
 
-`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白におさめられないと, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後のブラケット内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
+`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白に収まらないときには, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後の角カッコ内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
 
 - `h`: フロートを**ここ** (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.
 - `t`: そのページの**先頭** (top) に配置します.
 - `b`: そのページの**末尾** (bottom) に配置します.
-- `p`: フロート専用の特別な**ページ**に配置します.
+- `p`: フロート専用の特別な**ページ** (page) に配置します.
 - `!`: LaTex が「良い」フロートの位置を決定するための内部パラメータ上書きします.
 - `H`: フロートを正確に LaTex コード上と同じ位置に配置します. **float** パッケージが必要です (`\usepackage{float}`).
 
-これらの修飾子は併用できます. 例えば `!b` は LaTeX に図をページ末尾に置くよう矯正できます. デフォルトの挙動は `tbp` です. これは LaTeX が図をまずページ先頭に, ついで末尾に, そして独立したページに置こうとします.
+これらの修飾子は併用できます. 例えば `!b` は LaTeX が図をページ末尾に置くよう強制できます. デフォルトの挙動は `tbp` です. これは LaTeX が図をまずページ先頭に, ついで末尾に, そして独立したページに置こうとします.
 
 ### 図がフロートするのを防ぐ {#prevent-figures-from-floating}
 
@@ -205,7 +204,7 @@ output:
     extra_dependencies: ["float"]
 ```
 
-チャンクオプション `fig.pos`\index{ちゃんくおぷしょん@チャンクオプション!fig.pos} をフロートの挙動を制御するのに使えます. オプションの値 `!H` は文書でのいかなる移動も防ぎます. 以下の行を　R Markdown 文書の最初のコードチャンクに書くことで, 全てのチャンクがこの設定を持つように, これをデフォルトの挙動にすることもできます.
+チャンクオプション `fig.pos`\index{ちゃんくおぷしょん@チャンクオプション!fig.pos} をフロートの挙動を制御するのに使えます. オプションの値 `!H` は文書でのいかなる移動も防ぎます. 以下の行を　R Markdown 文書の最初のコードチャンクに書くことで, 全てのチャンクがこの設定になるように, 文書のデフォルトの挙動を設定できます.
 
 ```{r, eval=FALSE}
 knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
@@ -217,7 +216,7 @@ knitr::opts_chunk$set(fig.pos = "!H", out.extra = "")
 
 <!-- https://tex.stackexchange.com/questions/15706/force-floats-to-be-typeset-after-their-occurrence-in-the-source-text -->
 
-全てのフロートを固定するよう強制することに代わる方法は, テキスト上でフロートが後回しになるよう強制することです. これは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうというよくある問題を排除できます. こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
+全てのフロートを固定するよう強制する代わりに, テキストの後ろにフロートが回るよう強制する方法があります. これはよくある問題を排除できます. 問題とは関連するテキストが現れるよりも前に図がページの先頭に現れてしまうということで, こうなるとレポートを読む流れが破壊されてしまいます. LaTeX パッケージの **flafter**\index{LaTeX パッケージ!flafter} を使って以下のようにすることで, 常に図がテキストより後に現れるよう強制できます.
 
 ```yaml
 output: 
@@ -227,7 +226,7 @@ output:
 
 ### LaTeX 配置ルールを調整する (\*)
 
-LaTeX 自体のフロート配置パラメータは全体として, あなたにとって「理にかなった」配置を邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
+LaTeX のフロート配置パラメータの初期値は, あなたにとっては「理にかなった」配置を全体的に邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
 
 ```{r float-default, echo = FALSE}
 floatOpts <- data.frame(
@@ -248,7 +247,7 @@ floatOpts <- data.frame(
 knitr::kable(floatOpts, caption = "LaTeX デフォルトのフロート設定")
 ```
 
-LaTeX に図を動かさないよう努力してもらうために, これらの設定を変えることができます. LaTeX プリアンブルファイルに, 1ページのテキストの最小量を減らすような以下のコードを追加し, フロートが収まる余地を増やさせることができます.
+LaTeX に図を動かさないよう努力してもらうために, これらの設定を変えることができます. LaTeX プリアンブルファイルに, 1ページのテキストの最小量を減らすような以下のコードを追加し, フロートが収まる余地を増やすことができます.
 
 ```tex
 \renewcommand{\topfraction}{.85}
@@ -264,9 +263,9 @@ LaTeX に図を動かさないよう努力してもらうために, これらの
 
 ## LaTeX で複数の図をまとめる {#latex-subfigure}
 
-複数の画像を1つの画像環境に含めたいときがあるかもしれません. 複数の画像を1つの環境に並べ, それぞれのサブキャプションを与えることで, 複数の図 (サブ図) をまとめる\index{ず@図!さぶず@サブ図}ことが達成できます.
+複数の画像を1つの画像環境に含めたいときがあるかもしれません. 複数の画像 (sub-figures, サブ図) を1つの環境に配置しそれぞれに副題を与えることで, サブ図をまとめる\index{ず@図!さぶず@サブ図}ことができます.
 
-図をまとめるには LaTeX パッケージの **subfig**\index{LaTeX パッケージ!subfig} が必要です. `pdf_document` 出力の YAML オプションの `extra_dependencies`\index{しゅつりょくおぷしょん@出力オプション!extra\_dependencies} で読み込ませることができます. 例えばこのように.
+複数の図をまとめるには LaTeX パッケージの **subfig**\index{LaTeX パッケージ!subfig} が必要です. `pdf_document` 出力の YAML オプションの `extra_dependencies`\index{しゅつりょくおぷしょん@出力オプション!extra\_dependencies} で読み込ませることができます. 例は以下のようになります.
 
 ```yaml
 ---
@@ -276,12 +275,12 @@ output:
 ---
 ```
 
-コードチャンクからの全てのプロットを並べるために, チャンクオプション `fig.cap`\index{ちゃんくおぷしょん@チャンクオプション!fig.cap} (環境全体のキャプション)  と `fig.subcap`\index{ちゃんくおぷしょん@チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の選択のために, 以下のような選択肢も使用できます.
+あるコードチャンクからの全てのプロットを並べるためには, チャンクオプション `fig.cap`\index{ちゃんくおぷしょん@チャンクオプション!fig.cap} (環境全体のキャプション)  と `fig.subcap`\index{ちゃんくおぷしょん@チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の出力を得るためには, 以下のような選択肢も使用できます.
 
 
-- `fig.ncol`\index{ちゃんくおぷしょん@チャンクオプション!fig.ncol}: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これは複数の行に分けられます.
+- `fig.ncol`\index{ちゃんくおぷしょん@チャンクオプション!fig.ncol}: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これを使って複数の行に分けられます.
 
-- `out.width`\index{ちゃんくおぷしょん@チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定しますが. 例えば2つグラフがあるなら,  `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
+- `out.width`\index{ちゃんくおぷしょん@チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定します. 例えば2つグラフがあるなら,  `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
 
 以下は具体例の1つです.
 
@@ -301,7 +300,7 @@ boxplot(Sepal.Width ~ Species, data = iris)
 ```
 ````
 
-この出力を図\@ref(fig:latex-subfig)に示します. 簡潔さのため, 上記の例は `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"` や長いキャプションなどのチャンクオプションをいくつか省略しています.
+この出力を図\@ref(fig:latex-subfig)に示します. 簡潔にするために, 上記の例はチャンクヘッダの `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"` や長くなるキャプションなどのチャンクオプションをいくつか省略しています.
 
 ```{r latex-subfig, fig.cap="複数の図を含む単一の figure 環境の例", echo=FALSE}
 knitr::include_graphics(file.path(BOOKLANG, "images/latex-subfig.png"), dpi = NA)
@@ -315,7 +314,7 @@ knitr::include_graphics(file.path(BOOKLANG, "images/latex-subfig.png"), dpi = NA
   Unicode char \u8: not set up for use with LaTeX.
 ```
 
-もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジンである `pdflatex` を使って文書 (中間ファイルの `.tex` ) を PDF へレンダリングしているのでしょう. `pdflatex` はそのファイルにある何らかの Unicode 文字を処理できません. もしこのようなケースであれば, `xelatex` か `lualatex` へ切り替える\index{しゅつりょくおぷしょん@出力オプション!latex\_engine}ことになるでしょう. 例えばこのように.
+もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジンである `pdflatex` を使って文書 (中間ファイルの `.tex` ) を PDF へレンダリングしているのでしょう. `pdflatex` はそのファイルにある何らかの Unicode 文字を処理できません. このようなときは, `xelatex` か `lualatex` へ切り替える\index{しゅつりょくおぷしょん@出力オプション!latex\_engine}ことになるでしょう. 例えばこのように.
 
 ```yaml
 output:
@@ -323,7 +322,7 @@ output:
     latex_engine: xelatex
 ```
 
-他の文書出力フォーマット, 特に `bookdown::pdf_document2` や `tufte::tufte_handout` といった `pdf_document` ベースのものも LaTeX エンジンも変更できるでしょう. 例えばこのように.
+他の文書出力フォーマットの LaTeX エンジン, 特に `pdf_document` ベースの `bookdown::pdf_document2` や `tufte::tufte_handout` といったもののエンジンも変更できます. 例えばこのように.
 
 ```yaml
 output:
@@ -335,7 +334,7 @@ output:
 
 ## LaTeX のコードフラグメントを生成する {#latex-fragment}
 
-もしあなたの執筆作業が主に純粋な LaTeX を使うものであっても, R Markdown はそれでもなお便利だと感じたかもしれません. R Markdown で書いて, 文書を他の LaTeX 文書に読み込める LaTeX のコード片 (フラグメント)\index{LaTeX!fragment} に変換すれば, より便利になることもあるかもしれません.
+もしはじめから純粋な LaTeX 文書で作業していたとしても, R Markdown はやはり便利だとわかることもあるでしょう. R Markdown で書いて, 文書を他の LaTeX 文書に読み込める LaTeX のコード片 (フラグメント)\index{LaTeX!fragment} に変換したほうが便利なこともあります.
 
 Rmd 文書を LaTeX にレンダリングするとき, `\documentclass{}`, `\begin{body}`, `\end{body}` を含む完全な LaTeX 文書が生成されます. フラグメントはこの完全な文書の主に本文の部分です. LaTeX フラグメントをレンダリングするのに, `latex_fragment` 出力フォーマットが使えます. 例えばこのように.
 
@@ -359,7 +358,7 @@ LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は�
 \pagestyle{fancy}
 ```
 
-このパッケージは異なる3つのインターフェースを提示しますが, ここでは `\fancyhead` と `\fancyfoot` コマンドを使います. 形式を決める構文は `\fancyhead[selectors]{output text}` で, ここでカスタマイズしたいヘッダの部分がどこかをセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.
+このパッケージは異なる3つのインターフェースを提示します. ここでは `\fancyhead` と `\fancyfoot` コマンドを使います. 形式を決める構文は `\fancyhead[selectors]{output text}` で, カスタマイズしたいヘッダの箇所をセレクタが宣言しています. ページの位置を指定する以下のようなセレクタが使えます.
 
 - **E** 偶数ページ
 - **O** 奇数ページ
@@ -414,9 +413,9 @@ output:
     template: my-template.tex
 ```
 
-デフォルトの LaTeX テンプレートは https://github.com/jgm/pandoc/tree/master/data/templates で見ることができます (ファイル名は `default.latex`). 自分でテンプレートを作成したい場合, このテンプレートから作りたいと思うことでしょう.
+Pandocのデフォルトの LaTeX テンプレートは https://github.com/jgm/pandoc/tree/master/data/templates で見ることができます (ファイル名は `default.latex`). 自分でテンプレートを作成したい場合, このテンプレートから作りたいと思うことでしょう.
 
-Pandoc 変数の完全なリストとその意味 (`$body$` や `$title$` のような) は Pandoc マニュアルの https://pandoc.org/MANUAL.html#templates で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, **MonashEBSTemplates** パッケージ\index{R パッケージ!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates) を確認することもできます. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは `inst/rmarkdown/templates/*/resources/` ディレクトリ (`*` はテンプレート名を指します) 以下にあります. 例えば出力フォーマット `MonashEBSTemplates::memo` に対するテンプレートは YAML メタデータの変数 `branding` をモナシュ大学のブランドロゴを含むかどうかをコントロールするのに使えます. このようにテンプレート内で `if` 文を使うことでこれを実現しています.
+Pandoc 変数 (`$body$` や `$title$` など) の完全なリストとその意味は Pandoc マニュアルの https://pandoc.org/MANUAL.html#templates で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, **MonashEBSTemplates** パッケージ\index{R パッケージ!MonashEBSTemplates} (https://github.com/robjhyndman/MonashEBSTemplates) を確認することもできます. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは `inst/rmarkdown/templates/*/resources/` ディレクトリ (`*` はテンプレート名を指します) 以下にあります. 例えば出力フォーマット `MonashEBSTemplates::memo` 用のテンプレートは YAML メタデータの変数 `branding` を使って, モナシュ大学のブランドロゴを含むかどうかを制御できます. 以下のようにテンプレート内で `if` 文を使うことで実現しています.
 
 ```latex
 $if(branding)$%
@@ -429,9 +428,9 @@ $endif$
 
 ## 生の LaTeX コードを書く {#raw-latex}
 
-デフォルトでは Pandoc は LaTeX へ変換する時, 文書内の LaTeX コード\index{LaTeX!生のコード}を維持するので, Markdown 内で LaTeX コマンドや環境を使うことができます. しかし, LaTeX コードが Pandoc がパースするには複雑過ぎるときがあるかもしれず, そのような場合 Pandoc は通常の Markdown として扱います. 結果として特別な LaTeX の文字はエスケープされます. 例えばバックスラッシュ `\` は `\textbackslash{}` に変換されるかもしれません.
+デフォルトでは Pandoc は LaTeX へ変換する時, 文書内の LaTeX コード\index{LaTeX!生のコード}を維持するので, Markdown 内で LaTeX コマンドや環境を使うことができます. しかし, LaTeX コードが Pandoc がパースするには複雑過ぎる場合には, Pandoc は通常の Markdown として扱います. 結果として特別な LaTeX の文字はエスケープされます. 例えばバックスラッシュ `\` は `\textbackslash{}` に変換されるかもしれません.
 
-Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, `=latex` の属性を付けることもできます. 例えばこのように.
+Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, `=latex` の属性を付けることができます. 例えばこのように.
 
 ````md
 ```{=latex}
@@ -446,14 +445,14 @@ A & B \\
 
 ## ハードコア LaTeX ユーザーのために (\*) {#latex-hardcore}
 
-R Markdown はきっと執筆と組版のための最善の文書フォーマットではないでしょう. シンプルさは長所であると同時に短所でもあります. LaTeX はタイプすべきコマンドの多さと引き換えに, 組版の観点で Markdown よりはるかに強力です. あなたにとって組版がはるかに優先すべき事項で, あらゆる LaTeX コマンドや環境を使うことに満足しているのなら, 文書全体で Markdown を使う代わりに純粋な LaTeX コードを使うことができます.
+R Markdown はきっと執筆と組版のための最善の文書フォーマットではないでしょう. シンプルさは長所であると同時に短所でもあります. LaTeX はタイプすべきコマンドの多さと引き換えに, 組版の観点で Markdown よりはるかに強力です. あなたにとって組版がはるかに優先すべき事項で, あらゆる LaTeX コマンドや環境を使うことに満足しているのなら, 文書全体で Markdown を使う代わりに純粋な LaTeX コードを使えばよいのです.
 
 **knitr** パッケージは R Markdown に限定されない多様なソース文書フォーマットをサポートしています. 以下は R コードと純粋な LaTeX コードが混ざり合っている例です
 
 `r import_example('knitr.Rnw')`
 
-例えば上記のファイルは `latex.Rnw` であるようにファイル名はたいてい `.Rnw`\index{LaTeX!Rnw} という拡張子がつきます. 考え方は同じですが R コードチャンクとインライン R コードを書くための構文が異なっています. R コードチャンクは `<<>>=` で始まり (チャンクオプションは括弧内に書きます), `@` で終わります. インライン R コードは `Sexpr{}` 内に書きます.
+例えば上記のファイルが `latex.Rnw` であるようにファイル名には通常 `.Rnw`\index{LaTeX!Rnw} という拡張子がつきます. 考え方は同じですが R コードチャンク構文とインライン R コードを書く構文とは異なっています. R コードチャンクは `<<>>=` で始まり (チャンクオプションは括弧内に書きます), `@` で終わります. インライン R コードは `Sexpr{}` 内に書きます.
 
-`knitr::knit()` 関数は `Rnw` 文書を出力ファイルである LaTeX (`.tex`) にコンパイルでき, それをさらに `pdflatex` といった LaTeX ツールを通して PDF にコンパイルできます. `.Rnw` から PDF を一足でコンパイルするのに `knitr::knit2pdf()`\index{knitr!knit2pdf()} を使うこともできます. RStudio を使っているならツールバーの `Compile PDF` を押すこともできます. Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, たぶんあなたは **knitr** に変更したいだろうということに注意してください (その方法はこの投稿 http://stackoverflow.com/q/27592837/559676 を確認してください).
+`knitr::knit()` 関数は `Rnw` 文書を出力ファイルである LaTeX (`.tex`) にコンパイルでき, それをさらに `pdflatex` といった LaTeX ツールを通して PDF にコンパイルできます. `.Rnw` から PDF を一足飛びでコンパイルするのに `knitr::knit2pdf()`\index{knitr!knit2pdf()} を使うこともできます. RStudio を使っているならツールバーの `Compile PDF` を押すこともできます. 注意してほしいのは, Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, これを **knitr** に変更することです (その方法はこの投稿 http://stackoverflow.com/q/27592837/559676 を確認してください).
 
-`Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも覚えておいてほしいです.
+`Rnw` 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (\@ref(latex-template)節参照) もまた役に立つかもしれない, ということも覚えておいてください.
