@@ -1,10 +1,10 @@
 # チャンクフック (\*) {#chunk-hooks}
 
-チャンクフック\index{チャンクフック}\index{chunk hook|see{チャンクフック}}はあるチャンクオプションの値が `NULL` ではないときに駆動する関数です. チャンクフックを使うと, チャンク内でコードを実行する以上の追加のタスクを実行することができます. 例えばグラフに後処理をしたり (例えば第\@ref(crop-plot)節, 第\@ref(optipng)節) , コードチャンクの実行時間を記録したいときなどです. このようなタスクはレポート内の計算や分析に必須でなくても, 例えばグラフを改良したり最も時間のかかるチャンクを特定したりといった, 他の目的に対しては役に立つででしょう.
+チャンクフック\index{チャンクフック}\index{chunk hook|see{チャンクフック}}はあるチャンクオプションの値が `NULL` ではないときに駆動する関数です. チャンクフックを使うと, チャンク内でコードを実行する以上の追加のタスクを実行することができます. 例えばグラフに後処理をしたり (例えば\@ref(crop-plot)節, \@ref(optipng)節) , コードチャンクの実行時間を記録したいときなどです. このようなタスクはレポート内の計算や分析に必須でなくても, 例えばグラフを改良したり最も時間のかかるチャンクを特定したりといった, 他の目的に対しては役に立つででしょう.
 
 例えばコンソールになんらかの情報をただ表示するだけなど, チャンクフックをまったく別の作用のために使うことができますし, あるいは返り値を使うなら, それが文字列であれば出力文書にその値を書き出すこともできます. 
 
-出力フック (第\@ref(output-hooks)章参照)と同様に, チャンクフックも `knitr::knit_hooks`\index{knitr!knit\_hooks} オブジェクトにて登録されます. 出力フックの名前は **knitr** によって予約されているので, カスタムチャンクフックに使ってはならないことに注意してください.
+出力フック (\@ref(output-hooks)章参照)のように, チャンクフックは `knitr::knit_hooks`\index{knitr!knit\_hooks} オブジェクトにて登録されます. 出力フックの名前は **knitr** によって予約されているので, カスタムチャンクフックに使ってはならないことに注意してください.
 
 ```{r}
 names(knitr:::.default.hooks)
@@ -42,7 +42,7 @@ function(before, options, envir, name) {
 
 4つの引数はすべてあってもなくても構いません. 4つ, 3つ, 2つ, 1つ, あるいは引数がなくとも可能です. 上記の例では `before` 引数1つだけを使っています. これらの引数は以下のような意味があります.
 
-- `before`: チャンクフックがいままさに実行されようとしているときか, コードチャンクが実行された後かを意味します. チャンクフックはコードチャンクごとに, 直前に `hook(before = TRUE)` が, 直後に `hook(before = FALSE)` が, つまり２度実行されることに注意してください.
+- `before`: このチャンクが現在, 実行される直前か直後かです. チャンクフックはコードチャンクごとに2度実行される, つまり直前に1度 `hook(before = TRUE)` が, 直後に `hook(before = FALSE)` が実行されることに注意してください.
 
 - `options`: 現在のコードチャンクのチャンクオプションのリストです. 例えば `list(fig.width = 5, echo = FALSE, ...)` のような値です.
 
@@ -69,7 +69,7 @@ knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
 Sys.which('pdfcrop')
 ```
 
-LaTeX 配布パッケージの TinyTeX (第\@ref(install-latex)節参照) を使っていて, `pdfcrop` があなたのシステムで利用できないときは, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールできます.
+LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, `pdfcrop` があなたのシステムで利用できないときは, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールできます.
 
 ```{r include = FALSE, eval=!tinytex:::check_installed("pdfcrop")}
 tinytex::tlmgr_install('pdfcrop')
@@ -88,7 +88,7 @@ plot(cars)
 
 ## PNG のグラフを最適化する {#optipng}
 
-OptiPNG (<http://optipng.sourceforge.net>)\index{OptiPNG} プログラムをインストールしていれば,  `knitr::hook_optipng()`\index{knitr!hook\_optipng()} フックを使って PNG 形式のグラフ画像ファイルの画質を劣化させることなく縮小して最適化できます\index{チャンクフック!PNG の最適化}\index{図!PNG の最適化}.
+OptiPNG (<http://optipng.sourceforge.net>)\index{OptiPNG} プログラムをインストールしていれば, `knitr::hook_optipng()`\index{knitr!hook\_optipng()} フックを使って PNG 形式のグラフ画像ファイルの画質を劣化させることなく縮小して最適化できます\index{チャンクフック!PNG の最適化}\index{図!PNG の最適化}.
 
 ```{r, eval=FALSE}
 knitr::knit_hooks$set(optipng = knitr::hook_optipng)
@@ -119,7 +119,7 @@ knitr::knit_hooks$set(time_it = local({
 )
 ```
 
-そうすると, チャンクオプション `time_it` を使って時間を測定できます. これが例です.
+するとこれ以降のチャンクでは, チャンクオプション `time_it` を使って時間を測定できます. これが例です.
 
 ````
 ```{r, time_it = TRUE}`r ''`
@@ -135,7 +135,7 @@ Sys.sleep(2)
 paste('Time for the chunk', options$label, 'to run:', res)
 ```
 
-あるいはフック関数で時間を表示させずに記録するのみという手もあります.
+あるいはフック関数で時間を表示させずに記録するだけという手もあります.
 
 ```{r, eval=FALSE}
 all_times <- list()  # 全てのチャンクの時間を保存する
@@ -164,7 +164,7 @@ knitr::knit_hooks$set(time_it = local({
 
 `r import_example('chunk-wrapper.Rmd')`
 
-基本的には,  `options$params.src` から取り出したチャンクヘッダを  ```` ```{r, }```` の中に入れることで元のヘッダを再現しています. そしてこの行を1組の4連続バッククオートで囲んでいるので, 出力時にはそのまま表示されます. 本来のコードチャンクはインデントされているかもしれない (例: 箇条書き内にネストされている場合)ので, 適切にインデントを追加することも必要になります. これはチャンクオプション `options$indent` に保存されています.
+基本的には, `options$params.src` から取り出したチャンクヘッダを ```` ```{r, }```` の中に入れることで元のヘッダを再現しています. そしてこの行を1組の4連続バッククオートで囲んでいるので, 出力時にはそのまま表示されます. 本来のコードチャンクはインデントされているかもしれない (例: 箇条書き内にネストされている場合)ので, 適切にインデントを追加することも必要になります. これはチャンクオプション `options$indent` に保存されています.
 
 上記の例の最後の, 箇条書き内の出力はこのようになります.
 
