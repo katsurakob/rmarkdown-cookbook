@@ -16,13 +16,9 @@ Markdown 言語の最大の強みは, その簡潔さが初心者にとっても
 
 - テキストアラインメントを指定する
 
-こういった機能があなたの努力に見合うかどうかはあなたの判断に委ねます. Markdown はある程度まではストイックで, 「自然界」とはプレーンテキストからなり, (見た目の) 快楽に ***支配されてはならない***, という, という哲学を反映しています. いずれにせよ, この章では R Markdown 文書の見た目や要素のスタイルをカスタマイズできる豆知識をいくつか提示します.
+こういった機能があなたの努力に見合うかどうかはあなたの判断に委ねます. Markdown は「自然界」はプレーンテキストからなり, (見た目上の) 面白さを欲求して**作為**すべきではない, という禁欲主義者たちの哲学をいくらか反映しています. いずれにせよ, この章では R Markdown 文書の見た目や要素のスタイルをカスタマイズをどうやればできるかの豆知識をいくつか提示します.
 
 Markdown 言語の基礎の復習が必要ならば, https://www.rstudio.com/resources/cheatsheets/ にある R Markdown チートシートには基本構文の概観がうまく盛り込まれています.
-
-TODO: 翻訳版がないか確認
-TODO: https://rstudio.com/wp-content/uploads/2016/11/Rmarkdown-cheatsheet-2.0_ja.pdf 
-https://kazutan.github.io/kazutanR/Rmd_intro.html KazutanのWEBからリンクされていました２０１６版なのでやや古い？
 
 ## フォント色 {#font-color}
 <!-- https://stackoverflow.com/questions/29067541/rmarkdown-how-to-change-the-font-color -->
@@ -43,13 +39,13 @@ output: pdf_document
 薔薇は \textcolor{red}{赤い}, 菫は \textcolor{blue}{青い}.
 ```
 
-上記の例では, 波カッコ（カーリー・ブレース）のペアの１番目には指定するテキスト色が含まれ, 2番めには色を適用したいテキストが含まれています.
+上記の例では, カーリー・ブレイス（`{}`）のペアの１番目には指定するテキスト色が含まれ, 2番めには色を適用したいテキストが含まれています.
 
-複数の出力フォーマットに対応するR Markdown の文書をデザインしたいときは, 生の HTML または LaTeX コードを文書の中に埋め込むべきではありません. それは, 出力フォーマットがかわると無視される (例: LaTeX コードは HTML では無視され, HTML タグは LaTeX 出力時には失われます.) ためです. 次に, この問題に対処する方法を2つ提示します.
+複数の出力フォーマットに対応する R Markdown の文書をデザインしたいときは, 生の HTML または LaTeX コードを文書の中に埋め込むべきではありません. それは, 出力フォーマットがかわると無視される (例: LaTeX コードは HTML では無視され, HTML タグは LaTeX 出力時には失われます.) ためです. 次に, この問題に対処する方法を2つ提示します.
 
 ### 生の HTML/LaTeX コードを書く関数を使う {#using-an-r-function-to-write-raw-html-or-latex-code}
 
-以下のようなカスタム R 関数を書くことで **knitr** \index{knitr!is\_latex\_output()}\index{knitr!is\_html\_output()} パッケージの `is_latex_output()` および `is_html_output()` 関数を使って, 出力フォーマットに依存した適切な構文を挿入するができます.
+以下のようなカスタム R 関数を書くことで **knitr** \index{knitr!is\_latex\_output()}\index{knitr!is\_html\_output()} パッケージの `is_latex_output()` および `is_html_output()` 関数を使って, 出力フォーマットに依存した適切な構文を挿入することができます.
 
 ```{r}
 colorize = function(x, color){
@@ -61,24 +57,24 @@ colorize = function(x, color){
 }
 ```
 
-そうするとインライン R コード内で `` `r knitr::inline_expr('colorize("文の一部を赤色にする", "red")')` `` ように使うことができます.  これは `r colorize("文の一部を赤色にする", "red")` でしょう (モノクロで印刷されたものを読んでいるなら, 赤色には見えないはずです).
+そうするとインライン R コード内で `` `r knitr::inline_expr('colorize("文の一部を赤色にする", "red")')` `` ように使うことができます. これは `r colorize("文の一部を赤色にする", "red")` でしょう (モノクロで印刷されたものを読んでいるなら, 赤色には見えないはずです).
 
 ### Lua フィルタを使う (\*) {#lua-color}
 
-Lua という他のプログラミング言語が関わるこの方法は, R ユーザにとっては少し発展的ですが, きわめて強力です. Pandoc の Lua フィルタ\index{Lua フィルタ}(第\@ref(lua-filters)節参照)を使って Markdown 要素をプログラムで修正することができます. 以下は使用例の全容です.
+Lua という他のプログラミング言語が関わるこの方法は, R ユーザにとっては少し発展的ですが, きわめて強力です. Pandoc の Lua フィルタ\index{Lua フィルタ}(\@ref(lua-filters)節参照)を使って Markdown 要素をプログラムで修正することができます. 以下は使用例の全容です.
 
 `r import_example('font-color.Rmd')`
 
-この例では, `bracketed_spans` という名称の Pandoc Markdown 拡張機能をこっそり使っています. これはテキストに属性を付けて書くことを可能にします. 例えば `[text]{.class attribute="value"}` のように. `cat` コードチャンク^[`cat` コードチャンクを詳しく知らないのなら, 第\@ref(eng-cat)節を見てください. ここでは, チャンクを `.lua` ファイルに書き出す便利な方法としてこのエンジンを使っています. そのため Lua スクリプトを `color-text.lua` という別のファイルとして管理しなくてもよいわけです. `cat` エンジンを使いたくなというなら, コードチャンクに Lua コードを埋め込む代わりに Lua コードを正しくコピーして別のファイルに保存することができます.]内で定義された Lua フィルタは, 出力が HTML ならば `<span style="color: ..."></span>` という形でテキストを配置し, LaTeX なら `\textcolor{...}{}` として配置します. `color-text.lua` というファイル名で書き出しコマンドラインオプション `--lua-filter` で有効になった Lua フィルタは出力フォーマットの `pandoc_args` オプションを経由して Pandoc に与えられます.
+この例では, `bracketed_spans` という名称の Pandoc Markdown 拡張機能をこっそり使っています. これはテキストに属性を付けて書くことを可能にします. 例えば `[text]{.class attribute="value"}` のように. `cat` コードチャンク^[`cat` コードチャンクを詳しく知らないのなら, \@ref(eng-cat)節を見てください. ここでは, チャンクを `.lua` ファイルに書き出す便利な方法としてこのエンジンを使っています. そのため Lua スクリプトを `color-text.lua` という別のファイルとして管理しなくてもよいわけです. `cat` エンジンを使いたくなというなら, コードチャンクに Lua コードを埋め込む代わりに Lua コードを正しくコピーして別のファイルに保存することができます.]内で定義された Lua フィルタは, 出力が HTML ならば `<span style="color: ..."></span>` という形でテキストを配置し, LaTeX なら `\textcolor{...}{}` として配置します. `color-text.lua` というファイル名で書き出しコマンドラインオプション `--lua-filter` で有効になった Lua フィルタは出力フォーマットの `pandoc_args` オプションを経由して Pandoc に与えられます.
 
-従来の方法と比較して, Lua フィルタを使う利点は丸カッコの中でも Markdown 構文が使えることですが, 以前の節で紹介した R の `colorize()` 関数は Markdown 構文を使うことが出来ません (例えば `colorize('**太字**')` と書いても太字にはなりません).
+従来の方法と比較して, Lua フィルタを使う利点はパーレン (`()`) の中でも Markdown 構文が使えることですが, 以前の節で紹介した R の `colorize()` 関数は Markdown 構文を使うことができません (例えば `colorize('**太字**')` と書いても太字にはなりません).
 
 ## テキストをインデントする {#indent-text}
 
 <!-- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 -->
 <!-- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks -->
 
-第\@ref(linebreaks)節で話したように, Markdown では空白文字はしばしば意味をなさなくなります. さらに Markdown は, デフォルトでインデントの空白を無視します. しかしインデントを維持したいことがあります. 例えば詩や演説文などです. このような場合は垂直線 (`|`) で始まる罫線ブロックを使うことができます. 改行\index{改行}と行頭のスペースは出力でも維持されます. 例えばこのように^[Claus Ekstrøm: https://yihui.org/en/2018/06/xaringan-math-limerick/ 作のリメリックです.]
+\@ref(linebreaks)節で話したように, Markdown では空白文字はしばしば意味をなさなくなります. さらに Markdown は, デフォルトでインデントの空白を無視します. しかしインデントを維持したいことがあります. 例えば詩や演説文などです. このような場合は垂直線 (`|`) で始まる罫線ブロックを使うことができます. 改行\index{改行}と行頭のスペースは出力でも維持されます. 例えばこのように^[Claus Ekstrøm: https://yihui.org/en/2018/06/xaringan-math-limerick/ 作のリメリックです.]
 
 ```md
 | When dollars appear it's a sign
@@ -97,7 +93,7 @@ Lua という他のプログラミング言語が関わるこの方法は, R ユ
 |   been placed on a single long line
 
 
-各行は Markdown のソースでは改行コードが使われています (ハードラップ). 次に続く行をスペースで始めれば, 1つ前の行の改行と行頭のスペースは通常は無視されます. 例えばこのように入力すると
+各行は Markdown のソースでは改行コードが使われています (ハードラップ). 次に続く行をスペースで始めれば, 1つ前の行の改行と行頭のスペースは通常は無視されます. 例えばこのように入力します.
 
 ```md
 | 採用責任者
@@ -115,7 +111,7 @@ Lua という他のプログラミング言語が関わるこの方法は, R ユ
 > | 404 Not Found Road,
 >  Undefined 0x1234, NA
 
-「ニンジャの学校」の直後の改行が無視されているのがわかりますね.
+「ニンジャの学校」の直後の改行が無視されているのがわかると思います.
 
 ## テキスト出力の幅を制御する {#text-width}
 
@@ -139,7 +135,7 @@ matrix(runif(100), ncol = 20)
 ```
 ````
 
-全ての R 関数が `width` オプションを尊重しているわけではありません. このオプションが動作しないなら, 唯一の選択は長いテキスト行を折り返しすることです. 実際これは `html_document` 出力フォーマットのデフォルトの挙動です. あなたの使っている HTML 出力フォーマットが長い行の折返しをしないのなら, 以下の CSS コード\index{CSS プロパティ!white-space} を適用してみてください (解説は第\@ref(html-css)節を参照).
+全ての R 関数が `width` オプションを尊重しているわけではありません. このオプションが動作しないなら, 唯一の選択は長いテキスト行を折り返しすることです. 実際これは `html_document` 出力フォーマットのデフォルトの挙動です. あなたの使っている HTML 出力フォーマットが長い行の折返しをしないのなら, 以下の CSS コード\index{CSS プロパティ!white-space} を適用してみてください (解説は\@ref(html-css)節を参照).
 
 ```css
 pre code {
@@ -147,7 +143,7 @@ pre code {
 }
 ```
 
-PDF 出力では, 行の折返しはよりトリッキーになります. 解決策の1つは, Pandoc 引数の `--listing` を使うことで有効になる LaTeX パッケージの **listings**\index{LaTeX パッケージ!listings} を使うことです. そうしたなら, このパッケージに対するオプションを設定しなければなりませんが, その設定コードは外部 LaTeX ファイルに含めることができます (方法は\@ref(latex-preamble)節参照) 例えば\index{出力オプション!includes}このように.
+PDF 出力では, 行の折返しはよりトリッキーになります. 解決策の1つは, Pandoc 引数の `--listing` を使うことで有効になる LaTeX パッケージの **listings**\index{LaTeX パッケージ!listings} を使うことです. そうしたなら, このパッケージに対するオプションを設定しなければならず, またその設定コードは外部 LaTeX ファイルに含めることができます (方法は\@ref(latex-preamble)節参照) 例えば\index{出力オプション!includes}このように.
 
 ```yaml
 ---
@@ -266,7 +262,7 @@ cat("````
 
 ## コードブロックに行番号を表示する (\*) {#number-lines}
 
-`attr.source = ".numberLines"`\index{チャンクオプション!attr.source} でソースコードブロックにも行番号を付けることも, `attr.output = ".numberLines"`\index{チャンクオプション!attr.output} でテキスト出力ブロックに行番号を付けることもできます (これらのオプションの詳細は第\@ref(attr-output)節参照). 例えば.
+`attr.source = ".numberLines"`\index{チャンクオプション!attr.source} でソースコードブロックにも行番号を付けることも, `attr.output = ".numberLines"`\index{チャンクオプション!attr.output} でテキスト出力ブロックに行番号を付けることもできます (これらのオプションの詳細は\@ref(attr-output)節参照). 例えば.
 
 ````md
 ```{r, attr.source='.numberLines'}`r ''`
@@ -310,9 +306,9 @@ pre.numberSource code > span > a:first-child::before {
 }
 ```
 
-カスタム CSS スタイルを HTML 出力に適用する方法がわからないなら,  第\@ref(html-css)節を見てください.
+カスタム CSS スタイルを HTML 出力に適用する方法がわからないなら, \@ref(html-css)節を見てください.
 
-`startFrom` 属性で開始する数字を指定することもできます.  例えば.
+`startFrom` 属性で開始する数字を指定することもできます. 例えば.
 
 ````md
 ```{r, attr.source='.numberLines startFrom="5"'}`r ''`
@@ -326,9 +322,9 @@ if (TRUE) {
 
 ## 多段組み (\*) {#multi-column}
 
-Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743  での Atsushi Yasumoto の解決策に着想を得ました.
+Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743 での Atsushi Yasumoto^[**訳注**: @asusy のこと] の解決策に着想を得ました.
 
-HTML 出力のみ考慮する必要があるなら話はかなり単純で,  任意の HTML 要素を横に並べて表示するのはCSS\index{CSS} を使えば比較的簡単にできるからです. コードチャンクのテキスト出力を横に並べるだけならば, もっと簡単になります.  以下は1つ目の例です.
+考慮する必要があるのが HTML 出力のみなら話はかなり単純です. 任意の HTML 要素を横に並べて表示するのはCSS\index{CSS} を使えば比較的簡単にできるからです. コードチャンクのテキスト出力を横に並べるだけならば, もっと簡単になります. 以下は1つ目の例です.
 
 ````md
 ---
@@ -341,9 +337,9 @@ output: html_document
 ```
 ````
 
-CSS 属性 `display: inline-block;` \index{CSS プロパティ!display} は, コードブロックの出力 (つまり HTML タグの `<pre>` です) をインライン要素として表示しなさいという意味です. デフォルトではこれらのブロックはブロックレベル要素 (つまり `display: block;`) として表示され, 行を丸ごと占有します. チャンクオプション  `collapse = TRUE` はテキスト出力を R ソースコードブロックと結合することを意味するので, ソースとテキスト出力が同じ `<pre>` ブロックに配置されます.
+CSS 属性 `display: inline-block;` \index{CSS プロパティ!display} は, コードブロックの出力 (つまり HTML タグの `<pre>` です) をインライン要素として表示しなさいという意味です. デフォルトではこれらのブロックはブロックレベル要素 (つまり `display: block;`) として表示され, 行を丸ごと占有します. チャンクオプション `collapse = TRUE` はテキスト出力を R ソースコードブロックと結合することを意味するので, ソースとテキスト出力が同じ `<pre>` ブロックに配置されます.
 
-HTML 出力時に任意の順で横に並べたい場合, Pandoc の  [fenced `Div`.](https://pandoc.org/MANUAL.html#divs-and-spans)\index{Div}\index{Pandoc!Div| see {Div}} を使うことができます. "Div" は HTML タグの `<div>` に由来しますが, 任意のブロックやコンテナと解釈できます. `Div` の開始と終了は は3つ以上のコロン (例: `:::`) です. より多くのコロンの `Div` は, よりコロンの少ない `Div` を含むことができます. fenced `Div` の重要で有用な機能は, これに属性を付与できるということです. 例えば CSS 属性 `display: flex;` を外側のコンテナに適用できるので, 内側のコンテナは横並びに配置されます.
+HTML 出力時に任意の順で横に並べたい場合, Pandoc の [fenced `Div`.](https://pandoc.org/MANUAL.html#divs-and-spans)\index{Div}\index{Pandoc!Div| see {Div}} を使うことができます. "Div" は HTML タグの `<div>` に由来しますが, 任意のブロックやコンテナと解釈できます. `Div` の開始と終了は は3つ以上のコロン (例: `:::`) です. より多くのコロンの `Div` は, よりコロンの少ない `Div` を含むことができます. fenced `Div` の重要で有用な機能は, これに属性を付与できるということです. 例えば CSS 属性 `display: flex;` を外側のコンテナに適用できるので, 内側のコンテナは横並びに配置されます.
 
 `r import_example('multicol-html.Rmd')`
 
@@ -361,14 +357,14 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/multicol.png'), dpi = NA)
 
 `r import_example('columns.css')`
 
-LaTeX 出力 (`pdf_document`) では,  `columns.tex` に含まれているダーティーハックをLaTeX プリアンブルに適用し、 LaTeX 環境 `cols` と `col` を定義しなければなりません.
+LaTeX 出力 (`pdf_document`) では, `columns.tex` に含まれている「あまり行儀の良くない裏ワザ」をLaTeX プリアンブルに適用し、 LaTeX 環境 `cols` と `col` を定義しなければなりません.
 
 `r import_example('columns.tex')`
 
 `col` 環境が特に複雑な主な理由としては, LaTeX 出力で Pandoc は各 `Div` でいつも段落を改めるので, この改段を除去しなければならないからです. そうしないと `Div` を横並びに配置することはできません. このハックは https://tex.stackexchange.com/q/179016/9128 から借用しました.
 
-Beamer 出力でも `columns.tex` で同じハックを適用しています. Pandoc は [スライドショー](https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc)用に `::: {.columns}`, `::: {.column}`, `::: {.incremental}` といった特別な `Div` を提供していることに注意してください. これらは特別な意味を持つため, この節のような方法で `Div` を LaTeX 環境を変換するときには, これらのタイプの `Div` を**使わない**ように注意しなければなりません. `columns` や `column` という名前の `Div` タイプを使わず, `cols`, `col` 使ったのは, これが理由です.
+Beamer 出力でも `columns.tex` で同じハックを適用しています. Pandoc は [スライドショー](https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc)用に `::: {.columns}`, `::: {.column}`, `::: {.incremental}` といった特別な `Div` を提供していることに注意してください. これらは特別な意味を持つため, この節のような方法で `Div` を LaTeX 環境に変換するときには, これらのタイプの `Div` を**使わない**ように注意しなければなりません. `columns` や `column` という名前の `Div` タイプを使わず, `cols`, `col` 使ったのは, これが理由です.
 
-fenced `Div` についてより詳しく知りたいなら, 第\@ref(custom-blocks)節を見てください.
+fenced `Div` についてより詳しく知りたいなら, \@ref(custom-blocks)節を見てください.
 
-**訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御することができます (第\@ref(latex-variables)節参照).
+**訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御することができます (\@ref(latex-variables)節参照).
