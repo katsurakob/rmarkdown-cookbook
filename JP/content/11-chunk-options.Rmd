@@ -426,7 +426,7 @@ add_logo = function(path, options) {
 
 では上記の処理関数を `fig.process = add_logo` と `magick.gravity = "northwest"` オプションで以下のコードチャンクに適用します. よってロゴは右上の隅に追加されます. 実際の出力は図\@ref(fig:magick-logo)になります.
 
-```{r, magick-logo, dev='png', fig.retina=1, fig.process=add_logo, magick.gravity = 'northeast', fig.cap='チャンクオプション fig.process でグラフに R のロゴを追加する'}
+```{r, magick-logo, dev='png', fig.retina=1, fig.process=add_logo, magick.gravity = 'northeast', fig.cap='チャンクオプション fig.process でグラフに R のロゴを追加する', crop=NULL}
 par(mar = c(4, 4, .1, .1))
 hist(faithful$eruptions, breaks = 30, main = '', col = 'gray', border = 'white')
 ```
@@ -448,7 +448,7 @@ pdf2png = function(path) {
 
 ## 高品質なグラフィック (\*) {#graphical-device}
 
-**rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF 出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `r knitr::combine_words(names(knitr:::auto_exts), before = '\x60"', after = '"\x60')`
+**rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF 出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `r knitr::combine_words(names(knitr:::auto_exts), before = '\x60"', after = '"\x60', and = "")`
 
 大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいすデバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: これらと異なり, `cairo_pdf` は base R に含まれています.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 

@@ -73,7 +73,7 @@ iris2 = head(iris)
 knitr::kable(iris2, col.names = gsub('[.]', ' ', names(iris)))
 ```
 
-`col.names` 引数には必ずしも `gsub()` ような関数で列を与える必要はなく, 元のデータオブジェクトの列数と同じ長さであれば, 好きな文字列ベクトルを与えることができます. 例えば以下のように.
+`col.names` 引数には必ずしも `gsub()` ような関数で列を与える必要はなく, 元のデータオブジェクトの列数と同じ長さであれば, 以下の例のように好きな文字列ベクトルを与えることができます. 
 
 ```{r, eval=FALSE, tidy=FALSE}
 knitr::kable(

@@ -294,7 +294,7 @@ vignette: >
 
 1. `DESCRIPTION` ファイルに `Suggests: knitr, rmarkdown` を追加する.
 
-ビネット出力フォーマットは HTML でなくても構いません. PDF でも可能なので, `output: pdf_document` も使えます. 他の出力フォーマットでも `beamer_presentation` や `tufte::tufte_html` のような, HTML か PDF を作成するものであればどれも大丈夫です. ただし, 現時点では R は HTML と PDF のビネットのみを認識します.
+ビネット出力フォーマットは HTML でなくてもかまいません. PDF でも可能なので, `output: pdf_document` も使えます. 他の出力フォーマットでも `beamer_presentation` や `tufte::tufte_html` のような, HTML か PDF を作成するものであればどれも大丈夫です. ただし, 現時点では R は HTML と PDF のビネットのみを認識します.
 
 ## R パッケージの R Markdown テンプレート {#package-template}
 

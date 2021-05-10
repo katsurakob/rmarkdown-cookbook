@@ -101,7 +101,7 @@ purl2(file.path(BOOKLANG, 'examples/purl.Rmd'), documentation = 2)
 
 ## R Markdown Notebook {#notebook}
 
- _R Markdown Definitive Guide_ [@rmarkdown2018] の [Section 2.2](https://bookdown.org/yihui/rmarkdown/compile.html) で言及したように, Rmd 文書をコンパイルする方法はいくつかあります. その1つは次の例のように `html_notebook` という出力形式で R Markdown Notebook を使うことです.
+ _R Markdown Definitive Guide_ [@rmarkdown2018] の [Section 2.2](https://bookdown.org/yihui/rmarkdown/compile.html) で言及したように, Rmd 文書をコンパイルする方法はいくつかあります. その1つは次の例のように `html_notebook` という出力フォーマットで R Markdown Notebook を使うことです.
 
 ```yaml
 ---
@@ -110,9 +110,9 @@ output: html_notebook
 ---
 ```
 
-RStudio でこの出力形式を使うと, ツールバー上の `Knit` ボタンが `Preview` ボタンになります.
+RStudio でこの出力フォーマットを使うと, ツールバー上の `Knit` ボタンが `Preview` ボタンになります.
 
-notebook\index{RStudio!notebook} を使う主な利点は Rmd 文書を**同じRセッションで繰り返し**作業できることです. コードチャンクにある緑色の矢印ボタンを押せばチャンクを個別に随時実行でき, エディタ上でテキストやグラフの出力を見られます. ツールバー上の `Preview` ボタンを押すと, Rmd 文書を既に実行したコードチャンクの出力を含む HTML 文書へレンダリングするだけです. `Preview` ボタンは一切のコードチャンクを実行しません. これと比較して, 他の出力形式を使い `knit` ボタンを押したときには, RStudio は文書全体をコンパイルする (つまり全てのコードチャンクが一気に実行されます) ために R セッションを新規で立ち上げますので, たいていはもっと時間がかかります.
+notebook\index{RStudio!notebook} を使う主な利点は Rmd 文書を**同じRセッションで繰り返し**作業できることです. コードチャンクにある緑色の矢印ボタンを押せばチャンクを個別に随時実行でき, エディタ上でテキストやグラフの出力を見られます. ツールバー上の `Preview` ボタンを押すと, Rmd 文書を既に実行したコードチャンクの出力を含む HTML 文書へレンダリングするだけです. `Preview` ボタンは一切のコードチャンクを実行しません. これと比較して, 他の出力フォーマットを使い `knit` ボタンを押したときには, RStudio は文書全体をコンパイルする (つまり全てのコードチャンクが一気に実行されます) ために R セッションを新規で立ち上げますので, たいていはもっと時間がかかります.
 
 コードチャンクを個別に実行した時に出力がインライン表示されるという RStudio のデフォルトの挙動が気に入らないなら, `Tools -> Global Options -> R Markdown` から "Show output inline for all R Markdown documents" というオプションのチェックを外すことができます. 以降, コードチャンクを実行すると出力はソースエディタ内ではなく R コンソールに表示されます. このオプションは以下のように YAML メタデータで個別の Rmd 文書ごとに設定することもできます.
 

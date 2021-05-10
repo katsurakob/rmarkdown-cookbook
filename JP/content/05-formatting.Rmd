@@ -322,7 +322,7 @@ if (TRUE) {
 
 ## 多段組み (\*) {#multi-column}
 
-Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743 での Atsushi Yasumoto^[**訳注**: @asusy のこと] の解決策に着想を得ました.
+Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743 での Atsushi Yasumoto^[**訳注**: \@atusy のこと] の解決策に着想を得ました.
 
 考慮する必要があるのが HTML 出力のみなら話はかなり単純です. 任意の HTML 要素を横に並べて表示するのはCSS\index{CSS} を使えば比較的簡単にできるからです. コードチャンクのテキスト出力を横に並べるだけならば, もっと簡単になります. 以下は1つ目の例です.
 
