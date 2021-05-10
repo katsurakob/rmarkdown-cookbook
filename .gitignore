@@ -8,7 +8,6 @@ _bookdown_files/*
 packages.bib
 *-tikzDictionary
 css/box.css
-latex/blackbox.tex
 latex/infobox.tex
 _latex
 /README_files/
