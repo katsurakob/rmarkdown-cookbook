@@ -15,16 +15,19 @@ sansfont: "DejaVu Sans"
 sansfontoptions:
   - Scale=0.9
 monofont: "Ricty"
-jamainfont: "Noto Serif CJK JP"
-jasansfont: "Noto Sans CJK JP"
-jamonofont: "Ricty"
+jmainfont: "Noto Serif CJK JP"
+jsansfont: "Noto Sans CJK JP"
+jmonofont: "Ricty"
 documentclass: bxjsreport
+classoption:
+    - lualatex
+    - ja=standard
 link-citations: yes
 colorlinks: yes
 bibliography:
-  - bib/packages.bib
-  - bib/literature.bib
-  - 'bib/literature-ja.bib'
+    - bib/packages.bib
+    - bib/literature.bib
+    - 'bib/literature-ja.bib'
 lot: yes
 lof: yes
 fontsize: 11pt
