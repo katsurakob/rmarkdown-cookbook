@@ -18,7 +18,7 @@ knitr::include_graphics(file.path(BOOKLANG, "images/workflow.png"), dpi = NA)
 
 その後 `.md` ファイルは, あるマークアップ言語のファイルから別のものへと変換するための多用途なツールである Pandoc\index{Pandoc} によって処理されます. Pandoc は文書の YAML フロントマターで指定された何らかのパラメータ (例: `title`, `author`, `date`) を受け取り, 文書を `output` パラメータで指定された出力フォーマット (HTML へ出力する `html_document` のような) へ変換します.
 
-出力形式が PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの `.md` を もう一つの中間ファイル `.tex` に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. \@ref(install-latex) 節で話したように, **rmarkdown** パッケージは **tinytex** パッケージ [@R-tinytex] の `latexmk()` 関数を呼び出し, これが次々に LaTeX を呼び出して `.tex` をコンパイルし `.pdf` にします.
+出力フォーマットが PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの `.md` を もう一つの中間ファイル `.tex` に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. \@ref(install-latex) 節で話したように, **rmarkdown** パッケージは **tinytex** パッケージ [@R-tinytex] の `latexmk()` 関数を呼び出し, これが次々に LaTeX を呼び出して `.tex` をコンパイルし `.pdf` にします.
 
 簡潔にまとめると, `rmarkdown::render()` = `knitr::knit()` + Pandoc (PDF の場合のみ + LaTeX) ということです.
 
@@ -28,7 +28,7 @@ Robin Linacre が https://stackoverflow.com/q/40563479/559676 で R Markdown と
 
 - **xaringan**\index{xaringan} パッケージ [@R-xaringan] は出力された `.md` をウェブブラウザ上で Markdown コンテンツを表示するための JavaScript ライブラリに渡します.^[**訳注**: **xaringan** について日本語で言及している例は少ないですが, 次のページが用法・技術的な説明の両面で優れています. https://qiita.com/nozma/items/21c56c7319e4fefceb79]
 
-- **blogdown**\index{blogdown} パッケージは [@R-blogdown] `.Rmarkdown` 文書形式をサポートし,  `.Rmarkdown` を knit して `.markdown` にします.  通常であれば、Markdown 文書は外部のサイトジェネレータによって HTML にレンダリングされます.
+- **blogdown**\index{blogdown} パッケージは [@R-blogdown] `.Rmarkdown` 文書形式をサポートし, `.Rmarkdown` を knit して `.markdown` にします. 通常であれば、Markdown 文書は外部のサイトジェネレータによって HTML にレンダリングされます.
 
 ## R Markdown の解剖学 {#rmarkdown-anatomy}
 
@@ -48,7 +48,7 @@ output: html_document
 ---
 ```
 
-上記の場合,  `title`, `author` フィールドは Pandoc によって処理され, テンプレートの変数の値が設定されます. デフォルトのテンプレートでは, `title` と `author` の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの [YAML metadata block.](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) に関するセクションで見られます.^[**訳注**: 日本語訳での対応箇所はこちら: https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks]
+上記の場合, `title`, `author` フィールドは Pandoc によって処理され, テンプレートの変数の値が設定されます. デフォルトのテンプレートでは, `title` と `author` の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの [YAML metadata block.](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) に関するセクションで見られます.^[**訳注**: 日本語訳での対応箇所はこちら: https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks]
 
 対照的に `output` フィールドは **rmarkdown** によるレンダリング処理中に出力フォーマット関数 `rmarkdown::html_document()` に適用されます. `output` に指定した出力フォーマットに引数を与えることで, 以降のレンダリング処理に影響させることができます. 例えばこのように書きます.
 
@@ -90,7 +90,8 @@ Markdown のテキストは文書に構造を与えることもできます. Mar
 ### 第3水準の見出し
 ```
 
-これらの見出しは **rmarkdown** が `.md` を最終的な出力フォーマットに変換する際に文書全体に構造を与えます. この構造は, ある属性を付与することでセクション (章や節) を参照し整形するのに役立ちます. Pandoc 構文は, 見出しの記述に `{#id}` の表記にしたがってユニークな識別子をつけることで参照が作成できますし,  `{.クラス名}` のように書くことで、セクションに一つないし複数のクラスを付与できます. 例えば以下のように.
+
+これらの見出しは **rmarkdown** が `.md` を最終的な出力フォーマットに変換する際に文書全体に構造を与えます. この構造は, ある属性を付与することでセクション (章や節) を参照し整形するのに役立ちます. 例えば以下のように, Pandoc 構文は見出しの記述に `{#id}` の表記にしたがってユニークな識別子をつけることで参照が作成できますし, `{.クラス名}` のように書くことで、セクションに一つないし複数のクラスを付与できます. 
 
 ```md
 ## 第2水準の見出し {#introduction .important .large}

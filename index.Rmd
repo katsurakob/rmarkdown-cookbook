@@ -15,16 +15,19 @@ sansfont: "DejaVu Sans"
 sansfontoptions:
   - Scale=0.9
 monofont: "Ricty"
-jamainfont: "Noto Serif CJK JP"
-jasansfont: "Noto Sans CJK JP"
-jamonofont: "Ricty"
+jmainfont: "Noto Serif CJK JP"
+jsansfont: "Noto Sans CJK JP"
+jmonofont: "Ricty"
 documentclass: bxjsreport
+classoption:
+    - lualatex
+    - ja=standard
 link-citations: yes
 colorlinks: yes
 bibliography:
-  - bib/packages.bib
-  - bib/literature.bib
-  - 'bib/literature-ja.bib'
+    - bib/packages.bib
+    - bib/literature.bib
+    - 'bib/literature-ja.bib'
 lot: yes
 lof: yes
 fontsize: 11pt
@@ -90,8 +93,16 @@ options(bookdown.post.latex = function(x) {
 
 source("utils.R")
 
-require(here)
 
+knitr::knit_hooks$set(optipng = knitr::hook_optipng)
+knitr::opts_hooks$set(
+  fig.cap = function(options){
+    options$opting <- '-o7'
+    return(options)
+  }
+)
+
+require(here)
 BOOKLANG <- rmarkdown::metadata$booklanguage
 image_dir <- file.path(rmarkdown::metadata$booklanguage, "images")
 last_update <- format(Sys.time(), '%Y/%m/%d %H:%M:%S %Z')
@@ -99,17 +110,21 @@ last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `
 ```
 
 ---
-date: "`r last_update`, ver. 0.9 (一部未校正), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.1 (Word 関連の動作確認未完), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
 
 :::{.infobox .caution data-latex="{caution}"}
-**注**: 本書は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されます. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+本書の原著は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されました. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
+
+**訳注**
 
 オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
 
-This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
+本翻訳版に関するご意見は[こちら](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new)で受け付けています. また, ご覧になっているのが Web 版であれば, 上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は[翻訳メモ](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md)の内容を確認してからしていただけると助かります.
+
+This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 :::
 
 ```{asis eval=knitr::is_html_output()}

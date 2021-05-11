@@ -15,9 +15,9 @@ if (!is.na(i)) engs = head(engs, i - 1)
 engs
 ```
 
-現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の `bash` コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の `bash` コードチャンクはそれ以前の `bash` チャンクで作成された変数を使うことができませんし, `cd` による作業ディレクトリの変更も異なる `bash` チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……,  ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\@ref(eng-python)節参照).
+現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の `bash` コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の `bash` コードチャンクはそれ以前の `bash` チャンクで作成された変数を使うことができませんし, `cd` による作業ディレクトリの変更も異なる `bash` チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\@ref(eng-python)節参照).
 
-_R Markdown Definitive Guide_ [@rmarkdown2018] の  [Section 2.7](https://bookdown.org/yihui/rmarkdown/language-engines.html) では Python, シェル, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C そして Fortran のコードを使用する例が紹介されています. この章ではさらなる言語エンジンを紹介します. そしてさらなる例はリポジトリ https://github.com/yihui/knitr-examples で見られます. "engine" という単語を含むファイルを探してください.
+_R Markdown Definitive Guide_ [@rmarkdown2018] の [Section 2.7](https://bookdown.org/yihui/rmarkdown/language-engines.html) では Python, シェル, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C そして Fortran のコードを使用する例が紹介されています. この章ではさらなる言語エンジンを紹介します. そしてさらなる例はリポジトリ https://github.com/yihui/knitr-examples で見られます. "engine" という単語を含むファイルを探してください.
 
 初めに, カスタム言語エンジンの登録によってこれがどのように動作するかを解明しましょう.
 
@@ -32,7 +32,7 @@ knitr::knit_engines$set(foo = function(options) {
 })
 ```
 
-これは `foot` エンジンを登録し, ```` ```{foo}```` で始まるコードチャンクを使えるようになります.
+これは `foo` エンジンを登録し, ```` ```{foo}```` で始まるコードチャンクを使えるようになります.
 
 エンジン関数は1つの引数 `options` を取り, これはコードチャンクのオプションのリストです. `options$code` にある文字列ベクトルとして, チャンクのソースコードにアクセスできます. 例えば, このコードチャンクに対して考えます.
 
@@ -54,7 +54,7 @@ knitr::knit_engines$set(upper = function(options) {
 })
 ```
 
-ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{ちゃんくおぷしょん@チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください.  このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{ちゃんくおぷしょん@チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討することもできます. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
+ポイントは `toupper` 関数を「コード」に適用して, `\n` でコードの全ての行を連結し, 単一の文字列として結果を返すことです. `toupper()` はチャンクオプション `eval = TRUE`\index{ちゃんくおぷしょん@チャンクオプション!eval}の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください. このことは `eval` のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, `results = 'hide'`\index{ちゃんくおぷしょん@チャンクオプション!results} の時に出力を隠すため, 関数内に `if (options$results == 'hide') return()` を加えることも検討することもできます. 以下は `upper` エンジンをオプションとともに使用するチャンクの例です.
 
 > ````md
 > ```{upper}`r ''`
@@ -66,7 +66,7 @@ knitr::knit_engines$set(upper = function(options) {
 > Hello, **knitr** engines!
 > ```
 
-次に, `py` という名前のもう1つの Python エンジン^[実用的には組み込みの `python` エンジンをを使うべきです. これは **reticulate** パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (\@ref(eng-python)節参照).]の例を紹介します. このエンジンは単純に R の `system2()` 関数から `python` コマンドを呼び出すことで実装しています.
+次に, `py` という名前のもう1つの Python エンジン^[実用的には組み込みの `python` エンジンを使うべきです. これは **reticulate** パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (\@ref(eng-python)節参照).]の例を紹介します. このエンジンは単純に R の `system2()` 関数から `python` コマンドを呼び出すことで実装しています.
 
 ```{r, tidy=FALSE}
 knitr::knit_engines$set(py = function(options) {
@@ -98,13 +98,13 @@ knitr::knit_engines$set(py = function(options) {
 > print(1 + 1)
 > ```
 
-あなたのバージョンの言語エンジンが **knitr**  の既存の言語エンジンよりも必要性がるか, より良いものだと確信しているなら, `knitr::knit_engines$set()` によって既存のものを上書きすることすらできます. たいていの場合は既存のエンジンに慣れたユーザーが驚いてしまうかもしれないので, そうすることはお薦めしませんが, どちらにせよこの可能性は頭の片隅に置いてほしいです.
+あなたのバージョンの言語エンジンが **knitr** の既存の言語エンジンよりも必要性がるか, より良いものだと確信しているなら, `knitr::knit_engines$set()` によって既存のものを上書きすることすらできます. たいていの場合は既存のエンジンに慣れたユーザーが驚いてしまうかもしれないので, そうすることはお薦めしませんが, どちらにせよこの可能性は頭の片隅に置いてほしいです.
 
 ## Python コードの実行と双方向処理 {#eng-python}
 
 あなたが Python を好んでいることは知っていますので, とてもはっきりと言ってしまいましょう. R Markdown と **knitr** はなんと Python\index{げんごえんじん@言語エンジン!python}\index{Python} をサポートしています.
 
-Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ``` ```{python}```` を使うことができます. 例えばこのように.
+Python のコードチャンクを R Markdown 文書に加えるには チャンクヘッダ ```` ```{python}```` を使うことができます. 例えばこのように.
 
 ````md
 ```{python}`r ''`
@@ -207,11 +207,11 @@ R 4.0.0 以降では `r"()"` 内での生の文字列 (`?Quotes` のヘルプ参
 
 `r import_example("cat-latex.Rmd")`
 
-上記の `cat` コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の `cat` コードチャンクにオプション `engine.opts = list(file = 'preamble.tex', append = TRUE)` と `code = sprintf('\\fancyfoot[LO,RE]{%s}'` を付けることで `preamble.tex` に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した `engine.opts` が `base::cat()` に渡されるということを思い出してください. つまり `append = TRUE` は `cat()` に渡されます. そして チャンクオプション `code` はこの後の\@ref(option-code)節を読めば理解できるでしょう.
+上記の `cat` コードチャンク内の LaTeX コードで, PDF 文書のヘッダとフッタを定義しました. フッタに著者名も表示したいなら, 別の `cat` コードチャンクにオプション `engine.opts = list(file = 'preamble.tex', append = TRUE)` と `code = sprintf('\\fancyfoot[LO,RE]{%s}', rmarkdown::metadata$author)` を付けることで `preamble.tex` に著者情報を追加することができます. このチャンクの動作を理解するには, この節の最初の方で紹介した `engine.opts` が `base::cat()` に渡されるということを思い出してください. つまり `append = TRUE` は `cat()` に渡されます. そして チャンクオプション `code` はこの後の\@ref(option-code)節を読めば理解できるでしょう.
 
 ### YAML データをファイルに書き込みつつ表示する
 
-`cat` コードチャンクの中身はデフォルトでは出力文書に表示されません. 中身を書き出した後で表示もしたいならば,  チャンクオプション `class.source` に言語名を指定してください. 言語名はシンタックスハイライトに使われます. 以下の例では, 言語名を `yaml` に指定しています.
+`cat` コードチャンクの中身はデフォルトでは出力文書に表示されません. 中身を書き出した後で表示もしたいならば,チャンクオプション `class.source` に言語名を指定してください. 言語名はシンタックスハイライトに使われます. 以下の例では, 言語名を `yaml` に指定しています.
 
 ````md
 ```{cat, engine.opts=list(file='demo.yml'), class.source='yaml'}`r ''`
@@ -362,7 +362,7 @@ unlink('sine.csv')
 
 Sass (https://sass-lang.com) は CSS を拡張した言語\index{CSS!Sass}\index{Sass}で, 基本的な CSS で行っていた のよりはるかに柔軟な方法でルールを作成できます. これを学ぶことに関心があるなら, 公式ドキュメントを見てください.
 
-R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン,  `sass`\index{げんごえんじん@言語エンジン!sass} and `scss`\index{げんごえんじん@言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが  ```` ```{scss}```` である `scss` コードチャンクです.
+R パッケージの **sass** [@R-sass] \index{R パッケージ!sass} は SaSS を CSS にコンパイルするのに使用できます. **sass** パッケージに基づいて, **knitr** はコードチャンクを CSS にコンパイルするため2つの言語エンジン, `sass`\index{げんごえんじん@言語エンジン!sass} and `scss`\index{げんごえんじん@言語エンジン!scss} を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが ```` ```{scss}```` である `scss` コードチャンクです.
 
 ```{scss}
 $font-stack: "HGS創英角ﾎﾟｯﾌﾟ体", "Comic Sans MS", cursive, sans-serif;

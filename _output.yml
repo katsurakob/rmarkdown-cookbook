@@ -27,6 +27,7 @@ rmdja::pdf_book_ja:
 #      - latex/infobox.tex
     before_body: latex/before_body.tex
     after_body: latex/after_body.tex
+  fig_auto_font: no
   block_style: tcolorbox
   keep_tex: yes
   keep_md: yes
