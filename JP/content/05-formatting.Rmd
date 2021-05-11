@@ -357,7 +357,7 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/multicol.png'), dpi = NA)
 
 `r import_example('columns.css')`
 
-LaTeX 出力 (`pdf_document`) では, `columns.tex` に含まれている「あまり行儀の良くない裏ワザ」をLaTeX プリアンブルに適用し、 LaTeX 環境 `cols` と `col` を定義しなければなりません.
+LaTeX 出力 (`pdf_document`) では, `columns.tex` に含まれている「あまり行儀の良くない裏ワザ」をLaTeX プリアンブルに適用し, LaTeX 環境 `cols` と `col` を定義しなければなりません.
 
 `r import_example('columns.tex')`
 
