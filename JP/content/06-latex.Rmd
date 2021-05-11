@@ -37,7 +37,7 @@ output:
       in_header: "preamble.tex"
 ```
 
-この小ワザに限れば、実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true` \index{YAML!links-as-notes}にすることで簡単にできます.
+この小ワザに限れば, 実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (\@ref(latex-variables)節参照) に組み込まれた機能である YAML オプション `links-as-notes` を `true` \index{YAML!links-as-notes}にすることで簡単にできます.
 
 コードをプリアンブルに追加する別の方法として, YAML フロントマター\index{YAML!header-includes} の `header-includes` フィールドに直接コードを与えることができます. \@ref(latex-logo)節でその例を紹介しています. `header-includes` を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットで生成したいのなら, やはり `includes` を使う方法をお薦めします. `header-includes` は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, `includes` オプションは `pdf_document` フォーマットにのみ適用されます.
 
