@@ -2,7 +2,7 @@
 
 図\@ref(fig:rmdworkflow)に描かれているように, **knitr** パッケージは R Markdown においてきわめて重要な役割を担います. この章と後に続くの3つの章では **knitr** に関連するレシピをお見せします. 
 
-R のチャンクを処理する際には, **knitr** の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) \index{{ちゃんくおぷしょん@チャンクオプション}\index{chunk option|see{チャンクオプション}}が使えます. 完全なリストは <https://yihui.org/knitr/options/> のオンラインドキュメントをご覧ください.^[**訳注**: 翻訳者による日本語訳はこちら: https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html] `r if (knitr::is_latex_output()) '利便性のため, 本書の 付録\\@ref(full-options)としてこのドキュメントのコピーを掲載しました.'`
+R のチャンクを処理する際には, **knitr** の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) \index{ちゃんくおぷしょん@チャンクオプション}\index{chunk option|see{チャンクオプション}}が使えます. 完全なリストは <https://yihui.org/knitr/options/> のオンラインドキュメントをご覧ください.^[**訳注**: 翻訳者による日本語訳はこちら: https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html] `r if (knitr::is_latex_output()) '利便性のため, 本書の 付録\\@ref(full-options)としてこのドキュメントのコピーを掲載しました.'`
 
 このあと続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いということも知っておいてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで `knitr::opts_chunk$set()`\index{ちゃんくおぷしょん@チャンクオプション!グローバルに設定する} を呼び出してください. ふつうは文書の最初のチャンクオプションに設定します. 例えばこのように.
 

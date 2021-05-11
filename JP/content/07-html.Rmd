@@ -69,7 +69,7 @@ R Markdown の HTML 出力は, デフォルトで, Bootstrap フレームワー�
 knitr::include_graphics(file.path(BOOKLANG, "images/chunk-bg.png"), dpi = NA)
 ```
 
-任意のクラスを使って対応する CSS ルールを定義することもできます. この場合, \@ref(html-css)節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません. 以下はその例です.
+任意のクラスを使って対応する CSS ルールを定義することもできます. この場合以下の例のように, \@ref(html-css)節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません.
 
 `r import_example('chunk-custom.Rmd')`
 
