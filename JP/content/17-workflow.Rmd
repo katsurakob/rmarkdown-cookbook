@@ -50,7 +50,7 @@ keyboard_table <- tibble::tribble(
 knitr::kable(keyboard_table, caption = "R Markdown に関連する RStudio のキーボード・ショートカット", booktabs = TRUE)
 ```
 
-加えて, `F7` キーを押してあなたの文書のスペルチェックがができます.  `Ctrl + Alt + F10` (macOS では `Command + Option + F10`) で R セッションを再起動することもできます. 新しい R セッションから演算するほうが結果はより再現性が高いため, 定期的に再起動することは再現性の確保に役立ちます. これはドロップダウンメニューの Run ボタンの後ろに隠れている, "Restart R and Run All Chunks" を使ってもできます.
+加えて, `F7` キーを押してあなたの文書のスペルチェックがができます. `Ctrl + Alt + F10` (macOS では `Command + Option + F10`) で R セッションを再起動することもできます. 新しい R セッションから演算するほうが結果はより再現性が高いため, 定期的に再起動することは再現性の確保に役立ちます. これはドロップダウンメニューの Run ボタンの後ろに隠れている, "Restart R and Run All Chunks" を使ってもできます.
 
 ## R Markdown のスペルチェック {#spell-check}
 

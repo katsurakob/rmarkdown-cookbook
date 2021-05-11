@@ -18,7 +18,7 @@ LaTeX 文書\index{LaTeX}の一般的な構造はこのようになっていま�
 
 これは文書クラスを `\documentclass{}` で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして `\begin{document}` に続いて文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.
 
-プリアンブルになにか追加したい時, `pdf_document` の\index{しゅつりょくおぷしょん@出力オプション!includes} `includes` オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. いずれも1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます.  `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
+プリアンブルになにか追加したい時, `pdf_document` の\index{しゅつりょくおぷしょん@出力オプション!includes} `includes` オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. `in_header`, `before_body`, そして `after_body` です. いずれも1つ以上のファイルパスを指定できます. `in_header` に指定されたファイルはプリアンブルに追加されます. `before_body` と `after_body` に指定されたファイルはそれぞれ本文の前と後に追加されます.
 
 例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. この小ワザが役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (`\href{URL}{text}` で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小ワザはテキストと URL の両方を表示します.
 
@@ -58,7 +58,7 @@ links-as-notes: true
 
 あなたが LaTeX をある程度ご存知なら, これらのオプションの意味は明らかでしょう. `documentclass` オプション\index{YAML!documentclass} は, 例えば `article`, `book`, `report` などの文書クラスを設定します. `classoption` は文書クラスに与えたいオプションをリストにしたもので, 例えば二段組の文書を作りたいなら `twocolumn` オプション,^[このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに `\onecolumn` コマンドを挿入することになるでしょう. 二段組モードを続けたいなら `\twocolumn` を挿入します.], 横置きレイアウトにするなら `landscape` オプション (デフォルトでは縦置き (portrait) レイアウト) があります. `papersize`\index{YAML!papersize} オプションは `a4`, `paper`, `a5` といった用紙サイズを設定します. `linestretch`\index{YAML!linestretch} オプションは行間を設定します. `fontsize`\index{YAML!fontsize} オプションはフォントサイズを `10pt`, `11pt`, `12pt` というふうに設定します. `links-as-notes` オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
 
-フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.],  `fontfamily` オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
+フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.], `fontfamily` オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
 
 ```yaml
 fontfamily: accanthis
@@ -67,7 +67,7 @@ output:
     latex_engine: pdflatex
 ```
 
-これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので https://tug.org/FontCatalogue/  を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
+これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので https://tug.org/FontCatalogue/ を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
 
 LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: **rmdja** パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます.] 例えばこのように.
 
@@ -115,7 +115,7 @@ title: |
 
 <!-- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 -->
 
-追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて **kableExtra**\index{R パッケージ!kableExtra} [@R-kableExtra]  のようないくつかのパッケージでは R パッケージの関数が LaTeX に依存して機能するものもあります. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.
+追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて **kableExtra**\index{R パッケージ!kableExtra} [@R-kableExtra] のようないくつかのパッケージでは R パッケージの関数が LaTeX に依存して機能するものもあります. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.
 
 ### LaTeX パッケージを読み込む {#loading-latex-packages}
 
@@ -183,7 +183,7 @@ LaTeX ではデフォルトではキャプションのある図は `figure` 環�
 \end{figure}
 ```
 
-`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白に収まらないときには, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても,  次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後の角カッコ内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
+`figure` 環境はフロート環境です. フロートの詳細な説明は https://en.wikibooks.org/wiki/LaTeX/Floats,_Figures_and_Captions で読むことができます. 要約するとフロートは, 図や表のようにページで区切られないコンテナとして使われます. 図表が現在のページの余白に収まらないときには, LaTeX は次のページの先頭に配置します. 図が十分に縦長だと, テキストを数行分の余白が残っていたとしても, 次のページ全てを占有します. この挙動は, `\begin{figure}[b]` のように, `\begin{figure}`の後の角カッコ内のいくつかの配置指定修飾子によって制御できます. 以下は使用可能な記号のリストです.
 
 - `h`: フロートを**ここ** (here) に配置します. つまりソーステキスト上に現れるところとほぼ同じ位置です.
 - `t`: そのページの**先頭** (top) に配置します.
@@ -275,12 +275,12 @@ output:
 ---
 ```
 
-あるコードチャンクからの全てのプロットを並べるためには, チャンクオプション `fig.cap`\index{ちゃんくおぷしょん@チャンクオプション!fig.cap} (環境全体のキャプション)  と `fig.subcap`\index{ちゃんくおぷしょん@チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の出力を得るためには, 以下のような選択肢も使用できます.
+あるコードチャンクからの全てのプロットを並べるためには, チャンクオプション `fig.cap`\index{ちゃんくおぷしょん@チャンクオプション!fig.cap} (環境全体のキャプション) と `fig.subcap`\index{ちゃんくおぷしょん@チャンクオプション!fig.subcap} (サブ図のためのキャプションの文字列ベクトル) を使わなければなりません. 最良の出力を得るためには, 以下のような選択肢も使用できます.
 
 
 - `fig.ncol`\index{ちゃんくおぷしょん@チャンクオプション!fig.ncol}: サブ図の列の数です. デフォルトでは全てのグラフが単一の行に並べられます. これを使って複数の行に分けられます.
 
-- `out.width`\index{ちゃんくおぷしょん@チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定します. 例えば2つグラフがあるなら,  `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
+- `out.width`\index{ちゃんくおぷしょん@チャンクオプション!out.width}: 個別のグラフの出力幅です. 通常はこれを `100%` を列の数で割ったものに設定します. 例えば2つグラフがあるなら, `out.width` は `50%` 以下にすべきです. そうしないとグラフはページの外枠をはみ出すかもしれません.
 
 以下は具体例の1つです.
 
@@ -390,7 +390,7 @@ LaTeX パッケージの **fancyhdr**\index{LaTeX パッケージ!fancyhdr} は�
 
 <!-- https://stackoverflow.com/questions/30922602/creating-a-footer-for-every-page-including-first-using-r-markdown -->
 
-デフォルトではヘッダとフッタは PDF 文書の最初のページには表示されません. 表示にもフッタを表示したいなら, もう1行  `\fancypagestyle{plain}{\pagestyle{fancy}}` を追加しなければなりません.
+デフォルトではヘッダとフッタは PDF 文書の最初のページには表示されません. 表示にもフッタを表示したいなら, もう1行 `\fancypagestyle{plain}{\pagestyle{fancy}}` を追加しなければなりません.
 
 ## Pandoc の LaTeX テンプレートをカスタマイズする (\*) {#latex-template}
 
@@ -441,7 +441,7 @@ A & B \\
 ```
 ````
 
-`latex` の前の等号を忘れないでください. つまり `latex` ではなく  `=latex` です. この機能は Pandoc 2.0 以降のバージョンが必要です (`rmarkdown::pandoc_version()` で確認してください).
+`latex` の前の等号を忘れないでください. つまり `latex` ではなく `=latex` です. この機能は Pandoc 2.0 以降のバージョンが必要です (`rmarkdown::pandoc_version()` で確認してください).
 
 ## ハードコア LaTeX ユーザーのために (\*) {#latex-hardcore}
 

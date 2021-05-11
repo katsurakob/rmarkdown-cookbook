@@ -329,12 +329,12 @@ R Markdown で **booktabs** のような LaTeX パッケージが追加で必要
 
 - 表に垂線はありませんが, `vline` 引数で追加することができます.
 - テーブルのヘッダと末尾にのみ水平線が描かれます. デフォルトの引数の値は `toprule = "\\toprule"`, `midrule = "\\midrule"`, `bottomrule = "\\bottomrule"` です. デフォルトでは1行分の空きが5行ごとに挿入されます. これは `linesep` 引数で制御でき, このデフォルトは `c("", "", "", "", "\\addlinespace")` となっています. 3行ごとに空白を与えたいなら, このようにできます.
-  
-  ```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
-  knitr::kable(iris3, format = 'latex', linesep = c('', '', '\\addlinespace'), booktabs = TRUE)
-  ```
-  
-  行空けを完全に削除したいなら, `linesep = ''` とこともできます.
+    
+    ```{r, render=if (!knitr::is_latex_output()) kat, comment='', class.output='tex'}
+    knitr::kable(iris3, format = 'latex', linesep = c('', '', '\\addlinespace'), booktabs = TRUE)
+    ```
+    
+    行空けを完全に削除したいなら, `linesep = ''` とこともできます.
 
 表がページよりも長くなってしまうもともあるでしょう. そのような場合は `longtable = TRUE` を使用できます. このオプションは LaTeX パッケージ [**longtable**](https://ctan.org/pkg/longtable) を使い表を複数ページに分割します.
 
@@ -450,7 +450,7 @@ kable(iris3[, 1:4], booktabs = TRUE) %>% pack_rows(
 
 ### LaTeX で表を縮小する {#scaling-down-wide-tables-in-latex}
 
-HTML や LaTeX 出力特有の機能もいくつかあります. 例えば横向きページは LaTeX でのみ意味をなすので, **kableExtra** の `landscape()`  関数\index{kableExtra!landscape()}は LaTeX でのみ機能します. 以下はページに合わせて表を縮小する例です. 縮小しなければ横に長すぎる表になります.
+HTML や LaTeX 出力特有の機能もいくつかあります. 例えば横向きページは LaTeX でのみ意味をなすので, **kableExtra** の `landscape()` 関数\index{kableExtra!landscape()}は LaTeX でのみ機能します. 以下はページに合わせて表を縮小する例です. 縮小しなければ横に長すぎる表になります.
 
 ```{r, tidy=FALSE}
 tab <- kable(tail(mtcars, 5), booktabs = TRUE)

@@ -79,7 +79,7 @@ params:
 
 ## R コード内で文書メタデータにアクセスする {#document-metadata}
 
-Rmd 文書をコンパイルする際には, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に格納されます. 例えば `rmarkdown::metadata$title` には文書のタイトルが与えられます. この `metadata` オブジェクトは R コード内で使うことができるので,　YAML メタデータに与えられた情報をハードコードしなくてすみます. 例えば以下のように  **blastula** パッケージ [@R-blastula]\index{R パッケージ!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
+Rmd 文書をコンパイルする際には, YAML セクション\index{YAML}の全てのメタデータはリストオブジェクト `rmarkdown::metadata` に格納されます. 例えば `rmarkdown::metadata$title` には文書のタイトルが与えられます. この `metadata` オブジェクトは R コード内で使うことができるので,　YAML メタデータに与えられた情報をハードコードしなくてすみます. 例えば以下のように **blastula** パッケージ [@R-blastula]\index{R パッケージ!blastula} で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.
 
 ````md
 ---
@@ -138,7 +138,7 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), d
 ```yaml
 ---
 output: html_document
-bibliography: references.bib  
+bibliography: references.bib 
 ---
 ```
 
@@ -253,7 +253,7 @@ knitr::write_bib(c(
 
 第1引数はパッケージ名の文字列ベクトルで, 第2引数は `.bib` ファイルのパスであるべきです. 上記の例では, `.packages()` は現在の R セッションが読み込んでいる全てのパッケージ名を返します. これらのパッケージのいずれかが更新された (例えば著者, タイトル, 年, あるいはバージョンが変更された) とき, `write_bib()` は自動的に `.bib` を更新できます.
 
-引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの `DESCRIPTION` ファイルをもとに生成したもので, もう1つは, もしパッケージに `CITATION` ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが `R-(パッケージ名)` という形式 (例えば `R-knitr`) になり, 後者のタイプはパッケージ名と公開年を結合したもの (例: `knitr2015`) がキーとなります . 同じ年に複数のエントリがあるときは, 接尾文字が追加されます. 例えば  `knitr2015a` と `knitr2015b` のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプは論文や書籍のようなパッケージと関連する出版物といったものが多いです.
+引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの `DESCRIPTION` ファイルをもとに生成したもので, もう1つは, もしパッケージに `CITATION` ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが `R-(パッケージ名)` という形式 (例えば `R-knitr`) になり, 後者のタイプはパッケージ名と公開年を結合したもの (例: `knitr2015`) がキーとなります . 同じ年に複数のエントリがあるときは, 接尾文字が追加されます. 例えば `knitr2015a` と `knitr2015b` のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプは論文や書籍のようなパッケージと関連する出版物といったものが多いです.
 
 ```{r, warning=FALSE, comment='', class.output='bibtex'}
 knitr::write_bib(c('knitr', 'rmarkdown'), width = 60)
@@ -275,13 +275,13 @@ knitr::write_bib(file = 'packages.bib')
 
 上記の例では `packages.bib` は自動で生成されたものなので, 手動で変更すべきではありません. それ以外の全ての引用エントリは `references.bib` に手動で書き込むことができます.
 
-ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献で動的に引用を生成するには,  **knitcitations** パッケージ\index{R パッケージ!knitcitations} [@R-knitcitations] を見てください.
+ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献で動的に引用を生成するには, **knitcitations** パッケージ\index{R パッケージ!knitcitations} [@R-knitcitations] を見てください.
 
 ## 文書内の相互参照 {#cross-ref}
 
 <!--https://stackoverflow.com/questions/38861041/knitr-rmarkdown-latex-how-to-cross-reference-figures-and-tables-->
 
-相互参照\index{そうごさんしょう@相互参照} はあなたの文書を通して読者を誘導するのに役に立つ方法であり, R Markdown ではこれを自動的に行なえます. これは **bookdown**  本の [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) で既に説明されていますが, 以下で簡潔な説明をします.
+相互参照\index{そうごさんしょう@相互参照} はあなたの文書を通して読者を誘導するのに役に立つ方法であり, R Markdown ではこれを自動的に行なえます. これは **bookdown** 本の [Chapter 2](https://bookdown.org/yihui/bookdown/components.html) で既に説明されていますが, 以下で簡潔な説明をします.
 
 相互参照を使用するにあたって, 以下が必要になります.
 
@@ -425,7 +425,7 @@ plot(mpg ~ hp, mtcars)
 ```
 ````
 
-\@ref(cross-ref) 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています.  `html_document2` の他にも, `pdf_document2`, `word_document2` といった他の出力に対する同様のフォーマット関数もあります.
+\@ref(cross-ref) 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています. `html_document2` の他にも, `pdf_document2`, `word_document2` といった他の出力に対する同様のフォーマット関数もあります.
 
 **bookdown** 以外の R Markdown 出力フォーマットにもこの機能を追加できます. 鍵となるのはこれらが **bookdown** 出力フォーマットの「基本フォーマット」であることです. 例えば, `rticles::jss_article` フォーマットで図に付番と相互参照をするために以下が使えます.
 
@@ -504,7 +504,7 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 
 ## モデルを数式に変換する {#equatiomatic}
 
-Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic}  [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示するための便利な自動化された手段です. 簡単な例を以下に示します.
+Daniel Anderson らによって開発された **equatiomatic** パッケージ\index{R パッケージ!equatiomatic} [@R-equatiomatic] (https://github.com/datalorax/equatiomatic) は R で当てはめたモデルに対応する数式を表示するための便利な自動化された手段です. 簡単な例を以下に示します.
 
 ```{r, results='asis'}
 fit <- lm(mpg ~ cyl + disp, mtcars)
@@ -539,13 +539,13 @@ for (i in 1:2) {
 
 アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\@ref(fig:pacman) が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
-PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に,  Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. その上で以下の例のように, チャンクオプション `fig.show = "animate"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
+PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. その上で以下の例のように, チャンクオプション `fig.show = "animate"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
 
 `r import_example('latex-animation.Rmd')`
 
 アニメーションのイメージフレーム間の表示間隔はチャンクオプション `interval`\index{ちゃんくおぷしょん@チャンクオプション!interval} で設定できます. デフォルトでは `interval = 1` (つまり1秒) です.
 
-R パッケージ **animation**\index{R パッケージ!animation} [@R-animation]  には, 統計的計算の方法やアイディアを表現するアニメーションの例がいくつか入っています. **gganimate** パッケージ\index{R パッケージ!gganimate} [@R-gganimate] は **ggplot2**\index{R パッケージ!gglot2} [@R-ggplot2] に基づいた滑らかなアニメーションの作成を可能にします. どちらも R Markdown で動作します.
+R パッケージ **animation**\index{R パッケージ!animation} [@R-animation] には, 統計的計算の方法やアイディアを表現するアニメーションの例がいくつか入っています. **gganimate** パッケージ\index{R パッケージ!gganimate} [@R-gganimate] は **ggplot2**\index{R パッケージ!gglot2} [@R-ggplot2] に基づいた滑らかなアニメーションの作成を可能にします. どちらも R Markdown で動作します.
 
 ## ダイアグラムを作成する {#diagrams}
 
@@ -579,7 +579,7 @@ DiagrammeR::grViz("digraph {
 
 ### 図にパラメータを追加する {#adding-parameters-to-plots}
 
-Graphviz の置換機能は可読性を損なうことなく, R コードを Graphviz のグラフ設定に混ぜ込むことができます. `@@` を伴う置換を指定するには, そこに置換されるのは有効な R 評価式であることを確実にせねばなりません.   評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. `@@` という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図\@ref(fig:diagram-params)はダイアグラムへの R コードの埋め込みと評価の例です.
+Graphviz の置換機能は可読性を損なうことなく, R コードを Graphviz のグラフ設定に混ぜ込むことができます. `@@` を伴う置換を指定するには, そこに置換されるのは有効な R 評価式であることを確実にせねばなりません.  評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. `@@` という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図\@ref(fig:diagram-params)はダイアグラムへの R コードの埋め込みと評価の例です.
 
 ```{r diagram-params, fig.cap="R から入力されたパラメータを使用したダイアグラム", fig.dim=c(6, 1), out.width="100%", crop=TRUE}
 DiagrammeR::grViz("
@@ -619,7 +619,7 @@ Markdown 構文で特殊な意味を持つ文字がいくつかあります. こ
 
 <!-- https://stackoverflow.com/questions/17046518/comment-out-text-in-r-markdown -->
 
-ソース文書内のテキストを最終的な出力文書に表示させないようコメントアウト\index{こめんと@コメント}するのはとても便利です.  この用途のため, HTML の構文である `<!-- ここにコメント -->` を使えます. コメントはどの出力フォーマットにも表示されません.
+ソース文書内のテキストを最終的な出力文書に表示させないようコメントアウト\index{こめんと@コメント}するのはとても便利です. この用途のため, HTML の構文である `<!-- ここにコメント -->` を使えます. コメントはどの出力フォーマットにも表示されません.
 
 コメントは1行でも, 複数行にも広げられます. これは草稿を書くのに便利でしょう.
 
@@ -670,7 +670,7 @@ labs = setdiff(labs, c("setup", "get-labels"))
 
 ## Pandoc の Lua フィルタから操作する (\*) {#lua-filters}
 
-\index{Pandoc!Lua フィルタ|see  {Lua フィルタ}}
+\index{Pandoc!Lua フィルタ|see {Lua フィルタ}}
 
 技術的にはこの節は少し発展的ですが, Markdown の内容が Pandoc 抽象構文木 (AST) にどのように翻訳されるかを一度学べば, Lua というプログラミング言語を使ってどのような Markdown の要素も操作する力を得ることになります.
 
@@ -700,7 +700,7 @@ xfun:::tree(
 
 あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
 
-最初に `raise-header.lua` という名前の Lua スクリプトファイルを作ります. これには `Header` という名前の関数が含まれており, "Header" タイプの要素を修正したいということを意味しています (一般に,  あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).
+最初に `raise-header.lua` という名前の Lua スクリプトファイルを作ります. これには `Header` という名前の関数が含まれており, "Header" タイプの要素を修正したいということを意味しています (一般に, あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).
 
 ```{cat, engine.opts=list(file='raise-header.lua', lang='lua')}
 function Header(el)
@@ -727,7 +727,7 @@ pandoc -t markdown --atx-headers \
 gsub('^##', '#', readLines('ast.md'))
 ```
 
-たいていの場合, 構造化された文書を操作するのに正規表現はロバストな手段ではありません.  例えば `##` が R コード内でコメントに使われているというように, ほぼいつも例外があるためです.  AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.
+たいていの場合, 構造化された文書を操作するのに正規表現はロバストな手段ではありません. 例えば `##` が R コード内でコメントに使われているというように, ほぼいつも例外があるためです. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.
 
 Pandoc の Lua フィルタに関する追加ドキュメントが https://pandoc.org/lua-filters.html にあり, ここで多くの例を見つけることができます. GitHub リポジトリ https://github.com/pandoc/lua-filters のコミュニティで書かれたフィルタを見つけることもできます.
 

@@ -360,17 +360,17 @@ directory
 
 - **index.Rmd**:
 
-  ````md
-  ---
-  title: "最低限の bookdown プロジェクト"
-  site: bookdown::bookdown_site
-  output: bookdown::gitbook
-  ---
-  
-  # はじめに {-}
-  
-  なにか書く
-  ````
+    ````md
+    ---
+    title: "最低限の bookdown プロジェクト"
+    site: bookdown::bookdown_site
+    output: bookdown::gitbook
+    ---
+    
+    # はじめに {-}
+    
+    なにか書く
+    ````
 
 最初のファイルは典型的には `index.Rmd` と呼ばれます. YAML フロントマターを与える唯一の Rmd ファイルとなるべきです. また, 特殊な YAML フィールド, `site: bookdown::bookdown_site` を含めて, **bookdown** を使うべきことを **rmarkdown** に知らせることで, 単一の Rmd ファイルをレンダリングするのではなく, 全ての Rmd ファイルをビルドさせます. `bookdown::gitbook` ・ `bookdown::pdf_book` ・ `bookdown::word_document2` ・ `bookdown::epub_book` といったどのような **bookdown** 出力フォーマットでも使えます.
 
@@ -378,19 +378,19 @@ directory
 
 - **01-導入.Rmd:**
 
-  ````md
-  # 第1章
-  
-  これは第1章です.
-  ````
+    ````md
+    # 第1章
+    
+    これは第1章です.
+    ````
 
 - **02-分析.Rmd**:
 
-  ```md
-  # 第2章
-  
-  これは第2章です.
-  ```
+    ```md
+    # 第2章
+    
+    これは第2章です.
+    ```
 
 これらの Rmd ファイルをレンダリングするためには, `rmarkdown::render()` の代わりに `bookdown::render_book('index.Rmd')` を呼ぶべきです. その内部では, デフォルトで **bookdown** が全ての Rmd ファイルを1つの Rmd に結合し, コンパイルします. ファイルは名前順に結合されます. 上記の例でファイル名の頭に数字を付けたのはそれが理由です.
 
