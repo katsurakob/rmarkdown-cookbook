@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.1 カスタム言語エンジンを登録する (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.1 カスタム言語エンジンを登録する (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="15.1 カスタム言語エンジンを登録する (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -470,38 +496,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="custom-engine" class="section level2" number="15.1">
 <h2><span class="header-section-number">15.1</span> カスタム言語エンジンを登録する (*)</h2>
 <p><code>knitr::knit_engines$set()</code> でカスタム言語エンジンを登録できます. これは関数を入力として受け容れます. これが例です.</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb431-1"><a href="custom-engine.html#cb431-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">foo =</span> <span class="cf">function</span>(options) {</span>
-<span id="cb431-2"><a href="custom-engine.html#cb431-2"></a>  <span class="co"># ソースコードは options$code にある</span></span>
-<span id="cb431-3"><a href="custom-engine.html#cb431-3"></a>  <span class="co"># それを使ってやりたいことは何でもやろう</span></span>
-<span id="cb431-4"><a href="custom-engine.html#cb431-4"></a>})</span></code></pre></div>
-<p>これは <code>foot</code> エンジンを登録し, <code>```{foo}</code> で始まるコードチャンクを使えるようになります.</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb430-1"><a href="custom-engine.html#cb430-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">foo =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb430-2"><a href="custom-engine.html#cb430-2"></a>  <span class="co"># ソースコードは options$code にある</span></span>
+<span id="cb430-3"><a href="custom-engine.html#cb430-3"></a>  <span class="co"># それを使ってやりたいことは何でもやろう</span></span>
+<span id="cb430-4"><a href="custom-engine.html#cb430-4"></a>})</span></code></pre></div>
+<p>これは <code>foo</code> エンジンを登録し, <code>```{foo}</code> で始まるコードチャンクを使えるようになります.</p>
 <p>エンジン関数は1つの引数 <code>options</code> を取り, これはコードチャンクのオプションのリストです. <code>options$code</code> にある文字列ベクトルとして, チャンクのソースコードにアクセスできます. 例えば, このコードチャンクに対して考えます.</p>
-<div class="sourceCode" id="cb432"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb432-1"><a href="custom-engine.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{foo}</span></span>
-<span id="cb432-2"><a href="custom-engine.html#cb432-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb432-3"><a href="custom-engine.html#cb432-3" aria-hidden="true" tabindex="-1"></a><span class="in">2 + 2</span></span>
-<span id="cb432-4"><a href="custom-engine.html#cb432-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb431-1"><a href="custom-engine.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{foo}</span></span>
+<span id="cb431-2"><a href="custom-engine.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb431-3"><a href="custom-engine.html#cb431-3" aria-hidden="true" tabindex="-1"></a><span class="in">2 + 2</span></span>
+<span id="cb431-4"><a href="custom-engine.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>options</code> の <code>code</code> 要素は文字列ベクトル <code>c('1 + 1', '2 + 2')</code> になります.</p>
 <p>言語エンジンは実はプログラミング言語として動作しなくてもよいですが, コードチャンクの任意のテキストを処理できます. まずは, コードチャンクの本文を大文字に変換するエンジンの例をお見せします.</p>
-<div class="sourceCode" id="cb433"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb433-1"><a href="custom-engine.html#cb433-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">upper =</span> <span class="cf">function</span>(options) {</span>
-<span id="cb433-2"><a href="custom-engine.html#cb433-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb433-3"><a href="custom-engine.html#cb433-3"></a>  <span class="cf">if</span> (options<span class="sc">$</span>eval) </span>
-<span id="cb433-4"><a href="custom-engine.html#cb433-4"></a>    <span class="fu">toupper</span>(code) <span class="cf">else</span> code</span>
-<span id="cb433-5"><a href="custom-engine.html#cb433-5"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb432"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb432-1"><a href="custom-engine.html#cb432-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">upper =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb432-2"><a href="custom-engine.html#cb432-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb432-3"><a href="custom-engine.html#cb432-3"></a>  <span class="cf">if</span> (options<span class="sc">$</span>eval) </span>
+<span id="cb432-4"><a href="custom-engine.html#cb432-4"></a>    <span class="fu">toupper</span>(code) <span class="cf">else</span> code</span>
+<span id="cb432-5"><a href="custom-engine.html#cb432-5"></a>})</span></code></pre></div>
 <p>ポイントは <code>toupper</code> 関数を「コード」に適用して, <code>\n</code> でコードの全ての行を連結し, 単一の文字列として結果を返すことです. <code>toupper()</code> はチャンクオプション <code>eval = TRUE</code>の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください. このことは <code>eval</code> のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, <code>results = 'hide'</code> の時に出力を隠すため, 関数内に <code>if (options$results == 'hide') return()</code> を加えることも検討することもできます. 以下は <code>upper</code> エンジンをオプションとともに使用するチャンクの例です.</p>
 <blockquote>
-<div class="sourceCode" id="cb434"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb434-1"><a href="custom-engine.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{upper}</span></span>
-<span id="cb434-2"><a href="custom-engine.html#cb434-2" aria-hidden="true" tabindex="-1"></a><span class="in">Hello, **knitr** engines!</span></span>
-<span id="cb434-3"><a href="custom-engine.html#cb434-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb433-1"><a href="custom-engine.html#cb433-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{upper}</span></span>
+<span id="cb433-2"><a href="custom-engine.html#cb433-2" aria-hidden="true" tabindex="-1"></a><span class="in">Hello, **knitr** engines!</span></span>
+<span id="cb433-3"><a href="custom-engine.html#cb433-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>HELLO, <strong>KNITR</strong> ENGINES!</p>
 </blockquote>
-<p>次に, <code>py</code> という名前のもう1つの Python エンジン<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>の例を紹介します. このエンジンは単純に R の <code>system2()</code> 関数から <code>python</code> コマンドを呼び出すことで実装しています.</p>
-<div class="sourceCode" id="cb435"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb435-1"><a href="custom-engine.html#cb435-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">py =</span> <span class="cf">function</span>(options) {</span>
-<span id="cb435-2"><a href="custom-engine.html#cb435-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
-<span id="cb435-3"><a href="custom-engine.html#cb435-3"></a>  out  <span class="ot">&lt;-</span> <span class="fu">system2</span>(</span>
-<span id="cb435-4"><a href="custom-engine.html#cb435-4"></a>    <span class="st">&#39;python&#39;</span>, <span class="fu">c</span>(<span class="st">&#39;-c&#39;</span>, <span class="fu">shQuote</span>(code)), <span class="at">stdout =</span> <span class="cn">TRUE</span></span>
-<span id="cb435-5"><a href="custom-engine.html#cb435-5"></a>  )</span>
-<span id="cb435-6"><a href="custom-engine.html#cb435-6"></a>  knitr<span class="sc">::</span><span class="fu">engine_output</span>(options, code, out)</span>
-<span id="cb435-7"><a href="custom-engine.html#cb435-7"></a>})</span></code></pre></div>
+<p>次に, <code>py</code> という名前のもう1つの Python エンジン<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>の例を紹介します. このエンジンは単純に R の <code>system2()</code> 関数から <code>python</code> コマンドを呼び出すことで実装しています.</p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb434-1"><a href="custom-engine.html#cb434-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">py =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb434-2"><a href="custom-engine.html#cb434-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb434-3"><a href="custom-engine.html#cb434-3"></a>  out  <span class="ot">&lt;-</span> <span class="fu">system2</span>(</span>
+<span id="cb434-4"><a href="custom-engine.html#cb434-4"></a>    <span class="st">&#39;python&#39;</span>, <span class="fu">c</span>(<span class="st">&#39;-c&#39;</span>, <span class="fu">shQuote</span>(code)), <span class="at">stdout =</span> <span class="cn">TRUE</span></span>
+<span id="cb434-5"><a href="custom-engine.html#cb434-5"></a>  )</span>
+<span id="cb434-6"><a href="custom-engine.html#cb434-6"></a>  knitr<span class="sc">::</span><span class="fu">engine_output</span>(options, code, out)</span>
+<span id="cb434-7"><a href="custom-engine.html#cb434-7"></a>})</span></code></pre></div>
 <p>上記のエンジン関数を完全に理解するために, 以下を知っておく必要があります.</p>
 <ol style="list-style-type: decimal">
 <li><p>Python コードは文字列として与えられ (上記関数の <code>code</code>), コードはコマンドラインの呼び出し <code>python -c 'code'</code> によって実行できます. これが <code>system2()</code> のしていることです. <code>system2()</code> <code>stdout = TRUE</code> を指定することでテキスト出力を収集しています.</p></li>
@@ -510,17 +536,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>knitr</strong> の多くの言語エンジンはこのようにして定義されています. つまり <code>system2()</code> を使って言語に対応するコマンドを実行してます. もし技術的に詳しい話に興味があるなら, R ソースコードにはほとんどの言語エンジンが書かれているここ <a href="https://github.com/yihui/knitr/blob/master/R/engine.R" class="uri">https://github.com/yihui/knitr/blob/master/R/engine.R</a> を確認することもできます.</p>
 <p>そして今や, 新しいエンジン <code>py</code> を使うことができます. 例えばこのように.</p>
 <blockquote>
-<div class="sourceCode" id="cb436"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb436-1"><a href="custom-engine.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{py}</span></span>
-<span id="cb436-2"><a href="custom-engine.html#cb436-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(1 + 1)</span></span>
-<span id="cb436-3"><a href="custom-engine.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb435-1"><a href="custom-engine.html#cb435-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{py}</span></span>
+<span id="cb435-2"><a href="custom-engine.html#cb435-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(1 + 1)</span></span>
+<span id="cb435-3"><a href="custom-engine.html#cb435-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <pre><code>## 2</code></pre>
 </blockquote>
 <p>あなたのバージョンの言語エンジンが <strong>knitr</strong> の既存の言語エンジンよりも必要性がるか, より良いものだと確信しているなら, <code>knitr::knit_engines$set()</code> によって既存のものを上書きすることすらできます. たいていの場合は既存のエンジンに慣れたユーザーが驚いてしまうかもしれないので, そうすることはお薦めしませんが, どちらにせよこの可能性は頭の片隅に置いてほしいです.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="34">
-<li id="fn34"><p>実用的には組み込みの <code>python</code> エンジンをを使うべきです. これは <strong>reticulate</strong> パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (<a href="eng-python.html#eng-python">15.2</a>節参照).<a href="custom-engine.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<ol start="41">
+<li id="fn41"><p>実用的には組み込みの <code>python</code> エンジンを使うべきです. これは <strong>reticulate</strong> パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (<a href="eng-python.html#eng-python">15.2</a>節参照).<a href="custom-engine.html#fnref41" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -552,6 +578,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

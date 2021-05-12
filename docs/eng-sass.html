@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.10 Sass/SCSS で HTML ページをスタイリングする | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.10 Sass/SCSS で HTML ページをスタイリングする | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="15.10 Sass/SCSS で HTML ページをスタイリングする | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -470,31 +496,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="eng-sass" class="section level2" number="15.10">
 <h2><span class="header-section-number">15.10</span> Sass/SCSS で HTML ページをスタイリングする</h2>
 <p>Sass (<a href="https://sass-lang.com" class="uri">https://sass-lang.com</a>) は CSS を拡張した言語で, 基本的な CSS で行っていた のよりはるかに柔軟な方法でルールを作成できます. これを学ぶことに関心があるなら, 公式ドキュメントを見てください.</p>
-<p>R パッケージの <strong>sass</strong> <span class="citation">(<a href="参考文献.html#ref-R-sass" role="doc-biblioref">Cheng et al. 2021</a>)</span>  は SaSS を CSS にコンパイルするのに使用できます. <strong>sass</strong> パッケージに基づいて, <strong>knitr</strong> はコードチャンクを CSS にコンパイルするため2つの言語エンジン, <code>sass</code> and <code>scss</code> を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが <code>```{scss}</code> である <code>scss</code> コードチャンクです.</p>
-<div class="sourceCode" id="cb459"><pre class="sourceCode numberSource scss numberLines lineAnchors"><code class="sourceCode"><span id="cb459-1"><a href="eng-sass.html#cb459-1"></a>$font-stack: &quot;HGS創英角ﾎﾟｯﾌﾟ体&quot;, &quot;Comic Sans MS&quot;, cursive, sans-serif;</span>
-<span id="cb459-2"><a href="eng-sass.html#cb459-2"></a>$primary-color: #00FF00;</span>
-<span id="cb459-3"><a href="eng-sass.html#cb459-3"></a></span>
-<span id="cb459-4"><a href="eng-sass.html#cb459-4"></a>.book.font-family-1 {</span>
-<span id="cb459-5"><a href="eng-sass.html#cb459-5"></a>  font: 100% $font-stack;</span>
-<span id="cb459-6"><a href="eng-sass.html#cb459-6"></a>  color: $primary-color;</span>
-<span id="cb459-7"><a href="eng-sass.html#cb459-7"></a>}</span></code></pre></div>
+<p>R パッケージの <strong>sass</strong> <span class="citation">(<a href="#ref-R-sass" role="doc-biblioref">Cheng et al. 2021</a>)</span>  は SaSS を CSS にコンパイルするのに使用できます. <strong>sass</strong> パッケージに基づいて, <strong>knitr</strong> はコードチャンクを CSS にコンパイルするため2つの言語エンジン, <code>sass</code> and <code>scss</code> を読み込みます. Sass と SCSS の構文は互いに対応しているためです. 以下はチャンクヘッダが <code>```{scss}</code> である <code>scss</code> コードチャンクです.</p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode numberSource scss numberLines lineAnchors"><code class="sourceCode"><span id="cb458-1"><a href="eng-sass.html#cb458-1"></a>$font-stack: &quot;HGS創英角ﾎﾟｯﾌﾟ体&quot;, &quot;Comic Sans MS&quot;, cursive, sans-serif;</span>
+<span id="cb458-2"><a href="eng-sass.html#cb458-2"></a>$primary-color: #00FF00;</span>
+<span id="cb458-3"><a href="eng-sass.html#cb458-3"></a></span>
+<span id="cb458-4"><a href="eng-sass.html#cb458-4"></a>.book.font-family-1 {</span>
+<span id="cb458-5"><a href="eng-sass.html#cb458-5"></a>  font: 100% $font-stack;</span>
+<span id="cb458-6"><a href="eng-sass.html#cb458-6"></a>  color: $primary-color;</span>
+<span id="cb458-7"><a href="eng-sass.html#cb458-7"></a>}</span></code></pre></div>
 <style type="text/css">
 ﻿.book.font-family-1{font:100% "HGS創英角ﾎﾟｯﾌﾟ体","Comic Sans MS",cursive,sans-serif;color:lime}
 </style>
 <p><code>sass</code> エンジンも使うことができます. Sass 構文は SCSS 構文とわずかに異なります. 例えばこのように.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb460-1"><a href="eng-sass.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sass}</span></span>
-<span id="cb460-2"><a href="eng-sass.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="in">$font-stack: &quot;HGS創英角ﾎﾟｯﾌﾟ体&quot;, &quot;Comic Sans MS&quot;, cursive, sans-serif</span></span>
-<span id="cb460-3"><a href="eng-sass.html#cb460-3" aria-hidden="true" tabindex="-1"></a><span class="in">$primary-color: #00FF00</span></span>
-<span id="cb460-4"><a href="eng-sass.html#cb460-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb460-5"><a href="eng-sass.html#cb460-5" aria-hidden="true" tabindex="-1"></a><span class="in">.book.font-family-1</span></span>
-<span id="cb460-6"><a href="eng-sass.html#cb460-6" aria-hidden="true" tabindex="-1"></a><span class="in">  font: 100% $font-stack</span></span>
-<span id="cb460-7"><a href="eng-sass.html#cb460-7" aria-hidden="true" tabindex="-1"></a><span class="in">  color: $primary-color</span></span>
-<span id="cb460-8"><a href="eng-sass.html#cb460-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb459-1"><a href="eng-sass.html#cb459-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sass}</span></span>
+<span id="cb459-2"><a href="eng-sass.html#cb459-2" aria-hidden="true" tabindex="-1"></a><span class="in">$font-stack: &quot;HGS創英角ﾎﾟｯﾌﾟ体&quot;, &quot;Comic Sans MS&quot;, cursive, sans-serif</span></span>
+<span id="cb459-3"><a href="eng-sass.html#cb459-3" aria-hidden="true" tabindex="-1"></a><span class="in">$primary-color: #00FF00</span></span>
+<span id="cb459-4"><a href="eng-sass.html#cb459-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb459-5"><a href="eng-sass.html#cb459-5" aria-hidden="true" tabindex="-1"></a><span class="in">.book.font-family-1</span></span>
+<span id="cb459-6"><a href="eng-sass.html#cb459-6" aria-hidden="true" tabindex="-1"></a><span class="in">  font: 100% $font-stack</span></span>
+<span id="cb459-7"><a href="eng-sass.html#cb459-7" aria-hidden="true" tabindex="-1"></a><span class="in">  color: $primary-color</span></span>
+<span id="cb459-8"><a href="eng-sass.html#cb459-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>あなたが<a href="https://bookdown.org/yihui/rmarkdown-cookbook/eng-sass.html">このセクションの HTML 版</a>を読んでいるなら, このページのフォントが Comic Sans に変化したことに気付くでしょう. これには驚いたかもしれませんが, パニックにならないでください, <a href="https://twitter.com/andrewheiss/status/1250438044542361600">あなたは脳卒中になどなっていません</a>.</p>
 <p><code>sass</code>/<code>scss</code> コードチャンクは <code>sass::sass()</code> 関数によってコンパイルされます. 現在はチャンクオプション <code>engine.opts</code> で CSS コードの出力スタイルをカスタマイズできます. 例えば <code>engine.opts = list(style = "expanded")</code> のように. デフォルトのスタイルは “compressed” です. これが何を意味するのか自信がないなら, <code>?sass::sass_options</code> のヘルプを参照し, <code>output_style</code> 引数の項目を探してください.</p>
 
 </div>
 <!-- </div> -->
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-sass" class="csl-entry">
+Cheng, Joe, Timothy Mastny, Richard Iannone, Barret Schloerke, and Carson Sievert. 2021. <em>Sass: Syntactically Awesome Style Sheets (Sass)</em>. <a href="https://github.com/rstudio/sass">https://github.com/rstudio/sass</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -524,6 +556,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

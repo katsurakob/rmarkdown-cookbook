@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.1 プリアンブルに LaTeX コードを追加する | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.1 プリアンブルに LaTeX コードを追加する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="6.1 プリアンブルに LaTeX コードを追加する | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -475,19 +501,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb108-3"><a href="latex-preamble.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
 <span id="cb108-4"><a href="latex-preamble.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">% body</span></span>
 <span id="cb108-5"><a href="latex-preamble.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
-<p>これは文書クラスを <code>\documentclass{}</code> で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして <code>\begin{document}</code> の後で文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.</p>
-<p>プリアンブルになにか追加したい時, <code>pdf_document</code> <code>include</code> を使わねばなりません. このオプションは3つのサブオプションを持ちます. <code>in_header</code>, <code>before_body</code>, そして <code>after_body</code> です. これらは1つ以上のファイルパスを指定できます. <code>in_header</code> に指定されたファイルはプリアンブルに追加されます. <code>before_body</code> と <code>after_body</code> に指定されたファイルはそれぞれ本文の前と後に追加されます.</p>
-<p>例えば以下はテキスト内のハイパーリンクを脚注に変えるトリックです. PDF 出力された文書が紙に印刷されたものだと, 読者は紙面のリンク (<code>\href{URL}{text}</code> で生成されたもの) をクリックすることはできませんが, 脚注の URL を見ることはできるのでこのトリックは役に立ちます. このトリックはテキストと URL の両方を表示します.</p>
+<p>これは文書クラスを <code>\documentclass{}</code> で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして <code>\begin{document}</code> に続いて文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.</p>
+<p>プリアンブルになにか追加したい時, <code>pdf_document</code> の <code>includes</code> オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. <code>in_header</code>, <code>before_body</code>, そして <code>after_body</code> です. いずれも1つ以上のファイルパスを指定できます. <code>in_header</code> に指定されたファイルはプリアンブルに追加されます. <code>before_body</code> と <code>after_body</code> に指定されたファイルはそれぞれ本文の前と後に追加されます.</p>
+<p>例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. この小ワザが役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (<code>\href{URL}{text}</code> で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小ワザはテキストと URL の両方を表示します.</p>
 <div class="sourceCode" id="cb109"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb109-1"><a href="latex-preamble.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co">% あなたはレンダリング前に \href のコピーを保存したいかもしれない</span></span>
 <span id="cb109-2"><a href="latex-preamble.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co">% \let\oldhref\href</span></span>
 <span id="cb109-3"><a href="latex-preamble.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</span></code></pre></div>
-<p>あるファイル名 , 例えば <code>preamble.tex</code> 内に上記のコードを保存できます. それからプリアンブルにこれを読み込んでください.</p>
+<p>上記のコードを任意のファイル名（例えば <code>preamble.tex</code> ） に保存してから, プリアンブルに読み込んでください.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb110-1"><a href="latex-preamble.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb110-2"><a href="latex-preamble.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
 <span id="cb110-3"><a href="latex-preamble.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
 <span id="cb110-4"><a href="latex-preamble.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></span></code></pre></div>
-<p>このトリックは実際には自分で実装しなくてもよく, Pandoc のデフォルトのテンプレート (<a href="latex-variables.html#latex-variables">6.2</a>節参照) に組み込まれた機能である YAML オプション <code>links-as-notes</code> を `true``にすることで簡単にできます.</p>
-<p>コードをプリアンブルに追加する別の方法は, YAML フロントマター の <code>header-includes</code> フィールドに直接与えることです. <a href="latex-logo.html#latex-logo">6.3</a>節でその例を紹介しています. <code>header-includes</code> を使う利点は R Markdown 文書1つの内部に全てを含められることです. しかしあなたのレポートを複数の出力フォーマットに生成しなければならないなら, <code>includes</code> を使う方法をお薦めします. <code>header-includes</code> は無条件であり, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. 比較として, <code>includes</code> オプションは <code>pdf_document</code> フォーマットにのみ適用されます.</p>
+<p>この小ワザに限れば, 実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (<a href="latex-variables.html#latex-variables">6.2</a>節参照) に組み込まれた機能である YAML オプション <code>links-as-notes</code> を <code>true</code> にすることで簡単にできます.</p>
+<p>コードをプリアンブルに追加する別の方法として, YAML フロントマター の <code>header-includes</code> フィールドに直接コードを与えることができます. <a href="latex-logo.html#latex-logo">6.3</a>節でその例を紹介しています. <code>header-includes</code> を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットで生成したいのなら, やはり <code>includes</code> を使う方法をお薦めします. <code>header-includes</code> は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, <code>includes</code> オプションは <code>pdf_document</code> フォーマットにのみ適用されます.</p>
 </div>
             </section>
 
@@ -518,6 +544,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

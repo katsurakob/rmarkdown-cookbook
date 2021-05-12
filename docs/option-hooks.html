@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.18 オプションフック (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.18 オプションフック (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="11.18 オプションフック (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,70 +495,70 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="option-hooks" class="section level2" number="11.18">
 <h2><span class="header-section-number">11.18</span> オプションフック (*)</h2>
-<p>あるチャンクオプションを, 他のチャンクオプションの値に応じて動的に変えたいことがあるかもしれません. これを実施するには<strong>オプションフック</strong>を設定するために, <code>opts_hooks</code> オブジェクトを使用することもできます. オプションフックはオプションと関連付けられた関数で, 対応するチャンクオプションが <code>NULL</code> でないときに実行されます. この関数は現在のチャンクのオプションのリストを引数として受け取り, そのリストを (おそらく変更して) 返すものであるべきです. 例えば <code>fig.width</code> オプションを常に <code>fig.height</code> より小さくならないように調整することができます.</p>
-<div class="sourceCode" id="cb333"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb333-1"><a href="option-hooks.html#cb333-1"></a>knitr<span class="sc">::</span>opts_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.width =</span> <span class="cf">function</span>(options) {</span>
-<span id="cb333-2"><a href="option-hooks.html#cb333-2"></a>  <span class="cf">if</span> (options<span class="sc">$</span>fig.width <span class="sc">&lt;</span> options<span class="sc">$</span>fig.height) {</span>
-<span id="cb333-3"><a href="option-hooks.html#cb333-3"></a>    options<span class="sc">$</span>fig.width <span class="ot">&lt;-</span> options<span class="sc">$</span>fig.height</span>
-<span id="cb333-4"><a href="option-hooks.html#cb333-4"></a>  }</span>
-<span id="cb333-5"><a href="option-hooks.html#cb333-5"></a>  options</span>
-<span id="cb333-6"><a href="option-hooks.html#cb333-6"></a>})</span></code></pre></div>
-<p><code>fig.width</code> が <code>NULL</code> になることはないので, このフック関数は常に, コードチャンクの直前にチャンクオプションの更新のために実行されます. 以下のコードチャンクは, 上記のオプションフックが設定されていれば, <code>fig.width</code> が初期値の5の代わりに実際には6になります.</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb334-1"><a href="option-hooks.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig.width = 5, fig.height = 6}</span></span>
-<span id="cb334-2"><a href="option-hooks.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
-<span id="cb334-3"><a href="option-hooks.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>別の例として, <a href="opts-comment.html#opts-comment">11.12</a>説の最後の例を書き換えます. 単一のチャンクオプション <code>console = TRUE</code> が, <code>comment = ""</code> と <code>prompt = TRUE</code> を意味するようにできます. <code>console</code> は <strong>knitr</strong> の固有のチャンクオプションでなく, 任意の名前のカスタムオプションであることに注意してください. デフォルト値は <code>NULL</code> です. 以下はその完全な例です.</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb335-1"><a href="option-hooks.html#cb335-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb335-2"><a href="option-hooks.html#cb335-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_hooks$set(console = function(options) {</span></span>
-<span id="cb335-3"><a href="option-hooks.html#cb335-3" aria-hidden="true" tabindex="-1"></a><span class="in">  if (isTRUE(options$console)) {</span></span>
-<span id="cb335-4"><a href="option-hooks.html#cb335-4" aria-hidden="true" tabindex="-1"></a><span class="in">    options$comment &lt;- &#39;&#39;; options$prompt &lt;- TRUE</span></span>
-<span id="cb335-5"><a href="option-hooks.html#cb335-5" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb335-6"><a href="option-hooks.html#cb335-6" aria-hidden="true" tabindex="-1"></a><span class="in">  options</span></span>
-<span id="cb335-7"><a href="option-hooks.html#cb335-7" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb335-8"><a href="option-hooks.html#cb335-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb335-9"><a href="option-hooks.html#cb335-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-10"><a href="option-hooks.html#cb335-10" aria-hidden="true" tabindex="-1"></a>デフォルトの出力.</span>
-<span id="cb335-11"><a href="option-hooks.html#cb335-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-12"><a href="option-hooks.html#cb335-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb335-13"><a href="option-hooks.html#cb335-13" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb335-14"><a href="option-hooks.html#cb335-14" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb335-15"><a href="option-hooks.html#cb335-15" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
-<span id="cb335-16"><a href="option-hooks.html#cb335-16" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb335-17"><a href="option-hooks.html#cb335-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb335-18"><a href="option-hooks.html#cb335-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-19"><a href="option-hooks.html#cb335-19" aria-hidden="true" tabindex="-1"></a><span class="in">`console = TRUE`</span> で出力.</span>
-<span id="cb335-20"><a href="option-hooks.html#cb335-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb335-21"><a href="option-hooks.html#cb335-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, console=TRUE}</span></span>
-<span id="cb335-22"><a href="option-hooks.html#cb335-22" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb335-23"><a href="option-hooks.html#cb335-23" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb335-24"><a href="option-hooks.html#cb335-24" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
-<span id="cb335-25"><a href="option-hooks.html#cb335-25" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb335-26"><a href="option-hooks.html#cb335-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>あるチャンクオプションを, 他のチャンクオプションの値に応じて動的に変えたいことがあるかもしれません. これは, <code>opts_hooks</code> オブジェクトを使って<strong>オプションフック</strong>を設定すればできます. オプションフックはオプションと関連付けられた関数で, 対応するチャンクオプションが <code>NULL</code> でないときに実行されます. この関数は入力引数として現在のチャンクのオプションのリストを受け取り, そのリストを (変更も加えて) 返します. 例えば <code>fig.width</code> オプションを常に <code>fig.height</code> より小さくならないように調整することができます.</p>
+<div class="sourceCode" id="cb332"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb332-1"><a href="option-hooks.html#cb332-1"></a>knitr<span class="sc">::</span>opts_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">fig.width =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb332-2"><a href="option-hooks.html#cb332-2"></a>  <span class="cf">if</span> (options<span class="sc">$</span>fig.width <span class="sc">&lt;</span> options<span class="sc">$</span>fig.height) {</span>
+<span id="cb332-3"><a href="option-hooks.html#cb332-3"></a>    options<span class="sc">$</span>fig.width <span class="ot">&lt;-</span> options<span class="sc">$</span>fig.height</span>
+<span id="cb332-4"><a href="option-hooks.html#cb332-4"></a>  }</span>
+<span id="cb332-5"><a href="option-hooks.html#cb332-5"></a>  options</span>
+<span id="cb332-6"><a href="option-hooks.html#cb332-6"></a>})</span></code></pre></div>
+<p><code>fig.width</code> が <code>NULL</code> になることはないので, このフック関数は必ずコードチャンクの直前に実行され, チャンクオプションを更新します. 以下のコードチャンクは, 上記のオプションフックが設定されていれば, <code>fig.width</code> が初期値の5の代わりに実際には6になります.</p>
+<div class="sourceCode" id="cb333"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb333-1"><a href="option-hooks.html#cb333-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r fig.width = 5, fig.height = 6}</span></span>
+<span id="cb333-2"><a href="option-hooks.html#cb333-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
+<span id="cb333-3"><a href="option-hooks.html#cb333-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>別の例として, 第<a href="opts-comment.html#opts-comment">11.12</a>説の最後の例を書き換えて, 単一のチャンクオプション <code>console = TRUE</code> を用いて <code>comment = ""</code> と <code>prompt = TRUE</code> を意味できるようにしました. <code>console</code> は <strong>knitr</strong> の固有のチャンクオプションでなく, 任意の名前のカスタムオプションであることに注意してください. デフォルト値は <code>NULL</code> です. 以下はその完全な例です.</p>
+<div class="sourceCode" id="cb334"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb334-1"><a href="option-hooks.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb334-2"><a href="option-hooks.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_hooks$set(console = function(options) {</span></span>
+<span id="cb334-3"><a href="option-hooks.html#cb334-3" aria-hidden="true" tabindex="-1"></a><span class="in">  if (isTRUE(options$console)) {</span></span>
+<span id="cb334-4"><a href="option-hooks.html#cb334-4" aria-hidden="true" tabindex="-1"></a><span class="in">    options$comment &lt;- &#39;&#39;; options$prompt &lt;- TRUE</span></span>
+<span id="cb334-5"><a href="option-hooks.html#cb334-5" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb334-6"><a href="option-hooks.html#cb334-6" aria-hidden="true" tabindex="-1"></a><span class="in">  options</span></span>
+<span id="cb334-7"><a href="option-hooks.html#cb334-7" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb334-8"><a href="option-hooks.html#cb334-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb334-9"><a href="option-hooks.html#cb334-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-10"><a href="option-hooks.html#cb334-10" aria-hidden="true" tabindex="-1"></a>デフォルトの出力.</span>
+<span id="cb334-11"><a href="option-hooks.html#cb334-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-12"><a href="option-hooks.html#cb334-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb334-13"><a href="option-hooks.html#cb334-13" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb334-14"><a href="option-hooks.html#cb334-14" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb334-15"><a href="option-hooks.html#cb334-15" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
+<span id="cb334-16"><a href="option-hooks.html#cb334-16" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb334-17"><a href="option-hooks.html#cb334-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb334-18"><a href="option-hooks.html#cb334-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-19"><a href="option-hooks.html#cb334-19" aria-hidden="true" tabindex="-1"></a><span class="in">`console = TRUE`</span> で出力.</span>
+<span id="cb334-20"><a href="option-hooks.html#cb334-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb334-21"><a href="option-hooks.html#cb334-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, console=TRUE}</span></span>
+<span id="cb334-22"><a href="option-hooks.html#cb334-22" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb334-23"><a href="option-hooks.html#cb334-23" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb334-24"><a href="option-hooks.html#cb334-24" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
+<span id="cb334-25"><a href="option-hooks.html#cb334-25" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb334-26"><a href="option-hooks.html#cb334-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>3つ目の例はどうやって自動的にソースコード・テキスト出力・メッセージ・警告・エラーの出力ブロックに行番号を追加するかに関するものです. 行番号を追加するために <code>attr.source</code>, <code>attr.output</code> といったチャンクオプションを使用する方法は<a href="number-lines.html#number-lines">5.7</a>節で紹介しています. ここでは単一のチャンクオプション (この例では <code>numberLines</code>) で行番号を追加するかどうかを制御したいとします.</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb336-1"><a href="option-hooks.html#cb336-1"></a>knitr<span class="sc">::</span>opts_hooks<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb336-2"><a href="option-hooks.html#cb336-2"></a>  <span class="at">numberLines =</span> <span class="cf">function</span>(options) {</span>
-<span id="cb336-3"><a href="option-hooks.html#cb336-3"></a>    attrs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;attr.&quot;</span>, options<span class="sc">$</span>numberLines)</span>
-<span id="cb336-4"><a href="option-hooks.html#cb336-4"></a>    options[attrs] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(options[attrs], c, <span class="st">&quot;.numberLines&quot;</span>)</span>
-<span id="cb336-5"><a href="option-hooks.html#cb336-5"></a>    options</span>
-<span id="cb336-6"><a href="option-hooks.html#cb336-6"></a>  }</span>
-<span id="cb336-7"><a href="option-hooks.html#cb336-7"></a>)</span>
-<span id="cb336-8"><a href="option-hooks.html#cb336-8"></a></span>
-<span id="cb336-9"><a href="option-hooks.html#cb336-9"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb336-10"><a href="option-hooks.html#cb336-10"></a>  <span class="at">numberLines =</span> <span class="fu">c</span>(</span>
-<span id="cb336-11"><a href="option-hooks.html#cb336-11"></a>    <span class="st">&quot;source&quot;</span>, <span class="st">&quot;output&quot;</span>, <span class="st">&quot;message&quot;</span>, <span class="st">&quot;warning&quot;</span>, <span class="st">&quot;error&quot;</span></span>
-<span id="cb336-12"><a href="option-hooks.html#cb336-12"></a>  )</span>
-<span id="cb336-13"><a href="option-hooks.html#cb336-13"></a>)</span></code></pre></div>
-<p>基本的に, オプションフック <code>numberLines</code> は <code>.numberLines</code> 属性を出力ブロックに追加し, チャンクオプション <code>opts_chunk$set()</code> によって設定された <code>numberLunes</code> はオプションフックによって実行されたことが確認されます.</p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb335-1"><a href="option-hooks.html#cb335-1"></a>knitr<span class="sc">::</span>opts_hooks<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb335-2"><a href="option-hooks.html#cb335-2"></a>  <span class="at">numberLines =</span> <span class="cf">function</span>(options) {</span>
+<span id="cb335-3"><a href="option-hooks.html#cb335-3"></a>    attrs <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">&quot;attr.&quot;</span>, options<span class="sc">$</span>numberLines)</span>
+<span id="cb335-4"><a href="option-hooks.html#cb335-4"></a>    options[attrs] <span class="ot">&lt;-</span> <span class="fu">lapply</span>(options[attrs], c, <span class="st">&quot;.numberLines&quot;</span>)</span>
+<span id="cb335-5"><a href="option-hooks.html#cb335-5"></a>    options</span>
+<span id="cb335-6"><a href="option-hooks.html#cb335-6"></a>  }</span>
+<span id="cb335-7"><a href="option-hooks.html#cb335-7"></a>)</span>
+<span id="cb335-8"><a href="option-hooks.html#cb335-8"></a></span>
+<span id="cb335-9"><a href="option-hooks.html#cb335-9"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb335-10"><a href="option-hooks.html#cb335-10"></a>  <span class="at">numberLines =</span> <span class="fu">c</span>(</span>
+<span id="cb335-11"><a href="option-hooks.html#cb335-11"></a>    <span class="st">&quot;source&quot;</span>, <span class="st">&quot;output&quot;</span>, <span class="st">&quot;message&quot;</span>, <span class="st">&quot;warning&quot;</span>, <span class="st">&quot;error&quot;</span></span>
+<span id="cb335-12"><a href="option-hooks.html#cb335-12"></a>  )</span>
+<span id="cb335-13"><a href="option-hooks.html#cb335-13"></a>)</span></code></pre></div>
+<p>基本的に, オプションフック <code>numberLines</code> は <code>.numberLines</code> 属性を出力ブロックに追加します. <code>opts_chunk$set()</code> によってチャンクオプション<code>numberLunes</code> が設定されオプションフックが確実に実行されます.</p>
 <p>上記の設定では, チャンクオプション <code>numberLines</code> をコードチャンクで使用して, そのチャンクの出力ブロックのどの部分に行番号を付けるかを決めることができます. 例えば <code>numberLines = c('source', 'output')</code> のように. <code>numberLines = NULL</code> は行番号を完全に削除します.</p>
-<p>このアプローチがチャンクオプションを直接設定するのと何が違うのかと思うかもしれません. 例えば<a href="number-lines.html#number-lines">5.7</a>節でしたように, 単に <code>knitr::opts_chunk$set(attr.source = '.numberLines')</code> とする場合と. ここでオプションフックを使う利点は <code>.numberLines</code> 属性をチャンクオプションに<strong>追加する</strong>という点のみです. これはチャンクオプションの既に存在する値を<strong>上書きする</strong>ことを意味しません. 例えば以下のチャンクのソースコードブロックは (既に設定したため) 行番号が付いており, そして番号を2行目から始めます.</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb337-1"><a href="option-hooks.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;startFrom=&quot;2&quot;&#39;}</span></span>
+<p>このアプローチはチャンクオプションを直接設定するのと何が違うのでしょうか. 例えば第<a href="number-lines.html#number-lines">5.7</a>節のように, 単に <code>knitr::opts_chunk$set(attr.source = '.numberLines')</code> とする場合と違って, ここでオプションフックを使う利点は <code>.numberLines</code> 属性をチャンクオプションに<strong>追加する</strong>というのみですが, これは既にあるチャンクオプションの値を<strong>上書きする</strong>ことを意味しません. 例えば以下のチャンクのソースコードブロックは (既に設定してある) 行番号が付いていますが, 番号付を2行目から始めます.</p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb336-1"><a href="option-hooks.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;startFrom=&quot;2&quot;&#39;}</span></span>
+<span id="cb336-2"><a href="option-hooks.html#cb336-2" aria-hidden="true" tabindex="-1"></a><span class="in"># このコメント行には番号がつかない</span></span>
+<span id="cb336-3"><a href="option-hooks.html#cb336-3" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb336-4"><a href="option-hooks.html#cb336-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>これは以下と同等です.</p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb337-1"><a href="option-hooks.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=c(&#39;startFrom=&quot;2&quot;&#39;, &#39;.numberLines&#39;}</span></span>
 <span id="cb337-2"><a href="option-hooks.html#cb337-2" aria-hidden="true" tabindex="-1"></a><span class="in"># このコメント行には番号がつかない</span></span>
 <span id="cb337-3"><a href="option-hooks.html#cb337-3" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
 <span id="cb337-4"><a href="option-hooks.html#cb337-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>これは以下と同等です.</p>
-<div class="sourceCode" id="cb338"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb338-1"><a href="option-hooks.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=c(&#39;startFrom=&quot;2&quot;&#39;, &#39;.numberLines&#39;}</span></span>
-<span id="cb338-2"><a href="option-hooks.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="in"># このコメント行には番号がつかない</span></span>
-<span id="cb338-3"><a href="option-hooks.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb338-4"><a href="option-hooks.html#cb338-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->
@@ -565,6 +591,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.2 R Markdown の解剖学 | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.2 R Markdown の解剖学 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="2.2 R Markdown の解剖学 | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,24 +495,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="rmarkdown-anatomy" class="section level2" number="2.2">
 <h2><span class="header-section-number">2.2</span> R Markdown の解剖学</h2>
-<p>R Markdown にいくつかの部品があることを考えながら, 我々は1レベル深く掘り下げることができます. では, レンダリング作業中にいつどのように処理を変化させるかに注目してみましょう.</p>
+<p>R Markdown にあるいくつかの部品を考慮することで, 我々はさらに1レベル深く掘り下げることができます. では, この部品がレンダリング作業中にいつどのように処理を変化させるかに注目してみましょう.</p>
 <div id="yaml-metadata" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> YAML メタデータ</h3>
-<p>YAML metadata (YAML ヘッダとも呼びます) はレンダリング処理の中の多くのステージで処理され, 様々な形で最終的な文書に作用することことができます. YAML メタデータは Pandoc, <strong>rmarkdown</strong>, そして <strong>knitr</strong> のそれぞれに読み込まれます. その過程で, メタデータに含まれる情報はコード, コンテンツ, そしてレンダリング処理に影響しうるものです.</p>
-<p>典型的な YAML ヘッダはこのように, 文書と基本的なレンダリング操作指示に関する基本的なメタデータを含んでいます.</p>
+<p>YAML metadata (YAML ヘッダとも呼びます) はレンダリング作業中の多くのステージで処理され, 様々な形で最終的な文書に作用することができます. YAML メタデータは Pandoc, <strong>rmarkdown</strong>, そして <strong>knitr</strong> のそれぞれで読み込まれます. その過程で, YAML メタデータに含まれる情報は, コード, コンテンツ, そしてレンダリング処理に影響をあたえます.</p>
+<p>典型的な YAML ヘッダは以下のような形をしており, 文書とレンダリング操作指示の基礎となるメタデータを含んでいます.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb11-1"><a href="rmarkdown-anatomy.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb11-2"><a href="rmarkdown-anatomy.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My R Markdown Report</span></span>
 <span id="cb11-3"><a href="rmarkdown-anatomy.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Yihui Xie</span></span>
 <span id="cb11-4"><a href="rmarkdown-anatomy.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
 <span id="cb11-5"><a href="rmarkdown-anatomy.html#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<p>この場合, <code>title</code>, <code>author</code> フィールドは Pandoc によって処理され, テンプレート変数の値に設定されます. デフォルトのテンプレートでは, <code>title</code> と <code>author</code> の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの <a href="https://pandoc.org/MANUAL.html#extension-yaml_metadata_block">YAML metadata block.</a> に関するセクションで見られます.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
-<p>対照的に <code>output</code> フィールドはレンダリング処理の中で <strong>rmarkdown</strong> が出力フォーマット関数 <code>rmarkdown::html_document()</code> に適用するのに使われます <code>output</code> に指定した出力フォーマットに引数をあたえることで, レンダリング処理に影響させることができます. 例えばこのように書きます.</p>
+<p>上記の場合, <code>title</code>, <code>author</code> フィールドは Pandoc によって処理され, テンプレートの変数の値が設定されます. デフォルトのテンプレートでは, <code>title</code> と <code>author</code> の情報は得られた文書の冒頭に現れます. Pandoc が YAML ヘッダの情報をどう扱うかのより詳細な話は, Pandoc マニュアルの <a href="https://pandoc.org/MANUAL.html#extension-yaml_metadata_block">YAML metadata block.</a> に関するセクションで見られます.<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
+<p>対照的に <code>output</code> フィールドは <strong>rmarkdown</strong> によるレンダリング処理中に出力フォーマット関数 <code>rmarkdown::html_document()</code> に適用されます. <code>output</code> に指定した出力フォーマットに引数を与えることで, 以降のレンダリング処理に影響させることができます. 例えばこのように書きます.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="rmarkdown-anatomy.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb12-2"><a href="rmarkdown-anatomy.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
 <span id="cb12-3"><a href="rmarkdown-anatomy.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
 <span id="cb12-4"><a href="rmarkdown-anatomy.html#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc_float</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
-<p>これは <code>rmarkdown::render()</code> に, <code>rmarkdown::html_document(toc = TRUE, toc_float = TRUE)</code> と指示することと同じです. これらのオプションが何をするのか知るために, あるいは使える他のオプションを知るために, R コンソールで <code>?rmarkdown::html_document</code> を実行してヘルプページを読むことになるでしょう. <code>output: html_document</code> は <code>output: rmarkdown::html_document</code> と等価であることに注意してください. 出力フォーマットが <code>rmarkdown::</code> のような修飾子を持たない場合, <strong>rmarkdown</strong> パッケージのものと想定されます. そうでないなら, R パッケージ名のプレフィックスが必要です. 例えば <code>bookdown::html_document2</code> のような.</p>
-<p><a href="parameterized-reports.html#parameterized-reports">17.4</a> 節に書いたように, YAML ヘッダ内でパラメータを選択したのなら, コンテンツとコードにも影響することができます. 簡潔に言うと, R Markdown ドキュメント全体で参照可能な変数や R 評価式をヘッダに含めることができるということです. 例えば以下のヘッダでは <code>start_date</code> と <code>end_date</code> パラメータを定義し, これらは以降の R Markdown 文書内で <code>params</code> というリスト内に反映されます. つまり, R コード内でこれらを使うことができ, <code>params$start_date</code> と <code>params$end_date</code> でアクセスできるということです.</p>
+<p>これは <code>rmarkdown::render()</code> に, <code>rmarkdown::html_document(toc = TRUE, toc_float = TRUE)</code> と指示することと同じです. これらのオプションが何をするのか知るために, あるいは使える他のオプションを知るためには, R コンソールで <code>?rmarkdown::html_document</code> を実行してヘルプページを読むとよいでしょう. <code>output: html_document</code> は <code>output: rmarkdown::html_document</code> と等価であることに注意してください. 出力フォーマットが <code>rmarkdown::</code> のような修飾子を持たない場合, R Makrodown はこれを <strong>rmarkdown</strong> パッケージ由来のものと想定します. そうでないなら, R パッケージ名のプレフィックスが必要です. 例えば <code>bookdown::html_document2</code> のような.</p>
+<p><a href="parameterized-reports.html#parameterized-reports">17.4</a> 節に書いたように, YAML ヘッダ内でパラメータを選択したのなら, コンテンツとコードにも影響することができます. 簡潔に言うと, R Markdown ドキュメント全体で参照可能な変数や R 評価式をヘッダに含めることができるということです. 例えば以下のヘッダでは <code>start_date</code> と <code>end_date</code> パラメータを定義することで, 以降の R Markdown 文書内で <code>params</code> というリスト内に反映されます. つまり, R コード内でこれらの値を使いたければ, <code>params$start_date</code> と <code>params$end_date</code> でアクセスできるということです.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb13-1"><a href="rmarkdown-anatomy.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb13-2"><a href="rmarkdown-anatomy.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> My RMarkdown</span></span>
 <span id="cb13-3"><a href="rmarkdown-anatomy.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> Yihui Xie</span></span>
@@ -498,23 +524,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="narrative" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> ナラティブ</h3>
-<p>ナラティブ (物語術) としてのテキスト要素は YAML メタデータやコードチャンクよりは理解が簡単でしょう. 典型的には, これはテキストエディタで書いているのと同じだと感じられるでしょう. しかし Markdown コンテンツは, どのようにコンテンツが作られるか, どうやって文書の構造がそこから作られるか, の両方に関して, 単純なテキストよりも強力で面白いものに違いありません.</p>
-<p>世のナラティブの多くは人の手で書かれていますが, 多くの R Markdown 文書ではコードと使用される分析を参照することが求められているようです. この理由として, <a href="document-elements.html#document-elements">4</a> 章において, コードがテキストの一部を生成するのを助ける様々な方法が実演されています. 単語を結合してリストにしたり (<a href="combine-words.html#combine-words">4.11</a>節), 参考文献リストを書いたり (<a href="bibliography.html#bibliography">4.5</a>節)といったやり方です. この変換は <code>.Rmd</code> から <code>.md</code> への変換と同様に <strong>knitr</strong> で制御されます.</p>
-<p>Markdown のテキストは文書の構造をも与えることができます. Markdown の構文をこの場で復習するには紙面が足りませんが,<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> 特に関連深い概念の1つとしてセクション見出しがあります. これは 1つ以上の, 対応したレベルの数のハッシュ (<code>#</code>) で表現されます. 例えば, 以下のように.</p>
+<p>ナラティブ (物語術) としてのテキスト要素は YAML メタデータやコードチャンクよりは理解が簡単でしょう. 典型的には, これはテキストエディタで書いているような感覚でしょう. しかし Markdown コンテンツは, どのようにコンテンツが作られるか, そこからどうやって文書の構造が作られるか, の両方に関して, 単純なテキストよりも強力で面白いものに違いありません.</p>
+<p>世のナラティブの多くは人の手で書かれていますが, 多くの R Markdown 文書では, 用いられているコードと分析を参照しようとします. この理由として, <a href="document-elements.html#document-elements">4</a> 章において, コードがテキストの一部を生成するのを助ける様々な方法が実演されています. 例えば単語を結合してリストにしたり (<a href="combine-words.html#combine-words">4.11</a>節), 参考文献リストを書いたり (<a href="bibliography.html#bibliography">4.5</a>節)といった方法です. この変換は <code>.Rmd</code> から <code>.md</code> への変換と同様に <strong>knitr</strong> で制御されます.</p>
+<p>Markdown のテキストは文書に構造を与えることもできます. Markdown の構文をこの場で復習するには紙面が足りませんが,<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a> 特に関連深い概念の1つとしてセクション見出しがあります. これは 1つ以上の, 対応したレベルの数のハッシュ (<code>#</code>) で表現されます. 例えば, 以下のように.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb14-1"><a href="rmarkdown-anatomy.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第1水準の見出し</span></span>
 <span id="cb14-2"><a href="rmarkdown-anatomy.html#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="rmarkdown-anatomy.html#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2水準の見出し</span></span>
 <span id="cb14-4"><a href="rmarkdown-anatomy.html#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-5"><a href="rmarkdown-anatomy.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">### 第3水準の見出し</span></span></code></pre></div>
-<p>これらの見出しは <strong>rmarkdown</strong> が <code>.md</code> を最終的な出力フォーマットに変換する際に文書全体に構造を与えます. この構造は, いくつかの属性を付与することでセクション (章や節) を参照し形成するのに役立ちます. Pandoc 構文は, 見出しの記述に <code>{#id}</code> と続けることで参照を作成することが可能になり, あるいは <code>{.クラス名}</code> のように書くことセクションに複数のクラスを付与できます. 例えば以下のように.</p>
+<p>これらの見出しは <strong>rmarkdown</strong> が <code>.md</code> を最終的な出力フォーマットに変換する際に文書全体に構造を与えます. この構造は, ある属性を付与することで章や節を参照し整形するのに役立ちます. 例えば以下のように, Pandoc 構文は見出しの記述に <code>{#id}</code> の表記にしたがってユニークな識別子をつけることで参照が作成できますし, <code>{.クラス名}</code> のように書くことで, セクションに一つないし複数のクラスを付与できます.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb15-1"><a href="rmarkdown-anatomy.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## 第2水準の見出し {#introduction .important .large}</span></span></code></pre></div>
-<p>例えば ID やクラスで参照するといった, これから学ぶいくつもの方法で, このセクションにアクセスすることができます. 具体例として, <a href="cross-ref.html#cross-ref">4.7</a>節ではセクションIDを使って文書内のどこでも相互参照する方法を実演していますし, <a href="html-tabs.html#html-tabs">7.6</a>節では小節を認識させる <code>.tabset</code> クラスを紹介しています.</p>
-<p>R Markdown のテキスト部分で見られる最後の興味深いコンテンツのタイプとして, 特定の出力したいフォーマットに対して「生のコンテンツ」をそのまま書き出す方法, 例えば LaTeX 出力に対して LaTeX コードを直接書く (<a href="raw-latex.html#raw-latex">6.11</a> 節), HTML 出力に対して HTML コードを直接書く, 等 (<a href="raw-content.html#raw-content">9.5</a> 節), を挙げます. 生のコンテンツは基本的な Markdown ではできないことが達成できますが, 出力フォーマットが異なるとたいていは無視されることに留意してください. 例えば生の LaTeX コマンドは出力が HTML の場合, 無視されます.</p>
+<p>これから学ぶいくつもの方法で, 例えば ID やクラスを参照することで, このセクションにアクセスすることができるようになります. 具体例として, <a href="cross-ref.html#cross-ref">4.7</a>節ではセクションIDを使って文書内のどこでも相互参照する方法を実演していますし, <a href="html-tabs.html#html-tabs">7.6</a>節では小節を再構成させる <code>.tabset</code> クラスを紹介しています.</p>
+<p>R Markdown のテキスト部分で見られる最後の興味深いコンテンツのタイプとして, 特定の出力したいフォーマットに対して「生のコンテンツ」をそのまま書き出す方法, 例えば LaTeX 出力に対して LaTeX コードを直接書く (<a href="raw-latex.html#raw-latex">6.11</a> 節), HTML 出力に対して HTML コードを直接書く (<a href="raw-content.html#raw-content">9.5</a> 節), 等を挙げます. 生のコンテンツは基本的な Markdown ではできないことが達成できますが, 出力フォーマットが異なるとたいていは無視されてしまうことに留意してください. 例えば生の LaTeX コマンドは出力が HTML の場合, 無視されます.</p>
 </div>
 <div id="code-chunks" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> コードチャンク</h3>
-<p>コードチャンクは R Markdown にとっての心臓の鼓動です. チャンク内のコードは <strong>knitr</strong> によって実行され, 出力は Markdown に翻訳され, レポートは現在のスクリプトとデータに動的に同期します. 各コードチャンクは言語エンジン (<a href="other-languages.html#other-languages">15</a>章), ラベル, チャンクオプション (<a href="chunk-options.html#chunk-options">11</a>章), そしてコードで構成されます.</p>
-<p>コードチャンクを作ることができるいくつかの mod について理解するためには, <strong>knitr</strong> の処理をあとほんの少しだけ詳しく知ることが有意義です. 各チャンクでは, <strong>knitr</strong> 言語エンジンは3つの入力の部品を得ます. knit 環境 (<code>knitr::knit_global()</code>), コードの入力, 任意に指定できるラベル, そしてチャンクオプションのリストです. コードチャンクはコードもその出力も整形された表現として返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図<a href="rmarkdown-anatomy.html#fig:knitr-workflow">2.2</a>のように表せます.</p>
+<p>コードチャンクは R Markdown にとっての心臓の鼓動です. チャンク内のコードは <strong>knitr</strong> によって実行され, 出力は Markdown に翻訳され, レポートは現在のスクリプトとデータに動的に同期します. 各コードチャンクは言語エンジン (<a href="other-languages.html#other-languages">15</a>章), 任意に指定できるラベル, チャンクオプション (<a href="chunk-options.html#chunk-options">11</a>章), そしてコードで構成されます.</p>
+<p>コードチャンクに対してできるいくつかの修正について理解するためには, <strong>knitr</strong> の処理を少しだけ詳しく知ることが有意義です. 各チャンクでは, <strong>knitr</strong> 言語エンジンは3つの入力の部品を得ます. knit 環境 (<code>knitr::knit_global()</code>), 入力されたコード, そしてチャンクオプションのリストです. コードチャンクはコードの出力とともに見た目も整形して返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図<a href="rmarkdown-anatomy.html#fig:knitr-workflow">2.2</a>のように表せます.</p>
 <div class="figure" style="text-align: center"><span id="fig:knitr-workflow"></span>
 <div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:336px;" class="nomnoml html-widget"></div>
 <script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [<frame>コードチャンク|\n  [コード]->[言語エンジン]\n  [チャンクオプション]->[言語エンジン]\n  [環境]->[言語エンジン]\n  [言語エンジン]->[整形されたコード]\n  [言語エンジン]->[整形された出力]\n  [言語エンジン]->[(変更された) 環境]\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
@@ -525,15 +551,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>この処理は以下の方法で修正できます.</p>
 <ul>
 <li><p>言語エンジンを変更する</p></li>
-<li><p>チャンクオプションを, グローバルあるいはローカル, あるいは特定の言語に対してのみ修正する</p></li>
-<li><p>入出力にさらなる処理を追加するためのフックを使用する</p></li>
+<li><p>チャンクオプションを, グローバル, ローカル, あるいは言語エンジンに特定のものに修正する</p></li>
+<li><p>フックやチャプターを使用して, 入出力にさらなる処理を追加する</p></li>
 </ul>
-<p>例えば<a href="hook-hide.html#hook-hide">12.1</a>節で, ソースコードの特定行を改ざんする後処理をするフックを加える方法を学ぶことになるでしょう.</p>
-<p>コードチャンクは<a href="rmarkdown-anatomy.html#narrative">2.2.2</a>節でつぶさに見てきたナラティブのようなクラスと識別子を持ちます. コードチャンクは識別子 (よく「チャンクラベル」と呼ばれます) を言語エンジンの直後に任意で指定することができます. チャンクオプション <code>class.source</code> と <code>class.output</code> でそれぞれコードブロックとテキスト出力ブロックに対するクラスを設定することもできます (<a href="chunk-styling.html#chunk-styling">7.3</a>節参照). 例えばチャンクヘッダ <code>```{r summary-stats, class.output = 'large-text'}</code> はチャンクラベルに <code>summary-stats</code> を与え, テキスト出力ブロックに <code>large-text</code> というクラスを与えています. チャンクのラベルは1つだけですが, クラスは複数持つことができます.</p>
+<p>例えば<a href="hook-hide.html#hook-hide">12.1</a>節で, 後処理をするフックを加えてソースコードの特定行を編集する方法を学べるでしょう.</p>
+<p>コードチャンクには<a href="rmarkdown-anatomy.html#narrative">2.2.2</a>節でつぶさに見てきたナラティブのクラスと識別子に類似するコンセプトがあります. コードチャンクは識別子 (よく「チャンクラベル」と呼ばれます) を言語エンジンの直後に任意で指定することができます. チャンクオプション <code>class.source</code> と <code>class.output</code> でそれぞれコードブロックとテキスト出力ブロックに対するクラスを設定することもできます (<a href="chunk-styling.html#chunk-styling">7.3</a>節参照). 例えばチャンクヘッダ <code>```{r summary-stats, class.output = 'large-text'}</code> はチャンクラベルに <code>summary-stats</code> を与え, テキスト出力ブロックに <code>large-text</code> というクラスを与えています. チャンクのラベルは1つだけですが, クラスは複数持つことができます.</p>
 </div>
 <div id="document-body" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> 文書の本文</h3>
-<p>文書を執筆し編集するに際して理解すべき重要なことは, どのようにしてコードとナラティブの小片が文書内のいくつもの節やコンテナを作るのかです. 例えばこのような文書があったとします.</p>
+<p>文書を執筆し編集する際に理解すべき重要なことは, コードとナラティブの小片が文書内のいくつもの節やコンテナを作る方法です. 例えばこのような文書があったとします.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb16-1"><a href="rmarkdown-anatomy.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># タイトル</span></span>
 <span id="cb16-2"><a href="rmarkdown-anatomy.html#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="rmarkdown-anatomy.html#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## X 節</span></span>
@@ -561,7 +587,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb16-25"><a href="rmarkdown-anatomy.html#cb16-25" aria-hidden="true" tabindex="-1"></a><span class="in">y &lt;- 2</span></span>
 <span id="cb16-26"><a href="rmarkdown-anatomy.html#cb16-26" aria-hidden="true" tabindex="-1"></a><span class="in">print(y)</span></span>
 <span id="cb16-27"><a href="rmarkdown-anatomy.html#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>この文書を書いていると, それぞれの小片は, テキストとコードを含んだ, 独立した節とともに直線上に並んでいるものとみなすかもしれません. しかし実際にしているのは, 概念としては図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
+<p>この文書を書いていると, それぞれの小片は, テキストとコードを含む独立した節を一直線上に並べたものだとみなせるでしょう. しかし我々が実際にしているのは, 概念としては図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-containers"></span>
 <div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンク-x) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンク-y) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
@@ -569,11 +595,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 図 2.3: 入れ子状のコンテナとして表現された単純な R Markdown 文書の例
 </p>
 </div>
-<p>この図に関する2つの重要な特徴は (1) テキストやコードのどのセクションも個別のコンテナであり, (2) コンテナは他の別のコンテナを入れ子にできる, ということです. この入れ子は R Markdown 文書を RStudio IDE で執筆し, 文書のアウトラインを展開しているとはっきりと分かります.</p>
-<p>図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>では同じレベルのヘッダは同じレベルの入れ子を表していることに注意してください. 低レベルのヘッダはより高レベルなヘッダのコンテナ内部にあります. この場合, 通常は高レベルの節を「親」といい, 低レベルの節を「子」といいます. 例えば「小節」は「節」の子です. <a href="multi-column.html#multi-column">5.8</a>節で実演するように, ヘッダだけでなく <code>:::</code> を使ってまとまりの単位を作ることができます</p>
-<p>このテキストで説明されているフォーマットやスタイルのオプションを適用するとき, この構造は重要な意味を持ちます. 例えば, Pandoc が抽象構文木 (AST) でどのように文書を表現するかを学ぶ時 (<a href="lua-filters.html#lua-filters">4.20</a>節) や, HTML出力のスタイルを決めるために CSS セレクタを使用する時 (<a href="html-css.html#html-css">7.1</a>節ほか), 入れ子構造の概念が現れます.</p>
-<p>フォーマットとスタイルは似たようなタイプのコンテナ (例えばコードブロック) や, あるコンテナ内に全てあるコンテナ (例: 「Y 節」以下にある全てのコンテナ) に対して適用できます. 加えて<a href="rmarkdown-anatomy.html#narrative">2.2.2</a>節で説明したように, 同一のクラスをある節に対して同様のものとして扱うために適用することができますし, この場合は共通のクラス名は共通のプロパティ, あるいはこの節に共通の意図を示すようになります.</p>
-<p>本書を読みながら, 特定の「レシピ」がどんな種類のコンテナに対して作用しているのかを自問し, 考えることはあなたにとって有益になるでしょう.</p>
+<p>この図に関する2つの重要な特徴は (1) テキストやコードのどのセクションも個別のコンテナであり, (2) コンテナは他の別のコンテナを入れ子にできる, ということです. この入れ子は R Markdown 文書を RStudio IDE で執筆し, 文書のアウトラインを展開<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>しているとはっきりと分かります.</p>
+<p>図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>では同じレベルのヘッダは同じレベルの入れ子を表していることに注意してください. より低いレベルのヘッダはより高レベルなヘッダのコンテナ内部にあります. この場合, 通常は高レベルの節を「親」といい, 低レベルの節を「子」といいます. 例えば「小節」は「節」の子です. <a href="multi-column.html#multi-column">5.8</a>節で実演するように, ヘッダだけでなく <code>:::</code> を使ってまとまりの単位を作ることができます.</p>
+<p>このテキストで説明されているフォーマットやスタイルのオプションを適用するとき, この構造は重要な意味を持ちます. 例えば, Pandoc が抽象構文木 (AST) でどのように文書を表現するかを我々が学ぶ時 (<a href="lua-filters.html#lua-filters">4.20</a>節) や, HTML出力のスタイルを決めるために CSS セレクタを使用する時 (<a href="html-css.html#html-css">7.1</a>節ほか), 入れ子構造の概念が現れます.</p>
+<p>フォーマットとスタイルは類似するいずれのタイプのコンテナ (例えばコードブロック) や, あるコンテナの内部にある全てのコンテナ (例: 「Y 節」以下にある全てのコンテナ) に対して適用できます. 加えて<a href="rmarkdown-anatomy.html#narrative">2.2.2</a>節で説明したように, 同一のクラスを特定の節に対して適用し同様のものとして扱うよう明示できますが, この場合の共通するクラス名は, 節と節に共通のプロパティや共通の意図を示すようになります.</p>
+<p>本書を読みながら, 特定の「レシピ」がどんな種類のコンテナに対して作用しているのかを自問し思いを馳せることは役に立つでしょう.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -581,7 +607,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="11">
 <li id="fn11"><p><strong>訳注</strong>: 日本語訳での対応箇所はこちら: <a href="https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks" class="uri">https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html#metadata-blocks</a><a href="rmarkdown-anatomy.html#fnref11" class="footnote-back">↩︎</a></p></li>
 <li id="fn12"><p>Markdown の復習には, 代わりに, <a href="https://bookdown.org/yihui/bookdown/markdown-syntax.html" class="uri">https://bookdown.org/yihui/bookdown/markdown-syntax.html</a> をご覧になってください.<a href="rmarkdown-anatomy.html#fnref12" class="footnote-back">↩︎</a></p></li>
-<li id="fn13"><p>現実に, ここで見えているよりも多くのコンテナがあります. 例えば knit されたコードチャンクや, コードと出力がそれぞれ別のコンテナとして存在し, そしてこれらは親要素を共有しています.<a href="rmarkdown-anatomy.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn13"><p>実際にはここで見えているよりも多くのコンテナがあります. 例えば knit されたコードチャンクや, コードと出力がそれぞれ別のコンテナとして存在し, そしてこれらは親要素を共有しています.<a href="rmarkdown-anatomy.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<li id="fn14"><p><strong>訳注</strong>: エディタ右上にあるボタンで表示を切り替えることができます.<a href="rmarkdown-anatomy.html#fnref14" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -613,6 +640,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.6 R パッケージの引用を生成する | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.6 R パッケージの引用を生成する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4.6 R パッケージの引用を生成する | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -474,21 +500,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb42"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb42-1"><a href="write-bib.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{,</span>
 <span id="cb42-2"><a href="write-bib.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {xaringan: Presentation Ninja},</span>
 <span id="cb42-3"><a href="write-bib.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
-<span id="cb42-4"><a href="write-bib.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2020},</span>
-<span id="cb42-5"><a href="write-bib.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.19},</span>
+<span id="cb42-4"><a href="write-bib.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
+<span id="cb42-5"><a href="write-bib.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.20},</span>
 <span id="cb42-6"><a href="write-bib.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=xaringan},</span>
 <span id="cb42-7"><a href="write-bib.html#cb42-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>toBibtex()</code> で生成されたエントリを使うには, 出力を <code>.bib</code> ファイルにコピーし, 引用キーを追加しなければなりません (例えば <code>@Manual{,</code> の部分を <code>@Manual{R-xaringan,</code> と書き換える). これは <code>knitr::write_bib()</code> 関数によって自動化できます. この関数は引用エントリを生成し, 自動的にキーを加えてファイルに書き込みます. 例えばこのようにします.</p>
 <div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb43-1"><a href="write-bib.html#cb43-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
 <p>第1引数はパッケージ名の文字列ベクトルで, 第2引数は <code>.bib</code> ファイルのパスであるべきです. 上記の例では, <code>.packages()</code> は現在の R セッションが読み込んでいる全てのパッケージ名を返します. これらのパッケージのいずれかが更新された (例えば著者, タイトル, 年, あるいはバージョンが変更された) とき, <code>write_bib()</code> は自動的に <code>.bib</code> を更新できます.</p>
-<p>引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの <code>DESCRIPTION</code> ファイルをもとに生成したもので, もう1つは, もしパッケージに <code>CITATION</code> ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが <code>R-(パッケージ名)</code> という形式になり (例えば <code>R-knitr</code>), 後者のタイプはパッケージ名と公開年を結合したものがキーとなります (例: <code>knitr2015</code>). もし複数のエントリが同一年にあるなら, 接尾文字が追加されます. 例えば <code>knitr2015a</code> と <code>knitr2015b</code> のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプはしばしば論文や書籍のようなパッケージと関連のある出版物として扱われます.</p>
+<p>引用エントリには2つのタイプが選択肢としてあります. 1つはパッケージの <code>DESCRIPTION</code> ファイルをもとに生成したもので, もう1つは, もしパッケージに <code>CITATION</code> ファイルが存在するなら, そこから生成したものです. 前者のタイプは引用キーが <code>R-(パッケージ名)</code> という形式 (例えば <code>R-knitr</code>) になり, 後者のタイプはパッケージ名と公開年を結合したもの (例: <code>knitr2015</code>) がキーとなります . 同じ年に複数のエントリがあるときは, 接尾文字が追加されます. 例えば <code>knitr2015a</code> と <code>knitr2015b</code> のように. 前者のタイプはしばしばパッケージ自体を引用 (つまり, ソフトウェアとして) するのに使われますが, 後者のタイプは論文や書籍のようなパッケージと関連する出版物といったものが多いです.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb44-1"><a href="write-bib.html#cb44-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="st">&quot;knitr&quot;</span>, <span class="st">&quot;rmarkdown&quot;</span>), <span class="at">width =</span> <span class="dv">60</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb45"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb45-1"><a href="write-bib.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="va">@Manual</span>{<span class="ot">R</span>-<span class="ot">knitr</span>,</span>
 <span id="cb45-2"><a href="write-bib.html#cb45-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {knitr: A General-Purpose Package for Dynamic</span>
 <span id="cb45-3"><a href="write-bib.html#cb45-3" aria-hidden="true" tabindex="-1"></a>    Report Generation in R},</span>
 <span id="cb45-4"><a href="write-bib.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
 <span id="cb45-5"><a href="write-bib.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
-<span id="cb45-6"><a href="write-bib.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 1.31},</span>
+<span id="cb45-6"><a href="write-bib.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 1.33},</span>
 <span id="cb45-7"><a href="write-bib.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://yihui.org/knitr/},</span>
 <span id="cb45-8"><a href="write-bib.html#cb45-8" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb45-9"><a href="write-bib.html#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -559,8 +585,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb46-5"><a href="write-bib.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
 <span id="cb46-6"><a href="write-bib.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::write_bib(file = &#39;packages.bib&#39;)</span></span>
 <span id="cb46-7"><a href="write-bib.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>上記の例では <code>packages.bib</code> が自動で生成されたもので, 手動で変更すべきではありません. それ以外の全ての引用エントリは <code>references.bib</code> に手動で書き込むことができます.</p>
-<p>ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献を動的に引用を生成するには, <strong>knitcitations</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-knitcitations" role="doc-biblioref">Boettiger 2021</a>)</span> を確認することもできます.</p>
+<p>上記の例では <code>packages.bib</code> は自動で生成されたものなので, 手動で変更すべきではありません. それ以外の全ての引用エントリは <code>references.bib</code> に手動で書き込むことができます.</p>
+<p>ここまでは R パッケージの引用を生成する方法を1つだけ紹介しています. それ以外のタイプの文献で動的に引用を生成するには, <strong>knitcitations</strong> パッケージ <span class="citation">(<a href="#ref-R-knitcitations" role="doc-biblioref">Boettiger 2021</a>)</span> を見てください.</p>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-knitcitations" class="csl-entry">
+Boettiger, Carl. 2021. <em>Knitcitations: Citations for Knitr Markdown Files</em>. <a href="https://github.com/cboettig/knitcitations">https://github.com/cboettig/knitcitations</a>.
+</div>
 </div>
             </section>
 
@@ -591,6 +623,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

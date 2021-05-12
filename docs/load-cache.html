@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.2 オブジェクトが作られる前に使用する (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.2 オブジェクトが作られる前に使用する (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="14.2 オブジェクトが作られる前に使用する (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,63 +495,63 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="load-cache" class="section level2" number="14.2">
 <h2><span class="header-section-number">14.2</span> オブジェクトが作られる前に使用する (*)</h2>
-<p>コードチャンクとインライン R コードを含む <strong>knitr</strong> 文書内の全てのコードは, 始点から終点まで順番に実行されます. 理論上は, 値が代入される前の変数を使うことができません. しかしいくつかの場合では, 文書内で変数の値により早く言及したいことがあるかもしれません. 例えば結果を論文の概要に掲載したいというのはよくある状況ですが, 結果は実際には文書のもっと後で計算されます. 以下の例はそのアイディアを具体化したものですが, 実行はできません.</p>
-<div class="sourceCode" id="cb393"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb393-1"><a href="load-cache.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb393-2"><a href="load-cache.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 重要なレポート</span></span>
-<span id="cb393-3"><a href="load-cache.html#cb393-3" aria-hidden="true" tabindex="-1"></a><span class="co">概要: &gt;</span></span>
-<span id="cb393-4"><a href="load-cache.html#cb393-4" aria-hidden="true" tabindex="-1"></a><span class="co">  この分析では `x` の平均値が</span></span>
-<span id="cb393-5"><a href="load-cache.html#cb393-5" aria-hidden="true" tabindex="-1"></a><span class="co">  `r mx` であった.</span></span>
-<span id="cb393-6"><a href="load-cache.html#cb393-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb393-7"><a href="load-cache.html#cb393-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-8"><a href="load-cache.html#cb393-8" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
-<span id="cb393-9"><a href="load-cache.html#cb393-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb393-10"><a href="load-cache.html#cb393-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb393-11"><a href="load-cache.html#cb393-11" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
-<span id="cb393-12"><a href="load-cache.html#cb393-12" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
-<span id="cb393-13"><a href="load-cache.html#cb393-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><strong>knitr</strong> 文書内の全てのコードは, コードチャンクとインライン R コードも含めて, 最初から最後まで順番に実行されます. 理論上は, 値が代入される前の変数を使うことができません. しかし場合により, 文書内で変数の値により早く言及したいことがあるでしょう. 例えば論文の中で結果を概要欄に掲載したいというのはよくある状況ですが, 実際には結果は文書のもっと後で計算されます. 以下の例はそのアイディアを具体化したものですが, 実行はできません.</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb392-1"><a href="load-cache.html#cb392-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb392-2"><a href="load-cache.html#cb392-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 重要なレポート</span></span>
+<span id="cb392-3"><a href="load-cache.html#cb392-3" aria-hidden="true" tabindex="-1"></a><span class="co">概要: &gt;</span></span>
+<span id="cb392-4"><a href="load-cache.html#cb392-4" aria-hidden="true" tabindex="-1"></a><span class="co">  この分析では `x` の平均値が</span></span>
+<span id="cb392-5"><a href="load-cache.html#cb392-5" aria-hidden="true" tabindex="-1"></a><span class="co">  `r mx` であった.</span></span>
+<span id="cb392-6"><a href="load-cache.html#cb392-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb392-7"><a href="load-cache.html#cb392-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-8"><a href="load-cache.html#cb392-8" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
+<span id="cb392-9"><a href="load-cache.html#cb392-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb392-10"><a href="load-cache.html#cb392-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb392-11"><a href="load-cache.html#cb392-11" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
+<span id="cb392-12"><a href="load-cache.html#cb392-12" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
+<span id="cb392-13"><a href="load-cache.html#cb392-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この問題を解決するには, オブジェクトの値がどこかに保存され, 文書が次回コンパイルされる時に読み込まれなければなりません. これは, 文書が最低でも2回コンパイルされなければならないという意味であることに注意してください. 以下は <code>saveRDS()</code> 関数を使った, 実行可能な解決策の1つです.</p>
-<div class="sourceCode" id="cb394"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb394-1"><a href="load-cache.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb394-2"><a href="load-cache.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- if (file.exists(&#39;mean.rds&#39;)) {</span></span>
-<span id="cb394-3"><a href="load-cache.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="in">  readRDS(&#39;mean.rds&#39;)</span></span>
-<span id="cb394-4"><a href="load-cache.html#cb394-4" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
-<span id="cb394-5"><a href="load-cache.html#cb394-5" aria-hidden="true" tabindex="-1"></a><span class="in">  &quot;`mx` の値はまだ利用できない&quot;</span></span>
-<span id="cb394-6"><a href="load-cache.html#cb394-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb394-7"><a href="load-cache.html#cb394-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb394-8"><a href="load-cache.html#cb394-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-9"><a href="load-cache.html#cb394-9" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb394-10"><a href="load-cache.html#cb394-10" aria-hidden="true" tabindex="-1"></a>title: 重要なレポート</span>
-<span id="cb394-11"><a href="load-cache.html#cb394-11" aria-hidden="true" tabindex="-1"></a>概要: &gt;</span>
-<span id="cb394-12"><a href="load-cache.html#cb394-12" aria-hidden="true" tabindex="-1"></a>  この分析では <span class="in">`x`</span> の平均値が</span>
-<span id="cb394-13"><a href="load-cache.html#cb394-13" aria-hidden="true" tabindex="-1"></a>  <span class="in">`r mx`</span> であった.</span>
-<span id="cb394-14"><a href="load-cache.html#cb394-14" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb394-15"><a href="load-cache.html#cb394-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-16"><a href="load-cache.html#cb394-16" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
-<span id="cb394-17"><a href="load-cache.html#cb394-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb394-18"><a href="load-cache.html#cb394-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb394-19"><a href="load-cache.html#cb394-19" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
-<span id="cb394-20"><a href="load-cache.html#cb394-20" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
-<span id="cb394-21"><a href="load-cache.html#cb394-21" aria-hidden="true" tabindex="-1"></a><span class="in">saveRDS(mx, &#39;mean.rds&#39;)</span></span>
-<span id="cb394-22"><a href="load-cache.html#cb394-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb393"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb393-1"><a href="load-cache.html#cb393-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb393-2"><a href="load-cache.html#cb393-2" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- if (file.exists(&#39;mean.rds&#39;)) {</span></span>
+<span id="cb393-3"><a href="load-cache.html#cb393-3" aria-hidden="true" tabindex="-1"></a><span class="in">  readRDS(&#39;mean.rds&#39;)</span></span>
+<span id="cb393-4"><a href="load-cache.html#cb393-4" aria-hidden="true" tabindex="-1"></a><span class="in">} else {</span></span>
+<span id="cb393-5"><a href="load-cache.html#cb393-5" aria-hidden="true" tabindex="-1"></a><span class="in">  &quot;`mx` の値はまだ利用できない&quot;</span></span>
+<span id="cb393-6"><a href="load-cache.html#cb393-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb393-7"><a href="load-cache.html#cb393-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb393-8"><a href="load-cache.html#cb393-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-9"><a href="load-cache.html#cb393-9" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb393-10"><a href="load-cache.html#cb393-10" aria-hidden="true" tabindex="-1"></a>title: 重要なレポート</span>
+<span id="cb393-11"><a href="load-cache.html#cb393-11" aria-hidden="true" tabindex="-1"></a>概要: &gt;</span>
+<span id="cb393-12"><a href="load-cache.html#cb393-12" aria-hidden="true" tabindex="-1"></a>  この分析では <span class="in">`x`</span> の平均値が</span>
+<span id="cb393-13"><a href="load-cache.html#cb393-13" aria-hidden="true" tabindex="-1"></a>  <span class="in">`r mx`</span> であった.</span>
+<span id="cb393-14"><a href="load-cache.html#cb393-14" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb393-15"><a href="load-cache.html#cb393-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-16"><a href="load-cache.html#cb393-16" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
+<span id="cb393-17"><a href="load-cache.html#cb393-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb393-18"><a href="load-cache.html#cb393-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb393-19"><a href="load-cache.html#cb393-19" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
+<span id="cb393-20"><a href="load-cache.html#cb393-20" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
+<span id="cb393-21"><a href="load-cache.html#cb393-21" aria-hidden="true" tabindex="-1"></a><span class="in">saveRDS(mx, &#39;mean.rds&#39;)</span></span>
+<span id="cb393-22"><a href="load-cache.html#cb393-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>最初のコンパイルでは, 概要に「<code>mx</code> の値はまだ利用できない」という文言が現れます. その後, もう1度コンパイルすると <code>mx</code> の値が現れます.</p>
-<p><code>knitr::load_cache()</code> 関数はもう1つの解決策で, キャッシュ済みの特定のコードチャンクからオブジェクトの値を読み込むことが可能になります. このアイディアは上記の例と似ていますが, オブジェクトが自動でキャッシュデータベースに保存されるため, オブジェクトを手動で保存して読み込む手間を省くことになります. あなたがする必要があるのは <code>load_cache()</code> で読み込むことだけになります. 以下は単純化した例です.</p>
-<div class="sourceCode" id="cb395"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb395-1"><a href="load-cache.html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb395-2"><a href="load-cache.html#cb395-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> An important report</span></span>
-<span id="cb395-3"><a href="load-cache.html#cb395-3" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> &gt;</span></span>
-<span id="cb395-4"><a href="load-cache.html#cb395-4" aria-hidden="true" tabindex="-1"></a><span class="co">  この分析では `x` の平均値が</span></span>
-<span id="cb395-5"><a href="load-cache.html#cb395-5" aria-hidden="true" tabindex="-1"></a><span class="co">  `r knitr::load_cache(&#39;mean-x&#39;, &#39;mx&#39;)` であった.</span></span>
-<span id="cb395-6"><a href="load-cache.html#cb395-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb395-7"><a href="load-cache.html#cb395-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb395-8"><a href="load-cache.html#cb395-8" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
-<span id="cb395-9"><a href="load-cache.html#cb395-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb395-10"><a href="load-cache.html#cb395-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mean-x, cache=TRUE}</span></span>
-<span id="cb395-11"><a href="load-cache.html#cb395-11" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
-<span id="cb395-12"><a href="load-cache.html#cb395-12" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
-<span id="cb395-13"><a href="load-cache.html#cb395-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>この例ではチャンクラベル <code>mean-x</code> をコードチャンクに追加し, これは <code>load_cache()</code> 関数に与えられています. そしてチャンクオプション <code>cache = TRUE</code> でチャンクはキャッシュされています. このコードチャンクの全てのオブジェクトはキャッシュデータベースに保存されます. 繰り返しになりますが, この文書を最低でも2回コンパイルしなければならず. よってオブジェクト <code>mx</code> はキャッシュデータベースから正しく読み込まれます. <code>mx</code> の値が将来も変更される予定がないなら, 文書をこれ以上コンパイルする必要はありません.</p>
-<p>もし <code>load_cache()</code> の第2引数でオブジェクト名を指定しないなら, キャッシュデータベース全体が現在の環境に読み込まれます. 文書の後方でオブジェクトが作成される前に, キャッシュデータベースにあるものならどれでも使うことができます. これが例です.</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb396-1"><a href="load-cache.html#cb396-1"></a>knitr<span class="sc">::</span><span class="fu">load_cache</span>(<span class="st">&quot;mean-x&quot;</span>)</span>
-<span id="cb396-2"><a href="load-cache.html#cb396-2"></a>x  <span class="co"># the object `x`</span></span>
-<span id="cb396-3"><a href="load-cache.html#cb396-3"></a>mx  <span class="co"># the object `mx`</span></span></code></pre></div>
+<p><code>knitr::load_cache()</code> 関数はもう1つの解決策で, 特定のコードチャンクでキャッシュ済みのオブジェクトから値を読み込むことできます. このアイディアは上記の例と似ていますが, オブジェクトが自動でキャッシュデータベースに保存されるため, オブジェクトを手動で保存して読み込む手間を省くことになります. あなたは <code>load_cache()</code> で読み込むだけでいいのです. 以下は単純化した例です.</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb394-1"><a href="load-cache.html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb394-2"><a href="load-cache.html#cb394-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> An important report</span></span>
+<span id="cb394-3"><a href="load-cache.html#cb394-3" aria-hidden="true" tabindex="-1"></a><span class="an">abstract:</span><span class="co"> &gt;</span></span>
+<span id="cb394-4"><a href="load-cache.html#cb394-4" aria-hidden="true" tabindex="-1"></a><span class="co">  この分析では `x` の平均値が</span></span>
+<span id="cb394-5"><a href="load-cache.html#cb394-5" aria-hidden="true" tabindex="-1"></a><span class="co">  `r knitr::load_cache(&#39;mean-x&#39;, &#39;mx&#39;)` であった.</span></span>
+<span id="cb394-6"><a href="load-cache.html#cb394-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb394-7"><a href="load-cache.html#cb394-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb394-8"><a href="load-cache.html#cb394-8" aria-hidden="true" tabindex="-1"></a>我々は次のチャンクで <span class="in">`mx`</span> を作成した.</span>
+<span id="cb394-9"><a href="load-cache.html#cb394-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb394-10"><a href="load-cache.html#cb394-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mean-x, cache=TRUE}</span></span>
+<span id="cb394-11"><a href="load-cache.html#cb394-11" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 1:100</span></span>
+<span id="cb394-12"><a href="load-cache.html#cb394-12" aria-hidden="true" tabindex="-1"></a><span class="in">mx &lt;- mean(x)</span></span>
+<span id="cb394-13"><a href="load-cache.html#cb394-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>この例では, チャンクラベル <code>mean-x</code> をコードチャンクに追加し, それを <code>load_cache()</code> 関数に渡します. そしてチャンクオプション <code>cache = TRUE</code> でチャンクをキャッシュしています. このコードチャンクの全てのオブジェクトはキャッシュデータベースに保存されます. 繰り返しになりますが, オブジェクト <code>mx</code> はキャッシュデータベースから正しく読み込まれるには, この文書を最低でも2回コンパイルしなければなりません. <code>mx</code> の値が将来も変更される予定がないなら, 文書をこれ以上コンパイルする必要はありません.</p>
+<p>もし <code>load_cache()</code> の第2引数でオブジェクト名を指定しないなら, キャッシュデータベース全体が現在の環境に読み込まれます. そうすると, 文書の後方でオブジェクトが作成される前でも, キャッシュデータベースにあるどのオブジェクトも使えます. これが例です.</p>
+<div class="sourceCode" id="cb395"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb395-1"><a href="load-cache.html#cb395-1"></a>knitr<span class="sc">::</span><span class="fu">load_cache</span>(<span class="st">&quot;mean-x&quot;</span>)</span>
+<span id="cb395-2"><a href="load-cache.html#cb395-2"></a>x  <span class="co"># the object `x`</span></span>
+<span id="cb395-3"><a href="load-cache.html#cb395-3"></a>mx  <span class="co"># the object `mx`</span></span></code></pre></div>
 </div>
             </section>
 
@@ -556,6 +582,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

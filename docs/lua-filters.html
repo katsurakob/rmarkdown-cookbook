@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.20 Pandoc の Lua フィルタから操作する (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.20 Pandoc の Lua フィルタから操作する (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="4.20 Pandoc の Lua フィルタから操作する (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -475,8 +501,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb72"><pre class="sourceCode numberSource md numberLines lineAnchors"><code class="sourceCode markdown"><span id="cb72-1"><a href="lua-filters.html#cb72-1"></a><span class="fu">## 第1節</span></span>
 <span id="cb72-2"><a href="lua-filters.html#cb72-2"></a></span>
 <span id="cb72-3"><a href="lua-filters.html#cb72-3"></a>Hello world!</span></code></pre></div>
-<p>このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後ファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb73-1"><a href="lua-filters.html#cb73-1"></a><span class="ex">pandoc</span> -f markdown -t json -o ast.json ast.md</span></code></pre></div>
+<p>このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後にファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb73-1"><a href="lua-filters.html#cb73-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> json <span class="at">-o</span> ast.json ast.md</span></code></pre></div>
 <p>そして JSON ファイルを R に読み込み, データ構造を書き出します.</p>
 <p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type,” <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb74-1"><a href="lua-filters.html#cb74-1"></a>xfun<span class="sc">:::</span><span class="fu">tree</span>(</span>
@@ -511,7 +537,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  |  |-: int 1
  |  |-: int 20
  |-meta              : Named list()</code></pre>
-<p>あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1増やす, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.</p>
+<p>あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.</p>
 <p>最初に <code>raise-header.lua</code> という名前の Lua スクリプトファイルを作ります. これには <code>Header</code> という名前の関数が含まれており, “Header” タイプの要素を修正したいということを意味しています (一般に, あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).</p>
 <div class="sourceCode" id="cb76"><pre class="sourceCode numberSource lua numberLines lineAnchors"><code class="sourceCode lua"><span id="cb76-1"><a href="lua-filters.html#cb76-1"></a><span class="kw">function</span> Header<span class="op">(</span>el<span class="op">)</span></span>
 <span id="cb76-2"><a href="lua-filters.html#cb76-2"></a>  <span class="co">-- 見出しのレベルは要素の持つ &#39;level&#39; 属性でアクセスできます.</span></span>
@@ -523,23 +549,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb76-8"><a href="lua-filters.html#cb76-8"></a>  <span class="cf">return</span> el</span>
 <span id="cb76-9"><a href="lua-filters.html#cb76-9"></a><span class="kw">end</span></span></code></pre></div>
 <p>そしてこのスクリプト Pandoc の <code>--lua-filter</code> 引数に与えることができます. 例えばこうです.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb77-1"><a href="lua-filters.html#cb77-1"></a><span class="ex">pandoc</span> -t markdown --atx-headers <span class="kw">\</span></span>
-<span id="cb77-2"><a href="lua-filters.html#cb77-2"></a>  <span class="ex">--lua-filter</span>=raise-header.lua ast.md</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb77-1"><a href="lua-filters.html#cb77-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> markdown <span class="at">--atx-headers</span> <span class="dt">\</span></span>
+<span id="cb77-2"><a href="lua-filters.html#cb77-2"></a>  <span class="at">--lua-filter</span><span class="op">=</span>raise-header.lua ast.md</span></code></pre></div>
 <pre><code># 第1節
 
 Hello world!</code></pre>
-<p><code>## Section One</code> を <code># Section One</code> へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, なんでこんなふうに単に正規表現を使って <code>##</code> を <code>#</code> に置き換えないのかと思うかも知れません.</p>
+<p><code>## Section One</code> を <code># Section One</code> へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, どうして次のように単に正規表現を使って <code>##</code> を <code>#</code> に置き換えないのかと思うことでしょう.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb79-1"><a href="lua-filters.html#cb79-1"></a><span class="fu">gsub</span>(<span class="st">&quot;^##&quot;</span>, <span class="st">&quot;#&quot;</span>, <span class="fu">readLines</span>(<span class="st">&quot;ast.md&quot;</span>))</span></code></pre></div>
-<p>例えば <code>##</code> が R コード内でコメントに使われていたら, と言うふうに, 正規表現はほとんど常に例外があるため, たいていの場合で, 構造化された文書を操作するのにロバストな手段ではありません. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.</p>
+<p>たいていの場合, 構造化された文書を操作するのに正規表現はロバストな手段ではありません. 例えば <code>##</code> が R コード内でコメントに使われているというように, ほぼいつも例外があるためです. AST は構造化されたデータを与えてくれるので, 確実に意図した要素を修正していることが分かります.</p>
 <p>Pandoc の Lua フィルタに関する追加ドキュメントが <a href="https://pandoc.org/lua-filters.html" class="uri">https://pandoc.org/lua-filters.html</a> にあり, ここで多くの例を見つけることができます. GitHub リポジトリ <a href="https://github.com/pandoc/lua-filters" class="uri">https://github.com/pandoc/lua-filters</a> のコミュニティで書かれたフィルタを見つけることもできます.</p>
-<p>R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは <code>inst/</code> ディレクトリにあります)</p>
+<p>R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは <code>inst/</code> ディレクトリにあります).</p>
 <ul>
 <li><p><strong>rmarkdown</strong> パッケージ (<a href="https://github.com/rstudio/rmarkdown" class="uri">https://github.com/rstudio/rmarkdown</a>) は改行 (<a href="pagebreaks.html#pagebreaks">4.1</a>節参照) を挿入するフィルタとカスタムブロック (<a href="custom-blocks.html#custom-blocks">9.6</a>節参照)を生成するフィルタを含んでいます.</p></li>
-<li><p><strong>pagedown</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-pagedown" role="doc-biblioref">Xie et al. 2020</a>)</span> には脚注を実装するのを助けるフィルタと HTML ページに図のリストを表示するフィルタがあります.</p></li>
-<li><p><strong>govdown</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-govdown" role="doc-biblioref">Garmonsway 2020</a>)</span> には Pandoc の <code>Div</code> による囲みを適切な HTML タグに変換するフィルタがあります.</p></li>
+<li><p><strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2020</a>)</span> には脚注を実装するのを助けるフィルタと HTML ページに図のリストを表示するフィルタがあります.</p></li>
+<li><p><strong>govdown</strong> パッケージ <span class="citation">(<a href="#ref-R-govdown" role="doc-biblioref">Garmonsway 2020</a>)</span> には Pandoc の <code>Div</code> による囲みを適切な HTML タグに変換するフィルタがあります.</p></li>
 </ul>
 <p>本書の<a href="font-color.html#lua-color">5.1.2</a>節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.</p>
-<p>Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの <code>pandoc_args</code> オプションで適用することもできます. 例えばこのように.</p>
+<p>Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの <code>pandoc_args</code> オプションを次の例のように適用することもできます.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb80-1"><a href="lua-filters.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb80-2"><a href="lua-filters.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb80-3"><a href="lua-filters.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
@@ -549,6 +575,15 @@ Hello world!</code></pre>
 
 </div>
 <!-- </div> -->
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-govdown" class="csl-entry">
+Garmonsway, Duncan. 2020. <em>Govdown: GOV.UK Style Templates for r Markdown</em>. <a href="https://ukgovdatascience.github.io/govdown">https://ukgovdatascience.github.io/govdown</a>.
+</div>
+<div id="ref-R-pagedown" class="csl-entry">
+Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2020. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -578,6 +613,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

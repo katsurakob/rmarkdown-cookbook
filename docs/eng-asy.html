@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.9 Asymptote でグラフィックを作成する | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.9 Asymptote でグラフィックを作成する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="15.9 Asymptote でグラフィックを作成する | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -470,24 +496,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="eng-asy" class="section level2" number="15.9">
 <h2><span class="header-section-number">15.9</span> Asymptote でグラフィックを作成する</h2>
 <p>Asymptote (<a href="https://asymptote.sourceforge.io" class="uri">https://asymptote.sourceforge.io</a>) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) <code>asy</code> エンジンを使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ <a href="https://github.com/vectorgraphics/asymptote" class="uri">https://github.com/vectorgraphics/asymptote</a> からコピーした例で, 出力を図<a href="eng-asy.html#fig:elevation">15.1</a>に示します.</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb455-1"><a href="eng-asy.html#cb455-1"></a><span class="kw">import</span> graph3;</span>
-<span id="cb455-2"><a href="eng-asy.html#cb455-2"></a><span class="kw">import</span> grid3;</span>
-<span id="cb455-3"><a href="eng-asy.html#cb455-3"></a><span class="kw">import</span> palette;</span>
-<span id="cb455-4"><a href="eng-asy.html#cb455-4"></a>settings.prc = <span class="kw">false</span>;</span>
-<span id="cb455-5"><a href="eng-asy.html#cb455-5"></a></span>
-<span id="cb455-6"><a href="eng-asy.html#cb455-6"></a>currentprojection=orthographic(<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="dv">2</span>);</span>
-<span id="cb455-7"><a href="eng-asy.html#cb455-7"></a>size(<span class="dv">500</span>,<span class="dv">400</span>,IgnoreAspect);</span>
-<span id="cb455-8"><a href="eng-asy.html#cb455-8"></a></span>
-<span id="cb455-9"><a href="eng-asy.html#cb455-9"></a>real f(pair z) {<span class="cf">return</span> cos(<span class="dv">2</span>*pi*z.x)*sin(<span class="dv">2</span>*pi*z.y);}</span>
-<span id="cb455-10"><a href="eng-asy.html#cb455-10"></a></span>
-<span id="cb455-11"><a href="eng-asy.html#cb455-11"></a>surface s=surface(f,(-<span class="dv">1</span>/<span class="dv">2</span>,-<span class="dv">1</span>/<span class="dv">2</span>),(<span class="dv">1</span>/<span class="dv">2</span>,<span class="dv">1</span>/<span class="dv">2</span>),<span class="dv">50</span>,Spline);</span>
-<span id="cb455-12"><a href="eng-asy.html#cb455-12"></a></span>
-<span id="cb455-13"><a href="eng-asy.html#cb455-13"></a>surface S=planeproject(unitsquare3)*s;</span>
-<span id="cb455-14"><a href="eng-asy.html#cb455-14"></a>S.colors(palette(s.map(zpart),Rainbow()));</span>
-<span id="cb455-15"><a href="eng-asy.html#cb455-15"></a>draw(S,nolight);</span>
-<span id="cb455-16"><a href="eng-asy.html#cb455-16"></a>draw(s,lightgray+opacity(<span class="fl">0.7</span>));</span>
-<span id="cb455-17"><a href="eng-asy.html#cb455-17"></a></span>
-<span id="cb455-18"><a href="eng-asy.html#cb455-18"></a>grid3(XYZgrid);</span></code></pre></div>
+<div class="sourceCode" id="cb454"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb454-1"><a href="eng-asy.html#cb454-1"></a><span class="kw">import</span> graph3;</span>
+<span id="cb454-2"><a href="eng-asy.html#cb454-2"></a><span class="kw">import</span> grid3;</span>
+<span id="cb454-3"><a href="eng-asy.html#cb454-3"></a><span class="kw">import</span> palette;</span>
+<span id="cb454-4"><a href="eng-asy.html#cb454-4"></a>settings.prc = <span class="kw">false</span>;</span>
+<span id="cb454-5"><a href="eng-asy.html#cb454-5"></a></span>
+<span id="cb454-6"><a href="eng-asy.html#cb454-6"></a>currentprojection=orthographic(<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="dv">2</span>);</span>
+<span id="cb454-7"><a href="eng-asy.html#cb454-7"></a>size(<span class="dv">500</span>,<span class="dv">400</span>,IgnoreAspect);</span>
+<span id="cb454-8"><a href="eng-asy.html#cb454-8"></a></span>
+<span id="cb454-9"><a href="eng-asy.html#cb454-9"></a>real f(pair z) {<span class="cf">return</span> cos(<span class="dv">2</span>*pi*z.x)*sin(<span class="dv">2</span>*pi*z.y);}</span>
+<span id="cb454-10"><a href="eng-asy.html#cb454-10"></a></span>
+<span id="cb454-11"><a href="eng-asy.html#cb454-11"></a>surface s=surface(f,(-<span class="dv">1</span>/<span class="dv">2</span>,-<span class="dv">1</span>/<span class="dv">2</span>),(<span class="dv">1</span>/<span class="dv">2</span>,<span class="dv">1</span>/<span class="dv">2</span>),<span class="dv">50</span>,Spline);</span>
+<span id="cb454-12"><a href="eng-asy.html#cb454-12"></a></span>
+<span id="cb454-13"><a href="eng-asy.html#cb454-13"></a>surface S=planeproject(unitsquare3)*s;</span>
+<span id="cb454-14"><a href="eng-asy.html#cb454-14"></a>S.colors(palette(s.map(zpart),Rainbow()));</span>
+<span id="cb454-15"><a href="eng-asy.html#cb454-15"></a>draw(S,nolight);</span>
+<span id="cb454-16"><a href="eng-asy.html#cb454-16"></a>draw(s,lightgray+opacity(<span class="fl">0.7</span>));</span>
+<span id="cb454-17"><a href="eng-asy.html#cb454-17"></a></span>
+<span id="cb454-18"><a href="eng-asy.html#cb454-18"></a>grid3(XYZgrid);</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:elevation"></span>
 <img src="rmarkdown-cookbook_files/figure-html/elevation-1.png" alt="Asymptote で作成した3Dグラフィック"  />
 <p class="caption">
@@ -501,32 +527,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="r-でデータを生成し-asymptote-に読み込ませる" class="section level3" number="15.9.1">
 <h3><span class="header-section-number">15.9.1</span> R でデータを生成し Asymptote に読み込ませる</h3>
 <p>ここでは, 最初に以下の R コードチャンクのように, R で生成したデータを CSV ファイルに保存します.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb457-1"><a href="eng-asy.html#cb457-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
-<span id="cb457-2"><a href="eng-asy.html#cb457-2"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
-<span id="cb457-3"><a href="eng-asy.html#cb457-3"></a><span class="fu">writeLines</span>(<span class="fu">paste</span>(x, y, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>), <span class="st">&quot;sine.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb456"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb456-1"><a href="eng-asy.html#cb456-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">l =</span> <span class="dv">100</span>)</span>
+<span id="cb456-2"><a href="eng-asy.html#cb456-2"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
+<span id="cb456-3"><a href="eng-asy.html#cb456-3"></a><span class="fu">writeLines</span>(<span class="fu">paste</span>(x, y, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>), <span class="st">&quot;sine.csv&quot;</span>)</span></code></pre></div>
 <p>それから Asymptote でこれを読み込み, データに基づいたグラフを描画し図<a href="eng-asy.html#fig:sine-curve">15.2</a> に示します. 以下が <code>asy</code> コードチャンクです.</p>
-<div class="sourceCode" id="cb458"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb458-1"><a href="eng-asy.html#cb458-1"></a><span class="kw">import</span> graph;</span>
-<span id="cb458-2"><a href="eng-asy.html#cb458-2"></a>size(<span class="dv">400</span>,<span class="dv">300</span>,IgnoreAspect);</span>
-<span id="cb458-3"><a href="eng-asy.html#cb458-3"></a>settings.prc = <span class="kw">false</span>;</span>
-<span id="cb458-4"><a href="eng-asy.html#cb458-4"></a></span>
-<span id="cb458-5"><a href="eng-asy.html#cb458-5"></a><span class="co">// import data from csv file</span></span>
-<span id="cb458-6"><a href="eng-asy.html#cb458-6"></a>file in=input(<span class="st">&quot;sine.csv&quot;</span>).line().csv();</span>
-<span id="cb458-7"><a href="eng-asy.html#cb458-7"></a>real[][] a=in.dimension(<span class="dv">0</span>,<span class="dv">0</span>);</span>
-<span id="cb458-8"><a href="eng-asy.html#cb458-8"></a>a=transpose(a);</span>
-<span id="cb458-9"><a href="eng-asy.html#cb458-9"></a></span>
-<span id="cb458-10"><a href="eng-asy.html#cb458-10"></a><span class="co">// generate a path</span></span>
-<span id="cb458-11"><a href="eng-asy.html#cb458-11"></a>path rpath = graph(a[<span class="dv">0</span>],a[<span class="dv">1</span>]);</span>
-<span id="cb458-12"><a href="eng-asy.html#cb458-12"></a>path lpath = (<span class="dv">1</span>,<span class="dv">0</span>)--(<span class="dv">5</span>,<span class="dv">1</span>);</span>
-<span id="cb458-13"><a href="eng-asy.html#cb458-13"></a></span>
-<span id="cb458-14"><a href="eng-asy.html#cb458-14"></a><span class="co">// find intersection</span></span>
-<span id="cb458-15"><a href="eng-asy.html#cb458-15"></a>pair pA=intersectionpoint(rpath,lpath);</span>
-<span id="cb458-16"><a href="eng-asy.html#cb458-16"></a></span>
-<span id="cb458-17"><a href="eng-asy.html#cb458-17"></a><span class="co">// draw all</span></span>
-<span id="cb458-18"><a href="eng-asy.html#cb458-18"></a>draw(rpath,red);</span>
-<span id="cb458-19"><a href="eng-asy.html#cb458-19"></a>draw(lpath,dashed + blue);</span>
-<span id="cb458-20"><a href="eng-asy.html#cb458-20"></a>dot(<span class="st">&quot;$</span><span class="er">\d</span><span class="st">elta$&quot;</span>,pA,NE);</span>
-<span id="cb458-21"><a href="eng-asy.html#cb458-21"></a>xaxis(<span class="st">&quot;$x$&quot;</span>,BottomTop,LeftTicks);</span>
-<span id="cb458-22"><a href="eng-asy.html#cb458-22"></a>yaxis(<span class="st">&quot;$y$&quot;</span>,LeftRight,RightTicks);</span></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb457-1"><a href="eng-asy.html#cb457-1"></a><span class="kw">import</span> graph;</span>
+<span id="cb457-2"><a href="eng-asy.html#cb457-2"></a>size(<span class="dv">400</span>,<span class="dv">300</span>,IgnoreAspect);</span>
+<span id="cb457-3"><a href="eng-asy.html#cb457-3"></a>settings.prc = <span class="kw">false</span>;</span>
+<span id="cb457-4"><a href="eng-asy.html#cb457-4"></a></span>
+<span id="cb457-5"><a href="eng-asy.html#cb457-5"></a><span class="co">// import data from csv file</span></span>
+<span id="cb457-6"><a href="eng-asy.html#cb457-6"></a>file in=input(<span class="st">&quot;sine.csv&quot;</span>).line().csv();</span>
+<span id="cb457-7"><a href="eng-asy.html#cb457-7"></a>real[][] a=in.dimension(<span class="dv">0</span>,<span class="dv">0</span>);</span>
+<span id="cb457-8"><a href="eng-asy.html#cb457-8"></a>a=transpose(a);</span>
+<span id="cb457-9"><a href="eng-asy.html#cb457-9"></a></span>
+<span id="cb457-10"><a href="eng-asy.html#cb457-10"></a><span class="co">// generate a path</span></span>
+<span id="cb457-11"><a href="eng-asy.html#cb457-11"></a>path rpath = graph(a[<span class="dv">0</span>],a[<span class="dv">1</span>]);</span>
+<span id="cb457-12"><a href="eng-asy.html#cb457-12"></a>path lpath = (<span class="dv">1</span>,<span class="dv">0</span>)--(<span class="dv">5</span>,<span class="dv">1</span>);</span>
+<span id="cb457-13"><a href="eng-asy.html#cb457-13"></a></span>
+<span id="cb457-14"><a href="eng-asy.html#cb457-14"></a><span class="co">// find intersection</span></span>
+<span id="cb457-15"><a href="eng-asy.html#cb457-15"></a>pair pA=intersectionpoint(rpath,lpath);</span>
+<span id="cb457-16"><a href="eng-asy.html#cb457-16"></a></span>
+<span id="cb457-17"><a href="eng-asy.html#cb457-17"></a><span class="co">// draw all</span></span>
+<span id="cb457-18"><a href="eng-asy.html#cb457-18"></a>draw(rpath,red);</span>
+<span id="cb457-19"><a href="eng-asy.html#cb457-19"></a>draw(lpath,dashed + blue);</span>
+<span id="cb457-20"><a href="eng-asy.html#cb457-20"></a>dot(<span class="st">&quot;$</span><span class="er">\d</span><span class="st">elta$&quot;</span>,pA,NE);</span>
+<span id="cb457-21"><a href="eng-asy.html#cb457-21"></a>xaxis(<span class="st">&quot;$x$&quot;</span>,BottomTop,LeftTicks);</span>
+<span id="cb457-22"><a href="eng-asy.html#cb457-22"></a>yaxis(<span class="st">&quot;$y$&quot;</span>,LeftRight,RightTicks);</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:sine-curve"></span>
 <img src="rmarkdown-cookbook_files/figure-html/sine-curve-1.png" alt="R からデータを渡し Asymptote でグラフを描く"  />
 <p class="caption">
@@ -564,6 +590,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

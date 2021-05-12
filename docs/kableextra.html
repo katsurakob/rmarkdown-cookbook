@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.2 kableExtra パッケージ | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.2 kableExtra パッケージ | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="10.2 kableExtra パッケージ | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,24 +495,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="kableextra" class="section level2" number="10.2">
 <h2><span class="header-section-number">10.2</span> <strong>kableExtra</strong> パッケージ</h2>
-<p><strong>kableExtra</strong> package <span class="citation">(<a href="参考文献.html#ref-R-kableExtra" role="doc-biblioref">Zhu 2020</a>)</span>は <code>knitr::kable()</code> (<a href="kable.html#kable">10.1</a>節参照) を使用して作成した表の基本機能を拡張するために設計されました. <code>knitr::kable()</code> はシンプルな設計なので (これは Yihui が怠け者であるという意味として読み流してください), 他のパッケージで見られるような機能の多くが決定的に失われてしまっています. そして <strong>kableExtra</strong> はこのギャップを完全に埋めてくれます. <strong>kableExtra</strong> について最も驚異することは, 表のほとんどの機能, 例えば, 図<a href="kable.html#fig:striped-table">10.1</a>のようなストライプ背景の表をつくるなどが HTML でも PDF でも動作することです.</p>
+<p><strong>kableExtra</strong> package <span class="citation">(<a href="#ref-R-kableExtra" role="doc-biblioref">Zhu 2020</a>)</span>は <code>knitr::kable()</code> (<a href="kable.html#kable">10.1</a>節参照) を使用して作成した表の基本機能を拡張するために設計されました. <code>knitr::kable()</code> はシンプルな設計なので (これは Yihui が怠け者であるという意味にとるのはご随意に！), 他のパッケージで見られるような機能の多くが決定的に失われてしまっています. そして <strong>kableExtra</strong> はこのギャップを完全に埋めてくれます. <strong>kableExtra</strong> について最も驚異することは, 表のほとんどの機能, 例えば, 図<a href="kable.html#fig:striped-table">10.1</a>のようなストライプ背景の表をつくるなどが HTML でも PDF でも動作することです.</p>
 <p>このパッケージはいつものように CRAN からインストールできますし, GitHub (<a href="https://github.com/haozhu233/kableExtra" class="uri">https://github.com/haozhu233/kableExtra</a>) から開発版をインストールすることもできます.</p>
-<div class="sourceCode" id="cb270"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb270-1"><a href="kableextra.html#cb270-1"></a><span class="co"># install from CRAN</span></span>
-<span id="cb270-2"><a href="kableextra.html#cb270-2"></a><span class="fu">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</span>
-<span id="cb270-3"><a href="kableextra.html#cb270-3"></a></span>
-<span id="cb270-4"><a href="kableextra.html#cb270-4"></a><span class="co"># install the development version</span></span>
-<span id="cb270-5"><a href="kableextra.html#cb270-5"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb269-1"><a href="kableextra.html#cb269-1"></a><span class="co"># install from CRAN</span></span>
+<span id="cb269-2"><a href="kableextra.html#cb269-2"></a><span class="fu">install.packages</span>(<span class="st">&quot;kableExtra&quot;</span>)</span>
+<span id="cb269-3"><a href="kableextra.html#cb269-3"></a></span>
+<span id="cb269-4"><a href="kableextra.html#cb269-4"></a><span class="co"># install the development version</span></span>
+<span id="cb269-5"><a href="kableextra.html#cb269-5"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;haozhu233/kableExtra&quot;</span>)</span></code></pre></div>
 <p>発展的なドキュメントが <a href="https://haozhu233.github.io/kableExtra/" class="uri">https://haozhu233.github.io/kableExtra/</a> にあり, <code>kable()</code> の出力を HTML や LaTeX 出力でどうカスタマイズするかについて多くの使用例が掲載されています. 我々としてはご自分でドキュメントを読むことをおすすめし, ここでは一部の例だけを提示します.</p>
 <p><strong>kableExtra</strong> パッケージはパイプ演算子 <code>%&gt;%</code> を前面に出しています. <code>kable()</code> の出力に <strong>kableExtra</strong> のスタイル関数を接続することができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb271-1"><a href="kableextra.html#cb271-1"></a><span class="fu">library</span>(knitr)</span>
-<span id="cb271-2"><a href="kableextra.html#cb271-2"></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb271-3"><a href="kableextra.html#cb271-3"></a><span class="fu">kable</span>(iris) <span class="sc">%&gt;%</span></span>
-<span id="cb271-4"><a href="kableextra.html#cb271-4"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">&quot;striped&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb270"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb270-1"><a href="kableextra.html#cb270-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb270-2"><a href="kableextra.html#cb270-2"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb270-3"><a href="kableextra.html#cb270-3"></a><span class="fu">kable</span>(iris) <span class="sc">%&gt;%</span></span>
+<span id="cb270-4"><a href="kableextra.html#cb270-4"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">&quot;striped&quot;</span>)</span></code></pre></div>
 <div id="set-the-font-size" class="section level3" number="10.2.1">
 <h3><span class="header-section-number">10.2.1</span> フォントサイズを設定する</h3>
 <p><strong>kableExtra</strong> パッケージの <code>kable_styling()</code> 関数によってテーブル全体のスタイルを設定できます. 例えばページ上での表のアラインメント, 幅, フォントサイズなどです. 以下は小さいフォントサイズを使う例です.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb272-1"><a href="kableextra.html#cb272-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">5</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb272-2"><a href="kableextra.html#cb272-2"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb271-1"><a href="kableextra.html#cb271-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">5</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb271-2"><a href="kableextra.html#cb271-2"></a>  <span class="fu">kable_styling</span>(<span class="at">font_size =</span> <span class="dv">8</span>)</span></code></pre></div>
 <table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -599,12 +625,12 @@ setosa
 <div id="style-specific-rows-columns" class="section level3" number="10.2.2">
 <h3><span class="header-section-number">10.2.2</span> 特定の行・列のスタイルを設定する</h3>
 <p>関数 <code>row_spec()</code> と <code>column_spec()</code> はそれぞれ個別の行と列のスタイル設定に使うことができます. 以下の例では第1行をボールドイタリックにし, 第2, 第3行を黒色背景と白色文字にし, 第4行にアンダーラインを引きタイプフェースを変更し, 第5行を回転させ, そして第5列に打ち消し線を引きます.</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb273-1"><a href="kableextra.html#cb273-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">5</span>), <span class="at">align =</span> <span class="st">&#39;c&#39;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb273-2"><a href="kableextra.html#cb273-2"></a>  <span class="fu">row_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">italic =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb273-3"><a href="kableextra.html#cb273-3"></a>  <span class="fu">row_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">background =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb273-4"><a href="kableextra.html#cb273-4"></a>  <span class="fu">row_spec</span>(<span class="dv">4</span>, <span class="at">underline =</span> <span class="cn">TRUE</span>, <span class="at">monospace =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb273-5"><a href="kableextra.html#cb273-5"></a>  <span class="fu">row_spec</span>(<span class="dv">5</span>, <span class="at">angle =</span> <span class="dv">45</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb273-6"><a href="kableextra.html#cb273-6"></a>  <span class="fu">column_spec</span>(<span class="dv">5</span>, <span class="at">strikeout =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb272"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb272-1"><a href="kableextra.html#cb272-1"></a><span class="fu">kable</span>(<span class="fu">head</span>(iris, <span class="dv">5</span>), <span class="at">align =</span> <span class="st">&#39;c&#39;</span>, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb272-2"><a href="kableextra.html#cb272-2"></a>  <span class="fu">row_spec</span>(<span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">italic =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-3"><a href="kableextra.html#cb272-3"></a>  <span class="fu">row_spec</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">color =</span> <span class="st">&#39;white&#39;</span>, <span class="at">background =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb272-4"><a href="kableextra.html#cb272-4"></a>  <span class="fu">row_spec</span>(<span class="dv">4</span>, <span class="at">underline =</span> <span class="cn">TRUE</span>, <span class="at">monospace =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-5"><a href="kableextra.html#cb272-5"></a>  <span class="fu">row_spec</span>(<span class="dv">5</span>, <span class="at">angle =</span> <span class="dv">45</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb272-6"><a href="kableextra.html#cb272-6"></a>  <span class="fu">column_spec</span>(<span class="dv">5</span>, <span class="at">strikeout =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -718,11 +744,11 @@ setosa
 <div id="group-rows-columns" class="section level3" number="10.2.3">
 <h3><span class="header-section-number">10.2.3</span> 行・列をグループ化する</h3>
 <p>行や列をそれぞれ, <code>pack_rows()</code> と <code>add_header_above()</code> 関数でまとめることができます. <code>collapse_rows()</code> 関数で行を崩し, セルを複数行にまたがらせることができます. 以下は行をグループ化したカスタムテーブルヘッダの例です.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb274-1"><a href="kableextra.html#cb274-1"></a>iris2 <span class="ot">&lt;-</span> iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)]</span>
-<span id="cb274-2"><a href="kableextra.html#cb274-2"></a><span class="fu">names</span>(iris2) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;[.].+&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="fu">names</span>(iris2))</span>
-<span id="cb274-3"><a href="kableextra.html#cb274-3"></a><span class="fu">kable</span>(iris2, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb274-4"><a href="kableextra.html#cb274-4"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;長さ&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;幅&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb274-5"><a href="kableextra.html#cb274-5"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;Measurements&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;More attributes&quot;</span> <span class="ot">=</span> <span class="dv">1</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb273-1"><a href="kableextra.html#cb273-1"></a>iris2 <span class="ot">&lt;-</span> iris[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">5</span>)]</span>
+<span id="cb273-2"><a href="kableextra.html#cb273-2"></a><span class="fu">names</span>(iris2) <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="st">&#39;[.].+&#39;</span>, <span class="st">&#39;&#39;</span>, <span class="fu">names</span>(iris2))</span>
+<span id="cb273-3"><a href="kableextra.html#cb273-3"></a><span class="fu">kable</span>(iris2, <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb273-4"><a href="kableextra.html#cb273-4"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;長さ&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;幅&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot; &quot;</span> <span class="ot">=</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb273-5"><a href="kableextra.html#cb273-5"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">&quot;Measurements&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;More attributes&quot;</span> <span class="ot">=</span> <span class="dv">1</span>))</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -857,12 +883,12 @@ setosa
 </tr>
 </tbody>
 </table>
-<p><code>add_header_above()</code> 内の名前付きベクトルに対して, 名前がテーブルヘッダにテキストとして表示され, 整数値のベクトルが対応する名前の列の長さを表します. 例えば <code>"Length" = 2</code> が <code>Length</code> が2列にまたがることを意味します.</p>
+<p><code>add_header_above()</code> 内の名前付きベクトルに対して, 名前がテーブルヘッダにテキストとして表示され, 整数値のベクトルが対応する名前の列の数を表します. 例えば <code>"Length" = 2</code> が <code>Length</code> が2列にまたがることを意味します.</p>
 <p>以下は <code>pack_rows()</code> の例です. <code>index</code> 引数の意味は既に説明した <code>add_header_above()</code> の引数と似ています.</p>
-<div class="sourceCode" id="cb275"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb275-1"><a href="kableextra.html#cb275-1"></a>iris3 <span class="ot">&lt;-</span> iris[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">51</span><span class="sc">:</span><span class="dv">54</span>, <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>), ]</span>
-<span id="cb275-2"><a href="kableextra.html#cb275-2"></a><span class="fu">kable</span>(iris3[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">pack_rows</span>(</span>
-<span id="cb275-3"><a href="kableextra.html#cb275-3"></a>  <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;versicolor&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;virginica&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)</span>
-<span id="cb275-4"><a href="kableextra.html#cb275-4"></a>)</span></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb274-1"><a href="kableextra.html#cb274-1"></a>iris3 <span class="ot">&lt;-</span> iris[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">51</span><span class="sc">:</span><span class="dv">54</span>, <span class="dv">101</span><span class="sc">:</span><span class="dv">103</span>), ]</span>
+<span id="cb274-2"><a href="kableextra.html#cb274-2"></a><span class="fu">kable</span>(iris3[, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">booktabs =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span> <span class="fu">pack_rows</span>(</span>
+<span id="cb274-3"><a href="kableextra.html#cb274-3"></a>  <span class="at">index =</span> <span class="fu">c</span>(<span class="st">&quot;setosa&quot;</span> <span class="ot">=</span> <span class="dv">2</span>, <span class="st">&quot;versicolor&quot;</span> <span class="ot">=</span> <span class="dv">4</span>, <span class="st">&quot;virginica&quot;</span> <span class="ot">=</span> <span class="dv">3</span>)</span>
+<span id="cb274-4"><a href="kableextra.html#cb274-4"></a>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -889,7 +915,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 1
 </td>
 <td style="text-align:right;">
@@ -906,7 +932,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 2
 </td>
 <td style="text-align:right;">
@@ -928,7 +954,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 51
 </td>
 <td style="text-align:right;">
@@ -945,7 +971,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 52
 </td>
 <td style="text-align:right;">
@@ -962,7 +988,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 53
 </td>
 <td style="text-align:right;">
@@ -979,7 +1005,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 54
 </td>
 <td style="text-align:right;">
@@ -1001,7 +1027,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 101
 </td>
 <td style="text-align:right;">
@@ -1018,7 +1044,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 102
 </td>
 <td style="text-align:right;">
@@ -1035,7 +1061,7 @@ Petal.Width
 </td>
 </tr>
 <tr>
-<td style="text-align:left; padding-left:  2em;" indentlevel="1">
+<td style="text-align:left;padding-left: 2em;" indentlevel="1">
 103
 </td>
 <td style="text-align:right;">
@@ -1057,8 +1083,8 @@ Petal.Width
 <div id="scaling-down-wide-tables-in-latex" class="section level3" number="10.2.4">
 <h3><span class="header-section-number">10.2.4</span> LaTeX で表を縮小する</h3>
 <p>HTML や LaTeX 出力特有の機能もいくつかあります. 例えば横向きページは LaTeX でのみ意味をなすので, <strong>kableExtra</strong> の <code>landscape()</code> 関数は LaTeX でのみ機能します. 以下はページに合わせて表を縮小する例です. 縮小しなければ横に長すぎる表になります.</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb276-1"><a href="kableextra.html#cb276-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">kable</span>(<span class="fu">tail</span>(mtcars, <span class="dv">5</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb276-2"><a href="kableextra.html#cb276-2"></a>tab  <span class="co"># 長すぎる元の表</span></span></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb275-1"><a href="kableextra.html#cb275-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">kable</span>(<span class="fu">tail</span>(mtcars, <span class="dv">5</span>), <span class="at">booktabs =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb275-2"><a href="kableextra.html#cb275-2"></a>tab  <span class="co"># 長すぎる元の表</span></span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1292,8 +1318,8 @@ Volvo 142E
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb277"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb277-1"><a href="kableextra.html#cb277-1"></a>tab <span class="sc">%&gt;%</span></span>
-<span id="cb277-2"><a href="kableextra.html#cb277-2"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb276-1"><a href="kableextra.html#cb276-1"></a>tab <span class="sc">%&gt;%</span></span>
+<span id="cb276-2"><a href="kableextra.html#cb276-2"></a>  <span class="fu">kable_styling</span>(<span class="at">latex_options =</span> <span class="st">&quot;scale_down&quot;</span>)</span></code></pre></div>
 <table class="table" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1530,6 +1556,12 @@ Volvo 142E
 <p>HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう.</p>
 </div>
 </div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-kableExtra" class="csl-entry">
+Zhu, Hao. 2020. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -1559,6 +1591,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

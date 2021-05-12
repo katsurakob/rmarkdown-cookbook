@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.13 テキスト出力ブロックに属性を与える (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.13 テキスト出力ブロックに属性を与える (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="11.13 テキスト出力ブロックに属性を与える (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,32 +495,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="attr-output" class="section level2" number="11.13">
 <h2><span class="header-section-number">11.13</span> テキスト出力ブロックに属性を与える (*)</h2>
-<p><a href="chunk-styling.html#chunk-styling">7.3</a>節では, <code>class.source</code> と <code>class.output</code> を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には <strong>knitr</strong> には同様の様々なオプションがあります. それらは <code>class.message</code>, <code>class.warning</code>, <code>class.error</code> といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば <code>class.error</code> はチャンクオプション <code>error = TRUE</code> (<a href="opts-error.html#opts-error">11.2</a>節参照) が設定されているとき, エラーメッセージに大してクラスを追加します. これらのオプションのもっともよくある応用は, クラス名に応じて定義された CSS ルールでスタイルを適用することでしょう. この例の実演は<a href="chunk-styling.html#chunk-styling">7.3</a>節でなされています.</p>
+<p><a href="chunk-styling.html#chunk-styling">7.3</a>節では, <code>class.source</code> と <code>class.output</code> を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には <strong>knitr</strong> には同様の様々なオプションがあります. それらは <code>class.message</code>, <code>class.warning</code>, <code>class.error</code> といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば <code>class.error</code> はチャンクオプション <code>error = TRUE</code> (<a href="opts-error.html#opts-error">11.2</a>節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS ルールで出力にスタイルを適用するときでしょう. この例の実演は<a href="chunk-styling.html#chunk-styling">7.3</a>節でなされています.</p>
 <p>典型的には, テキスト出力ブロックは最低限コードブロックに囲まれており, Markdown のソースはこのようになります.</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb317-1"><a href="attr-output.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{.className}</span></span>
-<span id="cb317-2"><a href="attr-output.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="in">出力された行</span></span>
-<span id="cb317-3"><a href="attr-output.html#cb317-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>出力フォーマットが HTML ならば, たいていの場合で<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>このように変換されます.</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb318-1"><a href="attr-output.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> class=</span><span class="st">&quot;className&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb318-2"><a href="attr-output.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>出力された行<span class="kw">&lt;/code&gt;</span></span>
-<span id="cb318-3"><a href="attr-output.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb316-1"><a href="attr-output.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{.className}</span></span>
+<span id="cb316-2"><a href="attr-output.html#cb316-2" aria-hidden="true" tabindex="-1"></a><span class="in">出力された行</span></span>
+<span id="cb316-3"><a href="attr-output.html#cb316-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>出力フォーマットが HTML ならば, たいていの場合で<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>このように変換されます.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb317-1"><a href="attr-output.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> class=</span><span class="st">&quot;className&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb317-2"><a href="attr-output.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>出力された行<span class="kw">&lt;/code&gt;</span></span>
+<span id="cb317-3"><a href="attr-output.html#cb317-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
 <p><code>class.*</code> オプションは <code>&lt;pre&gt;</code> 要素の <code>class</code> 属性を制御します. この要素は先述のテキスト出力ブロックを入れたコンテナです.</p>
 <p>実際には, クラスは HTML の <code>&lt;pre&gt;</code> 要素の属性に使用可能なものの1つにすぎません. HTML 要素は幅や高さやスタイルなどと, 他にも多くの属性を持ちます. <code>attr.source</code>, <code>attr.output</code>, <code>attr.message</code>, <code>attr.warning</code>, <code>attr.error</code> を含む一連のチャンクオプション <code>attr.*</code> によって, 任意の属性をテキスト出力ブロックに追加することができます. 例えば <code>attr.source = 'style="background: pink;"'</code> を使えばソースブロックの背景をピンク色にできます. 対応するコードブロックはこのようになります.</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb319-1"><a href="attr-output.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{style=&quot;background: pink;&quot;}</span></span>
-<span id="cb319-2"><a href="attr-output.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
-<span id="cb319-3"><a href="attr-output.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb318-1"><a href="attr-output.html#cb318-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{style=&quot;background: pink;&quot;}</span></span>
+<span id="cb318-2"><a href="attr-output.html#cb318-2" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
+<span id="cb318-3"><a href="attr-output.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>そして HTML 出力はこのようになります.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb320-1"><a href="attr-output.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;background: pink;&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb320-2"><a href="attr-output.html#cb320-2" aria-hidden="true" tabindex="-1"></a>...</span>
-<span id="cb320-3"><a href="attr-output.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb319-1"><a href="attr-output.html#cb319-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;background: pink;&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb319-2"><a href="attr-output.html#cb319-2" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb319-3"><a href="attr-output.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
 <p><a href="number-lines.html#number-lines">5.7</a>, <a href="hook-scroll.html#hook-scroll">12.3</a>節でさらなる例を見ることができます.</p>
 <p>技術的なことをいいますと, チャンクオプション <code>class.*</code> は <code>attr.*</code> の特殊形です. 例えば <code>class.source = 'numberLines'</code> は <code>attr.source = '.numberLines'</code> と同じです (後者は先頭にドットがあることに注意). しかし <code>attr.source</code> は任意の属性をとることができ, 例えば <code>attr.source = c('.numberLines', 'startFrom="11"')</code> も可能です.</p>
-<p>これらのオプションはほとんどの HTML 出力で有効です. 属性が他の出力フォーマットでも有効な場合もありますが, そのような場合になるのは比較的珍しいです. 属性は Pandoc か, 何らかのサードパーティ製パッケージ でもサポートされている必要があります. <code>.numberLines</code> 属性は Pandoc によって HTML と LaTeX の両方で動作し, サードパーティ製パッケージというのは大抵は<a href="lua-filters.html#lua-filters">4.20</a>節で紹介したような Lua フィルターを使ったものになります.</p>
+<p>これらのオプションはほとんどの HTML 出力で有効です. 属性が他の出力フォーマットでも有効な場合もありますが, そのような場合になるのは比較的珍しいです. 属性は Pandoc か, 何らかのサードパーティ製パッケージ のいずれかでサポートされている必要があります. <code>.numberLines</code> 属性は Pandoc によって HTML と LaTeX の両方で動作し, サードパーティ製パッケージというのは大抵は<a href="lua-filters.html#lua-filters">4.20</a>節で紹介したような Lua フィルターを使ったものになります.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="31">
-<li id="fn31"><p><code>&lt;div class="className"&gt;&lt;/div&gt;</code> に変換される場合もあります. 万全を期すには HTML 出力された文書を確認することもできます.<a href="attr-output.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<ol start="38">
+<li id="fn38"><p><code>&lt;div class="className"&gt;&lt;/div&gt;</code> に変換される場合もあります. 万全を期すには HTML 出力された文書を確認することもできます.<a href="attr-output.html#fnref38" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -526,6 +552,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

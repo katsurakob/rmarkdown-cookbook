@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12 出力フック (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12 出力フック (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="12 出力フック (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,47 +495,47 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="output-hooks" class="section level1" number="12">
 <h1><span class="header-section-number">12</span> 出力フック (*)</h1>
-<p><strong>knitr</strong> パッケージによって, あなたはコードチャンクから出力されるものを各パーツ, ソースコード・テキスト出力・メッセージ・グラフといったものごとに制御しています. この制御は「出力フック」 (output hook(s))によって実現されています. 出力フックは出力の各パーツを入力 (典型的には文字列ベクトルとして扱います) として, 出力文書に書き出すための文字列を返す一連の関数です. 現時点ではこのしくみを理解するのは簡単ではないでしょうが, これから説明する簡単な例を見ればこのアイディアがはっきりと理解できるものと思います. この例ではコードチャンクの出力がどのようにして <strong>knitr</strong> の出力フックを介してレンダリングされるかを表しています.</p>
+<p><strong>knitr</strong> パッケージによって, あなたはコードチャンクから出力されるものを各パーツ, ソースコード・テキスト出力・メッセージ・グラフといったものごとに制御しています. この制御は「出力フック」 (output hook(s))によって実現されています. 出力フックは出力の各パーツを入力 (典型的には文字列ベクトルとして扱います) とし, 文字列を出力文書に書き出すために返す一連の関数です. 現時点ではこのしくみを理解するのは簡単ではないでしょうが, これから説明する簡単な例を見ればこのアイディアがはっきりと理解できるものと思います. この例ではコードチャンクの出力が <strong>knitr</strong> の出力フックを介してレンダリングされる様子を表しています.</p>
 <p>このような1行だけのコードチャンクについて考えてみてください.</p>
-<div class="sourceCode" id="cb339"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb339-1"><a href="output-hooks.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb339-2"><a href="output-hooks.html#cb339-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb339-3"><a href="output-hooks.html#cb339-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p><strong>knitr</strong> がコードチャンクを評価した後, 2つの出力要素を得て, 2つとも文字列ベクトルとして保持されます. ソースコードの <code>"1 + 1"</code> と, テキスト出力の <code>"[1] 2"</code> です. これらの文字列は求められている出力フォーマットに応じて, チャンクフックによってさらなる処理がなされます. たとえば Markdown 文書では <strong>knitr</strong> はソースコードを言語名を付けてコードブロックで囲みます. これは <code>source</code> フックを介して行われ, だいたいこのような関数となります.</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb340-1"><a href="output-hooks.html#cb340-1"></a><span class="co"># 上記のケースでは, `x` は文字列 &#39;1 + 1&#39; に相当</span></span>
-<span id="cb340-2"><a href="output-hooks.html#cb340-2"></a><span class="cf">function</span>(x, options) {</span>
-<span id="cb340-3"><a href="output-hooks.html#cb340-3"></a>  <span class="co"># ここの小文字 &#39;r&#39; は言語名を表す</span></span>
-<span id="cb340-4"><a href="output-hooks.html#cb340-4"></a>  <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;```r&quot;</span>, x, <span class="st">&quot;```&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb340-5"><a href="output-hooks.html#cb340-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb338-1"><a href="output-hooks.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb338-2"><a href="output-hooks.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb338-3"><a href="output-hooks.html#cb338-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><strong>knitr</strong> がコードチャンクを評価すると, 2つの出力要素を得ます. 2つとも文字列ベクトルとして保持されます. ソースコードの <code>"1 + 1"</code> と, テキスト出力の <code>"[1] 2"</code> です. これらの文字列は求められている出力フォーマットに応じて, チャンクフックによってさらなる処理がなされます. たとえば Markdown 文書では <strong>knitr</strong> はソースコードに言語名を付けてコードブロックで囲みます. これは <code>source</code> フックを介して行われ, だいたいこのような関数となります.</p>
+<div class="sourceCode" id="cb339"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb339-1"><a href="output-hooks.html#cb339-1"></a><span class="co"># 上記のケースでは, `x` は文字列 &#39;1 + 1&#39; に相当</span></span>
+<span id="cb339-2"><a href="output-hooks.html#cb339-2"></a><span class="cf">function</span>(x, options) {</span>
+<span id="cb339-3"><a href="output-hooks.html#cb339-3"></a>  <span class="co"># ここの小文字 &#39;r&#39; は言語名を表す</span></span>
+<span id="cb339-4"><a href="output-hooks.html#cb339-4"></a>  <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;```r&quot;</span>, x, <span class="st">&quot;```&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb339-5"><a href="output-hooks.html#cb339-5"></a>}</span></code></pre></div>
 <p>同様に, テキスト出力はこのような <code>output</code> フック関数によって処理されます.</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb341-1"><a href="output-hooks.html#cb341-1"></a><span class="cf">function</span>(x, options) {</span>
-<span id="cb341-2"><a href="output-hooks.html#cb341-2"></a>  <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;```&quot;</span>, x, <span class="st">&quot;```&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb341-3"><a href="output-hooks.html#cb341-3"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb340-1"><a href="output-hooks.html#cb340-1"></a><span class="cf">function</span>(x, options) {</span>
+<span id="cb340-2"><a href="output-hooks.html#cb340-2"></a>  <span class="fu">paste</span>(<span class="fu">c</span>(<span class="st">&quot;```&quot;</span>, x, <span class="st">&quot;```&quot;</span>), <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb340-3"><a href="output-hooks.html#cb340-3"></a>}</span></code></pre></div>
 <p>よって上記のコードチャンクの最終的な出力はこのようになります.</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb342-1"><a href="output-hooks.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb342-2"><a href="output-hooks.html#cb342-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb342-3"><a href="output-hooks.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb342-4"><a href="output-hooks.html#cb342-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb342-5"><a href="output-hooks.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb342-6"><a href="output-hooks.html#cb342-6" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 2</span></span>
-<span id="cb342-7"><a href="output-hooks.html#cb342-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb341-1"><a href="output-hooks.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb341-2"><a href="output-hooks.html#cb341-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb341-3"><a href="output-hooks.html#cb341-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb341-4"><a href="output-hooks.html#cb341-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb341-5"><a href="output-hooks.html#cb341-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb341-6"><a href="output-hooks.html#cb341-6" aria-hidden="true" tabindex="-1"></a><span class="in">[1] 2</span></span>
+<span id="cb341-7"><a href="output-hooks.html#cb341-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>実際のフックは上記のような2つの関数よりも複雑ですが, 発想は同じです. <code>knit_hooks</code> オブジェクトから <code>get()</code> メソッドで実際のフック関数を取得できます. これが例です.</p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb343-1"><a href="output-hooks.html#cb343-1"></a><span class="co"># 意味のある出力のため, 以下のコードは knitr</span></span>
-<span id="cb343-2"><a href="output-hooks.html#cb343-2"></a><span class="co"># 文書のコードチャンクの *内部で* 実行されるべき</span></span>
-<span id="cb343-3"><a href="output-hooks.html#cb343-3"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;source&quot;</span>)</span>
-<span id="cb343-4"><a href="output-hooks.html#cb343-4"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;output&quot;</span>)</span>
-<span id="cb343-5"><a href="output-hooks.html#cb343-5"></a><span class="co"># または knitr::knit_hooks$get(c(&#39;source&#39;, &#39;output&#39;))</span></span></code></pre></div>
-<p>あなたが <strong>knitr</strong> パッケージの開発に貢献することに本当に関心があるのでない限り, 組み込みのフック関数のソースコードを読むことをお薦めしません. 関心があるのなら, このコードは <a href="https://github.com/yihui/knitr/tree/master/R" class="uri">https://github.com/yihui/knitr/tree/master/R</a> で <code>hooks-*.R</code> という形式で命名されたスクリプトファイルにて見ることができます. 例えば <code>hooks-md.R</code> には R Markdown 文書に対するフックが含まれています. たいていの <strong>knitr</strong> ユーザーにとっては, 組み込みのフックよりも便利なカスタム出力フックの作り方を知っていれば十分です. この章のこれ以降では, あなたはいくつかの例で出力フックに関するこのようなことを学びます. さらに, 我々は以下のような基本的アイディアを示します.</p>
-<p>カスタム出力フックは <code>knit_hooks()</code> の <code>set()</code> メソッドによって登録されます. このメソッドは既存のデフォルのトフックを上書きするので, 既存のフックのコピーを保存し, 出力要素にあなた独自の処理してから, その結果をこのデフォルトのフックに与えるようにしておくことをお薦めします. 構文はたいていこのようになります.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb344-1"><a href="output-hooks.html#cb344-1"></a><span class="co"># ここで local() を使うかは任意 (ここでは単に `hook_old`</span></span>
-<span id="cb344-2"><a href="output-hooks.html#cb344-2"></a><span class="co"># のような不要なグローバル変数を作ることを避ける目的)</span></span>
-<span id="cb344-3"><a href="output-hooks.html#cb344-3"></a><span class="fu">local</span>({</span>
-<span id="cb344-4"><a href="output-hooks.html#cb344-4"></a>  hook_old <span class="ot">&lt;-</span> knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;NAME&quot;</span>)  <span class="co"># 古いフックを保存する</span></span>
-<span id="cb344-5"><a href="output-hooks.html#cb344-5"></a>  knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">NAME =</span> <span class="cf">function</span>(x, options) {</span>
-<span id="cb344-6"><a href="output-hooks.html#cb344-6"></a>    <span class="co"># ここで, x をどうしたいかにかかわらず, 新しい x を</span></span>
-<span id="cb344-7"><a href="output-hooks.html#cb344-7"></a>    <span class="co"># さらに古いフックに与える</span></span>
-<span id="cb344-8"><a href="output-hooks.html#cb344-8"></a>    <span class="fu">hook_old</span>(x, options)</span>
-<span id="cb344-9"><a href="output-hooks.html#cb344-9"></a>  })</span>
-<span id="cb344-10"><a href="output-hooks.html#cb344-10"></a>})</span></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb342-1"><a href="output-hooks.html#cb342-1"></a><span class="co"># 意味のある出力のため, 以下のコードは knitr</span></span>
+<span id="cb342-2"><a href="output-hooks.html#cb342-2"></a><span class="co"># 文書のコードチャンクの *内部で* 実行されるべき</span></span>
+<span id="cb342-3"><a href="output-hooks.html#cb342-3"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;source&quot;</span>)</span>
+<span id="cb342-4"><a href="output-hooks.html#cb342-4"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;output&quot;</span>)</span>
+<span id="cb342-5"><a href="output-hooks.html#cb342-5"></a><span class="co"># または knitr::knit_hooks$get(c(&#39;source&#39;, &#39;output&#39;))</span></span></code></pre></div>
+<p><strong>knitr</strong> パッケージの開発に貢献することに本当に関心がない方には, 組み込みのフック関数のソースコードを読むことをお薦めしません. 関心がある方は, このコードは <a href="https://github.com/yihui/knitr/tree/master/R" class="uri">https://github.com/yihui/knitr/tree/master/R</a> にある <code>hooks-*.R</code> という形式で命名されたスクリプトファイルでご覧ください. 例えば <code>hooks-md.R</code> には R Markdown 文書に対するフックが含まれています. 普通であれば <strong>knitr</strong> ユーザーにとっては, 組み込みのフックを活かして使うカスタム出力フックの作り方を知っていれば十分です. この章ではそれが学べますし, 以下では基本的な考え方を示します.</p>
+<p>カスタム出力フックは <code>knit_hooks</code> の <code>set()</code> メソッドによって登録されます. このメソッドは既存のデフォルトのフックを上書きするので, 既存のフックのコピーを保存し, 好きなように出力要素を処理して, その結果をこのデフォルトのフックに与えるようにしておくことをお薦めします. 構文はたいてい次のようになります.</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb343-1"><a href="output-hooks.html#cb343-1"></a><span class="co"># ここで local() を使うかは任意 (ここでは単に `hook_old`</span></span>
+<span id="cb343-2"><a href="output-hooks.html#cb343-2"></a><span class="co"># のような不要なグローバル変数を作ることを避ける目的)</span></span>
+<span id="cb343-3"><a href="output-hooks.html#cb343-3"></a><span class="fu">local</span>({</span>
+<span id="cb343-4"><a href="output-hooks.html#cb343-4"></a>  hook_old <span class="ot">&lt;-</span> knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;NAME&quot;</span>)  <span class="co"># 古いフックを保存する</span></span>
+<span id="cb343-5"><a href="output-hooks.html#cb343-5"></a>  knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">NAME =</span> <span class="cf">function</span>(x, options) {</span>
+<span id="cb343-6"><a href="output-hooks.html#cb343-6"></a>    <span class="co"># ここで, x に何らかの処理を行い, それから 新しい x</span></span>
+<span id="cb343-7"><a href="output-hooks.html#cb343-7"></a>    <span class="co"># を古いフックに与える</span></span>
+<span id="cb343-8"><a href="output-hooks.html#cb343-8"></a>    <span class="fu">hook_old</span>(x, options)</span>
+<span id="cb343-9"><a href="output-hooks.html#cb343-9"></a>  })</span>
+<span id="cb343-10"><a href="output-hooks.html#cb343-10"></a>})</span></code></pre></div>
 <p>ここで, <code>NAME</code> は以下のいずれかのフックの名前を意味します.</p>
 <ul>
 <li><p><code>source</code>: ソースコードを処理するフック.</p></li>
@@ -554,6 +580,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

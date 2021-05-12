@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16.6 R コードチャンク用の作業ディレクトリ | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16.6 R コードチャンク用の作業ディレクトリ | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="16.6 R コードチャンク用の作業ディレクトリ | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,22 +495,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="working-directory" class="section level2" number="16.6">
 <h2><span class="header-section-number">16.6</span> R コードチャンク用の作業ディレクトリ</h2>
-<p>デフォルトでは R コードチャンクの作業ディレクトリは Rmd 文書のあるディレクトリです. 例えば Rmd ファイルのパスが <code>~/Downloads/foo.Rmd</code> であるなら, R コードチャンクが評価される作業ディレクトリは <code>~/Downloads/</code> になります. これはチャンク内で外部ファイルを相対パスで参照するとき, そのパスは Rmd ファイルのあるディレクトリからの相対パスであることを知る必要があることを意味します. 前述の例の Rmd ファイルでは, コードチャンク内での <code>read.csv("data/iris.csv")</code> は <code>~/Downloads/data/iris.csv</code> から CSV ファイルを読み込むことを意味しています.</p>
-<p>よく分からない時は, <code>getwd()</code> をコードチャンクに追加して文書をコンパイルし, <code>getwd()</code> の出力を確認することができます.</p>
-<p>時には他のディレクトリを作業ディレクトリとして使いたいかもしれません. たいていの場合は作業ディレクトリの変更方法は <code>setwd()</code> ですが, <code>setwd()</code> は R Markdown あるいは他の <strong>knitr</strong> ソース文書では一貫性がないことに注意してください. これは <code>setwd()</code> が現在のコードチャンクに対して動作し, 作業ディレクトリはこのコードチャンクが評価された後に元に戻ることを意味します.</p>
-<p>全てのコードチャンクに対して作業ディレクトリを変更したい場合, 文書の冒頭の <code>setup</code> コードチャンクでこのように設定することもできます.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb477-1"><a href="working-directory.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb477-2"><a href="working-directory.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
-<span id="cb477-3"><a href="working-directory.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>R コードチャンクの作業ディレクトリは, デフォルトでは Rmd 文書のあるディレクトリです. 例えば Rmd ファイルのパスが <code>~/Downloads/foo.Rmd</code> であるなら, R コードチャンクが評価される作業ディレクトリは <code>~/Downloads/</code> になります. ということは, チャンク内で外部ファイルを相対パスで参照するとき, そのパスは Rmd ファイルのあるディレクトリからの相対パスであることを知っておくべきことを意味します. 前述の Rmd ファイルの例では, コードチャンク内での <code>read.csv("data/iris.csv")</code> は <code>~/Downloads/data/iris.csv</code> から CSV ファイルを読み込むことを意味しています.</p>
+<p>よく分からない時は, <code>getwd()</code> をコードチャンクに追加して文書をコンパイルし, <code>getwd()</code> の出力を確認できます.</p>
+<p>時には他のディレクトリを作業ディレクトリとして使いたいこともあります. 一般的な作業ディレクトリの変更方法は <code>setwd()</code> ですが, <code>setwd()</code> は R Markdown あるいは他の <strong>knitr</strong> ソース文書で一貫して使えるわけではないことに注意してください. これは <code>setwd()</code> が現在のコードチャンクに限って動作し, 作業ディレクトリはこのコードチャンクが評価された後に元に戻ることを意味します.</p>
+<p>全てのコードチャンクに対して作業ディレクトリを変更したい場合, 文書の冒頭で <code>setup</code> コードチャンクを設定できます.</p>
+<div class="sourceCode" id="cb476"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb476-1"><a href="working-directory.html#cb476-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb476-2"><a href="working-directory.html#cb476-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
+<span id="cb476-3"><a href="working-directory.html#cb476-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>これは以降の全てのコードチャンクの作業ディレクトリを変更します.</p>
-<p>RStudio を使用しているなら, 作業ディレクトリをメニュの <code>Tools -&gt; Global Options -&gt; R Markdown</code> からも選択できます (図<a href="working-directory.html#fig:rmd-wd">16.1</a>参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. “Current” オプションで R コンソールの現在の作業ディレクトリを使うか, “Project” オプションで Rmd ファイルの含まれているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.</p>
+<p>RStudio を使用しているなら, 作業ディレクトリをメニュの <code>Tools -&gt; Global Options -&gt; R Markdown</code> からも選択できます (図<a href="working-directory.html#fig:rmd-wd">16.1</a>参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. “Current” オプションで R コンソールの現在の作業ディレクトリを使うか, “Project” オプションで Rmd ファイルが入っているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.</p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-wd"></span>
 <img src="JP/images/rmd-wd.png" alt="R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する"  />
 <p class="caption">
 図 16.1: R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する
 </p>
 </div>
-<p>RStudio では, 図<a href="working-directory.html#fig:knit-wd">16.2</a>で見せるように, 個別の Rmd 文書をそれぞれ固有の作業ディレクトリで knit することもできます. “Knit Directory” を変更し “Knit” ボタンをクリックした後で, <strong>knitr</strong> はコードチャンクの評価に新しい作業ディレクトリを使用します. これらの全ての設定は既に言及した <code>knitr::opts_knit$set(root.dir = ...)</code> に集約されています. よってあなたがこれらの選択のいずれにも満足しないのなら, <code>knitr::opts_knit$set()</code> を使いご自分でディレクトリを指定できます.</p>
+<p>RStudio では, 図<a href="working-directory.html#fig:knit-wd">16.2</a>で見せるように, 個別の Rmd 文書をそれぞれ固有の作業ディレクトリで knit することもできます. “Knit Directory” を変更し “Knit” ボタンをクリックした後で, <strong>knitr</strong> は新しい作業ディレクトリを使ってコードチャンクを評価します. これらの全ての設定は既に言及した <code>knitr::opts_knit$set(root.dir = ...)</code> に集約されています. よってあなたがこれまでの選択肢のいずれにも満足しないのなら, <code>knitr::opts_knit$set()</code> を使いご自分でディレクトリを指定できます.</p>
 <div class="figure" style="text-align: center"><span id="fig:knit-wd"></span>
 <img src="JP/images/knit-wd.png" alt="RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する"  />
 <p class="caption">
@@ -492,23 +518,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </p>
 </div>
 <p>作業ディレクトリに関して完全に正しい選択というものはありません. それぞれに長所と短所があります.</p>
-<p>(<strong>knitr</strong> のデフォルト) Rmd 文書のディレクトリをコードチャンクの作業ディレクトリとして使うなら, ファイルパスは Rmd 文書からの相対パスだと想定します. これは ウェブブラウザで相対パスを扱うのと似ています. 例えば 例えば <code>https://www.example.org/path/to/page.html</code> という HTML ページでの画像 <code>&lt;img src="foo/bar.png" /&gt;</code> に対して, ウェブブラウザが <code>https://www.example.org/path/to/foo/bar.png</code> から画像を取得しようとするのと似ています. 言い換えるなら, 相対パス <code>foo/bar.png</code> は HTML ファイルのディレクトリ <code>https://www.example.org/path/to/</code> からの相対位置です.</p>
-<pre><code>このアプローチの利点は Rmd ファイルを参照するファイルと**一緒に**, 相対的な位置関係を保っている限りどこへでも自由に移動できることです. 上記の HTML ページと画像の例では, `page.html` と `foo/bar.png` を `https://www.example.org/another/path/` へ一緒に移動させることができます. そしてあなたは `&lt;img /&gt;` の `src` 属性の相対パスを更新する必要はありません.
-
-Rmd 文書の相対パスを「Rmd ファイルからの相対位置」とは対照的に「Rコンソールの作業ディレクトリからの相対位置」と考えるのを好むユーザもいます. よって **knitr** のデフォルトディレクトリは混乱を招きます. 私が **knitr** を設計する際に R コンソールの作業ディレクトリをデフォルトで使わないようにした理由は, ユーザがいつでも `setwd()` で作業ディレクトリを変更できるようにするためでした. この作業ディレクトリが安定している保証はありません.  毎度のようにユーザが `setwd()` をコンソールで呼び出すと, Rmd 文書内のファイルパスが無効になるリスクがあります. ファイルパスが `setwd()` という外部要因に依存していて, それが Rmd ファイルの制御の手から離れているというのは恐ろしいことでしょう. 相対パスを考慮して, Rmd ファイルを「宇宙の中心」として扱うのなら, Rmd ファイル内のパスは安定するでしょう.
-
-その上, あなたが相対パスを考慮するのが難しすぎるのでやりたくないのなら, 図\@ref(fig:rmd-relative)のように RStudio 上で自動補完機能を使ってファイルパスを入力することもできます. RStudio は Rmd ファイルからの相対パスを補完しようと試みます.</code></pre>
 <ul>
-<li><p>R コンソールの作業ディレクトリはプログラミング的あるいは対話的に文書を knit するのに良い選択になりうるでしょう. 例えばループ中に文書を複数回 knit し, その毎回で異なる作業ディレクトリを使い, ディレクトリ内の異なるデータファイルを読み込む (ファイル名は同じとします) こともできます. この種の作業ディレクトリは <strong>ezknitr</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-ezknitr" role="doc-biblioref">Attali 2016</a>)</span> で支持されており, 実質的に <strong>knitr</strong> のコードチャンクのために作業ディレクトリを変更するために <code>knitr::opts_knit$set(root.dir)</code> を使用しています.</p></li>
-<li><p>プロジェクトディレクトリを作業ディレクトリとして使うことには明確な前提が要求されます. そもそもプロジェクト (例えば RStudio のプロジェクトか, バージョン管理プロジェクト) を使わなければならないということです. これはこのアプローチの欠点となりえます. この種の作業ディレクトリの利点はあらゆる Rmd 文書内の全ての相対パスがプロジェクトのルートディレクトリからの相対パスになることです. よってプロジェクト内で Rmd ファイルがどこにあるかを考えたり, 対応する他のファイルの場所を調整したりする必要はありません. この種の作業ディレクトリは <strong>here</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> で支持されており, このパッケージは渡された相対パスを解決し絶対パスを返す <code>here::here()</code> 関数を提供しています (相対パスはプロジェクトのルートからの相対であることを忘れないでください). 欠点は参照されているファイルを Rmd ファイルとともにプロジェクト内の他の場所に移動させた時に, Rmd 文書内の参照パスを更新する必要があることです. Rmd ファイルを他の人と共有する時は, プロジェクト全体も共有しなければなりません.</p>
-<p>これらの種類のパスは HTML でのプロトコルやドメインのない絶対パスと似ています. 例えば <code>https://www.example.org/path/to/page.html</code> というページの画像 <code>&lt;img src="/foo/bar.png" /&gt;</code> はウェブサイトのルートディレクトリ以下の画像を参照しています. つまり <code>https://www.example.org/foo/bar.png</code> です. 画像の <code>src</code> 属性の先頭の <code>/</code> はウェブサイトのルートディレクトリを表しています. 絶対パスと相対パスについてもっと学びたい (あるいはもっと混乱したい) なら, <a href="https://bookdown.org/yihui/blogdown/html.html"><strong>blogdown</strong> 本の Appendix B.1</a> <span class="citation">(<a href="参考文献.html#ref-blogdown2017" role="doc-biblioref">Xie, Hill, and Thomas 2017</a>)</span> を見てください.</p></li>
+<li><p>(<strong>knitr</strong> のデフォルト) Rmd 文書のディレクトリをコードチャンクの作業ディレクトリとして使うなら, ファイルパスは Rmd 文書からの相対パスだと想定していることになります. これは ウェブブラウザで相対パスを扱うのと似ています. 例えば <code>https://www.example.org/path/to/page.html</code> という HTML ページでの画像 <code>&lt;img src="foo/bar.png" /&gt;</code> に対して, ウェブブラウザが <code>https://www.example.org/path/to/foo/bar.png</code> から画像を取得するのと似ています. 言い換えるなら, 相対パス <code>foo/bar.png</code> は HTML ファイルのあるディレクトリ <code>https://www.example.org/path/to/</code> からの相対位置です.</p>
+<p>このアプローチの利点は Rmd ファイルを Rmd ファイルが参照しているファイルと<strong>一緒に</strong>, 相対的な位置関係を保っている限りどこへでも自由に移動できることです. 上記の HTML ページと画像の例では, <code>page.html</code> と <code>foo/bar.png</code> を <code>https://www.example.org/another/path/</code> へ一緒に移動させることができます. そしてあなたは <code>&lt;img /&gt;</code> の <code>src</code> 属性の相対パスを更新する必要はありません.</p>
+<p>Rmd 文書の相対パスを「Rmd ファイルからの相対位置」とは対照的に「Rコンソールの作業ディレクトリからの相対位置」と考えるのを好むユーザもいます. よって <strong>knitr</strong> のデフォルトディレクトリは混乱を招きます. 私が <strong>knitr</strong> を設計する際に R コンソールの作業ディレクトリをデフォルトで使わないようにした理由は, ユーザがいつでも <code>setwd()</code> で作業ディレクトリを変更したければできてしまうからでした. この作業ディレクトリが安定している保証はありません. 毎度のようにユーザが <code>setwd()</code> をコンソールで呼び出すと, Rmd 文書内のファイルパスが無効になるリスクがあります. ファイルパスが Rmd ファイルの制御の手から離れて <code>setwd()</code> という外部要因に依存しているというのは不自然なことでしょう. 相対パスを考慮する際に, Rmd ファイルを「宇宙の中心」として扱えば, Rmd ファイル内にあるパスはもっと安定するでしょう.</p>
+<p>その上, あなたが相対パスを考慮するのが難しすぎて嫌だと言うなら, 図<a href="working-directory.html#fig:rmd-relative">16.3</a>のように RStudio 上で自動補完機能を使ってファイルパスを入力することもできます. RStudio は Rmd ファイルからの相対パスを補完しようと試みます.</p></li>
+<li><p>R コンソールの作業ディレクトリはプログラミング的あるいは対話的に文書を knit するのに良い選択になりうるでしょう. 例えばループ中に文書を複数回 knit し, そこで毎回で異なる作業ディレクトリを使い, 各々のディレクトリ内の異なるデータファイル(ファイル名は同じとします) を読み込むこともできます. この種の作業ディレクトリは <strong>ezknitr</strong> パッケージ <span class="citation">(<a href="#ref-R-ezknitr" role="doc-biblioref">Attali 2016</a>)</span> で推奨されており, 実は <code>knitr::opts_knit$set(root.dir)</code> を使って <strong>knitr</strong> のコードチャンクの作業ディレクトリを変更しています.</p></li>
+<li><p>プロジェクトディレクトリを作業ディレクトリとして使うことには明確な前提が要求されます. そもそもプロジェクト (例えば RStudio のプロジェクトか, バージョン管理プロジェクト) を使わなければならないということです. この点はアプローチにとっての欠点となりえます. この種の作業ディレクトリを使う利点はあらゆる Rmd 文書内の全ての相対パスがプロジェクトのルートディレクトリからの相対パスになることです. よってプロジェクト内で Rmd ファイルがどこにあるかを考えたり, 他のファイルの場所に対応して調整したりする必要はありません. この種の作業ディレクトリは <strong>here</strong> パッケージ <span class="citation">(<a href="#ref-R-here" role="doc-biblioref">Müller 2020</a>)</span> で推奨されており, このパッケージでは渡された相対パスを解決し絶対パスを返す <code>here::here()</code> 関数を提供しています (相対パスはプロジェクトのルートからの相対であることを忘れないでください). 欠点となるのは, 参照されているファイルを Rmd ファイルとともにプロジェクト内の他の場所に移動させた時に, Rmd 文書内の参照パスを更新する必要があることです. Rmd ファイルを他の人と共有する時は, プロジェクト全体も共有しなければなりません.</p>
+<p>これらの種類のパスは HTML でのプロトコルやドメインのない絶対パスと似ています. 例えば <code>https://www.example.org/path/to/page.html</code> というページの画像 <code>&lt;img src="/foo/bar.png" /&gt;</code> はウェブサイトのルートディレクトリ以下の画像を参照しています. つまり <code>https://www.example.org/foo/bar.png</code> です. 画像の <code>src</code> 属性の先頭の <code>/</code> はウェブサイトのルートディレクトリを表しています. HTML の絶対パスと相対パスについてもっと学びたい (あるいはもっと混乱したい) なら, <a href="https://bookdown.org/yihui/blogdown/html.html"><strong>blogdown</strong> 本の Appendix B.1</a> <span class="citation">(<a href="#ref-blogdown2017" role="doc-biblioref">Xie, Hill, and Thomas 2017</a>)</span> を見てください.</p></li>
 </ul>
-<p>うんざりさせられる作業ディレクトリ問題は相対パスに対処している時に発生した次のような疑問に端を発します. 「<strong>何に対して相対的なの?</strong>」と. 既に言及したように, いろいろな人がいろいろな好みを持っており, 完全に正しい回答はありません.</p>
+<p>作業ディレクトリのうんざりする問題は, ほとんどの場合, 相対パスに対処している時に抱く 「 <strong>何に対して相対的なの?</strong> 」という疑問に端を発します. 既に言及したように, いろいろな人がいろいろな好みを持っており, 完全に正しい回答はありません.</p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-relative"></span>
 <img src="JP/images/rmd-relative.png" alt="RStudio 上で Rmd 文書のファイルパスを自動補完する"  />
 <p class="caption">
 図 16.3: RStudio 上で Rmd 文書のファイルパスを自動補完する
 </p>
+</div>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-ezknitr" class="csl-entry">
+Attali, Dean. 2016. <em>Ezknitr: Avoid the Typical Working Directory Pain When Using Knitr</em>. <a href="https://github.com/ropenscilabs/ezknitr">https://github.com/ropenscilabs/ezknitr</a>.
+</div>
+<div id="ref-R-here" class="csl-entry">
+Müller, Kirill. 2020. <em>Here: A Simpler Way to Find Your Files</em>. <a href="https://CRAN.R-project.org/package=here">https://CRAN.R-project.org/package=here</a>.
+</div>
+<div id="ref-blogdown2017" class="csl-entry">
+Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/blogdown">https://github.com/rstudio/blogdown</a>.
 </div>
 </div>
             </section>
@@ -540,6 +576,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

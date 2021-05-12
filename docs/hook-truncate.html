@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.4 テキスト出力を中断する | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.4 テキスト出力を中断する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="12.4 テキスト出力を中断する | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,33 +495,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="hook-truncate" class="section level2" number="12.4">
 <h2><span class="header-section-number">12.4</span> テキスト出力を中断する</h2>
-<p>コードチャンクから出力されたテキストが長い時, 最初の数行だけを表示させたくなるかもしれません. 例えば数千行のデータフレームを表示する時, データ全体を表示するのは不便で, 最初の数行だけで十分かもしれません. 以下では <code>output</code> フックを再定義してカスタムチャンクオプション <code>out.lines</code> によって最大行数を制御できるようにしています.</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb360-1"><a href="hook-truncate.html#cb360-1"></a><span class="co"># 組み込みの出力フックを保存</span></span>
-<span id="cb360-2"><a href="hook-truncate.html#cb360-2"></a>hook_output <span class="ot">&lt;-</span> knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;output&quot;</span>)</span>
-<span id="cb360-3"><a href="hook-truncate.html#cb360-3"></a></span>
-<span id="cb360-4"><a href="hook-truncate.html#cb360-4"></a><span class="co"># テキスト出力を打ち切る出力フックを新規に作成</span></span>
-<span id="cb360-5"><a href="hook-truncate.html#cb360-5"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">output =</span> <span class="cf">function</span>(x, options) {</span>
-<span id="cb360-6"><a href="hook-truncate.html#cb360-6"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(n <span class="ot">&lt;-</span> options<span class="sc">$</span>out.lines)) {</span>
-<span id="cb360-7"><a href="hook-truncate.html#cb360-7"></a>    x <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">split_lines</span>(x)</span>
-<span id="cb360-8"><a href="hook-truncate.html#cb360-8"></a>    <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">&gt;</span> n) {</span>
-<span id="cb360-9"><a href="hook-truncate.html#cb360-9"></a>      <span class="co"># 出力を切断</span></span>
-<span id="cb360-10"><a href="hook-truncate.html#cb360-10"></a>      x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">head</span>(x, n), <span class="st">&quot;....</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb360-11"><a href="hook-truncate.html#cb360-11"></a>    }</span>
-<span id="cb360-12"><a href="hook-truncate.html#cb360-12"></a>    x <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb360-13"><a href="hook-truncate.html#cb360-13"></a>  }</span>
-<span id="cb360-14"><a href="hook-truncate.html#cb360-14"></a>  <span class="fu">hook_output</span>(x, options)</span>
-<span id="cb360-15"><a href="hook-truncate.html#cb360-15"></a>})</span></code></pre></div>
-<p>上記のフック関数の基本的なアイディアはテキスト出力の行数が, チャンクオプション <code>out.lines</code>で指定したしきい値 (関数本体では変数 <code>n</code> として保存されています) を上回ったら最初の <code>n</code> 行だけを保持し, 出力が打ち切られたことを表す省略記号 (<code>....</code>) を末尾に加えます.</p>
+<p>コードチャンクから出力されたテキストが長い時, 冒頭の数行だけを表示させたくなります. 例えば数千行のデータフレームを表示する時, データ全体を表示するのは不便で, 最初の数行だけで十分でしょう. 以下では <code>output</code> フックを再定義してカスタムチャンクオプション <code>out.lines</code> によって最大行数を制御できるようにしています.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb359-1"><a href="hook-truncate.html#cb359-1"></a><span class="co"># 組み込みの出力フックを保存</span></span>
+<span id="cb359-2"><a href="hook-truncate.html#cb359-2"></a>hook_output <span class="ot">&lt;-</span> knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">get</span>(<span class="st">&quot;output&quot;</span>)</span>
+<span id="cb359-3"><a href="hook-truncate.html#cb359-3"></a></span>
+<span id="cb359-4"><a href="hook-truncate.html#cb359-4"></a><span class="co"># テキスト出力を打ち切る出力フックを新規に作成</span></span>
+<span id="cb359-5"><a href="hook-truncate.html#cb359-5"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">output =</span> <span class="cf">function</span>(x, options) {</span>
+<span id="cb359-6"><a href="hook-truncate.html#cb359-6"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(n <span class="ot">&lt;-</span> options<span class="sc">$</span>out.lines)) {</span>
+<span id="cb359-7"><a href="hook-truncate.html#cb359-7"></a>    x <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">split_lines</span>(x)</span>
+<span id="cb359-8"><a href="hook-truncate.html#cb359-8"></a>    <span class="cf">if</span> (<span class="fu">length</span>(x) <span class="sc">&gt;</span> n) {</span>
+<span id="cb359-9"><a href="hook-truncate.html#cb359-9"></a>      <span class="co"># 出力を切断</span></span>
+<span id="cb359-10"><a href="hook-truncate.html#cb359-10"></a>      x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">head</span>(x, n), <span class="st">&quot;....</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb359-11"><a href="hook-truncate.html#cb359-11"></a>    }</span>
+<span id="cb359-12"><a href="hook-truncate.html#cb359-12"></a>    x <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
+<span id="cb359-13"><a href="hook-truncate.html#cb359-13"></a>  }</span>
+<span id="cb359-14"><a href="hook-truncate.html#cb359-14"></a>  <span class="fu">hook_output</span>(x, options)</span>
+<span id="cb359-15"><a href="hook-truncate.html#cb359-15"></a>})</span></code></pre></div>
+<p>上記のフック関数の基本的なアイディアはテキスト出力の行数が, チャンクオプション <code>out.lines</code>で指定したしきい値 (関数本体では変数 <code>n</code> として保存されています) を上回ったら, 最初の <code>n</code> 行だけを残し, 省略記号 (<code>....</code>) を末尾に加え出力が打ち切られたことを表します.</p>
 <p>以下のチャンクでチャンクオプション <code>out.lines = 4</code> を設定し, この新たな <code>output</code> フックをテストできます.</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb361-1"><a href="hook-truncate.html#cb361-1"></a><span class="fu">print</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb360-1"><a href="hook-truncate.html#cb360-1"></a><span class="fu">print</span>(cars)</span></code></pre></div>
 <pre><code>##    speed dist
 ## 1      4    2
 ## 2      4   10
 ## 3      7    4
 ....</code></pre>
-<p>そして期待通りに4行の出力が現れました. 本来の <code>output</code> フックを <code>hook_output</code> 保存しているので, 再度 <code>set()</code> メソッドを呼び出して復旧することができます.</p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb363-1"><a href="hook-truncate.html#cb363-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">output =</span> hook_output)</span></code></pre></div>
-<p>読者への練習問題として, 異なる方法で出力を打ち切ることに挑戦するとよいかもしれません. 最大行を決定するチャンクオプション <code>out.lines</code> を所与として, あなたは末尾ではなく中間を打ち切ることができますか? 例えば <code>out.lines = 10</code> なら, このように最初と最後の5行を残し, 中間に <code>....</code> を追加します.</p>
+<p>期待通りに4行の出力が現れました. 元の <code>output</code> フックを <code>hook_output</code> に保存しているので, 再度 <code>set()</code> メソッドを呼び出して復元することができます.</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb362-1"><a href="hook-truncate.html#cb362-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">output =</span> hook_output)</span></code></pre></div>
+<p>読者への練習問題として, 異なる方法で出力を打ち切ることに挑戦してみてください. 最大行を決定するチャンクオプション <code>out.lines</code> を所与として, 末尾の行ではなく中間の行を打ち切ることができますか? 例えば <code>out.lines = 10</code> なら, このように最初と最後の5行を残し, 中間に <code>....</code> を追加します.</p>
 <pre class="text"><code>##    speed dist
 ## 1      4    2
 ## 2      4   10
@@ -538,6 +564,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>14.9 より透明性のあるキャッシュの仕組み | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="14.9 より透明性のあるキャッシュの仕組み | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="14.9 より透明性のあるキャッシュの仕組み | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,128 +495,128 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="cache-rds" class="section level2" number="14.9">
 <h2><span class="header-section-number">14.9</span> より透明性のあるキャッシュの仕組み</h2>
-<p><a href="cache.html#cache">11.4</a>節で紹介した <strong>knitr</strong> のキャッシュの仕組みが複雑すぎると思ったら (実際そうです!), <code>xfun::cache_rds()</code> 関数に基づいた, より簡単なキャッシュの仕組みを検討するとよいかもしれません. これが例です.</p>
-<div class="sourceCode" id="cb410"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb410-1"><a href="cache-rds.html#cb410-1"></a>xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb410-2"><a href="cache-rds.html#cb410-2"></a>  <span class="co"># ここに時間のかかるコードを書く</span></span>
-<span id="cb410-3"><a href="cache-rds.html#cb410-3"></a>})</span></code></pre></div>
-<p><strong>knitr</strong> のキャッシュの難解なのは, キャッシュの無効化のタイミングがどう決定されるかという点です. <code>xfun::cache_rds()</code> にとっては, これはずっと明確です. この関数を最初に R コードに与えたとき, コードが評価され, 結果が <code>.rds</code> ファイルに保存されます. 次に <code>cache_rds()</code> を再実行すると, <code>.rds</code> ファイルを読み込み, コードを再び評価することなく直ちに結果を返します. キャッシュを無効化する最も明確な方法は, <code>.rds</code> ファイルを削除することです. 手動で削除したくないなら, <code>xfun::cache_rds()</code> に <code>return = TRUE</code> 引数を付けて呼び出すこともできます.</p>
+<p><a href="cache.html#cache">11.4</a>節で紹介した <strong>knitr</strong> のキャッシュの仕組みが複雑すぎると思ったら (実際そうです!), <code>xfun::cache_rds()</code> 関数に基づいた, より簡単なキャッシュの仕組みを検討してください. これが例です.</p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb409-1"><a href="cache-rds.html#cb409-1"></a>xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb409-2"><a href="cache-rds.html#cb409-2"></a>  <span class="co"># ここに時間のかかるコードを書く</span></span>
+<span id="cb409-3"><a href="cache-rds.html#cb409-3"></a>})</span></code></pre></div>
+<p><strong>knitr</strong> のキャッシュは, キャッシュの無効化のタイミングがどう決定されるかという点が難解なのです. <code>xfun::cache_rds()</code> においては, これはずっと明確です. 最初に R コードをこの関数に与えたときは, コードが評価され結果が <code>.rds</code> ファイルに保存されます. 次に <code>cache_rds()</code> を再実行すると, <code>.rds</code> ファイルを読み込み, コードを再び評価することなく直ちに結果を返します. キャッシュを無効化する最も明確な方法は, <code>.rds</code> ファイルを削除することです. 手動で削除したくないなら, <code>xfun::cache_rds()</code> に <code>rerun = TRUE</code> 引数を付けて呼び出します.</p>
 <p><strong>knitr</strong> のソース文書上のコードチャンクで <code>xfun::cache_rds()</code> が呼び出された時, <code>.rds</code> ファイルのパスはチャンクオプション <code>cache.path</code> とチャンクラベルによって決定します. 例えば <code>input.Rmd</code> という Rmd 文書に <code>foo</code> というチャンクラベルのあるコードチャンクがあるとします.</p>
-<div class="sourceCode" id="cb411"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb411-1"><a href="cache-rds.html#cb411-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, foo}</span></span>
-<span id="cb411-2"><a href="cache-rds.html#cb411-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- xfun::cache_rds({</span></span>
-<span id="cb411-3"><a href="cache-rds.html#cb411-3" aria-hidden="true" tabindex="-1"></a><span class="in">  Sys.sleep(3)</span></span>
-<span id="cb411-4"><a href="cache-rds.html#cb411-4" aria-hidden="true" tabindex="-1"></a><span class="in">  1:10</span></span>
-<span id="cb411-5"><a href="cache-rds.html#cb411-5" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb411-6"><a href="cache-rds.html#cb411-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb410-1"><a href="cache-rds.html#cb410-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, foo}</span></span>
+<span id="cb410-2"><a href="cache-rds.html#cb410-2" aria-hidden="true" tabindex="-1"></a><span class="in">res &lt;- xfun::cache_rds({</span></span>
+<span id="cb410-3"><a href="cache-rds.html#cb410-3" aria-hidden="true" tabindex="-1"></a><span class="in">  Sys.sleep(3)</span></span>
+<span id="cb410-4"><a href="cache-rds.html#cb410-4" aria-hidden="true" tabindex="-1"></a><span class="in">  1:10</span></span>
+<span id="cb410-5"><a href="cache-rds.html#cb410-5" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb410-6"><a href="cache-rds.html#cb410-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>.rds</code> ファイルのパスは <code>input_cache/FORMAT/foo_HASH.rds</code> という形式になります. ここで <code>FORMAT</code> は Pandoc の出力フォーマット名 (例えば <code>html</code> あるいは <code>latex</code>) であり, <code>HASH</code> は a-z および 0-9 からなる32桁の16進 MD5 ハッシュ値です. 例えば <code>input_cache/html/foo_7a3f22c4309d400eff95de0e8bddac71.rds</code> のようになります.</p>
 <p><code>?xfun::cache_rds</code> のヘルプで言及されているように, キャッシュを無効化したいであろう2つのよくあるケースがあります. (1) 評価式が変更された時, (2) 評価式の外部の変数が使用され, その変数の値が変更された時です. 次に, この2つのキャッシュ無効化の方法がどう動作するのかと, 異なるコードのバージョンに対応する複数のキャッシュのコピーをどう保持するかを説明します.</p>
 <div id="コードの変更によってキャッシュを無効化する" class="section level3" number="14.9.1">
 <h3><span class="header-section-number">14.9.1</span> コードの変更によってキャッシュを無効化する</h3>
-<p>例えば <code>cache_rds({x + 1})</code> から <code>cache_rds({x + 2})</code> へと, <code>cache_rds()</code> 内のコードを変更したとき, キャッシュは自動で無効化され, コードは再評価されます. しかし, 空白やコメントの変更は問われないことに注意してください. あるいは一般論として, パースされた表現に影響のない範囲の変更ではキャッシュは無効化されません. 例えば以下の2つの <code>cache_rds()</code> でパースされたコードは本質的に同等です.</p>
-<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="cache-rds.html#cb412-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb412-2"><a href="cache-rds.html#cb412-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">3</span>  );</span>
-<span id="cb412-3"><a href="cache-rds.html#cb412-3" aria-hidden="true" tabindex="-1"></a>  x<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>;  <span class="co"># セミコロンは問題ではない</span></span>
-<span id="cb412-4"><a href="cache-rds.html#cb412-4" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span><span class="dv">1</span>;</span>
-<span id="cb412-5"><a href="cache-rds.html#cb412-5" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb412-6"><a href="cache-rds.html#cb412-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb412-7"><a href="cache-rds.html#cb412-7" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb412-8"><a href="cache-rds.html#cb412-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">3</span>)</span>
-<span id="cb412-9"><a href="cache-rds.html#cb412-9" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># これはコメント</span></span>
-<span id="cb412-10"><a href="cache-rds.html#cb412-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span></span>
-<span id="cb412-11"><a href="cache-rds.html#cb412-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>  <span class="co"># 空白の変更は完全に自由</span></span>
-<span id="cb412-12"><a href="cache-rds.html#cb412-12" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
-<p>つまり, 最初のコードを <code>cache_rds()</code> で実行したなら, 2度目のコードはキャッシュの利点を得ることが可能です. この性質はキャッシュを無効化することなくコードの見た目を整える変更が可能になるため, 便利です.</p>
-<p>2つのバージョンのコードが同等であるか自信がないなら, 以下のように <code>parse_code()</code> を試すこともできます.</p>
-<div class="sourceCode" id="cb413"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb413-1"><a href="cache-rds.html#cb413-1"></a>parse_code <span class="ot">&lt;-</span> <span class="cf">function</span>(expr) {</span>
-<span id="cb413-2"><a href="cache-rds.html#cb413-2"></a>  <span class="fu">deparse</span>(<span class="fu">substitute</span>(expr))</span>
-<span id="cb413-3"><a href="cache-rds.html#cb413-3"></a>}</span>
-<span id="cb413-4"><a href="cache-rds.html#cb413-4"></a><span class="co"># 空白とセミコロンは関係ない</span></span>
-<span id="cb413-5"><a href="cache-rds.html#cb413-5"></a><span class="fu">parse_code</span>({x<span class="sc">+</span><span class="dv">1</span>})</span></code></pre></div>
+<p>例えば <code>cache_rds({x + 1})</code> から <code>cache_rds({x + 2})</code> へと, <code>cache_rds()</code> 内のコードを変更したとき, キャッシュは自動で無効化され, コードは再評価されます. しかし, 空白やコメントの変更は問われないことに注意してください. あるいは一般論として, パースされた表現に影響のない範囲の変更ではキャッシュは無効化されません. 例えば <code>cache_rds()</code> にパースされた以下2つのコードは本質的に同等です.</p>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb411-1"><a href="cache-rds.html#cb411-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb411-2"><a href="cache-rds.html#cb411-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">3</span>  );</span>
+<span id="cb411-3"><a href="cache-rds.html#cb411-3" aria-hidden="true" tabindex="-1"></a>  x<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>;  <span class="co"># セミコロンは問題ではない</span></span>
+<span id="cb411-4"><a href="cache-rds.html#cb411-4" aria-hidden="true" tabindex="-1"></a>  x<span class="sc">+</span><span class="dv">1</span>;</span>
+<span id="cb411-5"><a href="cache-rds.html#cb411-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb411-6"><a href="cache-rds.html#cb411-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb411-7"><a href="cache-rds.html#cb411-7" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb411-8"><a href="cache-rds.html#cb411-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">Sys.sleep</span>(<span class="dv">3</span>)</span>
+<span id="cb411-9"><a href="cache-rds.html#cb411-9" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co"># これはコメント</span></span>
+<span id="cb411-10"><a href="cache-rds.html#cb411-10" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span></span>
+<span id="cb411-11"><a href="cache-rds.html#cb411-11" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>  <span class="co"># 空白の変更は完全に自由</span></span>
+<span id="cb411-12"><a href="cache-rds.html#cb411-12" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>つまり, 最初のコードを <code>cache_rds()</code> で実行したなら, 2度目のコードはキャッシュの利便性を得られます. この仕様のおかげでキャッシュを無効化することなくコードの見た目を整える変更ができます.</p>
+<p>2つのバージョンのコードが同等であるか自信がないなら, 以下の <code>parse_code()</code> を試してください.</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb412-1"><a href="cache-rds.html#cb412-1"></a>parse_code <span class="ot">&lt;-</span> <span class="cf">function</span>(expr) {</span>
+<span id="cb412-2"><a href="cache-rds.html#cb412-2"></a>  <span class="fu">deparse</span>(<span class="fu">substitute</span>(expr))</span>
+<span id="cb412-3"><a href="cache-rds.html#cb412-3"></a>}</span>
+<span id="cb412-4"><a href="cache-rds.html#cb412-4"></a><span class="co"># 空白とセミコロンは影響しない</span></span>
+<span id="cb412-5"><a href="cache-rds.html#cb412-5"></a><span class="fu">parse_code</span>({x<span class="sc">+</span><span class="dv">1</span>})</span></code></pre></div>
 <pre><code>## [1] &quot;{&quot;         &quot;    x + 1&quot; &quot;}&quot;</code></pre>
-<div class="sourceCode" id="cb415"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb415-1"><a href="cache-rds.html#cb415-1"></a><span class="fu">parse_code</span>({ x   <span class="sc">+</span>    <span class="dv">1</span>; })</span></code></pre></div>
+<div class="sourceCode" id="cb414"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb414-1"><a href="cache-rds.html#cb414-1"></a><span class="fu">parse_code</span>({ x   <span class="sc">+</span>    <span class="dv">1</span>; })</span></code></pre></div>
 <pre><code>## [1] &quot;{&quot;         &quot;    x + 1&quot; &quot;}&quot;</code></pre>
-<div class="sourceCode" id="cb417"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb417-1"><a href="cache-rds.html#cb417-1"></a><span class="co"># 左アロー演算子と右アロー演算子は同じ</span></span>
-<span id="cb417-2"><a href="cache-rds.html#cb417-2"></a><span class="fu">identical</span>(<span class="fu">parse_code</span>({x <span class="ot">&lt;-</span> <span class="dv">1</span>}), <span class="fu">parse_code</span>({<span class="dv">1</span> <span class="ot">-&gt;</span> x}))</span></code></pre></div>
+<div class="sourceCode" id="cb416"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb416-1"><a href="cache-rds.html#cb416-1"></a><span class="co"># 左アロー演算子と右アロー演算子は同等</span></span>
+<span id="cb416-2"><a href="cache-rds.html#cb416-2"></a><span class="fu">identical</span>(<span class="fu">parse_code</span>({x <span class="ot">&lt;-</span> <span class="dv">1</span>}), <span class="fu">parse_code</span>({<span class="dv">1</span> <span class="ot">-&gt;</span> x}))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="グローバル変数の変更によってキャッシュを無効化する" class="section level3" number="14.9.2">
 <h3><span class="header-section-number">14.9.2</span> グローバル変数の変更によってキャッシュを無効化する</h3>
-<p>変数にはグローバルとローカル変数の2種類があります. グローバル変数は評価式の外部で作られ, ローカル変数は評価式の内部で作られます. 評価式内のグローバル変数の値が変われば, キャッシュされた結果は, もはや再度実行して得られる結果を反映しません. 例えば以下の評価式で, <code>y</code> が変化したなら, あなたが一番やりたいのはきっと, キャッシュを無効化して評価をやり直すことでしょう. さもなければ古い <code>y</code> の値を維持したままになってしまいます.</p>
-<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="cache-rds.html#cb419-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="cb419-2"><a href="cache-rds.html#cb419-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb419-3"><a href="cache-rds.html#cb419-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb419-4"><a href="cache-rds.html#cb419-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb419-5"><a href="cache-rds.html#cb419-5" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb419-6"><a href="cache-rds.html#cb419-6" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
+<p>変数にはグローバルとローカル変数の2種類があります. グローバル変数は評価式の外部で作られ, ローカル変数は評価式の内部で作られます. キャッシュされた結果は, 評価式内のグローバル変数の値が変われば, もはや再度実行して得られるはずの結果を反映していません. 例えば以下の評価式で, <code>y</code> が変化したなら, あなたが一番やりたいのはきっと, キャッシュを無効化して評価をやり直すことでしょう. さもなければ古い <code>y</code> の値を維持したままになってしまいます.</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="cache-rds.html#cb418-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb418-2"><a href="cache-rds.html#cb418-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb418-3"><a href="cache-rds.html#cb418-3" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb418-4"><a href="cache-rds.html#cb418-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb418-5"><a href="cache-rds.html#cb418-5" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb418-6"><a href="cache-rds.html#cb418-6" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div>
 <p><code>y</code> が変化した時にキャッシュを無効化するには, キャッシュを無効化すべきかを決定する際に <code>y</code> も考慮する必要があることを, <code>hash</code> 引数を通して <code>cache_rds()</code> に教えてあげることもできます.</p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb419-1"><a href="cache-rds.html#cb419-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb419-2"><a href="cache-rds.html#cb419-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb419-3"><a href="cache-rds.html#cb419-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
+<span id="cb419-4"><a href="cache-rds.html#cb419-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y))</span></code></pre></div>
+<p><code>hash</code> 引数の値が変化した時, 前述のキャッシュファイル名に含まれる32桁のハッシュ値も対応して変化するため, キャッシュは無効化されます. これで他の R オブジェクトとキャッシュの依存関係を指定する手段を得ました. 例えば R のバージョンに依存してキャッシュを取りたいなら, このようにして依存関係を指定することもできます.</p>
 <div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="cache-rds.html#cb420-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
 <span id="cb420-2"><a href="cache-rds.html#cb420-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb420-3"><a href="cache-rds.html#cb420-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb420-4"><a href="cache-rds.html#cb420-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y))</span></code></pre></div>
-<p><code>hash</code> 引数の値が変化した時, 前述のキャッシュファイル名に含まれる32桁のハッシュ値も対応して変化するため, キャッシュは無効化されます. これで他の R オブジェクトとキャッシュの依存関係を指定する手段を得ました. 例えば R のバージョンに依存してキャッシュを取りたいなら, このようにして依存関係を指定することもできます.</p>
-<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="cache-rds.html#cb421-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb421-2"><a href="cache-rds.html#cb421-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb421-3"><a href="cache-rds.html#cb421-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y</span>
-<span id="cb421-4"><a href="cache-rds.html#cb421-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y, <span class="fu">getRversion</span>()))</span></code></pre></div>
+<span id="cb420-4"><a href="cache-rds.html#cb420-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y, <span class="fu">getRversion</span>()))</span></code></pre></div>
 <p>あるいはデータファイルが最後に修正されたタイミングに依存させたいなら, こうします.</p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb421-1"><a href="cache-rds.html#cb421-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb421-2"><a href="cache-rds.html#cb421-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>)</span>
+<span id="cb421-3"><a href="cache-rds.html#cb421-3" aria-hidden="true" tabindex="-1"></a>  x[[<span class="dv">1</span>]] <span class="sc">+</span> y</span>
+<span id="cb421-4"><a href="cache-rds.html#cb421-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y, <span class="fu">file.mtime</span>(<span class="st">&quot;data.csv&quot;</span>)))</span></code></pre></div>
+<p><code>hash</code> 引数にこのグローバル変数のリストを与えたくなければ, 代わりに <code>hash = "auto"</code> を試しましょう. これは <code>cache_rds()</code> に全てのグローバル変数を自動的に把握するよう指示し, 変数の値のリストを <code>hash</code> 引数の値として使わせます.</p>
 <div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="cache-rds.html#cb422-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb422-2"><a href="cache-rds.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data.csv&quot;</span>)</span>
-<span id="cb422-3"><a href="cache-rds.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  x[[<span class="dv">1</span>]] <span class="sc">+</span> y</span>
-<span id="cb422-4"><a href="cache-rds.html#cb422-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(y, <span class="fu">file.mtime</span>(<span class="st">&quot;data.csv&quot;</span>)))</span></code></pre></div>
-<p><code>hash</code> 引数にこのグローバル変数のリストを与えたくないなら, 代わりに <code>hash = "auto"</code> を試すこともできます. これは全てのグローバル変数を自動的に把握し, それらの値のリストを <code>hash</code> 引数の値に使用することを試みるよう <code>cache_rds()</code> に指示するものです.</p>
+<span id="cb422-2"><a href="cache-rds.html#cb422-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb422-3"><a href="cache-rds.html#cb422-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y <span class="sc">+</span> z  <span class="co"># y と z はグローバル変数</span></span>
+<span id="cb422-4"><a href="cache-rds.html#cb422-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="st">&quot;auto&quot;</span>)</span></code></pre></div>
+<p>これは以下と同等です.</p>
 <div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="cache-rds.html#cb423-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
 <span id="cb423-2"><a href="cache-rds.html#cb423-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb423-3"><a href="cache-rds.html#cb423-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y <span class="sc">+</span> z  <span class="co"># y と z はグローバル変数</span></span>
-<span id="cb423-4"><a href="cache-rds.html#cb423-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="st">&quot;auto&quot;</span>)</span></code></pre></div>
-<p>これは以下と同等です.</p>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="cache-rds.html#cb424-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb424-2"><a href="cache-rds.html#cb424-2" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb424-3"><a href="cache-rds.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  x <span class="sc">+</span> y <span class="sc">+</span> z  <span class="co"># y と z はグローバル変数</span></span>
-<span id="cb424-4"><a href="cache-rds.html#cb424-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(<span class="at">y =</span> y, <span class="at">z =</span> z))</span></code></pre></div>
-<p><code>hash = "auto"</code> とした時, グローバル変数は <code>codetools::findGlobals()</code> によって識別されます. これは完全に信頼できるものではないかもしれません. あなたのコードを一番良く知っているのはあなた自身ですので, どの変数がキャッシュを無効化できるかを万全にしたいならば, <code>hash</code> 引数には明示的に値のリストを指定することをお薦めします.</p>
+<span id="cb423-4"><a href="cache-rds.html#cb423-4" aria-hidden="true" tabindex="-1"></a>}, <span class="at">hash =</span> <span class="fu">list</span>(<span class="at">y =</span> y, <span class="at">z =</span> z))</span></code></pre></div>
+<p><code>hash = "auto"</code> とした時, グローバル変数は <code>codetools::findGlobals()</code> によって識別されます. これは完全に信頼できるものではありません. あなたのコードを一番良く知っているのはあなた自身ですので, <code>hash</code> 引数には明示的に値のリストを指定して, どの変数がキャッシュを無効化できるかを万全にすることをお薦めします.</p>
 </div>
 <div id="キャッシュの複数のコピーを保持する" class="section level3" number="14.9.3">
 <h3><span class="header-section-number">14.9.3</span> キャッシュの複数のコピーを保持する</h3>
-<p>キャッシュは典型的には時間のかかるコードに対して使用されるので, たぶんあなたは無効化することに対して躊躇するべきでしょう. キャッシュを無効化するのが早すぎたり, 積極的すぎたりしたことを後悔するかもしれません. もし古いバージョンのキャッシュが再び必要になったら, 再現のために長い計算時間を待たなければなりませんから.</p>
-<p><code>cache_rds()</code> の <code>clean</code> 引数を <code>FALSE</code> に設定すれば, キャッシュの古いコピーを保持することが可能になります. この挙動を R セッション全体を通してデフォルトにしたいなら, R のグローバルオプション <code>options(xfun.cache_rds.clean = FALSE)</code> で設定することもできます. デフォルトでは, <code>clean = TRUE</code> と <code>cache_rds()</code> は毎回, 古いキャッシュを削除しようと試みます. <code>clean = FALSE</code> の設定は, あなたがまだ試験的なコードを使用しているなら有用になりえます. 例えば, 2つのバージョンの線形モデルのキャッシュを取ることができます.</p>
-<div class="sourceCode" id="cb425"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb425-1"><a href="cache-rds.html#cb425-1"></a>model <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb425-2"><a href="cache-rds.html#cb425-2"></a>  <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb425-3"><a href="cache-rds.html#cb425-3"></a>}, <span class="at">clean =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb425-4"><a href="cache-rds.html#cb425-4"></a></span>
-<span id="cb425-5"><a href="cache-rds.html#cb425-5"></a>model <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb425-6"><a href="cache-rds.html#cb425-6"></a>  <span class="fu">lm</span>(dist <span class="sc">~</span> speed <span class="sc">+</span> <span class="fu">I</span>(speed<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cars)</span>
-<span id="cb425-7"><a href="cache-rds.html#cb425-7"></a>}, <span class="at">clean =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>キャッシュは典型的には時間のかかるコードに対して使用されるので, きっとあなたは無効化することに対して躊躇するでしょう. キャッシュを無効化するのが早すぎたり, 積極的すぎたりしたことを後悔するかもしれません. もし古いバージョンのキャッシュが再び必要になったら, 再現のために長い計算時間を待たなければなりませんから.</p>
+<p><code>cache_rds()</code> の <code>clean</code> 引数を <code>FALSE</code> に設定すれば, キャッシュの古いコピーを保持できます. R のグローバルオプション <code>options(xfun.cache_rds.clean = FALSE)</code> の設定で, この挙動を R セッション全体を通したデフォルトにもできます. デフォルトでは, <code>clean = TRUE</code> と <code>cache_rds()</code> は毎回, 古いキャッシュを削除しようと試みます. <code>clean = FALSE</code> の設定は, まだコードを試行錯誤しているうちは有用になりえます. 例えば, 2つのバージョンの線形モデルのキャッシュを取ることができます.</p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb424-1"><a href="cache-rds.html#cb424-1"></a>model <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb424-2"><a href="cache-rds.html#cb424-2"></a>  <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb424-3"><a href="cache-rds.html#cb424-3"></a>}, <span class="at">clean =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb424-4"><a href="cache-rds.html#cb424-4"></a></span>
+<span id="cb424-5"><a href="cache-rds.html#cb424-5"></a>model <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb424-6"><a href="cache-rds.html#cb424-6"></a>  <span class="fu">lm</span>(dist <span class="sc">~</span> speed <span class="sc">+</span> <span class="fu">I</span>(speed<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> cars)</span>
+<span id="cb424-7"><a href="cache-rds.html#cb424-7"></a>}, <span class="at">clean =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>どちらのモデルを使うかを決めたら, <code>clean = TRUE</code> を再度設定するか, この引数を消すことでデフォルトの <code>TRUE</code> に戻すことができます.</p>
 </div>
 <div id="knitr-のキャッシュ機能との比較" class="section level3" number="14.9.4">
 <h3><span class="header-section-number">14.9.4</span> <strong>knitr</strong> のキャッシュ機能との比較</h3>
-<p><strong>knitr</strong> キャッシュ, つまりチャンクオプション <code>cache = TRUE</code> をいつ使うべきか, そして <code>xfun::cache_rds()</code> をいつ使うべきか迷うかもしれません. <code>xfun::cache_rds()</code> の大きな利点は副作用のキャッシュを取らず, 評価式の値のみであることです. その一方で <strong>knitr</strong> は副作用についてもキャッシュを取ります. 出力やグラフを表示するといった副作用のいくつかは有用かもしれません. 例えば以下のコードでは, <code>cache_rds()</code> が次回にキャッシュを読み込んだ時, テキスト出力とグラフが失われてしまい, <code>1:10</code> という値だけが戻ってきます.</p>
-<div class="sourceCode" id="cb426"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb426-1"><a href="cache-rds.html#cb426-1"></a>xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
-<span id="cb426-2"><a href="cache-rds.html#cb426-2"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)</span>
-<span id="cb426-3"><a href="cache-rds.html#cb426-3"></a>  <span class="fu">plot</span>(cars)</span>
-<span id="cb426-4"><a href="cache-rds.html#cb426-4"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb426-5"><a href="cache-rds.html#cb426-5"></a>})</span></code></pre></div>
+<p><strong>knitr</strong> キャッシュ, つまりチャンクオプション <code>cache = TRUE</code> と, <code>xfun::cache_rds()</code> をそれぞれいつ使えばよいのか迷っているかもしれません. <code>xfun::cache_rds()</code> の最大の欠点は, 評価式の値のみをキャッシュしそれ以外の結果をキャッシュしないことです. その一方で <strong>knitr</strong> は評価式以外の値についてもキャッシュを取ります. 出力やグラフを表示するといった評価式以外の結果には有用なものもあります. 例えば以下のコードでは, <code>cache_rds()</code> が次にキャッシュを読み込んだ時には, テキスト出力とグラフが失われてしまい, <code>1:10</code> という値だけが戻ってきます.</p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb425-1"><a href="cache-rds.html#cb425-1"></a>xfun<span class="sc">::</span><span class="fu">cache_rds</span>({</span>
+<span id="cb425-2"><a href="cache-rds.html#cb425-2"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)</span>
+<span id="cb425-3"><a href="cache-rds.html#cb425-3"></a>  <span class="fu">plot</span>(cars)</span>
+<span id="cb425-4"><a href="cache-rds.html#cb425-4"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb425-5"><a href="cache-rds.html#cb425-5"></a>})</span></code></pre></div>
 <p>これと比較してオプション <code>cache = TRUE</code> のあるコードチャンクでは, 全てがキャッシュされます.</p>
-<div class="sourceCode" id="cb427"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb427-1"><a href="cache-rds.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache=TRUE}</span></span>
-<span id="cb427-2"><a href="cache-rds.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;Hello world!&quot;)</span></span>
-<span id="cb427-3"><a href="cache-rds.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb427-4"><a href="cache-rds.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="in">1:10</span></span>
+<div class="sourceCode" id="cb426"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb426-1"><a href="cache-rds.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache=TRUE}</span></span>
+<span id="cb426-2"><a href="cache-rds.html#cb426-2" aria-hidden="true" tabindex="-1"></a><span class="in">print(&quot;Hello world!&quot;)</span></span>
+<span id="cb426-3"><a href="cache-rds.html#cb426-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb426-4"><a href="cache-rds.html#cb426-4" aria-hidden="true" tabindex="-1"></a><span class="in">1:10</span></span>
+<span id="cb426-5"><a href="cache-rds.html#cb426-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><strong>knitr</strong> のキャッシュ機能の大きな欠点であると同時にユーザーが最もよく不満の対象とするのは, キャッシュがとても多くの要因で決まるため, 知らないうちに無効化してしまうことがある点です. 例えば, チャンクオプションのいかなる変更もキャッシュを無効化する可能性がありますが,<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a> 演算に影響しないであろうチャンクオプションもあります. 以下のコードチャンクでチャンクオプション <code>fig.width = 6</code> を <code>fig.width = 10</code> へと変更してもキャッシュを無効化すべきではありませんが, 実際は無効化してしまいます.</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb427-1"><a href="cache-rds.html#cb427-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache=TRUE, fig.width=6}</span></span>
+<span id="cb427-2"><a href="cache-rds.html#cb427-2" aria-hidden="true" tabindex="-1"></a><span class="in"># there are no plots in this chunk</span></span>
+<span id="cb427-3"><a href="cache-rds.html#cb427-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(1000)</span></span>
+<span id="cb427-4"><a href="cache-rds.html#cb427-4" aria-hidden="true" tabindex="-1"></a><span class="in">mean(x)</span></span>
 <span id="cb427-5"><a href="cache-rds.html#cb427-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p><strong>knitr</strong> のキャッシュ機能の大きな利点であると同時にユーザーが最もよく不満の対象とする点は, キャッシュがとても多くの要因で決まるため, うっかり無効化してしまうかもしれないという点です. 例えば, チャンクオプションのいかなる変更もキャッシュを無効化する可能性がありますが,<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a> 計算に影響しないであろうチャンクオプションもあります. 以下のコードチャンクでは, チャンクオプション <code>fig.width = 6</code> を <code>fig.width = 10</code> へと変更することはキャッシュを無意味なものにしませんが, 無効化してしまいます.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb428-1"><a href="cache-rds.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache=TRUE, fig.width=6}</span></span>
-<span id="cb428-2"><a href="cache-rds.html#cb428-2" aria-hidden="true" tabindex="-1"></a><span class="in"># there are no plots in this chunk</span></span>
-<span id="cb428-3"><a href="cache-rds.html#cb428-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(1000)</span></span>
-<span id="cb428-4"><a href="cache-rds.html#cb428-4" aria-hidden="true" tabindex="-1"></a><span class="in">mean(x)</span></span>
-<span id="cb428-5"><a href="cache-rds.html#cb428-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>実際のところ <strong>knitr</strong> のキャッシュはかなり強力で柔軟であり, 多くの方法で挙動を調整できます. あなたはキャシュがどう動作するのかを学び理解するのに, 最終的に計算するタスクの所要時間よりもはるかに多くの時間を費やしてしまうかもしれません. ですので私はパッケージの作者として, これらのあまり知られていない機能は紹介するに値するのかと, しばしば疑問に思っています.</p>
-<p>まだはっきりわからない人は, <code>xfun::cache_rds()</code> は計算のキャッシュを取るために一般的な方法でなおかつどこでも動作し, 一方で <strong>knitr</strong> のキャッシュは <strong>knitr</strong> 文書でのみ動作すると覚えてください.</p>
+<p>実際に <strong>knitr</strong> のキャッシュはかなり強力で柔軟であり, 多くの方法で挙動を調整できます. あなたはキャシュがどう動作するのかを学び理解するのに, 最終的に計算するタスクの所要時間よりもはるかに多くの時間を費やしてしまうかもしれません. ですので私はパッケージの作者として, これらのあまり知られていない機能は紹介するに値するのかと, 疑問に思うことがよくあります.</p>
+<p>まだはっきりわからない人は, <code>xfun::cache_rds()</code> は演算をキャッシュする一般的な方法でありどこでも動作しますが, 一方の <strong>knitr</strong> のキャッシュは <strong>knitr</strong> 文書でのみ動作すると覚えてください.</p>
 
 </div>
 </div>
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="33">
-<li id="fn33"><p>これはデフォルトの挙動であり, 変更することができます. 全てのチャンクオプションがキャッシュに影響しないよう, より細かい粒度でキャッシュを取るようにできるようなるには, <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html</a> をご覧ください.<a href="cache-rds.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<ol start="40">
+<li id="fn40"><p>これはデフォルトの挙動であり, 変更することができます. より細かい粒度でキャッシュを生成し, 全てのチャンクオプションがキャッシュに影響しないようにするには, <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html</a> をご覧ください.<a href="cache-rds.html#fnref40" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -622,6 +648,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

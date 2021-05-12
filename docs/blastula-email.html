@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17.8 R Markdown から Eメールを送信する Send emails based on R Markdown | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17.8 R Markdown から Eメールを送信する Send emails based on R Markdown | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="17.8 R Markdown から Eメールを送信する Send emails based on R Markdown | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,32 +495,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="blastula-email" class="section level2" number="17.8">
 <h2><span class="header-section-number">17.8</span> R Markdown から Eメールを送信する Send emails based on R Markdown</h2>
-<p><strong>blastula</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-blastula" role="doc-biblioref">Iannone and Cheng 2020</a>)</span>があれば Rmd 文書を Eメールの本文にして送信することが可能になります. Rmd 文書を Eメールへレンダリングするには, 文書に出力フォーマット <code>blastula::blastula_email</code> を使用すること必要があります.</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb497-1"><a href="blastula-email.html#cb497-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb497-2"><a href="blastula-email.html#cb497-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 週次レポート</span></span>
-<span id="cb497-3"><a href="blastula-email.html#cb497-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> blastula::blastula_email</span></span>
-<span id="cb497-4"><a href="blastula-email.html#cb497-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span> </span>
-<span id="cb497-5"><a href="blastula-email.html#cb497-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-6"><a href="blastula-email.html#cb497-6" aria-hidden="true" tabindex="-1"></a>ボスへ</span>
-<span id="cb497-7"><a href="blastula-email.html#cb497-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-8"><a href="blastula-email.html#cb497-8" aria-hidden="true" tabindex="-1"></a>お疲れ様です.</span>
-<span id="cb497-9"><a href="blastula-email.html#cb497-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-10"><a href="blastula-email.html#cb497-10" aria-hidden="true" tabindex="-1"></a>以下が <span class="in">`iris`</span> データの分析になります.</span>
-<span id="cb497-11"><a href="blastula-email.html#cb497-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-12"><a href="blastula-email.html#cb497-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb497-13"><a href="blastula-email.html#cb497-13" aria-hidden="true" tabindex="-1"></a><span class="in">summary(iris)</span></span>
-<span id="cb497-14"><a href="blastula-email.html#cb497-14" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
-<span id="cb497-15"><a href="blastula-email.html#cb497-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb497-16"><a href="blastula-email.html#cb497-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-17"><a href="blastula-email.html#cb497-17" aria-hidden="true" tabindex="-1"></a>もううんざりだというのなら知らせていただきたく.</span>
-<span id="cb497-18"><a href="blastula-email.html#cb497-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb497-19"><a href="blastula-email.html#cb497-19" aria-hidden="true" tabindex="-1"></a>よろしくお願いします</span>
-<span id="cb497-20"><a href="blastula-email.html#cb497-20" aria-hidden="true" tabindex="-1"></a>ジョン</span></code></pre></div>
-<p>この Rmd 文書は <code>blastula::render_email()</code> 関数でレンダリングされるべきであり, 出力は <code>blastula::smtp_send()</code> に渡すことができます. これはEメールを送信する関数です. <code>smtp_send()</code> にはEメールサーバとあなたの認証が必要であることに注意してください.</p>
-<p>RStudio Connect を使用しているなら, <a href="https://solutions.rstudio.com/examples/blastula-overview/" class="uri">https://solutions.rstudio.com/examples/blastula-overview/</a> で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例を見ることができます.</p>
+<p><strong>blastula</strong> パッケージ <span class="citation">(<a href="#ref-R-blastula" role="doc-biblioref">Iannone and Cheng 2020</a>)</span>があれば Rmd 文書を Eメールの本文にして送信できます. Rmd 文書を Eメールへレンダリングするには, 文書に出力フォーマット <code>blastula::blastula_email</code> を使用する必要があります.</p>
+<div class="sourceCode" id="cb495"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb495-1"><a href="blastula-email.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb495-2"><a href="blastula-email.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 週次レポート</span></span>
+<span id="cb495-3"><a href="blastula-email.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> blastula::blastula_email</span></span>
+<span id="cb495-4"><a href="blastula-email.html#cb495-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span> </span>
+<span id="cb495-5"><a href="blastula-email.html#cb495-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-6"><a href="blastula-email.html#cb495-6" aria-hidden="true" tabindex="-1"></a>ボスへ</span>
+<span id="cb495-7"><a href="blastula-email.html#cb495-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-8"><a href="blastula-email.html#cb495-8" aria-hidden="true" tabindex="-1"></a>お疲れ様です.</span>
+<span id="cb495-9"><a href="blastula-email.html#cb495-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-10"><a href="blastula-email.html#cb495-10" aria-hidden="true" tabindex="-1"></a>以下が <span class="in">`iris`</span> データの分析になります.</span>
+<span id="cb495-11"><a href="blastula-email.html#cb495-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-12"><a href="blastula-email.html#cb495-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb495-13"><a href="blastula-email.html#cb495-13" aria-hidden="true" tabindex="-1"></a><span class="in">summary(iris)</span></span>
+<span id="cb495-14"><a href="blastula-email.html#cb495-14" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
+<span id="cb495-15"><a href="blastula-email.html#cb495-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb495-16"><a href="blastula-email.html#cb495-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-17"><a href="blastula-email.html#cb495-17" aria-hidden="true" tabindex="-1"></a>もううんざりだというのなら知らせていただきたく.</span>
+<span id="cb495-18"><a href="blastula-email.html#cb495-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb495-19"><a href="blastula-email.html#cb495-19" aria-hidden="true" tabindex="-1"></a>よろしくお願いします</span>
+<span id="cb495-20"><a href="blastula-email.html#cb495-20" aria-hidden="true" tabindex="-1"></a>ジョン</span></code></pre></div>
+<p>この Rmd 文書は <code>blastula::render_email()</code> 関数でレンダリングされ, 出力は <code>blastula::smtp_send()</code> に渡されます. これはEメールを送信する関数です. <code>smtp_send()</code> にはEメールサーバとあなたの認証が必要であることに注意してください.</p>
+<p>RStudio Connect を使用しているなら, <a href="https://solutions.rstudio.com/examples/blastula-overview/" class="uri">https://solutions.rstudio.com/examples/blastula-overview/</a> で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.</p>
 
 </div>
 <!-- </div> -->
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-blastula" class="csl-entry">
+Iannone, Richard, and Joe Cheng. 2020. <em>Blastula: Easily Send HTML Email Messages</em>. <a href="https://github.com/rich-iannone/blastula">https://github.com/rich-iannone/blastula</a>.
+</div>
+</div>
             </section>
 
           </div>
@@ -524,6 +556,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

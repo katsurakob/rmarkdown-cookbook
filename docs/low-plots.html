@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.16 低水準作図関数で1つづつグラフを作る (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.16 低水準作図関数で1つづつグラフを作る (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="11.16 低水準作図関数で1つづつグラフを作る (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,27 +495,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="low-plots" class="section level2" number="11.16">
 <h2><span class="header-section-number">11.16</span> 低水準作図関数で1つづつグラフを作る (*)</h2>
-<p>R グラフィックスには2種類の作図関数があります. 高水準作図関数は新たなグラフを作成し, 低水準作図関数は既存のグラフに要素を追加します. 詳細は R マニュアルの12章 <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html"><em>An Introduction to R</em></a> を確認することもできます.</p>
-<p>デフォルトでは <strong>knitr</strong> は低水準作図関数による中間グラフはそれより前のグラフを修正するのに使います. 全ての低水準作図による変更が反映された最後のグラフのみが表示されます.
-By default, <strong>knitr</strong> does not show the intermediate plots when a series of low-level plotting functions are used to modify a previous plot. Only the last plot on which all low-level plotting changes have been made is shown.</p>
-<p>特に教育目的では, 中間グラフを表示することが有用になりえます. 低水準作図による変更を保存するために, チャンクオプション <code>fig.keep = 'low'</code> を設定することができます. 例えば 図<a href="low-plots.html#fig:low-plots-1">11.3</a>, <a href="low-plots.html#fig:low-plots-2">11.4</a>は <code>fig.keep = 'low'</code> のオプションを設定した同一のコードチャンク由来ですが, 2つのコードチャンクから生成されたように見えます. さらに異なる図のキャプションを, チャンクオプション <code>fig.cap = c('...の散布図', '... に回帰直線を追加')</code> で割り当てています.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="low-plots.html#cb327-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb327-2"><a href="low-plots.html#cb327-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
+<p>R グラフィックスには2種類の作図関数があります. 高水準作図関数は新たなグラフを作成し, 低水準作図関数は既存のグラフに要素を追加します. 詳細は R マニュアルの12章 <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html"><em>An Introduction to R</em></a> をご覧ください.</p>
+<p><strong>knitr</strong> はデフォルトで, 低水準作図関数がより前のグラフを次々と修正していく段階ではその途中段階のグラフを表示しません. 全ての低水準作図による変更が反映された最後のグラフのみが表示されます.</p>
+<p>特に教育目的では, 中間グラフを表示することが有用になりえます. チャンクオプション <code>fig.keep = 'low'</code> を設定すれば, 低水準作図による変更を保存できます. 例えば 図<a href="low-plots.html#fig:low-plots-1">11.3</a>, <a href="low-plots.html#fig:low-plots-2">11.4</a>は <code>fig.keep = 'low'</code> のオプションを設定した単一のコードチャンクからできたものですが, 2つのコードチャンクから生成されたように見えます. また, チャンクオプション <code>fig.cap = c('...の散布図', '... に回帰直線を追加')</code>  で異なる図のキャプションを割り当てています.</p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb326-1"><a href="low-plots.html#cb326-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb326-2"><a href="low-plots.html#cb326-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-1"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-1.png" alt="cars データの散布図."  />
 <p class="caption">
 図 11.3: cars データの散布図.
 </p>
 </div>
-<div class="sourceCode" id="cb328"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb328-1"><a href="low-plots.html#cb328-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb328-2"><a href="low-plots.html#cb328-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="low-plots.html#cb327-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb327-2"><a href="low-plots.html#cb327-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-2.png" alt="既にある散布図に回帰曲線を追加"  />
 <p class="caption">
 図 11.4: 既にある散布図に回帰曲線を追加
 </p>
 </div>
-<p><strong>異なる</strong>コードチャンク間でグラフの変更を維持したいなら, <a href="global-device.html#global-device">14.5</a>節を参照してください.</p>
+<p><strong>異なる</strong>コードチャンク間でグラフの変更を維持したいなら, 第<a href="global-device.html#global-device">14.5</a>節を参照してください.</p>
 </div>
             </section>
 
@@ -520,6 +545,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

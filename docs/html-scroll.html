@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.4 コードブロックをスクロール可能にする (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.4 コードブロックをスクロール可能にする (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="7.4 コードブロックをスクロール可能にする (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,8 +495,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="html-scroll" class="section level2" number="7.4">
 <h2><span class="header-section-number">7.4</span> コードブロックをスクロール可能にする (*)</h2>
-<p>大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したいかもしれません. そうしないとページはとてつもなく長くなり, それらを細かく読む気のない読者に読み飛ばしづらくなるかもしれません. この問題の解決法は複数あります. <code>html_document</code> フォーマットの <code>code_folding</code> オプションを使うというのがその1つです. このオプションは出力文書のコードブロックを折りたたみ, また読者はボタンを押して展開することができます (詳細は<a href="fold-show.html#fold-show">7.5</a>節).</p>
-<p>他の可能性としてはコードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの <code>max-height</code> と <code>overflow-y</code> で実現できます. 以下はその使用例の全容で, 出力は図<a href="html-scroll.html#fig:html-scroll">7.3</a>になります.</p>
+<p>大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したほうがよいでしょう. そうしないとページはとてつもなく長くなり, コードやテキストの出力を細かく読む気のない人が読み飛ばしづらくなります. この問題の解決法は複数あります. 一つは, <code>html_document</code> フォーマットの <code>code_folding</code> オプションを使います. このオプションは文書のコードブロックを折りたたんで出力し, 読者はボタンを押して折りたたみを展開することができます (詳細は<a href="fold-show.html#fold-show">7.5</a>節).</p>
+<p>他の解決法としては, コードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの <code>max-height</code> と <code>overflow-y</code> で実現できます. 以下はその使用例の全容で, 出力は図<a href="html-scroll.html#fig:html-scroll">7.3</a>になります.</p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb147-1"><a href="html-scroll.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb147-2"><a href="html-scroll.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> スクロール可能なコードブロック</span></span>
 <span id="cb147-3"><a href="html-scroll.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
@@ -517,9 +543,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 図 7.3: カスタム CSS を使用したスクロール可能なコードブロック
 </p>
 </div>
-<p>上記の例では全てのコードブロックに大域的に 300px の高さ上限を定義しています. HTML 出力時にはコードブロックが <code>&lt;pre&gt;</code> タグで囲まれていることを思い出してください. それから <code>class</code> 属性に <code>&lt;pre&gt;</code> ブロックの高さを 100px に制限します. これは CSS セレクタ <code>pre[class]</code> が意味するところです. デフォルトではテキスト出力は <code>&lt;pre&gt; &lt;/pre&gt;</code> に含まれ, R コードブロックは <code>&lt;pre class="r"&gt; &lt;/pre&gt;</code> に含まれます (ここで <code>&lt;pre&gt;</code> タグが <code>class</code> 属性を持っていることに注意してください).</p>
-<p>第2の R コードチャンクからのテキスト出力の高さも 100px です. これが出力にたいして, カスタムクラス名 <code>scroll-100</code> を割り当て, 高さの上限を 100px に定義した理由です.</p>
-<p>個別のコードブロックに対して異なる最大高さを指定したいならば, <a href="hook-scroll.html#hook-scroll">12.3</a>節の例を見ることもできます.</p>
+<p>上記の例では全てのコードブロックに大域的に 300px の高さの上限を定義しています. HTML 出力時にはコードブロックが <code>&lt;pre&gt;</code> タグで囲まれていることを思い出してください. それから <code>class</code> 属性を用いて <code>&lt;pre&gt;</code> ブロックの高さを 100px に制限します. これは CSS セレクタ <code>pre[class]</code> が意味するところです. デフォルトではテキスト出力は <code>&lt;pre&gt; &lt;/pre&gt;</code> に含まれ, R コードブロックは <code>&lt;pre class="r"&gt; &lt;/pre&gt;</code> に含まれます ( <code>&lt;pre&gt;</code> タグが <code>class</code> 属性を持っていることに注意).</p>
+<p>２つ目の R コードチャンクからのテキスト出力の高さも 100px です. これは出力に対して, カスタムクラス名 <code>scroll-100</code> を割り当て, 高さの上限を 100px に定義したためです.</p>
+<p>個別のコードブロックに対して異なる最大の高さを指定したいならば, <a href="hook-scroll.html#hook-scroll">12.3</a>節の例を見てください.</p>
 </div>
             </section>
 
@@ -550,6 +576,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

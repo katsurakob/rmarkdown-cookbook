@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.6 カスタムブロック (*) | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.6 カスタムブロック (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.6 カスタムブロック (*) | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -470,7 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="custom-blocks" class="section level2" number="9.6">
 <h2><span class="header-section-number">9.6</span> カスタムブロック (*)</h2>
 <!-- https://stackoverflow.com/questions/36293511/creating-custom-blocks-in-rstudios-bookdown -->
-<p><strong>bookdown</strong> 本の <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">2.7節</a> では, どうすれば R Markdown でブロックの見た目をカスタマイズできるかを話しました. これはレポートや本の中で, 読者があなたの著作の中の要点を確実に取りせるようにコンテンツを目立たせるための, 便利な方法になりうるでしょう. これらのブロックをどう使うかの例として, 次のようなものがあります.</p>
+<p><strong>bookdown</strong> 本の <a href="https://bookdown.org/yihui/bookdown/custom-blocks.html">2.7節</a> では, どうすれば R Markdown でブロックの見た目をカスタマイズできるかを話しました. これはレポートや本の中でコンテンツを目立たせる便利な方法で, 読者があなたの著作の中の要点を確実に取りせるようにできます. これらのブロックの使い方の例として, 次のようなものがあります.</p>
 <ul>
 <li>あなたの分析コードを実行する前に, ユーザが最新のパッケージを使用しているか確認するための警告メッセージを表示する.</li>
 <li>ソースコードのある GitHub リポジトリへのリンクを文書の冒頭に追加する.</li>
@@ -479,7 +505,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>この節では PDF と HTML の両方でカスタムブロックを作成する方法を説明します. どちらのフォーマットでも R Markdown 上で同じ整形の構文を使用できますが, 要求される設定は異なります.</p>
 <div id="block-syntax" class="section level3" number="9.6.1">
 <h3><span class="header-section-number">9.6.1</span> 構文</h3>
-<p>カスタムブロックの構文は Pandoc の <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code> blocks</a> に基づいています. <code>Div</code> ブロックはとても強力ですが1つだけ問題があります. これはおもに HTML 出力に対して動作し, LaTeX 出力に対しては動作しないことです.</p>
+<p>カスタムブロックの構文は Pandoc の <a href="https://pandoc.org/MANUAL.html#divs-and-spans">fenced <code>Div</code> blocks</a> に基づいています. <code>Div</code> ブロックはとても強力ですが1つだけ問題があります. これはおもに HTML 出力に対して動作しますが, LaTeX 出力に対しては動作しないことです.</p>
 <p>バージョン 1.16 以降の <strong>rmarkdown</strong> パッケージは <code>Div</code> ブロックを HTML と LaTeX どちらに対しても変換するようになりました. HTML 出力に対してはブロックの全ての属性が <code>&lt;div&gt;</code> タグの属性になります. 例えば <code>Div</code> は ID (<code>#</code> の後のに続くもの), 1つまたは複数のクラス (クラス名は <code>.</code> の後に書かれるものです), そしてそれ以外の属性を持ちます. 以下の <code>Div</code> ブロック,</p>
 <div class="sourceCode" id="cb194"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb194-1"><a href="custom-blocks.html#cb194-1" aria-hidden="true" tabindex="-1"></a>::: {#hello .greeting .message width=&quot;40%&quot;}</span>
 <span id="cb194-2"><a href="custom-blocks.html#cb194-2" aria-hidden="true" tabindex="-1"></a>Hello **world**!</span>
@@ -488,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb195"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb195-1"><a href="custom-blocks.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;hello&quot;</span><span class="ot"> class=</span><span class="st">&quot;greeting message&quot;</span><span class="ot"> width=</span><span class="st">&quot;40%&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb195-2"><a href="custom-blocks.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  Hello <span class="kw">&lt;strong&gt;</span>world<span class="kw">&lt;/strong&gt;</span>!</span>
 <span id="cb195-3"><a href="custom-blocks.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
-<p>LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, <code>data-latex</code> と名付けた属性を <code>Div</code> ブロックに与えるべきです. これは環境に対する引数になります. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で <code>verbatim</code> 環境を使用します. これは引数を必要としません.</p>
+<p>LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, <code>Div</code> ブロックに <code>data-latex</code> と名付けた属性を与え, 環境の引数としましょう. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で <code>verbatim</code> 環境を使用します. これは引数を必要としません.</p>
 <div class="sourceCode" id="cb196"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb196-1"><a href="custom-blocks.html#cb196-1" aria-hidden="true" tabindex="-1"></a>::: {.verbatim data-latex=&quot;&quot;}</span>
 <span id="cb196-2"><a href="custom-blocks.html#cb196-2" aria-hidden="true" tabindex="-1"></a>ここに _verbatim_ テキストを表示.</span>
 <span id="cb196-3"><a href="custom-blocks.html#cb196-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
@@ -500,7 +526,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb198"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb198-1"><a href="custom-blocks.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;verbatim&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb198-2"><a href="custom-blocks.html#cb198-2" aria-hidden="true" tabindex="-1"></a>ここに <span class="kw">&lt;em&gt;</span>verbatim<span class="kw">&lt;/em&gt;</span> テキストを表示.</span>
 <span id="cb198-3"><a href="custom-blocks.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
-<p>2つ目の例は <code>center</code> と <code>minipage</code> 環境を使い, ページ幅の半分の大きさの中央揃えしたボックス内にテキストを表示しています.</p>
+<p>2つ目の例では <code>center</code> と <code>minipage</code> 環境を使い, ページ幅の半分の大きさに中央揃えしたボックス内にテキストを表示しています.</p>
 <div class="sourceCode" id="cb199"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb199-1"><a href="custom-blocks.html#cb199-1" aria-hidden="true" tabindex="-1"></a>:::: {.center data-latex=&quot;&quot;}</span>
 <span id="cb199-2"><a href="custom-blocks.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb199-3"><a href="custom-blocks.html#cb199-3" aria-hidden="true" tabindex="-1"></a>::: {.minipage data-latex=&quot;{.5\linewidth}&quot;}</span>
@@ -508,13 +534,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb199-5"><a href="custom-blocks.html#cb199-5" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb199-6"><a href="custom-blocks.html#cb199-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb199-7"><a href="custom-blocks.html#cb199-7" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
-<p><code>center</code> ブロックの中に <code>minipage</code> ブロックをネストしていることに注意してください. 親ブロックに子ブロックを入れるには, さらに1つ余分にコロンが必要です. 上記の例では <code>center</code> ブロックに4つのコロンを使用していますが, 5個以上書くことも可能です. 2つのブロックは以下の LaTeX コードに変換されます.</p>
+<p><code>center</code> ブロックの中に <code>minipage</code> ブロックをネストしていることに注意してください. 親ブロックに子ブロックを入れるには, さらにコロンが必要です. 上記の例では <code>center</code> ブロックに4つのコロンを使用していますが, 5個以上書くことも可能です. 2つのブロックは以下の LaTeX コードに変換されます.</p>
 <div class="sourceCode" id="cb200"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb200-1"><a href="custom-blocks.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">center</span>}</span>
 <span id="cb200-2"><a href="custom-blocks.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">minipage</span>}{.5<span class="fu">\linewidth</span>}</span>
 <span id="cb200-3"><a href="custom-blocks.html#cb200-3" aria-hidden="true" tabindex="-1"></a>この段落は中央揃えされ, 親要素の半分の幅で表示されます.</span>
 <span id="cb200-4"><a href="custom-blocks.html#cb200-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">minipage</span>}</span>
 <span id="cb200-5"><a href="custom-blocks.html#cb200-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">center</span>}</span></code></pre></div>
-<p>HTML 出力では, ユーザーの好みで CSS によって <code>&lt;div&gt;</code> ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば <code>\newenvironment</code> を, 既存の環境を再定義するならば <code>\renewenvironment</code> コマンドを LaTeX 上で使うこともできます. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は <code>style.css</code> や <code>preamble.tex</code> といったファイルを内に記述子, YAML オプションで読み込みます.</p>
+<p>HTML 出力では, ユーザーの好みで CSS によって <code>&lt;div&gt;</code> ブロックの外見を定義することもできます. LaTeX 出力の場合は, 環境が未定義ならば <code>\newenvironment</code> を, 既存の環境を再定義するならば <code>\renewenvironment</code> コマンドを LaTeX 上で使うこともできます. LaTeX 上での定義で PDF 上でのブロックの見た目を決定できます. これらのカスタマイズは通常は <code>style.css</code> や <code>preamble.tex</code> といったファイルを内に記述して, YAML オプションで読み込みます.</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb201-1"><a href="custom-blocks.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb201-2"><a href="custom-blocks.html#cb201-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb201-3"><a href="custom-blocks.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
@@ -523,13 +549,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb201-6"><a href="custom-blocks.html#cb201-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
 <span id="cb201-7"><a href="custom-blocks.html#cb201-7" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> preamble.tex</span></span>
 <span id="cb201-8"><a href="custom-blocks.html#cb201-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<p>次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. <a href="multi-column.html#multi-column">5.8</a>節にさらなる使用例として, 多段組みレイアウト内で複数ブロックを並べるものがあります.</p>
+<p>次に, CSS ルールや LaTeX 環境を使用したいくつか発展的なカスタムブロックの実例をお見せします. さらなる使用例としては, <a href="multi-column.html#multi-column">5.8</a>節に, 多段組みレイアウト内で複数ブロックを並べるものがあります.</p>
 </div>
 <div id="block-shaded" class="section level3" number="9.6.2">
 <h3><span class="header-section-number">9.6.2</span> 影付きブロックを追加する</h3>
 <p>まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.</p>
-<p>HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSSにあまり詳しくないなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば <a href="https://www.w3schools.com/css/" class="uri">https://www.w3schools.com/css/</a> とか.</p>
-<p>TODO: 日本語の代替サイト</p>
+<p>HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSSにあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば <a href="https://www.w3schools.com/css/" class="uri">https://www.w3schools.com/css/</a> とか<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>.</p>
 <div class="sourceCode" id="cb202"><pre class="sourceCode numberSource css css numberLines lineAnchors"><code class="sourceCode css"><span id="cb202-1"><a href="custom-blocks.html#cb202-1"></a><span class="fu">.blackbox</span> {</span>
 <span id="cb202-2"><a href="custom-blocks.html#cb202-2"></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
 <span id="cb202-3"><a href="custom-blocks.html#cb202-3"></a>  <span class="kw">background</span>: <span class="cn">black</span><span class="op">;</span></span>
@@ -540,7 +565,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb202-8"><a href="custom-blocks.html#cb202-8"></a><span class="fu">.center</span> {</span>
 <span id="cb202-9"><a href="custom-blocks.html#cb202-9"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
 <span id="cb202-10"><a href="custom-blocks.html#cb202-10"></a>}</span></code></pre></div>
-<p>LaTeX 出力に対しては, LaTeX パッケージの <strong>framed</strong> を基にして <code>blackbox</code> という名前で黒い背景色と白い文字色の新しい環境を作成します.</p>
+<p>LaTeX 出力に対しては, LaTeX パッケージの <strong>framed</strong> を基にして <code>blackbox</code> という名前で新しい環境を作成し, 黒い背景色と白い文字色にします.</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode numberSource latex latex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb203-1"><a href="custom-blocks.html#cb203-1"></a><span class="bu">\usepackage</span>{<span class="ex">color</span>}</span>
 <span id="cb203-2"><a href="custom-blocks.html#cb203-2"></a><span class="bu">\usepackage</span>{<span class="ex">framed</span>}</span>
 <span id="cb203-3"><a href="custom-blocks.html#cb203-3"></a><span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{.8em}</span>
@@ -550,7 +575,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb203-7"><a href="custom-blocks.html#cb203-7"></a>  <span class="fu">\color</span>{white}</span>
 <span id="cb203-8"><a href="custom-blocks.html#cb203-8"></a>  <span class="kw">\begin</span>{<span class="ex">shaded</span>}}</span>
 <span id="cb203-9"><a href="custom-blocks.html#cb203-9"></a> {<span class="kw">\end</span>{<span class="ex">shaded</span>}}</span></code></pre></div>
-<p>本書で <strong>framed</strong> パッケージを使うのはこれがかなり軽量だからですが, このパッケージは角の丸い枠を描画することができません. それを実現するには, 影付きボックスを作るためのとても柔軟な一連のオプションを持つ, より洗練された LaTeX パッケージである <strong>tcolorblox</strong> (<a href="https://ctan.org/pkg/tcolorbox" class="uri">https://ctan.org/pkg/tcolorbox</a>)が必要になります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.</p>
+<p>本書で <strong>framed</strong> パッケージを使うのはこれがかなり軽量だからですが, このパッケージは色付きで角の丸い枠を描画することができません. それを実現するには, より洗練された LaTeX パッケージである <strong>tcolorblox</strong> (<a href="https://ctan.org/pkg/tcolorbox" class="uri">https://ctan.org/pkg/tcolorbox</a>)が必要です. このパッケージには影付きボックスを作るためのとても柔軟な一連のオプションがあります. パッケージのドキュメントからは多くの使用例を見ることができます. 以下の LaTeX 環境は上記の CSS の例と似た影付きボックスを作成できます.</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb204-1"><a href="custom-blocks.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">tcolorbox</span>}</span>
 <span id="cb204-2"><a href="custom-blocks.html#cb204-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb204-3"><a href="custom-blocks.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\newtcolorbox</span>{blackbox}{</span>
@@ -577,73 +602,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="block-image" class="section level3" number="9.6.3">
 <h3><span class="header-section-number">9.6.3</span> アイコンを加える</h3>
-<p>カスタムボックス内に画像を含めることで, より注意を引く見た目に作ることができます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 次の例は, このようなディレクトリ構造で動作させるという前提です. これは本書を作成するために使ったものを簡略化したものです.</p>
-<pre class="text"><code>directory/
-├── your-report.Rmd
-├── style.css
-├── preamble.tex
-└── images/ 
-      └── ├── important.png
-          ├── note.png
-          └── caution.png</code></pre>
-<p>どのように動作するか説明する前に, この例のソースコードと出力を示します.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb207-1"><a href="custom-blocks.html#cb207-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .caution data-latex=&quot;{caution}&quot;}</span>
-<span id="cb207-2"><a href="custom-blocks.html#cb207-2" aria-hidden="true" tabindex="-1"></a>**注意!**</span>
-<span id="cb207-3"><a href="custom-blocks.html#cb207-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb207-4"><a href="custom-blocks.html#cb207-4" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</span>
-<span id="cb207-5"><a href="custom-blocks.html#cb207-5" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+<p>カスタムボックス内に画像を含めることで, より見た目で注意を引く作りにできます. 画像はブロックの内容をより効果的に伝える方法にもなりえます. 以下に続く例では, 次のようなディレクトリ構造で動作させるという前提にしています. これは本書を作成するために使ったものを簡略化したものです.</p>
+<ul>
+<li><code>directory/</code>
+<ul>
+<li><code>your-report.Rmd</code></li>
+<li><code>style.css</code></li>
+<li><code>preamble.tex</code></li>
+<li><code>images/</code>
+<ul>
+<li><code>important.png</code></li>
+<li><code>note.png</code></li>
+<li><code>caution.png</code></li>
+<li><code>...</code></li>
+</ul></li>
+</ul></li>
+</ul>
+<p>全体がどのように動作するかを説明する前に, この例のソースコードと出力をお見せしましょう.</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb206-1"><a href="custom-blocks.html#cb206-1" aria-hidden="true" tabindex="-1"></a>::: {.infobox .caution data-latex=&quot;{caution}&quot;}</span>
+<span id="cb206-2"><a href="custom-blocks.html#cb206-2" aria-hidden="true" tabindex="-1"></a>**注意!**</span>
+<span id="cb206-3"><a href="custom-blocks.html#cb206-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb206-4"><a href="custom-blocks.html#cb206-4" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</span>
+<span id="cb206-5"><a href="custom-blocks.html#cb206-5" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
 <p>出力はこうなります.</p>
 <div class="infobox caution">
 <p><strong>注意!</strong></p>
 <p>この<strong>新しい注意書き</strong>を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</p>
 </div>
 <p>HTML 出力では, CSS の <code>background-image</code> プロパティ内にボックスの画像を追加することができます. 背景に画像を挿入し, 左側に十分な幅のパディングを追加することでテキストと画像の重なりを避けます. ローカルの画像ファイルを使用するなら, ファイルパスは CSS との相対パスで与えます. これが例です.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb208-1"><a href="custom-blocks.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.infobox</span> {</span>
-<span id="cb208-2"><a href="custom-blocks.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb208-3"><a href="custom-blocks.html#cb208-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb208-4"><a href="custom-blocks.html#cb208-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">orange</span><span class="op">;</span></span>
-<span id="cb208-5"><a href="custom-blocks.html#cb208-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
-<span id="cb208-6"><a href="custom-blocks.html#cb208-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="cn">#f5f5f5</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span>/<span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
-<span id="cb208-7"><a href="custom-blocks.html#cb208-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb208-8"><a href="custom-blocks.html#cb208-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb208-9"><a href="custom-blocks.html#cb208-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.caution</span> {</span>
-<span id="cb208-10"><a href="custom-blocks.html#cb208-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">&quot;images/caution.png&quot;</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb208-11"><a href="custom-blocks.html#cb208-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>ブロックに <code>.infobox</code> と <code>.caution</code> という2つのクラス名を使用していることに注意してください. <code>infobox</code> クラスは色付きの外枠のある影付きボックスを定義するのに使用し, <code>caution</code> クラスは画像を入れるために使用されています. 2つのクラスを使用する利点は影付きボックスの設定を繰り返すことなく, いろいろなアイコンの付いたブロックを定義できるということです. <code>warning</code> のボックスが必要ならば, <code>.infobox</code> のルールを繰り返し書くことなく, 以下のように定義するだけで十分です.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb209-1"><a href="custom-blocks.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
-<span id="cb209-2"><a href="custom-blocks.html#cb209-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">&quot;images/warning.png&quot;</span><span class="fu">)</span><span class="op">;</span></span>
-<span id="cb209-3"><a href="custom-blocks.html#cb209-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb207-1"><a href="custom-blocks.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.infobox</span> {</span>
+<span id="cb207-2"><a href="custom-blocks.html#cb207-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">1</span><span class="dt">em</span> <span class="dv">4</span><span class="dt">em</span><span class="op">;</span></span>
+<span id="cb207-3"><a href="custom-blocks.html#cb207-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">margin-bottom</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb207-4"><a href="custom-blocks.html#cb207-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border</span>: <span class="dv">2</span><span class="dt">px</span> <span class="dv">solid</span> <span class="cn">orange</span><span class="op">;</span></span>
+<span id="cb207-5"><a href="custom-blocks.html#cb207-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">border-radius</span>: <span class="dv">10</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb207-6"><a href="custom-blocks.html#cb207-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background</span>: <span class="cn">#f5f5f5</span> <span class="dv">5</span><span class="dt">px</span> <span class="dv">center</span>/<span class="dv">3</span><span class="dt">em</span> <span class="dv">no-repeat</span><span class="op">;</span></span>
+<span id="cb207-7"><a href="custom-blocks.html#cb207-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb207-8"><a href="custom-blocks.html#cb207-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb207-9"><a href="custom-blocks.html#cb207-9" aria-hidden="true" tabindex="-1"></a><span class="fu">.caution</span> {</span>
+<span id="cb207-10"><a href="custom-blocks.html#cb207-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">&quot;images/caution.png&quot;</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb207-11"><a href="custom-blocks.html#cb207-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>ブロックに <code>.infobox</code> と <code>.caution</code> という2つのクラス名を使用していることに注意してください. <code>infobox</code> クラスは色付きの外枠のある影付きボックスを定義するのに使用し, <code>caution</code> クラスは画像を入れるために使用されています. 2つのクラスを使用する利点は影付きボックスの設定を繰り返すことなく, いろいろなアイコンの付いたブロックを定義できるということです. 例えば, <code>warning</code> のボックスが必要ならば, <code>.infobox</code> のルールを繰り返し書くことなく, 以下のように定義するだけで十分です.</p>
+<div class="sourceCode" id="cb208"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb208-1"><a href="custom-blocks.html#cb208-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.warning</span> {</span>
+<span id="cb208-2"><a href="custom-blocks.html#cb208-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">background-image</span>: <span class="fu">url(</span><span class="st">&quot;images/warning.png&quot;</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb208-3"><a href="custom-blocks.html#cb208-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>すると以下の Markdown ソースコードで <code>warning</code> ボックスを作成できます.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb210-1"><a href="custom-blocks.html#cb210-1" aria-hidden="true" tabindex="-1"></a>:::: {.infobox .warning data-latex=&quot;warning&quot;}</span>
-<span id="cb210-2"><a href="custom-blocks.html#cb210-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-3"><a href="custom-blocks.html#cb210-3" aria-hidden="true" tabindex="-1"></a>実際のコンテンツをここに表示</span>
-<span id="cb210-4"><a href="custom-blocks.html#cb210-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb210-5"><a href="custom-blocks.html#cb210-5" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb209-1"><a href="custom-blocks.html#cb209-1" aria-hidden="true" tabindex="-1"></a>:::: {.infobox .warning data-latex=&quot;warning&quot;}</span>
+<span id="cb209-2"><a href="custom-blocks.html#cb209-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-3"><a href="custom-blocks.html#cb209-3" aria-hidden="true" tabindex="-1"></a>実際のコンテンツをここに表示</span>
+<span id="cb209-4"><a href="custom-blocks.html#cb209-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb209-5"><a href="custom-blocks.html#cb209-5" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
 <p>PDF 出力に対しては, 以前の例で定義した <code>blackbox</code> 環境を基に <code>infobox</code> 環境を作成し, ボックスの左側に画像を追加できます. LaTeX 環境に画像を追加する方法はいくつもあります. これはそのうちの1つにすぎません. なお, これは上記の CSS で定義したスタイルを正確に再現するものではありません.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode numberSource tex tex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb211-1"><a href="custom-blocks.html#cb211-1"></a><span class="fu">\newenvironment</span>{infobox}[1]</span>
-<span id="cb211-2"><a href="custom-blocks.html#cb211-2"></a>  {</span>
-<span id="cb211-3"><a href="custom-blocks.html#cb211-3"></a>  <span class="kw">\begin</span>{<span class="ex">itemize</span>}</span>
-<span id="cb211-4"><a href="custom-blocks.html#cb211-4"></a>  <span class="fu">\renewcommand</span>{<span class="ex">\labelitemi</span>}{</span>
-<span id="cb211-5"><a href="custom-blocks.html#cb211-5"></a>    <span class="fu">\raisebox</span>{-.7<span class="fu">\height</span>}[0pt][0pt]{</span>
-<span id="cb211-6"><a href="custom-blocks.html#cb211-6"></a>      {<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}</span>
-<span id="cb211-7"><a href="custom-blocks.html#cb211-7"></a>        <span class="bu">\includegraphics</span>{<span class="ex">images/#1</span>}}</span>
-<span id="cb211-8"><a href="custom-blocks.html#cb211-8"></a>    }</span>
-<span id="cb211-9"><a href="custom-blocks.html#cb211-9"></a>  }</span>
-<span id="cb211-10"><a href="custom-blocks.html#cb211-10"></a>  <span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{1em}</span>
-<span id="cb211-11"><a href="custom-blocks.html#cb211-11"></a>  <span class="kw">\begin</span>{<span class="ex">blackbox</span>}</span>
-<span id="cb211-12"><a href="custom-blocks.html#cb211-12"></a>  <span class="fu">\item</span></span>
-<span id="cb211-13"><a href="custom-blocks.html#cb211-13"></a>  }</span>
-<span id="cb211-14"><a href="custom-blocks.html#cb211-14"></a>  {</span>
-<span id="cb211-15"><a href="custom-blocks.html#cb211-15"></a>  <span class="kw">\end</span>{<span class="ex">blackbox</span>}</span>
-<span id="cb211-16"><a href="custom-blocks.html#cb211-16"></a>  <span class="kw">\end</span>{<span class="ex">itemize</span>}</span>
-<span id="cb211-17"><a href="custom-blocks.html#cb211-17"></a>  }</span></code></pre></div>
-<p>以下に, 異なるアイコンでブロックを示します.
-Below we show more example blocks with different icons:</p>
+<div class="sourceCode" id="cb210"><pre class="sourceCode numberSource tex tex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb210-1"><a href="custom-blocks.html#cb210-1"></a><span class="fu">\newenvironment</span>{infobox}[1]</span>
+<span id="cb210-2"><a href="custom-blocks.html#cb210-2"></a>  {</span>
+<span id="cb210-3"><a href="custom-blocks.html#cb210-3"></a>  <span class="kw">\begin</span>{<span class="ex">itemize</span>}</span>
+<span id="cb210-4"><a href="custom-blocks.html#cb210-4"></a>  <span class="fu">\renewcommand</span>{<span class="ex">\labelitemi</span>}{</span>
+<span id="cb210-5"><a href="custom-blocks.html#cb210-5"></a>    <span class="fu">\raisebox</span>{-.7<span class="fu">\height</span>}[0pt][0pt]{</span>
+<span id="cb210-6"><a href="custom-blocks.html#cb210-6"></a>      {<span class="fu">\setkeys</span>{Gin}{width=3em,keepaspectratio}</span>
+<span id="cb210-7"><a href="custom-blocks.html#cb210-7"></a>        <span class="bu">\includegraphics</span>{<span class="ex">images/#1</span>}}</span>
+<span id="cb210-8"><a href="custom-blocks.html#cb210-8"></a>    }</span>
+<span id="cb210-9"><a href="custom-blocks.html#cb210-9"></a>  }</span>
+<span id="cb210-10"><a href="custom-blocks.html#cb210-10"></a>  <span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{1em}</span>
+<span id="cb210-11"><a href="custom-blocks.html#cb210-11"></a>  <span class="kw">\begin</span>{<span class="ex">blackbox</span>}</span>
+<span id="cb210-12"><a href="custom-blocks.html#cb210-12"></a>  <span class="fu">\item</span></span>
+<span id="cb210-13"><a href="custom-blocks.html#cb210-13"></a>  }</span>
+<span id="cb210-14"><a href="custom-blocks.html#cb210-14"></a>  {</span>
+<span id="cb210-15"><a href="custom-blocks.html#cb210-15"></a>  <span class="kw">\end</span>{<span class="ex">blackbox</span>}</span>
+<span id="cb210-16"><a href="custom-blocks.html#cb210-16"></a>  <span class="kw">\end</span>{<span class="ex">itemize</span>}</span>
+<span id="cb210-17"><a href="custom-blocks.html#cb210-17"></a>  }</span></code></pre></div>
+<p>以下に, 様々なアイコンを付けたブロックを掲載します.</p>
 <div class="infobox warning">
 <p><strong>注意!</strong></p>
 <p>この<strong>新しい注意書き</strong>を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</p>
 </div>
-<div class="infobox note">
+<div class="infobox memo">
 <p><strong>注意!</strong></p>
 <p>この<strong>新しい注意書き</strong>を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</p>
 </div>
@@ -656,52 +687,58 @@ Below we show more example blocks with different icons:</p>
 <p>この<strong>新しい注意書き</strong>を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</p>
 </div>
 <p>代替案として, LaTeX パッケージの <a href="https://ctan.org/pkg/awesomebox"><strong>awesomebox</strong></a> を使って PDF にアイコン付きのボックスを生成することもできます. このパッケージがあれば非常に多くのアイコンを選ぶことができます. 以下に簡単な例をお見せします. 使用可能な LaTeX 環境と引数についてはパッケージのドキュメントを参照してください.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb212-1"><a href="custom-blocks.html#cb212-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb212-2"><a href="custom-blocks.html#cb212-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Awesome Boxes</span></span>
-<span id="cb212-3"><a href="custom-blocks.html#cb212-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb212-4"><a href="custom-blocks.html#cb212-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
-<span id="cb212-5"><a href="custom-blocks.html#cb212-5" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb212-6"><a href="custom-blocks.html#cb212-6" aria-hidden="true" tabindex="-1"></a><span class="co">    extra_dependencies: awesomebox</span></span>
-<span id="cb212-7"><a href="custom-blocks.html#cb212-7" aria-hidden="true" tabindex="-1"></a><span class="an">documentlass:</span><span class="co"> ltjsarticle</span></span>
-<span id="cb212-8"><a href="custom-blocks.html#cb212-8" aria-hidden="true" tabindex="-1"></a><span class="an">mainfont:</span><span class="co"> Noto Serif CJK JP</span></span>
-<span id="cb212-9"><a href="custom-blocks.html#cb212-9" aria-hidden="true" tabindex="-1"></a><span class="an">sansfont:</span><span class="co"> Noto Sans CJK JP</span></span>
-<span id="cb212-10"><a href="custom-blocks.html#cb212-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb212-11"><a href="custom-blocks.html#cb212-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-12"><a href="custom-blocks.html#cb212-12" aria-hidden="true" tabindex="-1"></a>&quot;note&quot; 型のボックス:</span>
-<span id="cb212-13"><a href="custom-blocks.html#cb212-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-14"><a href="custom-blocks.html#cb212-14" aria-hidden="true" tabindex="-1"></a>::: {.noteblock data-latex=&quot;&quot;}</span>
-<span id="cb212-15"><a href="custom-blocks.html#cb212-15" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, あなたがこれを見ていることは監視されており, _当局に報告される_!</span>
-<span id="cb212-16"><a href="custom-blocks.html#cb212-16" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb212-17"><a href="custom-blocks.html#cb212-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-18"><a href="custom-blocks.html#cb212-18" aria-hidden="true" tabindex="-1"></a>このボックスの引数を生成するための R 関数 <span class="in">`box_args()`</span> を定義しました.</span>
-<span id="cb212-19"><a href="custom-blocks.html#cb212-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-20"><a href="custom-blocks.html#cb212-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb212-21"><a href="custom-blocks.html#cb212-21" aria-hidden="true" tabindex="-1"></a><span class="in">box_args &lt;- function(</span></span>
-<span id="cb212-22"><a href="custom-blocks.html#cb212-22" aria-hidden="true" tabindex="-1"></a><span class="in">  vrulecolor = &#39;white&#39;,</span></span>
-<span id="cb212-23"><a href="custom-blocks.html#cb212-23" aria-hidden="true" tabindex="-1"></a><span class="in">  hrule = c(&#39;\\abLongLine&#39;, &#39;\\abShortLine&#39;, &#39;&#39;),</span></span>
-<span id="cb212-24"><a href="custom-blocks.html#cb212-24" aria-hidden="true" tabindex="-1"></a><span class="in">  title = &#39;&#39;, vrulewidth = &#39;0pt&#39;,</span></span>
-<span id="cb212-25"><a href="custom-blocks.html#cb212-25" aria-hidden="true" tabindex="-1"></a><span class="in">  icon = &#39;Bomb&#39;, iconcolor = &#39;black&#39;</span></span>
-<span id="cb212-26"><a href="custom-blocks.html#cb212-26" aria-hidden="true" tabindex="-1"></a><span class="in">) {</span></span>
-<span id="cb212-27"><a href="custom-blocks.html#cb212-27" aria-hidden="true" tabindex="-1"></a><span class="in">  hrule &lt;- match.arg(hrule)</span></span>
-<span id="cb212-28"><a href="custom-blocks.html#cb212-28" aria-hidden="true" tabindex="-1"></a><span class="in">  sprintf(</span></span>
-<span id="cb212-29"><a href="custom-blocks.html#cb212-29" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;[%s][%s][\\textbf{%s}]{%s}{\\fa%s}{%s}&#39;,</span></span>
-<span id="cb212-30"><a href="custom-blocks.html#cb212-30" aria-hidden="true" tabindex="-1"></a><span class="in">    vrulecolor, hrule, title, vrulewidth, icon, iconcolor</span></span>
-<span id="cb212-31"><a href="custom-blocks.html#cb212-31" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
-<span id="cb212-32"><a href="custom-blocks.html#cb212-32" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb212-33"><a href="custom-blocks.html#cb212-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb212-34"><a href="custom-blocks.html#cb212-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-35"><a href="custom-blocks.html#cb212-35" aria-hidden="true" tabindex="-1"></a>インライン R コード内で <span class="in">`awesomeblock`</span> 環境に引数を与えます.</span>
-<span id="cb212-36"><a href="custom-blocks.html#cb212-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-37"><a href="custom-blocks.html#cb212-37" aria-hidden="true" tabindex="-1"></a>::: {.awesomeblock data-latex=&quot;<span class="in">`r box_args(title = &#39;注意!&#39;)`</span>&quot;}</span>
-<span id="cb212-38"><a href="custom-blocks.html#cb212-38" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう!</span>
-<span id="cb212-39"><a href="custom-blocks.html#cb212-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb212-40"><a href="custom-blocks.html#cb212-40" aria-hidden="true" tabindex="-1"></a>あなたがこれを見ていることは監視されており, _当局に報告される_!</span>
-<span id="cb212-41"><a href="custom-blocks.html#cb212-41" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb211-1"><a href="custom-blocks.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb211-2"><a href="custom-blocks.html#cb211-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Awesome Boxes</span></span>
+<span id="cb211-3"><a href="custom-blocks.html#cb211-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb211-4"><a href="custom-blocks.html#cb211-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
+<span id="cb211-5"><a href="custom-blocks.html#cb211-5" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb211-6"><a href="custom-blocks.html#cb211-6" aria-hidden="true" tabindex="-1"></a><span class="co">    extra_dependencies: awesomebox</span></span>
+<span id="cb211-7"><a href="custom-blocks.html#cb211-7" aria-hidden="true" tabindex="-1"></a><span class="an">documentlass:</span><span class="co"> ltjsarticle</span></span>
+<span id="cb211-8"><a href="custom-blocks.html#cb211-8" aria-hidden="true" tabindex="-1"></a><span class="an">mainfont:</span><span class="co"> Noto Serif CJK JP</span></span>
+<span id="cb211-9"><a href="custom-blocks.html#cb211-9" aria-hidden="true" tabindex="-1"></a><span class="an">sansfont:</span><span class="co"> Noto Sans CJK JP</span></span>
+<span id="cb211-10"><a href="custom-blocks.html#cb211-10" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb211-11"><a href="custom-blocks.html#cb211-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-12"><a href="custom-blocks.html#cb211-12" aria-hidden="true" tabindex="-1"></a>&quot;note&quot; 型のボックス:</span>
+<span id="cb211-13"><a href="custom-blocks.html#cb211-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-14"><a href="custom-blocks.html#cb211-14" aria-hidden="true" tabindex="-1"></a>::: {.noteblock data-latex=&quot;&quot;}</span>
+<span id="cb211-15"><a href="custom-blocks.html#cb211-15" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, あなたがこれを見ていることは監視されており, _当局に報告される_!</span>
+<span id="cb211-16"><a href="custom-blocks.html#cb211-16" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb211-17"><a href="custom-blocks.html#cb211-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-18"><a href="custom-blocks.html#cb211-18" aria-hidden="true" tabindex="-1"></a>このボックスの引数を生成するための R 関数 <span class="in">`box_args()`</span> を定義しました.</span>
+<span id="cb211-19"><a href="custom-blocks.html#cb211-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-20"><a href="custom-blocks.html#cb211-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb211-21"><a href="custom-blocks.html#cb211-21" aria-hidden="true" tabindex="-1"></a><span class="in">box_args &lt;- function(</span></span>
+<span id="cb211-22"><a href="custom-blocks.html#cb211-22" aria-hidden="true" tabindex="-1"></a><span class="in">  vrulecolor = &#39;white&#39;,</span></span>
+<span id="cb211-23"><a href="custom-blocks.html#cb211-23" aria-hidden="true" tabindex="-1"></a><span class="in">  hrule = c(&#39;\\abLongLine&#39;, &#39;\\abShortLine&#39;, &#39;&#39;),</span></span>
+<span id="cb211-24"><a href="custom-blocks.html#cb211-24" aria-hidden="true" tabindex="-1"></a><span class="in">  title = &#39;&#39;, vrulewidth = &#39;0pt&#39;,</span></span>
+<span id="cb211-25"><a href="custom-blocks.html#cb211-25" aria-hidden="true" tabindex="-1"></a><span class="in">  icon = &#39;Bomb&#39;, iconcolor = &#39;black&#39;</span></span>
+<span id="cb211-26"><a href="custom-blocks.html#cb211-26" aria-hidden="true" tabindex="-1"></a><span class="in">) {</span></span>
+<span id="cb211-27"><a href="custom-blocks.html#cb211-27" aria-hidden="true" tabindex="-1"></a><span class="in">  hrule &lt;- match.arg(hrule)</span></span>
+<span id="cb211-28"><a href="custom-blocks.html#cb211-28" aria-hidden="true" tabindex="-1"></a><span class="in">  sprintf(</span></span>
+<span id="cb211-29"><a href="custom-blocks.html#cb211-29" aria-hidden="true" tabindex="-1"></a><span class="in">    &#39;[%s][%s][\\textbf{%s}]{%s}{\\fa%s}{%s}&#39;,</span></span>
+<span id="cb211-30"><a href="custom-blocks.html#cb211-30" aria-hidden="true" tabindex="-1"></a><span class="in">    vrulecolor, hrule, title, vrulewidth, icon, iconcolor</span></span>
+<span id="cb211-31"><a href="custom-blocks.html#cb211-31" aria-hidden="true" tabindex="-1"></a><span class="in">  )</span></span>
+<span id="cb211-32"><a href="custom-blocks.html#cb211-32" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb211-33"><a href="custom-blocks.html#cb211-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb211-34"><a href="custom-blocks.html#cb211-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-35"><a href="custom-blocks.html#cb211-35" aria-hidden="true" tabindex="-1"></a>インライン R コード内で <span class="in">`awesomeblock`</span> 環境に引数を与えます.</span>
+<span id="cb211-36"><a href="custom-blocks.html#cb211-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-37"><a href="custom-blocks.html#cb211-37" aria-hidden="true" tabindex="-1"></a>::: {.awesomeblock data-latex=&quot;<span class="in">`r box_args(title = &#39;注意!&#39;)`</span>&quot;}</span>
+<span id="cb211-38"><a href="custom-blocks.html#cb211-38" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう!</span>
+<span id="cb211-39"><a href="custom-blocks.html#cb211-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb211-40"><a href="custom-blocks.html#cb211-40" aria-hidden="true" tabindex="-1"></a>あなたがこれを見ていることは監視されており, _当局に報告される_!</span>
+<span id="cb211-41"><a href="custom-blocks.html#cb211-41" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
 <p><strong>訳注</strong>: 翻訳者の開発した <strong>rmdja</strong> パッケージでは, デフォルトでこの節で紹介されているようなカスタムブロックが定義されており, より簡単にアイコン付きブロックを記述できます. 詳細はこのパッケージのドキュメントをご覧ください.</p>
 
 </div>
 </div>
 <!-- </div> -->
+<div class="footnotes">
+<hr />
+<ol start="33">
+<li id="fn33"><p><strong>訳注</strong>: このサイト相当の日本語のサイトを翻訳者は知らないので Moziila のサイトなどを参考にしてください <a href="https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics" class="uri">https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics</a> (一部未翻訳のページもあるかもしれません)<a href="custom-blocks.html#fnref33" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
             </section>
 
           </div>
@@ -731,6 +768,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

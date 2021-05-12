@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>13.1 グラフをクロップする | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="13.1 グラフをクロップする | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="13.1 グラフをクロップする | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,16 +495,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="crop-plot" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> グラフをクロップする</h2>
-<p>チャンクフック<code>knitr::hook_pdfcrop()</code> は PDF やその他の種類の画像ファイルをクロップするのに使うことができます. つまりグラフから余分な余白を削除します. これを有効にするには, コードチャンク内で <code>knit_hooks$set()</code> を使って設定し, 対応するチャンクオプションをオンにしてください. これが例です.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
-<p>それからグラフをクロップするコードチャンクで, チャンクオプション <code>crop = TRUE</code> を使うことができます.</p>
-<p>フック関数 <code>hook_pdfcrop()</code> は PDF ファイルをクロップするために内部プログラム <code>pdfcrop</code> を呼び出します. このプログラムはよく LaTeX の配布パッケージに同梱されています (例えば TeX Live や MikTeX). あなたのシステムでこれが使用可能かはこのようにして確認できます.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb375-1"><a href="crop-plot.html#cb375-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
-<span id="cb375-2"><a href="crop-plot.html#cb375-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
+<p>チャンクフック<code>knitr::hook_pdfcrop()</code> は PDF やその他の種類の画像ファイルをクロップ, つまりグラフから余分な余白を削除するのに使えます. これを有効にするには, コードチャンク内で <code>knit_hooks$set()</code> を使って対応するチャンクオプションをオンに設定してください. これが例です.</p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb373-1"><a href="crop-plot.html#cb373-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
+<p>そうすると, チャンクオプション <code>crop = TRUE</code> を使ってグラフをクロップできます.</p>
+<p>フック関数 <code>hook_pdfcrop()</code> は内部プログラム <code>pdfcrop</code> を呼び出して PDF ファイルをクロップします. このプログラムは通常 LaTeX の配布パッケージ (例えば TeX Live や MikTeX) に同梱されています. システムでこれが使用可能かどうかは次のようにして確認できます.</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
+<span id="cb374-2"><a href="crop-plot.html#cb374-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
 <pre><code>##                  pdfcrop 
 ## &quot;/usr/local/bin/pdfcrop&quot;</code></pre>
-<p>LaTeX 配布パッケージの TinyTeX (<a href="install-latex.html#install-latex">1.2</a>節参照) を使っていて, なおかつ <code>pdfcrop</code> があなたのシステムで利用できないなら, <code>tinytex::tlmgr_install('pdfcrop')</code> でインストールすることもできます.</p>
-<p>PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの <strong>magick</strong> <span class="citation">(<a href="参考文献.html#ref-R-magick" role="doc-biblioref">Ooms 2021</a>)</span>を呼び出してクロップします. この R パッケージがインストールされているか確認する必要があります. 図<a href="crop-plot.html#fig:crop-no">13.1</a>はクロップされていないグラフで, 図 <a href="crop-plot.html#fig:crop-yes">13.2</a>はクロップされた同じグラフです.</p>
+<p>LaTeX 配布パッケージの TinyTeX (<a href="install-latex.html#install-latex">1.2</a>節参照) を使っていて, <code>pdfcrop</code> があなたのシステムで利用できないときは, <code>tinytex::tlmgr_install('pdfcrop')</code> でインストールできます.</p>
+<div class="infobox memo">
+<p><strong>訳注</strong></p>
+<p><code>knitr::hook_pdfcrop</code> の使用には ghostscript も必要になります. 環境によっては別途, 手動でインストールする必要があるかもしれません.</p>
+</div>
+<p>PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの <strong>magick</strong> <span class="citation">(<a href="#ref-R-magick" role="doc-biblioref">Ooms 2021</a>)</span>を呼び出してクロップします. この R パッケージがインストールされているか確かめておきましょう. 図<a href="crop-plot.html#fig:crop-no">13.1</a>はクロップされていないグラフで, 図 <a href="crop-plot.html#fig:crop-yes">13.2</a>はクロップされた同じグラフです.</p>
 <div class="figure" style="text-align: center"><span id="fig:crop-no"></span>
 <img src="rmarkdown-cookbook_files/figure-html/crop-no-1.png" alt="クロップされていないグラフ"  />
 <p class="caption">
@@ -490,6 +520,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="caption">
 図 13.2: クロップされたグラフ
 </p>
+</div>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-magick" class="csl-entry">
+———. 2021. <em>Magick: Advanced Graphics and Image-Processing in r</em>. <a href="https://CRAN.R-project.org/package=magick">https://CRAN.R-project.org/package=magick</a>.
 </div>
 </div>
             </section>
@@ -521,6 +557,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

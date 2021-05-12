@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17.4 パラメータ化されたレポート | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17.4 パラメータ化されたレポート | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="17.4 パラメータ化されたレポート | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -469,49 +495,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="parameterized-reports" class="section level2" number="17.4">
 <h2><span class="header-section-number">17.4</span> パラメータ化されたレポート</h2>
-<p><a href="rmarkdown-render.html#rmarkdown-render">17.3</a>節では一連のレポートを <code>for</code> ループ内でレンダリングする方法の1つを紹介しました. 実際には <code>rmarkdown::render()</code> はこのタスクのために設計された <code>params</code> という名前の引数を持っています. この引数を通じてレポートをパラメータ化することができます. レポートのパラメータを指定する時, <code>params</code> 変数をレポートに使うことが可能になります. 例えば, 以下を呼び出したとします.</p>
-<div class="sourceCode" id="cb488"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb488-1"><a href="parameterized-reports.html#cb488-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
-<span id="cb488-2"><a href="parameterized-reports.html#cb488-2"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&#39;input.Rmd&#39;</span>, <span class="at">params =</span> <span class="fu">list</span>(<span class="at">state =</span> state))</span>
-<span id="cb488-3"><a href="parameterized-reports.html#cb488-3"></a>}</span></code></pre></div>
+<p><a href="rmarkdown-render.html#rmarkdown-render">17.3</a>節では <code>for</code> ループ内で一連のレポートをレンダリングする方法を1つ紹介しました. 実際には <code>rmarkdown::render()</code> はこのタスクのために設計された <code>params</code> という名前の引数を持っています. この引数を通じてレポートをパラメータ化することができます. レポート用のパラメータを指定した時は, レポート内で<code>params</code> 変数が使えます. 例えば, 以下を呼び出したとします.</p>
+<div class="sourceCode" id="cb486"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb486-1"><a href="parameterized-reports.html#cb486-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
+<span id="cb486-2"><a href="parameterized-reports.html#cb486-2"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&#39;input.Rmd&#39;</span>, <span class="at">params =</span> <span class="fu">list</span>(<span class="at">state =</span> state))</span>
+<span id="cb486-3"><a href="parameterized-reports.html#cb486-3"></a>}</span></code></pre></div>
 <p>それから <code>input.Rmd</code> 内部では, オブジェクト <code>params</code> が <code>state</code> 変数を持つリストになります.</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb489-1"><a href="parameterized-reports.html#cb489-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb489-2"><a href="parameterized-reports.html#cb489-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`r params$state` に関するレポート&quot;</span></span>
-<span id="cb489-3"><a href="parameterized-reports.html#cb489-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb489-4"><a href="parameterized-reports.html#cb489-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb489-5"><a href="parameterized-reports.html#cb489-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb489-6"><a href="parameterized-reports.html#cb489-6" aria-hidden="true" tabindex="-1"></a><span class="in">`r params$state`</span> の面積は</span>
-<span id="cb489-7"><a href="parameterized-reports.html#cb489-7" aria-hidden="true" tabindex="-1"></a><span class="in">`r state.area[state.name == params$state]`</span></span>
-<span id="cb489-8"><a href="parameterized-reports.html#cb489-8" aria-hidden="true" tabindex="-1"></a>平方マイルである.</span></code></pre></div>
-<p>レポートに対してパラメータを指定する別の方法に, YAML フィールドの <code>params</code> を使うというものもあります. 例えばこのように.</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb490-1"><a href="parameterized-reports.html#cb490-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb490-2"><a href="parameterized-reports.html#cb490-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> パラメータ化されたレポート</span></span>
-<span id="cb490-3"><a href="parameterized-reports.html#cb490-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
-<span id="cb490-4"><a href="parameterized-reports.html#cb490-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb490-5"><a href="parameterized-reports.html#cb490-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">state</span><span class="kw">:</span><span class="at"> ネブラスカ州</span></span>
-<span id="cb490-6"><a href="parameterized-reports.html#cb490-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2019</span></span>
-<span id="cb490-7"><a href="parameterized-reports.html#cb490-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">midwest</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb490-8"><a href="parameterized-reports.html#cb490-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<p>YAML の <code>params</code> フィールドまたは <code>rmarkdown::render()</code> の <code>params</code> 引数と同じ数だけパラメータを含めることが可能だということに注意してください. YAML のフィールドと引数が両方存在するなら, 引数のパラメータの値が対応する YAML フィールドの値で上書きされます. 例えば先ほどの <code>params</code> フィールドを使った例で <code>rmarkdown::render(..., params = list(state = 'アイオワ州', year = 2018)</code> を呼び出した場合は, R Markdown 文書上の <code>params$state</code> は <code>ネブラスカ州</code> の代わりに <code>アイオワ州</code> に, <code>params$year</code> は <code>2019</code> の代わりに <code>2018</code> になります.</p>
-<p>同じ R Markdown 文書を一連のレポート群へとレンダリングする時は, 各レポートのファイル名が一意になるように <code>rmarkdown::render()</code> の <code>output_file</code> 引数を調整する必要があります. そうでないと, うっかりレポートファイルを上書きしてしまいます. 例えば州と年ごとにレポートを生成する関数を書くことが可能です.</p>
-<div class="sourceCode" id="cb491"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb491-1"><a href="parameterized-reports.html#cb491-1"></a>render_one <span class="ot">&lt;-</span> <span class="cf">function</span>(state, year) {</span>
-<span id="cb491-2"><a href="parameterized-reports.html#cb491-2"></a>  <span class="co"># input.Rmd の出力フォーマットが PDF と仮定</span></span>
-<span id="cb491-3"><a href="parameterized-reports.html#cb491-3"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
-<span id="cb491-4"><a href="parameterized-reports.html#cb491-4"></a>    <span class="st">&#39;input.Rmd&#39;</span>,</span>
-<span id="cb491-5"><a href="parameterized-reports.html#cb491-5"></a>    <span class="at">output_file =</span> <span class="fu">paste0</span>(state, <span class="st">&#39;-&#39;</span>, year, <span class="st">&#39;.pdf&#39;</span>),</span>
-<span id="cb491-6"><a href="parameterized-reports.html#cb491-6"></a>    <span class="at">params =</span> <span class="fu">list</span>(<span class="at">state =</span> state, <span class="at">year =</span> year),</span>
-<span id="cb491-7"><a href="parameterized-reports.html#cb491-7"></a>    <span class="at">envir =</span> <span class="fu">parent.frame</span>()</span>
-<span id="cb491-8"><a href="parameterized-reports.html#cb491-8"></a>  )</span>
-<span id="cb491-9"><a href="parameterized-reports.html#cb491-9"></a>}</span></code></pre></div>
-<p>そして全てのレポートを生成するために <code>for</code> ループをネストすることができます.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb492-1"><a href="parameterized-reports.html#cb492-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
-<span id="cb492-2"><a href="parameterized-reports.html#cb492-2"></a>  <span class="cf">for</span> (year <span class="cf">in</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2020</span>) {</span>
-<span id="cb492-3"><a href="parameterized-reports.html#cb492-3"></a>    <span class="fu">render_one</span>(state, year)</span>
-<span id="cb492-4"><a href="parameterized-reports.html#cb492-4"></a>  }</span>
-<span id="cb492-5"><a href="parameterized-reports.html#cb492-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb487-1"><a href="parameterized-reports.html#cb487-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb487-2"><a href="parameterized-reports.html#cb487-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`r params$state` に関するレポート&quot;</span></span>
+<span id="cb487-3"><a href="parameterized-reports.html#cb487-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb487-4"><a href="parameterized-reports.html#cb487-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb487-5"><a href="parameterized-reports.html#cb487-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb487-6"><a href="parameterized-reports.html#cb487-6" aria-hidden="true" tabindex="-1"></a><span class="in">`r params$state`</span> の面積は</span>
+<span id="cb487-7"><a href="parameterized-reports.html#cb487-7" aria-hidden="true" tabindex="-1"></a><span class="in">`r state.area[state.name == params$state]`</span></span>
+<span id="cb487-8"><a href="parameterized-reports.html#cb487-8" aria-hidden="true" tabindex="-1"></a>平方マイルである.</span></code></pre></div>
+<p>レポートに対してパラメータを指定する別の方法として, YAML フィールドで <code>params</code> を使うという手もあります. 例えばこのように.</p>
+<div class="sourceCode" id="cb488"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb488-1"><a href="parameterized-reports.html#cb488-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb488-2"><a href="parameterized-reports.html#cb488-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> パラメータ化されたレポート</span></span>
+<span id="cb488-3"><a href="parameterized-reports.html#cb488-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> html_document</span></span>
+<span id="cb488-4"><a href="parameterized-reports.html#cb488-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb488-5"><a href="parameterized-reports.html#cb488-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">state</span><span class="kw">:</span><span class="at"> ネブラスカ州</span></span>
+<span id="cb488-6"><a href="parameterized-reports.html#cb488-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2019</span></span>
+<span id="cb488-7"><a href="parameterized-reports.html#cb488-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">midwest</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb488-8"><a href="parameterized-reports.html#cb488-8" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>YAML の <code>params</code> フィールドまたは <code>rmarkdown::render()</code> の <code>params</code> 引数には, いくつでもパラメータを含められることに注目してください. YAML のフィールドと <code>rmarkdown::render()</code> の引数とが両方あるときには, <code>render()</code> の引数の値が対応する YAML フィールドの値を上書きしてしまいます. 例えば先ほどの <code>params</code> フィールドを使った例で <code>rmarkdown::render(..., params = list(state = 'アイオワ州', year = 2018)</code> を呼び出した場合は, R Markdown 文書上の <code>params$state</code> は <code>ネブラスカ州</code> の代わりに <code>アイオワ州</code> に, <code>params$year</code> は <code>2019</code> の代わりに <code>2018</code> になります.</p>
+<p>同じ R Markdown 文書を一連のレポート群へとレンダリングする時は, 各レポートのファイル名が一意になるように <code>rmarkdown::render()</code> の <code>output_file</code> 引数を調整する必要があります. そうでないと, うっかりレポートファイルを上書きしてしまいます. 例えば, 各州の各年ごとにレポートを生成できる関数を書きます.</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb489-1"><a href="parameterized-reports.html#cb489-1"></a>render_one <span class="ot">&lt;-</span> <span class="cf">function</span>(state, year) {</span>
+<span id="cb489-2"><a href="parameterized-reports.html#cb489-2"></a>  <span class="co"># input.Rmd の出力フォーマットが PDF と仮定</span></span>
+<span id="cb489-3"><a href="parameterized-reports.html#cb489-3"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb489-4"><a href="parameterized-reports.html#cb489-4"></a>    <span class="st">&#39;input.Rmd&#39;</span>,</span>
+<span id="cb489-5"><a href="parameterized-reports.html#cb489-5"></a>    <span class="at">output_file =</span> <span class="fu">paste0</span>(state, <span class="st">&#39;-&#39;</span>, year, <span class="st">&#39;.pdf&#39;</span>),</span>
+<span id="cb489-6"><a href="parameterized-reports.html#cb489-6"></a>    <span class="at">params =</span> <span class="fu">list</span>(<span class="at">state =</span> state, <span class="at">year =</span> year),</span>
+<span id="cb489-7"><a href="parameterized-reports.html#cb489-7"></a>    <span class="at">envir =</span> <span class="fu">parent.frame</span>()</span>
+<span id="cb489-8"><a href="parameterized-reports.html#cb489-8"></a>  )</span>
+<span id="cb489-9"><a href="parameterized-reports.html#cb489-9"></a>}</span></code></pre></div>
+<p>そして <code>for</code> ループをネストして全てのレポートを生成します.</p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb490-1"><a href="parameterized-reports.html#cb490-1"></a><span class="cf">for</span> (state <span class="cf">in</span> state.name) {</span>
+<span id="cb490-2"><a href="parameterized-reports.html#cb490-2"></a>  <span class="cf">for</span> (year <span class="cf">in</span> <span class="dv">2000</span><span class="sc">:</span><span class="dv">2020</span>) {</span>
+<span id="cb490-3"><a href="parameterized-reports.html#cb490-3"></a>    <span class="fu">render_one</span>(state, year)</span>
+<span id="cb490-4"><a href="parameterized-reports.html#cb490-4"></a>  }</span>
+<span id="cb490-5"><a href="parameterized-reports.html#cb490-5"></a>}</span></code></pre></div>
 <p>最終的に, <code>アラバマ州-2000.pdf</code>, <code>アラバマ州-2001.pdf</code>, …, <code>ワイオミング州-2019.pdf</code>, and <code>ワイオミング州-2020.pdf</code> のように一連のレポートを得られます.</p>
-<p>Shiny から作成されたグラフィカルユーザーインターフェイス (GUI) を通して対話的にパラメータ化されたレポートのパラメータを入力することも可能です. これは YAML に <code>params</code> フィールドを与えることが必要で, <strong>rmarkdown</strong> が各パラメータに対する適切な入力ウィジェットを使用する GUI を自動的に作成してくれます. 例えばチェックボックスはブーリアン型のパラメータに対して用意されます.</p>
-<p>RStudio を使用していないなら, GUI を始めるのには, <code>rmarkdown::render()</code> に <code>params = 'ask'</code> を渡して呼び出して GUI を開始することが可能です.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb493-1"><a href="parameterized-reports.html#cb493-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;input.Rmd&quot;</span>, <span class="at">params =</span> <span class="st">&quot;ask&quot;</span>)</span></code></pre></div>
+<p>パラメータ化されたレポートであれば, Shiny で作成されたグラフィカルユーザーインターフェイス (GUI) を通して対話的にパラメータを入力することも可能です. これは YAML に <code>params</code> フィールドを与えることが必要ですが, 各パラメータに対応する適切な入力ウィジェットを用いた GUI を <strong>rmarkdown</strong> が自動的に作成してくれます. 例えばチェックボックスはブーリアン型のパラメータに対して用意されます.</p>
+<p>RStudio を使用していないなら, <code>rmarkdown::render()</code> 呼び出して <code>params = 'ask'</code> を渡せば GUI を開始できます.</p>
+<div class="sourceCode" id="cb491"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb491-1"><a href="parameterized-reports.html#cb491-1"></a>rmarkdown<span class="sc">::</span><span class="fu">render</span>(<span class="st">&quot;input.Rmd&quot;</span>, <span class="at">params =</span> <span class="st">&quot;ask&quot;</span>)</span></code></pre></div>
 <p>RStudio を使用しているなら, メニューの <code>Knit</code> ボタンの中にある <code>Knit with Parameters</code> をクリックすることが可能です. 図<a href="parameterized-reports.html#fig:params-shiny">17.1</a>はパラメータに対する GUI の例を示しています.</p>
 <div class="figure" style="text-align: center"><span id="fig:params-shiny"></span>
 <img src="JP/images/params-shiny.png" alt="GUI から入力できるパラメータで R Markdown を knit する"  />
@@ -519,7 +545,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 図 17.1: GUI から入力できるパラメータで R Markdown を knit する
 </p>
 </div>
-<p>パラメータ化されたレポートの詳細については, <em>R Markdown Definitive Guide</em> <span class="citation">(<a href="参考文献.html#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の <a href="https://bookdown.org/yihui/rmarkdown/parameterized-reports.html">Chapter 15</a> を読むことができます.</p>
+<p>パラメータ化されたレポートの詳細については, <em>R Markdown Definitive Guide</em> <span class="citation">(<a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の <a href="https://bookdown.org/yihui/rmarkdown/parameterized-reports.html">Chapter 15</a> を読むとよいでしょう.</p>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-rmarkdown2018" class="csl-entry">
+Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
+</div>
 </div>
             </section>
 
@@ -550,6 +582,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {

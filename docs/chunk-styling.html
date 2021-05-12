@@ -5,21 +5,21 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.3 コードチャンクのスタイルを変更する | R Markdown クックブック</title>
-  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.3 コードチャンクのスタイルを変更する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
-  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
-  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
+  <meta property="og:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="7.3 コードチャンクのスタイルを変更する | R Markdown クックブック" />
   
-  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小技や簡潔で実践的なトリックの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png" />
+  <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
+  <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
 
 <meta name="author" content="(著者) Xie, Yihui" />
 <meta name="author" content="(著者) Dervieux, Christophe" />
@@ -53,6 +53,8 @@
 
 
 
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
 <script src="libs/htmlwidgets/htmlwidgets.js"></script>
 <script src="libs/es6shim/es6shim.js"></script>
 <script src="libs/es7shim/es7shim.js"></script>
@@ -70,6 +72,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -130,6 +133,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 <link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
@@ -162,10 +188,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="" data-path="christophe-dervieux.html"><a href="christophe-dervieux.html"><i class="fa fa-check"></i>Christophe Dervieux</a></li>
 <li class="chapter" data-level="" data-path="emily-riederer.html"><a href="emily-riederer.html"><i class="fa fa-check"></i>Emily Riederer</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報</a>
+<li class="chapter" data-level="" data-path="translators.html"><a href="translators.html"><i class="fa fa-check"></i>翻訳者情報 (About Translators)</a>
 <ul>
 <li class="chapter" data-level="" data-path="片桐智志-katagiri-satoshi.html"><a href="片桐智志-katagiri-satoshi.html"><i class="fa fa-check"></i>片桐智志 (Katagiri, Satoshi)</a></li>
-<li class="chapter" data-level="" data-path="謝辞.html"><a href="謝辞.html"><i class="fa fa-check"></i>謝辞</a></li>
+<li class="chapter" data-level="" data-path="翻訳協力者への謝辞.html"><a href="翻訳協力者への謝辞.html"><i class="fa fa-check"></i>翻訳協力者への謝辞</a></li>
 </ul></li>
 <li class="chapter" data-level="1" data-path="installation.html"><a href="installation.html"><i class="fa fa-check"></i><b>1</b> インストール方法</a>
 <ul>
@@ -374,7 +400,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.4" data-path="show-header.html"><a href="show-header.html"><i class="fa fa-check"></i><b>13.4</b> 出力にチャンクヘッダを表示する</a></li>
 <li class="chapter" data-level="13.5" data-path="rgl-3d.html"><a href="rgl-3d.html"><i class="fa fa-check"></i><b>13.5</b> rgl によるインタラクティブな3次元グラフを埋め込む</a></li>
 </ul></li>
-<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr のトリック</a>
+<li class="chapter" data-level="14" data-path="knitr-misc.html"><a href="knitr-misc.html"><i class="fa fa-check"></i><b>14</b> その他の knitr の小ワザ</a>
 <ul>
 <li class="chapter" data-level="14.1" data-path="reuse-chunks.html"><a href="reuse-chunks.html"><i class="fa fa-check"></i><b>14.1</b> コードチャンクを再利用する</a>
 <ul>
@@ -470,8 +496,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="chunk-styling" class="section level2" number="7.3">
 <h2><span class="header-section-number">7.3</span> コードチャンクのスタイルを変更する</h2>
 <!-- https://stackoverflow.com/questions/41030477/changing-chunk-background-color-in-rmarkdown -->
-<p>チャンクオプションの <code>class.source</code> と <code>class.output</code> を使い, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名の文字列ベクトルを取ります (<a href="attr-output.html#attr-output">11.13</a>節参照). 例えば <code>class.source = "important"</code> は出力時にコードチャンクを含む HTML 要素に <code>important</code> というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.<a href="#fn24" class="footnote-ref" id="fnref24"><sup>24</sup></a> このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.</p>
-<p>デフォルトでは, R Markdown の HTML 出力は Bootstrap フレームワークを読み込みます. Bootstrap は <code>"bg-primary"</code>, <code>"bg-success"</code>, <code>"bg-info"</code>, <code>"bg-warning"</code>, <code>"bg-danger"</code> といったいくつかの <a href="https://getbootstrap.com/docs/3.4/css/#helper-classes">背景に対する CSS クラス</a> が定義済みのため, コードと出力の外観の変更を容易にしてくれます.</p>
+<p>チャンクオプションの <code>class.source</code> と <code>class.output</code> を使えば, それぞれコードチャンクおよびそのテキスト出力のスタイルをカスタマイズできます. これらのオプションはクラス名の文字列ベクトルを取ります (<a href="attr-output.html#attr-output">11.13</a>節参照). 例えば <code>class.source = "important"</code> は, コードチャンクを含んでいる HTML 要素が出力される時に <code>important</code> というクラス名を持たせます. そこでこのクラスに CSS ルールを定義できます.<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a> このルールは特定のコードチャンクやテキスト出力を強調したいときに役に立ちます.</p>
+<p>R Markdown の HTML 出力は, デフォルトで, Bootstrap フレームワークを読み込みます. Bootstrap は <code>"bg-primary"</code>, <code>"bg-success"</code>, <code>"bg-info"</code>, <code>"bg-warning"</code>, <code>"bg-danger"</code> といったいくつかの <a href="https://getbootstrap.com/docs/3.4/css/#helper-classes">背景に対する CSS クラス</a> が定義済みのため, コードと出力の外観の変更を容易にしてくれます.</p>
 <p>以下はチャンクオプション <code>class.source = "bg-danger"</code> と <code>class.output = "bg-warning"</code> を使った例で, その出力は図<a href="chunk-styling.html#fig:chunk-bg">7.1</a>で見られます.</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb144-1"><a href="chunk-styling.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb144-2"><a href="chunk-styling.html#cb144-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクのスタイルを変更する</span></span>
@@ -495,7 +521,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 図 7.1: Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック
 </p>
 </div>
-<p>任意のクラスを使って対応する CSS ルールを定義することもできます. この場合, <a href="html-css.html#html-css">7.1</a>節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません. 以下はその例です.</p>
+<p>任意のクラスを使って対応する CSS ルールを定義することもできます. この場合以下の例のように, <a href="html-css.html#html-css">7.1</a>節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません.</p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb145-1"><a href="chunk-styling.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb145-2"><a href="chunk-styling.html#cb145-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> チャンクにカスタムクラスを割り当てる</span></span>
 <span id="cb145-3"><a href="chunk-styling.html#cb145-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
@@ -516,22 +542,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb145-18"><a href="chunk-styling.html#cb145-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source=&quot;watch-out&quot;}</span></span>
 <span id="cb145-19"><a href="chunk-styling.html#cb145-19" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
 <span id="cb145-20"><a href="chunk-styling.html#cb145-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>図<a href="chunk-styling.html#fig:chunk-border">7.2</a>がスタイルの出力です.</p>
+<p>図<a href="chunk-styling.html#fig:chunk-border">7.2</a>が出力されたスタイルです.</p>
 <div class="figure" style="text-align: center"><span id="fig:chunk-border"></span>
 <img src="JP/images/chunk-border.png" alt="明桃色の背景, 赤い太枠線をもつコードチャンク"  />
 <p class="caption">
 図 7.2: 明桃色の背景, 赤い太枠線をもつコードチャンク
 </p>
 </div>
-<p>文書内の全てのコードブロックにカスタムスタイルを塩要したいなら, グローバルな <strong>knitr</strong> オプションで <code>class.source</code> を設定します. 例えばこのように.</p>
+<p>文書内の全てのコードブロックにカスタムスタイルを適用したいなら, グローバルな <strong>knitr</strong> オプションで <code>class.source</code> を設定します. 例えばこのように.</p>
 <div class="sourceCode" id="cb146"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb146-1"><a href="chunk-styling.html#cb146-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">class.source =</span> <span class="st">&quot;watch-out&quot;</span>)</span></code></pre></div>
-<p>複数のクラスをコードブロックに適用できます. 例えば <code>class.source = c("important", "warning")</code> でコードブロックに “important” と “warning” という2つのクラスを持たせられます.</p>
-<p>コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, <strong>flair</strong> パッケージ <span class="citation">(<a href="参考文献.html#ref-R-flair" role="doc-biblioref">Bodwin and Glanz 2020</a>)</span> の使用を検討してもよいかもしれません. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.</p>
+<p>複数のクラスをコードブロックに適用できます. 例えば <code>class.source = c("important", "warning")</code> でコードブロックに “important” と “warning” という2つのクラスを持たせることができます.</p>
+<p>コードブロック全体ではなく, 内部の個別の要素を装飾したいならば, <strong>flair</strong> パッケージ <span class="citation">(<a href="#ref-R-flair" role="doc-biblioref">Bodwin and Glanz 2020</a>)</span> の使用を検討するとよいでしょう. このパッケージでコードの個別の部分 (特定の文字, 関数名, 引数など) をカスタムスタイル (例えば色, フォントサイズ, あるいはフォントのウエイト) で強調できます.</p>
+</div>
+<h3>参考文献</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-R-flair" class="csl-entry">
+Bodwin, Kelly, and Hunter Glanz. 2020. <em>Flair: Highlight, Annotate, and Format Your r Source Code</em>. <a href="https://CRAN.R-project.org/package=flair">https://CRAN.R-project.org/package=flair</a>.
+</div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="24">
-<li id="fn24"><p>CSS ではクラスは先頭にピリオド (<code>.</code>) を付けるため, この場合はルールは <code>.important</code> から始まります.<a href="chunk-styling.html#fnref24" class="footnote-back">↩︎</a></p></li>
+<ol start="28">
+<li id="fn28"><p>CSS ではクラスは先頭にピリオド (<code>.</code>) を付けるため, この場合はルールは <code>.important</code> から始まります.<a href="chunk-styling.html#fnref28" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -563,6 +595,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["linkedin", "weibo", "instapaper", "vk"]
 },
 "fontsettings": {
