@@ -35,9 +35,9 @@ knitr::include_graphics(file.path(BOOKLANG, "images/visual-edit.png"), dpi = NA)
 
 ## R スクリプトをレポートにレンダリングする {#spin}
 
-長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを["**knitr** の隠された至宝](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/)と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (`Ctrl / Cmd + Shift + K`) です.
+長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを["**knitr** の秘宝](https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/)と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (`Ctrl / Cmd + Shift + K`) です.
 
-R スクリプトをレポートにレンダリングすると, まず `knitr::spin()`\index{knitr!spin()} 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「**knitr**の隠された至宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.
+R スクリプトをレポートにレンダリングすると, まず `knitr::spin()`\index{knitr!spin()} 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「**knitr**の秘宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.
 
 レポートの要素を細かく管理したいなら, 以下のような構文が役に立ちます.
 
