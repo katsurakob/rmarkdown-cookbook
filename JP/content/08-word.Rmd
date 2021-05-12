@@ -38,9 +38,7 @@ output:
 knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-1.png'), dpi = NA)
 ```
 
-図\@ref(fig:word-template-1)は Word の「ホーム」タブから "Styles" ウィンドウを開くと見つけられます. カーソルを文書の特定の要素上に動かすと, スタイルリストの項目が強調されます. ある要素のスタイル種別を変更したいならば, 強調された項目上でドロップダウンメニューをクリックして図\@ref(fig:word-template-2)のようなダイアログボックスを見ることができます.
-
-TODO: Word 日本語版での名称確認
+図\@ref(fig:word-template-1)は Word の「ホーム」タブから「スタイル」ウィンドウを開くと見つけられます. カーソルを文書の特定の要素上に動かすと, スタイルリストの項目が強調されます. ある要素のスタイルを変更したいならば, 強調された項目上でドロップダウンメニューの「変更」をクリックして図\@ref(fig:word-template-2)のようなダイアログボックスを見ることができます.
 
 ```{r, word-template-2, echo=FALSE, fig.cap='Word 文書の要素のスタイルを変更する', out.width='100%'}
 knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-2.png'), dpi = NA)
@@ -50,11 +48,20 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-2.png'), dpi =
 
 カスタムスタイル付きの Word テンプレートを作成する方法の詳細については, https://vimeo.com/110804387 で短い動画を見るか, https://rmarkdown.rstudio.com/articles_docx.html の記事を読むとよいでしょう.
 
-要素に対するスタイル名がすぐには見つからないこともあります. 複数のスタイルが同じ要素に適用され, それらのうち1つだけが強調されてみえることもあります. 修正したいスタイルが実際になんであるかは, 当て推量やネット検索で解決することが求められることもあります. 例えば "Manage Styles" ボタン (図\@ref(fig:word-template-1)のスタイルリストの下部にある, 左から3番目のボタン) をクリックし, "Tabke" スタイル (図\@ref(fig:word-table)参照) を見つけるまでには多数のスタイル名をスクロールして飛ばさなければならりません. これでようやく, 枠線などの表のスタイルを修正できます.
+文書の要素に対するスタイル名がすぐには見つからないこともあります. 複数のスタイルが同じ要素に適用され, それらのうち1つだけが強調されてみえることもあります. 修正したいスタイルが実際になんであるかは, 当て推量やネット検索で解決することが求められることもあります. 例えば「スタイルの管理」ボタン (図\@ref(fig:word-template-1)のスタイルリストの下部にある, 左から3番目のボタン) をクリックし, "Table" スタイル (図\@ref(fig:word-table)参照) を見つけるまでには多数のスタイル名をスクロールして飛ばさなければならりません. これでようやく, 枠線などの表のスタイルを修正できます.
 
 ```{r, word-table, echo=FALSE, fig.cap='Word 文書の表のスタイルを修正する', out.width='100%'}
 knitr::include_graphics(file.path(BOOKLANG, 'images/word-table.png'), dpi = NA)
 ```
+
+::::::{.infobox .memo data-latex="{memo}"}
+
+:::{.center data-latex=""}
+**訳注**
+:::
+
+Word の日本語版へのローカライズの過程によるものか, バージョンアップによるものかは分かりませんが, Word のスタイル名は必ずしもこの例とは一致しないかもしれません.
+::::::
 
 ## R Markdown と Word 間の双方向ワークフロー {#word-redoc}
 
