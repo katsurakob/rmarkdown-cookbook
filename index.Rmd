@@ -110,22 +110,24 @@ last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `
 ```
 
 ---
-date: "`r last_update`, ver. 0.9.1 (Word 関連の動作確認未完), 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.2, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
 
-:::{.infobox .caution data-latex="{caution}"}
+::::::{.infobox .caution data-latex="{caution}"}
 本書の原著は[Chapman & Hall/CRC](https://www.routledge.com/p/book/9780367563837)より出版されました. 本書のオンライン版は (Chapman & Hall/CRC の厚意により) ここで無料で読むことができます. 本書は[クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンス](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)のもとで提供されています. ご意見は [GitHubで](https://github.com/yihui/rmarkdown-cookbook/issues/new) いつでも受け付けています. いつもありがとうございます.
 
+:::{.center data-latex=""}
 **訳注**
+:::
 
 オリジナルは[こちら](https://bookdown.org/yihui/rmarkdown-cookbook/)で読むことができます.
 
 本翻訳版に関するご意見は[こちら](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new)で受け付けています. また, ご覧になっているのが Web 版であれば, 上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は[翻訳メモ](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md)の内容を確認してからしていただけると助かります.
 
 This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
-:::
+::::::
 
 ```{asis eval=knitr::is_html_output()}
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
@@ -147,7 +149,7 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 
 - *R Markdown: The Definitive Guide* [@rmarkdown2018] は **rmarkdown** パッケージやその他いくつかの拡張パッケージでの R Markdown の出力フォーマットに関する技術的資料です.
 
-- *R for Data Science* [@wickham2016Data]^[本書は https://r4ds.had.co.nz/ で無料公開されています. また, 日本語訳がオライリー・ジャパンより出版されています.] の Part V "Communicate".: このパートは上記の "Definitive Guide" よりも技術的なことは少ないので, より平易な R Markdown の入門になるでしょう.
+- *R for Data Science* [@wickham2016Data]^[本書は https://r4ds.had.co.nz/ で無料公開されています. また, 日本語訳『Rではじめるデータサイエンス』というタイトルでオライリー・ジャパンより出版されています.] の Part V "Communicate".: このパートは上記の "Definitive Guide" よりも技術的なことは少ないので, より平易な R Markdown の入門になるでしょう.
 
 - *Dynamic Documents with R and knitr* [@knitr2015] は **knitr** パッケージ [@R-knitr] の網羅的な入門書です (補足しますと, R Markdown は **knitr** パッケージのサポートする文書形式の1つにすぎません). 短縮版を読みたい場合, Karl Broman による最小限のチュートリアル ["knitr in a knutshell"](https://kbroman.org/knitr_knutshell/) が役に立つでしょう. **訳注**: これらは日本語訳が存在しませんが, Yihui 氏によるドキュメント *[knitr
 Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/knitr/)* の日本語訳は既に用意してあります^[https://gedevan-aleksizde.github.io/knitr-doc-ja/].
@@ -160,7 +162,7 @@ Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/
 
 本書は最初から順に読む必要はありません. 以降の各章はそれより前の章よりも難解になることはありません. 各章と各セクションのうち, 他よりも発展的と思われるものに対しては, タイトルにアスタリスク (`*`) を付けています. R Markdown でやりたい具体的なタスクがあるとき, あるいは目次に目を通していたら興味のある箇所が見つかった, という使い方が最も効率的な読み方でしょう. いくつかの箇所で相互参照を免れないところがありますが, 用例集を理解するのに必要な予備知識への参照のつもりです.
 
-自分で用例集に挑戦したいならば, 本書の完全なソースコードと用例集は Github の https://github.com/yihui/rmarkdown-cookbook で自由に見ることができます^[訳注: この日本語版のソースコードは https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook で見られます. 用例集はさらに `JP/examples` と辿ることで見つかります.]. 本書の電子書籍版をお読みの場合, 掲載されているコードをお好きなテキストエディタにコピー&ペーストして実行することになるでしょう.
+自分で用例集に挑戦したいならば, 本書の完全なソースコードと用例集は Github の https://github.com/yihui/rmarkdown-cookbook で自由に見ることができます^[訳注: この日本語版のソースコードは https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook で見られます. 用例集はさらに `JP/examples` ディレクトリを辿ることで見つかります.]. 本書の電子書籍版をお読みの場合, 掲載されているコードをお好きなテキストエディタにコピー&ペーストして実行することになるでしょう.
 
 ## 本書の構成 {-#Structure-of-the-book}
 
@@ -170,7 +172,7 @@ Elegant, flexible, and fast dynamic report generation with R](https://yihui.org/
 
 ## ソフトウェア情報と表記のルール {#software-info .unnumbered}
 
-本書をコンパイルした時点での基本的な R セッション情報は以下のとおりです^[訳注: 日本語版作成にあたって, [**rmdja** パッケージ](https://github.com/Gedevan-Aleksizde/rmdja)を使用しています.].
+本書をコンパイルした時点での基本的な R セッション情報は以下のとおりです^[訳注: 日本語版作成にあたって, [**rmdja** パッケージ](https://github.com/Gedevan-Aleksizde/rmdja)の開発版を使用しているため, 完全に同一のファイルを作成できる保証はないことをご容赦ください.].
 
 ```{r tidy=FALSE}
 xfun::session_info(c(

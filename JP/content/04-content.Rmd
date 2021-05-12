@@ -498,7 +498,9 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 たまに「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. コーディング中毒にならないようにしましょう.
 
 :::{.infobox .caution data-latex"{caution}"}
-**訳注** 上記の例では, 最終行の出典の右寄せができません. これは Pandoc の fenced `Div` blocks の機能を使用しています. (\@ref(custom-blocks)節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください.
+**訳注**
+
+上記の例では, 最終行の出典の右寄せが再現できません. これは Pandoc の fenced `Div` blocks の機能を使用しています. (\@ref(custom-blocks)節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください.
 :::
 
 

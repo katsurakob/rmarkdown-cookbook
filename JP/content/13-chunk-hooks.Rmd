@@ -76,8 +76,11 @@ tinytex::tlmgr_install('pdfcrop')
 
 ```
 
-:::{.infobox .memo data-latex="{memo}"}
-**訳注**: `knitr::hook_pdfcrop` の使用には ghostscript も必要になります. 環境によっては別途, 手動でインストールする必要があるかもしれません.
+::::::{.infobox .memo data-latex="{memo}"}
+
+**訳注**
+
+`knitr::hook_pdfcrop` の使用には ghostscript も必要になります. 環境によっては別途, 手動でインストールする必要があるかもしれません.
 :::
 
 PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの **magick** [@R-magick]\index{R パッケージ!magick}を呼び出してクロップします. この R パッケージがインストールされているか確かめておきましょう. 図\@ref(fig:crop-no)はクロップされていないグラフで, 図 \@ref(fig:crop-yes)はクロップされた同じグラフです.
