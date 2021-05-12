@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>15.3 asis エンジンでコンテンツを条件付きで実行する Execute content conditionally via the asis engine | R Markdown クックブック</title>
+  <title>15.3 asis エンジンでコンテンツを条件付きで実行する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="15.3 asis エンジンでコンテンツを条件付きで実行する Execute content conditionally via the asis engine | R Markdown クックブック" />
+  <meta property="og:title" content="15.3 asis エンジンでコンテンツを条件付きで実行する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
   <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="15.3 asis エンジンでコンテンツを条件付きで実行する Execute content conditionally via the asis engine | R Markdown クックブック" />
+  <meta name="twitter:title" content="15.3 asis エンジンでコンテンツを条件付きで実行する | R Markdown クックブック" />
   
   <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
@@ -427,7 +427,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1" data-path="custom-engine.html"><a href="custom-engine.html"><i class="fa fa-check"></i><b>15.1</b> カスタム言語エンジンを登録する (*)</a></li>
 <li class="chapter" data-level="15.2" data-path="eng-python.html"><a href="eng-python.html"><i class="fa fa-check"></i><b>15.2</b> Python コードの実行と双方向処理</a></li>
-<li class="chapter" data-level="15.3" data-path="eng-asis.html"><a href="eng-asis.html"><i class="fa fa-check"></i><b>15.3</b> <code>asis</code> エンジンでコンテンツを条件付きで実行する Execute content conditionally via the <code>asis</code> engine</a></li>
+<li class="chapter" data-level="15.3" data-path="eng-asis.html"><a href="eng-asis.html"><i class="fa fa-check"></i><b>15.3</b> <code>asis</code> エンジンでコンテンツを条件付きで実行する</a></li>
 <li class="chapter" data-level="15.4" data-path="eng-bash.html"><a href="eng-bash.html"><i class="fa fa-check"></i><b>15.4</b> シェルスクリプトを実行する</a></li>
 <li class="chapter" data-level="15.5" data-path="d3.html"><a href="d3.html"><i class="fa fa-check"></i><b>15.5</b> D3 で可視化する</a></li>
 <li class="chapter" data-level="15.6" data-path="eng-cat.html"><a href="eng-cat.html"><i class="fa fa-check"></i><b>15.6</b> <code>cat</code> エンジンでチャンクをファイルに書き出す</a>
@@ -494,7 +494,7 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="eng-asis" class="section level2" number="15.3">
-<h2><span class="header-section-number">15.3</span> <code>asis</code> エンジンでコンテンツを条件付きで実行する Execute content conditionally via the <code>asis</code> engine</h2>
+<h2><span class="header-section-number">15.3</span> <code>asis</code> エンジンでコンテンツを条件付きで実行する</h2>
 <p>その名が示すとおり, <code>asis</code> エンジンはチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション <code>echo</code> によりチャンクの内容の表示を決定します. <code>echo = FALSE</code> の時はチャンクは隠されます. 以下は簡単な例です.</p>
 <div class="sourceCode" id="cb439"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb439-1"><a href="eng-asis.html#cb439-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb439-2"><a href="eng-asis.html#cb439-2" aria-hidden="true" tabindex="-1"></a><span class="in">getRandomNumber &lt;- function() {</span></span>

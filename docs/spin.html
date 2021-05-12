@@ -427,7 +427,7 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="15.1" data-path="custom-engine.html"><a href="custom-engine.html"><i class="fa fa-check"></i><b>15.1</b> カスタム言語エンジンを登録する (*)</a></li>
 <li class="chapter" data-level="15.2" data-path="eng-python.html"><a href="eng-python.html"><i class="fa fa-check"></i><b>15.2</b> Python コードの実行と双方向処理</a></li>
-<li class="chapter" data-level="15.3" data-path="eng-asis.html"><a href="eng-asis.html"><i class="fa fa-check"></i><b>15.3</b> <code>asis</code> エンジンでコンテンツを条件付きで実行する Execute content conditionally via the <code>asis</code> engine</a></li>
+<li class="chapter" data-level="15.3" data-path="eng-asis.html"><a href="eng-asis.html"><i class="fa fa-check"></i><b>15.3</b> <code>asis</code> エンジンでコンテンツを条件付きで実行する</a></li>
 <li class="chapter" data-level="15.4" data-path="eng-bash.html"><a href="eng-bash.html"><i class="fa fa-check"></i><b>15.4</b> シェルスクリプトを実行する</a></li>
 <li class="chapter" data-level="15.5" data-path="d3.html"><a href="d3.html"><i class="fa fa-check"></i><b>15.5</b> D3 で可視化する</a></li>
 <li class="chapter" data-level="15.6" data-path="eng-cat.html"><a href="eng-cat.html"><i class="fa fa-check"></i><b>15.6</b> <code>cat</code> エンジンでチャンクをファイルに書き出す</a>
@@ -495,8 +495,8 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="spin" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> R スクリプトをレポートにレンダリングする</h2>
-<p>長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを<a href="https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/">"<strong>knitr</strong> の隠された至宝</a>と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (<code>Ctrl / Cmd + Shift + K</code>) です.</p>
-<p>R スクリプトをレポートにレンダリングすると, まず <code>knitr::spin()</code> 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「<strong>knitr</strong>の隠された至宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.</p>
+<p>長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを<a href="https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/">"<strong>knitr</strong> の秘宝</a>と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (<code>Ctrl / Cmd + Shift + K</code>) です.</p>
+<p>R スクリプトをレポートにレンダリングすると, まず <code>knitr::spin()</code> 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「<strong>knitr</strong>の秘宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.</p>
 <p>レポートの要素を細かく管理したいなら, 以下のような構文が役に立ちます.</p>
 <ul>
 <li><p>Roxygen コメントはテキストとして扱われます. roxygen コメントは <code>#'</code> で始まる R のコメントで, レポートにナラティブを書くのに役立ちます. コメント内ではあらゆる Markdown 構文を使うことができます.</p></li>

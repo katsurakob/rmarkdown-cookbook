@@ -40,7 +40,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/05/12 23:31:00 JST, ver. 0.9.2, 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/05/12 23:30:18 JST, ver. 0.9.2, 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -377,14 +377,10 @@ R Markdown はいくつかの異なるプロセスを合わせて文書を作成
 
 R Markdown 文書に対する基本的なワークフローの構造を図\@ref(fig:rmdworkflow)に示します. ステップ (矢印) と, 出力ファイルが生成される前に作成される中間ファイルを強調しています. 全ての処理は `rmarkdown::render()` 関数内に実装されています. 以降は各ステップを詳細に説明します.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/workflow} 
-
-}
-
-\caption{R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム}(\#fig:rmdworkflow)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/workflow.png" alt="R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム"  />
+<p class="caption">(\#fig:rmdworkflow)R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム</p>
+</div>
 
 `.Rmd` 文書は, 文書の本来の形式です. YAML (メタデータ)\index{YAML}, テキスト (ナラティブ), コードチャンク\index{こーどちゃんく@コードチャンク} を含んでいます.
 
@@ -480,14 +476,15 @@ R Markdown のテキスト部分で見られる最後の興味深いコンテン
 
 コードチャンクに対してできるいくつかの修正について理解するためには, **knitr** の処理を少しだけ詳しく知ることが有意義です. 各チャンクでは, **knitr** 言語エンジンは3つの入力の部品を得ます. knit 環境 (`knitr::knit_global()`), 入力されたコード, そしてチャンクオプションのリストです. コードチャンクはコードの出力とともに見た目も整形して返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図\@ref(fig:knitr-workflow)のように表せます.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
 
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/knitr-workflow-1} 
+```{=html}
+<div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:336px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [<frame>コードチャンク|\n  [コード]->[言語エンジン]\n  [チャンクオプション]->[言語エンジン]\n  [環境]->[言語エンジン]\n  [言語エンジン]->[整形されたコード]\n  [言語エンジン]->[整形された出力]\n  [言語エンジン]->[(変更された) 環境]\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
+```
 
-}
-
-\caption{言語エンジンへの入出力フローチャート}(\#fig:knitr-workflow)
-\end{figure}
+<p class="caption">(\#fig:knitr-workflow)言語エンジンへの入出力フローチャート</p>
+</div>
 
 この処理は以下の方法で修正できます.
 
@@ -537,14 +534,15 @@ print(y)
 
 この文書を書いていると, それぞれの小片は, テキストとコードを含む独立した節を一直線上に並べたものだとみなせるでしょう. しかし我々が実際にしているのは, 概念としては図\@ref(fig:rmd-containers)でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です^[実際にはここで見えているよりも多くのコンテナがあります. 例えば knit されたコードチャンクや, コードと出力がそれぞれ別のコンテナとして存在し, そしてこれらは親要素を共有しています.]
 
-\begin{figure}
+<div class="figure" style="text-align: center">
 
-{\centering \includegraphics[width=0.5\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/rmd-containers-1} 
+```{=html}
+<div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンク-x) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンク-y) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
+```
 
-}
-
-\caption{入れ子状のコンテナとして表現された単純な R Markdown 文書の例}(\#fig:rmd-containers)
-\end{figure}
+<p class="caption">(\#fig:rmd-containers)入れ子状のコンテナとして表現された単純な R Markdown 文書の例</p>
+</div>
 
 この図に関する2つの重要な特徴は (1) テキストやコードのどのセクションも個別のコンテナであり, (2) コンテナは他の別のコンテナを入れ子にできる, ということです. この入れ子は R Markdown 文書を RStudio IDE で執筆し, 文書のアウトラインを展開^[**訳注**: エディタ右上にあるボタンで表示を切り替えることができます.]しているとはっきりと分かります.
 
@@ -602,14 +600,10 @@ x <- 5  # 円の半径
 
 あなたがまだ Markdown の書き方に慣れていないか, Markdown コードを書きたくなければ, RStudio\index{RStudio} ver. 1.4 には実験的ですが Markdown 文書用のビジュアルエディタがあります. これは図\@ref(fig:visual-edit)で示すように Word のような伝統的な WYSIWYG なエディタと似ていると感じるでしょう. この完全なドキュメントは https://rstudio.github.io/visual-markdown-editing/ で見ることができます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/visual-edit} 
-
-}
-
-\caption{RStudio のビジュアル Markdown エディタ}(\#fig:visual-edit)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/visual-edit.png" alt="RStudio のビジュアル Markdown エディタ"  />
+<p class="caption">(\#fig:visual-edit)RStudio のビジュアル Markdown エディタ</p>
+</div>
 
 ビジュアルエディタによって, ヘッダ, 図, 表, 脚注などといった Pandoc でサポートされているほとんどあらゆる Markdown 要素を視覚的に編集できます. あなたは全ての構文を覚えなくてもよいのです. ある要素の構文を忘れた場合, RStudio ツールバー (図\@ref(fig:visual-edit)参照) を使うかキーボードショートカットを使って, 要素を追加したり編集したりできます.
 
@@ -913,14 +907,10 @@ output:
 
 付番されていない節は記述に特記情報を追加するのに使われます. 例えば本書では, 「はじめに」と「著者について」 の章は本文ではないため付番されていません. 図\@ref(fig:unnumbered-sections)を見ればわかるように, 実際の本文は番号の付いていない2つの章の後から始まり, 本文の章は付番されています. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/unnumbered-sections} 
-
-}
-
-\caption{付番された章とされていない章を示すための目次のスクリーンショット}(\#fig:unnumbered-sections)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/unnumbered-sections.png" alt="付番された章とされていない章を示すための目次のスクリーンショット"  />
+<p class="caption">(\#fig:unnumbered-sections)付番された章とされていない章を示すための目次のスクリーンショット</p>
+</div>
 
 節番号は1つづつ増えます. もし付番した節の後に付番されていない節を挿入し, その後さらに付番した節が始まると, 節番号は再び増加していきます.
 
@@ -1202,14 +1192,10 @@ knitr::kable(mtcars[1:5, 1:5], caption = "mtcars データ")
 
 この文書の出力を図 \@ref(fig:bookdown-ref) に示します. 
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/bookdown-ref} 
-
-}
-
-\caption{R Markdown 文書内の相互参照の例}(\#fig:bookdown-ref)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/bookdown-ref.png" alt="R Markdown 文書内の相互参照の例"  />
+<p class="caption">(\#fig:bookdown-ref)R Markdown 文書内の相互参照の例</p>
+</div>
 
 数式, 定理, 節の見出しにも相互参照することができます. これらのタイプの参照の方法は **bookdown** 本の 2.2, 2.6節でより詳しく説明されています.
 
@@ -1466,14 +1452,10 @@ for (i in 1:2) {
 ```
 ````
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.5\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/pacman-1} \includegraphics[width=0.5\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/pacman-2} 
-
-}
-
-\caption{パックマンのアニメーション}(\#fig:pacman)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/pacman-.gif" alt="パックマンのアニメーション"  />
+<p class="caption">(\#fig:pacman)パックマンのアニメーション</p>
+</div>
 
 アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\@ref(fig:pacman) が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
@@ -1529,14 +1511,15 @@ DiagrammeR::grViz("digraph {
   height = 500)
 ```
 
-\begin{figure}
+<div class="figure" style="text-align: center">
 
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/diagram-profit-1} 
+```{=html}
+<div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
 
-}
-
-\caption{プログラマの絵空事を表したダイアグラム}(\#fig:diagram-profit)
-\end{figure}
+<p class="caption">(\#fig:diagram-profit)プログラマの絵空事を表したダイアグラム</p>
+</div>
 
 ノードの形状, 色, 線のタイプを定義したり, パラメータを追加したりできる拡張的な操作も用意されています.
 
@@ -1569,14 +1552,15 @@ DiagrammeR::grViz("
   height = 100)
 ```
 
-\begin{figure}
+<div class="figure" style="text-align: center">
 
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/diagram-params-1} 
+```{=html}
+<div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+```
 
-}
-
-\caption{R から入力されたパラメータを使用したダイアグラム}(\#fig:diagram-params)
-\end{figure}
+<p class="caption">(\#fig:diagram-params)R から入力されたパラメータを使用したダイアグラム</p>
+</div>
 
 ### その他のダイアグラム作成パッケージ {#other-packages-for-making-diagrams}
 
@@ -1835,7 +1819,7 @@ colorize <- function(x, color) {
 }
 ```
 
-そうするとインライン R コード内で `` `r colorize("文の一部を赤色にする", "red")` `` ように使うことができます. これは \textcolor{red}{文の一部を赤色にする} でしょう (モノクロで印刷されたものを読んでいるなら, 赤色には見えないはずです).
+そうするとインライン R コード内で `` `r colorize("文の一部を赤色にする", "red")` `` ように使うことができます. これは <span style='color: red;'>文の一部を赤色にする</span> でしょう (モノクロで印刷されたものを読んでいるなら, 赤色には見えないはずです).
 
 ### Lua フィルタを使う (\*) {#lua-color}
 
@@ -1999,22 +1983,13 @@ output:
 
 図 \@ref(fig:wrap-text-1) は長い行のあるデフォルトの `pdf_document` 出力で, ページ余白をはみ出しています. 図\@ref(fig:wrap-text-2) は **listings** パッケージでテキストを折り返したときの PDF 出力です.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/wrap-none} 
-
-}
-
-\caption{幅が広すぎる通常のテキスト出力}(\#fig:wrap-text-1)
-\end{figure}
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/wrap-listings} 
-
-}
-
-\caption{listings パッケージで折り返されたテキスト出力}(\#fig:wrap-text-2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/wrap-none.png" alt="幅が広すぎる通常のテキスト出力"  />
+<p class="caption">(\#fig:wrap-text-1)幅が広すぎる通常のテキスト出力</p>
+</div><div class="figure" style="text-align: center">
+<img src="JP/images/wrap-listings.png" alt="listings パッケージで折り返されたテキスト出力"  />
+<p class="caption">(\#fig:wrap-text-2)listings パッケージで折り返されたテキスト出力</p>
+</div>
 
 :::{.infobox .memo data-latex="{memo}"}
 **訳注**
@@ -2274,14 +2249,10 @@ plot(cars, pch = 19)
 ::::::
 ````
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/multicol} 
-
-}
-
-\caption{HTML, LaTeX, Beamer で動作する二段組み}(\#fig:multicol)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/multicol.png" alt="HTML, LaTeX, Beamer で動作する二段組み"  />
+<p class="caption">(\#fig:multicol)HTML, LaTeX, Beamer で動作する二段組み</p>
+</div>
 
 図\@ref(fig:multicol) がその出力です. この例では外側の `.cols` クラスを持つ `Div` と, 内側に `.col` クラスを持つ3つの `Div` を使っています. HTML 出力では, 外部 CSS ファイル `columns.css` を導入し, その中で Flexbox レイアウトを外側の `Div` に適用しているので, 内側の `Div` が横並びになります.
 
@@ -2446,14 +2417,10 @@ file.copy(file.path(R.home("doc"), "html", "logo.jpg"), '.')
 
 図\@ref(fig:latex-logo) がこの出力例です.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/latex-logo} 
-
-}
-
-\caption{LaTeX の表紙ページにロゴを追加する}(\#fig:latex-logo)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/latex-logo.png" alt="LaTeX の表紙ページにロゴを追加する"  />
+<p class="caption">(\#fig:latex-logo)LaTeX の表紙ページにロゴを追加する</p>
+</div>
 
 LaTeX パッケージ (**titling**) を特に要求しない代替方法として, Markdown 構文を使って `title` フィールド\index{YAML!title}に画像を挿入する方法があります. 例えばこのように.
 
@@ -2583,30 +2550,18 @@ output:
 
 LaTeX のフロート配置パラメータの初期値は, あなたにとっては「理にかなった」配置を全体的に邪魔しているかもしれません. 堅実などころか悪質なまでに. これらのデフォルト設定を表\@ref(tab:float-default)に示します.
 
-\begin{table}
 
-\caption{(\#tab:float-default)LaTeX デフォルトのフロート設定}
-\centering
-\begin{tabular}[t]{l|l|l}
-\hline
-コマンド & 概要 & デフォルト\\
-\hline
-topfraction & ページ先頭からフロートが占めるページ割合の最大値 & 0.7\\
-\hline
-bottomfraction & ページ末尾からフロートが占めるページ割合の最大値 & 0.3\\
-\hline
-textfraction & 1ページに占めるテキストの割合の最小値 & 0.2\\
-\hline
-floatpagefraction & 1ページに占めるフロートの割合の最小値 & 0.5\\
-\hline
-topnumber & ページ先頭のフロート最大数 & 2\\
-\hline
-bottomnumber & ページ末尾のフロート最大数 & 1\\
-\hline
-totalnumber & 1ページの最大フロート数 & 3\\
-\hline
-\end{tabular}
-\end{table}
+Table: (\#tab:float-default)LaTeX デフォルトのフロート設定
+
+|コマンド          |概要                                             |デフォルト |
+|:-----------------|:------------------------------------------------|:----------|
+|topfraction       |ページ先頭からフロートが占めるページ割合の最大値 |0.7        |
+|bottomfraction    |ページ末尾からフロートが占めるページ割合の最大値 |0.3        |
+|textfraction      |1ページに占めるテキストの割合の最小値            |0.2        |
+|floatpagefraction |1ページに占めるフロートの割合の最小値            |0.5        |
+|topnumber         |ページ先頭のフロート最大数                       |2          |
+|bottomnumber      |ページ末尾のフロート最大数                       |1          |
+|totalnumber       |1ページの最大フロート数                          |3          |
 
 LaTeX に図を動かさないよう努力してもらうために, これらの設定を変えることができます. LaTeX プリアンブルファイルに, 1ページのテキストの最小量を減らすような以下のコードを追加し, フロートが収まる余地を増やすことができます.
 
@@ -2663,14 +2618,10 @@ boxplot(Sepal.Width ~ Species, data = iris)
 
 この出力を図\@ref(fig:latex-subfig)に示します. 簡潔にするために, 上記の例はチャンクヘッダの `fig.ncol = 2`, `out.width = "50%"`, `fig.align = "center"` や長くなるキャプションなどのチャンクオプションをいくつか省略しています.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/latex-subfig} 
-
-}
-
-\caption{複数の図を含む単一の figure 環境の例}(\#fig:latex-subfig)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/latex-subfig.png" alt="複数の図を含む単一の figure 環境の例"  />
+<p class="caption">(\#fig:latex-subfig)複数の図を含む単一の figure 環境の例</p>
+</div>
 
 ## Unicode 文字を含む文書をレンダリングする {#latex-unicode}
 
@@ -2928,14 +2879,10 @@ mtcars[1:5, "mpg", drop = FALSE]
 ```
 ````
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/chunk-bg} 
-
-}
-
-\caption{Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック}(\#fig:chunk-bg)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/chunk-bg.png" alt="Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック"  />
+<p class="caption">(\#fig:chunk-bg)Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック</p>
+</div>
 
 任意のクラスを使って対応する CSS ルールを定義することもできます. この場合以下の例のように, \@ref(html-css)節で言及した方法を使ってカスタム CSS ルールを読み込ませなければなりません.
 
@@ -2965,14 +2912,10 @@ mtcars[1:5, "mpg"]
 
 図\@ref(fig:chunk-border)が出力されたスタイルです.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/chunk-border} 
-
-}
-
-\caption{明桃色の背景, 赤い太枠線をもつコードチャンク}(\#fig:chunk-border)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/chunk-border.png" alt="明桃色の背景, 赤い太枠線をもつコードチャンク"  />
+<p class="caption">(\#fig:chunk-border)明桃色の背景, 赤い太枠線をもつコードチャンク</p>
+</div>
 
 文書内の全てのコードブロックにカスタムスタイルを適用したいなら, グローバルな **knitr** オプションで `class.source` を設定します. 例えばこのように.
 
@@ -3034,14 +2977,10 @@ print(mtcars)
 ```
 ````
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/html-scroll} 
-
-}
-
-\caption{カスタム CSS を使用したスクロール可能なコードブロック}(\#fig:html-scroll)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/html-scroll.png" alt="カスタム CSS を使用したスクロール可能なコードブロック"  />
+<p class="caption">(\#fig:html-scroll)カスタム CSS を使用したスクロール可能なコードブロック</p>
+</div>
 
 上記の例では全てのコードブロックに大域的に 300px の高さの上限を定義しています. HTML 出力時にはコードブロックが `<pre>` タグで囲まれていることを思い出してください. それから `class` 属性を用いて `<pre>` ブロックの高さを 100px に制限します. これは CSS セレクタ `pre[class]` が意味するところです. デフォルトではテキスト出力は `<pre> </pre>` に含まれ, R コードブロックは `<pre class="r"> </pre>` に含まれます ( `<pre>` タグが `class` 属性を持っていることに注意).
 
@@ -3146,14 +3085,10 @@ head(mtcars)
 
 出力を図\@ref(fig:html-tabs)に示します. 実際には一度に1つのタブしか見られないことに注意してください. この図は両方のタブがみられるよう2つのスクリーンショットを連結したものです.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/html-tabs} 
-
-}
-
-\caption{複数のセクションをタブに}(\#fig:html-tabs)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/html-tabs.png" alt="複数のセクションをタブに"  />
+<p class="caption">(\#fig:html-tabs)複数のセクションをタブに</p>
+</div>
 
 タブに "pill" 効果を付けるため, さらに別の属性 `.tabset-pills` を上位レベルの見出しに追加することができます. これでタブは暗青色の背景になります.
 
@@ -3380,14 +3315,10 @@ output:
 
 \@ref(html-scroll)節で言及したように, `html_document` フォーマットの `code_folding: hide` オプションでソースコードチャンクを折りたたむことができます. 現在は出力ブロックを折りたたむことはできませんが, JavaScript の小ワザが使えれば出力を折りたたみできます. これは出力が比較的長く, しかしさほど重要でないときに役に立つでしょう. 初期状態で折りたたみ, 読者が興味を持てば内容を見るために展開することができます. 図\@ref(fig:details-tag)はその例です. 「詳細」ボタンをクリックして出力を展開できるでしょう.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/details-closed} \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/details-open} 
-
-}
-
-\caption{details 要素でテキスト出力を囲む}(\#fig:details-tag)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/details-closed.png" alt="details 要素でテキスト出力を囲む"  /><img src="JP/images/details-open.png" alt="details 要素でテキスト出力を囲む"  />
+<p class="caption">(\#fig:details-tag)details 要素でテキスト出力を囲む</p>
+</div>
 
 あなたがご覧になっているのが本書の HTML バージョンなら, 以下のチャンクで実際に動くのを見ることができます. PDF または印刷版を読んでいるのなら, このような対話的機能 (「詳細」ボタンを押すこと) はもちろん不可能です.
 
@@ -3410,7 +3341,24 @@ output:
 
 以下の Rmd 文書は, 出力ブロックを検出しそれを `<details>` タグで囲む JavaScript コードを読み込ませた, 完全なソースです. 
 
-
+<script type="text/javascript">
+(function() {
+  var codes = document.querySelectorAll('pre:not([class])');
+  var code, i, d, s, p;
+  for (i = 0; i < codes.length; i++) {
+    code = codes[i];
+    p = code.parentNode;
+    d = document.createElement('details');
+    s = document.createElement('summary');
+    s.innerText = '詳細';
+    // <details><summary>詳細</summary></details>
+    d.appendChild(s);
+    // コードを <details> 内に移動
+    p.replaceChild(d, code);
+    d.appendChild(code);
+  }
+})();
+</script>
 
 ````md
 ---
@@ -3605,25 +3553,17 @@ output:
 
 たった今言及したように, `template.docx` は Pandoc から生成されたものでなければなりません. このテンプレートは `word_document` 出力フォーマットを使ったどのような R Markdown 文書 からでも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい要素の種類を含んでいるべきです) 作ることができます^[**訳注**: この記述はややわかりにくいかもしれませんが, R Markdown もまた Pandoc によってファイルを生成していることを思い出してください. 具体的な手順は次のようになります. 一旦 (1) R Markdown 文書をコンパイルし docx ファイルを生成し, (2) このファイルを Word で開いて変更したい箇所のスタイル設定を行い, 保存します. (3) そして上記のように `reference_docx` フィールドに保存したファイルを指定してから, 再びファイルをコンパイルします. このとき参照されるのはスタイル情報のみなので, 既に保存した文書の内容は出力に影響しません.]. それから `.docx` ファイルを開き, スタイルを編集します.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/word-template-1} 
-
-}
-
-\caption{特定の文書要素のスタイルを見つける}(\#fig:word-template-1)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/word-template-1.png" alt="特定の文書要素のスタイルを見つける"  />
+<p class="caption">(\#fig:word-template-1)特定の文書要素のスタイルを見つける</p>
+</div>
 
 図\@ref(fig:word-template-1)は Word の「ホーム」タブから「スタイル」ウィンドウを開くと見つけられます. カーソルを文書の特定の要素上に動かすと, スタイルリストの項目が強調されます. ある要素のスタイルを変更したいならば, 強調された項目上でドロップダウンメニューの「変更」をクリックして図\@ref(fig:word-template-2)のようなダイアログボックスを見ることができます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/word-template-2} 
-
-}
-
-\caption{Word 文書の要素のスタイルを変更する}(\#fig:word-template-2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/word-template-2.png" alt="Word 文書の要素のスタイルを変更する"  />
+<p class="caption">(\#fig:word-template-2)Word 文書の要素のスタイルを変更する</p>
+</div>
 
 スタイルの編集を終わったら, 文書を保存し (誤って上書きしないようなファイル名にしてください), 今後の Word 文書のテンプレートとして使用することができます. Pandoc が参照文書テンプレートを与えられて新しい Word 文書をレンダリングするとき, テンプレートのスタイルが読み出されて新しい文書に適用されます.
 
@@ -3631,14 +3571,10 @@ output:
 
 文書の要素に対するスタイル名がすぐには見つからないこともあります. 複数のスタイルが同じ要素に適用され, それらのうち1つだけが強調されてみえることもあります. 修正したいスタイルが実際になんであるかは, 当て推量やネット検索で解決することが求められることもあります. 例えば「スタイルの管理」ボタン (図\@ref(fig:word-template-1)のスタイルリストの下部にある, 左から3番目のボタン) をクリックし, "Table" スタイル (図\@ref(fig:word-table)参照) を見つけるまでには多数のスタイル名をスクロールして飛ばさなければならりません. これでようやく, 枠線などの表のスタイルを修正できます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/word-table} 
-
-}
-
-\caption{Word 文書の表のスタイルを修正する}(\#fig:word-table)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/word-table.png" alt="Word 文書の表のスタイルを修正する"  />
+<p class="caption">(\#fig:word-table)Word 文書の表のスタイルを修正する</p>
+</div>
 
 :::{.infobox .memo data-latex="{memo}"}
 
@@ -3771,7 +3707,7 @@ LaTeX と HTML はどちらもよく使われるフォーマットです. `knitr
 ```{.r .numberLines .lineAnchors}
 # markdown を HTML として扱わない
 knitr::is_html_output(excludes = "markdown")
-## [1] FALSE
+## [1] TRUE
 ```
 
 ある出力要素が LaTeX または HTML のみで生成されるのなら, これらの関数を条件つきで生成できるように使えます. 例えば, PDF のページには大きすぎる表はフォントサイズを小さくした環境内に表を入れるとよいでしょうが, そういった LaTeX 環境は HTML 出力では機能しませんので, HTML 出力に含めるべきでありません (HTML 出力でフォントサイズを調整したいなら, CSS を使うこともできます). 以下はその例です.
@@ -3879,14 +3815,10 @@ webshot::install_phantomjs()
 knitr::include_url("https://yihui.org")
 ```
 
-\begin{figure}
-
-{\centering \href{https://yihui.org}{\includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/include-url-1} }
-
-}
-
-\caption{iframe または screenshot による Yihui's のホームページ}(\#fig:include-url)
-\end{figure}
+<div class="figure" style="text-align: center">
+<iframe src="https://yihui.org" width="100%" height="400px"></iframe>
+<p class="caption">(\#fig:include-url)iframe または screenshot による Yihui's のホームページ</p>
+</div>
 
 \let\href\ooldhref
 
@@ -3907,14 +3839,10 @@ plot(mpg ~ hp, data = mtcars, pch = 19)
 ````
 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.48\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/figures-side-1} \includegraphics[width=0.48\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/figures-side-2} 
-
-}
-
-\caption{横に並べた図}(\#fig:figures-side)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/figures-side-1.png" alt="横に並べた図" width="48%" /><img src="rmarkdown-cookbook_files/figure-html/figures-side-2.png" alt="横に並べた図" width="48%" />
+<p class="caption">(\#fig:figures-side)横に並べた図</p>
+</div>
 
 この単純なアプローチは PDF でも HTML 出力でも動作します.
 
@@ -4132,7 +4060,15 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
 .3 ....
 }
 ```
-
+* `directory/`
+    * `your-report.Rmd`
+    * `style.css`
+    * `preamble.tex`
+    * `images/`
+        * `important.png`
+        * `note.png`
+        * `caution.png`
+        * `...`
 
 
 全体がどのように動作するかを説明する前に, この例のソースコードと出力をお見せしましょう.
@@ -4303,8 +4239,8 @@ box_args <- function(
 
 ```{.r .numberLines .lineAnchors}
 kable(x, format, digits = getOption("digits"), row.names = NA, 
-  col.names = NA, align, caption = NULL, label = NULL, 
-  format.args = list(), escape = TRUE, ...)
+  col.names = NA, align, caption = NULL, label = NULL, format.args = list(), 
+  escape = TRUE, ...)
 ```
 
 ### サポートする表形式 {#kable-formats}
@@ -4449,23 +4385,15 @@ knitr::kable(iris2, col.names = gsub("[.]", " ", names(iris)))
 ```
 
 
-\begin{tabular}{r|r|r|r|l}
-\hline
-Sepal Length & Sepal Width & Petal Length & Petal Width & Species\\
-\hline
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-\hline
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-\hline
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-\hline
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-\hline
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\hline
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-\hline
-\end{tabular}
+
+| Sepal Length| Sepal Width| Petal Length| Petal Width|Species |
+|------------:|-----------:|------------:|-----------:|:-------|
+|          5.1|         3.5|          1.4|         0.2|setosa  |
+|          4.9|         3.0|          1.4|         0.2|setosa  |
+|          4.7|         3.2|          1.3|         0.2|setosa  |
+|          4.6|         3.1|          1.5|         0.2|setosa  |
+|          5.0|         3.6|          1.4|         0.2|setosa  |
+|          5.4|         3.9|          1.7|         0.4|setosa  |
 
 `col.names` 引数には必ずしも `gsub()` ような関数で列を与える必要はなく, 元のデータオブジェクトの列数と同じ長さであれば, 以下の例のように好きな文字列ベクトルを与えることができます. 
 
@@ -4488,23 +4416,15 @@ knitr::kable(iris2, align = "lccrr")
 ```
 
 
-\begin{tabular}{l|c|c|r|r}
-\hline
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\hline
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-\hline
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-\hline
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-\hline
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-\hline
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\hline
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-\hline
-\end{tabular}
+
+|Sepal.Length | Sepal.Width | Petal.Length | Petal.Width| Species|
+|:------------|:-----------:|:------------:|-----------:|-------:|
+|5.1          |     3.5     |     1.4      |         0.2|  setosa|
+|4.9          |     3.0     |     1.4      |         0.2|  setosa|
+|4.7          |     3.2     |     1.3      |         0.2|  setosa|
+|4.6          |     3.1     |     1.5      |         0.2|  setosa|
+|5.0          |     3.6     |     1.4      |         0.2|  setosa|
+|5.4          |     3.9     |     1.7      |         0.4|  setosa|
 
 ### 表にキャプションを追加する {#kable-caption}
 
@@ -4515,28 +4435,18 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 knitr::kable(iris2, caption = "表のキャプションの例")
 ```
 
-\begin{table}
 
-\caption{(\#tab:kable-cap)表のキャプションの例}
-\centering
-\begin{tabular}[t]{r|r|r|r|l}
-\hline
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\hline
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-\hline
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-\hline
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-\hline
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-\hline
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\hline
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-\hline
-\end{tabular}
-\end{table}
+
+Table: (\#tab:kable-cap)表のキャプションの例
+
+| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
+|------------:|-----------:|------------:|-----------:|:-------|
+|          5.1|         3.5|          1.4|         0.2|setosa  |
+|          4.9|         3.0|          1.4|         0.2|setosa  |
+|          4.7|         3.2|          1.3|         0.2|setosa  |
+|          4.6|         3.1|          1.5|         0.2|setosa  |
+|          5.0|         3.6|          1.4|         0.2|setosa  |
+|          5.4|         3.9|          1.7|         0.4|setosa  |
 
 \@ref(cross-ref)節で言及したように, 出力フォーマットが **bookdown** パッケージ由来のものであれば, キャプションのある表を相互参照することができます.
 
@@ -4562,24 +4472,19 @@ format(10000.123, big.mark = ",")
 
 
 ```{.r .numberLines .lineAnchors}
-d <- cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 
-  0, 1000))
+d <- cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 0, 
+  1000))
 # 最大で4桁表示
 knitr::kable(d, digits = 4)
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-0.8827 & 1e+03 & -479.4422\\
-\hline
-0.7700 & 1e+05 & 284.2424\\
-\hline
-0.7413 & 1e+07 & -367.3443\\
-\hline
-\end{tabular}
+
+|     X1|    X2|         X3|
+|------:|-----:|----------:|
+| 0.0698| 1e+03|  -571.9407|
+| 0.7653| 1e+05| -2161.6849|
+| 0.0049| 1e+07| -1705.9400|
 
 ```{.r .numberLines .lineAnchors}
 # 列ごとにそれぞれ丸める
@@ -4587,17 +4492,12 @@ knitr::kable(d, digits = c(5, 0, 2))
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-0.88271 & 1e+03 & -479.44\\
-\hline
-0.77000 & 1e+05 & 284.24\\
-\hline
-0.74128 & 1e+07 & -367.34\\
-\hline
-\end{tabular}
+
+|      X1|    X2|       X3|
+|-------:|-----:|--------:|
+| 0.06975| 1e+03|  -571.94|
+| 0.76528| 1e+05| -2161.68|
+| 0.00491| 1e+07| -1705.94|
 
 ```{.r .numberLines .lineAnchors}
 # 指数表記を使わせない
@@ -4605,17 +4505,12 @@ knitr::kable(d, digits = 3, format.args = list(scientific = FALSE))
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-0.883 & 1000 & -479.442\\
-\hline
-0.770 & 100000 & 284.242\\
-\hline
-0.741 & 10000000 & -367.344\\
-\hline
-\end{tabular}
+
+|    X1|       X2|        X3|
+|-----:|--------:|---------:|
+| 0.070|     1000|  -571.941|
+| 0.765|   100000| -2161.685|
+| 0.005| 10000000| -1705.940|
 
 ```{.r .numberLines .lineAnchors}
 # 大きな数に対してカンマ区切りする
@@ -4624,17 +4519,12 @@ knitr::kable(d, digits = 3, format.args = list(big.mark = ",",
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-0.883 & 1,000 & -479.442\\
-\hline
-0.770 & 100,000 & 284.242\\
-\hline
-0.741 & 10,000,000 & -367.344\\
-\hline
-\end{tabular}
+
+|    X1|         X2|         X3|
+|-----:|----------:|----------:|
+| 0.070|      1,000|   -571.941|
+| 0.765|    100,000| -2,161.685|
+| 0.005| 10,000,000| -1,705.940|
 
 ### 欠損値を表示する {#display-missing-values}
 
@@ -4647,17 +4537,12 @@ knitr::kable(d)  # デフォルトでは NA は表示される
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-NA & 1e+03 & -479.4\\
-\hline
-0.7700 & 1e+05 & NA\\
-\hline
-0.7413 & NA & -367.3\\
-\hline
-\end{tabular}
+
+|     X1|    X2|      X3|
+|------:|-----:|-------:|
+|     NA| 1e+03|  -571.9|
+| 0.7653| 1e+05|      NA|
+| 0.0049|    NA| -1705.9|
 
 ```{.r .numberLines .lineAnchors}
 # NA を空白に置き換え
@@ -4666,17 +4551,12 @@ knitr::kable(d)
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
- & 1e+03 & -479.4\\
-\hline
-0.7700 & 1e+05 & \\
-\hline
-0.7413 &  & -367.3\\
-\hline
-\end{tabular}
+
+|     X1|    X2|      X3|
+|------:|-----:|-------:|
+|       | 1e+03|  -571.9|
+| 0.7653| 1e+05|        |
+| 0.0049|      | -1705.9|
 
 ```{.r .numberLines .lineAnchors}
 options(knitr.kable.NA = "**")
@@ -4684,17 +4564,12 @@ knitr::kable(d)
 ```
 
 
-\begin{tabular}{r|r|r}
-\hline
-X1 & X2 & X3\\
-\hline
-** & 1e+03 & -479.4\\
-\hline
-0.7700 & 1e+05 & **\\
-\hline
-0.7413 & ** & -367.3\\
-\hline
-\end{tabular}
+
+|     X1|    X2|      X3|
+|------:|-----:|-------:|
+|     **| 1e+03|  -571.9|
+| 0.7653| 1e+05|      **|
+| 0.0049|    **| -1705.9|
 
 ```{.r .numberLines .lineAnchors}
 options(opts)  # グローバルオプションを元に戻す
@@ -4712,15 +4587,11 @@ knitr::kable(d)
 ```
 
 
-\begin{tabular}{l|r|r|r|r}
-\hline
-  & Estimate & Std. Error & t value & Pr(>|t|)\\
-\hline
-(Intercept) & -17.579 & 6.7584 & -2.601 & 0.0123\\
-\hline
-speed & 3.932 & 0.4155 & 9.464 & 0.0000\\
-\hline
-\end{tabular}
+
+|            | Estimate| Std. Error| t value| Pr(>&#124;t&#124;)|
+|:-----------|--------:|----------:|-------:|------------------:|
+|(Intercept) |  -17.579|     6.7584|  -2.601|             0.0123|
+|speed       |    3.932|     0.4155|   9.464|             0.0000|
 
 ```{.r .numberLines .lineAnchors}
 # 行と列の名前に数式表現を与える
@@ -4730,15 +4601,11 @@ knitr::kable(d, escape = FALSE)
 ```
 
 
-\begin{tabular}{l|r|r|r|r}
-\hline
-  & Estimate & Std. Error & t value & $P(T > |t|)$\\
-\hline
-$\beta_0$ & -17.579 & 6.7584 & -2.601 & 0.0123\\
-\hline
-$\beta_1$ & 3.932 & 0.4155 & 9.464 & 0.0000\\
-\hline
-\end{tabular}
+
+|          | Estimate| Std. Error| t value| $P(T > &#124;t&#124;)$|
+|:---------|--------:|----------:|-------:|----------------------:|
+|$\beta_0$ |  -17.579|     6.7584|  -2.601|                 0.0123|
+|$\beta_1$ |    3.932|     0.4155|   9.464|                 0.0000|
 
 `escape = FALSE` なしでは特殊文字はエスケープされるか置き換えられます. 例えば `$` は `\$` に, `_` は `\_` に, `\` は `\textbackslash{}` にエスケープされます.
 
@@ -4797,32 +4664,35 @@ knitr::kable(
 )
 ```
 
-\begin{table}
-\caption{(\#tab:two-tables)横に並べられた2つの表}
 
-\centering
-\begin{tabular}[t]{rr}
-\toprule
-speed & dist\\
-\midrule
-4 & 2\\
-4 & 10\\
-7 & 4\\
-\bottomrule
-\end{tabular}
-\centering
-\begin{tabular}[t]{lrrr}
-\toprule
-  & mpg & cyl & disp\\
-\midrule
-Mazda RX4 & 21.0 & 6 & 160\\
-Mazda RX4 Wag & 21.0 & 6 & 160\\
-Datsun 710 & 22.8 & 4 & 108\\
-Hornet 4 Drive & 21.4 & 6 & 258\\
-Hornet Sportabout & 18.7 & 8 & 360\\
-\bottomrule
-\end{tabular}
-\end{table}
+
+<table class="kable_wrapper">
+<caption>(\#tab:two-tables)横に並べられた2つの表</caption>
+<tbody>
+  <tr>
+   <td> 
+
+| speed| dist|
+|-----:|----:|
+|     4|    2|
+|     4|   10|
+|     7|    4|
+
+ </td>
+   <td> 
+
+|                  |  mpg| cyl| disp|
+|:-----------------|----:|---:|----:|
+|Mazda RX4         | 21.0|   6|  160|
+|Mazda RX4 Wag     | 21.0|   6|  160|
+|Datsun 710        | 22.8|   4|  108|
+|Hornet 4 Drive    | 21.4|   6|  258|
+|Hornet Sportabout | 18.7|   8|  360|
+
+ </td>
+  </tr>
+</tbody>
+</table>
 
 この機能は HTML と PDF 出力でのみ機能することに注意してください.
 
@@ -4844,36 +4714,35 @@ knitr::kables(
 )
 ```
 
-\begin{table}
-\caption{(\#tab:kables)knitr::kables() によって作成された2つの表.}
 
-\begin{tabular}[t]{r|r}
-\hline
-速さ & 距離\\
-\hline
-4 & 2\\
-\hline
-4 & 10\\
-\hline
-7 & 4\\
-\hline
-\end{tabular}
-\begin{tabular}[t]{l|r|r|r}
-\hline
-  & mpg & cyl & disp\\
-\hline
-Mazda RX4 & 21 & 6 & 160\\
-\hline
-Mazda RX4 Wag & 21 & 6 & 160\\
-\hline
-Datsun 710 & 23 & 4 & 108\\
-\hline
-Hornet 4 Drive & 21 & 6 & 258\\
-\hline
-Hornet Sportabout & 19 & 8 & 360\\
-\hline
-\end{tabular}
-\end{table}
+
+<table class="kable_wrapper">
+<caption>(\#tab:kables)knitr::kables() によって作成された2つの表.</caption>
+<tbody>
+  <tr>
+   <td> 
+
+| 速さ| 距離|
+|----:|----:|
+|    4|    2|
+|    4|   10|
+|    7|    4|
+
+ </td>
+   <td> 
+
+|                  | mpg| cyl| disp|
+|:-----------------|---:|---:|----:|
+|Mazda RX4         |  21|   6|  160|
+|Mazda RX4 Wag     |  21|   6|  160|
+|Datsun 710        |  23|   4|  108|
+|Hornet 4 Drive    |  21|   6|  258|
+|Hornet Sportabout |  19|   8|  360|
+
+ </td>
+  </tr>
+</tbody>
+</table>
 
 ### `for` ループから複数の表を作成する (\*) {#generate-multiple-table-from-for-loop}
 
@@ -5022,7 +4891,7 @@ iris3 <- head(iris, 10)
 knitr::kable(iris3, format = "latex", booktabs = TRUE)
 ```
 
-
+```{.tex}
 \begin{tabular}{rrrrl}
 \toprule
 Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
@@ -5040,6 +4909,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 4.9 & 3.1 & 1.5 & 0.1 & setosa\\
 \bottomrule
 \end{tabular}
+```
 
 R Markdown で **booktabs** のような LaTeX パッケージが追加で必要なら, YAML で宣言しなければならないことを忘れないでください (やり方は\@ref(latex-extra)節参照).
 
@@ -5057,11 +4927,11 @@ R Markdown で **booktabs** のような LaTeX パッケージが追加で必要
     
     
     ```{.r .numberLines .lineAnchors}
-    knitr::kable(iris3, format = "latex", linesep = c("", "", 
-      "\\addlinespace"), booktabs = TRUE)
+    knitr::kable(iris3, format = "latex", linesep = c("", "", "\\addlinespace"), 
+      booktabs = TRUE)
     ```
     
-    
+    ```{.tex}
     \begin{tabular}{rrrrl}
     \toprule
     Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
@@ -5081,6 +4951,7 @@ R Markdown で **booktabs** のような LaTeX パッケージが追加で必要
     4.9 & 3.1 & 1.5 & 0.1 & setosa\\
     \bottomrule
     \end{tabular}
+    ```
     
     行空けを完全に削除したいなら, `linesep = ''` とこともできます.
 
@@ -5146,14 +5017,10 @@ th, td { padding: 5px; }
 thead, tfoot, tr:nth-child(even) { background: #eee; }
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.7\linewidth,height=1\textheight,keepaspectratio]{JP/images/striped-table} 
-
-}
-
-\caption{HTML と CSS で作成したストライプ背景の表}(\#fig:striped-table)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/striped-table.png" alt="HTML と CSS で作成したストライプ背景の表"  />
+<p class="caption">(\#fig:striped-table)HTML と CSS で作成したストライプ背景の表</p>
+</div>
 
 ## **kableExtra** パッケージ {#kableextra}
 
@@ -5192,22 +5059,54 @@ kable(head(iris, 5), booktabs = TRUE) %>%
   kable_styling(font_size = 8)
 ```
 
-\begin{table}
-\centering\begingroup\fontsize{8}{10}\selectfont
-
-\begin{tabular}{rrrrl}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\bottomrule
-\end{tabular}
-\endgroup{}
-\end{table}
+<table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:right;"> Sepal.Length </th>
+   <th style="text-align:right;"> Sepal.Width </th>
+   <th style="text-align:right;"> Petal.Length </th>
+   <th style="text-align:right;"> Petal.Width </th>
+   <th style="text-align:left;"> Species </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.6 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 3.6 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+</tbody>
+</table>
 
 ### 特定の行・列のスタイルを設定する {#style-specific-rows-columns}
 
@@ -5223,18 +5122,54 @@ kable(head(iris, 5), align = 'c', booktabs = TRUE) %>%
   column_spec(5, strikeout = TRUE)
 ```
 
-
-\begin{tabular}{cccc>{}c}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-\em{\textbf{5.1}} & \em{\textbf{3.5}} & \em{\textbf{1.4}} & \em{\textbf{0.2}} & \sout{\em{\textbf{setosa}}}\\
-\cellcolor{black}{\textcolor{white}{4.9}} & \cellcolor{black}{\textcolor{white}{3.0}} & \cellcolor{black}{\textcolor{white}{1.4}} & \cellcolor{black}{\textcolor{white}{0.2}} & \sout{\cellcolor{black}{\textcolor{white}{setosa}}}\\
-\cellcolor{black}{\textcolor{white}{4.7}} & \cellcolor{black}{\textcolor{white}{3.2}} & \cellcolor{black}{\textcolor{white}{1.3}} & \cellcolor{black}{\textcolor{white}{0.2}} & \sout{\cellcolor{black}{\textcolor{white}{setosa}}}\\
-\underline{\ttfamily{4.6}} & \underline{\ttfamily{3.1}} & \underline{\ttfamily{1.5}} & \underline{\ttfamily{0.2}} & \sout{\underline{\ttfamily{setosa}}}\\
-\rotatebox{45}{5.0} & \rotatebox{45}{3.6} & \rotatebox{45}{1.4} & \rotatebox{45}{0.2} & \sout{\rotatebox{45}{setosa}}\\
-\bottomrule
-\end{tabular}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> Sepal.Length </th>
+   <th style="text-align:center;"> Sepal.Width </th>
+   <th style="text-align:center;"> Petal.Length </th>
+   <th style="text-align:center;"> Petal.Width </th>
+   <th style="text-align:center;"> Species </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;font-weight: bold;font-style: italic;"> 5.1 </td>
+   <td style="text-align:center;font-weight: bold;font-style: italic;"> 3.5 </td>
+   <td style="text-align:center;font-weight: bold;font-style: italic;"> 1.4 </td>
+   <td style="text-align:center;font-weight: bold;font-style: italic;"> 0.2 </td>
+   <td style="text-align:center;font-weight: bold;font-style: italic;text-decoration: line-through;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 4.9 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 3.0 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 1.4 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 0.2 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;text-decoration: line-through;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 4.7 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 3.2 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 1.3 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;"> 0.2 </td>
+   <td style="text-align:center;color: white !important;background-color: black !important;text-decoration: line-through;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;font-family: monospace;text-decoration: underline;"> 4.6 </td>
+   <td style="text-align:center;font-family: monospace;text-decoration: underline;"> 3.1 </td>
+   <td style="text-align:center;font-family: monospace;text-decoration: underline;"> 1.5 </td>
+   <td style="text-align:center;font-family: monospace;text-decoration: underline;"> 0.2 </td>
+   <td style="text-align:center;font-family: monospace;text-decoration: underline;text-decoration: line-through;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);"> 5.0 </td>
+   <td style="text-align:center;-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);"> 3.6 </td>
+   <td style="text-align:center;-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);"> 1.4 </td>
+   <td style="text-align:center;-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);"> 0.2 </td>
+   <td style="text-align:center;-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -ms-transform: rotate(45deg); -o-transform: rotate(45deg); transform: rotate(45deg);text-decoration: line-through;"> setosa </td>
+  </tr>
+</tbody>
+</table>
 
 同様に, `cell_spec()`\index{kableExtra!cell\_spec()} 関数で個別のセルにスタイル設定できます.
 
@@ -5251,22 +5186,63 @@ kable(iris2, booktabs = TRUE) %>%
   add_header_above(c("Measurements" = 4, "More attributes" = 1))
 ```
 
-
-\begin{tabular}{rrrrl}
-\toprule
-\multicolumn{4}{c}{Measurements} & \multicolumn{1}{c}{More attributes} \\
-\cmidrule(l{3pt}r{3pt}){1-4} \cmidrule(l{3pt}r{3pt}){5-5}
-\multicolumn{2}{c}{長さ} & \multicolumn{2}{c}{幅} & \multicolumn{1}{c}{ } \\
-\cmidrule(l{3pt}r{3pt}){1-2} \cmidrule(l{3pt}r{3pt}){3-4}
-Sepal & Petal & Sepal & Petal & Species\\
-\midrule
-5.1 & 1.4 & 3.5 & 0.2 & setosa\\
-4.9 & 1.4 & 3.0 & 0.2 & setosa\\
-4.7 & 1.3 & 3.2 & 0.2 & setosa\\
-4.6 & 1.5 & 3.1 & 0.2 & setosa\\
-5.0 & 1.4 & 3.6 & 0.2 & setosa\\
-\bottomrule
-\end{tabular}
+<table>
+ <thead>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="4"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">Measurements</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="1"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">More attributes</div></th>
+</tr>
+<tr>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">長さ</div></th>
+<th style="border-bottom:hidden;padding-bottom:0; padding-left:3px;padding-right:3px;text-align: center; " colspan="2"><div style="border-bottom: 1px solid #ddd; padding-bottom: 5px; ">幅</div></th>
+<th style="empty-cells: hide;border-bottom:hidden;" colspan="1"></th>
+</tr>
+  <tr>
+   <th style="text-align:right;"> Sepal </th>
+   <th style="text-align:right;"> Petal </th>
+   <th style="text-align:right;"> Sepal </th>
+   <th style="text-align:right;"> Petal </th>
+   <th style="text-align:left;"> Species </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 1.3 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 4.6 </td>
+   <td style="text-align:right;"> 1.5 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 5.0 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 3.6 </td>
+   <td style="text-align:right;"> 0.2 </td>
+   <td style="text-align:left;"> setosa </td>
+  </tr>
+</tbody>
+</table>
 
 `add_header_above()` 内の名前付きベクトルに対して, 名前がテーブルヘッダにテキストとして表示され, 整数値のベクトルが対応する名前の列の数を表します. 例えば `"Length" = 2` が `Length` が2列にまたがることを意味します.
 
@@ -5280,28 +5256,85 @@ kable(iris3[, 1:4], booktabs = TRUE) %>% pack_rows(
 )
 ```
 
-
-\begin{tabular}{lrrrr}
-\toprule
-  & Sepal.Length & Sepal.Width & Petal.Length & Petal.Width\\
-\midrule
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{setosa}}\\
-\hspace{1em}1 & 5.1 & 3.5 & 1.4 & 0.2\\
-\hspace{1em}2 & 4.9 & 3.0 & 1.4 & 0.2\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{versicolor}}\\
-\hspace{1em}51 & 7.0 & 3.2 & 4.7 & 1.4\\
-\hspace{1em}52 & 6.4 & 3.2 & 4.5 & 1.5\\
-\hspace{1em}53 & 6.9 & 3.1 & 4.9 & 1.5\\
-\hspace{1em}54 & 5.5 & 2.3 & 4.0 & 1.3\\
-\addlinespace[0.3em]
-\multicolumn{5}{l}{\textbf{virginica}}\\
-\hspace{1em}101 & 6.3 & 3.3 & 6.0 & 2.5\\
-\hspace{1em}102 & 5.8 & 2.7 & 5.1 & 1.9\\
-\hspace{1em}103 & 7.1 & 3.0 & 5.9 & 2.1\\
-\bottomrule
-\end{tabular}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> Sepal.Length </th>
+   <th style="text-align:right;"> Sepal.Width </th>
+   <th style="text-align:right;"> Petal.Length </th>
+   <th style="text-align:right;"> Petal.Width </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr grouplength="2"><td colspan="5" style="border-bottom: 1px solid;"><strong>setosa</strong></td></tr>
+<tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 1 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 3.5 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 2 </td>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 1.4 </td>
+   <td style="text-align:right;"> 0.2 </td>
+  </tr>
+  <tr grouplength="4"><td colspan="5" style="border-bottom: 1px solid;"><strong>versicolor</strong></td></tr>
+<tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 51 </td>
+   <td style="text-align:right;"> 7.0 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 1.4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 52 </td>
+   <td style="text-align:right;"> 6.4 </td>
+   <td style="text-align:right;"> 3.2 </td>
+   <td style="text-align:right;"> 4.5 </td>
+   <td style="text-align:right;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 53 </td>
+   <td style="text-align:right;"> 6.9 </td>
+   <td style="text-align:right;"> 3.1 </td>
+   <td style="text-align:right;"> 4.9 </td>
+   <td style="text-align:right;"> 1.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 54 </td>
+   <td style="text-align:right;"> 5.5 </td>
+   <td style="text-align:right;"> 2.3 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 1.3 </td>
+  </tr>
+  <tr grouplength="3"><td colspan="5" style="border-bottom: 1px solid;"><strong>virginica</strong></td></tr>
+<tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 101 </td>
+   <td style="text-align:right;"> 6.3 </td>
+   <td style="text-align:right;"> 3.3 </td>
+   <td style="text-align:right;"> 6.0 </td>
+   <td style="text-align:right;"> 2.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 102 </td>
+   <td style="text-align:right;"> 5.8 </td>
+   <td style="text-align:right;"> 2.7 </td>
+   <td style="text-align:right;"> 5.1 </td>
+   <td style="text-align:right;"> 1.9 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;padding-left: 2em;" indentlevel="1"> 103 </td>
+   <td style="text-align:right;"> 7.1 </td>
+   <td style="text-align:right;"> 3.0 </td>
+   <td style="text-align:right;"> 5.9 </td>
+   <td style="text-align:right;"> 2.1 </td>
+  </tr>
+</tbody>
+</table>
 
 ### LaTeX で表を縮小する {#scaling-down-wide-tables-in-latex}
 
@@ -5313,39 +5346,192 @@ tab <- kable(tail(mtcars, 5), booktabs = TRUE)
 tab  # 長すぎる元の表
 ```
 
-
-\begin{tabular}{lrrrrrrrrrrr}
-\toprule
-  & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
-\midrule
-Lotus Europa & 30.4 & 4 & 95.1 & 113 & 3.77 & 1.513 & 16.9 & 1 & 1 & 5 & 2\\
-Ford Pantera L & 15.8 & 8 & 351.0 & 264 & 4.22 & 3.170 & 14.5 & 0 & 1 & 5 & 4\\
-Ferrari Dino & 19.7 & 6 & 145.0 & 175 & 3.62 & 2.770 & 15.5 & 0 & 1 & 5 & 6\\
-Maserati Bora & 15.0 & 8 & 301.0 & 335 & 3.54 & 3.570 & 14.6 & 0 & 1 & 5 & 8\\
-Volvo 142E & 21.4 & 4 & 121.0 & 109 & 4.11 & 2.780 & 18.6 & 1 & 1 & 4 & 2\\
-\bottomrule
-\end{tabular}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> mpg </th>
+   <th style="text-align:right;"> cyl </th>
+   <th style="text-align:right;"> disp </th>
+   <th style="text-align:right;"> hp </th>
+   <th style="text-align:right;"> drat </th>
+   <th style="text-align:right;"> wt </th>
+   <th style="text-align:right;"> qsec </th>
+   <th style="text-align:right;"> vs </th>
+   <th style="text-align:right;"> am </th>
+   <th style="text-align:right;"> gear </th>
+   <th style="text-align:right;"> carb </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Lotus Europa </td>
+   <td style="text-align:right;"> 30.4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 95.1 </td>
+   <td style="text-align:right;"> 113 </td>
+   <td style="text-align:right;"> 3.77 </td>
+   <td style="text-align:right;"> 1.513 </td>
+   <td style="text-align:right;"> 16.9 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ford Pantera L </td>
+   <td style="text-align:right;"> 15.8 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 351.0 </td>
+   <td style="text-align:right;"> 264 </td>
+   <td style="text-align:right;"> 4.22 </td>
+   <td style="text-align:right;"> 3.170 </td>
+   <td style="text-align:right;"> 14.5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ferrari Dino </td>
+   <td style="text-align:right;"> 19.7 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 145.0 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 3.62 </td>
+   <td style="text-align:right;"> 2.770 </td>
+   <td style="text-align:right;"> 15.5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Maserati Bora </td>
+   <td style="text-align:right;"> 15.0 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 301.0 </td>
+   <td style="text-align:right;"> 335 </td>
+   <td style="text-align:right;"> 3.54 </td>
+   <td style="text-align:right;"> 3.570 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Volvo 142E </td>
+   <td style="text-align:right;"> 21.4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 121.0 </td>
+   <td style="text-align:right;"> 109 </td>
+   <td style="text-align:right;"> 4.11 </td>
+   <td style="text-align:right;"> 2.780 </td>
+   <td style="text-align:right;"> 18.6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
 
 ```{.r .numberLines .lineAnchors}
 tab %>%
   kable_styling(latex_options = "scale_down")
 ```
 
-\begin{table}
-\centering
-\resizebox{\linewidth}{!}{
-\begin{tabular}{lrrrrrrrrrrr}
-\toprule
-  & mpg & cyl & disp & hp & drat & wt & qsec & vs & am & gear & carb\\
-\midrule
-Lotus Europa & 30.4 & 4 & 95.1 & 113 & 3.77 & 1.513 & 16.9 & 1 & 1 & 5 & 2\\
-Ford Pantera L & 15.8 & 8 & 351.0 & 264 & 4.22 & 3.170 & 14.5 & 0 & 1 & 5 & 4\\
-Ferrari Dino & 19.7 & 6 & 145.0 & 175 & 3.62 & 2.770 & 15.5 & 0 & 1 & 5 & 6\\
-Maserati Bora & 15.0 & 8 & 301.0 & 335 & 3.54 & 3.570 & 14.6 & 0 & 1 & 5 & 8\\
-Volvo 142E & 21.4 & 4 & 121.0 & 109 & 4.11 & 2.780 & 18.6 & 1 & 1 & 4 & 2\\
-\bottomrule
-\end{tabular}}
-\end{table}
+<table class="table" style="margin-left: auto; margin-right: auto;">
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:right;"> mpg </th>
+   <th style="text-align:right;"> cyl </th>
+   <th style="text-align:right;"> disp </th>
+   <th style="text-align:right;"> hp </th>
+   <th style="text-align:right;"> drat </th>
+   <th style="text-align:right;"> wt </th>
+   <th style="text-align:right;"> qsec </th>
+   <th style="text-align:right;"> vs </th>
+   <th style="text-align:right;"> am </th>
+   <th style="text-align:right;"> gear </th>
+   <th style="text-align:right;"> carb </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Lotus Europa </td>
+   <td style="text-align:right;"> 30.4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 95.1 </td>
+   <td style="text-align:right;"> 113 </td>
+   <td style="text-align:right;"> 3.77 </td>
+   <td style="text-align:right;"> 1.513 </td>
+   <td style="text-align:right;"> 16.9 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ford Pantera L </td>
+   <td style="text-align:right;"> 15.8 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 351.0 </td>
+   <td style="text-align:right;"> 264 </td>
+   <td style="text-align:right;"> 4.22 </td>
+   <td style="text-align:right;"> 3.170 </td>
+   <td style="text-align:right;"> 14.5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 4 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Ferrari Dino </td>
+   <td style="text-align:right;"> 19.7 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 145.0 </td>
+   <td style="text-align:right;"> 175 </td>
+   <td style="text-align:right;"> 3.62 </td>
+   <td style="text-align:right;"> 2.770 </td>
+   <td style="text-align:right;"> 15.5 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 6 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Maserati Bora </td>
+   <td style="text-align:right;"> 15.0 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 301.0 </td>
+   <td style="text-align:right;"> 335 </td>
+   <td style="text-align:right;"> 3.54 </td>
+   <td style="text-align:right;"> 3.570 </td>
+   <td style="text-align:right;"> 14.6 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 8 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Volvo 142E </td>
+   <td style="text-align:right;"> 21.4 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 121.0 </td>
+   <td style="text-align:right;"> 109 </td>
+   <td style="text-align:right;"> 4.11 </td>
+   <td style="text-align:right;"> 2.780 </td>
+   <td style="text-align:right;"> 18.6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 2 </td>
+  </tr>
+</tbody>
+</table>
 
 HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう.
 
@@ -5380,7 +5566,7 @@ HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう
 
 図\@ref(fig:rmdworkflow)に描かれているように, **knitr** パッケージは R Markdown においてきわめて重要な役割を担います. この章と後に続くの3つの章では **knitr** に関連するレシピをお見せします. 
 
-R のチャンクを処理する際には, **knitr** の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) \index{ちゃんくおぷしょん@チャンクオプション}\index{chunk option|see{チャンクオプション}}が使えます. 完全なリストは <https://yihui.org/knitr/options/> のオンラインドキュメントをご覧ください.^[**訳注**: 翻訳者による日本語訳はこちら: https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html] 利便性のため, 本書の 付録\@ref(full-options)としてこのドキュメントのコピーを掲載しました.
+R のチャンクを処理する際には, **knitr** の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) \index{ちゃんくおぷしょん@チャンクオプション}\index{chunk option|see{チャンクオプション}}が使えます. 完全なリストは <https://yihui.org/knitr/options/> のオンラインドキュメントをご覧ください.^[**訳注**: 翻訳者による日本語訳はこちら: https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html] 
 
 このあと続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いということも知っておいてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで `knitr::opts_chunk$set()`\index{ちゃんくおぷしょん@チャンクオプション!グローバルに設定する} を呼び出してください. ふつうは文書の最初のチャンクオプションに設定します. 例えばこのように.
 
@@ -5923,8 +6109,7 @@ add_logo <- function(path, options) {
   logo <- file.path(R.home("doc"), "html", "logo.jpg")
   logo <- magick::image_read(logo)
   # デフォルトの重心は `northwest` (左上) で,
-  # ユーザーはチャンクオプション `magick.gravity`
-  # で変更できる
+  # ユーザーはチャンクオプション `magick.gravity` で変更できる
   if (is.null(g <- options$magick.gravity)) 
     g <- "northwest"
   # ロゴを画像に追加する
@@ -5946,14 +6131,10 @@ hist(faithful$eruptions, breaks = 30, main = "", col = "gray",
   border = "white")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/magick-logo-1} 
-
-}
-
-\caption{チャンクオプション fig.process でグラフに R のロゴを追加する}(\#fig:magick-logo)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/magick-logo-1.png" alt="チャンクオプション fig.process でグラフに R のロゴを追加する"  />
+<p class="caption">(\#fig:magick-logo)チャンクオプション fig.process でグラフに R のロゴを追加する</p>
+</div>
 
 あなたが **magick** パッケージにより詳しくなったら, R のグラフに後処理をするための, より創造的で有用なアイディアを思いつくことでしょう.
 
@@ -5991,14 +6172,10 @@ text(-1, .2, cex = 3, col = 'blue',
   '$\\phi(x)=\\frac{1}{\\sqrt{2\\pi}}e^{\\frac{-x^2}{2}}$')
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/dev-tikz-1} 
-
-}
-
-\caption{tikz デバイスでレンダリングされたグラフ}(\#fig:dev-tikz)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/dev-tikz-1.png" alt="tikz デバイスでレンダリングされたグラフ"  />
+<p class="caption">(\#fig:dev-tikz)tikz デバイスでレンダリングされたグラフ</p>
+</div>
 
 base R は実は数式表現をサポートしていますが, LaTeX を介してレンダリングされていないことに注意してください (詳細は `?plotmath` を見てください). `tikz` デバイスの細かい組版を調整するいくつかの発展的なオプションがあります. `?tikzDevice::tikz` で, できることを確認できます. 例えばグラフにマルチバイト文字が含まれているなら, 次のオプションを設定するといいでしょう.
 
@@ -6034,28 +6211,20 @@ par(mar = c(4, 4, 0.1, 0.1))
 plot(cars)
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/low-plots-1} 
-
-}
-
-\caption{cars データの散布図.}(\#fig:low-plots-1)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/low-plots-1.png" alt="cars データの散布図."  />
+<p class="caption">(\#fig:low-plots-1)cars データの散布図.</p>
+</div>
 
 ```{.r .numberLines .lineAnchors}
 fit <- lm(dist ~ speed, data = cars)
 abline(fit)
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/low-plots-2} 
-
-}
-
-\caption{既にある散布図に回帰曲線を追加}(\#fig:low-plots-2)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/low-plots-2.png" alt="既にある散布図に回帰曲線を追加"  />
+<p class="caption">(\#fig:low-plots-2)既にある散布図に回帰曲線を追加</p>
+</div>
 
 **異なる**コードチャンク間でグラフの変更を維持したいなら, 第\@ref(global-device)節を参照してください.
 
@@ -6553,14 +6722,10 @@ options$attr.output <- c(
 )
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/hook-scroll} 
-
-}
-
-\caption{チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例}(\#fig:hook-scroll)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/hook-scroll.png" alt="チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例"  />
+<p class="caption">(\#fig:hook-scroll)チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例</p>
+</div>
 
 `source` フックでも同様の小ワザを使って, ソースコードブロックの高さを制限できます.
 
@@ -6691,14 +6856,10 @@ figcaption {
 
 図\@ref(fig:hook-html5)がその出力です. この例では実際には `plot` フックを上書きしましたが, この章の他のほとんどの例ではデフォルトのフックの冒頭にカスタムフックを構築していることに注意してください. デフォルトのフックを完全に上書きするのは, 組み込まれている機能を無視しても構わない時に限るべきです. 例えば次の `plot` フックは `out.width ='100%'` や `fig.show = 'animate'` といったチャンクオプションがあるかもしれないことを考慮していません.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/hook-html5} 
-
-}
-
-\caption{HTML5 figure タグ内の図}(\#fig:hook-html5)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/hook-html5.png" alt="HTML5 figure タグ内の図"  />
+<p class="caption">(\#fig:hook-html5)HTML5 figure タグ内の図</p>
+</div>
 
 この例はファイルパス `x` と `plot` フック\index{しゅつりょくふっく@出力フック!plot}が活用できそうなことを示すものです. 図のスタイルのカスタマイズだけが必要なら, HTML5 タグを使うことはありません. 通常であれば, デフォルトの `plot` フックは以下のような HTML コードに画像を出力します.
 
@@ -6825,23 +6986,15 @@ LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っ
 
 PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの **magick** [@R-magick]\index{R パッケージ!magick}を呼び出してクロップします. この R パッケージがインストールされているか確かめておきましょう. 図\@ref(fig:crop-no)はクロップされていないグラフで, 図 \@ref(fig:crop-yes)はクロップされた同じグラフです.
 
-\begin{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/crop-no-1.png" alt="クロップされていないグラフ"  />
+<p class="caption">(\#fig:crop-no)クロップされていないグラフ</p>
+</div>
 
-{\centering \framebox{\includegraphics[width=1\linewidth,height=1\textheight,]{rmarkdown-cookbook_files/figure-latex/crop-no-1} } 
-
-}
-
-\caption{クロップされていないグラフ}(\#fig:crop-no)
-\end{figure}
-
-\begin{figure}
-
-{\centering \framebox{\includegraphics[width=1\linewidth,height=1\textheight,]{rmarkdown-cookbook_files/figure-latex/crop-yes-1} } 
-
-}
-
-\caption{クロップされたグラフ}(\#fig:crop-yes)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/crop-yes-1.png" alt="クロップされたグラフ"  />
+<p class="caption">(\#fig:crop-yes)クロップされたグラフ</p>
+</div>
 
 ## PNG のグラフを最適化する {#optipng}
 
@@ -7020,14 +7173,10 @@ plot3d(x, y, z, col = rainbow(1000))
 
 この例をコンパイルすると図\@ref(fig:rgl-3d)のようなインタラクティブな3次元散布図が得られるはずです. インタラクティブなグラフは出力フォーマットが HTML の時だけ動作することに注意してください.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/rgl-3d} 
-
-}
-
-\caption{rgl パッケージから生成した3次元散布図}(\#fig:rgl-3d)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/rgl-3d.png" alt="rgl パッケージから生成した3次元散布図"  />
+<p class="caption">(\#fig:rgl-3d)rgl パッケージから生成した3次元散布図</p>
+</div>
 
 <!--chapter:end:JP/content/13-chunk-hooks.Rmd-->
 
@@ -7354,7 +7503,7 @@ knitr::knit_expand(
   text = "`a` の値は {{a}} なので, `a + 1` は {{a+1}} である.",
   a = round(rnorm(1), 4)
 )
-## [1] "`a` の値は 0.2198 なので, `a + 1` は 1.2198 である."
+## [1] "`a` の値は -1.1142 なので, `a + 1` は -0.1142 である."
 ```
 
 `{{ }}` 内に動的なものが含まれている Rmd 文書であれば, `knit_expand()` を適用して `knit()` を呼び出してコンパイルすることができるということを, この例は意味しています. 例えばここに `template.Rmd` という文書があったとします.
@@ -8071,14 +8220,10 @@ grid3(XYZgrid);
 ```
 
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/elevation-1} 
-
-}
-
-\caption{Asymptote で作成した3Dグラフィック}(\#fig:elevation)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/elevation-1.png" alt="Asymptote で作成した3Dグラフィック"  />
+<p class="caption">(\#fig:elevation)Asymptote で作成した3Dグラフィック</p>
+</div>
 
 PDF 出力に対しては追加の LaTeX パッケージが必要であることに注意してください. そうでないとこのようなエラーが出ることでしょう.
 
@@ -8130,14 +8275,10 @@ yaxis("$y$",LeftRight,RightTicks);
 ```
 
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{rmarkdown-cookbook_files/figure-latex/sine-curve-1} 
-
-}
-
-\caption{R からデータを渡し Asymptote でグラフを描く}(\#fig:sine-curve)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="rmarkdown-cookbook_files/figure-html/sine-curve-1.png" alt="R からデータを渡し Asymptote でグラフを描く"  />
+<p class="caption">(\#fig:sine-curve)R からデータを渡し Asymptote でグラフを描く</p>
+</div>
 
 
 
@@ -8157,6 +8298,11 @@ $primary-color: #00FF00;
   color: $primary-color;
 }
 ```
+
+
+<style type="text/css">
+﻿.book.font-family-1{font:100% "HGS創英角ﾎﾟｯﾌﾟ体","Comic Sans MS",cursive,sans-serif;color:lime}
+</style>
 
 `sass` エンジンも使うことができます. Sass 構文は SCSS 構文とわずかに異なります. 例えばこのように.
 
@@ -8411,25 +8557,17 @@ knitr::opts_knit$set(root.dir = '/tmp')
 
 RStudio を使用しているなら, 作業ディレクトリをメニュの `Tools -> Global Options -> R Markdown` からも選択できます\index{RStudio!さぎょうでぃれくとり@作業ディレクトリ} (図\@ref(fig:rmd-wd)参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. "Current" オプションで R コンソールの現在の作業ディレクトリを使うか, "Project" オプションで Rmd ファイルが入っているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/rmd-wd} 
-
-}
-
-\caption{R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する}(\#fig:rmd-wd)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/rmd-wd.png" alt="R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する"  />
+<p class="caption">(\#fig:rmd-wd)R Studio で R Markdown 文書用のデフォルトの作業ディレクトリを変更する</p>
+</div>
 
 RStudio では, 図\@ref(fig:knit-wd)で見せるように, 個別の Rmd 文書をそれぞれ固有の作業ディレクトリで knit することもできます. "Knit Directory" を変更し "Knit" ボタンをクリックした後で, **knitr** は新しい作業ディレクトリを使ってコードチャンクを評価します. これらの全ての設定は既に言及した `knitr::opts_knit$set(root.dir = ...)` に集約されています. よってあなたがこれまでの選択肢のいずれにも満足しないのなら, `knitr::opts_knit$set()` を使いご自分でディレクトリを指定できます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/knit-wd} 
-
-}
-
-\caption{RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する}(\#fig:knit-wd)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/knit-wd.png" alt="RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する"  />
+<p class="caption">(\#fig:knit-wd)RStudio の他の使用可能な作業ディレクトリで Rmd 文書を knit する</p>
+</div>
 
 作業ディレクトリに関して完全に正しい選択というものはありません. それぞれに長所と短所があります.
 
@@ -8449,14 +8587,10 @@ RStudio では, 図\@ref(fig:knit-wd)で見せるように, 個別の Rmd 文書
 
 作業ディレクトリのうんざりする問題は, ほとんどの場合, 相対パスに対処している時に抱く 「 **何に対して相対的なの?** 」という疑問に端を発します. 既に言及したように, いろいろな人がいろいろな好みを持っており, 完全に正しい回答はありません.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/rmd-relative} 
-
-}
-
-\caption{RStudio 上で Rmd 文書のファイルパスを自動補完する}(\#fig:rmd-relative)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/rmd-relative.png" alt="RStudio 上で Rmd 文書のファイルパスを自動補完する"  />
+<p class="caption">(\#fig:rmd-relative)RStudio 上で Rmd 文書のファイルパスを自動補完する</p>
+</div>
 
 ## R パッケージのビネット {#package-vignette}
 
@@ -8466,14 +8600,10 @@ R パッケージの開発を経験したか, プロジェクトで自作関数�
 
 R Markdown でパッケージのビネットを作成するのに最も簡単な方法は, RStudio のメニュー `File -> New File -> R Markdown -> From Template`\index{RStudio!びねっとのてんぷれーと@ビネットのテンプレート}を経由するものです (図\@ref(fig:package-vignette)参照). それから **rmarkdown** パッケージから "Package Vignette" を選択すると, ビネットのテンプレートが得られます. テンプレートの, タイトル・著者・その他のメタデータを変更したら, レポートの本文を書き始めましょう.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/package-vignette} 
-
-}
-
-\caption{RStudio でパッケージのビネットを作成する}(\#fig:package-vignette)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/package-vignette.png" alt="RStudio でパッケージのビネットを作成する"  />
+<p class="caption">(\#fig:package-vignette)RStudio でパッケージのビネットを作成する</p>
+</div>
 
 他の方法としては, **usethis**\index{R パッケージ!usethis} [@R-usethis] をインストールし `usethis::use_vignette()`\index{usethis!use\_vignette()} 関数を使ってビネットのスケルトンを作成できます. 以下はパッケージのビネットの YAML フロントマターの典型的な姿です\index{YAML!ビネットのフロントマター}.
 
@@ -8544,14 +8674,10 @@ RStudio ユーザーにとって最も簡単な始め方は, 図\@ref(fig:bookdo
 
 RStudio を使っていないか, コンソールから作業するのが好きなら, `bookdown:::bookdown_skeleton('本のディレクトリ')` 関数を呼べば同じものが作れます.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/bookdown-project} 
-
-}
-
-\caption{RStudio で bookdown プロジェクトを作成する}(\#fig:bookdown-project)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/bookdown-project.png" alt="RStudio で bookdown プロジェクトを作成する"  />
+<p class="caption">(\#fig:bookdown-project)RStudio で bookdown プロジェクトを作成する</p>
+</div>
 
 使用法を実演するために, 同じディレクトリに3つのファイルを含めた最低限の例を用意しました.
 
@@ -8625,33 +8751,88 @@ R・ **rmarkdown** パッケージ・Pandoc がインストールされている
 
 
 
-\begin{table}
-
-\caption{(\#tab:shortcuts)R Markdown に関連する RStudio のキーボード・ショートカット}
-\centering
-\begin{tabular}[t]{lll}
-\toprule
-Task & Windows \& Linux & macOS\\
-\midrule
-R チャンクを挿入 & Ctrl+Alt+I & Command+Option+I\\
-HTML をプレビュー & Ctrl+Shift+K & Command+Shift+K\\
-文書を knit する (knitr) & Ctrl+Shift+K & Command+Shift+K\\
-Notebook をコンパイル & Ctrl+Shift+K & Command+Shift+K\\
-PDF をコンパイル & Ctrl+Shift+K & Command+Shift+K\\
-\addlinespace
-ここから上のチャンクをすべて実行 & Ctrl+Alt+P & Command+Option+P\\
-このチャンクを実行 & Ctrl+Alt+C & Command+Option+C\\
-このチャンクを実行 & Ctrl+Shift+Enter & Command+Shift+Enter\\
-次のチャンクを実行 & Ctrl+Alt+N & Command+Option+N\\
-全てのチャンクを実行 & Ctrl+Alt+R & Command+Option+R\\
-\addlinespace
-次のチャンクかタイトルへ移動 & Ctrl+PgDown & Command+PgDown\\
-前のチャンクかタイトルへ移動 & Ctrl+PgUp & Command+PgUp\\
-文書のアウトラインを表示/隠す & Ctrl+Shift+O & Command+Shift+O\\
-本, ウェブサイトその他のビルド & Ctrl+Shift+B & Command+Shift+B\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table>
+<caption>(\#tab:shortcuts)R Markdown に関連する RStudio のキーボード・ショートカット</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Task </th>
+   <th style="text-align:left;"> Windows &amp; Linux </th>
+   <th style="text-align:left;"> macOS </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> R チャンクを挿入 </td>
+   <td style="text-align:left;"> Ctrl+Alt+I </td>
+   <td style="text-align:left;"> Command+Option+I </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> HTML をプレビュー </td>
+   <td style="text-align:left;"> Ctrl+Shift+K </td>
+   <td style="text-align:left;"> Command+Shift+K </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 文書を knit する (knitr) </td>
+   <td style="text-align:left;"> Ctrl+Shift+K </td>
+   <td style="text-align:left;"> Command+Shift+K </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Notebook をコンパイル </td>
+   <td style="text-align:left;"> Ctrl+Shift+K </td>
+   <td style="text-align:left;"> Command+Shift+K </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> PDF をコンパイル </td>
+   <td style="text-align:left;"> Ctrl+Shift+K </td>
+   <td style="text-align:left;"> Command+Shift+K </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> ここから上のチャンクをすべて実行 </td>
+   <td style="text-align:left;"> Ctrl+Alt+P </td>
+   <td style="text-align:left;"> Command+Option+P </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> このチャンクを実行 </td>
+   <td style="text-align:left;"> Ctrl+Alt+C </td>
+   <td style="text-align:left;"> Command+Option+C </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> このチャンクを実行 </td>
+   <td style="text-align:left;"> Ctrl+Shift+Enter </td>
+   <td style="text-align:left;"> Command+Shift+Enter </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 次のチャンクを実行 </td>
+   <td style="text-align:left;"> Ctrl+Alt+N </td>
+   <td style="text-align:left;"> Command+Option+N </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 全てのチャンクを実行 </td>
+   <td style="text-align:left;"> Ctrl+Alt+R </td>
+   <td style="text-align:left;"> Command+Option+R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 次のチャンクかタイトルへ移動 </td>
+   <td style="text-align:left;"> Ctrl+PgDown </td>
+   <td style="text-align:left;"> Command+PgDown </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 前のチャンクかタイトルへ移動 </td>
+   <td style="text-align:left;"> Ctrl+PgUp </td>
+   <td style="text-align:left;"> Command+PgUp </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 文書のアウトラインを表示/隠す </td>
+   <td style="text-align:left;"> Ctrl+Shift+O </td>
+   <td style="text-align:left;"> Command+Shift+O </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 本, ウェブサイトその他のビルド </td>
+   <td style="text-align:left;"> Ctrl+Shift+B </td>
+   <td style="text-align:left;"> Command+Shift+B </td>
+  </tr>
+</tbody>
+</table>
 
 加えて, `F7` キーを押してあなたの文書のスペルチェックがができます. `Ctrl + Alt + F10` (macOS では `Command + Option + F10`) で R セッションを再起動することもできます. 新しい R セッションから演算するほうが結果はより再現性が高いため, 定期的に再起動することは再現性の確保に役立ちます. これはドロップダウンメニューの Run ボタンの後ろに隠れている, "Restart R and Run All Chunks" を使ってもできます.
 
@@ -8781,14 +8962,10 @@ rmarkdown::render("input.Rmd", params = "ask")
 
 RStudio を使用しているなら, メニューの `Knit` ボタンの中にある `Knit with Parameters`\index{RStudio!Knit with Parameters} をクリックすることが可能です. 図\@ref(fig:params-shiny)はパラメータに対する GUI の例を示しています.
 
-\begin{figure}
-
-{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/params-shiny} 
-
-}
-
-\caption{GUI から入力できるパラメータで R Markdown を knit する}(\#fig:params-shiny)
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="JP/images/params-shiny.png" alt="GUI から入力できるパラメータで R Markdown を knit する"  />
+<p class="caption">(\#fig:params-shiny)GUI から入力できるパラメータで R Markdown を knit する</p>
+</div>
 
 パラメータ化されたレポートの詳細については, _R Markdown Definitive Guide_ [@rmarkdown2018] の [Chapter 15](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html) を読むとよいでしょう.
 
@@ -8908,273 +9085,11 @@ RStudio Connect を使用しているなら, https://solutions.rstudio.com/examp
 
 
 
-# (APPENDIX) 補遺 {-}
-
-# **knitr** のチャンク及びパッケージオプション {#full-options}
-
-:::{.infobox .tip data-latex="{tip}"}
-この付録は https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html で公開されているものと同一です.
-:::
-
-
-**knitr** パッケージはソースコード, テキスト, グラフ, チャンクで使用するプログラミング言語といった, コードチャンクのコンポネントのほとんど全部をカスタマイズするための多くのオプションを提供します. `knit` 処理のカスタマイズをパッケージレベルでカスタマイズするオプションもあります. この章では **knitr** で使用できる全てのチャンクオプションとパッケージオプションを解説します. 以下のリスト中で, オプションのデフォルト値になっているものはカッコ内に表記しています.
-
-## チャンクオプション一覧 {#chunk-options-full}
-
-チャンクオプションはチャンクのヘッダに書きます. チャンクヘッダの構文は文書フォーマットがなんであるかに依存します. 例えば `.Rnw` ファイル (R + LaTeX) であれば, `<< >>=` という記号の中に書きます. `.Rmd` ならば, チャンクヘッダは ```` ```{r} ```` 内に書きます. 以下の例は主に `.Rmd` (R Markdown) の場合ですが, ほとんどのチャンクオプションはどのフォーマットでも使用可能です.
-
-チャンクオプションは以下のように `タグ名=値` という形式で書きます.
-
-````
-```{r, my-chunk, echo=FALSE, fig.height=4, dev='jpeg'}
-```
-````
-
-**チャンクラベル**は特殊なチャンクオプションです (例: 先ほどの例の `my-chunk` がそれにあたります). これは唯一のタグが不要なチャンクオプションです (つまり, 値のみ書くことになります). もし `タグ名=値` の形式で書きたいのならば, チャンクオプション名の `label` を明示的に使うこともできます.
-
-````
-```{r label="my-chunk"}
-```
-````
-
-各チャンクのラベルは文書内において一意であることが前提です. 特にキャッシュとグラフのファイル名はチャンクラベルで紐付けているため重要です. ラベルのないチャンクは `unnamed-chunk-i` という形式でラベル名が割り当てられます. `i` は順に整数が割り当てられます.
-
-文書全体のチャンクオプションのデフォルト値を変更するために `knitr::opts_chunk$set()` を使うことができます. 例えば以下のようなチャンクを文書の冒頭に書きます.
-
-````
-```{r, setup, include=FALSE}
-knitr::opts_chunk$set(
-  comment = '', fig.width = 6, fig.height = 6
-)
-```
-````
-
-チャンクオプションの豆知識をいくつか掲載します.
-
-1. チャンクヘッダは1行で書かねばなりません. 改行してはいけません.
-2. チャンクラベルとファイルパスにスペース, ピリオド `.`, アンダースコア `_` を使用するのは避けましょう. セパレータが必要ならば, ハイフン `-` の使用を推奨します. 例えば `setup-options` はラベル名として望ましいですが `setup.options` や `chunk 1` は良くありません. `fig.path = 'figures/mcmc-'` はパス名として良いですが, `fig.path = 'markov chain/monte carlo'` は良くありません.
-3. 全てのオプションの値は **R の構文として適切でなければなりません**. チャンクオプションを関数の引数のように考えると良いでしょう.
-  - 例えば **character** 型をとるオプションは引用符で囲まなければなりません. 例: `results = 'asis'` や `out.width = '\\textwidth'`. ただしリテラルのバックスラッシュは二重のバックスラッシュが必要なことを忘れないでください.
-  - 理論上はチャンクラベルもまた引用符で囲む必要がありますが, 利便性のため書かなくとも自動で引用符が追加されます (例: ```` ```{r, 2a}``` ```` は ```` ```{r, label='2a'}``` ```` として扱われます).
-  - R のコードとして有効なものである限り, いくらでも複雑な構文を書くことができます.
-
-以下では `オプション`: (`デフォルト値`; 値の型) という形式で, **knitr** で使えるチャンクオプションのリストを掲載します.
-
-### コード評価関連 {#evaluate}
-
--   **`eval`**: (`TRUE`; `logical` または `numeric`).: コードチャンクを評価するかどうか. どの R の評価式を評価するかを選ぶために `numeric` のベクトルを使用することもできます. 例: `eval=c(1, 3, 4)` ならば1つ目, 3つ目, そして4つ目の評価式を評価し, `eval = -(4:5)` は 4, 5つ目の式以外の全てを評価します.
-
-### テキストの出力関連 {#text-output}
-
--   **`echo`**: (`TRUE`; `logical` または `numeric`).: 出力される文書にソースコードを表示するかどうか. 「表示」「隠す」に対応する `TRUE`/`FALSE` に加え, どの R の評価式を表示するかを選ぶために `numeric` のベクトルを使用することもできます. 例: `echo=2:3` は 2, 3番めの評価式を表示し,  `echo = -4` は4番目だけを非表示にします.
-- `results`: (`'markup'`; `character`) 実行結果のテキストの部分をどう表示するかを制御します. このオプションは通常のテキスト出力にのみ影響することに注意してください (警告・メッセージ・エラーは適用範囲外です). 取りうる値は次のとおりです.
-  - `markup`: 出力の文書フォーマットに応じて適切な環境でテキスト出力をマークアップします. 例えば R Markdown ならば `"[1] 1 2 3"` が **knitr** によって以下のように加工されます. この場合, `results='markup'` は囲み (```` ``` ````) 付きのコードブロックとして出力されることを意味します.
-  ````
-  ```
-  [1] 1 2 3
-  ```
-  ````
-  - `asis`: テキスト出力を「そのまま」書き出します. つまり, 生の結果テキストをマークアップ一切なしでそのまま文書に書き出します.
-  - **`hold`**: チャンクと flush の全てのテキスト出力をチャンクの末尾に固定します.
-  - **`hide`** (または `FALSE`): テキスト出力を表示しません.
--   `collapse`: (`FALSE`; `logical`) 可能であれば, ソースと出力をつなげて1つのブロックにするかどうかです (デフォルトではソースと出力はそれぞれ独立したブロックです). このオプションは Markdown 文書でのみ有効です.
--   **`warning`**: (`TRUE`; `logical`).: 警告文 (`warning()` で出力されるテキスト) を保存するかどうかです. `FALSE` の場合, 全ての警告文は文書に出力されず, 代わりにコンソールに書き出されます. 警告文の一部を選ぶインデックスとして, `numeric` 型のベクトルを指定することもできます. この場合のインデックスの数値は「何番目の警告文を表示するか」を参照する (例: `3` はこのチャンクから投げられた3番目の警告文を意味します) ものであって, 「何番目の R コードの警告文の出力を許可するか」ではないことに注意してください.
--   **`error`**: (`TRUE`; `logical`).: エラー文 (`stop()` で出力される文です) を保持するかどうかです. デフォルトの `TRUE` では, **コード評価はエラーが出ても停止しません!** エラー時点で停止させたい場合はこのオプションを `FALSE` に指定してください. **R Markdown ではこのデフォルト値は `FALSE` に変更されていることに注意**してください. チャンクオプションに `include=FALSE` がある場合, 起こりうるエラーを見落とさないように,  **knitr** はエラー時点で停止するようになります.
--   **`message`**: (`TRUE`; `logical`).: `message()` が出力するメッセージ文を (`warning` オプションと同様に) 表示するかどうかです.
--   **`include`**: (`TRUE`; `logical`).: 出力する文書にチャンクの出力を含めるかどうかです. `FALSE` ならばなにも書き出されませんが, コードの評価はなされ, チャンク内にプロット命令があるのならグラフのファイルも生成されます. よってこの図をそれ以降で任意に挿入することもできます.
--   **`strip.white`**: (`TRUE`; `logical`).: 出力時にソースコードの冒頭と末尾から空白行を除去するかどうかです.
--   **`class.output`**: (`NULL`; `character`).: テキストの出力ブロックに追加するクラス名のベクトル. このオプションは R Markdown で HTML を出力する際にのみ機能します. 例えば `class.output = c('foo', 'bar')` はテキスト出力が `<pre class="foo bar"></pre>` で囲まれたブロックとして書き出されます.
--   **`class.message`**/**`class.warning`**/**`class.error`**: (`NULL`; `character`)・: `class.output` と同様に, R Markdown においてそれぞれ メッセージ文, 警告文, エラー文のブロックに対してクラス名を与えます. `class.source` もまた同様にソースコードのブロックに対して適用されます. @ref(#code-decoration)節を参照してください.
--   **`attr.output`**/**`attr.message`**/**`attr.warning`**/**`attr.error`**: (`NULL`;
-    `character`).: 上記の `class.*` オプション群と同様に, Pandoc に対してコードブロックの属性を指定します. つまり `class.*` は `attr.*` の特殊ケースです. 例: `class.source = 'numberLines'` は `attr.source = '.numberLines'` と等価ですが, `attr.source` は任意の値を取ることができます. 例えば, `attr.source = c('.numberLines', 'startFrom="11"')`.
--   **`render`**: (`knitr::knit_print`; `function(x, options, ...)`).: チャンクで表示される値に対して適用する関数です. 関数の第1引数には (`x`) はチャンクの各評価式が評価された結果が与えられます. このチャンクのチャンクオプションがリストとして第二引数 `opstions` に与えられます. この関数は文字列を返すことを想定しています. 詳細は package vignette (`vignette('knit_print', package = 'knitr')`) を参照してください.
--   **`split`**: (`FALSE`; `logical`).: 出力ブロックを分割したファイルに書き出すかどうか. LaTeX ならば `\input{}` で読み込み, HTML ならば `<iframe></iframe>` タグで読み込まれます. このオプションは `.Rnw`, `.Rtex` そして `.Rhtml` でのみ機能します.
-
-### コードの装飾関連 {#code-decoration}
-
-- `tidy`: (`FALSE`) R コードを整形するかどうかです. 他の有効な値は次のとおりです.
-  - `TRUE` (`tidy = 'formatR'` と等価です): 整形のために `formatR::tidy_source()` を呼び出します.
-  - `'styler'`: コード整形のために `styler::style_text()` を呼び出します.
-  - 整形されたコードを返す, `function(code, ...) {}` という形式の任意の関数.
-  - 整形が失敗した場合, 元の R コードは変更されません (警告は表示されます).
-- `tidy.opts`: (`NULL`; `list`) `tidy` オプションで指定した関数へのオプション引数のリストです. 例えば `tidy.opts = list(blank = FALSE, width.cutoff = 60)` は `tidy = 'formatR'` に対して空白行を削除し各行が60文字におさまるように改行しようとします.
-- `prompt`: (`FALSE`; `logical`) R コードにプロンプト記号 (`>` など) を付けるかどうかです.  `?base::options` ヘルプページの `prompt` と `continue` を参照してください. プロンプト記号の追加は, 読者がコードをコピーするのを難しくさせるため, `prompt=FALSE` のほうが良い選択であることに留意してください. エンジンが `R` 以外の場合, このオプションはうまく機能しないことがあります (issue [\#1274](https://github.com/yihui/knitr/issues/1274)).
--   **`comment`**: (`'##'`; `character`).: テキスト出力の各行の先頭文字です. デフォルトでは, コメントアウトできるよう `##` となっているので, 読者は文書から任意の範囲をそのままコピーしても出力部分は無視されるのでそのまま実行することができます. `comment = ''` を指定することで, デフォルトの `##` は除去されます.
--   **`highlight`**: (`TRUE`; `logical`).: ソースコードをシンタックスハイライトするかどうかです^[訳注: R Markdown ではさらに, YAML フロントマターで適用するハイライトのテーマ名を指定できます].
--   **`class.source`**: (`NULL`; `character`).: 出力された文書のソースコードブロックのクラス名です. 出力ブロックに対して機能する `class.output` をはじめとする `class.*` シリーズと同様です.
--   **`attr.source`**: (`NULL`; `character`).: ソースコードブロックの属性です. `attr.output` などの `attr.*` シリーズと同様です.
--   `size`: (`'normalsize'`; `character`) `.Rnw` 使用時のチャンクサイズのフォントサイズです. 指定可能なサイズは  [overleaf のヘルプページ (英語)](https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles) を参照してください^[訳注: `\normalsize`, `\Large`, `\LARGE` など LaTeX で指定できるフォントサイズを表すマクロのことを指しています].
--   **`background`**: (`'#F7F7F7'`; `character`).:  `.Rnw` 使用時のチャンクブロックの背景色です^[訳注: R Markdown では背景色は CSS や `class.output` などで設定する必要があります. 詳細は R Markdown Cookbook などを参照してください].
--   **`indent`**: (`character`).: チャンクの出力で各行に追加する文字です. 典型的には空白と同義です. このオプションは読み込み専用を想定しており, 値は **knitr** が文書を読み込む際に設定されます. 例えば以下のチャンクでは, `indent` は空白文字2個です^[訳注: R Markdown の場合は **knitr** 以外の中間処理があるため, 必ずしもこのルールを守りません].
-  
-
-```{.r .numberLines .lineAnchors}
-rnorm(10)
-```
-
-```
-##  [1]  1.37096 -0.56470  0.36313  0.63286  0.40427
-##  [6] -0.10612  1.51152 -0.09466  2.01842 -0.06271
-```
-
-### キャッシュ関連 {#cache-options}
-
--   **`cache`**: (`FALSE`; `logical`).: コードチャンクのキャッシュを取るかどうかです. 初回の実行またはキャッシュが存在しない場合は通常通り実行され, 結果がデータセットが保存され (`.rdb`, `.rdx` ファイルなど), それ以降でコードチャンクが評価されることがあれば, 以前保存されたこれらのファイルからこのチャンクの結果を読み出します. ファイル名がチャンクラベルと R コードの MD5 ハッシュ値で一致する必要があることに注意してください. つまりチャンクになんらかの変更がある度に異なる MD5 ハッシュ値が生成されるため, キャッシュはその度に無効になります. 詳細は [キャッシュの解説](https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html#cache) を参考にしてください.
--   **`cache.path`**: (`'cache/'`; `character`).: 生成したキャッシュファイルの保存場所を指定します. R Markdown ではデフォルトでは入力ファイルの名前に基づきます. 例えば `INPUT.Rmd` の `FOO` というラベルのチャンクのキャッシュは `INPUT_cache/FOO_*.*` というファイルパスに保存されます.
--   **`cache.vars`**: (`NULL`; `character`).: キャッシュデータベースに保存される変数名のベクトルを指定します. デフォルトではチャンクで作られた全ての変数が識別され保存されますが, 変数名の自動検出はロバストではないかもしれませんし,  保存したい変数を選別したい場合もあるかもしれないので, 保存したい変数を手動選択することもできます.
--   **`cache.globals`**: (`NULL`; `character`).: このチャンクで作成されない変数の名前のベクトルを指定します. このオプションは主に `autodep = TRUE` オプションをより正確に動作させたいときに使います. チャンク `B` で使われているグローバル変数が チャンク `A` のローカル変数として使われているときなど. グローバル変数の自動検出に失敗した際に使う場合, こにオプションを使って手動でグローバル変数の名前を指定してください (具体例として issue [\#1403](https://github.com/yihui/knitr/issues/1403) を参照してください).
--   **`cache.lazy`**: (`TRUE`; logical).: 遅延読み込み `lazyLoad()` を使うか, 直接 `load()` でオブジェクトを読み込むかを指定します. 非常に大きなオブジェクトに対しては, 遅延読み込みは機能しないかもしれません. よってこの場合は `cache.lazy = FALSE` が望ましいかもしれません (issue [\#572](https://github.com/yihui/knitr/issues/572) を参照してください).
--   **`cache.comments`**: (`NULL`; `logical`).: `FALSE` の場合, R コードチャンク内のコメントを書き換えてもキャッシュが無効になりません.
--   **`cache.rebuild`**: (`FALSE`; `logical`).: `TRUE` の場合, キャッシュが有効であってもチャンクのコードの再評価を行います. このオプションはキャッシュの無効化の条件を指定したいときに有用です. 例えば `cache.rebuild = !file.exists("some-file")` とすれば `some-file` が存在しないときにチャンクが評価されキャッシュが再構成されます (issue [\#238](https://github.com/yihui/knitr/issues/238) を参照).
--   **`dependson`**: (`NULL`; `character` または `numeric`).: このチャンクが依存しているチャンクのラベル名を文字ベクトルで指定します. このオプションはキャッシュされたチャンクでのみ適用されます. キャッシュされたチャンク内のオブジェクトは, 他のキャッシュされたチャンクに依存しているかもしれず, 他のチャンクの変更に合わせてこのチャンクも更新する必要があるかもしれません.
-  - `dependson` に `numeric` ベクトルを与えた場合, それはチャンクラベルのインデックスを意味します. 例えば `dependson = 1` ならばこの文書の1番目のチャンクに依存することを意味し, `dependson = c(-1, -2)` は直前の2つのチャンクを意味します (負のインデックスは現在のチャンクからの相対的な位置を表します).
-  - `opts_chunk$set()` によってグローバルにチャンクオプションを設定した場合, このオプションは機能しません. ローカルなチャンクオプションとして設定しなければなりません.
--   **`autodep`**: (`FALSE`; `logical`).: グローバル変数を検出することでチャンク間の依存関係を分析するかどうかを指定します (あまり信頼できません). よって, `dependson` を明示的に指定する必要はありません.
-
-### グラフ関連 {#plots}
-
--   **`fig.path`**: (`'figure/'`; `character`).: 図の保存ファイルパスを生成する際の接尾語. `fig.path` とチャンクラベルを連結したものがフルパスになります. `figure/prefix-` のようにディレクトリ名が含まれて, それが存在しない場合はディレクトリが作成されます.
--   **`fig.keep`**: (`'high'`; `character`).: グラフをどのように保存するかです. 可能な値は次のとおりです.
-    -   `high`: 高水準プロットのみ保存 (低水準の変更は全て高水準プロットに統合されます).
-    -   `none`: 全て破棄します.
-    -   `all`: 全てのプロットを保存します (低水準プロットでの変更は新しいグラフとして保存されます).
-    -   `first`: 最初のプロットのみ保存します.
-    -   `last`: 最後のプロットのみ保存します.
-    -   数値ベクトルを指定した場合, その値は保存する低水準プロットのインデックスとなります.
-    低水準プロットとは `lines()` や `points()` などの関数によるグラフ描画のことです. `fig.keep` についてより理解するには次のようなチャンクを考えてください. 通常はこれで2つのグラフを出力します (`fig.keep = 'high'` を指定したので).  `fig.keep = 'none'` としたなら, いかなるグラフも保存されません. `fig.keep = 'all'` ならば, 4 つのグラフとして保存されます. `fig.keep = 'first'` ならば `plot(1)` によって作成されたグラフが保存されます. `fig.keep = 'last'`, なら, 最後の10本の垂線を描画したグラフが保存されます.
-
-```{.r .numberLines .lineAnchors}
-plot(1)  # 高水準プロット
-abline(0, 1)  # 低水準の作図
-plot(rnorm(10))  # 高水準プロット
-# ループ内での複数の低水準作図 (R 評価式としては1つ)
-for (i in 1:10) {
-  abline(v = i, lty = 2)
-}
-```
-
--   **`fig.show`**: (`'asis'`; `character`).: グラフをどのように表示し, 配置するかです. 可能な値は次のとおりです.
-    -   `asis`: グラフが生成された場所にそのまま出力します (R ターミナルで実行した場合とおなじように).
-    -   `hold`: 全てのグラフをまとめてチャンクの最後に出力します.
-    -   `animate`: チャンクに複数のグラフがある場合, 連結して1つのアニメーションにします.
-    -   `hide`: グラフをファイルに保存しますが, 出力時は隠します.
--   **`dev`**: (LaTeX の場合は `'pdf'`^[訳注: `pdf` は日本語表示に向いていないため, `cairo_pdf` などを利用することをおすすめします],  HTML/Markdown の場合は `'png'`; `character`).: グラフをファイルに保存する際のグラフィックデバイスです. base R および, **`Cairo`**, **`cairoDevice`**, **`svglite`**, **`ragg`**, **tikzDevice** パッケージの提供するデバイスに対応しています. デバイスの例: `pdf`, `png`, `svg`, `jpeg`, `tiff`,
-    `cairo_pdf`, `CairoJPEG`, `CairoPNG`, `Cairo_pdf`, `Cairo_png`, `svglite`,
-    `ragg_png`, `tikz`, など. 有効なデバイスの一覧は `names(knitr:::auto_exts)` を参照してください. また, `function(filename, width, height)` という引数を定義した関数名を文字列で与えることでも指定できます. 画像サイズの単位は **常にインチ**です. ビットマップであってもインチで指定したものがピクセルに変換されます.
-
-チャンクオプション `dev`, `fig.ext`, `fig.width`, `fig.height`, `dpi` はベクトルを与えられます (長さが足りない場合は再利用されます). 例えば `dev = c('pdf', 'png')` は1つのグラフに対して 1つづつ `PDF` と `PNG` ファイルを作成します.
-
--   **`dev.args`**: (`NULL`; `list`).: グラフィックデバイスに与える追加の引数です. 例えば `dev.args = list(bg = 'yellow', pointsize = 10)` を `dev = 'png'` に与えられます. 特定のデバイスに依存するオプション (詳細はそれぞれのデバイスのドキュメントを確認してくだささい). `dev` に複数のデバイスが指定されている場合は `dev.args` を引数のリストをさらにリストでくくることになるでしょう. それぞれの引数リストが対応するデバイスに与えられます. 例: `dev = c('pdf', 'tiff'), dev.args = list(pdf = list(colormodel = 'cmyk', useDingats = TRUE), tiff = list(compression = 'lzw'))`.
--   **`fig.ext`**: (`NULL`; `character`).: 出力するグラフのファイル拡張子です. `NULL` ならばグラフィックデバイスに応じて自動決定されます. 詳細は `knitr:::auto_exts` を確認してください.
--   **`dpi`**: (`72`; `numeric`). ビットマップデバイスに対する DPI (インチ毎ドット, `dpi * inches = pixels`) です.
--   **`fig.width`**, **`fig.height`**: (いずれも `7`; `numeric`).: グラフの幅と高さです. 単位はインチです. グラフィックデバイスに与えられます.
--   **`fig.asp`**: (`NULL`; `numeric`).: グラフのアスペクト比, つまり 高さ/幅 の比です. `fig.asp` が指定された場合, 高さ (`fig.height`) は `fig.width * fig.asp` によって自動設定されます.
--   **`fig.dim`**: (`NULL`; `numeric`).: `fig.width` と `fig.height` を指定する長さ2の数値のベクトルです. 例: `fig.dim = c(5, 7)` は `fig.width = 5, fig.height = 7` の省略形です. `fig.asp` と `fig.dim` が指定された場合, `fig.asp` は無視されます (警告文が出力されます).
--   **`out.width`**, **`out.height`**: (`NULL`; `character`).: 出力時の画像の幅と高さです. 実体としての幅と高さである `fig.width`
-    と `fig.height` とは異なります. つまりグラフは文書に表示される際にスケールが調整されます. 出力フォーマットに応じて, これら2つのオプションはそれぞれ特殊な値を取ることができます. 例えば LaTeX ならば `.8\\linewidth`, `3in`, `8cm` などと指定でき, HTML ならば `300px` と指定できます. `.Rnw` ならば `out.width` のデフォルト値は `\\maxwidth` に変更され, その値は [framed のページ](https://gedevan-aleksizde.github.io/knitr-doc-ja/framed.html#framed) で書いたように定義されます. 例えば `'40%'` のようにパーセンテージで指定もでき, これは LaTeX では `0.4\linewidth` に置き換えられます.
--   **`out.extra`**: (`NULL`; `character`).: 図の表示に関するその他のオプションです. LaTeX で出力する場合は `\includegraphics[]` に挿入される任意の文字に対応し (例: `out.extra = 'angle=90'` ならば図の90度回転), HTML なら `<img />` に挿入されます (例: `out.extra = 'style="border:5px solid orange;"'`).
--   **`fig.retina`**: (`1`; `numeric`).: このオプションは HTML で出力する際にのみ適用されます. [Retina ディスプレイ](https://ja.wikipedia.org/wiki/Retina%E3%83%87%E3%82%A3%E3%82%B9%E3%83%97%E3%83%AC%E3%82%A4)  に対して画像サイズを調整する比率 (多くの場合は2を指定します) です. チャンクオプションの  `dpi` を `dpi * fig.retina` で, `out.width` を `fig.width * dpi / fig.retina` で計算します. 例えば `fig.retina = 2` なら, 画像の物理サイズが2倍となり, その表示サイズは半分になります.
--   **`resize.width`**, **`resize.height`**: (`NULL`; `character`).: LaTeX で出力する際に `\resizebox{}{}` コマンドで使われます. これら2つのオプションは Tikz グラフィックスをリサイズしたい場合のみ必要になります. それ以外に通常使うことはありません. しかし **tikzDevice** の開発者によれば, 他の箇所のテキストとの一貫性のため, Tikz グラフィックスはリサイズを想定していません. 値の1つでも `NULL` ならば, `!` が使用されます (この意味がわからない方は **graphicx** のドキュメントを読んでください).
--   **`fig.align`**: (`'default'`; `character`).: 出力時の画像の位置揃え (アラインメント) です. 可能な値は `default`, `left`, `right`, `center` です. `default` は位置について特に何も調整しません.
--   **`fig.link`**: (`NULL`; `character`) 画像に与えるリンク.
--   **`fig.env`**: (`'figure'`; `character`).: 画像に使われる LaTeX 環境. 例えば `fig.env = 'marginfigure'` ならば `\begin{marginfigure}` で囲まれます. このオプションの使用は `fig.cap` が指定されいることが条件です.
--   **`fig.cap`**: (`NULL`; `character`).: 図のキャプションです.
--   **`fig.alt`**: (`NULL`; `character`) HTML 出力時の図の `<img>` タグの `alt` 属性に使う代替テキストです. デフォルトでは, 代替テキストが与えられた場合チャンクオプション `fig.cap` には代替テキストが使われます.
--   **`fig.scap`**: (`NULL`; `character`).: 図の短縮キャプションです. 出力が LaTeX の場合のみ意味をなします. 短縮キャプションは `\caption[]` コマンドに挿入され, 大抵の場合は PDF 出力時の「図一覧」で表示される見出しとして使われます.
--   **`fig.lp`**: (`'fig:'`; `character`).; 図の相互参照に使われるラベル^[訳注: チャンクラベルと混同しないでください]の接頭語で, `\label{}` コマンドに挿入されます. 実際のラベルはこの接頭語とチャンクラベルを連結して作られます. 例えば図のラベルが  ```` ```{r, foo-plot} ```` will be ならば, デフォルトでは図のラベルは `fig:foo-plot` になります.
--   **`fig.pos`**: (`''`; `character`).: LaTeX の `\begin{figure}[]` に使われる, 画像の位置調整オプション^[訳注: LaTeX では通常は図の位置は調整されますが, `fig.pos='H'` ならばその位置で固定されます]を指定します. 
--   **`fig.subcap`**: (`NULL`).: subfigures のためのキャプションです. 複数のグラフが1つのチャンクにあり, かつ `fig.subcap` も `fig.cap` is `NULL` である場合, `\subfloat{}` が個別の画像の表示に使われます (この場合はプリアンブルに `\usepackage{subfig}` と書く必要があります). 具体例は [067-graphics-options.Rnw](https://github.com/yihui/knitr-examples/blob/master/067-graphics-options.Rnw) を参照してください.
--   **`fig.ncol`**: (`NULL`; `integer`). subfigure の数です. 例えば[この issue](https://github.com/yihui/knitr/issues/1327#issuecomment-346242532) を見てください (`fig.ncol` も `fig.sep` も LaTeX でのみ機能します).
--   **`fig.sep`**: (`NULL`; `character`).: subfigures どうしの間に挿入されるセパレータを指定する文字ベクトルです. `fig.ncol` が指定された場合, デフォルトでは `fig.sep` に N 個ごとに  `\newline` が挿入されます (`N` は列の数です). 例えば `fig.ncol = 2` ならばデフォルトは `fig.sep = c('', '', '\\newline', '', '', '\\newline', '', ...)` となります.
--   **`fig.process`**: (`NULL`; `function`).: 画像ファイルに対する後処理の関数です. 関数は画像のファイルパスを引数として, 挿入したい新しい画像のファイルを返すものであるべきです. 関数に `options` 引数がある場合, この引数にチャンクオプションのリストが与えられます.
--   **`fig.showtext`**: (`NULL`; `logical`).: `TRUE` ならばグラフの描画前に `showtext::showtext_begin()` が呼ばれます. 詳細は [**`showtext`**](http://cran.rstudio.com/package=showtext) パッケージのドキュメントを参照してください^[訳注: `showtext` は手っ取り早く日本語を表示できますが, いくつかの制約があります. 詳細は『[おまえはもうRのグラフの日本語表示に悩まない (各OS対応)](https://ill-identified.hatenablog.com/entry/2020/10/03/200618)』『[Rでのフォントの扱い](https://oku.edu.mie-u.ac.jp/~okumura/stat/font.html)』などを見てください.].
--   **`external`**: (`TRUE`; `logical`).: tikz グラフィックの処理 (PDF 生成時のコンパイル前の処理) を外部化するかどうかです. **tikzDevice** パッケージの `tikz()` デバイスを使う場合 (つまり `dev='tikz'` を指定したとき) のみ使用され, コンパイル時間を短縮することが可能です.
--   **`sanitize`**: (`FALSE`; `character`). tikz グラフィックでサニタイズ (ここでは, LaTeXで特殊な意味を持つ文字のエスケープ処理) するかどうかです. 詳細は **tikzDevice** パッケージのドキュメントを参照してください.
-
-さらにこの他に, ユーザーが使用することを想定していない隠しオプションが2つあります. `fig.cur` (複数の図表がある場合の, 現在の図番号/インデックス) と `fig.num` (チャンク内の図の合計数) です. これら2つのオプションは **knitr** が複数の図そしてアニメーションを処理するためにあります. 場合によっては手動で保存した画像ファイルを使ってアニメーションを書き出す場合などに役に立つかもしれません (使用例として [graphics manual](https://github.com/yihui/knitr/releases/download/doc/knitr-graphics.pdf) を参照してください).
-
-### アニメーション関連 {#animation-options}
-
-- **`interval`**: (`1`; `numeric`).: アニメーションの1フレームごとの時間 (単位は秒) です.
-- **`animation.hook`**: (`knitr::hook_ffmpeg_html`; `function` または `character`). HTML 出力時のアニメーション作成用のフック関数を指定します. デフォルトでは FFmpeg を使って WebM 動画ファイルに変換します.
-  - 別のフック関数として [**gifski**](https://cran.r-project.org/package=gifski) パッケージの `knitr::hook_gifski` 関数はGIFアニメーションを作ることができます.
-  - このオプションは `'ffmpeg'` や `'gifski'` といった文字列を指定することもできます. これらは対応するフック関数の省略形です. 例: `animation.hook = 'gifski'` は `animation.hook = knitr::hook_gifski` を意味します.
-- **`aniopts`**: (`'controls,loop'`; `character`).: アニメーションに対する追加のオプションです. 詳細は LaTeX の [**animate**
-        パッケージのドキュメント](http://ctan.org/pkg/animate)を参照してください.
-- **`ffmpeg.bitrate`**: (`1M`; `character`).: WebM 動画の質を制御するための FFmpeg の引数 `-b:v` に対応する値を指定できます.
-- **`ffmpeg.format`**: (`webm`; `character`).: FFmpeg の出力する動画フォーマットです. つまり, 動画ファイルの拡張子名です.
-
-### コードチャンク関連 {#code-chunk}
-
-- **`code`**: (`NULL`; `character`).: 指定された場合, そのチャンクのコードを上書きします. この機能によって, プログラミング的にコード挿入が可能になります. 例えば `code = readLines('test.R')` とすれば `test.R` の内容を現在のチャンクで実行します.
-- **`ref.label`**: (`NULL`; `character`).: 現在のチャンクのコードに引き継ぐ, 別のチャンクのラベルの文字列ベクトルを指定します (動作例は  [チャンク参照](https://gedevan-aleksizde.github.io/knitr-doc-ja/reference.html#reference) を確認してください).
-
-### 子文書関連 {#child-document-appendix}
-
-- **`child`**: (`NULL`; `character`).:  親文書に挿入する子文書のファイルパスを示す文字ベクトルを指定します.
-
-### 言語エンジン関連 {#engine}
-
-- **`engine`**: (`'R'`; `character`).: コードチャンクの言語名です. 指定可能な名前は `names(knitr::knit_engines$get())` で確認できます. 例: `python`, `sql`, `julia`, `bash`, `c`, など. `knitr::knit_engines` で他の言語を使うためのセットアップが可能です.
-- **`engine.path`**: (`NULL`; `character`).: 実行可能なエンジンのパスを指定します. あなたのお使いのシステムの別の実行ファイルを使用するためのオプションです. 例えば `python` はデフォルトでは `/usr/bin/python` を参照しますが, 他のバージョンを使うため `engine.path = '~/anaconda/bin/python'` などと指定することもできます^[訳注: R Markdown の場合, Python のバージョンは `reticulate` パッケージでも制御できます. むしろそちらをつかったほうが便利だと思われます.]. `engine.path` もまたパスのリストを与えられます. これによってエンジンごとにそれぞれパスを指定することができます. 以下のコードが例です. リストの名前はエンジン名と一致する必要があります.
-
-```{.r .numberLines .lineAnchors}
-knitr::opts_chunk$set(engine.path = list(python = "~/anaconda/bin/python", 
-  ruby = "/usr/local/bin/ruby"))
-```
-
-
-### オプションテンプレート関連
-
--   **`opts.label`**: (`NULL`; `character`).: `knitr::opts_template` でのオプションのラベルです. オプションセットのラベルは `knitr::opts_template` で設定できます (`?knitr::opts_template` を参照してください). このオプションにより, 頻繁に使うチャンクオプションのタイピング労力を削減できます. 
-
-**訳注**: 例えば次のように, `echo=F` を設定するテンプレート `noecho` をどこかで作成したとします. すると, 以降のチャンクで `opts.label="noecho"` を設定すると `opts_template` で設定した `noecho` のオプションが全て適用されます. もちろん複数のオプションをまとめることもできるので, 定番の設定を使いまわすのが簡単になります.
-
-```{.r .numberLines .lineAnchors}
-knitr::opts_template$set(noecho = list(echo = F))
-```
-
-### ソースコードの抽出関連
-
--   **`purl`**: (`TRUE`; `logical`).: ソースドキュメントから `knitr::purl()` でソースコードを取りだす時, このチャンクを含めるか除外するかどうかです.
-
-### その他のチャンクオプション
-
--   **`R.options`**: (`NULL`; `list`).: コードチャンク内でのローカルな R オプションを指定します. これらは `options()` によってこのコードチャンクの直前に一時的に設定され, 実行後に戻されます.
-
-## パッケージオプション一覧 {#package-options}
-
-パッケージオプションは [`knitr::opts_knit`](https://gedevan-aleksizde.github.io/knitr-doc-ja/objects.html#objects) を使用することで変更できます. **`knitr::opts_chunk` と混同しないでください**. 使用例は以下のとおりです.
-
-```{.r .numberLines .lineAnchors}
-knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
-```
-
-別の方法として, R の基本関数である `options()` を使ってパッケージオプションを設定する場合は `?knitr::opts_knit` を参照してください.
-
-可能なオプションは次のとおりです.
-
-- **`aliases`**: (`NULL`; `character`).: チャンクオプションのエイリアスを指定する名前付きベクトルです. 例えば `c(h = 'fig.height', w = 'fig.width')` は **knitr** に `h` は `fig.height` `w` は `fig.width` と同じ意味だと認識させます. このオプションは名前の長いチャンクオプションのタイピング労力を削減できます.
-- **`base.dir`**: (`NULL`; `character`).: グラフを生成する際のディレクトリの絶対パスです.
-- **`base.url`**: (`NULL`; `character`).: HTML ページに掲載する画像のベースURLです.
-- **`concordance`**: (`FALSE`; `logical`).: この機能は  RStudio によって実装されている機能で, `.Rnw` でのみ有効です. 入力ファイルの行番号に対応した行番号を出力ファイルに書き出すかどうかを指定します. これにより, 出力から入力の誘導が可能になり, 特に LaTeX のエラー発生時に役に立ちます.
--   **`eval.after`**: (`c('fig.cap', 'fig.alt'; `character`).: オプション名の文字ベクトルを指定します. このオプションはチャンクが評価された**後で**評価され, 他の全てのオプションはチャンクが評価される前に評価されます. 例えば `eval.after = 'fig.cap'` が指定されているときに `fig.cap = paste('p-value is', t.test(x)$p.value)` とすると, `eval.after` にはチャンクの評価後の `x` の値が使用されます.
-- **`global.par`**: (`FALSE`; `logical`).: `TRUE` にすると, それ以前のコードチャンクでの `par()` での設定が引き継がれます (もちろん, この設定は R グラフィックスのみで有効です). デフォルトでは  **knitr** はグラフの記録のために新規のグラフィックデバイスを開き, コードの評価後に閉じるため, `par()` による設定はその都度破棄されます.
-- **`header`**: (`NULL`; `character`).: 文書の開始前に挿入するテキストを指定します. (例えば, LaTeX ならば `\documentclass{article}` の直後, HTML ならば `<head>` タグの直後). このオプションは LaTeX プリアンブルや HTML ヘッダでコマンドやスタイルの定義をするのに有用です. ドキュメントの開始地点は `knitr::knit_patterns$get('document.begin')` で知ることができます. このオプションは `.Rnw` と `.Rhtml` 限定の機能です^[訳注: R Markdown ではヘッダの設定は YAML フロントマターで行います].
--   `label.prefix`: (`c(table = 'tab:')`; character) ラベルの接頭語を指定します. 現時点では `kable::kable()` によって生成される表のラベルに対する接頭語のみサポートしています.
--  **`latex.options.color`**, **`latex.options.graphicx`**: (`NULL`).: それぞれ LaTeX パッケージの  **color** と **graphicx** に対するオプションを指定します. これらのオプションは `.Rnw` 限定の機能です^[訳注: R Markdown ではこの機能もやはり YAML フロントマターが担当しています].
-- **`latex.tilde`** (`NULL`): .Rnw 文書のハイライト出力部でのチルダを表す LaTeX コマンドです (使用例は issue [#1992](https://github.com/yihui/knitr/issues/1992) を見てください).
--   **`out.format`**: (`NULL`; `character`).: 可能な値は `latex`, `sweave`,
-    `html`, `markdown`, `jekyll` です. このオプションは入力ファイル名に応じて自動で決定され, 自動設定されるフック関数に影響します. 例えば `?knitr::render_latex` を参考にしてください. このオプションは `knitr::knit()` が実行される**前に**設定する必要があります (文書内で設定しても機能しません).
--   **`progress`**: (`TRUE`; `logical`).: `knitr::knit()` の実行中にプログレスバーを表示するかどうかを指定します.
--   **`root.dir`**: (`NULL`; `character`).: コードチャンク評価時のルートディレクトリを指定します. `NULL` の場合, 入力ファイルと同じ場所が指定されます.
--   **`self.contained`**: (`TRUE`; `logical`).: 出力する文書が自己完結的であるべきかどうかを指定します (`.tex` ファイルにスタイルを書き出すか, `html` に CSS を書き出すか). このオプションは `.Rnw` と `.Rhtml` でのみ機能します^[訳注: R Markdown では出力フォーマット関数に同様のオプションが用意されていることが多いです].
--   **`unnamed.chunk.label`**: (`unnamed-chunk`; `character`).: ラベルを設定していないチャンクのラベルの接頭語を指定します.
--   **`upload.fun`**: (`identity`; `function`).: ファイルパスを引数にとり, ファイルに対して処理を行い出力フォーマットが HTML または Markdown の場合に文字列を返す関数を指定します. 典型的な使い方として, 画像をアップロードしそのリンクを返す関数を指定します. 例えば `knitr::opts_knit$set(upload.fun = knitr::imgur_upload)` でファイルを http://imgur.com にアップロードできます (`?knitr::imgur_upload` を参照してください).
--   **`verbose`**: (`FALSE`; `logical`).: 情報を冗長に詳細するか (例えば各チャンクで実行されたRコードやメッセージログなど), チャンクラベルとオプションのみ表示するかを指定します.
 
 \backmatter
 
+
+# 参考文献 {-}
 
 
 
