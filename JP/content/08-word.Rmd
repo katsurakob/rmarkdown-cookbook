@@ -32,7 +32,7 @@ output:
 ---
 ```
 
-たった今言及したように, `template.docx` は Pandoc から生成されたものでなければなりません. このテンプレートは `word_document` 出力フォーマットを使ったどのような R Markdown 文書 からでも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい要素の種類を含んでいるべきです) 作ることができます. それから `.docx` ファイルを開き, スタイルを編集します.
+たった今言及したように, `template.docx` は Pandoc から生成されたものでなければなりません. このテンプレートは `word_document` 出力フォーマットを使ったどのような R Markdown 文書 からでも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい要素の種類を含んでいるべきです) 作ることができます^[**訳注**: この記述はややわかりにくいかもしれませんが, R Markdown もまた Pandoc によってファイルを生成していることを思い出してください. 具体的な手順は次のようになります. 一旦 (1) R Markdown 文書をコンパイルし docx ファイルを生成し, (2) このファイルを Word で開いて変更したい箇所のスタイル設定を行い, 保存します. (3) そして上記のように `reference_docx` フィールドに保存したファイルを指定してから, 再びファイルをコンパイルします. このとき参照されるのはスタイル情報のみなので, 既に保存した文書の内容は出力に影響しません.]. それから `.docx` ファイルを開き, スタイルを編集します.
 
 ```{r, word-template-1, echo=FALSE, fig.cap='特定の文書要素のスタイルを見つける', out.width='100%'}
 knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-1.png'), dpi = NA)
@@ -54,14 +54,12 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/word-template-2.png'), dpi =
 knitr::include_graphics(file.path(BOOKLANG, 'images/word-table.png'), dpi = NA)
 ```
 
-::::::{.infobox .memo data-latex="{memo}"}
+:::{.infobox .memo data-latex="{memo}"}
 
-:::{.center data-latex=""}
 **訳注**
-:::
 
-Word の日本語版へのローカライズの過程によるものか, バージョンアップによるものかは分かりませんが, Word のスタイル名は必ずしもこの例とは一致しないかもしれません.
-::::::
+Word の日本語版へのローカライズの過程によるものか, バージョンアップによるものかは分かりませんが, Word のスタイル名は必ずしもこの章の例とは一致しないかもしれません.
+:::
 
 ## R Markdown と Word 間の双方向ワークフロー {#word-redoc}
 
@@ -140,3 +138,12 @@ library(officedown)
 - あるセクションのページの向きを変える (縦向きか横向きか)
 
 **officedown** についてもっと学ぶには, 公式ドキュメント https://davidgohel.github.io/officedown/ をご覧ください.
+
+:::.infobox .memo data-latex="{memo}"}
+
+**訳注**
+
+翻訳者は **officedown** のテンプレートを日本語化した簡易的なパッケージを作成しています.
+
+https://github.com/Gedevan-Aleksizde/wordja
+:::

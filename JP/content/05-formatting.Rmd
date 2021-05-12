@@ -171,7 +171,11 @@ output:
 knitr::include_graphics(file.path(BOOKLANG, c('images/wrap-none.png', 'images/wrap-listings.png')), dpi = NA)
 ```
 
-**訳注**: **listings** には多くのオプションがありますが, それだけでデフォルトのシンタックスハイライトを再現するのは難しいです. コードブロックの折返しは **knitr** の `styler` オプションである程度制御できます. Pandoc は出力ブロックをほとんど表示オプションのない `verbatim` 環境として出力し, これが問題の主な原因です. フィルタや LaTeX マクロを使うなどしてこの環境を置き換えればデフォルトのシンタックスハイライトと折返しを両立することができます.
+:::{.infobox .memo data-latex="{memo}"}
+**訳注**
+
+**listings** には多くのオプションがありますが, それだけでデフォルトのシンタックスハイライトを再現するのは難しいです. コードブロックの折返しは **knitr** の `styler` オプションである程度制御できます. Pandoc は出力ブロックをほとんど表示オプションのない `verbatim` 環境として出力し, これが問題の主な原因です. フィルタや LaTeX マクロを使うなどしてこの環境を置き換えればデフォルトのシンタックスハイライトと折返しを両立することができます.
+:::
 
 ## グラフ・画像のサイズを制御する {#figure-size}
 
@@ -290,7 +294,7 @@ output:
     highlight: tango
 ```
 
- **bookdown** の `gitbook` 出力フォーマットでは, コードの左側の適切な位置に行番号を表示するために CSS を多少調整する必要があるかもしれません. 以下は本書で使用しているものです (行番号がページ左余白に近すぎると思ったら, `left` の値を `-0.2em` などに増やして調整してください).^[**訳注**: 日本語版は **rmdja** の出力フォーマットを使用しており, これはデフォルトで行番号を表示し, かつ gitbook に対応した調整を予め搭載しています.]
+ **bookdown** の `gitbook` 出力フォーマットでは, コードの左側の適切な位置に行番号を表示するために CSS を多少調整する必要があるかもしれません. 以下は本書で使用しているものです (行番号がページ左余白に近すぎると思ったら, `left` の値を `-0.2em` などに増やして調整してください).^[**訳注**: 日本語版は **rmdja** パッケージの出力フォーマットを使用しており, これはデフォルトで行番号を表示し, かつ gitbook に対応した調整を予め搭載しています.]
 
 ```css
 pre.numberSource code > span > a:first-child::before {
@@ -322,7 +326,7 @@ if (TRUE) {
 
 ## 多段組み (\*) {#multi-column}
 
-Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743 での Atsushi Yasumoto^[**訳注**: \@atusy のこと] の解決策に着想を得ました.
+Pandoc の Markdown はスライド文書に対する多段レイアウトをサポートしていますが, 他のタイプの文書ではサポートしていません. このレシピでは通常の HTML 文書や LaTeX 文書での多段レイアウトを使う方法を紹介します^[**訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御できるかもしれません (\@ref(latex-variables)節参照).]. これは **knitr** の issue https://github.com/yihui/knitr/issues/1743 での Atsushi Yasumoto^[**訳注**: \@atusy のこと] の解決策に着想を得ました.
 
 考慮する必要があるのが HTML 出力のみなら話はかなり単純です. 任意の HTML 要素を横に並べて表示するのはCSS\index{CSS} を使えば比較的簡単にできるからです. コードチャンクのテキスト出力を横に並べるだけならば, もっと簡単になります. 以下は1つ目の例です.
 
@@ -366,5 +370,3 @@ LaTeX 出力 (`pdf_document`) では, `columns.tex` に含まれている「あ�
 Beamer 出力でも `columns.tex` で同じハックを適用しています. Pandoc は [スライドショー](https://pandoc.org/MANUAL.html#producing-slide-shows-with-pandoc)用に `::: {.columns}`, `::: {.column}`, `::: {.incremental}` といった特別な `Div` を提供していることに注意してください. これらは特別な意味を持つため, この節のような方法で `Div` を LaTeX 環境に変換するときには, これらのタイプの `Div` を**使わない**ように注意しなければなりません. `columns` や `column` という名前の `Div` タイプを使わず, `cols`, `col` 使ったのは, これが理由です.
 
 fenced `Div` についてより詳しく知りたいなら, \@ref(custom-blocks)節を見てください.
-
-**訳注**: 二段組にしたいのが PDF 限定であれば, YAML フロントマターのみで簡単に制御することができます (\@ref(latex-variables)節参照).

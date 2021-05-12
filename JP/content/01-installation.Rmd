@@ -108,11 +108,8 @@ tinytex::parse_packages(
 代わりに MiKTeX\index{LaTeX!MiKTeX} を使っているなら, これも自動で足りないパッケージをインストールできます. MikTeX のインストール中に "Always install missing packages on-the-fly" の設定に必ずチェックしてください.  この設定をせずにインストールしていても, [まだ MiKTeX  Console で変更できます](https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175).
 
 
-::::::{.infobox .memo data-latex="{memo}"}
-
-:::{.center data-latex=""}
+:::{.infobox .memo data-latex="{memo}"}
 **訳注**
-:::
 
 日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 2021年現在は, `haranoaji`, `bxjscls` `luatex-ja` といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます.  既に書かれているように, **tinytex** はかなりの精度で必要なパッケージを自動でインストールしてくれますが, 何らかの理由でうまくいかない場合はこのような LaTeX パッケージを手動で指定してインストールする場合, `tinytex::tlmgr_install()` 関数を使うことができます. この関数は `tlmgr` コマンドを実行するための関数なので, **tinytex** を使っていない場合において `tlmgr install ...` を実行しているのと同じです.
-::::::
+:::
