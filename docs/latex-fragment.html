@@ -497,9 +497,9 @@ div.csl-indent {
 <h2><span class="header-section-number">6.8</span> LaTeX のコードフラグメントを生成する</h2>
 <p>もしはじめから純粋な LaTeX 文書で作業していたとしても, R Markdown はやはり便利だとわかることもあるでしょう. R Markdown で書いて, 文書を他の LaTeX 文書に読み込める LaTeX のコード片 (フラグメント) に変換したほうが便利なこともあります.</p>
 <p>Rmd 文書を LaTeX にレンダリングするとき, <code>\documentclass{}</code>, <code>\begin{body}</code>, <code>\end{body}</code> を含む完全な LaTeX 文書が生成されます. フラグメントはこの完全な文書の主に本文の部分です. LaTeX フラグメントをレンダリングするのに, <code>latex_fragment</code> 出力フォーマットが使えます. 例えばこのように.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb132-1"><a href="latex-fragment.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb132-2"><a href="latex-fragment.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> latex_fragment</span></span>
-<span id="cb132-3"><a href="latex-fragment.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb133-1"><a href="latex-fragment.html#cb133-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb133-2"><a href="latex-fragment.html#cb133-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> latex_fragment</span></span>
+<span id="cb133-3"><a href="latex-fragment.html#cb133-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>これは <code>.tex</code> ファイルをレンダリングします. 例えば <code>foo.Rmd</code> は <code>foo.tex</code> にレンダリングされ, 別の LaTeX 文書で <code>\input{foo.tex}</code> を使うことでフラグメントを読み込めます.</p>
 </div>
             </section>

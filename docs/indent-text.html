@@ -498,11 +498,11 @@ div.csl-indent {
 <!-- PROBLEM: https://stackoverflow.com/questions/47087557/indent-without-adding-a-bullet-point-or-number-in-rmarkdown/52570150#52570150 -->
 <!-- SOLUTION: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html%23raw-tex#line_blocks -->
 <p><a href="linebreaks.html#linebreaks">4.12</a>節で話したように, Markdown では空白文字はしばしば意味をなさなくなります. さらに Markdown は, デフォルトでインデントの空白を無視します. しかしインデントを維持したいことがあります. 例えば詩や演説文などです. このような場合は垂直線 (<code>|</code>) で始まる罫線ブロックを使うことができます. 改行と行頭のスペースは出力でも維持されます. 例えばこのように<a href="#fn20" class="footnote-ref" id="fnref20"><sup>20</sup></a></p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb84-1"><a href="indent-text.html#cb84-1" aria-hidden="true" tabindex="-1"></a>| When dollars appear it&#39;s a sign</span>
-<span id="cb84-2"><a href="indent-text.html#cb84-2" aria-hidden="true" tabindex="-1"></a>|   that your code does not quite align  </span>
-<span id="cb84-3"><a href="indent-text.html#cb84-3" aria-hidden="true" tabindex="-1"></a>| Ensure that your math  </span>
-<span id="cb84-4"><a href="indent-text.html#cb84-4" aria-hidden="true" tabindex="-1"></a>|   in xaringan hath  </span>
-<span id="cb84-5"><a href="indent-text.html#cb84-5" aria-hidden="true" tabindex="-1"></a>|   been placed on a single long line</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb85-1"><a href="indent-text.html#cb85-1" aria-hidden="true" tabindex="-1"></a>| When dollars appear it&#39;s a sign</span>
+<span id="cb85-2"><a href="indent-text.html#cb85-2" aria-hidden="true" tabindex="-1"></a>|   that your code does not quite align  </span>
+<span id="cb85-3"><a href="indent-text.html#cb85-3" aria-hidden="true" tabindex="-1"></a>| Ensure that your math  </span>
+<span id="cb85-4"><a href="indent-text.html#cb85-4" aria-hidden="true" tabindex="-1"></a>|   in xaringan hath  </span>
+<span id="cb85-5"><a href="indent-text.html#cb85-5" aria-hidden="true" tabindex="-1"></a>|   been placed on a single long line</span></code></pre></div>
 <p>出力はこうなります.</p>
 <blockquote>
 <div class="line-block">When dollars appear it’s a sign<br />
@@ -512,11 +512,11 @@ Ensure that your math<br />
   been placed on a single long line</div>
 </blockquote>
 <p>各行は Markdown のソースでは改行コードが使われています (ハードラップ). 次に続く行をスペースで始めれば, 1つ前の行の改行と行頭のスペースは通常は無視されます. 例えばこのように入力します.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb85-1"><a href="indent-text.html#cb85-1" aria-hidden="true" tabindex="-1"></a>| 採用責任者</span>
-<span id="cb85-2"><a href="indent-text.html#cb85-2" aria-hidden="true" tabindex="-1"></a>| ニンジャの学校,</span>
-<span id="cb85-3"><a href="indent-text.html#cb85-3" aria-hidden="true" tabindex="-1"></a>  ハッカーの大学</span>
-<span id="cb85-4"><a href="indent-text.html#cb85-4" aria-hidden="true" tabindex="-1"></a>| 404 Not Found Road,</span>
-<span id="cb85-5"><a href="indent-text.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  Undefined 0x1234, NA</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb86-1"><a href="indent-text.html#cb86-1" aria-hidden="true" tabindex="-1"></a>| 採用責任者</span>
+<span id="cb86-2"><a href="indent-text.html#cb86-2" aria-hidden="true" tabindex="-1"></a>| ニンジャの学校,</span>
+<span id="cb86-3"><a href="indent-text.html#cb86-3" aria-hidden="true" tabindex="-1"></a>  ハッカーの大学</span>
+<span id="cb86-4"><a href="indent-text.html#cb86-4" aria-hidden="true" tabindex="-1"></a>| 404 Not Found Road,</span>
+<span id="cb86-5"><a href="indent-text.html#cb86-5" aria-hidden="true" tabindex="-1"></a>  Undefined 0x1234, NA</span></code></pre></div>
 <p>出力はこうなります.</p>
 <blockquote>
 <div class="line-block">採用責任者<br />

@@ -496,15 +496,15 @@ div.csl-indent {
 <div id="eng-bash" class="section level2" number="15.4">
 <h2><span class="header-section-number">15.4</span> シェルスクリプトを実行する</h2>
 <p>あなたが好んでいるシェルに応じて, <code>bash</code> ・ <code>sh</code> ・ <code>zsh</code> エンジンでシェルスクリプトを実行できます. 以下はチャンクヘッダ <code>```{bash}</code> を使った <code>bash</code> の例です.</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode numberSource bash numberLines lineAnchors"><code class="sourceCode bash"><span id="cb440-1"><a href="eng-bash.html#cb440-1"></a><span class="fu">ls</span> <span class="pp">*</span>.Rmd <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5</span></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode numberSource bash numberLines lineAnchors"><code class="sourceCode bash"><span id="cb441-1"><a href="eng-bash.html#cb441-1"></a><span class="fu">ls</span> <span class="pp">*</span>.Rmd <span class="kw">|</span> <span class="fu">head</span> <span class="at">-n</span> 5</span></code></pre></div>
 <pre><code>## index.Rmd
 ## rmarkdown-cookbook.Rmd</code></pre>
 <p><code>bash</code> は R の <code>system2()</code> 関数で呼び出されていることに注意してください. <code>~/.bash_profile</code> や <code>~/.bash_login</code> のようなプロファイルにある, あなたの定義したコマンドのエイリアスや <code>PATH</code> などの環境変数は無視されます. ターミナル上でシェルを使っている時のようにこれらのプロファイルがほしいなら, <code>engine.opts</code> を介して <code>-l</code> 引数を与えることもできます. これが例です.</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb442-1"><a href="eng-bash.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, engine.opts=&#39;-l&#39;}</span></span>
-<span id="cb442-2"><a href="eng-bash.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="in">echo $PATH</span></span>
-<span id="cb442-3"><a href="eng-bash.html#cb442-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb443-1"><a href="eng-bash.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{bash, engine.opts=&#39;-l&#39;}</span></span>
+<span id="cb443-2"><a href="eng-bash.html#cb443-2" aria-hidden="true" tabindex="-1"></a><span class="in">echo $PATH</span></span>
+<span id="cb443-3"><a href="eng-bash.html#cb443-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>-l</code> 引数を全ての <code>bash</code> チャンクで有効にしたいなら, 文書の冒頭でグローバルチャンクオプションに設定することもできます.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb443-1"><a href="eng-bash.html#cb443-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">engine.opts =</span> <span class="fu">list</span>(<span class="at">bash =</span> <span class="st">&quot;-l&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb444-1"><a href="eng-bash.html#cb444-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">engine.opts =</span> <span class="fu">list</span>(<span class="at">bash =</span> <span class="st">&quot;-l&quot;</span>))</span></code></pre></div>
 <p>チャンクオプション <code>engine.opts</code> に文字列ベクトルとして他の引数を <code>bash</code> に与えることもできます.</p>
 </div>
             </section>

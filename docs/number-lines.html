@@ -496,36 +496,36 @@ div.csl-indent {
 <div id="number-lines" class="section level2" number="5.7">
 <h2><span class="header-section-number">5.7</span> コードブロックに行番号を表示する (*)</h2>
 <p><code>attr.source = ".numberLines"</code> でソースコードブロックにも行番号を付けることも, <code>attr.output = ".numberLines"</code> でテキスト出力ブロックに行番号を付けることもできます (これらのオプションの詳細は<a href="attr-output.html#attr-output">11.13</a>節参照). 例えば.</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb97-1"><a href="number-lines.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;.numberLines&#39;}</span></span>
-<span id="cb97-2"><a href="number-lines.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb97-3"><a href="number-lines.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
-<span id="cb97-4"><a href="number-lines.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
-<span id="cb97-5"><a href="number-lines.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb97-6"><a href="number-lines.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb98-1"><a href="number-lines.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;.numberLines&#39;}</span></span>
+<span id="cb98-2"><a href="number-lines.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb98-3"><a href="number-lines.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
+<span id="cb98-4"><a href="number-lines.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
+<span id="cb98-5"><a href="number-lines.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb98-6"><a href="number-lines.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>出力はこうなります.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb98-1"><a href="number-lines.html#cb98-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
-<span id="cb98-2"><a href="number-lines.html#cb98-2"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb98-3"><a href="number-lines.html#cb98-3"></a>  x <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb98-4"><a href="number-lines.html#cb98-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb99-1"><a href="number-lines.html#cb99-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
+<span id="cb99-2"><a href="number-lines.html#cb99-2"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb99-3"><a href="number-lines.html#cb99-3"></a>  x <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb99-4"><a href="number-lines.html#cb99-4"></a>}</span></code></pre></div>
 <p>HTML 出力では, Pandoc が提供するシンタックスハイライト のテーマ を選ぶ必要があることに注意してください. これは出力フォーマットの <code>highlight</code> オプションを <code>default</code> や <code>textmate</code> にすべきではないということを意味します. ヘルプページ <code>?rmarkdown::html_document</code> でこのオプションの他の値の一覧を見ることができます. 例えばこう設定できます.</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb99-1"><a href="number-lines.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb99-2"><a href="number-lines.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb99-3"><a href="number-lines.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">highlight</span><span class="kw">:</span><span class="at"> tango</span></span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb100-1"><a href="number-lines.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb100-2"><a href="number-lines.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb100-3"><a href="number-lines.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">highlight</span><span class="kw">:</span><span class="at"> tango</span></span></code></pre></div>
 <p><strong>bookdown</strong> の <code>gitbook</code> 出力フォーマットでは, コードの左側の適切な位置に行番号を表示するために CSS を多少調整する必要があるかもしれません. 以下は本書で使用しているものです (行番号がページ左余白に近すぎると思ったら, <code>left</code> の値を <code>-0.2em</code> などに増やして調整してください).<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a></p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb100-1"><a href="number-lines.html#cb100-1" aria-hidden="true" tabindex="-1"></a>pre<span class="fu">.numberSource</span> code <span class="op">&gt;</span> span <span class="op">&gt;</span> a<span class="in">:first-child::before</span> {</span>
-<span id="cb100-2"><a href="number-lines.html#cb100-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">-0.3</span><span class="dt">em</span><span class="op">;</span></span>
-<span id="cb100-3"><a href="number-lines.html#cb100-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p><strong>revealjs</strong> の <code>revealjs_presentation</code> 出力フォーマット <span class="citation">(<a href="#ref-R-revealjs" role="doc-biblioref">El Hattab and Allaire 2017</a>)</span> に対しても CSS の調整が必要かもしれません.</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb101-1"><a href="number-lines.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> pre code {</span>
-<span id="cb101-2"><a href="number-lines.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">visible</span><span class="op">;</span></span>
+<div class="sourceCode" id="cb101"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb101-1"><a href="number-lines.html#cb101-1" aria-hidden="true" tabindex="-1"></a>pre<span class="fu">.numberSource</span> code <span class="op">&gt;</span> span <span class="op">&gt;</span> a<span class="in">:first-child::before</span> {</span>
+<span id="cb101-2"><a href="number-lines.html#cb101-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">left</span>: <span class="dv">-0.3</span><span class="dt">em</span><span class="op">;</span></span>
 <span id="cb101-3"><a href="number-lines.html#cb101-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p><strong>revealjs</strong> の <code>revealjs_presentation</code> 出力フォーマット <span class="citation">(<a href="#ref-R-revealjs" role="doc-biblioref">El Hattab and Allaire 2017</a>)</span> に対しても CSS の調整が必要かもしれません.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb102-1"><a href="number-lines.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.reveal</span> pre code {</span>
+<span id="cb102-2"><a href="number-lines.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">overflow</span>: <span class="dv">visible</span><span class="op">;</span></span>
+<span id="cb102-3"><a href="number-lines.html#cb102-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>カスタム CSS スタイルを HTML 出力に適用する方法がわからないなら, <a href="html-css.html#html-css">7.1</a>節を見てください.</p>
 <p><code>startFrom</code> 属性で開始する数字を指定することもできます. 例えば.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb102-1"><a href="number-lines.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;.numberLines startFrom=&quot;5&quot;&#39;}</span></span>
-<span id="cb102-2"><a href="number-lines.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb102-3"><a href="number-lines.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="in">  1:10</span></span>
-<span id="cb102-4"><a href="number-lines.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb102-5"><a href="number-lines.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb103-1"><a href="number-lines.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, attr.source=&#39;.numberLines startFrom=&quot;5&quot;&#39;}</span></span>
+<span id="cb103-2"><a href="number-lines.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb103-3"><a href="number-lines.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="in">  1:10</span></span>
+<span id="cb103-4"><a href="number-lines.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb103-5"><a href="number-lines.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>現時点では Word 出力での行番号はサポートしていません.</p>
 </div>
 <h3>参考文献</h3>

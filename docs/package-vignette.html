@@ -505,15 +505,15 @@ div.csl-indent {
 </p>
 </div>
 <p>他の方法としては, <strong>usethis</strong> <span class="citation">(<a href="#ref-R-usethis" role="doc-biblioref">Wickham and Bryan 2020</a>)</span> をインストールし <code>usethis::use_vignette()</code> 関数を使ってビネットのスケルトンを作成できます. 以下はパッケージのビネットの YAML フロントマターの典型的な姿です.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb477-1"><a href="package-vignette.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb477-2"><a href="package-vignette.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットのタイトル&quot;</span></span>
-<span id="cb477-3"><a href="package-vignette.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットの著者&quot;</span></span>
-<span id="cb477-4"><a href="package-vignette.html#cb477-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rmarkdown::html_vignette</span></span>
-<span id="cb477-5"><a href="package-vignette.html#cb477-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span><span class="kw">: </span><span class="ch">&gt;</span></span>
-<span id="cb477-6"><a href="package-vignette.html#cb477-6" aria-hidden="true" tabindex="-1"></a>  %\VignetteIndexEntry{ビネットのタイトル}</span>
-<span id="cb477-7"><a href="package-vignette.html#cb477-7" aria-hidden="true" tabindex="-1"></a>  %\VignetteEngine{knitr::rmarkdown}</span>
-<span id="cb477-8"><a href="package-vignette.html#cb477-8" aria-hidden="true" tabindex="-1"></a>  %\VignetteEncoding{UTF-8}</span>
-<span id="cb477-9"><a href="package-vignette.html#cb477-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb478-1"><a href="package-vignette.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb478-2"><a href="package-vignette.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットのタイトル&quot;</span></span>
+<span id="cb478-3"><a href="package-vignette.html#cb478-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;ビネットの著者&quot;</span></span>
+<span id="cb478-4"><a href="package-vignette.html#cb478-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> rmarkdown::html_vignette</span></span>
+<span id="cb478-5"><a href="package-vignette.html#cb478-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span><span class="kw">: </span><span class="ch">&gt;</span></span>
+<span id="cb478-6"><a href="package-vignette.html#cb478-6" aria-hidden="true" tabindex="-1"></a>  %\VignetteIndexEntry{ビネットのタイトル}</span>
+<span id="cb478-7"><a href="package-vignette.html#cb478-7" aria-hidden="true" tabindex="-1"></a>  %\VignetteEngine{knitr::rmarkdown}</span>
+<span id="cb478-8"><a href="package-vignette.html#cb478-8" aria-hidden="true" tabindex="-1"></a>  %\VignetteEncoding{UTF-8}</span>
+<span id="cb478-9"><a href="package-vignette.html#cb478-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p><code>title</code> フィールドと <code>\VignetteIndexEntry{}</code> コマンドの両方で, ビネットのタイトルを変更しなければならないことに注意してください. 上記のビネット情報の他にも, パッケージの <code>DESCRIPTION</code> ファイルにさらに2つすべきことがあります.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>DESCRIPTION</code> ファイルに <code>VignetteBuilder: knitr</code> を指定する.</p></li>

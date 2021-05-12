@@ -496,22 +496,22 @@ div.csl-indent {
 <div id="latex-preamble" class="section level2" number="6.1">
 <h2><span class="header-section-number">6.1</span> プリアンブルに LaTeX コードを追加する</h2>
 <p>LaTeX 文書の一般的な構造はこのようになっています.</p>
-<div class="sourceCode" id="cb108"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb108-1"><a href="latex-preamble.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
-<span id="cb108-2"><a href="latex-preamble.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co">% preamble</span></span>
-<span id="cb108-3"><a href="latex-preamble.html#cb108-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb108-4"><a href="latex-preamble.html#cb108-4" aria-hidden="true" tabindex="-1"></a><span class="co">% body</span></span>
-<span id="cb108-5"><a href="latex-preamble.html#cb108-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb109-1"><a href="latex-preamble.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb109-2"><a href="latex-preamble.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co">% preamble</span></span>
+<span id="cb109-3"><a href="latex-preamble.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb109-4"><a href="latex-preamble.html#cb109-4" aria-hidden="true" tabindex="-1"></a><span class="co">% body</span></span>
+<span id="cb109-5"><a href="latex-preamble.html#cb109-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>これは文書クラスを <code>\documentclass{}</code> で宣言し, 必要に応じて特定の LaTeX パッケージを読み込んだり特定のオプションをプリアンブルで設定し, そして <code>\begin{document}</code> に続いて文書の本文を書き始めています. Markdown 文書はほとんどがこの文書の本文に対応します.</p>
 <p>プリアンブルになにか追加したい時, <code>pdf_document</code> の <code>includes</code> オプションを使わねばなりません. このオプションは3つのサブオプションを持ちます. <code>in_header</code>, <code>before_body</code>, そして <code>after_body</code> です. いずれも1つ以上のファイルパスを指定できます. <code>in_header</code> に指定されたファイルはプリアンブルに追加されます. <code>before_body</code> と <code>after_body</code> に指定されたファイルはそれぞれ本文の前と後に追加されます.</p>
 <p>例えば以下はテキスト内のハイパーリンクを脚注に変える小ワザです. この小ワザが役に立つのは, PDF 出力された文書が紙に印刷されたときに, 読者は紙面上のリンク (<code>\href{URL}{text}</code> で生成されたもの) をクリックすることはできませんが, 脚注で URL を見ることはできるからです. この小ワザはテキストと URL の両方を表示します.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb109-1"><a href="latex-preamble.html#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co">% あなたはレンダリング前に \href のコピーを保存したいかもしれない</span></span>
-<span id="cb109-2"><a href="latex-preamble.html#cb109-2" aria-hidden="true" tabindex="-1"></a><span class="co">% \let\oldhref\href</span></span>
-<span id="cb109-3"><a href="latex-preamble.html#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb110-1"><a href="latex-preamble.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">% あなたはレンダリング前に \href のコピーを保存したいかもしれない</span></span>
+<span id="cb110-2"><a href="latex-preamble.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">% \let\oldhref\href</span></span>
+<span id="cb110-3"><a href="latex-preamble.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\renewcommand</span>{<span class="ex">\href</span>}[2]{#2<span class="fu">\footnote</span>{<span class="fu">\url</span>{#1}}}</span></code></pre></div>
 <p>上記のコードを任意のファイル名（例えば <code>preamble.tex</code> ） に保存してから, プリアンブルに読み込んでください.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb110-1"><a href="latex-preamble.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb110-2"><a href="latex-preamble.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb110-3"><a href="latex-preamble.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb110-4"><a href="latex-preamble.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb111-1"><a href="latex-preamble.html#cb111-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb111-2"><a href="latex-preamble.html#cb111-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb111-3"><a href="latex-preamble.html#cb111-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb111-4"><a href="latex-preamble.html#cb111-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;preamble.tex&quot;</span></span></code></pre></div>
 <p>この小ワザに限れば, 実際に自分で実装しなくても, Pandoc のデフォルトの TaTeX テンプレート (<a href="latex-variables.html#latex-variables">6.2</a>節参照) に組み込まれた機能である YAML オプション <code>links-as-notes</code> を <code>true</code> にすることで簡単にできます.</p>
 <p>コードをプリアンブルに追加する別の方法として, YAML フロントマター の <code>header-includes</code> フィールドに直接コードを与えることができます. <a href="latex-logo.html#latex-logo">6.3</a>節でその例を紹介しています. <code>header-includes</code> を使う利点は R Markdown １文書の内部に全てを含められることです. しかしレポートを複数の出力フォーマットで生成したいのなら, やはり <code>includes</code> を使う方法をお薦めします. <code>header-includes</code> は使われ方に制約がないため, 非 LaTeX 出力の文書に対しても読み込まれてしまうからです. これと比較して, <code>includes</code> オプションは <code>pdf_document</code> フォーマットにのみ適用されます.</p>
 </div>

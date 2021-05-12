@@ -496,23 +496,23 @@ div.csl-indent {
 <div id="latex-template" class="section level2" number="6.10">
 <h2><span class="header-section-number">6.10</span> Pandoc の LaTeX テンプレートをカスタマイズする (*)</h2>
 <p>Pandoc はテンプレート を通じて Markdown を LaTeX に変換します. テンプレートは Pandoc 変数を含む LaTeX ファイルであり, Pandoc はこれらの変数を値に置き換えます. 以下は <code>$body$</code> という変数を1つだけ含んだ単純なテンプレートです.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb135-1"><a href="latex-template.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
-<span id="cb135-2"><a href="latex-template.html#cb135-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb135-3"><a href="latex-template.html#cb135-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$body$</span></span>
-<span id="cb135-4"><a href="latex-template.html#cb135-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb136-1"><a href="latex-template.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb136-2"><a href="latex-template.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb136-3"><a href="latex-template.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="ss">$body$</span></span>
+<span id="cb136-4"><a href="latex-template.html#cb136-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p><code>$body$</code> の値は Markdown ドキュメントの本文から生成された LaTeX コードです. 例えば Markdown で本文が <code>Hello **world**!</code> ならば, <code>$body$</code> の値は <code>Hello \textbf{world}!</code> となります.</p>
 <p><a href="latex-preamble.html#latex-preamble">6.1</a>, <a href="latex-variables.html#latex-variables">6.2</a>, <a href="latex-extra.html#latex-extra">6.4</a>節で紹介した LaTeX のカスタマイズ方法だけでは不十分なら, 代わりにカスタムテンプレートを使ってみてください. テンプレートはその内部に任意の LaTeX コードを使うことが可能なので, はるかに柔軟です. テンプレートを使うには, <code>pdf_document</code> の <code>template</code> オプション にテンプレートのパスを含めます.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb136-1"><a href="latex-template.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb136-2"><a href="latex-template.html#cb136-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb136-3"><a href="latex-template.html#cb136-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> my-template.tex</span></span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb137-1"><a href="latex-template.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb137-2"><a href="latex-template.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb137-3"><a href="latex-template.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">template</span><span class="kw">:</span><span class="at"> my-template.tex</span></span></code></pre></div>
 <p>Pandocのデフォルトの LaTeX テンプレートは <a href="https://github.com/jgm/pandoc/tree/master/data/templates" class="uri">https://github.com/jgm/pandoc/tree/master/data/templates</a> で見ることができます (ファイル名は <code>default.latex</code>). 自分でテンプレートを作成したい場合, このテンプレートから作りたいと思うことでしょう.</p>
 <p>Pandoc 変数 (<code>$body$</code> や <code>$title$</code> など) の完全なリストとその意味は Pandoc マニュアルの <a href="https://pandoc.org/MANUAL.html#templates" class="uri">https://pandoc.org/MANUAL.html#templates</a> で見ることができます. 任意のカスタム変数を使うこともでき, それは典型的には YAML メタデータからテンプレートへと与えられます. もし具体例で学びたいなら, <strong>MonashEBSTemplates</strong> パッケージ (<a href="https://github.com/robjhyndman/MonashEBSTemplates" class="uri">https://github.com/robjhyndman/MonashEBSTemplates</a>) を確認することもできます. これはいくつかのカスタム LaTeX テンプレートを提供しています. これらのテンプレートは <code>inst/rmarkdown/templates/*/resources/</code> ディレクトリ (<code>*</code> はテンプレート名を指します) 以下にあります. 例えば出力フォーマット <code>MonashEBSTemplates::memo</code> 用のテンプレートは YAML メタデータの変数 <code>branding</code> を使って, モナシュ大学のブランドロゴを含むかどうかを制御できます. 以下のようにテンプレート内で <code>if</code> 文を使うことで実現しています.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb137-1"><a href="latex-template.html#cb137-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$if(branding)$</span><span class="co">%</span></span>
-<span id="cb137-2"><a href="latex-template.html#cb137-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\includegraphics</span>[height=1.5cm]{<span class="ex">monash2</span>}</span>
-<span id="cb137-3"><a href="latex-template.html#cb137-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\vspace*</span>{-0.6cm}</span>
-<span id="cb137-4"><a href="latex-template.html#cb137-4" aria-hidden="true" tabindex="-1"></a><span class="ss">$else$</span></span>
-<span id="cb137-5"><a href="latex-template.html#cb137-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\vspace*</span>{-1cm}</span>
-<span id="cb137-6"><a href="latex-template.html#cb137-6" aria-hidden="true" tabindex="-1"></a><span class="ss">$endif$</span></span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb138-1"><a href="latex-template.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$if(branding)$</span><span class="co">%</span></span>
+<span id="cb138-2"><a href="latex-template.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\includegraphics</span>[height=1.5cm]{<span class="ex">monash2</span>}</span>
+<span id="cb138-3"><a href="latex-template.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\vspace*</span>{-0.6cm}</span>
+<span id="cb138-4"><a href="latex-template.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="ss">$else$</span></span>
+<span id="cb138-5"><a href="latex-template.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="fu">\vspace*</span>{-1cm}</span>
+<span id="cb138-6"><a href="latex-template.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="ss">$endif$</span></span></code></pre></div>
 </div>
             </section>
 

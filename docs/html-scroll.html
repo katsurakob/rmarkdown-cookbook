@@ -497,46 +497,46 @@ div.csl-indent {
 <h2><span class="header-section-number">7.4</span> コードブロックをスクロール可能にする (*)</h2>
 <p>大量のコードやテキスト出力を HTML ページに表示するとき, 表示範囲の高さを制限したほうがよいでしょう. そうしないとページはとてつもなく長くなり, コードやテキストの出力を細かく読む気のない人が読み飛ばしづらくなります. この問題の解決法は複数あります. 一つは, <code>html_document</code> フォーマットの <code>code_folding</code> オプションを使います. このオプションは文書のコードブロックを折りたたんで出力し, 読者はボタンを押して折りたたみを展開することができます (詳細は<a href="fold-show.html#fold-show">7.5</a>節).</p>
 <p>他の解決法としては, コードブロックが長すぎるとき, 高さを固定しスクロール可能にすることです. これは CSS プロパティの <code>max-height</code> と <code>overflow-y</code> で実現できます. 以下はその使用例の全容で, 出力は図<a href="html-scroll.html#fig:html-scroll">7.3</a>になります.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb147-1"><a href="html-scroll.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb147-2"><a href="html-scroll.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> スクロール可能なコードブロック</span></span>
-<span id="cb147-3"><a href="html-scroll.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb147-4"><a href="html-scroll.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb147-5"><a href="html-scroll.html#cb147-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-6"><a href="html-scroll.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb147-7"><a href="html-scroll.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="in">pre {</span></span>
-<span id="cb147-8"><a href="html-scroll.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 300px;</span></span>
-<span id="cb147-9"><a href="html-scroll.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="in">  overflow-y: auto;</span></span>
-<span id="cb147-10"><a href="html-scroll.html#cb147-10" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb147-11"><a href="html-scroll.html#cb147-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-12"><a href="html-scroll.html#cb147-12" aria-hidden="true" tabindex="-1"></a><span class="in">pre[class] {</span></span>
-<span id="cb147-13"><a href="html-scroll.html#cb147-13" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 100px;</span></span>
-<span id="cb147-14"><a href="html-scroll.html#cb147-14" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb147-15"><a href="html-scroll.html#cb147-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb147-16"><a href="html-scroll.html#cb147-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-17"><a href="html-scroll.html#cb147-17" aria-hidden="true" tabindex="-1"></a>コードブロックの高さを制限する CSS ルールをいくつか定義しました. これらのルールがコードブロックとテキスト出力に対して機能するのかテストすることができます.</span>
-<span id="cb147-18"><a href="html-scroll.html#cb147-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-19"><a href="html-scroll.html#cb147-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb147-20"><a href="html-scroll.html#cb147-20" aria-hidden="true" tabindex="-1"></a><span class="in"># このチャンクに多くのコードがあるように見せかける</span></span>
-<span id="cb147-21"><a href="html-scroll.html#cb147-21" aria-hidden="true" tabindex="-1"></a><span class="in">if (1 + 1 == 2) {</span></span>
-<span id="cb147-22"><a href="html-scroll.html#cb147-22" aria-hidden="true" tabindex="-1"></a><span class="in">  # もちろん真になる</span></span>
-<span id="cb147-23"><a href="html-scroll.html#cb147-23" aria-hidden="true" tabindex="-1"></a><span class="in">  print(mtcars)</span></span>
-<span id="cb147-24"><a href="html-scroll.html#cb147-24" aria-hidden="true" tabindex="-1"></a><span class="in">  # 単に長いデータを表示させるだけ</span></span>
-<span id="cb147-25"><a href="html-scroll.html#cb147-25" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb147-26"><a href="html-scroll.html#cb147-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb147-27"><a href="html-scroll.html#cb147-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-28"><a href="html-scroll.html#cb147-28" aria-hidden="true" tabindex="-1"></a>次に高さを100px に制限するために <span class="in">`scroll-100`</span> という新しいクラスにルールを追加し,  チャンクオプション <span class="in">`class.output`</span> でこのクラスをコードチャンクの出力に追加します.</span>
-<span id="cb147-29"><a href="html-scroll.html#cb147-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-30"><a href="html-scroll.html#cb147-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb147-31"><a href="html-scroll.html#cb147-31" aria-hidden="true" tabindex="-1"></a><span class="in">.scroll-100 {</span></span>
-<span id="cb147-32"><a href="html-scroll.html#cb147-32" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 100px;</span></span>
-<span id="cb147-33"><a href="html-scroll.html#cb147-33" aria-hidden="true" tabindex="-1"></a><span class="in">  overflow-y: auto;</span></span>
-<span id="cb147-34"><a href="html-scroll.html#cb147-34" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: inherit;</span></span>
-<span id="cb147-35"><a href="html-scroll.html#cb147-35" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb147-36"><a href="html-scroll.html#cb147-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb147-37"><a href="html-scroll.html#cb147-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb147-38"><a href="html-scroll.html#cb147-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, class.output=&quot;scroll-100&quot;}</span></span>
-<span id="cb147-39"><a href="html-scroll.html#cb147-39" aria-hidden="true" tabindex="-1"></a><span class="in">print(mtcars)</span></span>
-<span id="cb147-40"><a href="html-scroll.html#cb147-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb148-1"><a href="html-scroll.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb148-2"><a href="html-scroll.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> スクロール可能なコードブロック</span></span>
+<span id="cb148-3"><a href="html-scroll.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb148-4"><a href="html-scroll.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb148-5"><a href="html-scroll.html#cb148-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-6"><a href="html-scroll.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb148-7"><a href="html-scroll.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="in">pre {</span></span>
+<span id="cb148-8"><a href="html-scroll.html#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 300px;</span></span>
+<span id="cb148-9"><a href="html-scroll.html#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="in">  overflow-y: auto;</span></span>
+<span id="cb148-10"><a href="html-scroll.html#cb148-10" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb148-11"><a href="html-scroll.html#cb148-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-12"><a href="html-scroll.html#cb148-12" aria-hidden="true" tabindex="-1"></a><span class="in">pre[class] {</span></span>
+<span id="cb148-13"><a href="html-scroll.html#cb148-13" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 100px;</span></span>
+<span id="cb148-14"><a href="html-scroll.html#cb148-14" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb148-15"><a href="html-scroll.html#cb148-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb148-16"><a href="html-scroll.html#cb148-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-17"><a href="html-scroll.html#cb148-17" aria-hidden="true" tabindex="-1"></a>コードブロックの高さを制限する CSS ルールをいくつか定義しました. これらのルールがコードブロックとテキスト出力に対して機能するのかテストすることができます.</span>
+<span id="cb148-18"><a href="html-scroll.html#cb148-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-19"><a href="html-scroll.html#cb148-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb148-20"><a href="html-scroll.html#cb148-20" aria-hidden="true" tabindex="-1"></a><span class="in"># このチャンクに多くのコードがあるように見せかける</span></span>
+<span id="cb148-21"><a href="html-scroll.html#cb148-21" aria-hidden="true" tabindex="-1"></a><span class="in">if (1 + 1 == 2) {</span></span>
+<span id="cb148-22"><a href="html-scroll.html#cb148-22" aria-hidden="true" tabindex="-1"></a><span class="in">  # もちろん真になる</span></span>
+<span id="cb148-23"><a href="html-scroll.html#cb148-23" aria-hidden="true" tabindex="-1"></a><span class="in">  print(mtcars)</span></span>
+<span id="cb148-24"><a href="html-scroll.html#cb148-24" aria-hidden="true" tabindex="-1"></a><span class="in">  # 単に長いデータを表示させるだけ</span></span>
+<span id="cb148-25"><a href="html-scroll.html#cb148-25" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb148-26"><a href="html-scroll.html#cb148-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb148-27"><a href="html-scroll.html#cb148-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-28"><a href="html-scroll.html#cb148-28" aria-hidden="true" tabindex="-1"></a>次に高さを100px に制限するために <span class="in">`scroll-100`</span> という新しいクラスにルールを追加し,  チャンクオプション <span class="in">`class.output`</span> でこのクラスをコードチャンクの出力に追加します.</span>
+<span id="cb148-29"><a href="html-scroll.html#cb148-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-30"><a href="html-scroll.html#cb148-30" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb148-31"><a href="html-scroll.html#cb148-31" aria-hidden="true" tabindex="-1"></a><span class="in">.scroll-100 {</span></span>
+<span id="cb148-32"><a href="html-scroll.html#cb148-32" aria-hidden="true" tabindex="-1"></a><span class="in">  max-height: 100px;</span></span>
+<span id="cb148-33"><a href="html-scroll.html#cb148-33" aria-hidden="true" tabindex="-1"></a><span class="in">  overflow-y: auto;</span></span>
+<span id="cb148-34"><a href="html-scroll.html#cb148-34" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: inherit;</span></span>
+<span id="cb148-35"><a href="html-scroll.html#cb148-35" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb148-36"><a href="html-scroll.html#cb148-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb148-37"><a href="html-scroll.html#cb148-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-38"><a href="html-scroll.html#cb148-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, class.output=&quot;scroll-100&quot;}</span></span>
+<span id="cb148-39"><a href="html-scroll.html#cb148-39" aria-hidden="true" tabindex="-1"></a><span class="in">print(mtcars)</span></span>
+<span id="cb148-40"><a href="html-scroll.html#cb148-40" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:html-scroll"></span>
 <img src="JP/images/html-scroll.png" alt="カスタム CSS を使用したスクロール可能なコードブロック"  />
 <p class="caption">

@@ -504,34 +504,34 @@ div.csl-indent {
 <li><p><strong>ラベルの設定されたコードチャンク</strong>: チャンクが生成した図を参照する識別子を提供してくれます.</p></li>
 </ul>
 <p>これらの条件が整って初めて, テキスト内で <code>\@ref(type:label)</code> という構文を使って相互参照を作成できます. <code>label</code> はチャンクラベルであり, <code>type</code> は参照される環境 (例:, <code>tab</code>, <code>fig</code>, <code>eqn</code>) です. 以下に例を示します.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb47-1"><a href="cross-ref.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb47-2"><a href="cross-ref.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 図, 表, 数式を相互参照する</span></span>
-<span id="cb47-3"><a href="cross-ref.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> bookdown による生成</span></span>
-<span id="cb47-4"><a href="cross-ref.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb47-5"><a href="cross-ref.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="co">  bookdown::pdf_document2:</span></span>
-<span id="cb47-6"><a href="cross-ref.html#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
-<span id="cb47-7"><a href="cross-ref.html#cb47-7" aria-hidden="true" tabindex="-1"></a><span class="co">  bookdown::html_document2: default</span></span>
-<span id="cb47-8"><a href="cross-ref.html#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
-<span id="cb47-9"><a href="cross-ref.html#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb47-10"><a href="cross-ref.html#cb47-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-11"><a href="cross-ref.html#cb47-11" aria-hidden="true" tabindex="-1"></a>図 \@ref(fig:cars-plot) を見よ.</span>
-<span id="cb47-12"><a href="cross-ref.html#cb47-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-13"><a href="cross-ref.html#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cars-plot, fig.cap=&quot;自動車のデータ&quot;, echo=FALSE}</span></span>
-<span id="cb47-14"><a href="cross-ref.html#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .2, .1))</span></span>
-<span id="cb47-15"><a href="cross-ref.html#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)  # a scatterplot</span></span>
-<span id="cb47-16"><a href="cross-ref.html#cb47-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb47-17"><a href="cross-ref.html#cb47-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-18"><a href="cross-ref.html#cb47-18" aria-hidden="true" tabindex="-1"></a>次に数式\@ref(eq:mean) を見よ.</span>
-<span id="cb47-19"><a href="cross-ref.html#cb47-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-20"><a href="cross-ref.html#cb47-20" aria-hidden="true" tabindex="-1"></a>\begin{equation}</span>
-<span id="cb47-21"><a href="cross-ref.html#cb47-21" aria-hidden="true" tabindex="-1"></a>\bar{X} = \frac{\sum_{i=1}^n X_i}{n} (<span class="sc">\#</span>eq:mean)</span>
-<span id="cb47-22"><a href="cross-ref.html#cb47-22" aria-hidden="true" tabindex="-1"></a>\end{equation}</span>
-<span id="cb47-23"><a href="cross-ref.html#cb47-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-24"><a href="cross-ref.html#cb47-24" aria-hidden="true" tabindex="-1"></a>さらに表 \@ref(tab:mtcars) を見よ.</span>
-<span id="cb47-25"><a href="cross-ref.html#cb47-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb47-26"><a href="cross-ref.html#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mtcars, echo=FALSE}</span></span>
-<span id="cb47-27"><a href="cross-ref.html#cb47-27" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(mtcars[1:5, 1:5], caption = &quot;mtcars データ&quot;)</span></span>
-<span id="cb47-28"><a href="cross-ref.html#cb47-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb48-1"><a href="cross-ref.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-2"><a href="cross-ref.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 図, 表, 数式を相互参照する</span></span>
+<span id="cb48-3"><a href="cross-ref.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> bookdown による生成</span></span>
+<span id="cb48-4"><a href="cross-ref.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb48-5"><a href="cross-ref.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="co">  bookdown::pdf_document2:</span></span>
+<span id="cb48-6"><a href="cross-ref.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: lualatex</span></span>
+<span id="cb48-7"><a href="cross-ref.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="co">  bookdown::html_document2: default</span></span>
+<span id="cb48-8"><a href="cross-ref.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="an">documentclass:</span><span class="co"> ltjsarticle</span></span>
+<span id="cb48-9"><a href="cross-ref.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb48-10"><a href="cross-ref.html#cb48-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-11"><a href="cross-ref.html#cb48-11" aria-hidden="true" tabindex="-1"></a>図 \@ref(fig:cars-plot) を見よ.</span>
+<span id="cb48-12"><a href="cross-ref.html#cb48-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-13"><a href="cross-ref.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cars-plot, fig.cap=&quot;自動車のデータ&quot;, echo=FALSE}</span></span>
+<span id="cb48-14"><a href="cross-ref.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4, 4, .2, .1))</span></span>
+<span id="cb48-15"><a href="cross-ref.html#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)  # a scatterplot</span></span>
+<span id="cb48-16"><a href="cross-ref.html#cb48-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb48-17"><a href="cross-ref.html#cb48-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-18"><a href="cross-ref.html#cb48-18" aria-hidden="true" tabindex="-1"></a>次に数式\@ref(eq:mean) を見よ.</span>
+<span id="cb48-19"><a href="cross-ref.html#cb48-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-20"><a href="cross-ref.html#cb48-20" aria-hidden="true" tabindex="-1"></a>\begin{equation}</span>
+<span id="cb48-21"><a href="cross-ref.html#cb48-21" aria-hidden="true" tabindex="-1"></a>\bar{X} = \frac{\sum_{i=1}^n X_i}{n} (<span class="sc">\#</span>eq:mean)</span>
+<span id="cb48-22"><a href="cross-ref.html#cb48-22" aria-hidden="true" tabindex="-1"></a>\end{equation}</span>
+<span id="cb48-23"><a href="cross-ref.html#cb48-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-24"><a href="cross-ref.html#cb48-24" aria-hidden="true" tabindex="-1"></a>さらに表 \@ref(tab:mtcars) を見よ.</span>
+<span id="cb48-25"><a href="cross-ref.html#cb48-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-26"><a href="cross-ref.html#cb48-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mtcars, echo=FALSE}</span></span>
+<span id="cb48-27"><a href="cross-ref.html#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::kable(mtcars[1:5, 1:5], caption = &quot;mtcars データ&quot;)</span></span>
+<span id="cb48-28"><a href="cross-ref.html#cb48-28" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この文書の出力を図 <a href="cross-ref.html#fig:bookdown-ref">4.2</a> に示します.</p>
 <div class="figure" style="text-align: center"><span id="fig:bookdown-ref"></span>
 <img src="JP/images/bookdown-ref.png" alt="R Markdown 文書内の相互参照の例"  />

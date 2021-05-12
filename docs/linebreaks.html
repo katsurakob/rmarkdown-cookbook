@@ -497,17 +497,17 @@ div.csl-indent {
 <h2><span class="header-section-number">4.12</span> 複数の改行コードを維持する</h2>
 <p>Markdown ユーザは, verbatim 環境 (コードブロック) 以外の場所では空白 (改行コード含む) は大抵の場合意味を持たないことに気づき, 驚くでしょう. 2つ以上のスペースはスペース1つと同じであり, 改行1つはスペース1つと同じです. LaTeX や HTML を使ったことがあるなら, これらの言語と同じルールであるため驚くことはないかもしれません.</p>
 <p>Markdown では, 空白行はしばしば段落などの要素の分離に使われます. 新しい段落に入らずに改行をするには, 末尾にスペース2つを追加しなければなりません. 特に詩や歌詞を引用したいときなど, 複数回改行したいときもあるかもしれません. 各行の末尾にスペース2つを手動で書き加えるのはうんざりする作業です. <code>blogdown:::quote_poem()</code> はこの作業を自動でやってくれます. 例えばこのように.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb61-1"><a href="linebreaks.html#cb61-1"></a>blogdown<span class="sc">:::</span><span class="fu">quote_poem</span>(<span class="fu">c</span>(<span class="st">&quot;かたつむり&quot;</span>, <span class="st">&quot;そろそろ登れ&quot;</span>, </span>
-<span id="cb61-2"><a href="linebreaks.html#cb61-2"></a>  <span class="st">&quot;富士の山&quot;</span>))</span>
-<span id="cb61-3"><a href="linebreaks.html#cb61-3"></a><span class="do">## [1] &quot;&gt; かたつむり  \nそろそろ登れ  \n富士の山&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb62-1"><a href="linebreaks.html#cb62-1"></a>blogdown<span class="sc">:::</span><span class="fu">quote_poem</span>(<span class="fu">c</span>(<span class="st">&quot;かたつむり&quot;</span>, <span class="st">&quot;そろそろ登れ&quot;</span>, </span>
+<span id="cb62-2"><a href="linebreaks.html#cb62-2"></a>  <span class="st">&quot;富士の山&quot;</span>))</span>
+<span id="cb62-3"><a href="linebreaks.html#cb62-3"></a><span class="do">## [1] &quot;&gt; かたつむり  \nそろそろ登れ  \n富士の山&quot;</span></span></code></pre></div>
 <p>RStudio IDE と <strong>blogdown</strong> パッケージ <span class="citation">(<a href="#ref-R-blogdown" role="doc-biblioref">Xie, Dervieux, and Presmanes Hill 2021</a>)</span> をインストールして使っているなら, 改行を維持したいテキストを選択し, ツールバーの “Addins” から RStudio アドインの “Quote Poem” をクリックすることができます. 例えば以下のテキスト (fenced code block 記法内) は末尾にスペースが付いていません.</p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb62-1"><a href="linebreaks.html#cb62-1" aria-hidden="true" tabindex="-1"></a>田子の浦ゆ</span>
-<span id="cb62-2"><a href="linebreaks.html#cb62-2" aria-hidden="true" tabindex="-1"></a>うち出でてみれば</span>
-<span id="cb62-3"><a href="linebreaks.html#cb62-3" aria-hidden="true" tabindex="-1"></a>真白にそ</span>
-<span id="cb62-4"><a href="linebreaks.html#cb62-4" aria-hidden="true" tabindex="-1"></a>富士の高嶺に</span>
-<span id="cb62-5"><a href="linebreaks.html#cb62-5" aria-hidden="true" tabindex="-1"></a>雪は降りける</span>
-<span id="cb62-6"><a href="linebreaks.html#cb62-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb62-7"><a href="linebreaks.html#cb62-7" aria-hidden="true" tabindex="-1"></a>--- 山部赤人</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb63-1"><a href="linebreaks.html#cb63-1" aria-hidden="true" tabindex="-1"></a>田子の浦ゆ</span>
+<span id="cb63-2"><a href="linebreaks.html#cb63-2" aria-hidden="true" tabindex="-1"></a>うち出でてみれば</span>
+<span id="cb63-3"><a href="linebreaks.html#cb63-3" aria-hidden="true" tabindex="-1"></a>真白にそ</span>
+<span id="cb63-4"><a href="linebreaks.html#cb63-4" aria-hidden="true" tabindex="-1"></a>富士の高嶺に</span>
+<span id="cb63-5"><a href="linebreaks.html#cb63-5" aria-hidden="true" tabindex="-1"></a>雪は降りける</span>
+<span id="cb63-6"><a href="linebreaks.html#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="linebreaks.html#cb63-7" aria-hidden="true" tabindex="-1"></a>--- 山部赤人</span></code></pre></div>
 <p>上記の詩句を選択肢, RStudio アドインの “Quote Poem” をクリックすれば, こう出力されます.</p>
 <blockquote>
 <p>田子の浦ゆ<br />

@@ -514,16 +514,16 @@ div.csl-indent {
 <div id="show-a-verbatim-inline-expression" class="section level3" number="5.6.1">
 <h3><span class="header-section-number">5.6.1</span> インライン R コードをそのまま表示</h3>
 <p>行内のコードをそのまま表示する方法はいくつかあります. 最初の方法は <code>`r</code> の直後でインラインコードを改行することです. 例えばこのように.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb95-1"><a href="verbatim-code-chunks.html#cb95-1" aria-hidden="true" tabindex="-1"></a>これは出力時にインライン R コードをそのまま表示します `<span class="in">` `</span>r</span>
-<span id="cb95-2"><a href="verbatim-code-chunks.html#cb95-2" aria-hidden="true" tabindex="-1"></a>1+1` ``.</span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb96-1"><a href="verbatim-code-chunks.html#cb96-1" aria-hidden="true" tabindex="-1"></a>これは出力時にインライン R コードをそのまま表示します `<span class="in">` `</span>r</span>
+<span id="cb96-2"><a href="verbatim-code-chunks.html#cb96-2" aria-hidden="true" tabindex="-1"></a>1+1` ``.</span></code></pre></div>
 <p>これが出力文書ではこうなっているはずです.</p>
 <blockquote>
 <p>これは出力時にインライン R コードをそのまま表示します <code>`r 1+1`</code>.</p>
 </blockquote>
 <p>この小ワザは2つの理由で動作します. (1) Markdown パーサはしばしば単独の改行文字を単なるスペース1つとして扱う (2連続の改行は新しい段落を始めることと比べてみてください) ということと, (2) <strong>knitr</strong> は <code>`r</code> をパースするのに直後にスペース1つを要求する, つまりここにスペースがないとインラインコードとして扱われないということです.</p>
 <p>インライン R コードをそのまま表示する別の方法は, R コードを <code>knitr::inline_expr()</code> で包むことです. 例えば.</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb96-1"><a href="verbatim-code-chunks.html#cb96-1" aria-hidden="true" tabindex="-1"></a>これで出力時にインライン R コードがそのまま表示されます</span>
-<span id="cb96-2"><a href="verbatim-code-chunks.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="in">`` `r knitr::inline_expr(&quot;1+1&quot;)` ``</span>.</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb97-1"><a href="verbatim-code-chunks.html#cb97-1" aria-hidden="true" tabindex="-1"></a>これで出力時にインライン R コードがそのまま表示されます</span>
+<span id="cb97-2"><a href="verbatim-code-chunks.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="in">`` `r knitr::inline_expr(&quot;1+1&quot;)` ``</span>.</span></code></pre></div>
 <p>私 (Yihui) は2つ目の方法をお薦めします. 1つ目の方法は多かれ少なかれ Markdown 構文と <strong>knitr</strong> パーサに対するハック的なものだからです.</p>
 </div>
 </div>

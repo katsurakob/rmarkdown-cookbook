@@ -504,28 +504,28 @@ Calls: &lt;Anonymous&gt; ... process_file -&gt; split_file -&gt; lapply -&gt;
   FUN -&gt; parse_block
 Execution halted</code></pre>
 <p>しかし, 重複するラベルを許可したいこともあるというものです. 例えば親文書 <code>parent.Rmd</code> があり, その中で子文書を複数回 knit すれば, 失敗するでしょう.</p>
-<div class="sourceCode" id="cb406"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb406-1"><a href="duplicate-label.html#cb406-1"></a><span class="co"># 設定</span></span>
-<span id="cb406-2"><a href="duplicate-label.html#cb406-2"></a>settings <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
-<span id="cb406-3"><a href="duplicate-label.html#cb406-3"></a></span>
-<span id="cb406-4"><a href="duplicate-label.html#cb406-4"></a><span class="co"># 1度目の実行</span></span>
-<span id="cb406-5"><a href="duplicate-label.html#cb406-5"></a><span class="fu">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</span>
-<span id="cb406-6"><a href="duplicate-label.html#cb406-6"></a></span>
-<span id="cb406-7"><a href="duplicate-label.html#cb406-7"></a><span class="co"># 新しい設定</span></span>
-<span id="cb406-8"><a href="duplicate-label.html#cb406-8"></a>settings <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
-<span id="cb406-9"><a href="duplicate-label.html#cb406-9"></a></span>
-<span id="cb406-10"><a href="duplicate-label.html#cb406-10"></a><span class="co"># 再実行</span></span>
-<span id="cb406-11"><a href="duplicate-label.html#cb406-11"></a><span class="fu">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb407-1"><a href="duplicate-label.html#cb407-1"></a><span class="co"># 設定</span></span>
+<span id="cb407-2"><a href="duplicate-label.html#cb407-2"></a>settings <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
+<span id="cb407-3"><a href="duplicate-label.html#cb407-3"></a></span>
+<span id="cb407-4"><a href="duplicate-label.html#cb407-4"></a><span class="co"># 1度目の実行</span></span>
+<span id="cb407-5"><a href="duplicate-label.html#cb407-5"></a><span class="fu">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</span>
+<span id="cb407-6"><a href="duplicate-label.html#cb407-6"></a></span>
+<span id="cb407-7"><a href="duplicate-label.html#cb407-7"></a><span class="co"># 新しい設定</span></span>
+<span id="cb407-8"><a href="duplicate-label.html#cb407-8"></a>settings <span class="ot">&lt;-</span> <span class="fu">list</span>(...)</span>
+<span id="cb407-9"><a href="duplicate-label.html#cb407-9"></a></span>
+<span id="cb407-10"><a href="duplicate-label.html#cb407-10"></a><span class="co"># 再実行</span></span>
+<span id="cb407-11"><a href="duplicate-label.html#cb407-11"></a><span class="fu">knit_child</span>(<span class="st">&quot;useful_analysis.Rmd&quot;</span>)</span></code></pre></div>
 <p>この筋書きでは, 子文書が knit される<strong>前に</strong> R のグローバルオプションを設定することでラベルの重複を許可できます.</p>
-<div class="sourceCode" id="cb407"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb407-1"><a href="duplicate-label.html#cb407-1"></a><span class="fu">options</span>(<span class="at">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb408"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb408-1"><a href="duplicate-label.html#cb408-1"></a><span class="fu">options</span>(<span class="at">knitr.duplicate.label =</span> <span class="st">&quot;allow&quot;</span>)</span></code></pre></div>
 <p>子文書ではなくメインの文書でラベルの重複を許可したいなら, <code>knitr::knit()</code> が呼び出される<strong>前に</strong>設定しなければなりません. それを実現する可能性の1つとして, <code>~/.Rprofile</code> ファイル内で設定するという方法があります (詳細は <code>?Rprofile</code> のヘルプを見てください).</p>
 <p>このオプションの設定は注意深くすべきです. ほとんどのエラーメッセージは, それなりの理由があってこそ存在します. 重複するチャンクを許可することは図や相互参照に関して気が付かないうちに問題を生み出す可能性があります. 例えば, グラフ画像のファイル名はチャンクラベルによって決まるので, 2つのコードチャンクが同じラベルを持ち, かつ両方のチャンクが図を生成しているなら, 理論上はこれらの画像ファイルは互いに上書きすることになります (そしてエラーも警告も発しません). <strong>knitr</strong> は <code>knitr.duplicate.label = "allow"</code> オプションがあると, 重複するラベルに暗黙に数字の接頭語を追加して変更しています. 例えば, 2つのコードチャンクに対してはこうなります.</p>
-<div class="sourceCode" id="cb408"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb408-1"><a href="duplicate-label.html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test}</span></span>
-<span id="cb408-2"><a href="duplicate-label.html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
-<span id="cb408-3"><a href="duplicate-label.html#cb408-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb408-4"><a href="duplicate-label.html#cb408-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb408-5"><a href="duplicate-label.html#cb408-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test}</span></span>
-<span id="cb408-6"><a href="duplicate-label.html#cb408-6" aria-hidden="true" tabindex="-1"></a><span class="in">plot(10:1)</span></span>
-<span id="cb408-7"><a href="duplicate-label.html#cb408-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb409"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb409-1"><a href="duplicate-label.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test}</span></span>
+<span id="cb409-2"><a href="duplicate-label.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(1:10)</span></span>
+<span id="cb409-3"><a href="duplicate-label.html#cb409-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb409-4"><a href="duplicate-label.html#cb409-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-5"><a href="duplicate-label.html#cb409-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test}</span></span>
+<span id="cb409-6"><a href="duplicate-label.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="in">plot(10:1)</span></span>
+<span id="cb409-7"><a href="duplicate-label.html#cb409-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>2つ目のラベルは暗黙のうちに <code>test-1</code> に変更されます. これはラベル <code>test</code> のチャンクからのグラフ画像を上書きすることを回避するかもしれませんが, 同時にチャンクラベルが予想できなくなります. ということは, 図の相互参照 (<a href="cross-ref.html#cross-ref">4.7</a>節参照) も相互参照がチャンクラベルに基づいているので難しくなるでしょう.</p>
 </div>
             </section>

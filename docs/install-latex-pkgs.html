@@ -525,7 +525,10 @@ div.csl-indent {
 <p>代わりに MiKTeX を使っているなら, これも自動で足りないパッケージをインストールできます. MikTeX のインストール中に “Always install missing packages on-the-fly” の設定に必ずチェックしてください. この設定をせずにインストールしていても, <a href="https://github.com/rstudio/rmarkdown/issues/1285#issuecomment-374340175">まだ MiKTeX Console で変更できます</a>.</p>
 <div class="infobox memo">
 <p><strong>訳注</strong></p>
-<p>日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 2021年現在は, <code>haranoaji</code>, <code>bxjscls</code> <code>luatex-ja</code> といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, <strong>tinytex</strong> はかなりの精度で必要なパッケージを自動でインストールしてくれますが, 何らかの理由でうまくいかない場合はこのような LaTeX パッケージを手動で指定してインストールする場合, <code>tinytex::tlmgr_install()</code> 関数を使うことができます. この関数は <code>tlmgr</code> コマンドを実行するための関数なので, <strong>tinytex</strong> を使っていない場合において <code>tlmgr install ...</code> を実行しているのと同じです.</p>
+<p>日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 例えばコンパイル時, 毎回翻訳ファイルがないという旨の警告が出るかもしれません. これは出力に影響しませんが, 煩わしく感じるなら以下のようにして対応する LaTeX パッケージ (R のパッケージではないことに注意してください) をインストールすることで解決できます.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="install-latex-pkgs.html#cb11-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">tlmgr_install</span>(<span class="st">&quot;texlive-msg-translations&quot;</span>)</span></code></pre></div>
+<p>一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, <code>haranoaji</code>, <code>bxjscls</code> <code>luatex-ja</code> といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, <strong>tinytex</strong> はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は <strong>tinytex</strong> を使わず手動でインストールする必要があるかもしれません. 上記の <code>tinytex::tlmgr_install()</code> 関数は <code>tlmgr</code> のコマンドを実行するための関数なので, <strong>tinytex</strong> を使用していない環境では <code>tlmgr install ...</code> を代わりに実行することになります.</p>
+<p>PDF 出力のためのセットアップは翻訳者が独自に書いた補足資料 <a href="https://rpubs.com/ktgrstsh/755893" class="uri">https://rpubs.com/ktgrstsh/755893</a> も参考になるかもしれません.</p>
 </div>
 
 </div>

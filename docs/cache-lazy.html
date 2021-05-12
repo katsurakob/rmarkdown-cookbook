@@ -496,19 +496,19 @@ div.csl-indent {
 <div id="cache-lazy" class="section level2" number="11.6">
 <h2><span class="header-section-number">11.6</span> 巨大オブジェクトをキャッシュする</h2>
 <p>チャンクオプション <code>cache = TRUE</code> を使うと, キャッシュされたオブジェクトは R セッション内で遅延読み込みされます. これはオブジェクトが実際にコード内で使用されるまでキャッシュデータベースから読み込まれないことを意味します. このおかげで, 以降の文書内で全てのオブジェクトが使われるわけではない場合にメモリを多少節約することができます. 例えば大きなデータオブジェクトを読み込んだが, 以降の分析ではその一部しか使わないなら, 元のデータオブジェクトはキャッシュデータベースから読み込まれません.</p>
-<div class="sourceCode" id="cb287"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb287-1"><a href="cache-lazy.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, read-data, cache=TRUE}</span></span>
-<span id="cb287-2"><a href="cache-lazy.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="in">full &lt;- read.csv(&quot;HUGE.csv&quot;)</span></span>
-<span id="cb287-3"><a href="cache-lazy.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="in">rows &lt;- subset(full, price &gt; 100)</span></span>
-<span id="cb287-4"><a href="cache-lazy.html#cb287-4" aria-hidden="true" tabindex="-1"></a><span class="in"># next we only use `rows`</span></span>
-<span id="cb287-5"><a href="cache-lazy.html#cb287-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb287-6"><a href="cache-lazy.html#cb287-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb287-7"><a href="cache-lazy.html#cb287-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb287-8"><a href="cache-lazy.html#cb287-8" aria-hidden="true" tabindex="-1"></a><span class="in">plot(rows)</span></span>
-<span id="cb287-9"><a href="cache-lazy.html#cb287-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb288-1"><a href="cache-lazy.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, read-data, cache=TRUE}</span></span>
+<span id="cb288-2"><a href="cache-lazy.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="in">full &lt;- read.csv(&quot;HUGE.csv&quot;)</span></span>
+<span id="cb288-3"><a href="cache-lazy.html#cb288-3" aria-hidden="true" tabindex="-1"></a><span class="in">rows &lt;- subset(full, price &gt; 100)</span></span>
+<span id="cb288-4"><a href="cache-lazy.html#cb288-4" aria-hidden="true" tabindex="-1"></a><span class="in"># next we only use `rows`</span></span>
+<span id="cb288-5"><a href="cache-lazy.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb288-6"><a href="cache-lazy.html#cb288-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-7"><a href="cache-lazy.html#cb288-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb288-8"><a href="cache-lazy.html#cb288-8" aria-hidden="true" tabindex="-1"></a><span class="in">plot(rows)</span></span>
+<span id="cb288-9"><a href="cache-lazy.html#cb288-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>しかし, オブジェクトが大きすぎるときは, このようなエラーに遭遇するかもしれません.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="cache-lazy.html#cb288-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">lazyLoadDBinsertVariable</span>(vars[i], ... </span>
-<span id="cb288-2"><a href="cache-lazy.html#cb288-2" aria-hidden="true" tabindex="-1"></a>  long vectors not supported yet<span class="sc">:</span> ...</span>
-<span id="cb288-3"><a href="cache-lazy.html#cb288-3" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="cache-lazy.html#cb289-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">lazyLoadDBinsertVariable</span>(vars[i], ... </span>
+<span id="cb289-2"><a href="cache-lazy.html#cb289-2" aria-hidden="true" tabindex="-1"></a>  long vectors not supported yet<span class="sc">:</span> ...</span>
+<span id="cb289-3"><a href="cache-lazy.html#cb289-3" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
 <p>この問題が発生したら, チャンクオプション <code>cache.lazy = FALSE</code> で遅延読み込みを無効にしてみてください. チャンク内の全てのオブジェクトが即座にメモリに読み込まれるでしょう.</p>
 </div>
             </section>

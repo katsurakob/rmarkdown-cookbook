@@ -497,16 +497,16 @@ div.csl-indent {
 <h2><span class="header-section-number">14.3</span> knit 処理を打ち切る</h2>
 <p>時には knit 処理を文書の末尾よりも早い時点で終了したいこともあります. 例えば何かを分析する作業をしていて,結果の前半だけを共有したいとか, まだ最後のコードが書ききれていないというときです. このような状況ではコードチャンクで <code>knit_exit()</code> 関数を使ってみましょう. この関数はそのチャンクの直後で knit 処理を終わらせることができます.</p>
 <p>以下は単純な例です. ここではとても単純なチャンクと, その後にもっと時間のかかるチャンクを配置しています.</p>
-<div class="sourceCode" id="cb396"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb396-1"><a href="knit-exit.html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb396-2"><a href="knit-exit.html#cb396-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb396-3"><a href="knit-exit.html#cb396-3" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_exit()</span></span>
-<span id="cb396-4"><a href="knit-exit.html#cb396-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb396-5"><a href="knit-exit.html#cb396-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-6"><a href="knit-exit.html#cb396-6" aria-hidden="true" tabindex="-1"></a>あなたは出力のうち上記のコンテンツだけを見たい.</span>
-<span id="cb396-7"><a href="knit-exit.html#cb396-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb396-8"><a href="knit-exit.html#cb396-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb396-9"><a href="knit-exit.html#cb396-9" aria-hidden="true" tabindex="-1"></a><span class="in">Sys.sleep(100)</span></span>
-<span id="cb396-10"><a href="knit-exit.html#cb396-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb397"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb397-1"><a href="knit-exit.html#cb397-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb397-2"><a href="knit-exit.html#cb397-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb397-3"><a href="knit-exit.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::knit_exit()</span></span>
+<span id="cb397-4"><a href="knit-exit.html#cb397-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb397-5"><a href="knit-exit.html#cb397-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb397-6"><a href="knit-exit.html#cb397-6" aria-hidden="true" tabindex="-1"></a>あなたは出力のうち上記のコンテンツだけを見たい.</span>
+<span id="cb397-7"><a href="knit-exit.html#cb397-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb397-8"><a href="knit-exit.html#cb397-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb397-9"><a href="knit-exit.html#cb397-9" aria-hidden="true" tabindex="-1"></a><span class="in">Sys.sleep(100)</span></span>
+<span id="cb397-10"><a href="knit-exit.html#cb397-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>通常ならば100秒待つところですが, <code>knit_exit()</code> を呼び出しているので文書の残りの部分は無視されます.</p>
 </div>
             </section>

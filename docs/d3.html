@@ -496,30 +496,30 @@ div.csl-indent {
 <div id="d3" class="section level2" number="15.5">
 <h2><span class="header-section-number">15.5</span> D3 で可視化する</h2>
 <p>R のパッケージ <strong>r2d3</strong> <span class="citation">(<a href="#ref-R-r2d3" role="doc-biblioref">Strayer, Luraschi, and Allaire 2020</a>)</span> は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで <code>r2d3()</code> 関数を呼び出すか, <code>d3</code> エンジンを使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は <code>d3</code> エンジンで棒グラフを描く例です.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb444-1"><a href="d3.html#cb444-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb444-2"><a href="d3.html#cb444-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;D3 でグラフを生成する&quot;</span></span>
-<span id="cb444-3"><a href="d3.html#cb444-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb444-4"><a href="d3.html#cb444-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb444-5"><a href="d3.html#cb444-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb444-6"><a href="d3.html#cb444-6" aria-hidden="true" tabindex="-1"></a>最初に, **r2d3** パッケージを読み込み **knitr** が自動で</span>
-<span id="cb444-7"><a href="d3.html#cb444-7" aria-hidden="true" tabindex="-1"></a><span class="in">`d3`</span> エンジンをセットアップしてくれるようにします</span>
-<span id="cb444-8"><a href="d3.html#cb444-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb444-9"><a href="d3.html#cb444-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
-<span id="cb444-10"><a href="d3.html#cb444-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(r2d3)</span></span>
-<span id="cb444-11"><a href="d3.html#cb444-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb444-12"><a href="d3.html#cb444-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb444-13"><a href="d3.html#cb444-13" aria-hidden="true" tabindex="-1"></a>ここで R でデータを生成して D3 に渡してグラフを描画できます.</span>
-<span id="cb444-14"><a href="d3.html#cb444-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb444-15"><a href="d3.html#cb444-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{d3, data=runif(30), options=list(color=&#39;steelblue&#39;)}</span></span>
-<span id="cb444-16"><a href="d3.html#cb444-16" aria-hidden="true" tabindex="-1"></a><span class="in">svg.selectAll(&#39;rect&#39;)</span></span>
-<span id="cb444-17"><a href="d3.html#cb444-17" aria-hidden="true" tabindex="-1"></a><span class="in">  .data(data)</span></span>
-<span id="cb444-18"><a href="d3.html#cb444-18" aria-hidden="true" tabindex="-1"></a><span class="in">  .enter()</span></span>
-<span id="cb444-19"><a href="d3.html#cb444-19" aria-hidden="true" tabindex="-1"></a><span class="in">    .append(&#39;rect&#39;)</span></span>
-<span id="cb444-20"><a href="d3.html#cb444-20" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;width&#39;, function(d) { return d * 672; })</span></span>
-<span id="cb444-21"><a href="d3.html#cb444-21" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;height&#39;, &#39;10px&#39;)</span></span>
-<span id="cb444-22"><a href="d3.html#cb444-22" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;y&#39;, function(d, i) { return i * 16; })</span></span>
-<span id="cb444-23"><a href="d3.html#cb444-23" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;fill&#39;, options.color);</span></span>
-<span id="cb444-24"><a href="d3.html#cb444-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb445-1"><a href="d3.html#cb445-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb445-2"><a href="d3.html#cb445-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;D3 でグラフを生成する&quot;</span></span>
+<span id="cb445-3"><a href="d3.html#cb445-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb445-4"><a href="d3.html#cb445-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb445-5"><a href="d3.html#cb445-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb445-6"><a href="d3.html#cb445-6" aria-hidden="true" tabindex="-1"></a>最初に, **r2d3** パッケージを読み込み **knitr** が自動で</span>
+<span id="cb445-7"><a href="d3.html#cb445-7" aria-hidden="true" tabindex="-1"></a><span class="in">`d3`</span> エンジンをセットアップしてくれるようにします</span>
+<span id="cb445-8"><a href="d3.html#cb445-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb445-9"><a href="d3.html#cb445-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r setup}</span></span>
+<span id="cb445-10"><a href="d3.html#cb445-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(r2d3)</span></span>
+<span id="cb445-11"><a href="d3.html#cb445-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb445-12"><a href="d3.html#cb445-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb445-13"><a href="d3.html#cb445-13" aria-hidden="true" tabindex="-1"></a>ここで R でデータを生成して D3 に渡してグラフを描画できます.</span>
+<span id="cb445-14"><a href="d3.html#cb445-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb445-15"><a href="d3.html#cb445-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{d3, data=runif(30), options=list(color=&#39;steelblue&#39;)}</span></span>
+<span id="cb445-16"><a href="d3.html#cb445-16" aria-hidden="true" tabindex="-1"></a><span class="in">svg.selectAll(&#39;rect&#39;)</span></span>
+<span id="cb445-17"><a href="d3.html#cb445-17" aria-hidden="true" tabindex="-1"></a><span class="in">  .data(data)</span></span>
+<span id="cb445-18"><a href="d3.html#cb445-18" aria-hidden="true" tabindex="-1"></a><span class="in">  .enter()</span></span>
+<span id="cb445-19"><a href="d3.html#cb445-19" aria-hidden="true" tabindex="-1"></a><span class="in">    .append(&#39;rect&#39;)</span></span>
+<span id="cb445-20"><a href="d3.html#cb445-20" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;width&#39;, function(d) { return d * 672; })</span></span>
+<span id="cb445-21"><a href="d3.html#cb445-21" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;height&#39;, &#39;10px&#39;)</span></span>
+<span id="cb445-22"><a href="d3.html#cb445-22" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;y&#39;, function(d, i) { return i * 16; })</span></span>
+<span id="cb445-23"><a href="d3.html#cb445-23" aria-hidden="true" tabindex="-1"></a><span class="in">      .attr(&#39;fill&#39;, options.color);</span></span>
+<span id="cb445-24"><a href="d3.html#cb445-24" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">

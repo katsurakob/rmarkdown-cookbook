@@ -496,12 +496,12 @@ div.csl-indent {
 <div id="r-code" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> コードチャンクとインライン R コード</h2>
 <p>R Markdown 文書はテキスト (ナラティブ) とコードが混合してできています. Rmd 文書には2種類のコード, コードチャンクとインライン (行内) R コードです. 以下は簡単な例です.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb17-1"><a href="r-code.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb17-2"><a href="r-code.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 5  # 円の半径</span></span>
-<span id="cb17-3"><a href="r-code.html#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb17-4"><a href="r-code.html#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="r-code.html#cb17-5" aria-hidden="true" tabindex="-1"></a>半径 <span class="in">`r x`</span> の円に対し,</span>
-<span id="cb17-6"><a href="r-code.html#cb17-6" aria-hidden="true" tabindex="-1"></a>その面積は <span class="in">`r pi * x^2`</span> である.</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb18-1"><a href="r-code.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb18-2"><a href="r-code.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- 5  # 円の半径</span></span>
+<span id="cb18-3"><a href="r-code.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb18-4"><a href="r-code.html#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="r-code.html#cb18-5" aria-hidden="true" tabindex="-1"></a>半径 <span class="in">`r x`</span> の円に対し,</span>
+<span id="cb18-6"><a href="r-code.html#cb18-6" aria-hidden="true" tabindex="-1"></a>その面積は <span class="in">`r pi * x^2`</span> である.</span></code></pre></div>
 <p>通常コードチャンクは <code>```{}</code> で始まり, <code>```</code> で終わります. コードチャンク内ではコードを何行でも書いてかまいません. インライン R コードは <code>`r `</code> という構文を使って文書のナラティブの中に埋め込まれます. 上記の例ではコードチャンク内で円の半径として変数 <code>x</code> を定義し, 次のパラグラフでこの円の面積を計算しています.</p>
 <p>チャンクオプションを通してコードチャンクの挙動と出力をカスタマイズできます (オプションはカーリー・ブレイス <code>{}</code> 内に与えます). 例のいくつかは<a href="chunk-options.html#chunk-options">11</a>章で見つかるでしょう. コードチャンクに別のプログラミング言語のコードを書くこともできます (<a href="other-languages.html#other-languages">15</a> 章を見てください).</p>
 </div>

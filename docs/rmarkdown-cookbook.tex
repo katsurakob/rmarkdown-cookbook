@@ -321,7 +321,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/05/12 23:31:00 JST, ver. 0.9.2, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/02/01 20:02:05 JST}}
+\date{2021/05/13 00:03:56 JST, ver. 0.9.2, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/02/01 20:02:05 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -727,7 +727,17 @@ TinyTeX を使わない場合, \textbf{tinytex} パッケージはやはりエ�
 \begin{infobox}{memo}
 \textbf{訳注}
 
-日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 2021年現在は, \texttt{haranoaji}, \texttt{bxjscls} \texttt{luatex-ja} といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, \textbf{tinytex} はかなりの精度で必要なパッケージを自動でインストールしてくれますが, 何らかの理由でうまくいかない場合はこのような LaTeX パッケージを手動で指定してインストールする場合, \texttt{tinytex::tlmgr\_install()} 関数を使うことができます. この関数は \texttt{tlmgr} コマンドを実行するための関数なので, \textbf{tinytex} を使っていない場合において \texttt{tlmgr install ...} を実行しているのと同じです.
+日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 例えばコンパイル時, 毎回翻訳ファイルがないという旨の警告が出るかもしれません. これは出力に影響しませんが, 煩わしく感じるなら以下のようにして対応する LaTeX パッケージ (R のパッケージではないことに注意してください) をインストールすることで解決できます.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tinytex}\SpecialCharTok{::}\FunctionTok{tlmgr\_install}\NormalTok{(}\StringTok{"texlive{-}msg{-}translations"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, \texttt{haranoaji}, \texttt{bxjscls} \texttt{luatex-ja} といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, \textbf{tinytex} はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は \textbf{tinytex} を使わず手動でインストールする必要があるかもしれません. 上記の \texttt{tinytex::tlmgr\_install()} 関数は \texttt{tlmgr} のコマンドを実行するための関数なので, \textbf{tinytex} を使用していない環境では \texttt{tlmgr install ...} を代わりに実行することになります.
+
+PDF 出力のためのセットアップは翻訳者が独自に書いた補足資料 \url{https://rpubs.com/ktgrstsh/755893} も参考になるかもしれません.
 
 \end{infobox}
 
@@ -1687,16 +1697,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年5月12日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年5月13日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{\%Y \%B}: 2021 5月
 \item
-  \texttt{\%y/\%m/\%d}: 21/05/12
+  \texttt{\%y/\%m/\%d}: 21/05/13
 \item
-  \texttt{\%b\%d (\%a)}: 5月12 (水)
+  \texttt{\%b\%d (\%a)}: 5月13 (木)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.

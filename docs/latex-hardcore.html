@@ -497,23 +497,23 @@ div.csl-indent {
 <h2><span class="header-section-number">6.12</span> ハードコア LaTeX ユーザーのために (*)</h2>
 <p>R Markdown はきっと執筆と組版のための最善の文書フォーマットではないでしょう. シンプルさは長所であると同時に短所でもあります. LaTeX はタイプすべきコマンドの多さと引き換えに, 組版の観点で Markdown よりはるかに強力です. あなたにとって組版がはるかに優先すべき事項で, あらゆる LaTeX コマンドや環境を使うことに満足しているのなら, 文書全体で Markdown を使う代わりに純粋な LaTeX コードを使えばよいのです.</p>
 <p><strong>knitr</strong> パッケージは R Markdown に限定されない多様なソース文書フォーマットをサポートしています. 以下は R コードと純粋な LaTeX コードが混ざり合っている例です</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb139-1"><a href="latex-hardcore.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
-<span id="cb139-2"><a href="latex-hardcore.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[T1]{<span class="ex">fontenc</span>}</span>
-<span id="cb139-3"><a href="latex-hardcore.html#cb139-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-4"><a href="latex-hardcore.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb139-5"><a href="latex-hardcore.html#cb139-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-6"><a href="latex-hardcore.html#cb139-6" aria-hidden="true" tabindex="-1"></a>これがコードチャンクです.</span>
-<span id="cb139-7"><a href="latex-hardcore.html#cb139-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-8"><a href="latex-hardcore.html#cb139-8" aria-hidden="true" tabindex="-1"></a>&lt;&lt;foo, fig.height=4&gt;&gt;=</span>
-<span id="cb139-9"><a href="latex-hardcore.html#cb139-9" aria-hidden="true" tabindex="-1"></a>1 + 1</span>
-<span id="cb139-10"><a href="latex-hardcore.html#cb139-10" aria-hidden="true" tabindex="-1"></a>par(mar = c(4, 4, .2, .2))</span>
-<span id="cb139-11"><a href="latex-hardcore.html#cb139-11" aria-hidden="true" tabindex="-1"></a>plot(rnorm(100))</span>
-<span id="cb139-12"><a href="latex-hardcore.html#cb139-12" aria-hidden="true" tabindex="-1"></a>@</span>
-<span id="cb139-13"><a href="latex-hardcore.html#cb139-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-14"><a href="latex-hardcore.html#cb139-14" aria-hidden="true" tabindex="-1"></a>インラインコードを書くこともできます. 例えば <span class="ss">$</span><span class="sc">\pi</span><span class="ss">=</span><span class="sc">\Sexpr</span><span class="ss">{pi}$</span> とか,</span>
-<span id="cb139-15"><a href="latex-hardcore.html#cb139-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">\Sexpr</span>{1.9910214e28} で大きな数値を表現できます.</span>
-<span id="cb139-16"><a href="latex-hardcore.html#cb139-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb139-17"><a href="latex-hardcore.html#cb139-17" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb140-1"><a href="latex-hardcore.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>}</span>
+<span id="cb140-2"><a href="latex-hardcore.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[T1]{<span class="ex">fontenc</span>}</span>
+<span id="cb140-3"><a href="latex-hardcore.html#cb140-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-4"><a href="latex-hardcore.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb140-5"><a href="latex-hardcore.html#cb140-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-6"><a href="latex-hardcore.html#cb140-6" aria-hidden="true" tabindex="-1"></a>これがコードチャンクです.</span>
+<span id="cb140-7"><a href="latex-hardcore.html#cb140-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-8"><a href="latex-hardcore.html#cb140-8" aria-hidden="true" tabindex="-1"></a>&lt;&lt;foo, fig.height=4&gt;&gt;=</span>
+<span id="cb140-9"><a href="latex-hardcore.html#cb140-9" aria-hidden="true" tabindex="-1"></a>1 + 1</span>
+<span id="cb140-10"><a href="latex-hardcore.html#cb140-10" aria-hidden="true" tabindex="-1"></a>par(mar = c(4, 4, .2, .2))</span>
+<span id="cb140-11"><a href="latex-hardcore.html#cb140-11" aria-hidden="true" tabindex="-1"></a>plot(rnorm(100))</span>
+<span id="cb140-12"><a href="latex-hardcore.html#cb140-12" aria-hidden="true" tabindex="-1"></a>@</span>
+<span id="cb140-13"><a href="latex-hardcore.html#cb140-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-14"><a href="latex-hardcore.html#cb140-14" aria-hidden="true" tabindex="-1"></a>インラインコードを書くこともできます. 例えば <span class="ss">$</span><span class="sc">\pi</span><span class="ss">=</span><span class="sc">\Sexpr</span><span class="ss">{pi}$</span> とか,</span>
+<span id="cb140-15"><a href="latex-hardcore.html#cb140-15" aria-hidden="true" tabindex="-1"></a> <span class="fu">\Sexpr</span>{1.9910214e28} で大きな数値を表現できます.</span>
+<span id="cb140-16"><a href="latex-hardcore.html#cb140-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-17"><a href="latex-hardcore.html#cb140-17" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
 <p>例えば上記のファイルが <code>latex.Rnw</code> であるようにファイル名には通常 <code>.Rnw</code> という拡張子がつきます. 考え方は同じですが R コードチャンク構文とインライン R コードを書く構文とは異なっています. R コードチャンクは <code>&lt;&lt;&gt;&gt;=</code> で始まり (チャンクオプションは括弧内に書きます), <code>@</code> で終わります. インライン R コードは <code>Sexpr{}</code> 内に書きます.</p>
 <p><code>knitr::knit()</code> 関数は <code>Rnw</code> 文書を出力ファイルである LaTeX (<code>.tex</code>) にコンパイルでき, それをさらに <code>pdflatex</code> といった LaTeX ツールを通して PDF にコンパイルできます. <code>.Rnw</code> から PDF を一足飛びでコンパイルするのに <code>knitr::knit2pdf()</code> を使うこともできます. RStudio を使っているならツールバーの <code>Compile PDF</code> を押すこともできます. 注意してほしいのは, Rnw 文書をコンパイルする方法のデフォルトは Sweave であり, これを <strong>knitr</strong> に変更することです (その方法はこの投稿 <a href="http://stackoverflow.com/q/27592837/559676" class="uri">http://stackoverflow.com/q/27592837/559676</a> を確認してください).</p>
 <p><code>Rnw</code> 文書は LaTeX のフルパワーをあなたにもたらします. Markdown ではほんとうに解決の難しい組版の問題があるのなら, これは最終手段となるでしょう. ただし, Markdown をやめる前に, カスタム Pandoc LaTeX テンプレート (<a href="latex-template.html#latex-template">6.10</a>節参照) もまた役に立つかもしれない, ということも覚えておいてください.</p>

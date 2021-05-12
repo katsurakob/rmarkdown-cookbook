@@ -496,51 +496,51 @@ div.csl-indent {
 <div id="hook-number" class="section level2" number="12.2">
 <h2><span class="header-section-number">12.2</span> ソースコード内に行番号を追加する</h2>
 <p>この節では, ソースコードに行番号をコメントとして追加する <code>source</code> フックの定義の例を示します. 例えば, このコードチャンクに対するものを考えます.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb349-1"><a href="hook-number.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb349-2"><a href="hook-number.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb349-3"><a href="hook-number.html#cb349-3" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
-<span id="cb349-4"><a href="hook-number.html#cb349-4" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
-<span id="cb349-5"><a href="hook-number.html#cb349-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb349-6"><a href="hook-number.html#cb349-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb350-1"><a href="hook-number.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb350-2"><a href="hook-number.html#cb350-2" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb350-3"><a href="hook-number.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
+<span id="cb350-4"><a href="hook-number.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
+<span id="cb350-5"><a href="hook-number.html#cb350-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb350-6"><a href="hook-number.html#cb350-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>このような出力を求めているものとします.</p>
-<div class="sourceCode" id="cb350"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb350-1"><a href="hook-number.html#cb350-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {    <span class="co"># 1</span></span>
-<span id="cb350-2"><a href="hook-number.html#cb350-2"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>    <span class="co"># 2</span></span>
-<span id="cb350-3"><a href="hook-number.html#cb350-3"></a>  x <span class="sc">+</span> <span class="dv">1</span>        <span class="co"># 3</span></span>
-<span id="cb350-4"><a href="hook-number.html#cb350-4"></a>}              <span class="co"># 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb351-1"><a href="hook-number.html#cb351-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {    <span class="co"># 1</span></span>
+<span id="cb351-2"><a href="hook-number.html#cb351-2"></a>  x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>    <span class="co"># 2</span></span>
+<span id="cb351-3"><a href="hook-number.html#cb351-3"></a>  x <span class="sc">+</span> <span class="dv">1</span>        <span class="co"># 3</span></span>
+<span id="cb351-4"><a href="hook-number.html#cb351-4"></a>}              <span class="co"># 4</span></span></code></pre></div>
 <p>完全な例は以下になります.</p>
-<div class="sourceCode" id="cb351"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb351-1"><a href="hook-number.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb351-2"><a href="hook-number.html#cb351-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> ソースコードに行番号を追加する</span></span>
-<span id="cb351-3"><a href="hook-number.html#cb351-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb351-4"><a href="hook-number.html#cb351-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-5"><a href="hook-number.html#cb351-5" aria-hidden="true" tabindex="-1"></a>行番号をソースコードに追加する <span class="in">`source`</span> フックを用意します.</span>
-<span id="cb351-6"><a href="hook-number.html#cb351-6" aria-hidden="true" tabindex="-1"></a>番号は各行の末尾のコメントに現れます.</span>
-<span id="cb351-7"><a href="hook-number.html#cb351-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-8"><a href="hook-number.html#cb351-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb351-9"><a href="hook-number.html#cb351-9" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
-<span id="cb351-10"><a href="hook-number.html#cb351-10" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_source &lt;- knitr::knit_hooks$get(&#39;source&#39;)</span></span>
-<span id="cb351-11"><a href="hook-number.html#cb351-11" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(source = function(x, options) {</span></span>
-<span id="cb351-12"><a href="hook-number.html#cb351-12" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- xfun::split_lines(x)</span></span>
-<span id="cb351-13"><a href="hook-number.html#cb351-13" aria-hidden="true" tabindex="-1"></a><span class="in">    n &lt;- nchar(x, &#39;width&#39;)</span></span>
-<span id="cb351-14"><a href="hook-number.html#cb351-14" aria-hidden="true" tabindex="-1"></a><span class="in">    i &lt;- seq_along(x)  # 行番号</span></span>
-<span id="cb351-15"><a href="hook-number.html#cb351-15" aria-hidden="true" tabindex="-1"></a><span class="in">    n &lt;- n + nchar(i)</span></span>
-<span id="cb351-16"><a href="hook-number.html#cb351-16" aria-hidden="true" tabindex="-1"></a><span class="in">    s &lt;- knitr:::v_spaces(max(n) - n)</span></span>
-<span id="cb351-17"><a href="hook-number.html#cb351-17" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- paste(x, s, &#39;  # &#39;, i, sep = &#39;&#39;, collapse = &#39;\n&#39;)</span></span>
-<span id="cb351-18"><a href="hook-number.html#cb351-18" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_source(x, options)</span></span>
-<span id="cb351-19"><a href="hook-number.html#cb351-19" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb351-20"><a href="hook-number.html#cb351-20" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb351-21"><a href="hook-number.html#cb351-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb351-22"><a href="hook-number.html#cb351-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-23"><a href="hook-number.html#cb351-23" aria-hidden="true" tabindex="-1"></a>ここで新しいフックのテストができます. この文書を knit するとき,</span>
-<span id="cb351-24"><a href="hook-number.html#cb351-24" aria-hidden="true" tabindex="-1"></a>末尾のコメントに行番号が見られます.</span>
-<span id="cb351-25"><a href="hook-number.html#cb351-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb351-26"><a href="hook-number.html#cb351-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb351-27"><a href="hook-number.html#cb351-27" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb351-28"><a href="hook-number.html#cb351-28" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
-<span id="cb351-29"><a href="hook-number.html#cb351-29" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
-<span id="cb351-30"><a href="hook-number.html#cb351-30" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb351-31"><a href="hook-number.html#cb351-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb352"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb352-1"><a href="hook-number.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb352-2"><a href="hook-number.html#cb352-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> ソースコードに行番号を追加する</span></span>
+<span id="cb352-3"><a href="hook-number.html#cb352-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb352-4"><a href="hook-number.html#cb352-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-5"><a href="hook-number.html#cb352-5" aria-hidden="true" tabindex="-1"></a>行番号をソースコードに追加する <span class="in">`source`</span> フックを用意します.</span>
+<span id="cb352-6"><a href="hook-number.html#cb352-6" aria-hidden="true" tabindex="-1"></a>番号は各行の末尾のコメントに現れます.</span>
+<span id="cb352-7"><a href="hook-number.html#cb352-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-8"><a href="hook-number.html#cb352-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb352-9"><a href="hook-number.html#cb352-9" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
+<span id="cb352-10"><a href="hook-number.html#cb352-10" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_source &lt;- knitr::knit_hooks$get(&#39;source&#39;)</span></span>
+<span id="cb352-11"><a href="hook-number.html#cb352-11" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(source = function(x, options) {</span></span>
+<span id="cb352-12"><a href="hook-number.html#cb352-12" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- xfun::split_lines(x)</span></span>
+<span id="cb352-13"><a href="hook-number.html#cb352-13" aria-hidden="true" tabindex="-1"></a><span class="in">    n &lt;- nchar(x, &#39;width&#39;)</span></span>
+<span id="cb352-14"><a href="hook-number.html#cb352-14" aria-hidden="true" tabindex="-1"></a><span class="in">    i &lt;- seq_along(x)  # 行番号</span></span>
+<span id="cb352-15"><a href="hook-number.html#cb352-15" aria-hidden="true" tabindex="-1"></a><span class="in">    n &lt;- n + nchar(i)</span></span>
+<span id="cb352-16"><a href="hook-number.html#cb352-16" aria-hidden="true" tabindex="-1"></a><span class="in">    s &lt;- knitr:::v_spaces(max(n) - n)</span></span>
+<span id="cb352-17"><a href="hook-number.html#cb352-17" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- paste(x, s, &#39;  # &#39;, i, sep = &#39;&#39;, collapse = &#39;\n&#39;)</span></span>
+<span id="cb352-18"><a href="hook-number.html#cb352-18" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_source(x, options)</span></span>
+<span id="cb352-19"><a href="hook-number.html#cb352-19" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb352-20"><a href="hook-number.html#cb352-20" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb352-21"><a href="hook-number.html#cb352-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb352-22"><a href="hook-number.html#cb352-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-23"><a href="hook-number.html#cb352-23" aria-hidden="true" tabindex="-1"></a>ここで新しいフックのテストができます. この文書を knit するとき,</span>
+<span id="cb352-24"><a href="hook-number.html#cb352-24" aria-hidden="true" tabindex="-1"></a>末尾のコメントに行番号が見られます.</span>
+<span id="cb352-25"><a href="hook-number.html#cb352-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-26"><a href="hook-number.html#cb352-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb352-27"><a href="hook-number.html#cb352-27" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb352-28"><a href="hook-number.html#cb352-28" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- 1:10</span></span>
+<span id="cb352-29"><a href="hook-number.html#cb352-29" aria-hidden="true" tabindex="-1"></a><span class="in">  x + 1</span></span>
+<span id="cb352-30"><a href="hook-number.html#cb352-30" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb352-31"><a href="hook-number.html#cb352-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>上記の例での主な小ワザは各行のコメントの前に必要なスペースの数を決めることです. これによってコメントが右揃えになっています. この数は各行のコードの文字列幅に依存しています. このフック関数の意味を咀嚼することは読者に任せます. 内部で使われている関数 <code>knitr:::v_spaces()</code> は特定の長さのスペースを生成することに使われている点に注意してください. これが例です.</p>
-<div class="sourceCode" id="cb352"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb352-1"><a href="hook-number.html#cb352-1"></a>knitr<span class="sc">:::</span><span class="fu">v_spaces</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">0</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb353"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb353-1"><a href="hook-number.html#cb353-1"></a>knitr<span class="sc">:::</span><span class="fu">v_spaces</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">6</span>, <span class="dv">0</span>))</span></code></pre></div>
 <pre><code>## [1] &quot; &quot;      &quot;   &quot;    &quot;      &quot; &quot;&quot;</code></pre>
 <p><a href="number-lines.html#number-lines">5.7</a>節で紹介した方法が, ソースコードに行番号を追加する方法としてあなたが本当に求めていたものかもしれません. その構文はより簡潔で, ソースコードでもテキスト出力ブロックでも動作します. 上記の <code>source</code> フックの小ワザは, カスタム関数でソースコードを操作できることの一例を示すのが主な狙いです.</p>
 </div>

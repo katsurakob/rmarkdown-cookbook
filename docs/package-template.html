@@ -511,8 +511,8 @@ div.csl-indent {
 <p>代わりに自分のテンプレートを手動で準備したいなら, <code>inst/rmarkdown/templates</code> のサブディレクトリを作成してください. このディレクトリ内に, 少なくとも2つのファイルを保存する必要があります.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>template.yaml</code> という名前のファイル. これは RStudio IDE に対して, 人間が判読できるテンプレートの名称などの基本的なメタデータを与えます. 例えば以下のように 最低でも, このファイルは <code>name</code> と <code>description</code> フィールドを持っているべきです.</p>
-<div class="sourceCode" id="cb478"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb478-1"><a href="package-template.html#cb478-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
-<span id="cb478-2"><a href="package-template.html#cb478-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb479-1"><a href="package-template.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
+<span id="cb479-2"><a href="package-template.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
 <p>テンプレートが選択された時に新しいディレクトリを作成してほしいなら, <code>create_dir: true</code> を含めることもできます. 例えば <a href="https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml"><strong>learnr</strong> パッケージのテンプレート</a>は <code>create_dir: true</code> を設定しており, 一方で <a href="https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml"><strong>flexdashboard</strong> パッケージのテンプレート</a> はデフォルトの <code>create_dir: false</code> を使用しています. これらのテンプレートを RStudio で開いてみると, 様々なユーザの意図に気付くはずです.</p></li>
 <li><p><code>skeleton/skeleton.Rmd</code> 内に保存された R Markdown 文書ファイル. これは R Markdown 文書に挿入したいどのようなコンテンツでも含めることができます.</p></li>
 </ol>

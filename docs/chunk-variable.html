@@ -496,28 +496,28 @@ div.csl-indent {
 <div id="chunk-variable" class="section level2" number="11.1">
 <h2><span class="header-section-number">11.1</span> チャンクオプションに変数を使う</h2>
 <p>大抵の場合, 例えば <code>fig.width = 6</code> のようにチャンクオプションは定数をとりますが, 簡単であるか複雑であるかに関わらず, 任意の R コードからの値をとることもできます. 特殊なケースはチャンクオプションに通せる変数です. 変数もまた R コードであることに注意してください. 例えば文書の冒頭で図の幅を変数で定義して, その変数を後の他のコードチャンクで使えば, それ以降の幅を簡単に変更できます.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb278-1"><a href="chunk-variable.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb278-2"><a href="chunk-variable.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="in">my_width &lt;- 7</span></span>
-<span id="cb278-3"><a href="chunk-variable.html#cb278-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb278-4"><a href="chunk-variable.html#cb278-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb278-5"><a href="chunk-variable.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=my_width}</span></span>
-<span id="cb278-6"><a href="chunk-variable.html#cb278-6" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb278-7"><a href="chunk-variable.html#cb278-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>以下はチャンクオプショで <code>if-else</code> 文を使う例です.</p>
 <div class="sourceCode" id="cb279"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb279-1"><a href="chunk-variable.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb279-2"><a href="chunk-variable.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="in">fig_small &lt;- FALSE  # 大きい図に対しては TRUE に変更</span></span>
-<span id="cb279-3"><a href="chunk-variable.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="in">width_small &lt;- 4</span></span>
-<span id="cb279-4"><a href="chunk-variable.html#cb279-4" aria-hidden="true" tabindex="-1"></a><span class="in">width_large &lt;- 8</span></span>
-<span id="cb279-5"><a href="chunk-variable.html#cb279-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb279-6"><a href="chunk-variable.html#cb279-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb279-7"><a href="chunk-variable.html#cb279-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=if (fig_small) width_small else width_large}</span></span>
-<span id="cb279-8"><a href="chunk-variable.html#cb279-8" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb279-9"><a href="chunk-variable.html#cb279-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb279-2"><a href="chunk-variable.html#cb279-2" aria-hidden="true" tabindex="-1"></a><span class="in">my_width &lt;- 7</span></span>
+<span id="cb279-3"><a href="chunk-variable.html#cb279-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb279-4"><a href="chunk-variable.html#cb279-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-5"><a href="chunk-variable.html#cb279-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=my_width}</span></span>
+<span id="cb279-6"><a href="chunk-variable.html#cb279-6" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb279-7"><a href="chunk-variable.html#cb279-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>以下はチャンクオプショで <code>if-else</code> 文を使う例です.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb280-1"><a href="chunk-variable.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb280-2"><a href="chunk-variable.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="in">fig_small &lt;- FALSE  # 大きい図に対しては TRUE に変更</span></span>
+<span id="cb280-3"><a href="chunk-variable.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="in">width_small &lt;- 4</span></span>
+<span id="cb280-4"><a href="chunk-variable.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="in">width_large &lt;- 8</span></span>
+<span id="cb280-5"><a href="chunk-variable.html#cb280-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb280-6"><a href="chunk-variable.html#cb280-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-7"><a href="chunk-variable.html#cb280-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.width=if (fig_small) width_small else width_large}</span></span>
+<span id="cb280-8"><a href="chunk-variable.html#cb280-8" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb280-9"><a href="chunk-variable.html#cb280-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>さらに以下にもう1つの例として, 必要なパッケージが使用可能な場合のみコードチャンクを評価する (つまり実行する) ものを示します.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb280-1"><a href="chunk-variable.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=require(&#39;leaflet&#39;)}</span></span>
-<span id="cb280-2"><a href="chunk-variable.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(leaflet)</span></span>
-<span id="cb280-3"><a href="chunk-variable.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="in">leaflet() %&gt;% addTiles()</span></span>
-<span id="cb280-4"><a href="chunk-variable.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb281-1"><a href="chunk-variable.html#cb281-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=require(&#39;leaflet&#39;)}</span></span>
+<span id="cb281-2"><a href="chunk-variable.html#cb281-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(leaflet)</span></span>
+<span id="cb281-3"><a href="chunk-variable.html#cb281-3" aria-hidden="true" tabindex="-1"></a><span class="in">leaflet() %&gt;% addTiles()</span></span>
+<span id="cb281-4"><a href="chunk-variable.html#cb281-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>意図が分からない方のために説明しますと, <code>require('package')</code> はパッケージが使用可能なら <code>TRUE</code> を返し, そうでないなら <code>FALSE</code> を返します.</p>
 </div>
             </section>

@@ -497,7 +497,7 @@ div.csl-indent {
 <h1><span class="header-section-number">15</span> その他の言語</h1>
 <p>R Markdown は <strong>knitr</strong> を通して R 言語以外の多くのプログラミング言語をもサポートしています. 言語の名前は3連続のバッククオートの後のカーリーブレースの最初の単語で表現されます. 例えば <code>```{r}</code> の小文字の <code>r</code> はコードチャンクに R のコードが含まれていることを意味し, <code>```{python}</code> は Python のコードチャンクであることを表しています. この章ではあなたがあまり詳しくないであろういくつかの言語をお見せします.</p>
 <p><strong>knitr</strong> では, どの言語も言語エンジンを通してサポートされています. 言語エンジンは本質的にはソースコードとコードチャンクを入力として, 出力として文字列を返す関数です. これらは <code>knitr::knit_engines</code> オブジェクトで管理されています. 既存のエンジンはこのようにして確認することもできます.</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb428-1"><a href="other-languages.html#cb428-1"></a><span class="fu">names</span>(knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">get</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb429-1"><a href="other-languages.html#cb429-1"></a><span class="fu">names</span>(knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">get</span>())</span></code></pre></div>
 <pre><code>##  [1] &quot;awk&quot;       &quot;bash&quot;      &quot;coffee&quot;    &quot;gawk&quot;     
 ##  [5] &quot;groovy&quot;    &quot;haskell&quot;   &quot;lein&quot;      &quot;mysql&quot;    
 ##  [9] &quot;node&quot;      &quot;octave&quot;    &quot;perl&quot;      &quot;psql&quot;     

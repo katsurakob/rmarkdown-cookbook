@@ -497,8 +497,8 @@ div.csl-indent {
 <h2><span class="header-section-number">11.5</span> 複数の出力フォーマットに対してチャンクをキャッシュする</h2>
 <p><code>cache = TRUE</code> でキャッシュが有効化されたとき, <strong>knitr</strong> は R コードチャンクで生成された R オブジェクトをキャッシュデータベースに書き込みます. これで次回から再読込ができます. キャッシュデータベースのパスはチャンクオプション <code>cache.path</code> によって決まります. R Markdown はデフォルトで出力フォーマットごとに異なるキャッシュのパスを使用するので, 時間のかかるコードチャンクは出力フォーマットごとに丸ごと実行されることになります. これは不便かもしれませんが, これがデフォルトの挙動であることには理由があります. コードチャンクの出力を, 固有の出力フォーマットによって決められるからです. 例えばグラフを生成した時, 出力フォーマットが <code>word_document</code> なら <code>![text](path/to/image.png)</code> のような Markdown 構文で図を掲載できますし, 出力フォーマットが <code>html_document</code> なら <code>&lt;img src="path/to/image.png" /&gt;</code> が使えます.</p>
 <p>コードチャンクにグラフなど副産物が一切ないときは, 全ての出力フォーマットで同じキャッシュデータベースを使っても安全であり, 時間を節約できます. 例えば大きなデータオブジェクトを読み込むか時間のかかるモデルを実行するかというときは, 結果は出力フォーマットに依存しませんので, 同じキャッシュデータベースを使うことができます. コードチャンクに <code>cache.path</code> を指定することでデータベースのパスを指定できます. これが例です.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb286-1"><a href="cache-path.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r important-computing, cache=TRUE, cache.path=&quot;cache/&quot;}</span></span>
-<span id="cb286-2"><a href="cache-path.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb287-1"><a href="cache-path.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r important-computing, cache=TRUE, cache.path=&quot;cache/&quot;}</span></span>
+<span id="cb287-2"><a href="cache-path.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>R Markdown ではデフォルトでは <code>cache.path = "INPUT_cache/FORMAT/"</code> で, <code>INPUT</code> には入力ファイル名が, <code>FORMAT</code> には <code>html</code>, <code>latex</code>, <code>docx</code> といった出力フォーマット名が入ります.</p>
 </div>
             </section>

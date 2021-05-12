@@ -499,36 +499,36 @@ div.csl-indent {
 <p>文書がどうレンダリングされるかをカスタマイズしたいという状況もあるでしょう. 例えば今日の日付を文書に含めたり, コンパイルした文書を別のディレクトリに出力したいというときです. このようなことは適切な <code>output_file</code> 引数を付けて <code>rmarkdown::render()</code> を呼び出すことで実現できるのですが (<a href="rmarkdown-render.html#rmarkdown-render">17.3</a>節参照) , レポートをコンパイルするのに <code>rmarkdown::render()</code> をいちいち呼び出すことに頼るのは不便かもしれません.</p>
 <p>文書の YAML フロントマターで <code>knit</code> フィールドを与えれば <code>Knit</code> ボタンの挙動を制御できます. このフィールドは, 主要な引数 <code>input</code>（ 入力 Rmd 文書のパス）を伴って関数を取ってくれますが, 現時点では他の引数は無視されます. 関数のソースコードを直接 <code>knit</code> コードに書くことも, R パッケージなどどこか別の場所に関数を置いてそれを呼び出すことも可能です. カスタム <code>knit</code> 関数が日常的に必要ならば, 毎度のように R Markdown 文書に関数のソースコードを繰り返し書くのではなく, パッケージに関数を置くことをお薦めします.</p>
 <p>YAML に直接ソースコードを置くなら, 関数全体をパーレン <code>()</code> で囲まなければなりません. ソースコードが複数行になるなら, 最初の行以外の全ての行にスペース2つ分のインデントをしなければなりません. 例えば出力ファイル名にレンダリングした日付を含めたい場合, 次のような YAML コードが使用可能です.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb492-1"><a href="custom-knit.html#cb492-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb492-2"><a href="custom-knit.html#cb492-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
-<span id="cb492-3"><a href="custom-knit.html#cb492-3" aria-hidden="true" tabindex="-1"></a><span class="at">    rmarkdown::render(</span></span>
-<span id="cb492-4"><a href="custom-knit.html#cb492-4" aria-hidden="true" tabindex="-1"></a><span class="at">      input,</span></span>
-<span id="cb492-5"><a href="custom-knit.html#cb492-5" aria-hidden="true" tabindex="-1"></a><span class="at">      output_file = paste0(</span></span>
-<span id="cb492-6"><a href="custom-knit.html#cb492-6" aria-hidden="true" tabindex="-1"></a><span class="at">        xfun::sans_ext(input), &#39;-&#39;, Sys.Date(), &#39;.html&#39;</span></span>
-<span id="cb492-7"><a href="custom-knit.html#cb492-7" aria-hidden="true" tabindex="-1"></a><span class="at">      ),</span></span>
-<span id="cb492-8"><a href="custom-knit.html#cb492-8" aria-hidden="true" tabindex="-1"></a><span class="at">      envir = globalenv()</span></span>
-<span id="cb492-9"><a href="custom-knit.html#cb492-9" aria-hidden="true" tabindex="-1"></a><span class="at">    )</span></span>
-<span id="cb492-10"><a href="custom-knit.html#cb492-10" aria-hidden="true" tabindex="-1"></a><span class="at">  })</span></span>
-<span id="cb492-11"><a href="custom-knit.html#cb492-11" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb493-1"><a href="custom-knit.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb493-2"><a href="custom-knit.html#cb493-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> (function(input, ...) {</span></span>
+<span id="cb493-3"><a href="custom-knit.html#cb493-3" aria-hidden="true" tabindex="-1"></a><span class="at">    rmarkdown::render(</span></span>
+<span id="cb493-4"><a href="custom-knit.html#cb493-4" aria-hidden="true" tabindex="-1"></a><span class="at">      input,</span></span>
+<span id="cb493-5"><a href="custom-knit.html#cb493-5" aria-hidden="true" tabindex="-1"></a><span class="at">      output_file = paste0(</span></span>
+<span id="cb493-6"><a href="custom-knit.html#cb493-6" aria-hidden="true" tabindex="-1"></a><span class="at">        xfun::sans_ext(input), &#39;-&#39;, Sys.Date(), &#39;.html&#39;</span></span>
+<span id="cb493-7"><a href="custom-knit.html#cb493-7" aria-hidden="true" tabindex="-1"></a><span class="at">      ),</span></span>
+<span id="cb493-8"><a href="custom-knit.html#cb493-8" aria-hidden="true" tabindex="-1"></a><span class="at">      envir = globalenv()</span></span>
+<span id="cb493-9"><a href="custom-knit.html#cb493-9" aria-hidden="true" tabindex="-1"></a><span class="at">    )</span></span>
+<span id="cb493-10"><a href="custom-knit.html#cb493-10" aria-hidden="true" tabindex="-1"></a><span class="at">  })</span></span>
+<span id="cb493-11"><a href="custom-knit.html#cb493-11" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>例えば 2019/07/29 に <code>example.Rmd</code> を knit したなら, 出力ファイル名は <code>example-2019-07-29.html</code> となります.</p>
 <p>上記のアプローチは単純で直截的ですが, 関数が R Markdown 文書で使われるのが1度限りでないと, YAML に直接関数を埋め込むのは管理が難しくなります. そこで例えばパッケージ内に <code>knit_with_date()</code> という関数を作成するとよいでしょう.</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb493-1"><a href="custom-knit.html#cb493-1"></a><span class="co">#&#39; RStudio 用のカスタム knit 関数</span></span>
-<span id="cb493-2"><a href="custom-knit.html#cb493-2"></a><span class="co">#&#39;</span></span>
-<span id="cb493-3"><a href="custom-knit.html#cb493-3"></a><span class="co">#&#39; @export</span></span>
-<span id="cb493-4"><a href="custom-knit.html#cb493-4"></a>knit_with_date <span class="ot">&lt;-</span> <span class="cf">function</span>(input, ...) {</span>
-<span id="cb493-5"><a href="custom-knit.html#cb493-5"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
-<span id="cb493-6"><a href="custom-knit.html#cb493-6"></a>    input,</span>
-<span id="cb493-7"><a href="custom-knit.html#cb493-7"></a>    <span class="at">output_file =</span> <span class="fu">paste0</span>(</span>
-<span id="cb493-8"><a href="custom-knit.html#cb493-8"></a>        xfun<span class="sc">::</span><span class="fu">sans_ext</span>(input), <span class="st">&#39;-&#39;</span>, <span class="fu">Sys.Date</span>(), <span class="st">&#39;.&#39;</span>,</span>
-<span id="cb493-9"><a href="custom-knit.html#cb493-9"></a>        xfun<span class="sc">::</span><span class="fu">file_ext</span>(input)</span>
-<span id="cb493-10"><a href="custom-knit.html#cb493-10"></a>    ),</span>
-<span id="cb493-11"><a href="custom-knit.html#cb493-11"></a>    <span class="at">envir =</span> <span class="fu">globalenv</span>()</span>
-<span id="cb493-12"><a href="custom-knit.html#cb493-12"></a>  )</span>
-<span id="cb493-13"><a href="custom-knit.html#cb493-13"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb494"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb494-1"><a href="custom-knit.html#cb494-1"></a><span class="co">#&#39; RStudio 用のカスタム knit 関数</span></span>
+<span id="cb494-2"><a href="custom-knit.html#cb494-2"></a><span class="co">#&#39;</span></span>
+<span id="cb494-3"><a href="custom-knit.html#cb494-3"></a><span class="co">#&#39; @export</span></span>
+<span id="cb494-4"><a href="custom-knit.html#cb494-4"></a>knit_with_date <span class="ot">&lt;-</span> <span class="cf">function</span>(input, ...) {</span>
+<span id="cb494-5"><a href="custom-knit.html#cb494-5"></a>  rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb494-6"><a href="custom-knit.html#cb494-6"></a>    input,</span>
+<span id="cb494-7"><a href="custom-knit.html#cb494-7"></a>    <span class="at">output_file =</span> <span class="fu">paste0</span>(</span>
+<span id="cb494-8"><a href="custom-knit.html#cb494-8"></a>        xfun<span class="sc">::</span><span class="fu">sans_ext</span>(input), <span class="st">&#39;-&#39;</span>, <span class="fu">Sys.Date</span>(), <span class="st">&#39;.&#39;</span>,</span>
+<span id="cb494-9"><a href="custom-knit.html#cb494-9"></a>        xfun<span class="sc">::</span><span class="fu">file_ext</span>(input)</span>
+<span id="cb494-10"><a href="custom-knit.html#cb494-10"></a>    ),</span>
+<span id="cb494-11"><a href="custom-knit.html#cb494-11"></a>    <span class="at">envir =</span> <span class="fu">globalenv</span>()</span>
+<span id="cb494-12"><a href="custom-knit.html#cb494-12"></a>  )</span>
+<span id="cb494-13"><a href="custom-knit.html#cb494-13"></a>}</span></code></pre></div>
 <p>上記のコードを <strong>myPackage</strong> という名前のパッケージに追加すれば, 次のような YAML 設定を使いカスタム <code>knit</code> 関数を参照することが可能になります.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb494-1"><a href="custom-knit.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb494-2"><a href="custom-knit.html#cb494-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> myPackage::knit_with_date</span></span>
-<span id="cb494-3"><a href="custom-knit.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb495"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb495-1"><a href="custom-knit.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb495-2"><a href="custom-knit.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="fu">knit</span><span class="kw">:</span><span class="at"> myPackage::knit_with_date</span></span>
+<span id="cb495-3"><a href="custom-knit.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p><code>?rmarkdown::render</code> のヘルプページを見て, <code>Knit</code> ボタンの背後にある <code>knit</code> 関数のカスタマイズについて, さらなるアイディアを見つけるのもよいでしょう.</p>
 </div>
             </section>

@@ -496,58 +496,58 @@ div.csl-indent {
 <div id="hook-html5" class="section level2" number="12.5">
 <h2><span class="header-section-number">12.5</span> HTML5 フォーマットで図を出力する</h2>
 <p>デフォルトでは R Markdown のグラフは HTML 上で <code>&lt;p&gt;</code> または <code>&lt;div&gt;</code> タグ内の <code>&lt;img src="..." /&gt;</code> で読み込まれます. 以下の例は HTML5 の <code>&lt;figure&gt;</code> タグでグラフを表示する方法です.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb364-1"><a href="hook-html5.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb364-2"><a href="hook-html5.html#cb364-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`&lt;figure&gt;` タグで図を出力する&quot;</span></span>
-<span id="cb364-3"><a href="hook-html5.html#cb364-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb364-4"><a href="hook-html5.html#cb364-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb364-5"><a href="hook-html5.html#cb364-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-6"><a href="hook-html5.html#cb364-6" aria-hidden="true" tabindex="-1"></a>ファイルパス <span class="in">`x`</span> とチャンクオプション <span class="in">`options$fig.cap`</span> の</span>
-<span id="cb364-7"><a href="hook-html5.html#cb364-7" aria-hidden="true" tabindex="-1"></a>図のキャプションが与えられた状態で, このようなフォーム内に</span>
-<span id="cb364-8"><a href="hook-html5.html#cb364-8" aria-hidden="true" tabindex="-1"></a>HTML5 タグ内にグラフを描きたいとします.</span>
-<span id="cb364-9"><a href="hook-html5.html#cb364-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-10"><a href="hook-html5.html#cb364-10" aria-hidden="true" tabindex="-1"></a><span class="in">```html</span></span>
-<span id="cb364-11"><a href="hook-html5.html#cb364-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;figure&gt;</span></span>
-<span id="cb364-12"><a href="hook-html5.html#cb364-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span><span class="ot"> alt=</span><span class="st">&quot;キャプション&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb364-13"><a href="hook-html5.html#cb364-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;figcaption&gt;</span>キャプション<span class="kw">&lt;/figcaption&gt;</span></span>
-<span id="cb364-14"><a href="hook-html5.html#cb364-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/figure&gt;</span></span>
-<span id="cb364-15"><a href="hook-html5.html#cb364-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb364-16"><a href="hook-html5.html#cb364-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-17"><a href="hook-html5.html#cb364-17" aria-hidden="true" tabindex="-1"></a>ここで出力フォーマットが HTML であるときのみ <span class="in">`plot`</span> フックを再定義します.</span>
-<span id="cb364-18"><a href="hook-html5.html#cb364-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-19"><a href="hook-html5.html#cb364-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb364-20"><a href="hook-html5.html#cb364-20" aria-hidden="true" tabindex="-1"></a><span class="in">if (knitr::is_html_output()) knitr::knit_hooks$set(</span></span>
-<span id="cb364-21"><a href="hook-html5.html#cb364-21" aria-hidden="true" tabindex="-1"></a><span class="in">  plot = function(x, options) {</span></span>
-<span id="cb364-22"><a href="hook-html5.html#cb364-22" aria-hidden="true" tabindex="-1"></a><span class="in">    cap  &lt;- options$fig.cap  # 図のキャプション</span></span>
-<span id="cb364-23"><a href="hook-html5.html#cb364-23" aria-hidden="true" tabindex="-1"></a><span class="in">    tags &lt;- htmltools::tags</span></span>
-<span id="cb364-24"><a href="hook-html5.html#cb364-24" aria-hidden="true" tabindex="-1"></a><span class="in">    as.character(tags$figure(</span></span>
-<span id="cb364-25"><a href="hook-html5.html#cb364-25" aria-hidden="true" tabindex="-1"></a><span class="in">      tags$img(src = x, alt = cap),</span></span>
-<span id="cb364-26"><a href="hook-html5.html#cb364-26" aria-hidden="true" tabindex="-1"></a><span class="in">      tags$figcaption(cap)</span></span>
-<span id="cb364-27"><a href="hook-html5.html#cb364-27" aria-hidden="true" tabindex="-1"></a><span class="in">    ))</span></span>
-<span id="cb364-28"><a href="hook-html5.html#cb364-28" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb364-29"><a href="hook-html5.html#cb364-29" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb364-30"><a href="hook-html5.html#cb364-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb364-31"><a href="hook-html5.html#cb364-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-32"><a href="hook-html5.html#cb364-32" aria-hidden="true" tabindex="-1"></a>以下のコードチャンクから生成されたプロットは <span class="in">`&lt;figure&gt;`</span> タグ内に配置されます.</span>
-<span id="cb364-33"><a href="hook-html5.html#cb364-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-34"><a href="hook-html5.html#cb364-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.cap=&#39;cars データの散布図&#39;}</span></span>
-<span id="cb364-35"><a href="hook-html5.html#cb364-35" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4.5, 4.5, .2, .2))</span></span>
-<span id="cb364-36"><a href="hook-html5.html#cb364-36" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19, col = &#39;red&#39;)</span></span>
-<span id="cb364-37"><a href="hook-html5.html#cb364-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb364-38"><a href="hook-html5.html#cb364-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-39"><a href="hook-html5.html#cb364-39" aria-hidden="true" tabindex="-1"></a><span class="in">`&lt;figure&gt;`</span> と <span class="in">`&lt;figcaption&gt;`</span> タグの見栄えのために CSS スタイルを追加します. <span class="in">`figure`</span> には破線の枠を, キャプションには明桃色の背景を設定します.</span>
-<span id="cb364-40"><a href="hook-html5.html#cb364-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb364-41"><a href="hook-html5.html#cb364-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb364-42"><a href="hook-html5.html#cb364-42" aria-hidden="true" tabindex="-1"></a><span class="in">figure {</span></span>
-<span id="cb364-43"><a href="hook-html5.html#cb364-43" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 2px dashed red;</span></span>
-<span id="cb364-44"><a href="hook-html5.html#cb364-44" aria-hidden="true" tabindex="-1"></a><span class="in">  margin: 1em 0;</span></span>
-<span id="cb364-45"><a href="hook-html5.html#cb364-45" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb364-46"><a href="hook-html5.html#cb364-46" aria-hidden="true" tabindex="-1"></a><span class="in">figcaption {</span></span>
-<span id="cb364-47"><a href="hook-html5.html#cb364-47" aria-hidden="true" tabindex="-1"></a><span class="in">  padding: .5em;</span></span>
-<span id="cb364-48"><a href="hook-html5.html#cb364-48" aria-hidden="true" tabindex="-1"></a><span class="in">  background: lightpink;</span></span>
-<span id="cb364-49"><a href="hook-html5.html#cb364-49" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 1.3em;</span></span>
-<span id="cb364-50"><a href="hook-html5.html#cb364-50" aria-hidden="true" tabindex="-1"></a><span class="in">  font-variant: small-caps;</span></span>
-<span id="cb364-51"><a href="hook-html5.html#cb364-51" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb364-52"><a href="hook-html5.html#cb364-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb365-1"><a href="hook-html5.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb365-2"><a href="hook-html5.html#cb365-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`&lt;figure&gt;` タグで図を出力する&quot;</span></span>
+<span id="cb365-3"><a href="hook-html5.html#cb365-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb365-4"><a href="hook-html5.html#cb365-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb365-5"><a href="hook-html5.html#cb365-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-6"><a href="hook-html5.html#cb365-6" aria-hidden="true" tabindex="-1"></a>ファイルパス <span class="in">`x`</span> とチャンクオプション <span class="in">`options$fig.cap`</span> の</span>
+<span id="cb365-7"><a href="hook-html5.html#cb365-7" aria-hidden="true" tabindex="-1"></a>図のキャプションが与えられた状態で, このようなフォーム内に</span>
+<span id="cb365-8"><a href="hook-html5.html#cb365-8" aria-hidden="true" tabindex="-1"></a>HTML5 タグ内にグラフを描きたいとします.</span>
+<span id="cb365-9"><a href="hook-html5.html#cb365-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-10"><a href="hook-html5.html#cb365-10" aria-hidden="true" tabindex="-1"></a><span class="in">```html</span></span>
+<span id="cb365-11"><a href="hook-html5.html#cb365-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;figure&gt;</span></span>
+<span id="cb365-12"><a href="hook-html5.html#cb365-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span><span class="ot"> alt=</span><span class="st">&quot;キャプション&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb365-13"><a href="hook-html5.html#cb365-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;figcaption&gt;</span>キャプション<span class="kw">&lt;/figcaption&gt;</span></span>
+<span id="cb365-14"><a href="hook-html5.html#cb365-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/figure&gt;</span></span>
+<span id="cb365-15"><a href="hook-html5.html#cb365-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb365-16"><a href="hook-html5.html#cb365-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-17"><a href="hook-html5.html#cb365-17" aria-hidden="true" tabindex="-1"></a>ここで出力フォーマットが HTML であるときのみ <span class="in">`plot`</span> フックを再定義します.</span>
+<span id="cb365-18"><a href="hook-html5.html#cb365-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-19"><a href="hook-html5.html#cb365-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb365-20"><a href="hook-html5.html#cb365-20" aria-hidden="true" tabindex="-1"></a><span class="in">if (knitr::is_html_output()) knitr::knit_hooks$set(</span></span>
+<span id="cb365-21"><a href="hook-html5.html#cb365-21" aria-hidden="true" tabindex="-1"></a><span class="in">  plot = function(x, options) {</span></span>
+<span id="cb365-22"><a href="hook-html5.html#cb365-22" aria-hidden="true" tabindex="-1"></a><span class="in">    cap  &lt;- options$fig.cap  # 図のキャプション</span></span>
+<span id="cb365-23"><a href="hook-html5.html#cb365-23" aria-hidden="true" tabindex="-1"></a><span class="in">    tags &lt;- htmltools::tags</span></span>
+<span id="cb365-24"><a href="hook-html5.html#cb365-24" aria-hidden="true" tabindex="-1"></a><span class="in">    as.character(tags$figure(</span></span>
+<span id="cb365-25"><a href="hook-html5.html#cb365-25" aria-hidden="true" tabindex="-1"></a><span class="in">      tags$img(src = x, alt = cap),</span></span>
+<span id="cb365-26"><a href="hook-html5.html#cb365-26" aria-hidden="true" tabindex="-1"></a><span class="in">      tags$figcaption(cap)</span></span>
+<span id="cb365-27"><a href="hook-html5.html#cb365-27" aria-hidden="true" tabindex="-1"></a><span class="in">    ))</span></span>
+<span id="cb365-28"><a href="hook-html5.html#cb365-28" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb365-29"><a href="hook-html5.html#cb365-29" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb365-30"><a href="hook-html5.html#cb365-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb365-31"><a href="hook-html5.html#cb365-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-32"><a href="hook-html5.html#cb365-32" aria-hidden="true" tabindex="-1"></a>以下のコードチャンクから生成されたプロットは <span class="in">`&lt;figure&gt;`</span> タグ内に配置されます.</span>
+<span id="cb365-33"><a href="hook-html5.html#cb365-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-34"><a href="hook-html5.html#cb365-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.cap=&#39;cars データの散布図&#39;}</span></span>
+<span id="cb365-35"><a href="hook-html5.html#cb365-35" aria-hidden="true" tabindex="-1"></a><span class="in">par(mar = c(4.5, 4.5, .2, .2))</span></span>
+<span id="cb365-36"><a href="hook-html5.html#cb365-36" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars, pch = 19, col = &#39;red&#39;)</span></span>
+<span id="cb365-37"><a href="hook-html5.html#cb365-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb365-38"><a href="hook-html5.html#cb365-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-39"><a href="hook-html5.html#cb365-39" aria-hidden="true" tabindex="-1"></a><span class="in">`&lt;figure&gt;`</span> と <span class="in">`&lt;figcaption&gt;`</span> タグの見栄えのために CSS スタイルを追加します. <span class="in">`figure`</span> には破線の枠を, キャプションには明桃色の背景を設定します.</span>
+<span id="cb365-40"><a href="hook-html5.html#cb365-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb365-41"><a href="hook-html5.html#cb365-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb365-42"><a href="hook-html5.html#cb365-42" aria-hidden="true" tabindex="-1"></a><span class="in">figure {</span></span>
+<span id="cb365-43"><a href="hook-html5.html#cb365-43" aria-hidden="true" tabindex="-1"></a><span class="in">  border: 2px dashed red;</span></span>
+<span id="cb365-44"><a href="hook-html5.html#cb365-44" aria-hidden="true" tabindex="-1"></a><span class="in">  margin: 1em 0;</span></span>
+<span id="cb365-45"><a href="hook-html5.html#cb365-45" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb365-46"><a href="hook-html5.html#cb365-46" aria-hidden="true" tabindex="-1"></a><span class="in">figcaption {</span></span>
+<span id="cb365-47"><a href="hook-html5.html#cb365-47" aria-hidden="true" tabindex="-1"></a><span class="in">  padding: .5em;</span></span>
+<span id="cb365-48"><a href="hook-html5.html#cb365-48" aria-hidden="true" tabindex="-1"></a><span class="in">  background: lightpink;</span></span>
+<span id="cb365-49"><a href="hook-html5.html#cb365-49" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 1.3em;</span></span>
+<span id="cb365-50"><a href="hook-html5.html#cb365-50" aria-hidden="true" tabindex="-1"></a><span class="in">  font-variant: small-caps;</span></span>
+<span id="cb365-51"><a href="hook-html5.html#cb365-51" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb365-52"><a href="hook-html5.html#cb365-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="hook-html5.html#fig:hook-html5">12.2</a>がその出力です. この例では実際には <code>plot</code> フックを上書きしましたが, この章の他のほとんどの例ではデフォルトのフックの冒頭にカスタムフックを構築していることに注意してください. デフォルトのフックを完全に上書きするのは, 組み込まれている機能を無視しても構わない時に限るべきです. 例えば次の <code>plot</code> フックは <code>out.width ='100%'</code> や <code>fig.show = 'animate'</code> といったチャンクオプションがあるかもしれないことを考慮していません.</p>
 <div class="figure" style="text-align: center"><span id="fig:hook-html5"></span>
 <img src="JP/images/hook-html5.png" alt="HTML5 figure タグ内の図"  />
@@ -556,10 +556,10 @@ div.csl-indent {
 </p>
 </div>
 <p>この例はファイルパス <code>x</code> と <code>plot</code> フックが活用できそうなことを示すものです. 図のスタイルのカスタマイズだけが必要なら, HTML5 タグを使うことはありません. 通常であれば, デフォルトの <code>plot</code> フックは以下のような HTML コードに画像を出力します.</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb365-1"><a href="hook-html5.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;figure&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb365-2"><a href="hook-html5.html#cb365-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb365-3"><a href="hook-html5.html#cb365-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;caption&quot;</span><span class="kw">&gt;</span>キャプション<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb365-4"><a href="hook-html5.html#cb365-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb366-1"><a href="hook-html5.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;figure&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb366-2"><a href="hook-html5.html#cb366-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb366-3"><a href="hook-html5.html#cb366-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;caption&quot;</span><span class="kw">&gt;</span>キャプション<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb366-4"><a href="hook-html5.html#cb366-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>よって <code>div.figure</code> と <code>p.caption</code> に対して CSS ルールを定義するだけで可能となります.</p>
 
 </div>

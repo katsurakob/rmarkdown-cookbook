@@ -496,15 +496,15 @@ div.csl-indent {
 <div id="fig-chunk" class="section level2" number="14.4">
 <h2><span class="header-section-number">14.4</span> どこにでもグラフを生成し, 表示させる</h2>
 <p>グラフは通常コードチャンク内で生成され, その直下に表示されますが, 以下の例のように表示場所を好きなところに指定したり, コードチャンクに隠すことも選べます.</p>
-<div class="sourceCode" id="cb397"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb397-1"><a href="fig-chunk.html#cb397-1" aria-hidden="true" tabindex="-1"></a>このコードチャンクでグラフを生成しますが, 表示はしません.</span>
-<span id="cb397-2"><a href="fig-chunk.html#cb397-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-3"><a href="fig-chunk.html#cb397-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cars-plot, dev=&#39;png&#39;, fig.show=&#39;hide&#39;}</span></span>
-<span id="cb397-4"><a href="fig-chunk.html#cb397-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb397-5"><a href="fig-chunk.html#cb397-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb397-6"><a href="fig-chunk.html#cb397-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-7"><a href="fig-chunk.html#cb397-7" aria-hidden="true" tabindex="-1"></a>別の段落でグラフを導入します</span>
-<span id="cb397-8"><a href="fig-chunk.html#cb397-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb397-9"><a href="fig-chunk.html#cb397-9" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">A nice plot.</span><span class="co">]</span>(<span class="in">`r knitr::fig_chunk(&#39;cars-plot&#39;, &#39;png&#39;)`</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb398-1"><a href="fig-chunk.html#cb398-1" aria-hidden="true" tabindex="-1"></a>このコードチャンクでグラフを生成しますが, 表示はしません.</span>
+<span id="cb398-2"><a href="fig-chunk.html#cb398-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-3"><a href="fig-chunk.html#cb398-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cars-plot, dev=&#39;png&#39;, fig.show=&#39;hide&#39;}</span></span>
+<span id="cb398-4"><a href="fig-chunk.html#cb398-4" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb398-5"><a href="fig-chunk.html#cb398-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb398-6"><a href="fig-chunk.html#cb398-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-7"><a href="fig-chunk.html#cb398-7" aria-hidden="true" tabindex="-1"></a>別の段落でグラフを導入します</span>
+<span id="cb398-8"><a href="fig-chunk.html#cb398-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb398-9"><a href="fig-chunk.html#cb398-9" aria-hidden="true" tabindex="-1"></a>!<span class="co">[</span><span class="ot">A nice plot.</span><span class="co">]</span>(<span class="in">`r knitr::fig_chunk(&#39;cars-plot&#39;, &#39;png&#39;)`</span>)</span></code></pre></div>
 <p>一時的にグラフを隠すためにコードチャンクでチャンクオプション <code>fig.show='hide'</code> を使用しました. それから別の段落で <code>knitr::fig_chunk()</code> 関数を呼び出して, このグラフ画像のファイルパスを取得しました. このパスは普通は <code>test_files/figure-html/cars-plot-1.png</code> のようになっています. このファイルパスを導出するためには, <code>fig_chunk()</code> 関数にチャンクラベルとグラフィックデバイス名を渡す必要があります.</p>
 <p><strong>blogdown</strong> で作成したウェブサイトへの <code>fig_chunk()</code> の応用を <a href="https://stackoverflow.com/a/46305297/559676" class="uri">https://stackoverflow.com/a/46305297/559676</a> で見ることもできます. この関数はどの R Markdown 出力フォーマットでも動作します. 特にスライド上では, スクリーンの広さが限られているため, 画像を表示するのに便利でしょう. 1つのスライドでコードを提示し, さらに別のスライドで画像を表示させることもできます.</p>
 </div>

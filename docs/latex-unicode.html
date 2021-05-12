@@ -495,18 +495,18 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="latex-unicode" class="section level2" number="6.7">
 <h2><span class="header-section-number">6.7</span> Unicode 文字を含む文書をレンダリングする</h2>
-<div class="sourceCode" id="cb129"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb129-1"><a href="latex-unicode.html#cb129-1" aria-hidden="true" tabindex="-1"></a>! Package inputenc Error:</span>
-<span id="cb129-2"><a href="latex-unicode.html#cb129-2" aria-hidden="true" tabindex="-1"></a>  Unicode char <span class="fu">\u</span>8: not set up for use with LaTeX.</span></code></pre></div>
+<div class="sourceCode" id="cb130"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb130-1"><a href="latex-unicode.html#cb130-1" aria-hidden="true" tabindex="-1"></a>! Package inputenc Error:</span>
+<span id="cb130-2"><a href="latex-unicode.html#cb130-2" aria-hidden="true" tabindex="-1"></a>  Unicode char <span class="fu">\u</span>8: not set up for use with LaTeX.</span></code></pre></div>
 <p>もしこのようなエラーにでくわしたら, おそらくデフォルトの LaTeX エンジンである <code>pdflatex</code> を使って文書 (中間ファイルの <code>.tex</code> ) を PDF へレンダリングしているのでしょう. <code>pdflatex</code> はそのファイルにある何らかの Unicode 文字を処理できません. このようなときは, <code>xelatex</code> か <code>lualatex</code> へ切り替えることになるでしょう. 例えばこのように.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb130-1"><a href="latex-unicode.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb130-2"><a href="latex-unicode.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb130-3"><a href="latex-unicode.html#cb130-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
-<p>他の文書出力フォーマットの LaTeX エンジン, 特に <code>pdf_document</code> ベースの <code>bookdown::pdf_document2</code> や <code>tufte::tufte_handout</code> といったもののエンジンも変更できます. 例えばこのように.</p>
 <div class="sourceCode" id="cb131"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb131-1"><a href="latex-unicode.html#cb131-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb131-2"><a href="latex-unicode.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_document2</span><span class="kw">:</span></span>
-<span id="cb131-3"><a href="latex-unicode.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> lualatex</span></span>
-<span id="cb131-4"><a href="latex-unicode.html#cb131-4" aria-hidden="true" tabindex="-1"></a><span class="at">  tufte:</span><span class="fu">:tufte_handout</span><span class="kw">:</span></span>
-<span id="cb131-5"><a href="latex-unicode.html#cb131-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
+<span id="cb131-2"><a href="latex-unicode.html#cb131-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb131-3"><a href="latex-unicode.html#cb131-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
+<p>他の文書出力フォーマットの LaTeX エンジン, 特に <code>pdf_document</code> ベースの <code>bookdown::pdf_document2</code> や <code>tufte::tufte_handout</code> といったもののエンジンも変更できます. 例えばこのように.</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb132-1"><a href="latex-unicode.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb132-2"><a href="latex-unicode.html#cb132-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_document2</span><span class="kw">:</span></span>
+<span id="cb132-3"><a href="latex-unicode.html#cb132-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> lualatex</span></span>
+<span id="cb132-4"><a href="latex-unicode.html#cb132-4" aria-hidden="true" tabindex="-1"></a><span class="at">  tufte:</span><span class="fu">:tufte_handout</span><span class="kw">:</span></span>
+<span id="cb132-5"><a href="latex-unicode.html#cb132-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
 </div>
             </section>
 

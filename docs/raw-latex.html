@@ -497,12 +497,12 @@ div.csl-indent {
 <h2><span class="header-section-number">6.11</span> 生の LaTeX コードを書く</h2>
 <p>デフォルトでは Pandoc は LaTeX へ変換する時, 文書内の LaTeX コードを維持するので, Markdown 内で LaTeX コマンドや環境を使うことができます. しかし, LaTeX コードが Pandoc がパースするには複雑過ぎる場合には, Pandoc は通常の Markdown として扱います. 結果として特別な LaTeX の文字はエスケープされます. 例えばバックスラッシュ <code>\</code> は <code>\textbackslash{}</code> に変換されるかもしれません.</p>
 <p>Pandoc が Markdown 文書内の生の LaTeX コードに確実に手を付けないようにするには, コードを fenced block で囲み, <code>=latex</code> の属性を付けることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb138-1"><a href="raw-latex.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{=latex}</span></span>
-<span id="cb138-2"><a href="raw-latex.html#cb138-2" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{tabular}{ll}</span></span>
-<span id="cb138-3"><a href="raw-latex.html#cb138-3" aria-hidden="true" tabindex="-1"></a><span class="in">A &amp; B \\</span></span>
-<span id="cb138-4"><a href="raw-latex.html#cb138-4" aria-hidden="true" tabindex="-1"></a><span class="in">A &amp; B \\</span></span>
-<span id="cb138-5"><a href="raw-latex.html#cb138-5" aria-hidden="true" tabindex="-1"></a><span class="in">\end{tabular}</span></span>
-<span id="cb138-6"><a href="raw-latex.html#cb138-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb139-1"><a href="raw-latex.html#cb139-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{=latex}</span></span>
+<span id="cb139-2"><a href="raw-latex.html#cb139-2" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{tabular}{ll}</span></span>
+<span id="cb139-3"><a href="raw-latex.html#cb139-3" aria-hidden="true" tabindex="-1"></a><span class="in">A &amp; B \\</span></span>
+<span id="cb139-4"><a href="raw-latex.html#cb139-4" aria-hidden="true" tabindex="-1"></a><span class="in">A &amp; B \\</span></span>
+<span id="cb139-5"><a href="raw-latex.html#cb139-5" aria-hidden="true" tabindex="-1"></a><span class="in">\end{tabular}</span></span>
+<span id="cb139-6"><a href="raw-latex.html#cb139-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>latex</code> の前の等号を忘れないでください. つまり <code>latex</code> ではなく <code>=latex</code> です. この機能は Pandoc 2.0 以降のバージョンが必要です (<code>rmarkdown::pandoc_version()</code> で確認してください).</p>
 </div>
             </section>

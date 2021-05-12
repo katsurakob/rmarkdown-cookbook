@@ -496,35 +496,35 @@ div.csl-indent {
 <div id="dynamic-yaml" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> 文書タイトルを動的に設定する</h2>
 <p>インライン R コード (<a href="r-code.html#r-code">3.1</a>節)は, Rmd 文書内のどこでも, YAML メタデータの部分であっても, 使うことができます. つまり次の例のように, インライン R コードによって文書のタイトルなどの YAML メタデータを動的に生成できるということです.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb28-1"><a href="dynamic-yaml.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb28-2"><a href="dynamic-yaml.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;自動車 `r nrow(mtcars)` 台の分析&quot;</span></span>
-<span id="cb28-3"><a href="dynamic-yaml.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb29-1"><a href="dynamic-yaml.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb29-2"><a href="dynamic-yaml.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;自動車 `r nrow(mtcars)` 台の分析&quot;</span></span>
+<span id="cb29-3"><a href="dynamic-yaml.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>文書タイトルが後の文書内で作成される R の変数に依存する場合, 以下の例のように変数の後にくる YAML セクションに <code>title</code> フィールドを書き加えることができます.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb29-1"><a href="dynamic-yaml.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb29-2"><a href="dynamic-yaml.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;利口なアナリスト&quot;</span></span>
-<span id="cb29-3"><a href="dynamic-yaml.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> pdf_document</span></span>
-<span id="cb29-4"><a href="dynamic-yaml.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb29-5"><a href="dynamic-yaml.html#cb29-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-6"><a href="dynamic-yaml.html#cb29-6" aria-hidden="true" tabindex="-1"></a>我々の市場シェアを頑張って計算してみました.</span>
-<span id="cb29-7"><a href="dynamic-yaml.html#cb29-7" aria-hidden="true" tabindex="-1"></a>I just tried really hard to calculate our market share:</span>
-<span id="cb29-8"><a href="dynamic-yaml.html#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-9"><a href="dynamic-yaml.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb29-10"><a href="dynamic-yaml.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="in">share &lt;- runif(1)</span></span>
-<span id="cb29-11"><a href="dynamic-yaml.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb29-12"><a href="dynamic-yaml.html#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="dynamic-yaml.html#cb29-13" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb29-14"><a href="dynamic-yaml.html#cb29-14" aria-hidden="true" tabindex="-1"></a>title: &quot;我々の市場シェアは今や <span class="in">`r round(100 * share, 2)`</span>% です!&quot;</span>
-<span id="cb29-15"><a href="dynamic-yaml.html#cb29-15" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb29-16"><a href="dynamic-yaml.html#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-17"><a href="dynamic-yaml.html#cb29-17" aria-hidden="true" tabindex="-1"></a>これはとても <span class="in">`r if(share &gt; 0.8) &quot;喜ばしい&quot; else &quot;悲しい&quot;`</span> ことです.</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb30-1"><a href="dynamic-yaml.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-2"><a href="dynamic-yaml.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> &quot;利口なアナリスト&quot;</span></span>
+<span id="cb30-3"><a href="dynamic-yaml.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> pdf_document</span></span>
+<span id="cb30-4"><a href="dynamic-yaml.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb30-5"><a href="dynamic-yaml.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-6"><a href="dynamic-yaml.html#cb30-6" aria-hidden="true" tabindex="-1"></a>我々の市場シェアを頑張って計算してみました.</span>
+<span id="cb30-7"><a href="dynamic-yaml.html#cb30-7" aria-hidden="true" tabindex="-1"></a>I just tried really hard to calculate our market share:</span>
+<span id="cb30-8"><a href="dynamic-yaml.html#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="dynamic-yaml.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-10"><a href="dynamic-yaml.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="in">share &lt;- runif(1)</span></span>
+<span id="cb30-11"><a href="dynamic-yaml.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-12"><a href="dynamic-yaml.html#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-13"><a href="dynamic-yaml.html#cb30-13" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-14"><a href="dynamic-yaml.html#cb30-14" aria-hidden="true" tabindex="-1"></a>title: &quot;我々の市場シェアは今や <span class="in">`r round(100 * share, 2)`</span>% です!&quot;</span>
+<span id="cb30-15"><a href="dynamic-yaml.html#cb30-15" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-16"><a href="dynamic-yaml.html#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="dynamic-yaml.html#cb30-17" aria-hidden="true" tabindex="-1"></a>これはとても <span class="in">`r if(share &gt; 0.8) &quot;喜ばしい&quot; else &quot;悲しい&quot;`</span> ことです.</span></code></pre></div>
 <p>上記の例では, 変数 <code>share</code> を生成してから文書のタイトルを追加しています. このような場合であってもうまくいくのは, Pandoc は文書内に YAML セクションをいくつ書いても読み込み, そして全てをマージすることができるためです.</p>
 <p>タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポートから動的に生成することができます (<a href="parameterized-reports.html#parameterized-reports">17.4</a> 節参照). 例えばこのように.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb30-1"><a href="dynamic-yaml.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb30-2"><a href="dynamic-yaml.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r params$doc_title`&quot;</span></span>
-<span id="cb30-3"><a href="dynamic-yaml.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;利口なアナリスト&quot;</span></span>
-<span id="cb30-4"><a href="dynamic-yaml.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb30-5"><a href="dynamic-yaml.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">doc_title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;デフォルトのタイトル&quot;</span></span>
-<span id="cb30-6"><a href="dynamic-yaml.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="dynamic-yaml.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb31-2"><a href="dynamic-yaml.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r params$doc_title`&quot;</span></span>
+<span id="cb31-3"><a href="dynamic-yaml.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;利口なアナリスト&quot;</span></span>
+<span id="cb31-4"><a href="dynamic-yaml.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb31-5"><a href="dynamic-yaml.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">doc_title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;デフォルトのタイトル&quot;</span></span>
+<span id="cb31-6"><a href="dynamic-yaml.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>タイトルを動的なパラメータにしておくと, タイトルだけ異なるレポートを簡単に一括で生成できます.</p>
 <p>この節ではタイトルを例にしましたが, このアイディアは YAML セクションのどのメタデータのフィールドにも適用可能です.</p>
 </div>

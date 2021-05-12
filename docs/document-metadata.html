@@ -496,23 +496,23 @@ div.csl-indent {
 <div id="document-metadata" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> R コード内で文書メタデータにアクセスする</h2>
 <p>Rmd 文書をコンパイルする際には, YAML セクションの全てのメタデータはリストオブジェクト <code>rmarkdown::metadata</code> に格納されます. 例えば <code>rmarkdown::metadata$title</code> には文書のタイトルが与えられます. この <code>metadata</code> オブジェクトは R コード内で使うことができるので,　YAML メタデータに与えられた情報をハードコードしなくてすみます. 例えば以下のように <strong>blastula</strong> パッケージ <span class="citation">(<a href="#ref-R-blastula" role="doc-biblioref">Iannone and Cheng 2020</a>)</span> で Eメールを送る時, 文書のタイトルをメールの件名に, 著者フィールドを送信者情報に使うことができます.</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb31-1"><a href="document-metadata.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb31-2"><a href="document-metadata.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 重要なレポート</span></span>
-<span id="cb31-3"><a href="document-metadata.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> John Doe</span></span>
-<span id="cb31-4"><a href="document-metadata.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="an">email:</span><span class="co"> john@example.com</span></span>
-<span id="cb31-5"><a href="document-metadata.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb31-6"><a href="document-metadata.html#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-7"><a href="document-metadata.html#cb31-7" aria-hidden="true" tabindex="-1"></a>重要な分析ができましたので結果をメールで送りたいと思います.</span>
-<span id="cb31-8"><a href="document-metadata.html#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-9"><a href="document-metadata.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb31-10"><a href="document-metadata.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(rmarkdown)</span></span>
-<span id="cb31-11"><a href="document-metadata.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="in">library(blastula)</span></span>
-<span id="cb31-12"><a href="document-metadata.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="in">smtp_send(</span></span>
-<span id="cb31-13"><a href="document-metadata.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="in">  ...,</span></span>
-<span id="cb31-14"><a href="document-metadata.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="in">  from = setNames(metadata$email, metadata$author),</span></span>
-<span id="cb31-15"><a href="document-metadata.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="in">  subject = metadata$title</span></span>
-<span id="cb31-16"><a href="document-metadata.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb31-17"><a href="document-metadata.html#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb32-1"><a href="document-metadata.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb32-2"><a href="document-metadata.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 重要なレポート</span></span>
+<span id="cb32-3"><a href="document-metadata.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> John Doe</span></span>
+<span id="cb32-4"><a href="document-metadata.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="an">email:</span><span class="co"> john@example.com</span></span>
+<span id="cb32-5"><a href="document-metadata.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb32-6"><a href="document-metadata.html#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="document-metadata.html#cb32-7" aria-hidden="true" tabindex="-1"></a>重要な分析ができましたので結果をメールで送りたいと思います.</span>
+<span id="cb32-8"><a href="document-metadata.html#cb32-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-9"><a href="document-metadata.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb32-10"><a href="document-metadata.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="in">library(rmarkdown)</span></span>
+<span id="cb32-11"><a href="document-metadata.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="in">library(blastula)</span></span>
+<span id="cb32-12"><a href="document-metadata.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="in">smtp_send(</span></span>
+<span id="cb32-13"><a href="document-metadata.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="in">  ...,</span></span>
+<span id="cb32-14"><a href="document-metadata.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="in">  from = setNames(metadata$email, metadata$author),</span></span>
+<span id="cb32-15"><a href="document-metadata.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="in">  subject = metadata$title</span></span>
+<span id="cb32-16"><a href="document-metadata.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb32-17"><a href="document-metadata.html#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">

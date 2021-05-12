@@ -497,34 +497,34 @@ div.csl-indent {
 <h2><span class="header-section-number">4.9</span> 文書に複数の著者を表記する</h2>
 <!-- https://stackoverflow.com/questions/26043807/multiple-authors-and-subtitles-in-rmarkdown-yaml -->
 <p>R Markdown 文書のYAML フロントマターに複数の著者を加える方法は複数あります. 単純に, 全員を同列に並べたい場合, 1つの文字列を与えることでできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb51-1"><a href="multiple-authors.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb51-2"><a href="multiple-authors.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;無題&quot;</span></span>
-<span id="cb51-3"><a href="multiple-authors.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;John Doe, Jane Doe&quot;</span></span>
-<span id="cb51-4"><a href="multiple-authors.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<p>別の方法として, 各エントリごとに行を分けたいならば, YAML フィールドにエントリのリストを与えることができます. これは著者ごとにEメールアドレスや所属情報を加えたいときに役に立ちます. 例えばこのように.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb52-1"><a href="multiple-authors.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb52-2"><a href="multiple-authors.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
-<span id="cb52-3"><a href="multiple-authors.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> John Doe, 組織1</span></span>
-<span id="cb52-4"><a href="multiple-authors.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> Jane Doe, 組織2</span></span>
-<span id="cb52-5"><a href="multiple-authors.html#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<p>追加情報を文書の脚注として追記したい時, Markdown 構文の <code>^[]</code> を利用できます. これは著者ごとに連絡先Eメールや住所といった多くの情報を含めたい場合により便利です. 厳密な動作は出力フォーマットに依存します.</p>
+<span id="cb52-2"><a href="multiple-authors.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;無題&quot;</span></span>
+<span id="cb52-3"><a href="multiple-authors.html#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;John Doe, Jane Doe&quot;</span></span>
+<span id="cb52-4"><a href="multiple-authors.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>別の方法として, 各エントリごとに行を分けたいならば, YAML フィールドにエントリのリストを与えることができます. これは著者ごとにEメールアドレスや所属情報を加えたいときに役に立ちます. 例えばこのように.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb53-1"><a href="multiple-authors.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb53-2"><a href="multiple-authors.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
-<span id="cb53-3"><a href="multiple-authors.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> John Doe^[組織1, john@example.org]</span></span>
-<span id="cb53-4"><a href="multiple-authors.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> Jane Doe^[組織2, jane@example.org]</span></span>
+<span id="cb53-3"><a href="multiple-authors.html#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> John Doe, 組織1</span></span>
+<span id="cb53-4"><a href="multiple-authors.html#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> Jane Doe, 組織2</span></span>
 <span id="cb53-5"><a href="multiple-authors.html#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>追加情報を文書の脚注として追記したい時, Markdown 構文の <code>^[]</code> を利用できます. これは著者ごとに連絡先Eメールや住所といった多くの情報を含めたい場合により便利です. 厳密な動作は出力フォーマットに依存します.</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb54-1"><a href="multiple-authors.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb54-2"><a href="multiple-authors.html#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
+<span id="cb54-3"><a href="multiple-authors.html#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> John Doe^[組織1, john@example.org]</span></span>
+<span id="cb54-4"><a href="multiple-authors.html#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> Jane Doe^[組織2, jane@example.org]</span></span>
+<span id="cb54-5"><a href="multiple-authors.html#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>特定の R Markdown テンプレートを使うと YAML に追加パラメータを直接指定できます. 例えば <a href="https://rstudio.github.io/distill/">Distill</a> 出力フォーマットは <code>url</code>, <code>affiliation</code>, <code>affiliation_url</code> を指定することが可能です. まずは <strong>distill</strong> パッケージ <span class="citation">(<a href="#ref-R-distill" role="doc-biblioref">Allaire, Iannone, et al. 2021</a>)</span> をインストールします.</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb54-1"><a href="multiple-authors.html#cb54-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;distill&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb55-1"><a href="multiple-authors.html#cb55-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;distill&quot;</span>)</span></code></pre></div>
 <p>Distill フォーマットは詳細な著者情報を与えて使うことができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb55-1"><a href="multiple-authors.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb55-2"><a href="multiple-authors.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;R Markdown のための Distill&quot;</span></span>
-<span id="cb55-3"><a href="multiple-authors.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
-<span id="cb55-4"><a href="multiple-authors.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;JJ Allaire&quot;</span></span>
-<span id="cb55-5"><a href="multiple-authors.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://github.com/jjallaire</span></span>
-<span id="cb55-6"><a href="multiple-authors.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> RStudio</span></span>
-<span id="cb55-7"><a href="multiple-authors.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation_url</span><span class="kw">:</span><span class="at"> https://www.rstudio.com</span></span>
-<span id="cb55-8"><a href="multiple-authors.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> distill::distill_article</span></span>
-<span id="cb55-9"><a href="multiple-authors.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb56-1"><a href="multiple-authors.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb56-2"><a href="multiple-authors.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;R Markdown のための Distill&quot;</span></span>
+<span id="cb56-3"><a href="multiple-authors.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span></span>
+<span id="cb56-4"><a href="multiple-authors.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;JJ Allaire&quot;</span></span>
+<span id="cb56-5"><a href="multiple-authors.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">url</span><span class="kw">:</span><span class="at"> https://github.com/jjallaire</span></span>
+<span id="cb56-6"><a href="multiple-authors.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation</span><span class="kw">:</span><span class="at"> RStudio</span></span>
+<span id="cb56-7"><a href="multiple-authors.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">affiliation_url</span><span class="kw">:</span><span class="at"> https://www.rstudio.com</span></span>
+<span id="cb56-8"><a href="multiple-authors.html#cb56-8" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> distill::distill_article</span></span>
+<span id="cb56-9"><a href="multiple-authors.html#cb56-9" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">

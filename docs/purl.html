@@ -496,47 +496,47 @@ div.csl-indent {
 <div id="purl" class="section level2" number="3.4">
 <h2><span class="header-section-number">3.4</span> Markdown から R script への変換</h2>
 <p>R Markdown から全ての R コードを取り出したい時は, <code>knitr::purl()</code> 関数を呼ぶことができます. 以下は <code>purl.Rmd</code> というファイル名の簡単な Rmd の例です.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb20-1"><a href="purl.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-2"><a href="purl.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> R コードを取りだすために `purl()` を使いましょう</span></span>
-<span id="cb20-3"><a href="purl.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb20-4"><a href="purl.html#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="purl.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in">`knitr::purl()`</span> 関数は **knitr** 文書から  R コードチャンクを取り出しコードを R スクリプトに保存します.</span>
-<span id="cb20-6"><a href="purl.html#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="purl.html#cb20-7" aria-hidden="true" tabindex="-1"></a>以下は簡単なチャンクです.</span>
-<span id="cb20-8"><a href="purl.html#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-9"><a href="purl.html#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, simple, echo=TRUE}</span></span>
-<span id="cb20-10"><a href="purl.html#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb20-11"><a href="purl.html#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb20-12"><a href="purl.html#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="purl.html#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="in">`r 2 * pi`</span> のようなインライン R 式はデフォルトでは無視されます.</span>
-<span id="cb20-14"><a href="purl.html#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="purl.html#cb20-15" aria-hidden="true" tabindex="-1"></a>特定のコードチャンクを取り出してほしくない場合は, 以下の例のようにチャンクオプション <span class="in">`purl = FALSE`</span> を設定できます. </span>
-<span id="cb20-16"><a href="purl.html#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-17"><a href="purl.html#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, ignored, purl=FALSE}</span></span>
-<span id="cb20-18"><a href="purl.html#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="in">x = rnorm(1000)</span></span>
-<span id="cb20-19"><a href="purl.html#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb21-1"><a href="purl.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb21-2"><a href="purl.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> R コードを取りだすために `purl()` を使いましょう</span></span>
+<span id="cb21-3"><a href="purl.html#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb21-4"><a href="purl.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="purl.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="in">`knitr::purl()`</span> 関数は **knitr** 文書から  R コードチャンクを取り出しコードを R スクリプトに保存します.</span>
+<span id="cb21-6"><a href="purl.html#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="purl.html#cb21-7" aria-hidden="true" tabindex="-1"></a>以下は簡単なチャンクです.</span>
+<span id="cb21-8"><a href="purl.html#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-9"><a href="purl.html#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, simple, echo=TRUE}</span></span>
+<span id="cb21-10"><a href="purl.html#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb21-11"><a href="purl.html#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb21-12"><a href="purl.html#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="purl.html#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="in">`r 2 * pi`</span> のようなインライン R 式はデフォルトでは無視されます.</span>
+<span id="cb21-14"><a href="purl.html#cb21-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-15"><a href="purl.html#cb21-15" aria-hidden="true" tabindex="-1"></a>特定のコードチャンクを取り出してほしくない場合は, 以下の例のようにチャンクオプション <span class="in">`purl = FALSE`</span> を設定できます. </span>
+<span id="cb21-16"><a href="purl.html#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="purl.html#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, ignored, purl=FALSE}</span></span>
+<span id="cb21-18"><a href="purl.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="in">x = rnorm(1000)</span></span>
+<span id="cb21-19"><a href="purl.html#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>knitr::purl("purl.Rmd")</code> を呼び出したら, 以下の R スクリプト (デフォルトのファイル名は <code>purl.R</code>) が生成されます.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="purl.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- simple, echo=TRUE------------------------------</span></span>
-<span id="cb21-2"><a href="purl.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="purl.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- simple, echo=TRUE------------------------------</span></span>
+<span id="cb22-2"><a href="purl.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <p>上記の R スクリプトでは, チャンクオプションがコメントとして書かれています. 純粋な R コードが欲しい場合, <code>knitr::purl()</code> を <code>documentation = 0</code> という引数を与えて呼べば, 以下のような R スクリプトが生成されます.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="purl.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="purl.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <p>テキストを全て残したいときは <code>documentation = 2</code> 引数を使えば, 以下のような R スクリプトを生成します.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="purl.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
-<span id="cb23-2"><a href="purl.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; title: R コードを取りだすために `purl()` を使いましょう</span></span>
-<span id="cb23-3"><a href="purl.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
-<span id="cb23-4"><a href="purl.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb23-5"><a href="purl.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; `knitr::purl()` 関数は **knitr** 文書から  R コードチャンクを取り出しコードを R スクリプトに保存します.</span></span>
-<span id="cb23-6"><a href="purl.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb23-7"><a href="purl.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 以下は簡単なチャンクです.</span></span>
-<span id="cb23-8"><a href="purl.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb23-9"><a href="purl.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- simple, echo=TRUE------------------------------</span></span>
-<span id="cb23-10"><a href="purl.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb23-11"><a href="purl.html#cb23-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-12"><a href="purl.html#cb23-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb23-13"><a href="purl.html#cb23-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; `r 2 * pi` のようなインライン R 式はデフォルトでは無視されます.</span></span>
-<span id="cb23-14"><a href="purl.html#cb23-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
-<span id="cb23-15"><a href="purl.html#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 特定のコードチャンクを取り出してほしくない場合は, 以下の例のようにチャンクオプション `purl = FALSE` を設定できます. </span></span>
-<span id="cb23-16"><a href="purl.html#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="purl.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
+<span id="cb24-2"><a href="purl.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; title: R コードを取りだすために `purl()` を使いましょう</span></span>
+<span id="cb24-3"><a href="purl.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; ---</span></span>
+<span id="cb24-4"><a href="purl.html#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb24-5"><a href="purl.html#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; `knitr::purl()` 関数は **knitr** 文書から  R コードチャンクを取り出しコードを R スクリプトに保存します.</span></span>
+<span id="cb24-6"><a href="purl.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb24-7"><a href="purl.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 以下は簡単なチャンクです.</span></span>
+<span id="cb24-8"><a href="purl.html#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb24-9"><a href="purl.html#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- simple, echo=TRUE------------------------------</span></span>
+<span id="cb24-10"><a href="purl.html#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb24-11"><a href="purl.html#cb24-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-12"><a href="purl.html#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb24-13"><a href="purl.html#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; `r 2 * pi` のようなインライン R 式はデフォルトでは無視されます.</span></span>
+<span id="cb24-14"><a href="purl.html#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span>
+<span id="cb24-15"><a href="purl.html#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; 特定のコードチャンクを取り出してほしくない場合は, 以下の例のようにチャンクオプション `purl = FALSE` を設定できます. </span></span>
+<span id="cb24-16"><a href="purl.html#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; </span></span></code></pre></div>
 <p><code>purl = FALSE</code> というオプションのあるコードチャンクは R スクリプトから除外されることに注意してください.</p>
 <p>インライン R コードはデフォルトでは無視されます. R スクリプトにインライン表現も含めたいなら, <code>knitr::purl()</code> を呼ぶ前に R のグローバルオプション <code>options(knitr.purl.inline = TRUE)</code> を設定する必要があります.</p>
 </div>

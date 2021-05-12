@@ -496,40 +496,40 @@ div.csl-indent {
 <div id="time-chunk" class="section level2" number="13.3">
 <h2><span class="header-section-number">13.3</span> チャンクの実行時間をレポートする</h2>
 <p><strong>knitr</strong> はデフォルトでは knit 処理中にテキストベースの進捗バーを提供します. より正確なチャンクの時間の情報がほしいなら, カスタムチャンクフックを登録して各チャンクの時間を記録することもできます. これはそのようなフックの例です.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb377-1"><a href="time-chunk.html#cb377-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">time_it =</span> <span class="fu">local</span>({</span>
-<span id="cb377-2"><a href="time-chunk.html#cb377-2"></a>  now <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb377-3"><a href="time-chunk.html#cb377-3"></a>  <span class="cf">function</span>(before, options) {</span>
-<span id="cb377-4"><a href="time-chunk.html#cb377-4"></a>    <span class="cf">if</span> (before) {</span>
-<span id="cb377-5"><a href="time-chunk.html#cb377-5"></a>      <span class="co"># 各チャンクの直前の時刻を記録する</span></span>
-<span id="cb377-6"><a href="time-chunk.html#cb377-6"></a>      now <span class="ot">&lt;&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb377-7"><a href="time-chunk.html#cb377-7"></a>    } <span class="cf">else</span> {</span>
-<span id="cb377-8"><a href="time-chunk.html#cb377-8"></a>      <span class="co"># チャンク直後の時刻との差を計算する</span></span>
-<span id="cb377-9"><a href="time-chunk.html#cb377-9"></a>      res <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), now)</span>
-<span id="cb377-10"><a href="time-chunk.html#cb377-10"></a>      <span class="co"># 時間を表示するための文字列を返す</span></span>
-<span id="cb377-11"><a href="time-chunk.html#cb377-11"></a>      <span class="fu">paste</span>(<span class="st">&quot;Time for this code chunk to run:&quot;</span>, res)</span>
-<span id="cb377-12"><a href="time-chunk.html#cb377-12"></a>    }</span>
-<span id="cb377-13"><a href="time-chunk.html#cb377-13"></a>  }</span>
-<span id="cb377-14"><a href="time-chunk.html#cb377-14"></a>}))</span></code></pre></div>
+<div class="sourceCode" id="cb378"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb378-1"><a href="time-chunk.html#cb378-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">time_it =</span> <span class="fu">local</span>({</span>
+<span id="cb378-2"><a href="time-chunk.html#cb378-2"></a>  now <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb378-3"><a href="time-chunk.html#cb378-3"></a>  <span class="cf">function</span>(before, options) {</span>
+<span id="cb378-4"><a href="time-chunk.html#cb378-4"></a>    <span class="cf">if</span> (before) {</span>
+<span id="cb378-5"><a href="time-chunk.html#cb378-5"></a>      <span class="co"># 各チャンクの直前の時刻を記録する</span></span>
+<span id="cb378-6"><a href="time-chunk.html#cb378-6"></a>      now <span class="ot">&lt;&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb378-7"><a href="time-chunk.html#cb378-7"></a>    } <span class="cf">else</span> {</span>
+<span id="cb378-8"><a href="time-chunk.html#cb378-8"></a>      <span class="co"># チャンク直後の時刻との差を計算する</span></span>
+<span id="cb378-9"><a href="time-chunk.html#cb378-9"></a>      res <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), now)</span>
+<span id="cb378-10"><a href="time-chunk.html#cb378-10"></a>      <span class="co"># 時間を表示するための文字列を返す</span></span>
+<span id="cb378-11"><a href="time-chunk.html#cb378-11"></a>      <span class="fu">paste</span>(<span class="st">&quot;Time for this code chunk to run:&quot;</span>, res)</span>
+<span id="cb378-12"><a href="time-chunk.html#cb378-12"></a>    }</span>
+<span id="cb378-13"><a href="time-chunk.html#cb378-13"></a>  }</span>
+<span id="cb378-14"><a href="time-chunk.html#cb378-14"></a>}))</span></code></pre></div>
 <p>するとこれ以降のチャンクでは, チャンクオプション <code>time_it</code> を使って時間を測定できます. これが例です.</p>
 <pre><code>```{r, time_it = TRUE}
 Sys.sleep(2)
 ```</code></pre>
 <p>全てのコードチャンクで時間を表示したいなら, もちろん <code>knitr::opts_chunk$set(time_it = TRUE)</code> でグローバルに設定することができます.</p>
 <p>上記のフック関数では, さらに詳細な情報をチャンクオプションから出力することもできます. つまりフック関数の <code>options</code> 引数を使います. 例えば, 返り値のチャンクラベルを表示することもできます.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb379-1"><a href="time-chunk.html#cb379-1"></a><span class="fu">paste</span>(<span class="st">&quot;Time for the chunk&quot;</span>, options<span class="sc">$</span>label, <span class="st">&quot;to run:&quot;</span>, res)</span></code></pre></div>
+<div class="sourceCode" id="cb380"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb380-1"><a href="time-chunk.html#cb380-1"></a><span class="fu">paste</span>(<span class="st">&quot;Time for the chunk&quot;</span>, options<span class="sc">$</span>label, <span class="st">&quot;to run:&quot;</span>, res)</span></code></pre></div>
 <p>あるいはフック関数で時間を表示させずに記録するだけという手もあります.</p>
-<div class="sourceCode" id="cb380"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb380-1"><a href="time-chunk.html#cb380-1"></a>all_times <span class="ot">&lt;-</span> <span class="fu">list</span>()  <span class="co"># 全てのチャンクの時間を保存する</span></span>
-<span id="cb380-2"><a href="time-chunk.html#cb380-2"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">time_it =</span> <span class="fu">local</span>({</span>
-<span id="cb380-3"><a href="time-chunk.html#cb380-3"></a>  now <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
-<span id="cb380-4"><a href="time-chunk.html#cb380-4"></a>  <span class="cf">function</span>(before, options) {</span>
-<span id="cb380-5"><a href="time-chunk.html#cb380-5"></a>    <span class="cf">if</span> (before) {</span>
-<span id="cb380-6"><a href="time-chunk.html#cb380-6"></a>      now <span class="ot">&lt;&lt;-</span> <span class="fu">Sys.time</span>()</span>
-<span id="cb380-7"><a href="time-chunk.html#cb380-7"></a>    } <span class="cf">else</span> {</span>
-<span id="cb380-8"><a href="time-chunk.html#cb380-8"></a>      res <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), now)</span>
-<span id="cb380-9"><a href="time-chunk.html#cb380-9"></a>      all_times[[options<span class="sc">$</span>label]] <span class="ot">&lt;&lt;-</span> res</span>
-<span id="cb380-10"><a href="time-chunk.html#cb380-10"></a>    }</span>
-<span id="cb380-11"><a href="time-chunk.html#cb380-11"></a>  }</span>
-<span id="cb380-12"><a href="time-chunk.html#cb380-12"></a>}))</span></code></pre></div>
+<div class="sourceCode" id="cb381"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb381-1"><a href="time-chunk.html#cb381-1"></a>all_times <span class="ot">&lt;-</span> <span class="fu">list</span>()  <span class="co"># 全てのチャンクの時間を保存する</span></span>
+<span id="cb381-2"><a href="time-chunk.html#cb381-2"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">time_it =</span> <span class="fu">local</span>({</span>
+<span id="cb381-3"><a href="time-chunk.html#cb381-3"></a>  now <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb381-4"><a href="time-chunk.html#cb381-4"></a>  <span class="cf">function</span>(before, options) {</span>
+<span id="cb381-5"><a href="time-chunk.html#cb381-5"></a>    <span class="cf">if</span> (before) {</span>
+<span id="cb381-6"><a href="time-chunk.html#cb381-6"></a>      now <span class="ot">&lt;&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb381-7"><a href="time-chunk.html#cb381-7"></a>    } <span class="cf">else</span> {</span>
+<span id="cb381-8"><a href="time-chunk.html#cb381-8"></a>      res <span class="ot">&lt;-</span> <span class="fu">difftime</span>(<span class="fu">Sys.time</span>(), now)</span>
+<span id="cb381-9"><a href="time-chunk.html#cb381-9"></a>      all_times[[options<span class="sc">$</span>label]] <span class="ot">&lt;&lt;-</span> res</span>
+<span id="cb381-10"><a href="time-chunk.html#cb381-10"></a>    }</span>
+<span id="cb381-11"><a href="time-chunk.html#cb381-11"></a>  }</span>
+<span id="cb381-12"><a href="time-chunk.html#cb381-12"></a>}))</span></code></pre></div>
 <p>こうすると <code>all_times</code> オブジェクトで全ての実行時間情報にアクセスすることができます. このオブジェクトはチャンクラベルを名前にもつ名前つきリストで, 各要素の値はそれぞれのチャンクの実行時間です.</p>
 <p>最後に技術的な注意事項として, 先ほどのフックで使われた <code>local()</code> 関数に詳しくない人もいるかもしれませんので, これについて説明したいとおもいます. この関数でコードを「ローカルな」環境で実行することができます. その主な恩恵は, コード内で作られた変数はこの環境内のローカルなものになるので, 外部の環境, たいていの場合はグローバル環境を汚染することがないということです. 例えばここでは <code>local()</code> 内で <code>now</code> 変数を作成し, これを <code>time_it</code> 内で使用しています. フック関数内では通常の代入演算子 <code>&lt;-</code> の代わりに二重アロー演算子 <code>&lt;&lt;-</code> で <code>now</code> の値を更新しています. <code>&lt;&lt;-</code> は 親環境（ここではあくまでも, <code>local()</code> 環境の内部にある）の変数に代入し, <code>&lt;-</code> は単に現在の環境にのみ値を代入するからというのが理由です. 各コードチャンクが評価される直前に, ローカル変数 <code>now</code> は現在の時刻を記録します. 各コードチャンクが評価されたら現在時刻と <code>now</code> との差を計算します. <code>local()</code> はコード内に渡された最後の値を返しますが, ここではそれがフック関数であることに注意してください. 簡潔に言うなら, <code>local()</code> は, ローカルだけで使われグローバル環境で使われない変数を露出しないことで, ワークスペースをきれいに保つということです. グローバル環境に変数 <code>now</code> が作られても構わなければ, <code>local()</code> を使わないという選択もできます.</p>
 </div>

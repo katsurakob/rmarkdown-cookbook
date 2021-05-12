@@ -499,29 +499,29 @@ div.csl-indent {
 <p>1つでも外部スクリプトがあれば, 基本的にはそれを読み込んで中身を, チャンクの <code>code</code> オプションに渡すことができます. <code>code</code> オプションは文字列ベクトルをとるので, それをコードチャンクの本文として扱えます. 以下に少しだけ例をお見せします.</p>
 <ul>
 <li><p><code>code</code> オプションはソースコードを文字列ベクトルとして取ることができます. これが例です.</p>
-<div class="sourceCode" id="cb461"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb461-1"><a href="option-code.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=c(&#39;1 + 1&#39;, &#39;if (TRUE) plot(cars)&#39;)}</span></span>
-<span id="cb461-2"><a href="option-code.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
-<li><p>外部ファイルを読み込むこともできます.</p>
-<div class="sourceCode" id="cb462"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb462-1"><a href="option-code.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=xfun::read_utf8(&#39;your-script.R&#39;)}</span></span>
+<div class="sourceCode" id="cb462"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb462-1"><a href="option-code.html#cb462-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=c(&#39;1 + 1&#39;, &#39;if (TRUE) plot(cars)&#39;)}</span></span>
 <span id="cb462-2"><a href="option-code.html#cb462-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
+<li><p>外部ファイルを読み込むこともできます.</p>
+<div class="sourceCode" id="cb463"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb463-1"><a href="option-code.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=xfun::read_utf8(&#39;your-script.R&#39;)}</span></span>
+<span id="cb463-2"><a href="option-code.html#cb463-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
 <li><p>ファイルを好きな数だけ読み込むこともできます.</p>
-<div class="sourceCode" id="cb463"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb463-1"><a href="option-code.html#cb463-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb463-2"><a href="option-code.html#cb463-2" aria-hidden="true" tabindex="-1"></a><span class="in">read_files &lt;- function(files) {</span></span>
-<span id="cb463-3"><a href="option-code.html#cb463-3" aria-hidden="true" tabindex="-1"></a><span class="in">  unlist(lapply(files, xfun::read_utf8))</span></span>
-<span id="cb463-4"><a href="option-code.html#cb463-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb463-5"><a href="option-code.html#cb463-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb463-6"><a href="option-code.html#cb463-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb463-7"><a href="option-code.html#cb463-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=read_files(c(&#39;one.R&#39;, &#39;two.R&#39;))}</span></span>
-<span id="cb463-8"><a href="option-code.html#cb463-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
+<div class="sourceCode" id="cb464"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb464-1"><a href="option-code.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb464-2"><a href="option-code.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="in">read_files &lt;- function(files) {</span></span>
+<span id="cb464-3"><a href="option-code.html#cb464-3" aria-hidden="true" tabindex="-1"></a><span class="in">  unlist(lapply(files, xfun::read_utf8))</span></span>
+<span id="cb464-4"><a href="option-code.html#cb464-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb464-5"><a href="option-code.html#cb464-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb464-6"><a href="option-code.html#cb464-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb464-7"><a href="option-code.html#cb464-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, code=read_files(c(&#39;one.R&#39;, &#39;two.R&#39;))}</span></span>
+<span id="cb464-8"><a href="option-code.html#cb464-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
 </ul>
 <p>他の言語のスクリプトも読み込めます. R Markdown で他の言語を使う方法は<a href="other-languages.html#other-languages">15</a>章を確認してください. 以下に, もう少しだけ R 以外のコードの例をお見せします.</p>
 <ul>
 <li><p>Python スクリプトを読み込む.</p>
-<div class="sourceCode" id="cb464"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb464-1"><a href="option-code.html#cb464-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python, code=xfun::read_utf8(&#39;script.py&#39;)}</span></span>
-<span id="cb464-2"><a href="option-code.html#cb464-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
-<li><p>C++ ファイルを読み込む:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb465-1"><a href="option-code.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{Rcpp, code=xfun::read_utf8(&#39;file.cpp&#39;)}</span></span>
+<div class="sourceCode" id="cb465"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb465-1"><a href="option-code.html#cb465-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python, code=xfun::read_utf8(&#39;script.py&#39;)}</span></span>
 <span id="cb465-2"><a href="option-code.html#cb465-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
+<li><p>C++ ファイルを読み込む:</p>
+<div class="sourceCode" id="cb466"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb466-1"><a href="option-code.html#cb466-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{Rcpp, code=xfun::read_utf8(&#39;file.cpp&#39;)}</span></span>
+<span id="cb466-2"><a href="option-code.html#cb466-2" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div></li>
 </ul>
 <p><code>code</code> オプションがあれば, お気に入りのエディタ使って複雑なコードを開発した上で, それを R Markdown 文書のコードチャンクに読み込ませるということができます.</p>
 </div>

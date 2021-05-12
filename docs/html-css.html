@@ -498,21 +498,21 @@ div.csl-indent {
 <p>HTML 文書の外観をカスタマイズしようと思うのなら, CSS と JavaScript を少しでも勉強することを強くお勧めします. <strong>blogdown</strong> 本 <span class="citation">(<a href="#ref-blogdown2017" role="doc-biblioref">Xie, Hill, and Thomas 2017</a>)</span> の <a href="https://bookdown.org/yihui/blogdown/website-basics.html">Appendix B</a> には HTML, CSS, JavaScript の簡単なチュートリアルがあります.</p>
 <p>初心者にとっては, CSS のセレクタと優先度のルールを理解することは極めて重要です. さもなければ自分のカスタム CSS が意図したように機能しないことに混乱することになるでしょう (おそらく優先度が十分でないから).</p>
 <p>Rmd 文書に1つかそれ以上のカスタムスタイルシートを読み込ませるには, 次の例のような <code>css</code> オプション を使うことができます.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb140-1"><a href="html-css.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb140-2"><a href="html-css.html#cb140-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb140-3"><a href="html-css.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;style.css&quot;</span></span></code></pre></div>
-<p>複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使います.</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb141-1"><a href="html-css.html#cb141-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb141-2"><a href="html-css.html#cb141-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb141-3"><a href="html-css.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;style-1.css&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;style-2.css&quot;</span><span class="kw">]</span></span></code></pre></div>
+<span id="cb141-3"><a href="html-css.html#cb141-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;style.css&quot;</span></span></code></pre></div>
+<p>複数のスタイルシートを読み込ませるには, このようにブラケットで囲んだリストを使います.</p>
+<div class="sourceCode" id="cb142"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb142-1"><a href="html-css.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb142-2"><a href="html-css.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb142-3"><a href="html-css.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">css</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;style-1.css&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;style-2.css&quot;</span><span class="kw">]</span></span></code></pre></div>
 <p>あるいは, <code>css</code> コードチャンク を使って, Rmd 文書に 直接 CSS のルールを埋め込むこともできます. 例えばこのように.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb142-1"><a href="html-css.html#cb142-1" aria-hidden="true" tabindex="-1"></a>ここに <span class="in">`css`</span> コードチャンクを埋め込む.</span>
-<span id="cb142-2"><a href="html-css.html#cb142-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb142-3"><a href="html-css.html#cb142-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
-<span id="cb142-4"><a href="html-css.html#cb142-4" aria-hidden="true" tabindex="-1"></a><span class="in">p {</span></span>
-<span id="cb142-5"><a href="html-css.html#cb142-5" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 32px;</span></span>
-<span id="cb142-6"><a href="html-css.html#cb142-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb142-7"><a href="html-css.html#cb142-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb143-1"><a href="html-css.html#cb143-1" aria-hidden="true" tabindex="-1"></a>ここに <span class="in">`css`</span> コードチャンクを埋め込む.</span>
+<span id="cb143-2"><a href="html-css.html#cb143-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb143-3"><a href="html-css.html#cb143-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, echo=FALSE}</span></span>
+<span id="cb143-4"><a href="html-css.html#cb143-4" aria-hidden="true" tabindex="-1"></a><span class="in">p {</span></span>
+<span id="cb143-5"><a href="html-css.html#cb143-5" aria-hidden="true" tabindex="-1"></a><span class="in">  font-size: 32px;</span></span>
+<span id="cb143-6"><a href="html-css.html#cb143-6" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb143-7"><a href="html-css.html#cb143-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>チャンクオプション <code>echo = FALSE</code> は CSS コードを出力にそのまま表示させないことを意味しますが, CSS コードを含む <code>&lt;style&gt;</code> タグは HTML 出力ファイルには生成されます.</p>
 </div>
 <h3>参考文献</h3>

@@ -496,26 +496,26 @@ div.csl-indent {
 <div id="blastula-email" class="section level2" number="17.8">
 <h2><span class="header-section-number">17.8</span> R Markdown から Eメールを送信する Send emails based on R Markdown</h2>
 <p><strong>blastula</strong> パッケージ <span class="citation">(<a href="#ref-R-blastula" role="doc-biblioref">Iannone and Cheng 2020</a>)</span>があれば Rmd 文書を Eメールの本文にして送信できます. Rmd 文書を Eメールへレンダリングするには, 文書に出力フォーマット <code>blastula::blastula_email</code> を使用する必要があります.</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb495-1"><a href="blastula-email.html#cb495-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb495-2"><a href="blastula-email.html#cb495-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 週次レポート</span></span>
-<span id="cb495-3"><a href="blastula-email.html#cb495-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> blastula::blastula_email</span></span>
-<span id="cb495-4"><a href="blastula-email.html#cb495-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span> </span>
-<span id="cb495-5"><a href="blastula-email.html#cb495-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-6"><a href="blastula-email.html#cb495-6" aria-hidden="true" tabindex="-1"></a>ボスへ</span>
-<span id="cb495-7"><a href="blastula-email.html#cb495-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-8"><a href="blastula-email.html#cb495-8" aria-hidden="true" tabindex="-1"></a>お疲れ様です.</span>
-<span id="cb495-9"><a href="blastula-email.html#cb495-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-10"><a href="blastula-email.html#cb495-10" aria-hidden="true" tabindex="-1"></a>以下が <span class="in">`iris`</span> データの分析になります.</span>
-<span id="cb495-11"><a href="blastula-email.html#cb495-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-12"><a href="blastula-email.html#cb495-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb495-13"><a href="blastula-email.html#cb495-13" aria-hidden="true" tabindex="-1"></a><span class="in">summary(iris)</span></span>
-<span id="cb495-14"><a href="blastula-email.html#cb495-14" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
-<span id="cb495-15"><a href="blastula-email.html#cb495-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb495-16"><a href="blastula-email.html#cb495-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-17"><a href="blastula-email.html#cb495-17" aria-hidden="true" tabindex="-1"></a>もううんざりだというのなら知らせていただきたく.</span>
-<span id="cb495-18"><a href="blastula-email.html#cb495-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb495-19"><a href="blastula-email.html#cb495-19" aria-hidden="true" tabindex="-1"></a>よろしくお願いします</span>
-<span id="cb495-20"><a href="blastula-email.html#cb495-20" aria-hidden="true" tabindex="-1"></a>ジョン</span></code></pre></div>
+<div class="sourceCode" id="cb496"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb496-1"><a href="blastula-email.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb496-2"><a href="blastula-email.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 週次レポート</span></span>
+<span id="cb496-3"><a href="blastula-email.html#cb496-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> blastula::blastula_email</span></span>
+<span id="cb496-4"><a href="blastula-email.html#cb496-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span> </span>
+<span id="cb496-5"><a href="blastula-email.html#cb496-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-6"><a href="blastula-email.html#cb496-6" aria-hidden="true" tabindex="-1"></a>ボスへ</span>
+<span id="cb496-7"><a href="blastula-email.html#cb496-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-8"><a href="blastula-email.html#cb496-8" aria-hidden="true" tabindex="-1"></a>お疲れ様です.</span>
+<span id="cb496-9"><a href="blastula-email.html#cb496-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-10"><a href="blastula-email.html#cb496-10" aria-hidden="true" tabindex="-1"></a>以下が <span class="in">`iris`</span> データの分析になります.</span>
+<span id="cb496-11"><a href="blastula-email.html#cb496-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-12"><a href="blastula-email.html#cb496-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb496-13"><a href="blastula-email.html#cb496-13" aria-hidden="true" tabindex="-1"></a><span class="in">summary(iris)</span></span>
+<span id="cb496-14"><a href="blastula-email.html#cb496-14" aria-hidden="true" tabindex="-1"></a><span class="in">plot(iris[, -5])</span></span>
+<span id="cb496-15"><a href="blastula-email.html#cb496-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb496-16"><a href="blastula-email.html#cb496-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-17"><a href="blastula-email.html#cb496-17" aria-hidden="true" tabindex="-1"></a>もううんざりだというのなら知らせていただきたく.</span>
+<span id="cb496-18"><a href="blastula-email.html#cb496-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb496-19"><a href="blastula-email.html#cb496-19" aria-hidden="true" tabindex="-1"></a>よろしくお願いします</span>
+<span id="cb496-20"><a href="blastula-email.html#cb496-20" aria-hidden="true" tabindex="-1"></a>ジョン</span></code></pre></div>
 <p>この Rmd 文書は <code>blastula::render_email()</code> 関数でレンダリングされ, 出力は <code>blastula::smtp_send()</code> に渡されます. これはEメールを送信する関数です. <code>smtp_send()</code> にはEメールサーバとあなたの認証が必要であることに注意してください.</p>
 <p>RStudio Connect を使用しているなら, <a href="https://solutions.rstudio.com/examples/blastula-overview/" class="uri">https://solutions.rstudio.com/examples/blastula-overview/</a> で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.</p>
 

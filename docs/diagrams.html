@@ -501,19 +501,19 @@ div.csl-indent {
 <h3><span class="header-section-number">4.15.1</span> 基本的なダイアグラム</h3>
 <p><strong>DiagrammeR</strong> はいくつかの異なるグラフ言語を使ってグラフを作成する方法を提供します. この節では Graphviz の例を提示しますが,<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> <strong>DiagrammeR</strong> は純粋に R コードだけでグラフを作ることもできます.</p>
 <p>RStudio IDE は Graphviz (<code>.gv</code>) および mermaid (<code>.mmd</code>) ファイルをネイティブにサポートしています. これらのタイプのファイルを RStudio で編集すると, シンタックスハイライトされるという利点があります. RStudio のツールバーの “Preview” ボタンをクリックすると, ダイアグラムをプレビューすることができます. 図<a href="diagrams.html#fig:diagram-profit">4.4</a> は, 4つのステップを表す４つの矩形で構成された, フローチャートの単純な例です. これは以下のコードで生成されています.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb67-1"><a href="diagrams.html#cb67-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">&quot;digraph {</span></span>
-<span id="cb67-2"><a href="diagrams.html#cb67-2"></a><span class="st">  graph [layout = dot, rankdir = TB]</span></span>
-<span id="cb67-3"><a href="diagrams.html#cb67-3"></a><span class="st">  </span></span>
-<span id="cb67-4"><a href="diagrams.html#cb67-4"></a><span class="st">  node [shape = rectangle]        </span></span>
-<span id="cb67-5"><a href="diagrams.html#cb67-5"></a><span class="st">  rec1 [label = &#39;ステップ 1. 起床する&#39;]</span></span>
-<span id="cb67-6"><a href="diagrams.html#cb67-6"></a><span class="st">  rec2 [label = &#39;ステップ 2. コードを書く&#39;]</span></span>
-<span id="cb67-7"><a href="diagrams.html#cb67-7"></a><span class="st">  rec3 [label = &#39;ステップ 3. ???&#39;]</span></span>
-<span id="cb67-8"><a href="diagrams.html#cb67-8"></a><span class="st">  rec4 [label = &#39;ステップ 4. 収入を得る&#39;]</span></span>
-<span id="cb67-9"><a href="diagrams.html#cb67-9"></a><span class="st">  </span></span>
-<span id="cb67-10"><a href="diagrams.html#cb67-10"></a><span class="st">  # ノードIDでエッジを定義</span></span>
-<span id="cb67-11"><a href="diagrams.html#cb67-11"></a><span class="st">  rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></span>
-<span id="cb67-12"><a href="diagrams.html#cb67-12"></a><span class="st">  }&quot;</span>, </span>
-<span id="cb67-13"><a href="diagrams.html#cb67-13"></a>  <span class="at">height =</span> <span class="dv">500</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb68-1"><a href="diagrams.html#cb68-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">&quot;digraph {</span></span>
+<span id="cb68-2"><a href="diagrams.html#cb68-2"></a><span class="st">  graph [layout = dot, rankdir = TB]</span></span>
+<span id="cb68-3"><a href="diagrams.html#cb68-3"></a><span class="st">  </span></span>
+<span id="cb68-4"><a href="diagrams.html#cb68-4"></a><span class="st">  node [shape = rectangle]        </span></span>
+<span id="cb68-5"><a href="diagrams.html#cb68-5"></a><span class="st">  rec1 [label = &#39;ステップ 1. 起床する&#39;]</span></span>
+<span id="cb68-6"><a href="diagrams.html#cb68-6"></a><span class="st">  rec2 [label = &#39;ステップ 2. コードを書く&#39;]</span></span>
+<span id="cb68-7"><a href="diagrams.html#cb68-7"></a><span class="st">  rec3 [label = &#39;ステップ 3. ???&#39;]</span></span>
+<span id="cb68-8"><a href="diagrams.html#cb68-8"></a><span class="st">  rec4 [label = &#39;ステップ 4. 収入を得る&#39;]</span></span>
+<span id="cb68-9"><a href="diagrams.html#cb68-9"></a><span class="st">  </span></span>
+<span id="cb68-10"><a href="diagrams.html#cb68-10"></a><span class="st">  # ノードIDでエッジを定義</span></span>
+<span id="cb68-11"><a href="diagrams.html#cb68-11"></a><span class="st">  rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></span>
+<span id="cb68-12"><a href="diagrams.html#cb68-12"></a><span class="st">  }&quot;</span>, </span>
+<span id="cb68-13"><a href="diagrams.html#cb68-13"></a>  <span class="at">height =</span> <span class="dv">500</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:diagram-profit"></span>
 <div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
@@ -526,27 +526,27 @@ div.csl-indent {
 <div id="adding-parameters-to-plots" class="section level3" number="4.15.2">
 <h3><span class="header-section-number">4.15.2</span> 図にパラメータを追加する</h3>
 <p>Graphviz の置換機能は可読性を損なうことなく, R コードを Graphviz のグラフ設定に混ぜ込むことができます. <code>@@</code> を伴う置換を指定するには, そこに置換されるのは有効な R 評価式であることを確実にせねばなりません. 評価式は脚注として置かれ, そして R ベクトルオブジェクトを返すものでなくてはなりません. <code>@@</code> という記法のすぐ後には数字が続き, これは R 評価式の脚注番号に対応します. 図<a href="diagrams.html#fig:diagram-params">4.5</a>はダイアグラムへの R コードの埋め込みと評価の例です.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb68-1"><a href="diagrams.html#cb68-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">&quot;</span></span>
-<span id="cb68-2"><a href="diagrams.html#cb68-2"></a><span class="st">  digraph graph2 {</span></span>
-<span id="cb68-3"><a href="diagrams.html#cb68-3"></a><span class="st">  </span></span>
-<span id="cb68-4"><a href="diagrams.html#cb68-4"></a><span class="st">  graph [layout = dot, rankdir = LR]</span></span>
-<span id="cb68-5"><a href="diagrams.html#cb68-5"></a><span class="st">  </span></span>
-<span id="cb68-6"><a href="diagrams.html#cb68-6"></a><span class="st">  # node definitions with substituted label text</span></span>
-<span id="cb68-7"><a href="diagrams.html#cb68-7"></a><span class="st">  node [shape = oval]</span></span>
-<span id="cb68-8"><a href="diagrams.html#cb68-8"></a><span class="st">  a [label = &#39;@@1&#39;]</span></span>
-<span id="cb68-9"><a href="diagrams.html#cb68-9"></a><span class="st">  b [label = &#39;@@2&#39;]</span></span>
-<span id="cb68-10"><a href="diagrams.html#cb68-10"></a><span class="st">  c [label = &#39;@@3&#39;]</span></span>
-<span id="cb68-11"><a href="diagrams.html#cb68-11"></a><span class="st">  d [label = &#39;@@4&#39;]</span></span>
-<span id="cb68-12"><a href="diagrams.html#cb68-12"></a><span class="st">  </span></span>
-<span id="cb68-13"><a href="diagrams.html#cb68-13"></a><span class="st">  a -&gt; b -&gt; c -&gt; d</span></span>
-<span id="cb68-14"><a href="diagrams.html#cb68-14"></a><span class="st">  }</span></span>
-<span id="cb68-15"><a href="diagrams.html#cb68-15"></a><span class="st">  </span></span>
-<span id="cb68-16"><a href="diagrams.html#cb68-16"></a><span class="st">  [1]: names(iris)[1]</span></span>
-<span id="cb68-17"><a href="diagrams.html#cb68-17"></a><span class="st">  [2]: names(iris)[2]</span></span>
-<span id="cb68-18"><a href="diagrams.html#cb68-18"></a><span class="st">  [3]: names(iris)[3]</span></span>
-<span id="cb68-19"><a href="diagrams.html#cb68-19"></a><span class="st">  [4]: names(iris)[4]</span></span>
-<span id="cb68-20"><a href="diagrams.html#cb68-20"></a><span class="st">  &quot;</span>, </span>
-<span id="cb68-21"><a href="diagrams.html#cb68-21"></a>  <span class="at">height =</span> <span class="dv">100</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb69-1"><a href="diagrams.html#cb69-1"></a>DiagrammeR<span class="sc">::</span><span class="fu">grViz</span>(<span class="st">&quot;</span></span>
+<span id="cb69-2"><a href="diagrams.html#cb69-2"></a><span class="st">  digraph graph2 {</span></span>
+<span id="cb69-3"><a href="diagrams.html#cb69-3"></a><span class="st">  </span></span>
+<span id="cb69-4"><a href="diagrams.html#cb69-4"></a><span class="st">  graph [layout = dot, rankdir = LR]</span></span>
+<span id="cb69-5"><a href="diagrams.html#cb69-5"></a><span class="st">  </span></span>
+<span id="cb69-6"><a href="diagrams.html#cb69-6"></a><span class="st">  # node definitions with substituted label text</span></span>
+<span id="cb69-7"><a href="diagrams.html#cb69-7"></a><span class="st">  node [shape = oval]</span></span>
+<span id="cb69-8"><a href="diagrams.html#cb69-8"></a><span class="st">  a [label = &#39;@@1&#39;]</span></span>
+<span id="cb69-9"><a href="diagrams.html#cb69-9"></a><span class="st">  b [label = &#39;@@2&#39;]</span></span>
+<span id="cb69-10"><a href="diagrams.html#cb69-10"></a><span class="st">  c [label = &#39;@@3&#39;]</span></span>
+<span id="cb69-11"><a href="diagrams.html#cb69-11"></a><span class="st">  d [label = &#39;@@4&#39;]</span></span>
+<span id="cb69-12"><a href="diagrams.html#cb69-12"></a><span class="st">  </span></span>
+<span id="cb69-13"><a href="diagrams.html#cb69-13"></a><span class="st">  a -&gt; b -&gt; c -&gt; d</span></span>
+<span id="cb69-14"><a href="diagrams.html#cb69-14"></a><span class="st">  }</span></span>
+<span id="cb69-15"><a href="diagrams.html#cb69-15"></a><span class="st">  </span></span>
+<span id="cb69-16"><a href="diagrams.html#cb69-16"></a><span class="st">  [1]: names(iris)[1]</span></span>
+<span id="cb69-17"><a href="diagrams.html#cb69-17"></a><span class="st">  [2]: names(iris)[2]</span></span>
+<span id="cb69-18"><a href="diagrams.html#cb69-18"></a><span class="st">  [3]: names(iris)[3]</span></span>
+<span id="cb69-19"><a href="diagrams.html#cb69-19"></a><span class="st">  [4]: names(iris)[4]</span></span>
+<span id="cb69-20"><a href="diagrams.html#cb69-20"></a><span class="st">  &quot;</span>, </span>
+<span id="cb69-21"><a href="diagrams.html#cb69-21"></a>  <span class="at">height =</span> <span class="dv">100</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:diagram-params"></span>
 <div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
 <script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>

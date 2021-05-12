@@ -496,11 +496,11 @@ div.csl-indent {
 <div id="crop-plot" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> グラフをクロップする</h2>
 <p>チャンクフック<code>knitr::hook_pdfcrop()</code> は PDF やその他の種類の画像ファイルをクロップ, つまりグラフから余分な余白を削除するのに使えます. これを有効にするには, コードチャンク内で <code>knit_hooks$set()</code> を使って対応するチャンクオプションをオンに設定してください. これが例です.</p>
-<div class="sourceCode" id="cb373"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb373-1"><a href="crop-plot.html#cb373-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
+<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
 <p>そうすると, チャンクオプション <code>crop = TRUE</code> を使ってグラフをクロップできます.</p>
 <p>フック関数 <code>hook_pdfcrop()</code> は内部プログラム <code>pdfcrop</code> を呼び出して PDF ファイルをクロップします. このプログラムは通常 LaTeX の配布パッケージ (例えば TeX Live や MikTeX) に同梱されています. システムでこれが使用可能かどうかは次のようにして確認できます.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
-<span id="cb374-2"><a href="crop-plot.html#cb374-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb375"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb375-1"><a href="crop-plot.html#cb375-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
+<span id="cb375-2"><a href="crop-plot.html#cb375-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
 <pre><code>##                  pdfcrop 
 ## &quot;/usr/local/bin/pdfcrop&quot;</code></pre>
 <p>LaTeX 配布パッケージの TinyTeX (<a href="install-latex.html#install-latex">1.2</a>節参照) を使っていて, <code>pdfcrop</code> があなたのシステムで利用できないときは, <code>tinytex::tlmgr_install('pdfcrop')</code> でインストールできます.</p>

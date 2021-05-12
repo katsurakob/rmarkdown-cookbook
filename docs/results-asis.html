@@ -496,17 +496,17 @@ div.csl-indent {
 <div id="results-asis" class="section level2" number="11.11">
 <h2><span class="header-section-number">11.11</span> テキストを生の Markdown として出力する (*)</h2>
 <p>デフォルトではコードチャンクからのテキスト出力は冒頭に2つハッシュを置いて, テキストをそのまま書き出します (<a href="opts-comment.html#opts-comment">11.12</a>節参照). <strong>knitr</strong> は出力をコードブロックで囲むため, テキストはそのまま表示されます. 例えば <code>1:5</code> というコードの生の出力はこうなります.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb302-1"><a href="results-asis.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb302-2"><a href="results-asis.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="in">## [1] 1 2 3 4 5</span></span>
-<span id="cb302-3"><a href="results-asis.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>時には生のテキストをそのまま出力するのではなく, Markdown 構文として扱いたいこともあるでしょう. 例えば <code>cat('# これは見出しです')</code> でセクション見出しを書きたい時があるかもしれませんが, 生の出力はこうなります.</p>
 <div class="sourceCode" id="cb303"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb303-1"><a href="results-asis.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb303-2"><a href="results-asis.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="in">## # これは見出しです</span></span>
+<span id="cb303-2"><a href="results-asis.html#cb303-2" aria-hidden="true" tabindex="-1"></a><span class="in">## [1] 1 2 3 4 5</span></span>
 <span id="cb303-3"><a href="results-asis.html#cb303-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>時には生のテキストをそのまま出力するのではなく, Markdown 構文として扱いたいこともあるでしょう. 例えば <code>cat('# これは見出しです')</code> でセクション見出しを書きたい時があるかもしれませんが, 生の出力はこうなります.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb304-1"><a href="results-asis.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb304-2"><a href="results-asis.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="in">## # これは見出しです</span></span>
+<span id="cb304-3"><a href="results-asis.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>テキストをコードブロックで囲んでほしくない, あるいは冒頭のハッシュもいらない. つまり, 生の出力が <code>cat()</code> に与えた文字列そのままになるようにしたい, というわけです.</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb304-1"><a href="results-asis.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># This is a header</span></span></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb305-1"><a href="results-asis.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># This is a header</span></span></code></pre></div>
 <p>これを解決するのはチャンクオプション <code>results = 'asis'</code> です. このオプションは テキスト出力をコードブロックで囲むのではなく, “as is” (そのまま) 扱うよう <strong>knitr</strong> に指示します. R コードから動的にコンテンツを生成したい時に, このオプションは特に有用でしょう. 例えば以下のコードチャンクと <code>results = 'asis'</code> オプションで, <code>iris</code> データから列名のリストを生成します.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb305-1"><a href="results-asis.html#cb305-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;- `&quot;</span>, <span class="fu">names</span>(iris), <span class="st">&quot;`&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb306-1"><a href="results-asis.html#cb306-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;- `&quot;</span>, <span class="fu">names</span>(iris), <span class="st">&quot;`&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <ul>
 <li><code>Sepal.Length</code></li>
 <li><code>Sepal.Width</code></li>
@@ -515,45 +515,45 @@ div.csl-indent {
 <li><code>Species</code></li>
 </ul>
 <p>ハイフン (<code>-</code>) は番号のない箇条書き意味する Markdown 構文です. バッククォートはオプションです. <code>results = 'asis'</code> オプションなしで上記のコードチャンクがそのまま出力されるのを見ることもできます.</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb306-1"><a href="results-asis.html#cb306-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;- `&quot;</span>, <span class="fu">names</span>(iris), <span class="st">&quot;`&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb307-1"><a href="results-asis.html#cb307-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;- `&quot;</span>, <span class="fu">names</span>(iris), <span class="st">&quot;`&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
 <pre><code>- `Sepal.Length`
 - `Sepal.Width`
 - `Petal.Length`
 - `Petal.Width`
 - `Species`</code></pre>
 <p>以下は, セクション見出し, パラグラフ, <code>mtcars</code> データの全ての列に対して<code>for</code> ループ内で作成したグラフを表示する例の全貌です</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb308-1"><a href="results-asis.html#cb308-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb308-2"><a href="results-asis.html#cb308-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> プログラミングでコンテンツを生成する</span></span>
-<span id="cb308-3"><a href="results-asis.html#cb308-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb308-4"><a href="results-asis.html#cb308-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb308-5"><a href="results-asis.html#cb308-5" aria-hidden="true" tabindex="-1"></a>チャンクオプション <span class="in">`results = &#39;asis&#39;`</span> で生の Markdown コンテンツを書き出すことができます. これはプロットを含めることもできます. </span>
-<span id="cb308-6"><a href="results-asis.html#cb308-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb308-7"><a href="results-asis.html#cb308-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, mtcars-plots, results=&#39;asis&#39;}</span></span>
-<span id="cb308-8"><a href="results-asis.html#cb308-8" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in names(mtcars)) {</span></span>
-<span id="cb308-9"><a href="results-asis.html#cb308-9" aria-hidden="true" tabindex="-1"></a><span class="in">  cat(&#39;\n\n# 変数 `&#39;, i, &#39;` の要約.\n\n&#39;)</span></span>
-<span id="cb308-10"><a href="results-asis.html#cb308-10" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- mtcars[, i]</span></span>
-<span id="cb308-11"><a href="results-asis.html#cb308-11" aria-hidden="true" tabindex="-1"></a><span class="in">  if (length(unique(x)) &lt;= 6) {</span></span>
-<span id="cb308-12"><a href="results-asis.html#cb308-12" aria-hidden="true" tabindex="-1"></a><span class="in">    cat(&#39;`&#39;, i, &#39;` はカテゴリカル変数である.\n\n&#39;)</span></span>
-<span id="cb308-13"><a href="results-asis.html#cb308-13" aria-hidden="true" tabindex="-1"></a><span class="in">    plot(table(x), xlab = i, ylab = &#39;度数&#39;, lwd = 10)</span></span>
-<span id="cb308-14"><a href="results-asis.html#cb308-14" aria-hidden="true" tabindex="-1"></a><span class="in">  } else {</span></span>
-<span id="cb308-15"><a href="results-asis.html#cb308-15" aria-hidden="true" tabindex="-1"></a><span class="in">    cat(&#39;連続変数 `&#39;, i, &#39;` のヒストグラム.\n\n&#39;)</span></span>
-<span id="cb308-16"><a href="results-asis.html#cb308-16" aria-hidden="true" tabindex="-1"></a><span class="in">    hist(x, xlab = i, main = &#39;&#39;)</span></span>
-<span id="cb308-17"><a href="results-asis.html#cb308-17" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
-<span id="cb308-18"><a href="results-asis.html#cb308-18" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb308-19"><a href="results-asis.html#cb308-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb309-1"><a href="results-asis.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb309-2"><a href="results-asis.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> プログラミングでコンテンツを生成する</span></span>
+<span id="cb309-3"><a href="results-asis.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb309-4"><a href="results-asis.html#cb309-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-5"><a href="results-asis.html#cb309-5" aria-hidden="true" tabindex="-1"></a>チャンクオプション <span class="in">`results = &#39;asis&#39;`</span> で生の Markdown コンテンツを書き出すことができます. これはプロットを含めることもできます. </span>
+<span id="cb309-6"><a href="results-asis.html#cb309-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb309-7"><a href="results-asis.html#cb309-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, mtcars-plots, results=&#39;asis&#39;}</span></span>
+<span id="cb309-8"><a href="results-asis.html#cb309-8" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in names(mtcars)) {</span></span>
+<span id="cb309-9"><a href="results-asis.html#cb309-9" aria-hidden="true" tabindex="-1"></a><span class="in">  cat(&#39;\n\n# 変数 `&#39;, i, &#39;` の要約.\n\n&#39;)</span></span>
+<span id="cb309-10"><a href="results-asis.html#cb309-10" aria-hidden="true" tabindex="-1"></a><span class="in">  x &lt;- mtcars[, i]</span></span>
+<span id="cb309-11"><a href="results-asis.html#cb309-11" aria-hidden="true" tabindex="-1"></a><span class="in">  if (length(unique(x)) &lt;= 6) {</span></span>
+<span id="cb309-12"><a href="results-asis.html#cb309-12" aria-hidden="true" tabindex="-1"></a><span class="in">    cat(&#39;`&#39;, i, &#39;` はカテゴリカル変数である.\n\n&#39;)</span></span>
+<span id="cb309-13"><a href="results-asis.html#cb309-13" aria-hidden="true" tabindex="-1"></a><span class="in">    plot(table(x), xlab = i, ylab = &#39;度数&#39;, lwd = 10)</span></span>
+<span id="cb309-14"><a href="results-asis.html#cb309-14" aria-hidden="true" tabindex="-1"></a><span class="in">  } else {</span></span>
+<span id="cb309-15"><a href="results-asis.html#cb309-15" aria-hidden="true" tabindex="-1"></a><span class="in">    cat(&#39;連続変数 `&#39;, i, &#39;` のヒストグラム.\n\n&#39;)</span></span>
+<span id="cb309-16"><a href="results-asis.html#cb309-16" aria-hidden="true" tabindex="-1"></a><span class="in">    hist(x, xlab = i, main = &#39;&#39;)</span></span>
+<span id="cb309-17"><a href="results-asis.html#cb309-17" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb309-18"><a href="results-asis.html#cb309-18" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb309-19"><a href="results-asis.html#cb309-19" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>改行 (<code>\n</code>) を過剰に追加していることに注意してください. これは Markdown コンテンツ上でそれぞれの要素を明確に分離したいからです. 要素間の改行は多すぎても無害ですが, 改行が不十分だと問題が起こりえます. 例えば以下の Markdown テキストには大いに曖昧さがあります.</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb309-1"><a href="results-asis.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># これは見出し?</span></span>
-<span id="cb309-2"><a href="results-asis.html#cb309-2" aria-hidden="true" tabindex="-1"></a>これは段落?ヘッダの一部?</span>
-<span id="cb309-3"><a href="results-asis.html#cb309-3" aria-hidden="true" tabindex="-1"></a><span class="al">![この画像は?](foo.png)</span></span>
-<span id="cb309-4"><a href="results-asis.html#cb309-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># この行はどうなる?</span></span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb310-1"><a href="results-asis.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># これは見出し?</span></span>
+<span id="cb310-2"><a href="results-asis.html#cb310-2" aria-hidden="true" tabindex="-1"></a>これは段落?ヘッダの一部?</span>
+<span id="cb310-3"><a href="results-asis.html#cb310-3" aria-hidden="true" tabindex="-1"></a><span class="al">![この画像は?](foo.png)</span></span>
+<span id="cb310-4"><a href="results-asis.html#cb310-4" aria-hidden="true" tabindex="-1"></a><span class="fu"># この行はどうなる?</span></span></code></pre></div>
 <p><code>cat('\n')</code> で生成できていたように空白行を追加すると, この曖昧さは消えます.</p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb310-1"><a href="results-asis.html#cb310-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># そうこれは見出し!</span></span>
-<span id="cb310-2"><a href="results-asis.html#cb310-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-3"><a href="results-asis.html#cb310-3" aria-hidden="true" tabindex="-1"></a>そしてこれは明らかに段落.</span>
-<span id="cb310-4"><a href="results-asis.html#cb310-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-5"><a href="results-asis.html#cb310-5" aria-hidden="true" tabindex="-1"></a><span class="al">![これは画像](foo.png)</span></span>
-<span id="cb310-6"><a href="results-asis.html#cb310-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb310-7"><a href="results-asis.html#cb310-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># 完全なる別の見出し</span></span></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb311-1"><a href="results-asis.html#cb311-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># そうこれは見出し!</span></span>
+<span id="cb311-2"><a href="results-asis.html#cb311-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-3"><a href="results-asis.html#cb311-3" aria-hidden="true" tabindex="-1"></a>そしてこれは明らかに段落.</span>
+<span id="cb311-4"><a href="results-asis.html#cb311-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-5"><a href="results-asis.html#cb311-5" aria-hidden="true" tabindex="-1"></a><span class="al">![これは画像](foo.png)</span></span>
+<span id="cb311-6"><a href="results-asis.html#cb311-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb311-7"><a href="results-asis.html#cb311-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># 完全なる別の見出し</span></span></code></pre></div>
 <p><code>cat()</code> だけがテキスト出力のできる関数ではありません. 他のよく使われる関数には <code>print()</code> があります. <code>print()</code> はしばしばオブジェクトの表示のために<strong>暗黙に</strong>呼び出されることに注意してください. これが R コンソールでオブジェクトや値をタイプした直後に出力が表示される理由です. 例えば R コンソールで <code>1:5</code> とタイプし <code>Enter</code> キーを押した時, R が実際には <code>print(1:5)</code> を暗黙に呼び出しているので出力が見えます. R コンソール上で入力していれば正常に表示されていたはずのオブジェクトや値が <code>for</code> ループなどのコード内では出力の生成に失敗するというのはとても混乱をもたらします. この話はかなり技術的に高度なので, 私はブログに <a href="https://yihui.org/en/2017/06/top-level-r-expressions/">“The Ghost Printer behind Top-level R Expressions”</a> という説明の記事を投稿しました. 技術的な詳細に関心がないなら, このルールだけは覚えてください. 「<code>for</code> ループ内の出力が表示されなかったら, おそらく <code>print()</code> 関数で明示的に表示させるべきです」</p>
 </div>
             </section>

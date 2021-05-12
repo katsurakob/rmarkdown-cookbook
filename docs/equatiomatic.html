@@ -496,14 +496,14 @@ div.csl-indent {
 <div id="equatiomatic" class="section level2" number="4.13">
 <h2><span class="header-section-number">4.13</span> モデルを数式に変換する</h2>
 <p>Daniel Anderson らによって開発された <strong>equatiomatic</strong> パッケージ <span class="citation">(<a href="#ref-R-equatiomatic" role="doc-biblioref">Anderson, Heiss, and Sumners 2021</a>)</span> (<a href="https://github.com/datalorax/equatiomatic" class="uri">https://github.com/datalorax/equatiomatic</a>) は R で当てはめたモデルに対応する数式を表示するための便利な自動化された手段です. 簡単な例を以下に示します.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb63-1"><a href="equatiomatic.html#cb63-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cyl <span class="sc">+</span> disp, mtcars)</span>
-<span id="cb63-2"><a href="equatiomatic.html#cb63-2"></a><span class="co"># 理論モデルを表示</span></span>
-<span id="cb63-3"><a href="equatiomatic.html#cb63-3"></a>equatiomatic<span class="sc">::</span><span class="fu">extract_eq</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb64-1"><a href="equatiomatic.html#cb64-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(mpg <span class="sc">~</span> cyl <span class="sc">+</span> disp, mtcars)</span>
+<span id="cb64-2"><a href="equatiomatic.html#cb64-2"></a><span class="co"># 理論モデルを表示</span></span>
+<span id="cb64-3"><a href="equatiomatic.html#cb64-3"></a>equatiomatic<span class="sc">::</span><span class="fu">extract_eq</span>(fit)</span></code></pre></div>
 <p><span class="math display">\[
 \operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
 \]</span></p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb64-1"><a href="equatiomatic.html#cb64-1"></a><span class="co"># 実際の係数を表示</span></span>
-<span id="cb64-2"><a href="equatiomatic.html#cb64-2"></a>equatiomatic<span class="sc">::</span><span class="fu">extract_eq</span>(fit, <span class="at">use_coefs =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb65-1"><a href="equatiomatic.html#cb65-1"></a><span class="co"># 実際の係数を表示</span></span>
+<span id="cb65-2"><a href="equatiomatic.html#cb65-2"></a>equatiomatic<span class="sc">::</span><span class="fu">extract_eq</span>(fit, <span class="at">use_coefs =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><span class="math display">\[
 \operatorname{\widehat{mpg}} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp})
 \]</span></p>

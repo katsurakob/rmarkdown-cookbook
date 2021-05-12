@@ -496,10 +496,10 @@ div.csl-indent {
 <div id="source-script" class="section level2" number="16.1">
 <h2><span class="header-section-number">16.1</span> 外部の R スクリプトを実行する</h2>
 <p>もし R Markdown 文書に大量のコードがあるなら, 以下の例のように, コードの一部を外部 R スクリプトに配置し, <code>source()</code> か <code>sys.source()</code> 経由で実行するよう検討してください.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb460-1"><a href="source-script.html#cb460-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb460-2"><a href="source-script.html#cb460-2" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;your-script.R&quot;, local = knitr::knit_global())</span></span>
-<span id="cb460-3"><a href="source-script.html#cb460-3" aria-hidden="true" tabindex="-1"></a><span class="in"># または sys.source(&quot;your-script.R&quot;, envir = knitr::knit_global())</span></span>
-<span id="cb460-4"><a href="source-script.html#cb460-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb461-1"><a href="source-script.html#cb461-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb461-2"><a href="source-script.html#cb461-2" aria-hidden="true" tabindex="-1"></a><span class="in">source(&quot;your-script.R&quot;, local = knitr::knit_global())</span></span>
+<span id="cb461-3"><a href="source-script.html#cb461-3" aria-hidden="true" tabindex="-1"></a><span class="in"># または sys.source(&quot;your-script.R&quot;, envir = knitr::knit_global())</span></span>
+<span id="cb461-4"><a href="source-script.html#cb461-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>お薦めするやり方は, <code>sys.source()</code> の <code>envir</code> 引数または <code>source()</code> の <code>local</code> 引数を明示的に使い, コードが確実に適正な環境で評価されるようにすることです. これらのデフォルト値は適切な環境でないかもしれません. 間違った環境で変数を作成してしまい, その後のチャンクでオブジェクトが見つからず驚くということになりかねません.</p>
 <p>それから, R Markdown 文書の中で, これらのスクリプトで作成された, データや関数といったオブジェクトを使えるのです. このやり方は R Markdown 文書が簡潔になるだけでなく, R コードの開発がもっと便利になるという効果もあります. 例えば R コードのデバッグは, R Markdown より, ピュアな R スクリプトでやるほうがたいてい簡単です.</p>
 <p>上記の例では <code>include = FALSE</code> を使っていることに注目してください. 出力を一切表示させずにスクリプトの実行するだけにしたいからです. 出力が欲しければこのチャンクオプションを削除するか, <a href="hide-one.html#hide-one">11.7</a>節で紹介したオプションを使って, 隠したり表示したりを出力の種類の違いによって選択することもできます.</p>
