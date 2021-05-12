@@ -120,7 +120,7 @@ R Markdown と **knitr** の Python サポートは **reticulate** パッケー�
 
 **reticulate** パッケージに関する詳細については, https://rstudio.github.io/reticulate/ のドキュメントを見ることもできます.
 
-## `asis` エンジンでコンテンツを条件付きで実行する Execute content conditionally via the `asis` engine {#eng-asis}
+## `asis` エンジンでコンテンツを条件付きで実行する {#eng-asis}
 
 その名が示すとおり, `asis` エンジン\index{げんごえんじん@言語エンジン!asis}はチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション `echo` によりチャンクの内容の表示を決定します. `echo = FALSE` の時はチャンクは隠されます. 以下は簡単な例です.
 
