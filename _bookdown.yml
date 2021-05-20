@@ -3,9 +3,12 @@ output_dir: 'docs/'
 repo: https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook
 delete_merged_file: true
 rmd_subdir: 'JP/content'
-clean:
+clean: 
   - packages.bib
   - rmarkdown-cookbook.tikzDictionary
+  - jauthoryear.bbx
+  - jauthoryear.cbx
+  - '_latex'
 language:
   label:
     fig: '図 '
