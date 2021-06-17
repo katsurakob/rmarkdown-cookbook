@@ -89,3 +89,4 @@
 * Fenced Div で二段組にすべきか
   + 特に beamer の場合は latex コードを直接埋め込むこともできる.  
 * .Rmarkdown にすると RStudio は認識するが bookdown が勝手に読み込むことはない https://github.com/rstudio/blogdown/issues/97#issuecomment-307931024 root ディレクトリと bookdown デフォルト挙動の問題
+* LaTeX のテンプレートを R Markdown に移植するときのポイント
