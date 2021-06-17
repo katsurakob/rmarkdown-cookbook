@@ -7,7 +7,7 @@
 # 参考文献 {-}
 '`
 
-```{r include=FALSE, tidy=FALSE}
+```{r include=FALSE, tidy=FALSE, warning = FALSE}
 # 引用パッケージの一覧
 pkgs <- c(
   .packages(), 
@@ -89,19 +89,11 @@ pkgs <- c(
 # Bios only: 'shiny', 'leaflet', 'rolldown', 'crrri', 'projmgr', 'Rd2roxyen', 'servr', 'highr', 'mime', 'testit', 'fun', 'tufte'
 # JavaScript: 'DataTables'
 )
-# 足りないパッケージはインストール
-lapply(pkgs, function(pkg) {
-    if (system.file(package = pkg) != '') return()
-    install.packages(pkg, repos = "https://cloud.r-project.org/") 
-    }
-)
+# 足りないパッケージがあれば警告
+pkg2 <- setdiff(pkgs, knitr:::.base.pkgs)
+in_desc <-  pkg2 %in% desc::desc_get_deps()$package
+if (any(!in_desc)) warning("To add to DESCRIPTION: ", paste0(pkg2[!in_desc], collapse = ", "))
 
 # automatically create a bib database for R packages
 knitr::write_bib(pkgs, file = 'bib/packages.bib', lib.loc = c(.libPaths(), '~/R-tmp'))
-
-# embed fonts
-if (knitr::is_latex_output()) {
-  pdfs = list.files(knitr::opts_chunk$get('fig.path'), '[.]pdf$', full.names = TRUE)
-  invisible(lapply(pdfs, embedFonts))
-}
 ```

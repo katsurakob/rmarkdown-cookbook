@@ -78,7 +78,10 @@ Imports:
     xfun,
     xtable,
     yaml,
-    ztable
+    ztable,
+    rmdja
 Suggests:
     rsconnect
 Encoding: UTF-8
+Remote:
+    Gedevan-Aleksizde/rmdja
