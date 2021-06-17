@@ -6,7 +6,6 @@ author:
   - "(著者) Riederer, Emily"
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
-site: bookdown::bookdown_site
 booklanguage: JP
 mainfont: "DejaVu Serif"
 mainfontoptions:
@@ -32,6 +31,7 @@ lot: yes
 lof: yes
 fontsize: 11pt
 github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
+site: bookdown::bookdown_site
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
 ---
@@ -39,7 +39,8 @@ cover-image: images/cover.png
 ```{r setup, include=FALSE}
 
 set.seed(0728)
-knitr::opts_chunk$set(tidy = TRUE)
+knitr::opts_chunk$set(tidy = TRUE, webshot = "webshot")
+
 if (knitr::is_html_output()) {
   # ignore percentage widths for HTML output, unless they are used for multiple
   # figures side by side
@@ -49,6 +50,7 @@ if (knitr::is_html_output()) {
     options
   })
 }
+
 # packages only available on Github
 remote_pkgs = c(character())  # e.g., c(equatiomatic = 'datalorax')
 lapply(c(

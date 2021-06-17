@@ -5,6 +5,7 @@ R Markdown クックブック 日本語版
 
 このリポジトリは『[R Markdown
 クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます.
+
 現在, 翻訳版は**ほぼ完成**です.
 
 最新更新時刻: 2021/05/12 22:24:53 JST 本家最終更新時刻: [2021/05/12
