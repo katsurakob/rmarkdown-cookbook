@@ -147,6 +147,16 @@ output:
 ```
 ````
 
+```{r, include = FALSE}
+foldable_engine <- c("r", "python", "bash", "sql", "cpp", "stan", "julia")
+foldable_engine <- knitr::combine_words(foldable_engine, before = "\x60")
+```
+
+`code_folding` は Rと他の一部の言語 (デフォルトでは `r foldable_engine`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.^[**訳注**: このサンプルコードは本家でも未完成なので表示できません.]
+
+
+`r import_example("knitr-foldable-class.Rmd")`
+
 ## 内容をタブブラウジングさせる {#html-tabs}
 
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
@@ -169,7 +179,19 @@ knitr::include_graphics(file.path(BOOKLANG, "images/html-tabs.png"), dpi = NA)
 ## Results {.tabset .tabset-pills}
 ```
 
-デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加できます.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加できます. 以下の例では, 文書を開くか再読み込みしたときに第2のタブ(背景情報) がアクティブ, つまり表示されている状態になります.
+
+```md
+## 結果 {.tabset}
+
+### 内容
+
+ここに文章.
+
+### 背景情報 {.active}
+
+ここに文章.
+```
 
 タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にします. 例えばこのように.
 
