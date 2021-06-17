@@ -287,4 +287,4 @@ plot(iris[, -5])
 
 この Rmd 文書は `blastula::render_email()` 関数でレンダリングされ, 出力は `blastula::smtp_send()` に渡されます. これはEメールを送信する関数です. `smtp_send()` にはEメールサーバとあなたの認証が必要であることに注意してください.
 
-RStudio Connect を使用しているなら, https://solutions.rstudio.com/examples/blastula-overview/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
+RStudio Connect を使用しているなら, https://solutions.rstudio.com/r/blastula/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
