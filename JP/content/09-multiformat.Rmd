@@ -154,7 +154,7 @@ knitr::pandoc_to()
 バージョン 1.16 以降の **rmarkdown** パッケージは `Div` ブロックを HTML と LaTeX どちらに対しても変換するようになりました. HTML 出力に対してはブロックの全ての属性が `<div>` タグの属性になります. 例えば `Div` は ID (`#` の後のに続くもの), 1つまたは複数のクラス (クラス名は `.` の後に書かれるものです), そしてそれ以外の属性を持ちます. 以下の `Div` ブロック,
 
 ```md
-::: {#hello .greeting .message width="40%"}
+::: {#hello .greeting .message style="color: red;"}
 Hello **world**!
 :::
 ```
@@ -162,7 +162,7 @@ Hello **world**!
 は以下の HTML コードに変換されます.
 
 ```html
-<div id="hello" class="greeting message" width="40%">
+<div id="hello" class="greeting message" style="color: red;">
   Hello <strong>world</strong>!
 </div>
 ```
