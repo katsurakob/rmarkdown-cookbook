@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -495,7 +495,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="html-accessibility" class="section level2" number="7.14">
 <h2><span class="header-section-number">7.14</span> HTML ページのアクセシビリティを向上させる</h2>
-<p>HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対するアクセシビリティをもたせることは重要です. たいていの場合, こういった読者は文書を視覚的に読む代わりに, スクリーンリーダ (音声読み上げソフト) といった<strong>聞く</strong>ための特殊なツールを使います. 通常はスクリーンリーダはテキストを読み上げることができるだけで, (ラスタ) 画像を読み上げられません. つまりあなたはスクリーンリーダに十分なテキストでヒントを与える必要があるということです. 良いニュースは, わずかな労力があればあなたの文書のアクセシビリティを格段に向上できるということです. Jonathan Godfrey が R Markdown 文書のアクセシビリティのためのいくつかのヒントを <a href="https://r-resources.massey.ac.nz/rmarkdown/" class="uri">https://r-resources.massey.ac.nz/rmarkdown/</a> で記事にしています.<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a> この記事に基づいて, 本書の読者にとっての利便性になるいくつかのヒントを以下に提示します.</p>
+<p>HTML 出力文書に, 何らかの視覚的な障害を持つ読者に対するアクセシビリティをもたせることは重要です. たいていの場合, こういった読者は文書を視覚的に読む代わりに, スクリーンリーダ (音声読み上げソフト) といった<strong>聞く</strong>ための特殊なツールを使います. 通常はスクリーンリーダはテキストを読み上げることができるだけで, (ラスタ) 画像を読み上げられません. つまりあなたはスクリーンリーダに十分なテキストでヒントを与える必要があるということです. 良いニュースは, わずかな労力があればあなたの文書のアクセシビリティを格段に向上できるということです. Jonathan Godfrey が R Markdown 文書のアクセシビリティのためのいくつかのヒントを <a href="https://r-resources.massey.ac.nz/rmarkdown/" class="uri">https://r-resources.massey.ac.nz/rmarkdown/</a> で記事にしています.<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a> この記事に基づいて, 本書の読者にとっての利便性になるいくつかのヒントを以下に提示します.</p>
 <ul>
 <li><p>HTML 文書はしばしば PDF よりアクセシビリティが優れている.</p></li>
 <li><p>可能ならば HTML 出力文書に Rmd ソース文書を同梱するようにする (例えば<a href="embed-rmd.html#embed-rmd">7.7</a>節でその方法の1つを実演しています). HTML 文書にアクセシビリティがない場合, 視覚障害者は Rmd ソースから内容を理解できるかもしれませんし, ソースを修正することもできるかもしれません.</p></li>
@@ -503,9 +503,9 @@ div.csl-indent {
 <p>この問題を理解するために, まずは web ページの画像が HTML タグ <code>&lt;img /&gt;</code> によって生成されることを知らなければなりません. このタグは <code>src</code> 属性を持ち, 画像ファイルのソースの場所を指定しています. 例えば <code>&lt;img src="foo_figures/image.png" /&gt;</code> のように. 視力のある読者はこの画像を見ることができますが, 視覚障害者には描かれていることを知るのは難しいのです. それはスクリーンリーダは, 特にラスタ画像の場合, 画像を読むことが出来ないためです (SVG のようなベクタ画像は多少ましかもしれませんが). この場合テキストでのヒントを与えると, スクリーンリーダは読み上げることができるので便利です. このテキストでのヒントは画像の代替 (alternate) テキストを意味する <code>alt</code> 属性で与えることできます.</p>
 <p>R Markdown のコードチャンクから生成された画像の場合は, もしチャンクオプション <code>fig.cap</code> (つまり 画像のキャプション, figure caption) が設定されているなら <code>alt</code> 属性はここから生成されます. 代わりに Markdown 構文 <code>![]()</code> を使って画像を挿入することもできます. 画像パスをパーレン <code>()</code> 内に入力し, <code>alt</code> テキストをブラケット <code>[]</code> 内に入力, 例えば <code>![テキスト情報](パス/image.png)</code> のように.</p>
 <p><code>alt</code> テキストは視覚のある読者にとっては HTML ページ上に表示されません. しかし画像にキャプションや代替テキストを与えた場合, <code>rmarkdown::html_document</code> フォーマットはデフォルトでキャプション要素を表示します. もし実際にキャプションを表示させたくないなら, このように <code>fig_caption</code> をオフにすることができます.</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb174-1"><a href="html-accessibility.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb174-2"><a href="html-accessibility.html#cb174-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb174-3"><a href="html-accessibility.html#cb174-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_caption</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb176-1"><a href="html-accessibility.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb176-2"><a href="html-accessibility.html#cb176-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb176-3"><a href="html-accessibility.html#cb176-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">fig_caption</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code></pre></div>
 <p>このケースでは <code>alt</code> 属性はまだ生成されますが, 表示されることはありません.</p></li>
 <li><p>数学的なコンテンツを書くには画像の代わりに LaTeX 構文を使う (例: <code>$ $</code>, あるいは <code>$$ $$</code>). デフォルトでは, R Markdown は数学的なコンテンツのレンダリングに MathJax ライブラリを使い, 結果としてスクリーンリーダが読み上げられるものになります.</p></li>
 <li><p>チャンクオプション <code>comment = ""</code> を設定してコードチャンクのテキスト出力の行頭の <code>##</code> を除く (<a href="opts-comment.html#opts-comment">11.12</a>節参照).</p></li>
@@ -514,8 +514,8 @@ div.csl-indent {
 </div>
 <div class="footnotes">
 <hr />
-<ol start="30">
-<li id="fn30"><p>JooYoung Seo も, 視覚障害を持つ人の手助けになる R パッケージを <a href="https://jooyoungseo.com/post/ds4blind/" class="uri">https://jooyoungseo.com/post/ds4blind/</a> で紹介しています. これは R Markdown と直接関係しませんが, 視覚障害者がどうグラフを読み取っているのかを学ぶのに役に立つでしょう.<a href="html-accessibility.html#fnref30" class="footnote-back">↩︎</a></p></li>
+<ol start="31">
+<li id="fn31"><p>JooYoung Seo も, 視覚障害を持つ人の手助けになる R パッケージを <a href="https://jooyoungseo.com/post/ds4blind/" class="uri">https://jooyoungseo.com/post/ds4blind/</a> で紹介しています. これは R Markdown と直接関係しませんが, 視覚障害者がどうグラフを読み取っているのかを学ぶのに役に立つでしょう.<a href="html-accessibility.html#fnref31" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -508,13 +508,13 @@ div.csl-indent {
 <p>フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの <code>pdflatex</code> を使っているのなら<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>, <code>fontfamily</code> オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.</p>
 <div class="sourceCode" id="cb113"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb113-1"><a href="latex-variables.html#cb113-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fontfamily</span><span class="kw">:</span><span class="at"> accanthis</span></span>
 <span id="cb113-2"><a href="latex-variables.html#cb113-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb113-3"><a href="latex-variables.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb113-3"><a href="latex-variables.html#cb113-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
 <span id="cb113-4"><a href="latex-variables.html#cb113-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> pdflatex</span></span></code></pre></div>
 <p>これで文書に <a href="https://tug.org/FontCatalogue/accanthis/">Accanthis</a> フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので <a href="https://tug.org/FontCatalogue/" class="uri">https://tug.org/FontCatalogue/</a> を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(<a href="install-latex.html#install-latex">1.2</a>節参照).</p>
 <p>LaTeX エンジンに <code>xelatex</code> または <code>lualatex</code> を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで <code>mainfont</code>, <code>sansfont</code>, <code>monofont</code> を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a> 例えばこのように.</p>
 <div class="sourceCode" id="cb114"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb114-1"><a href="latex-variables.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> Arial</span></span>
 <span id="cb114-2"><a href="latex-variables.html#cb114-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb114-3"><a href="latex-variables.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb114-3"><a href="latex-variables.html#cb114-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
 <span id="cb114-4"><a href="latex-variables.html#cb114-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span></span></code></pre></div>
 <p>Beamer の文書は LaTeX 文書なので, Beamer でスライドを生成する時にもこれらのオプションを使用できます. 加えて, Pandoc は Beamer スライド用にオプションをいくつか追加提供しています. それらは <a href="https://pandoc.org/MANUAL.html#variables-for-beamer-slides" class="uri">https://pandoc.org/MANUAL.html#variables-for-beamer-slides</a> で確認できます. 例えば <code>institute</code> オプションで著者の所属機関を指定することができます.</p>
 <div class="sourceCode" id="cb115"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb115-1"><a href="latex-variables.html#cb115-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
@@ -526,8 +526,8 @@ div.csl-indent {
 <hr />
 <ol start="24">
 <li id="fn24"><p>このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに <code>\onecolumn</code> コマンドを挿入することになるでしょう. 二段組モードを続けたいなら <code>\twocolumn</code> を挿入します.<a href="latex-variables.html#fnref24" class="footnote-back">↩︎</a></p></li>
-<li id="fn25"><p><strong>訳注</strong>: 日本語文書を <strong>pdflatex</strong> で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.<a href="latex-variables.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p><strong>訳注</strong>: <strong>rmdja</strong> パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます. 詳細はパッケージのドキュメント等を参考にしてください.<a href="latex-variables.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn25"><p><strong>訳注</strong>: 日本語文書を <strong>pdflatex</strong> で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません. <strong>xelatex</strong> または <strong>lualatex</strong> の使用をお薦めします.<a href="latex-variables.html#fnref25" class="footnote-back">↩︎</a></p></li>
+<li id="fn26"><p><strong>訳注</strong>: <strong>rmdja</strong> パッケージでは YAML フロントマターで3種類のフォントをまとめて設定できたり, あるいは欧文用フォントと和文用フォントを個別に細かく指定できたりします. 詳細はパッケージのドキュメント等を参考にしてください.<a href="latex-variables.html#fnref26" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

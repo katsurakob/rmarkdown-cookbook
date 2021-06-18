@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -502,39 +502,39 @@ div.csl-indent {
 の前, そして本文の後でかつ
 </body>
 <p>の直前です.</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb164-1"><a href="include-html.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb164-2"><a href="include-html.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb164-3"><a href="include-html.html#cb164-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb164-4"><a href="include-html.html#cb164-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span>
-<span id="cb164-5"><a href="include-html.html#cb164-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">before_body</span><span class="kw">:</span><span class="at"> before.html</span></span>
-<span id="cb164-6"><a href="include-html.html#cb164-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">after_body</span><span class="kw">:</span><span class="at"> after.html</span></span></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb166-1"><a href="include-html.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb166-2"><a href="include-html.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb166-3"><a href="include-html.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb166-4"><a href="include-html.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span>
+<span id="cb166-5"><a href="include-html.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">before_body</span><span class="kw">:</span><span class="at"> before.html</span></span>
+<span id="cb166-6"><a href="include-html.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">after_body</span><span class="kw">:</span><span class="at"> after.html</span></span></code></pre></div>
 <p>HTML にあまり詳しくないなら, <a href="html-template.html#html-template">7.9</a>節がこのオプションをより理解するのに役に立つかもしれません.</p>
 <p><code>in_header</code> オプションを使うなら, CSS と JavaScript コードを <code>&lt;head&gt;</code> タグ内に挿入することができます. <code>before_body</code> を使うなら, バナーやロゴを表示するヘッダを埋め込むこともできます. <code>after_body</code> を使うなら, フッタを読み込ませることができます. 例えばこのように.</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb165-1"><a href="include-html.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;</span>Copyright <span class="dv">&amp;copy;</span> John Doe 2020<span class="kw">&lt;/div&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb167-1"><a href="include-html.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;footer&quot;</span><span class="kw">&gt;</span>Copyright <span class="dv">&amp;copy;</span> John Doe 2020<span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>外部 HTML ファイルの内容を本文の好きな位置に読み込みたいときもあるでしょう. これは <code>htmltools::includeHTML()</code> を使えば可能です. HTML ファイルパスをこの関数に与えます. 関数はこのファイルを読み込み, 出力文書にたいしてこのファイルの中身を書き込みます. <a href="raw-content.html#raw-content">9.5</a>節で使用したようなテクニックをを使っても良いかもしれません. 例えばこのように.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb166-1"><a href="include-html.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="in">````{=html}</span></span>
-<span id="cb166-2"><a href="include-html.html#cb166-2" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
-<span id="cb166-3"><a href="include-html.html#cb166-3" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::file_string(&#39;file.html&#39;)</span></span>
-<span id="cb166-4"><a href="include-html.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb166-5"><a href="include-html.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb168-1"><a href="include-html.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="in">````{=html}</span></span>
+<span id="cb168-2"><a href="include-html.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
+<span id="cb168-3"><a href="include-html.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="in">xfun::file_string(&#39;file.html&#39;)</span></span>
+<span id="cb168-4"><a href="include-html.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb168-5"><a href="include-html.html#cb168-5" aria-hidden="true" tabindex="-1"></a><span class="in">````</span></span></code></pre></div>
 <p>HTML ファイル内に読み込めるのは別の HTML の一部分だけであり, HTMLファイルそのものを読み込んではならないことに注意してください. 完全な HTML ファイルとは <code>&lt;html&gt;</code> タグを含むものであり, これは他の <code>&lt;html&gt;</code> タグ内に埋め込むことができません. 以下は HTML 文書に別の完全な HTML 文書が 埋め込まれた場合の無効な HTML 文書です.</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb167-1"><a href="include-html.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb167-2"><a href="include-html.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span>  <span class="kw">&lt;/head&gt;</span></span>
-<span id="cb167-3"><a href="include-html.html#cb167-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-4"><a href="include-html.html#cb167-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
-<span id="cb167-5"><a href="include-html.html#cb167-5" aria-hidden="true" tabindex="-1"></a>  親 HTML ファイル.</span>
-<span id="cb167-6"><a href="include-html.html#cb167-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-7"><a href="include-html.html#cb167-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 以下 htmltools::includeHTML() --&gt;</span></span>
-<span id="cb167-8"><a href="include-html.html#cb167-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;html&gt;</span></span>
-<span id="cb167-9"><a href="include-html.html#cb167-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;head&gt;</span>  <span class="kw">&lt;/head&gt;</span></span>
-<span id="cb167-10"><a href="include-html.html#cb167-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;body&gt;</span></span>
-<span id="cb167-11"><a href="include-html.html#cb167-11" aria-hidden="true" tabindex="-1"></a>      子 HTML ファイル.</span>
-<span id="cb167-12"><a href="include-html.html#cb167-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/body&gt;</span></span>
-<span id="cb167-13"><a href="include-html.html#cb167-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/html&gt;</span></span>
-<span id="cb167-14"><a href="include-html.html#cb167-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 読み込み終わり --&gt;</span></span>
-<span id="cb167-15"><a href="include-html.html#cb167-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-16"><a href="include-html.html#cb167-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
-<span id="cb167-17"><a href="include-html.html#cb167-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb169-1"><a href="include-html.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb169-2"><a href="include-html.html#cb169-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span>  <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb169-3"><a href="include-html.html#cb169-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-4"><a href="include-html.html#cb169-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
+<span id="cb169-5"><a href="include-html.html#cb169-5" aria-hidden="true" tabindex="-1"></a>  親 HTML ファイル.</span>
+<span id="cb169-6"><a href="include-html.html#cb169-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-7"><a href="include-html.html#cb169-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 以下 htmltools::includeHTML() --&gt;</span></span>
+<span id="cb169-8"><a href="include-html.html#cb169-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;html&gt;</span></span>
+<span id="cb169-9"><a href="include-html.html#cb169-9" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;head&gt;</span>  <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb169-10"><a href="include-html.html#cb169-10" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;body&gt;</span></span>
+<span id="cb169-11"><a href="include-html.html#cb169-11" aria-hidden="true" tabindex="-1"></a>      子 HTML ファイル.</span>
+<span id="cb169-12"><a href="include-html.html#cb169-12" aria-hidden="true" tabindex="-1"></a>      <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb169-13"><a href="include-html.html#cb169-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/html&gt;</span></span>
+<span id="cb169-14"><a href="include-html.html#cb169-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">&lt;!-- 読み込み終わり --&gt;</span></span>
+<span id="cb169-15"><a href="include-html.html#cb169-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb169-16"><a href="include-html.html#cb169-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb169-17"><a href="include-html.html#cb169-17" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 <p>HTML ファイルを別の HTML 出力文書に読み込む時に問題が発生したなら, HTML ファイルに <code>&lt;html&gt;</code> タグが含まれていないか確認するとよいでしょう.</p>
 <p><strong>rmarkdown</strong> パッケージには <code>html_fragment</code> という出力フォーマットがあり, 完全な HTML 文書の代わりに HTML の一部を生成します. Rmd 文書内で別のコンパイルされた Rmd 文書の結果を読み込みたい場合, 後者の Rmd 文書の出力には 通常用いる<code>html_document</code> フォーマットの代わりに <code>html_fragment</code> フォーマットを使うとよいでしょう.</p>
 <p>HTML ファイルの代わりに Rmd または Markdown 文書を読み込ませたいなら, <a href="child-document.html#child-document">16.4</a>節で紹介されている子文書を使うこともできます.</p>

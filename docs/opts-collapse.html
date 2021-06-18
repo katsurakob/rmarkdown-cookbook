@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,14 +496,14 @@ div.csl-indent {
 <div id="opts-collapse" class="section level2" number="11.9">
 <h2><span class="header-section-number">11.9</span> テキスト出力をソースコードとまとめる</h2>
 <p>テキスト出力ブロックとソースコードブロックの間隔が空きすぎていると感じたら, チャンクオプション <code>collapse = TRUE</code> でテキスト出力をソースブロックと連結することを検討するとよいでしょう. <code>collapse = TRUE</code> としたとき, 出力はこのようになります.</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb293-1"><a href="opts-collapse.html#cb293-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb293-2"><a href="opts-collapse.html#cb293-2"></a><span class="do">## [1] 2</span></span>
-<span id="cb293-3"><a href="opts-collapse.html#cb293-3"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb293-4"><a href="opts-collapse.html#cb293-4"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb295-1"><a href="opts-collapse.html#cb295-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb295-2"><a href="opts-collapse.html#cb295-2"></a><span class="do">## [1] 2</span></span>
+<span id="cb295-3"><a href="opts-collapse.html#cb295-3"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb295-4"><a href="opts-collapse.html#cb295-4"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>以下は同じチャンクですが <code>collapse = TRUE</code> オプションがありません. デフォルトは <code>FALSE</code> です.</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb294-1"><a href="opts-collapse.html#cb294-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb296-1"><a href="opts-collapse.html#cb296-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb296"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb296-1"><a href="opts-collapse.html#cb296-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb298-1"><a href="opts-collapse.html#cb298-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
             </section>

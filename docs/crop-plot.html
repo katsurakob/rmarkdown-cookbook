@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,19 +496,19 @@ div.csl-indent {
 <div id="crop-plot" class="section level2" number="13.1">
 <h2><span class="header-section-number">13.1</span> グラフをクロップする</h2>
 <p>チャンクフック<code>knitr::hook_pdfcrop()</code> は PDF やその他の種類の画像ファイルをクロップ, つまりグラフから余分な余白を削除するのに使えます. これを有効にするには, コードチャンク内で <code>knit_hooks$set()</code> を使って対応するチャンクオプションをオンに設定してください. これが例です.</p>
-<div class="sourceCode" id="cb374"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb374-1"><a href="crop-plot.html#cb374-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
+<div class="sourceCode" id="cb376"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb376-1"><a href="crop-plot.html#cb376-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">crop =</span> knitr<span class="sc">::</span>hook_pdfcrop)</span></code></pre></div>
 <p>そうすると, チャンクオプション <code>crop = TRUE</code> を使ってグラフをクロップできます.</p>
 <p>フック関数 <code>hook_pdfcrop()</code> は内部プログラム <code>pdfcrop</code> を呼び出して PDF ファイルをクロップします. このプログラムは通常 LaTeX の配布パッケージ (例えば TeX Live や MikTeX) に同梱されています. システムでこれが使用可能かどうかは次のようにして確認できます.</p>
-<div class="sourceCode" id="cb375"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb375-1"><a href="crop-plot.html#cb375-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
-<span id="cb375-2"><a href="crop-plot.html#cb375-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
-<pre><code>##                  pdfcrop 
-## &quot;/usr/local/bin/pdfcrop&quot;</code></pre>
+<div class="sourceCode" id="cb377"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb377-1"><a href="crop-plot.html#cb377-1"></a><span class="co"># 返り値が空でないなら使用可能</span></span>
+<span id="cb377-2"><a href="crop-plot.html#cb377-2"></a><span class="fu">Sys.which</span>(<span class="st">&quot;pdfcrop&quot;</span>)</span></code></pre></div>
+<pre><code>##                pdfcrop 
+## &quot;/home/ks/bin/pdfcrop&quot;</code></pre>
 <p>LaTeX 配布パッケージの TinyTeX (<a href="install-latex.html#install-latex">1.2</a>節参照) を使っていて, <code>pdfcrop</code> があなたのシステムで利用できないときは, <code>tinytex::tlmgr_install('pdfcrop')</code> でインストールできます.</p>
 <div class="infobox memo">
 <p><strong>訳注</strong></p>
 <p><code>knitr::hook_pdfcrop</code> の使用には ghostscript も必要になります. 環境によっては別途, 手動でインストールする必要があるかもしれません.</p>
 </div>
-<p>PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの <strong>magick</strong> <span class="citation">(<a href="#ref-R-magick" role="doc-biblioref">Ooms 2021</a>)</span>を呼び出してクロップします. この R パッケージがインストールされているか確かめておきましょう. 図<a href="crop-plot.html#fig:crop-no">13.1</a>はクロップされていないグラフで, 図 <a href="crop-plot.html#fig:crop-yes">13.2</a>はクロップされた同じグラフです.</p>
+<p>PNG や JPEG といった PDF でないグラフ画像ファイルに対しては, このフック関数は R パッケージの <strong>magick</strong> <span class="citation">(<a href="#ref-R-magick" role="doc-biblioref">Ooms 2021b</a>)</span>を呼び出してクロップします. この R パッケージがインストールされているか確かめておきましょう. 図<a href="crop-plot.html#fig:crop-no">13.1</a>はクロップされていないグラフで, 図 <a href="crop-plot.html#fig:crop-yes">13.2</a>はクロップされた同じグラフです.</p>
 <div class="figure" style="text-align: center"><span id="fig:crop-no"></span>
 <img src="rmarkdown-cookbook_files/figure-html/crop-no-1.png" alt="クロップされていないグラフ"  />
 <p class="caption">
@@ -525,7 +525,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-magick" class="csl-entry">
-———. 2021. <em>Magick: Advanced Graphics and Image-Processing in r</em>. <a href="https://CRAN.R-project.org/package=magick">https://CRAN.R-project.org/package=magick</a>.
+———. 2021b. <em>Magick: Advanced Graphics and Image-Processing in r</em>. <a href="https://CRAN.R-project.org/package=magick">https://CRAN.R-project.org/package=magick</a>.
 </div>
 </div>
             </section>

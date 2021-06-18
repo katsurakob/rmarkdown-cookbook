@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -497,47 +497,47 @@ div.csl-indent {
 <h2><span class="header-section-number">12.1</span> ソースコードを検閲する</h2>
 <p>ときにはレポートにソースコードの全文を掲載したくないこともあるでしょう. 例えばコードのある行にパスワードが書かれているかもしれません. <a href="hide-one.html#hide-one">11.7</a>節ではチャンクオプション <code>echo</code> で R コードの文ごとに表示の有無を選べることを言及しました. 例えば <code>echo = 2</code> で2つ目の文を表示します. この節では, コードのインデックスを指定する必要のない, より柔軟な方法を提供します.</p>
 <p>基本的なアイディアはコードに特殊なコメント, 例えば <code># 秘密!!</code> のようなものを追加するということです. このコメントがコードのある行から検出されると, 行を省略します. 以下は <code>source</code> フックを使用した完全な例です.</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb345-1"><a href="hook-hide.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb345-2"><a href="hook-hide.html#cb345-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`source` フックを使用してコードのある行を隠す&quot;</span></span>
-<span id="cb345-3"><a href="hook-hide.html#cb345-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb345-4"><a href="hook-hide.html#cb345-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-5"><a href="hook-hide.html#cb345-5" aria-hidden="true" tabindex="-1"></a>初めに, 末尾に <span class="in">`# 秘密!!`</span> という文字列を含むコードの行を排除する <span class="in">`source`</span> フックを用意します.</span>
-<span id="cb345-6"><a href="hook-hide.html#cb345-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-7"><a href="hook-hide.html#cb345-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb345-8"><a href="hook-hide.html#cb345-8" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
-<span id="cb345-9"><a href="hook-hide.html#cb345-9" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_source &lt;- knitr::knit_hooks$get(&#39;source&#39;)</span></span>
-<span id="cb345-10"><a href="hook-hide.html#cb345-10" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(source = function(x, options) {</span></span>
-<span id="cb345-11"><a href="hook-hide.html#cb345-11" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- x[!grepl(&#39;# 秘密!!$&#39;, x)]</span></span>
-<span id="cb345-12"><a href="hook-hide.html#cb345-12" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_source(x, options)</span></span>
-<span id="cb345-13"><a href="hook-hide.html#cb345-13" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
-<span id="cb345-14"><a href="hook-hide.html#cb345-14" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb345-15"><a href="hook-hide.html#cb345-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb345-16"><a href="hook-hide.html#cb345-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-17"><a href="hook-hide.html#cb345-17" aria-hidden="true" tabindex="-1"></a>これで新しいフックをテストできます. この文書を knit すると, 特殊なコメント <span class="in">`# 秘密!!`</span> のある行が見えなくなります.</span>
-<span id="cb345-18"><a href="hook-hide.html#cb345-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-19"><a href="hook-hide.html#cb345-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb345-20"><a href="hook-hide.html#cb345-20" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1  # 表示されるべき通常のコード</span></span>
-<span id="cb345-21"><a href="hook-hide.html#cb345-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb345-22"><a href="hook-hide.html#cb345-22" aria-hidden="true" tabindex="-1"></a><span class="in"># 実際のユーザー名とパスワードを使ってみてください</span></span>
-<span id="cb345-23"><a href="hook-hide.html#cb345-23" aria-hidden="true" tabindex="-1"></a><span class="in">auth &lt;- httr::authenticate(&quot;user&quot;, &quot;passwd&quot;)</span></span>
-<span id="cb345-24"><a href="hook-hide.html#cb345-24" aria-hidden="true" tabindex="-1"></a><span class="in">auth &lt;- httr::authenticate(&quot;yihui&quot;, &quot;horsebattery&quot;)  # 秘密!!</span></span>
-<span id="cb345-25"><a href="hook-hide.html#cb345-25" aria-hidden="true" tabindex="-1"></a><span class="in">httr::GET(&quot;http://httpbin.org/basic-auth/user/passwd&quot;, auth)</span></span>
-<span id="cb345-26"><a href="hook-hide.html#cb345-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb347-1"><a href="hook-hide.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb347-2"><a href="hook-hide.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;`source` フックを使用してコードのある行を隠す&quot;</span></span>
+<span id="cb347-3"><a href="hook-hide.html#cb347-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb347-4"><a href="hook-hide.html#cb347-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-5"><a href="hook-hide.html#cb347-5" aria-hidden="true" tabindex="-1"></a>初めに, 末尾に <span class="in">`# 秘密!!`</span> という文字列を含むコードの行を排除する <span class="in">`source`</span> フックを用意します.</span>
+<span id="cb347-6"><a href="hook-hide.html#cb347-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-7"><a href="hook-hide.html#cb347-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb347-8"><a href="hook-hide.html#cb347-8" aria-hidden="true" tabindex="-1"></a><span class="in">local({</span></span>
+<span id="cb347-9"><a href="hook-hide.html#cb347-9" aria-hidden="true" tabindex="-1"></a><span class="in">  hook_source &lt;- knitr::knit_hooks$get(&#39;source&#39;)</span></span>
+<span id="cb347-10"><a href="hook-hide.html#cb347-10" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_hooks$set(source = function(x, options) {</span></span>
+<span id="cb347-11"><a href="hook-hide.html#cb347-11" aria-hidden="true" tabindex="-1"></a><span class="in">    x &lt;- x[!grepl(&#39;# 秘密!!$&#39;, x)]</span></span>
+<span id="cb347-12"><a href="hook-hide.html#cb347-12" aria-hidden="true" tabindex="-1"></a><span class="in">    hook_source(x, options)</span></span>
+<span id="cb347-13"><a href="hook-hide.html#cb347-13" aria-hidden="true" tabindex="-1"></a><span class="in">  })</span></span>
+<span id="cb347-14"><a href="hook-hide.html#cb347-14" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb347-15"><a href="hook-hide.html#cb347-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb347-16"><a href="hook-hide.html#cb347-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-17"><a href="hook-hide.html#cb347-17" aria-hidden="true" tabindex="-1"></a>これで新しいフックをテストできます. この文書を knit すると, 特殊なコメント <span class="in">`# 秘密!!`</span> のある行が見えなくなります.</span>
+<span id="cb347-18"><a href="hook-hide.html#cb347-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-19"><a href="hook-hide.html#cb347-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb347-20"><a href="hook-hide.html#cb347-20" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1  # 表示されるべき通常のコード</span></span>
+<span id="cb347-21"><a href="hook-hide.html#cb347-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb347-22"><a href="hook-hide.html#cb347-22" aria-hidden="true" tabindex="-1"></a><span class="in"># 実際のユーザー名とパスワードを使ってみてください</span></span>
+<span id="cb347-23"><a href="hook-hide.html#cb347-23" aria-hidden="true" tabindex="-1"></a><span class="in">auth &lt;- httr::authenticate(&quot;user&quot;, &quot;passwd&quot;)</span></span>
+<span id="cb347-24"><a href="hook-hide.html#cb347-24" aria-hidden="true" tabindex="-1"></a><span class="in">auth &lt;- httr::authenticate(&quot;yihui&quot;, &quot;horsebattery&quot;)  # 秘密!!</span></span>
+<span id="cb347-25"><a href="hook-hide.html#cb347-25" aria-hidden="true" tabindex="-1"></a><span class="in">httr::GET(&quot;http://httpbin.org/basic-auth/user/passwd&quot;, auth)</span></span>
+<span id="cb347-26"><a href="hook-hide.html#cb347-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>上記の <code>source</code> フックの重要な部分はこの行です. これはソースコードの入ったベクトル <code>x</code> から <code>grepl()</code> で追跡用のコメントの <code># 秘密!!</code> とマッチングしたものを排除しています.</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb346-1"><a href="hook-hide.html#cb346-1"></a>x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;# SECRET!!$&quot;</span>, x)]</span></code></pre></div>
+<div class="sourceCode" id="cb348"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb348-1"><a href="hook-hide.html#cb348-1"></a>x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;# SECRET!!$&quot;</span>, x)]</span></code></pre></div>
 <p>正確に言うなら, 上記のフックは追跡用の <code># 秘密!!</code> というコメントのある行ではなく, <strong>評価式</strong> (expressions) を全て排除します. <code>x</code> は実際には R 評価式のベクトルだからです. 例えば以下のコードチャンクを考えます.</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb347-1"><a href="hook-hide.html#cb347-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb347-2"><a href="hook-hide.html#cb347-2"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
-<span id="cb347-3"><a href="hook-hide.html#cb347-3"></a>  <span class="co"># SECRET!!</span></span>
-<span id="cb347-4"><a href="hook-hide.html#cb347-4"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
-<span id="cb347-5"><a href="hook-hide.html#cb347-5"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb349"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb349-1"><a href="hook-hide.html#cb349-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb349-2"><a href="hook-hide.html#cb349-2"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
+<span id="cb349-3"><a href="hook-hide.html#cb349-3"></a>  <span class="co"># SECRET!!</span></span>
+<span id="cb349-4"><a href="hook-hide.html#cb349-4"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
+<span id="cb349-5"><a href="hook-hide.html#cb349-5"></a>}</span></code></pre></div>
 <p><code>source</code> フック内の <code>x</code> の値はこうなります.</p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb348-1"><a href="hook-hide.html#cb348-1"></a><span class="fu">c</span>(<span class="st">&quot;1 + 1&quot;</span>, <span class="st">&quot;if (TRUE) { # SECRET!!</span><span class="sc">\n</span><span class="st">  1:10</span><span class="sc">\n</span><span class="st">}&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb350-1"><a href="hook-hide.html#cb350-1"></a><span class="fu">c</span>(<span class="st">&quot;1 + 1&quot;</span>, <span class="st">&quot;if (TRUE) { # SECRET!!</span><span class="sc">\n</span><span class="st">  1:10</span><span class="sc">\n</span><span class="st">}&quot;</span>)</span></code></pre></div>
 <p>R 評価式ではなく行単位で隠したいなら, <code>x</code> を行ごとに分割しなければなりません. <code>xfun::split_lines()</code> の使用を検討するとよいでしょう. フック関数の本体はこうなります.</p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb349-1"><a href="hook-hide.html#cb349-1"></a>x <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">split_lines</span>(x)  <span class="co"># 個別の行に分割する</span></span>
-<span id="cb349-2"><a href="hook-hide.html#cb349-2"></a>x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;# SECRET!!$&quot;</span>, x)]</span>
-<span id="cb349-3"><a href="hook-hide.html#cb349-3"></a>x <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)  <span class="co"># 結合して1つの行にする</span></span>
-<span id="cb349-4"><a href="hook-hide.html#cb349-4"></a><span class="fu">hook_source</span>(x, options)</span></code></pre></div>
+<div class="sourceCode" id="cb351"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb351-1"><a href="hook-hide.html#cb351-1"></a>x <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">split_lines</span>(x)  <span class="co"># 個別の行に分割する</span></span>
+<span id="cb351-2"><a href="hook-hide.html#cb351-2"></a>x <span class="ot">&lt;-</span> x[<span class="sc">!</span><span class="fu">grepl</span>(<span class="st">&quot;# SECRET!!$&quot;</span>, x)]</span>
+<span id="cb351-3"><a href="hook-hide.html#cb351-3"></a>x <span class="ot">&lt;-</span> <span class="fu">paste</span>(x, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)  <span class="co"># 結合して1つの行にする</span></span>
+<span id="cb351-4"><a href="hook-hide.html#cb351-4"></a><span class="fu">hook_source</span>(x, options)</span></code></pre></div>
 <p>この例はソースコードの文字列を操作する方法を, そして <code>grepl()</code> は決して文字列操作の唯一の方法ではない, ということを示しています. <a href="hook-number.html#hook-number">12.2</a>節では他の例もお見せしています.</p>
 </div>
             </section>

@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -533,9 +533,11 @@ div.csl-indent {
  |        |-:List of 2
  |           |-t: chr &quot;Str&quot;
  |           |-c: chr &quot;world!&quot;
- |-pandoc-api-version:List of 2
+ |-pandoc-api-version:List of 4
  |  |-: int 1
- |  |-: int 20
+ |  |-: int 17
+ |  |-: int 5
+ |  |-: int 4
  |-meta              : Named list()</code></pre>
 <p>あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.</p>
 <p>最初に <code>raise-header.lua</code> という名前の Lua スクリプトファイルを作ります. これには <code>Header</code> という名前の関数が含まれており, “Header” タイプの要素を修正したいということを意味しています (一般に, あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).</p>
@@ -561,8 +563,8 @@ Hello world!</code></pre>
 <p>R Markdown の世界では Lua フィルタを活用しているパッケージの例の一部が以下になります (たいていは <code>inst/</code> ディレクトリにあります).</p>
 <ul>
 <li><p><strong>rmarkdown</strong> パッケージ (<a href="https://github.com/rstudio/rmarkdown" class="uri">https://github.com/rstudio/rmarkdown</a>) は改行 (<a href="pagebreaks.html#pagebreaks">4.1</a>節参照) を挿入するフィルタとカスタムブロック (<a href="custom-blocks.html#custom-blocks">9.6</a>節参照)を生成するフィルタを含んでいます.</p></li>
-<li><p><strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2020</a>)</span> には脚注を実装するのを助けるフィルタと HTML ページに図のリストを表示するフィルタがあります.</p></li>
-<li><p><strong>govdown</strong> パッケージ <span class="citation">(<a href="#ref-R-govdown" role="doc-biblioref">Garmonsway 2020</a>)</span> には Pandoc の <code>Div</code> による囲みを適切な HTML タグに変換するフィルタがあります.</p></li>
+<li><p><strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2021</a>)</span> には脚注を実装するのを助けるフィルタと HTML ページに図のリストを表示するフィルタがあります.</p></li>
+<li><p><strong>govdown</strong> パッケージ <span class="citation">(<a href="#ref-R-govdown" role="doc-biblioref">Garmonsway 2021</a>)</span> には Pandoc の <code>Div</code> による囲みを適切な HTML タグに変換するフィルタがあります.</p></li>
 </ul>
 <p>本書の<a href="font-color.html#lua-color">5.1.2</a>節でも Lua フィルタでテキストの色を変更する方法を紹介する例を見ることができます.</p>
 <p>Lua フィルタを (上記のパッケージのように) 導入するために R パッケージ を作りたくない R Markdown ユーザーは, これらの Lua スクリプトをコンピュータのどこかに保存し, R Markdown 出力フォーマットの <code>pandoc_args</code> オプションを次の例のように適用することもできます.</p>
@@ -578,10 +580,10 @@ Hello world!</code></pre>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-govdown" class="csl-entry">
-Garmonsway, Duncan. 2020. <em>Govdown: GOV.UK Style Templates for r Markdown</em>. <a href="https://ukgovdatascience.github.io/govdown">https://ukgovdatascience.github.io/govdown</a>.
+Garmonsway, Duncan. 2021. <em>Govdown: GOV.UK Style Templates for r Markdown</em>. <a href="https://ukgovdatascience.github.io/govdown/">https://ukgovdatascience.github.io/govdown/</a>.
 </div>
 <div id="ref-R-pagedown" class="csl-entry">
-Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2020. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
+Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2021. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
 </div>
 </div>
             </section>

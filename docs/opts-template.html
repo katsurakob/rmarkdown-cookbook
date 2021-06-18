@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,21 +496,21 @@ div.csl-indent {
 <div id="opts-template" class="section level2" number="14.6">
 <h2><span class="header-section-number">14.6</span> グループ化したチャンクオプションを保存し再利用する (*)</h2>
 <p>いくつかのチャンクオプションを頻繁に使うのなら, それらを1つのグループとして保存し, 以降はグループ名を書くだけで再利用できるようにするとよいかもしれません. これは <code>knitr::opts_template$set(name = list(options))</code> で実行できます. それからチャンクオプション <code>opts.label</code> を用いてこのグループ名を参照できます. 例えばこのように.</p>
-<div class="sourceCode" id="cb401"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb401-1"><a href="opts-template.html#cb401-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb401-2"><a href="opts-template.html#cb401-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_template$set(fullwidth = list(</span></span>
-<span id="cb401-3"><a href="opts-template.html#cb401-3" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.width = 10, fig.height = 6,</span></span>
-<span id="cb401-4"><a href="opts-template.html#cb401-4" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.retina = 2, out.width = &#39;100%&#39;</span></span>
-<span id="cb401-5"><a href="opts-template.html#cb401-5" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
-<span id="cb401-6"><a href="opts-template.html#cb401-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb401-7"><a href="opts-template.html#cb401-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb401-8"><a href="opts-template.html#cb401-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;}</span></span>
-<span id="cb401-9"><a href="opts-template.html#cb401-9" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb401-10"><a href="opts-template.html#cb401-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb403"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb403-1"><a href="opts-template.html#cb403-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb403-2"><a href="opts-template.html#cb403-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_template$set(fullwidth = list(</span></span>
+<span id="cb403-3"><a href="opts-template.html#cb403-3" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.width = 10, fig.height = 6,</span></span>
+<span id="cb403-4"><a href="opts-template.html#cb403-4" aria-hidden="true" tabindex="-1"></a><span class="in">  fig.retina = 2, out.width = &#39;100%&#39;</span></span>
+<span id="cb403-5"><a href="opts-template.html#cb403-5" aria-hidden="true" tabindex="-1"></a><span class="in">))</span></span>
+<span id="cb403-6"><a href="opts-template.html#cb403-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb403-7"><a href="opts-template.html#cb403-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb403-8"><a href="opts-template.html#cb403-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;}</span></span>
+<span id="cb403-9"><a href="opts-template.html#cb403-9" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb403-10"><a href="opts-template.html#cb403-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>opts.label = 'fullwidth'</code> とすると, <strong>knitr</strong> は <code>knitr::opts_template</code> から一連のチャンクオプションを読み込み, 現在のチャンクに適用します. これはタイピングの労力を削減できます. チャンクオプションを文書全体で使用しなければならないならば, グローバルに設定すべきでしょう (<a href="chunk-options.html#chunk-options">11</a>章参照).</p>
 <p><code>opts.label</code> から読み込んだオプションを上書きすることもできます. 例えば以下のチャンクで <code>fig.height = 7</code> を設定したなら, 実際の値は <code>6</code> でなく <code>7</code> になります.</p>
-<div class="sourceCode" id="cb402"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb402-1"><a href="opts-template.html#cb402-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;, fig.height=7}</span></span>
-<span id="cb402-2"><a href="opts-template.html#cb402-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb402-3"><a href="opts-template.html#cb402-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb404"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb404-1"><a href="opts-template.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, opts.label=&#39;fullwidth&#39;, fig.height=7}</span></span>
+<span id="cb404-2"><a href="opts-template.html#cb404-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb404-3"><a href="opts-template.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>オプションのグループは好きな数だけ保存できます. 例えば <code>knitr::opts_template$set(group1 = list(...), group2 = list(...))</code> のように.</p>
 </div>
             </section>

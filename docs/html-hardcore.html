@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -497,46 +497,46 @@ div.csl-indent {
 <h2><span class="header-section-number">7.15</span> ハードコア HTML ユーザー向けの話 (*)</h2>
 <p><a href="latex-hardcore.html#latex-hardcore">6.12</a>節では, Markdown がシンプルであるがゆえにその制約が強すぎると感じるときは, Markdown の代わりに純粋な LaTeX 文書にコードチャンクを埋め込むことができる, という話をしました. 同様に, 直接 HTML コードを書くことに慣れていて快適さを感じるなら, HTML にコードチャンクを混ぜ合わせることもまた可能です. そのような文書は慣習的に <code>.Rhtml</code> というファイル拡張子を持ちます.</p>
 <p><code>Rhtml</code> 文書では, コードチャンクは <code>&lt;!--begin.rcode</code> と <code>end.rcode--&gt;</code> の間に埋め込まれ, インライン R コードは <code>&lt;!--rinline --&gt;</code> 内に埋め込まれます. 以下は <code>Rhtml</code> 全体の例です. これを <code>test.Rhtml</code> というファイル名で保存し, <code>knitr::knit("test.Rhtml")</code> を使ってコンパイルできます. 出力は 1つの HTML (<code>.html</code>) ファイルになります. RStudio では, ツールバーの <code>Knit</code> ボタンを押すことでもコンパイルできます.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb175-1"><a href="html-hardcore.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
-<span id="cb175-2"><a href="html-hardcore.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
-<span id="cb175-3"><a href="html-hardcore.html#cb175-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb175-4"><a href="html-hardcore.html#cb175-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;title&gt;</span>HTML の最低限の knitr 使用例<span class="kw">&lt;/title&gt;</span></span>
-<span id="cb175-5"><a href="html-hardcore.html#cb175-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
-<span id="cb175-6"><a href="html-hardcore.html#cb175-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb175-7"><a href="html-hardcore.html#cb175-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
-<span id="cb175-8"><a href="html-hardcore.html#cb175-8" aria-hidden="true" tabindex="-1"></a><span class="co">  knitr::opts_chunk$set(fig.width=5, fig.height=5)</span></span>
-<span id="cb175-9"><a href="html-hardcore.html#cb175-9" aria-hidden="true" tabindex="-1"></a><span class="co">  end.rcode--&gt;</span></span>
-<span id="cb175-10"><a href="html-hardcore.html#cb175-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-11"><a href="html-hardcore.html#cb175-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>これは <span class="kw">&lt;strong&gt;</span>knitr<span class="kw">&lt;/strong&gt;</span> が純粋な HTML ページでどのように動作するかの最低限の例です.<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb175-12"><a href="html-hardcore.html#cb175-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-13"><a href="html-hardcore.html#cb175-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>お決まりの退屈な使用例.<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb175-14"><a href="html-hardcore.html#cb175-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-15"><a href="html-hardcore.html#cb175-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
-<span id="cb175-16"><a href="html-hardcore.html#cb175-16" aria-hidden="true" tabindex="-1"></a><span class="co">    # 単純な計算</span></span>
-<span id="cb175-17"><a href="html-hardcore.html#cb175-17" aria-hidden="true" tabindex="-1"></a><span class="co">    1 + 1</span></span>
-<span id="cb175-18"><a href="html-hardcore.html#cb175-18" aria-hidden="true" tabindex="-1"></a><span class="co">    # 退屈な乱数生成</span></span>
-<span id="cb175-19"><a href="html-hardcore.html#cb175-19" aria-hidden="true" tabindex="-1"></a><span class="co">    set.seed(123)</span></span>
-<span id="cb175-20"><a href="html-hardcore.html#cb175-20" aria-hidden="true" tabindex="-1"></a><span class="co">    rnorm(5)</span></span>
-<span id="cb175-21"><a href="html-hardcore.html#cb175-21" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
-<span id="cb175-22"><a href="html-hardcore.html#cb175-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-23"><a href="html-hardcore.html#cb175-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>図を生成することもできます (<span class="kw">&lt;code&gt;</span>fig.align=&#39;center&#39;<span class="kw">&lt;/code&gt;</span>オプションで中央揃えしています).<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb175-24"><a href="html-hardcore.html#cb175-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-25"><a href="html-hardcore.html#cb175-25" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode cars-scatter, fig.align=&#39;center&#39;</span></span>
-<span id="cb175-26"><a href="html-hardcore.html#cb175-26" aria-hidden="true" tabindex="-1"></a><span class="co">    plot(mpg ~ hp, data = mtcars)</span></span>
-<span id="cb175-27"><a href="html-hardcore.html#cb175-27" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
-<span id="cb175-28"><a href="html-hardcore.html#cb175-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-29"><a href="html-hardcore.html#cb175-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>エラー, メッセージ, 警告文はそれぞれ異なる<span class="kw">&lt;code&gt;</span>class<span class="kw">&lt;/code&gt;</span>を持つ <span class="kw">&lt;code&gt;</span>div<span class="kw">&lt;/code&gt;</span> 内に配置されます.<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb175-30"><a href="html-hardcore.html#cb175-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-31"><a href="html-hardcore.html#cb175-31" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
-<span id="cb175-32"><a href="html-hardcore.html#cb175-32" aria-hidden="true" tabindex="-1"></a><span class="co">    sqrt(-1)  # 警告</span></span>
-<span id="cb175-33"><a href="html-hardcore.html#cb175-33" aria-hidden="true" tabindex="-1"></a><span class="co">    message(&#39;knitr says hello to HTML!&#39;)</span></span>
-<span id="cb175-34"><a href="html-hardcore.html#cb175-34" aria-hidden="true" tabindex="-1"></a><span class="co">    1 + &#39;a&#39;  # ミッションインポッシブル</span></span>
-<span id="cb175-35"><a href="html-hardcore.html#cb175-35" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
-<span id="cb175-36"><a href="html-hardcore.html#cb175-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-37"><a href="html-hardcore.html#cb175-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>さて全てうまくいっているようです. R に <span class="dv">&amp;pi;</span> の値を聞いてみましょう. もちろん答えは <span class="co">&lt;!--rinline pi --&gt;</span> です.<span class="kw">&lt;/p&gt;</span></span>
-<span id="cb175-38"><a href="html-hardcore.html#cb175-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb175-39"><a href="html-hardcore.html#cb175-39" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
-<span id="cb175-40"><a href="html-hardcore.html#cb175-40" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb177-1"><a href="html-hardcore.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb177-2"><a href="html-hardcore.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb177-3"><a href="html-hardcore.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
+<span id="cb177-4"><a href="html-hardcore.html#cb177-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;title&gt;</span>HTML の最低限の knitr 使用例<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb177-5"><a href="html-hardcore.html#cb177-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
+<span id="cb177-6"><a href="html-hardcore.html#cb177-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
+<span id="cb177-7"><a href="html-hardcore.html#cb177-7" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
+<span id="cb177-8"><a href="html-hardcore.html#cb177-8" aria-hidden="true" tabindex="-1"></a><span class="co">  knitr::opts_chunk$set(fig.width=5, fig.height=5)</span></span>
+<span id="cb177-9"><a href="html-hardcore.html#cb177-9" aria-hidden="true" tabindex="-1"></a><span class="co">  end.rcode--&gt;</span></span>
+<span id="cb177-10"><a href="html-hardcore.html#cb177-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-11"><a href="html-hardcore.html#cb177-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>これは <span class="kw">&lt;strong&gt;</span>knitr<span class="kw">&lt;/strong&gt;</span> が純粋な HTML ページでどのように動作するかの最低限の例です.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb177-12"><a href="html-hardcore.html#cb177-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-13"><a href="html-hardcore.html#cb177-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>お決まりの退屈な使用例.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb177-14"><a href="html-hardcore.html#cb177-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-15"><a href="html-hardcore.html#cb177-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
+<span id="cb177-16"><a href="html-hardcore.html#cb177-16" aria-hidden="true" tabindex="-1"></a><span class="co">    # 単純な計算</span></span>
+<span id="cb177-17"><a href="html-hardcore.html#cb177-17" aria-hidden="true" tabindex="-1"></a><span class="co">    1 + 1</span></span>
+<span id="cb177-18"><a href="html-hardcore.html#cb177-18" aria-hidden="true" tabindex="-1"></a><span class="co">    # 退屈な乱数生成</span></span>
+<span id="cb177-19"><a href="html-hardcore.html#cb177-19" aria-hidden="true" tabindex="-1"></a><span class="co">    set.seed(123)</span></span>
+<span id="cb177-20"><a href="html-hardcore.html#cb177-20" aria-hidden="true" tabindex="-1"></a><span class="co">    rnorm(5)</span></span>
+<span id="cb177-21"><a href="html-hardcore.html#cb177-21" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
+<span id="cb177-22"><a href="html-hardcore.html#cb177-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-23"><a href="html-hardcore.html#cb177-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>図を生成することもできます (<span class="kw">&lt;code&gt;</span>fig.align=&#39;center&#39;<span class="kw">&lt;/code&gt;</span>オプションで中央揃えしています).<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb177-24"><a href="html-hardcore.html#cb177-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-25"><a href="html-hardcore.html#cb177-25" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode cars-scatter, fig.align=&#39;center&#39;</span></span>
+<span id="cb177-26"><a href="html-hardcore.html#cb177-26" aria-hidden="true" tabindex="-1"></a><span class="co">    plot(mpg ~ hp, data = mtcars)</span></span>
+<span id="cb177-27"><a href="html-hardcore.html#cb177-27" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
+<span id="cb177-28"><a href="html-hardcore.html#cb177-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-29"><a href="html-hardcore.html#cb177-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>エラー, メッセージ, 警告文はそれぞれ異なる<span class="kw">&lt;code&gt;</span>class<span class="kw">&lt;/code&gt;</span>を持つ <span class="kw">&lt;code&gt;</span>div<span class="kw">&lt;/code&gt;</span> 内に配置されます.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb177-30"><a href="html-hardcore.html#cb177-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-31"><a href="html-hardcore.html#cb177-31" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!--begin.rcode</span></span>
+<span id="cb177-32"><a href="html-hardcore.html#cb177-32" aria-hidden="true" tabindex="-1"></a><span class="co">    sqrt(-1)  # 警告</span></span>
+<span id="cb177-33"><a href="html-hardcore.html#cb177-33" aria-hidden="true" tabindex="-1"></a><span class="co">    message(&#39;knitr says hello to HTML!&#39;)</span></span>
+<span id="cb177-34"><a href="html-hardcore.html#cb177-34" aria-hidden="true" tabindex="-1"></a><span class="co">    1 + &#39;a&#39;  # ミッションインポッシブル</span></span>
+<span id="cb177-35"><a href="html-hardcore.html#cb177-35" aria-hidden="true" tabindex="-1"></a><span class="co">    end.rcode--&gt;</span></span>
+<span id="cb177-36"><a href="html-hardcore.html#cb177-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-37"><a href="html-hardcore.html#cb177-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p&gt;</span>さて全てうまくいっているようです. R に <span class="dv">&amp;pi;</span> の値を聞いてみましょう. もちろん答えは <span class="co">&lt;!--rinline pi --&gt;</span> です.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb177-38"><a href="html-hardcore.html#cb177-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-39"><a href="html-hardcore.html#cb177-39" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/body&gt;</span></span>
+<span id="cb177-40"><a href="html-hardcore.html#cb177-40" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
 
 </div>
 <!-- </div> -->

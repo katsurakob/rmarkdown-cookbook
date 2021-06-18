@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,9 +496,9 @@ div.csl-indent {
 <div id="opts-error" class="section level2" number="11.2">
 <h2><span class="header-section-number">11.2</span> エラーが起こっても中止しない</h2>
 <p>時として, 例えば R のチュートリアルのために, わざとエラーを見せたいこともあるかもしれません. デフォルトでは, Rmd 文書のコードチャンクでのエラーは R の処理を停止させます. R の処理を停めることなくエラーを見せたいなら, 例えばこのように <code>error = TRUE</code> チャンクオプションを使うこともできます.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb282-1"><a href="opts-error.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, error=TRUE}</span></span>
-<span id="cb282-2"><a href="opts-error.html#cb282-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + &quot;a&quot;</span></span>
-<span id="cb282-3"><a href="opts-error.html#cb282-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb284-1"><a href="opts-error.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, error=TRUE}</span></span>
+<span id="cb284-2"><a href="opts-error.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + &quot;a&quot;</span></span>
+<span id="cb284-3"><a href="opts-error.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>Rmd 文書をコンパイルすると, 出力文書上でのエラーメッセージはこのような見た目になります.</p>
 <pre><code>Error in 1 + &quot;a&quot;:  二項演算子の引数が数値ではありません </code></pre>
 <p>R Markdown では <code>error = FALSE</code> がデフォルトであり, これはコードチャンクの実行時のエラーは処理を停止させます.</p>

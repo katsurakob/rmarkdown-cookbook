@@ -18,9 +18,9 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[Scale=0.9]{DejaVu Serif}
-  \setsansfont[Scale=0.9]{DejaVu Sans}
-  \setmonofont[]{Ricty}
+  \setmainfont[]{Noto Serif CJK JP}
+  \setsansfont[]{Noto Sans CJK JP}
+  \setmonofont[]{Ricty Discord}
 \fi
 
 % japanese font setting
@@ -29,13 +29,13 @@
   \usepackage[AutoFallBack=true]{zxjatype}
   \setjamainfont[]{Noto Serif CJK JP}
   \setjasansfont[]{Noto Sans CJK JP}
-  \setjamonofont[]{Ricty}
+  \setjamonofont[]{Ricty Discord}
 \fi
 \ifluatex
   \usepackage[]{luatexja-fontspec}
   \setmainjfont[]{Noto Serif CJK JP}
   \setsansjfont[]{Noto Sans CJK JP}
-  \setmonojfont[]{Ricty}
+  \setmonojfont[]{Ricty Discord}
 \fi
 
   \IfFileExists{pxrubrica.sty}{\usepackage{pxrubrica}}{}
@@ -321,7 +321,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/05/13 00:03:56 JST, ver. 0.9.2, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/02/01 20:02:05 JST}}
+\date{2021/06/18 14:14:31 JST, ver. 0.9.3.1, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/06/10 19:47:43 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -448,7 +448,7 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 \end{Shaded}
 
 \begin{verbatim}
-## R version 4.0.5 (2021-03-31)
+## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 20.04.2 LTS
 ## 
@@ -467,8 +467,8 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.22 knitr_1.33    rmarkdown_2.7
-##   rmdja_0.4.6.9 xfun_0.22    
+##   bookdown_0.22 knitr_1.33    rmarkdown_2.8
+##   rmdja_0.4.6.9 xfun_0.23    
 ## 
 ## Pandoc version: 2.11.4
 \end{verbatim}
@@ -735,7 +735,7 @@ TinyTeX を使わない場合, \textbf{tinytex} パッケージはやはりエ�
 \end{Highlighting}
 \end{Shaded}
 
-一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, \texttt{haranoaji}, \texttt{bxjscls} \texttt{luatex-ja} といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, \textbf{tinytex} はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は \textbf{tinytex} を使わず手動でインストールする必要があるかもしれません. 上記の \texttt{tinytex::tlmgr\_install()} 関数は \texttt{tlmgr} のコマンドを実行するための関数なので, \textbf{tinytex} を使用していない環境では \texttt{tlmgr install ...} を代わりに実行することになります.
+一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, \texttt{haranoaji}, \texttt{bxjscls} \texttt{luatex-ja} といった LaTeX パッケージが日本語文書の作成に広く使われます. 既に書かれているように, \textbf{tinytex} はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は \textbf{tinytex} を使わず手動でインストールする必要があるかもしれません. 上記の \texttt{tinytex::tlmgr\_install()} 関数は \texttt{tlmgr} のコマンドを実行するための関数なので, \textbf{tinytex} を使用していない環境では \texttt{tlmgr install ...} を代わりに実行することになります.
 
 PDF 出力のためのセットアップは翻訳者が独自に書いた補足資料 \url{https://rpubs.com/ktgrstsh/755893} も参考になるかもしれません.
 
@@ -1264,7 +1264,6 @@ notebook\index{RStudio!notebook} を使う主な利点は Rmd 文書を\textbf{�
 \CommentTok{{-}{-}{-}}
 
 \NormalTok{我々の市場シェアを頑張って計算してみました.}
-\NormalTok{I just tried really hard to calculate our market share:}
 
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r\}}
 \InformationTok{share \textless{}{-} runif(1)}
@@ -1498,7 +1497,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
   \DataTypeTok{title}\NormalTok{ = \{xaringan: Presentation Ninja\},}
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 0.20\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 0.21\},}
   \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=xaringan\},}
 \NormalTok{\}}
 \end{Highlighting}
@@ -1540,7 +1539,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    and Hadley Wickham and Joe Cheng and Winston Chang and}
 \NormalTok{    Richard Iannone\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 2.7\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 2.8\},}
   \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=rmarkdown\},}
 \NormalTok{\}}
 
@@ -1697,16 +1696,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年5月13日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%Y \%B}: 2021 5月
+  \texttt{\%Y \%B}: 2021 6月
 \item
-  \texttt{\%y/\%m/\%d}: 21/05/13
+  \texttt{\%y/\%m/\%d}: 21/06/18
 \item
-  \texttt{\%b\%d (\%a)}: 5月13 (木)
+  \texttt{\%b\%d (\%a)}: 6月18 (金)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -1720,15 +1719,15 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 
 \%a & 曜日の略称 & \%A & 曜日の名称 \\
 \%b & 月の略称 & \%B & 月の名称 \\
-\%c & ロケール依存の時刻 & \%d & 数値表記の日 \\
+\%c & ロケール依存の時刻フォーマット & \%d & 数値表記の日 \\
 \%H & 数値表記の時間 (24 時間) & \%I & 数値表記の時間 (12 時間) \\
 \%j & 1年の何日目か & \%m & 数値表記の月 \\
-\%M & 数値表記の分 & \%p & ロケール依存の午前/午後 \\
+\%M & 数値表記の分 & \%p & ロケール依存の午前/午後フォーマット \\
 \%S & 数値表記の秒 & \%U & 年の何週目か (日曜日始まり) \\
 \%w & 数値表記の曜日 (0=日曜日) & \%W & 年の何週目か (月曜日始まり) \\
-\%x & ロケール依存の日付 & \%X & ロケール依存の時刻 \\
+\%x & ロケール依存の日付フォーマット & \%X & ロケール依存の時刻フォーマット \\
 \%y & 下2桁表記の年 & \%Y & 4桁表記の年 \\
-\%z & GMT からのオフセット & \%Z & タイムゾーン (文字表記) \\
+\%z & GMT との時差 & \%Z & タイムゾーン (文字表記) \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1923,9 +1922,11 @@ RStudio IDE と \textbf{blogdown} パッケージ \autocite{R-blogdown} をイ�
 
 たまに「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. コーディング中毒にならないようにしましょう.
 
-:::\{.infobox .caution data-latex``\{caution\}''\} \textbf{訳注}
+:::\{.infobox .caution data-latex``\{caution\}''\}
 
-上記の例では, 最終行の出典の右寄せが再現できません. これは Pandoc の fenced \texttt{Div} blocks の機能を使用しています. (\ref{custom-blocks}節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください. :::
+\textbf{訳注}
+
+上記の例では, 最終行の出典の右寄せが再現できません. 右寄せには Pandoc の fenced \texttt{Div} blocks の機能が使用されています (\ref{custom-blocks}節). 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください. HTML 版をご覧ならば上部ツールバーの ``Edit'' ボタンからソースのURLを辿ることができます. :::
 
 \hypertarget{equatiomatic}{%
 \section{モデルを数式に変換する}\label{equatiomatic}}
@@ -2226,9 +2227,11 @@ List of 3
  |        |-:List of 2
  |           |-t: chr "Str"
  |           |-c: chr "world!"
- |-pandoc-api-version:List of 2
+ |-pandoc-api-version:List of 4
  |  |-: int 1
- |  |-: int 20
+ |  |-: int 17
+ |  |-: int 5
+ |  |-: int 4
  |-meta              : Named list()
 \end{verbatim}
 
@@ -2913,7 +2916,7 @@ fenced \texttt{Div} についてより詳しく知りたいなら, \ref{custom-b
 \hypertarget{latex-output}{%
 \chapter{LaTeX 出力}\label{latex-output}}
 
-多くの著作者にとって作品の主な出力は PDF レポートですが, この出力では強力な LaTex のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX テンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
+多くの著作者にとって作品の主な出力は PDF レポートですが, この出力では強力な LaTeX のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX テンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
 
 ただし, 始める前に注意しておきたいことがあります. R Markdown の恩恵の1つは単一のソース文書から複数のフォーマットの文書を生成できるということです. あなたの作品を単一の出力に対して仕立て上げるこにとよって, その出力フォーマット単体の見た目やパフォーマンスは向上するかもしれませんが, それはこの移植性を犠牲にすることでもあります. この問題は LaTeX に限ったことでなく. 他の出力フォーマットでも同様です.
 
@@ -2981,26 +2984,26 @@ LaTeX 出力に対してデフォルトの Pandoc テンプレートを使うな
 
 あなたが LaTeX をある程度ご存知なら, これらのオプションの意味は明らかでしょう. \texttt{documentclass} オプション\index{YAML!documentclass} は, 例えば \texttt{article}, \texttt{book}, \texttt{report} などの文書クラスを設定します. \texttt{classoption} は文書クラスに与えたいオプションをリストにしたもので, 例えば二段組の文書を作りたいなら \texttt{twocolumn} オプション,\footnote{このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに \texttt{\textbackslash{}onecolumn} コマンドを挿入することになるでしょう. 二段組モードを続けたいなら \texttt{\textbackslash{}twocolumn} を挿入します.}, 横置きレイアウトにするなら \texttt{landscape} オプション (デフォルトでは縦置き (portrait) レイアウト) があります. \texttt{papersize}\index{YAML!papersize} オプションは \texttt{a4}, \texttt{paper}, \texttt{a5} といった用紙サイズを設定します. \texttt{linestretch}\index{YAML!linestretch} オプションは行間を設定します. \texttt{fontsize}\index{YAML!fontsize} オプションはフォントサイズを \texttt{10pt}, \texttt{11pt}, \texttt{12pt} というふうに設定します. \texttt{links-as-notes} オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
 
-フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの \texttt{pdflatex}\index{pdflatex} を使っているのなら\footnote{\textbf{訳注}: 日本語文書を \textbf{pdflatex} で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.}, \texttt{fontfamily} オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
+フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの \texttt{pdflatex}\index{pdflatex} を使っているのなら\footnote{\textbf{訳注}: 日本語文書を \textbf{pdflatex} で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません. \textbf{xelatex} または \textbf{lualatex} の使用をお薦めします.}, \texttt{fontfamily} オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{fontfamily}\KeywordTok{:}\AttributeTok{ accanthis}
 \FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
+\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}
 \AttributeTok{    }\FunctionTok{latex\_engine}\KeywordTok{:}\AttributeTok{ pdflatex}
 \end{Highlighting}
 \end{Shaded}
 
 これで文書に \href{https://tug.org/FontCatalogue/accanthis/}{Accanthis} フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので \url{https://tug.org/FontCatalogue/} を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\ref{install-latex}節参照).
 
-LaTeX エンジンに \texttt{xelatex} または \texttt{lualatex} を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで \texttt{mainfont}\index{YAML!mainfont}, \texttt{sansfont}\index{YAML!sansfont}, \texttt{monofont}\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.\footnote{\textbf{訳注}: \textbf{rmdja} パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます. 詳細はパッケージのドキュメント等を参考にしてください.} 例えばこのように.
+LaTeX エンジンに \texttt{xelatex} または \texttt{lualatex} を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで \texttt{mainfont}\index{YAML!mainfont}, \texttt{sansfont}\index{YAML!sansfont}, \texttt{monofont}\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.\footnote{\textbf{訳注}: \textbf{rmdja} パッケージでは YAML フロントマターで3種類のフォントをまとめて設定できたり, あるいは欧文用フォントと和文用フォントを個別に細かく指定できたりします. 詳細はパッケージのドキュメント等を参考にしてください.} 例えばこのように.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{mainfont}\KeywordTok{:}\AttributeTok{ Arial}
 \FunctionTok{output}\KeywordTok{:}
-\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}\AttributeTok{ }
+\AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}
 \AttributeTok{    }\FunctionTok{latex\_engine}\KeywordTok{:}\AttributeTok{ xelatex}
 \end{Highlighting}
 \end{Shaded}
@@ -3088,7 +3091,7 @@ LaTeX パッケージ (\textbf{titling}) を特に要求しない代替方法と
 \begin{Highlighting}[]
 \PreprocessorTok{{-}{-}{-}}
 \FunctionTok{title}\KeywordTok{:}\AttributeTok{ }\StringTok{"追加 LaTeX パッケージを使う"}
-\FunctionTok{output}\KeywordTok{:}\AttributeTok{ }
+\FunctionTok{output}\KeywordTok{:}
 \AttributeTok{  }\FunctionTok{pdf\_document}\KeywordTok{:}
 \AttributeTok{    }\FunctionTok{extra\_dependencies}\KeywordTok{:}\AttributeTok{ }\KeywordTok{[}\StringTok{"bbm"}\KeywordTok{,}\AttributeTok{ }\StringTok{"threeparttable"}\KeywordTok{]}
 \PreprocessorTok{{-}{-}{-}}
@@ -3108,7 +3111,7 @@ LaTeX パッケージ (\textbf{titling}) を特に要求しない代替方法と
 \end{Highlighting}
 \end{Shaded}
 
-これは, LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.
+これは LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3536,7 +3539,7 @@ R Markdown はきっと執筆と組版のための最善の文書フォーマッ
 
 LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら変えることができます. CSS と JavaScript の小ワザは, HTML 出力においては有用ながらもシンプルですが, LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
 
-この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった, R Markdown の HTML 出力を向上するテクニックを紹介します. In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
+この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった, R Markdown の HTML 出力を改良するテクニックを紹介します.
 
 \hypertarget{html-css}{%
 \section{カスタム CSS を適用する}\label{html-css}}
@@ -3820,6 +3823,14 @@ R Markdown の HTML 出力は, デフォルトで, Bootstrap フレームワー�
 \end{Highlighting}
 \end{Shaded}
 
+\texttt{code\_folding} は Rと他の一部の言語 (デフォルトでは \texttt{r}, \texttt{python}, \texttt{bash}, \texttt{sql}, \texttt{cpp}, \texttt{stan}, and \texttt{julia}) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの \texttt{class.source} に \texttt{foldable} クラスを追加するか, または いずれかのチャンクで \texttt{knitr::opts\_chunk\$set(class.source = "foldable")} を使ってグローバルに折りたたみの適用範囲を広げることができます.\footnote{\textbf{訳注}: このサンプルコードは本家でも未完成なので表示できません.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\end{Highlighting}
+\end{Shaded}
+
 \hypertarget{html-tabs}{%
 \section{内容をタブブラウジングさせる}\label{html-tabs}}
 
@@ -3876,7 +3887,21 @@ HTML レポートで並列しているセクションをうまくまとめるに
 \end{Highlighting}
 \end{Shaded}
 
-デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに \texttt{.active} 属性を追加できます.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに \texttt{.active} 属性を追加できます. 以下の例では, 文書を開くか再読み込みしたときに第2のタブ(背景情報) がアクティブ, つまり表示されている状態になります.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\#\# 結果 \{.tabset\}}
+
+\FunctionTok{\#\#\# 内容}
+
+\NormalTok{ここに文章.}
+
+\FunctionTok{\#\#\# 背景情報 \{.active\}}
+
+\NormalTok{ここに文章.}
+\end{Highlighting}
+\end{Shaded}
 
 タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にします. 例えばこのように.
 
@@ -4798,7 +4823,7 @@ HTML ウィジェット (\url{https://htmlwidgets.org})\index{HTML!ウィジェ�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{::: \{\#hello .greeting .message width="40\%"\}}
+\NormalTok{::: \{\#hello .greeting .message style="color: red;"\}}
 \NormalTok{Hello **world**!}
 \NormalTok{:::}
 \end{Highlighting}
@@ -4808,7 +4833,7 @@ HTML ウィジェット (\url{https://htmlwidgets.org})\index{HTML!ウィジェ�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}div}\OtherTok{ id=}\StringTok{"hello"}\OtherTok{ class=}\StringTok{"greeting message"}\OtherTok{ width=}\StringTok{"40\%"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}div}\OtherTok{ id=}\StringTok{"hello"}\OtherTok{ class=}\StringTok{"greeting message"}\OtherTok{ style=}\StringTok{"color: red;"}\KeywordTok{\textgreater{}}
 \NormalTok{  Hello }\KeywordTok{\textless{}strong\textgreater{}}\NormalTok{world}\KeywordTok{\textless{}/strong\textgreater{}}\NormalTok{!}
 \KeywordTok{\textless{}/div\textgreater{}}
 \end{Highlighting}
@@ -6322,9 +6347,9 @@ HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう
 \item
   \textbf{formattable} \autocite{R-formattable}: \texttt{percent()}, \texttt{accounting()} といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. \textbf{gt} のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの \url{https://github.com/renkun-ken/formattable} で見ることができます.
 \item
-  \textbf{DT} \autocite{R-DT}: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみサポートしているため, 独立した節を設けて紹介したりはしません. \textbf{DT} は JavaScript ライブラリの \textbf{DataTables} を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. \textbf{DT} はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの \textbf{DaataTables} の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ \url{https://github.com/rstudio/DT} を見てください.
+  \textbf{DT} \autocite{R-DT}: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみのサポートのため独立した節を設けて紹介したりはしません. \textbf{DT} は JavaScript ライブラリの \textbf{DataTables} を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. \textbf{DT} はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの \textbf{DataTables} の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ \url{https://github.com/rstudio/DT} を見てください.
 \item
-  \textbf{reactable} \autocite{R-reactable}: \textbf{DT} と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で \textbf{DT} より優れているようです. もし \textbf{reactable} が 2015年時点で存在していれば, 私は \textbf{DT} を開発していなかったと思います. と言いつつも, \textbf{reactable} は\textbf{DT} にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント \url{https://glin.github.io/reactable/} を読み, どちらが目的に合ったものかを知ることもできるでしょう.
+  \textbf{reactable} \autocite{R-reactable}: \textbf{DT} と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で \textbf{DT} より優れているようです. もし \textbf{reactable} が 2015年時点で存在していれば, 私は \textbf{DT} を開発していなかったと思います. とは言うものの, \textbf{reactable} は\textbf{DT} にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント \url{https://glin.github.io/reactable/} を読み, どちらが目的に合ったものかを知ることもできるでしょう.
 \item
   \textbf{rhandsontable} \autocite{R-rhandsontable}: これも \textbf{DT} と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには \url{https://jrowen.github.io/rhandsontable/} を見てください.
 \item
@@ -7939,8 +7964,8 @@ Bye!
 \end{Shaded}
 
 \begin{verbatim}
-##                  pdfcrop 
-## "/usr/local/bin/pdfcrop"
+##                pdfcrop 
+## "/home/ks/bin/pdfcrop"
 \end{verbatim}
 
 LaTeX 配布パッケージの TinyTeX (\ref{install-latex}節参照) を使っていて, \texttt{pdfcrop} があなたのシステムで利用できないときは, \texttt{tinytex::tlmgr\_install(\textquotesingle{}pdfcrop\textquotesingle{})}\index{tinytex!tlmgr\_install()} でインストールできます.
@@ -8955,7 +8980,7 @@ HELLO, \textbf{KNITR} ENGINES!
 \NormalTok{knitr}\SpecialCharTok{::}\NormalTok{knit\_engines}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{py =} \ControlFlowTok{function}\NormalTok{(options) \{}
 \NormalTok{  code }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(options}\SpecialCharTok{$}\NormalTok{code, }\AttributeTok{collapse =} \StringTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
 \NormalTok{  out  }\OtherTok{\textless{}{-}} \FunctionTok{system2}\NormalTok{(}
-    \StringTok{\textquotesingle{}python\textquotesingle{}}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}{-}c\textquotesingle{}}\NormalTok{, }\FunctionTok{shQuote}\NormalTok{(code)), }\AttributeTok{stdout =} \ConstantTok{TRUE}
+    \StringTok{\textquotesingle{}python3\textquotesingle{}}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}{-}c\textquotesingle{}}\NormalTok{, }\FunctionTok{shQuote}\NormalTok{(code)), }\AttributeTok{stdout =} \ConstantTok{TRUE}
 \NormalTok{  )}
 \NormalTok{  knitr}\SpecialCharTok{::}\FunctionTok{engine\_output}\NormalTok{(options, code, out)}
 \NormalTok{\})}
@@ -10288,7 +10313,7 @@ Google ドライブ上では共同編集作業を同期的に行うことも, �
 
 この Rmd 文書は \texttt{blastula::render\_email()} 関数でレンダリングされ, 出力は \texttt{blastula::smtp\_send()} に渡されます. これはEメールを送信する関数です. \texttt{smtp\_send()} にはEメールサーバとあなたの認証が必要であることに注意してください.
 
-RStudio Connect を使用しているなら, \url{https://solutions.rstudio.com/examples/blastula-overview/} で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
+RStudio Connect を使用しているなら, \url{https://solutions.rstudio.com/r/blastula/} で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
 
 \hypertarget{appendix-ux88dcux907a}{%
 \appendix}
@@ -10395,6 +10420,16 @@ knitr::opts_chunk$set(
   \tightlist
   \item
     \texttt{asis}: テキスト出力を「そのまま」書き出します. つまり, 生の結果テキストをマークアップ一切なしでそのまま文書に書き出します.
+  \end{itemize}
+
+\begin{verbatim}
+```{r, results='asis'}
+cat("I'm raw **Markdown** content.\n")
+```
+\end{verbatim}
+
+  \begin{itemize}
+  \tightlist
   \item
     \textbf{\texttt{hold}}: チャンクと flush の全てのテキスト出力をチャンクの末尾に固定します.
   \item
@@ -10428,7 +10463,6 @@ knitr::opts_chunk$set(
 \subsection{コードの装飾関連}\label{code-decoration}}
 
 \begin{itemize}
-\tightlist
 \item
   \texttt{tidy}: (\texttt{FALSE}) R コードを整形するかどうかです. 他の有効な値は次のとおりです.
 
@@ -10461,24 +10495,16 @@ knitr::opts_chunk$set(
   \textbf{\texttt{background}}: (\texttt{\textquotesingle{}\#F7F7F7\textquotesingle{}}; \texttt{character}).: \texttt{.Rnw} 使用時のチャンクブロックの背景色です\footnote{訳注: R Markdown では背景色は CSS や \texttt{class.output} などで設定する必要があります. 詳細は R Markdown Cookbook などを参照してください}.
 \item
   \textbf{\texttt{indent}}: (\texttt{character}).: チャンクの出力で各行に追加する文字です. 典型的には空白と同義です. このオプションは読み込み専用を想定しており, 値は \textbf{knitr} が文書を読み込む際に設定されます. 例えば以下のチャンクでは, \texttt{indent} は空白文字2個です\footnote{訳注: R Markdown の場合は \textbf{knitr} 以外の中間処理があるため, 必ずしもこのルールを守りません}.
-\end{itemize}
-
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\FunctionTok{rnorm}\NormalTok{(}\DecValTok{10}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
 
 \begin{verbatim}
-##  [1]  1.37096 -0.56470  0.36313  0.63286  0.40427
-##  [6] -0.10612  1.51152 -0.09466  2.01842 -0.06271
+```{r indent-example, echo=2}
+set.seed(42)
+rnorm(10)
+```
 \end{verbatim}
 
-\hypertarget{cache-options}{%
-\subsection{キャッシュ関連}\label{cache-options}}
-
-\begin{itemize}
-\tightlist
+  \hypertarget{cache-options}{%
+  \subsection{キャッシュ関連}\label{cache-options}}
 \item
   \textbf{\texttt{cache}}: (\texttt{FALSE}; \texttt{logical}).: コードチャンクのキャッシュを取るかどうかです. 初回の実行またはキャッシュが存在しない場合は通常通り実行され, 結果がデータセットが保存され (\texttt{.rdb}, \texttt{.rdx} ファイルなど), それ以降でコードチャンクが評価されることがあれば, 以前保存されたこれらのファイルからこのチャンクの結果を読み出します. ファイル名がチャンクラベルと R コードの MD5 ハッシュ値で一致する必要があることに注意してください. つまりチャンクになんらかの変更がある度に異なる MD5 ハッシュ値が生成されるため, キャッシュはその度に無効になります. 詳細は \href{https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html\#cache}{キャッシュの解説} を参考にしてください.
 \item
@@ -10495,10 +10521,14 @@ knitr::opts_chunk$set(
   \textbf{\texttt{cache.rebuild}}: (\texttt{FALSE}; \texttt{logical}).: \texttt{TRUE} の場合, キャッシュが有効であってもチャンクのコードの再評価を行います. このオプションはキャッシュの無効化の条件を指定したいときに有用です. 例えば \texttt{cache.rebuild = !file.exists("some-file")} とすれば \texttt{some-file} が存在しないときにチャンクが評価されキャッシュが再構成されます (issue \href{https://github.com/yihui/knitr/issues/238}{\#238} を参照).
 \item
   \textbf{\texttt{dependson}}: (\texttt{NULL}; \texttt{character} または \texttt{numeric}).: このチャンクが依存しているチャンクのラベル名を文字ベクトルで指定します. このオプションはキャッシュされたチャンクでのみ適用されます. キャッシュされたチャンク内のオブジェクトは, 他のキャッシュされたチャンクに依存しているかもしれず, 他のチャンクの変更に合わせてこのチャンクも更新する必要があるかもしれません.
-\item
-  \texttt{dependson} に \texttt{numeric} ベクトルを与えた場合, それはチャンクラベルのインデックスを意味します. 例えば \texttt{dependson = 1} ならばこの文書の1番目のチャンクに依存することを意味し, \texttt{dependson = c(-1, -2)} は直前の2つのチャンクを意味します (負のインデックスは現在のチャンクからの相対的な位置を表します).
-\item
-  \texttt{opts\_chunk\$set()} によってグローバルにチャンクオプションを設定した場合, このオプションは機能しません. ローカルなチャンクオプションとして設定しなければなりません.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{dependson} に \texttt{numeric} ベクトルを与えた場合, それはチャンクラベルのインデックスを意味します. 例えば \texttt{dependson = 1} ならばこの文書の1番目のチャンクに依存することを意味し, \texttt{dependson = c(-1, -2)} は直前の2つのチャンクを意味します (負のインデックスは現在のチャンクからの相対的な位置を表します).
+  \item
+    \texttt{opts\_chunk\$set()} によってグローバルにチャンクオプションを設定した場合, このオプションは機能しません. ローカルなチャンクオプションとして設定しなければなりません.
+  \end{itemize}
 \item
   \textbf{\texttt{autodep}}: (\texttt{FALSE}; \texttt{logical}).: グローバル変数を検出することでチャンク間の依存関係を分析するかどうかを指定します (あまり信頼できません). よって, \texttt{dependson} を明示的に指定する必要はありません.
 \end{itemize}
@@ -10528,7 +10558,6 @@ knitr::opts_chunk$set(
   \item
     数値ベクトルを指定した場合, その値は保存する低水準プロットのインデックスとなります. 低水準プロットとは \texttt{lines()} や \texttt{points()} などの関数によるグラフ描画のことです. \texttt{fig.keep} についてより理解するには次のようなチャンクを考えてください. 通常はこれで2つのグラフを出力します (\texttt{fig.keep = \textquotesingle{}high\textquotesingle{}} を指定したので). \texttt{fig.keep = \textquotesingle{}none\textquotesingle{}} としたなら, いかなるグラフも保存されません. \texttt{fig.keep = \textquotesingle{}all\textquotesingle{}} ならば, 4 つのグラフとして保存されます. \texttt{fig.keep = \textquotesingle{}first\textquotesingle{}} ならば \texttt{plot(1)} によって作成されたグラフが保存されます. \texttt{fig.keep = \textquotesingle{}last\textquotesingle{}}, なら, 最後の10本の垂線を描画したグラフが保存されます.
   \end{itemize}
-\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -10541,9 +10570,6 @@ knitr::opts_chunk$set(
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{itemize}
-\tightlist
 \item
   \textbf{\texttt{fig.show}}: (\texttt{\textquotesingle{}asis\textquotesingle{}}; \texttt{character}).: グラフをどのように表示し, 配置するかです. 可能な値は次のとおりです.
 
@@ -10669,12 +10695,10 @@ knitr::opts_chunk$set(
 \subsection{言語エンジン関連}\label{engine}}
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{\texttt{engine}}: (\texttt{\textquotesingle{}R\textquotesingle{}}; \texttt{character}).: コードチャンクの言語名です. 指定可能な名前は \texttt{names(knitr::knit\_engines\$get())} で確認できます. 例: \texttt{python}, \texttt{sql}, \texttt{julia}, \texttt{bash}, \texttt{c}, など. \texttt{knitr::knit\_engines} で他の言語を使うためのセットアップが可能です.
 \item
   \textbf{\texttt{engine.path}}: (\texttt{NULL}; \texttt{character}).: 実行可能なエンジンのパスを指定します. あなたのお使いのシステムの別の実行ファイルを使用するためのオプションです. 例えば \texttt{python} はデフォルトでは \texttt{/usr/bin/python} を参照しますが, 他のバージョンを使うため \texttt{engine.path = \textquotesingle{}\textasciitilde{}/anaconda/bin/python\textquotesingle{}} などと指定することもできます\footnote{訳注: R Markdown の場合, Python のバージョンは \texttt{reticulate} パッケージでも制御できます. むしろそちらをつかったほうが便利だと思われます.}. \texttt{engine.path} もまたパスのリストを与えられます. これによってエンジンごとにそれぞれパスを指定することができます. 以下のコードが例です. リストの名前はエンジン名と一致する必要があります.
-\end{itemize}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -10682,23 +10706,50 @@ knitr::opts_chunk$set(
   \AttributeTok{ruby =} \StringTok{"/usr/local/bin/ruby"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
+\item
+  \textbf{\texttt{engine.opts}}: (\texttt{NULL}; \texttt{character}) 言語エンジンに与える追加引数. チャンクの段階ではオプションを文字列またはリストで指定することができます.
+
+\begin{verbatim}
+```{bash, engine.opts='-l'}
+echo $PATH
+```
+\end{verbatim}
+
+\begin{verbatim}
+```{cat, engine.opts = list(file = "my_custom.css")}
+h2 {
+  color: blue;
+}
+```
+\end{verbatim}
+
+  グローバルレベルでは, 要素名に言語名を与えた文字列のリストが使用できます. \texttt{engine.path} と同様に, \texttt{knitr::opts\_chunk\$set()} で引数のテンプレートを作ると便利です.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{engine.opts =} \FunctionTok{list}\NormalTok{(}\AttributeTok{perl =} \StringTok{"{-}Mstrict {-}Mwarnings"}\NormalTok{, }
+  \AttributeTok{bash =} \StringTok{"{-}o errexit"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+  各エンジンはそれぞれ自身の \texttt{engine.opts} を持ち, 固有のオプションを定義します. 言語エンジンのドキュメントを調べるべきでしょう. R Markdown クックブックには \href{https://bookdown.org/yihui/rmarkdown-cookbook/eng-cat.html}{\texttt{cat}}\footnote{翻訳版: \url{https://gedevan-aleksizde.github.io/rmarkdown-cookbook/eng-cat.html}}, \href{https://bookdown.org/yihui/rmarkdown-cookbook/eng-sass.html}{\texttt{sass}/\texttt{scss}}\footnote{翻訳版: \url{https://gedevan-aleksizde.github.io/rmarkdown-cookbook/eng-sass.html}}エンジンの例が掲載されています.
+\end{itemize}
 
 \hypertarget{ux30aaux30d7ux30b7ux30e7ux30f3ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux95a2ux9023}{%
 \subsection{オプションテンプレート関連}\label{ux30aaux30d7ux30b7ux30e7ux30f3ux30c6ux30f3ux30d7ux30ecux30fcux30c8ux95a2ux9023}}
 
 \begin{itemize}
-\tightlist
 \item
   \textbf{\texttt{opts.label}}: (\texttt{NULL}; \texttt{character}).: \texttt{knitr::opts\_template} でのオプションのラベルです. オプションセットのラベルは \texttt{knitr::opts\_template} で設定できます (\texttt{?knitr::opts\_template} を参照してください). このオプションにより, 頻繁に使うチャンクオプションのタイピング労力を削減できます.
-\end{itemize}
 
-\textbf{訳注}: 例えば次のように, \texttt{echo=F} を設定するテンプレート \texttt{noecho} をどこかで作成したとします. すると, 以降のチャンクで \texttt{opts.label="noecho"} を設定すると \texttt{opts\_template} で設定した \texttt{noecho} のオプションが全て適用されます. もちろん複数のオプションをまとめることもできるので, 定番の設定を使いまわすのが簡単になります.
+  \textbf{訳注}: 例えば次のように, \texttt{echo=F} を設定するテンプレート \texttt{noecho} をどこかで作成したとします. すると, 以降のチャンクで \texttt{opts.label="noecho"} を設定すると \texttt{opts\_template} で設定した \texttt{noecho} のオプションが全て適用されます. もちろん複数のオプションをまとめることもできるので, 定番の設定を使いまわすのが簡単になります.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_template}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{noecho =} \FunctionTok{list}\NormalTok{(}\AttributeTok{echo =}\NormalTok{ F))}
 \end{Highlighting}
 \end{Shaded}
+\end{itemize}
 
 \hypertarget{ux30bdux30fcux30b9ux30b3ux30fcux30c9ux306eux62bdux51faux95a2ux9023}{%
 \subsection{ソースコードの抽出関連}\label{ux30bdux30fcux30b9ux30b3ux30fcux30c9ux306eux62bdux51faux95a2ux9023}}
@@ -10723,11 +10774,11 @@ knitr::opts_chunk$set(
 
 パッケージオプションは \href{https://gedevan-aleksizde.github.io/knitr-doc-ja/objects.html\#objects}{\texttt{knitr::opts\_knit}} を使用することで変更できます. \textbf{\texttt{knitr::opts\_chunk} と混同しないでください}. 使用例は以下のとおりです.
 
-\begin{Shaded}
-\begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_knit}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{progress =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{verbose =} \ConstantTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+```{.r .numberLines .lineAnchors}
+knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
+```
+\end{verbatim}
 
 別の方法として, R の基本関数である \texttt{options()} を使ってパッケージオプションを設定する場合は \texttt{?knitr::opts\_knit} を参照してください.
 

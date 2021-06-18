@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,9 +496,9 @@ div.csl-indent {
 <div id="hide-all" class="section level2" number="11.8">
 <h2><span class="header-section-number">11.8</span> チャンクの出力を全て隠す</h2>
 <p>ときには出力を全く表示させずにコードチャンクを実行したいかもしれません. <a href="hide-one.html#hide-one">11.7</a>節で言及したような方法で個別にオプションを使うのではなく, ただ1つ <code>include = FALSE</code> を使うことで出力全体を抑制できます. これが例です.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb292-1"><a href="hide-all.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb292-2"><a href="hide-all.html#cb292-2" aria-hidden="true" tabindex="-1"></a><span class="in"># ここに何らかの R コード</span></span>
-<span id="cb292-3"><a href="hide-all.html#cb292-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb294-1"><a href="hide-all.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb294-2"><a href="hide-all.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="in"># ここに何らかの R コード</span></span>
+<span id="cb294-3"><a href="hide-all.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>include=FALSE</code> オプションがあると, <code>eval = FALSE</code> の指定がない限りコードチャンクは評価されますが, 出力は完全に抑制されます. コードも, テキスト出力も, メッセージもグラフも見えなくなります.</p>
 </div>
             </section>

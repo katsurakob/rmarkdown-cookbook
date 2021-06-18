@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,9 +496,9 @@ div.csl-indent {
 <div id="dev-vector" class="section level2" number="11.3">
 <h2><span class="header-section-number">11.3</span> 同じグラフを複数の出力フォーマットに</h2>
 <p>ほとんどの場合, 1つの図に対して <code>png</code> や <code>pdf</code> といった1つの画像フォーマットにしたいでしょう. 画像フォーマットはチャンクオプション <code>dev</code> で操作できます. つまり, グラフをレンダリングするグラフィックデバイスを意味します. このオプションはデバイス名のベクトルをとることができます. これが例です.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb284-1"><a href="dev-vector.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev=c(&#39;png&#39;, &#39;pdf&#39;, &#39;svg&#39;, &#39;tiff&#39;)}</span></span>
-<span id="cb284-2"><a href="dev-vector.html#cb284-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb284-3"><a href="dev-vector.html#cb284-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb286-1"><a href="dev-vector.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, dev=c(&#39;png&#39;, &#39;pdf&#39;, &#39;svg&#39;, &#39;tiff&#39;)}</span></span>
+<span id="cb286-2"><a href="dev-vector.html#cb286-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
+<span id="cb286-3"><a href="dev-vector.html#cb286-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>出力文書には最初のフォーマットのみが使われますが, 残りのフォーマットに対応する画像も生成されます. 例えば, レポートでは <code>png</code> 画像を掲載するが, 同じ画像の <code>tiff</code> 形式も求められるときなど, 追加で異なるフォーマットの図の提出が要求されるような場合に便利でしょう.</p>
 <p>デフォルトでは, 通常なら画像ファイルは出力文書がレンダリングされた後に削除されます. ファイルを保持する方法は<a href="keep-files.html#keep-files">16.5</a>節を参照してください.</p>
 </div>

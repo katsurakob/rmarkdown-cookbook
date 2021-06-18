@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -495,50 +495,50 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="opts-tidy" class="section level2" number="11.10">
 <h2><span class="header-section-number">11.10</span> R のソースコードを整形する</h2>
-<p>チャンクオプション <code>tidy = TRUE</code> を設定すると, <strong>formatR</strong> パッケージ <span class="citation">(<a href="#ref-R-formatR" role="doc-biblioref">Xie 2019a</a>)</span> の <code>tidy_source()</code> 関数によって R のソースコードが整形されます. <code>tidy_source()</code> 関数は, ほとんどの演算子の前後にスペースを追加する, 適切なインデントをする, 代入演算子 <code>=</code> を <code>&lt;-</code> に置き換えるなど, いくつかの観点でソースコードを整形します. チャンクオプション <code>tidy.opts</code> には <code>formatR::tidy_source()</code> に与えられる引数のリストが使えます. これが例です.</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb298-1"><a href="opts-tidy.html#cb298-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=TRUE, tidy.opts=list(arrow=TRUE, indent=2)}</span></span>
-<span id="cb298-2"><a href="opts-tidy.html#cb298-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 乱雑な R コード...</span></span>
-<span id="cb298-3"><a href="opts-tidy.html#cb298-3" aria-hidden="true" tabindex="-1"></a><span class="in">1+            1</span></span>
-<span id="cb298-4"><a href="opts-tidy.html#cb298-4" aria-hidden="true" tabindex="-1"></a><span class="in">x=1:10#代入演算子として &#39;&lt;-&#39; を好むユーザーがいる</span></span>
-<span id="cb298-5"><a href="opts-tidy.html#cb298-5" aria-hidden="true" tabindex="-1"></a><span class="in">if(TRUE){</span></span>
-<span id="cb298-6"><a href="opts-tidy.html#cb298-6" aria-hidden="true" tabindex="-1"></a><span class="in">print(&#39;Hello world!&#39;) # スペース2個でインデントする</span></span>
-<span id="cb298-7"><a href="opts-tidy.html#cb298-7" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb298-8"><a href="opts-tidy.html#cb298-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>チャンクオプション <code>tidy = TRUE</code> を設定すると, <strong>formatR</strong> パッケージ <span class="citation">(<a href="#ref-R-formatR" role="doc-biblioref">Xie 2021b</a>)</span> の <code>tidy_source()</code> 関数によって R のソースコードが整形されます. <code>tidy_source()</code> 関数は, ほとんどの演算子の前後にスペースを追加する, 適切なインデントをする, 代入演算子 <code>=</code> を <code>&lt;-</code> に置き換えるなど, いくつかの観点でソースコードを整形します. チャンクオプション <code>tidy.opts</code> には <code>formatR::tidy_source()</code> に与えられる引数のリストが使えます. これが例です.</p>
+<div class="sourceCode" id="cb300"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb300-1"><a href="opts-tidy.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=TRUE, tidy.opts=list(arrow=TRUE, indent=2)}</span></span>
+<span id="cb300-2"><a href="opts-tidy.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 乱雑な R コード...</span></span>
+<span id="cb300-3"><a href="opts-tidy.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="in">1+            1</span></span>
+<span id="cb300-4"><a href="opts-tidy.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="in">x=1:10#代入演算子として &#39;&lt;-&#39; を好むユーザーがいる</span></span>
+<span id="cb300-5"><a href="opts-tidy.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="in">if(TRUE){</span></span>
+<span id="cb300-6"><a href="opts-tidy.html#cb300-6" aria-hidden="true" tabindex="-1"></a><span class="in">print(&#39;Hello world!&#39;) # スペース2個でインデントする</span></span>
+<span id="cb300-7"><a href="opts-tidy.html#cb300-7" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb300-8"><a href="opts-tidy.html#cb300-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>整形後の出力はこうなります.</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb299-1"><a href="opts-tidy.html#cb299-1"></a><span class="co"># 乱雑な R コード...</span></span>
-<span id="cb299-2"><a href="opts-tidy.html#cb299-2"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb299-3"><a href="opts-tidy.html#cb299-3"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co">#代入演算子として &#39;&lt;-&#39; を好むユーザーがいる</span></span>
-<span id="cb299-4"><a href="opts-tidy.html#cb299-4"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
-<span id="cb299-5"><a href="opts-tidy.html#cb299-5"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)  <span class="co"># スペース2個でインデントする</span></span>
-<span id="cb299-6"><a href="opts-tidy.html#cb299-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb301-1"><a href="opts-tidy.html#cb301-1"></a><span class="co"># 乱雑な R コード...</span></span>
+<span id="cb301-2"><a href="opts-tidy.html#cb301-2"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb301-3"><a href="opts-tidy.html#cb301-3"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>  <span class="co">#代入演算子として &#39;&lt;-&#39; を好むユーザーがいる</span></span>
+<span id="cb301-4"><a href="opts-tidy.html#cb301-4"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
+<span id="cb301-5"><a href="opts-tidy.html#cb301-5"></a>  <span class="fu">print</span>(<span class="st">&quot;Hello world!&quot;</span>)  <span class="co"># スペース2個でインデントする</span></span>
+<span id="cb301-6"><a href="opts-tidy.html#cb301-6"></a>}</span></code></pre></div>
 <p><a href="text-width.html#text-width">5.3</a>節ではテキストの幅を制御する方法について言及しました. ソースコードの幅を制御したいなら, <code>tidy = TRUE</code> としたときに <code>width.cutoff</code> 引数を試してください. これが例です.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb300-1"><a href="opts-tidy.html#cb300-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=TRUE, tidy.opts=list(width.cutoff=50)}</span></span>
-<span id="cb300-2"><a href="opts-tidy.html#cb300-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 長い式</span></span>
-<span id="cb300-3"><a href="opts-tidy.html#cb300-3" aria-hidden="true" tabindex="-1"></a><span class="in">1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+</span></span>
-<span id="cb300-4"><a href="opts-tidy.html#cb300-4" aria-hidden="true" tabindex="-1"></a><span class="in">1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1</span></span>
-<span id="cb300-5"><a href="opts-tidy.html#cb300-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>出力はこうなります.</p>
-<div class="sourceCode" id="cb301"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb301-1"><a href="opts-tidy.html#cb301-1"></a><span class="co"># 長い式</span></span>
-<span id="cb301-2"><a href="opts-tidy.html#cb301-2"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
-<span id="cb301-3"><a href="opts-tidy.html#cb301-3"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
-<span id="cb301-4"><a href="opts-tidy.html#cb301-4"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
-<span id="cb301-5"><a href="opts-tidy.html#cb301-5"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
-<p>使用可能な引数を知るにはヘルプページ <code>?formatR::tidy_source</code> を読んでください. そして <a href="https://yihui.org/formatR/" class="uri">https://yihui.org/formatR/</a> で使用例とこの関数の限界を理解してください.</p>
-<p><code>tidy = styler</code> を設定したなら, コード整形には代わりに <strong>styler</strong> パッケージ <span class="citation">(<a href="#ref-R-styler" role="doc-biblioref">Müller and Walthert 2020</a>)</span> が使われます. R コードは <code>styler::style_text()</code> 関数で整形されます. <strong>styler</strong> パッケージは <strong>formatR</strong> よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 <code>%&gt;%</code> のあるコードも対処できたりします. チャンクオプション <code>tidy.opts</code> は <code>styler::style_text()</code> へ引数を渡して使うこともできます. これが例です.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb302-1"><a href="opts-tidy.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=&#39;styler&#39;, tidy.opts=list(strict=FALSE)}</span></span>
-<span id="cb302-2"><a href="opts-tidy.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 代入演算子のアラインメント</span></span>
-<span id="cb302-3"><a href="opts-tidy.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="in">a   &lt;- 1#one variable</span></span>
-<span id="cb302-4"><a href="opts-tidy.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="in">abc &lt;- 2#another variable</span></span>
+<div class="sourceCode" id="cb302"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb302-1"><a href="opts-tidy.html#cb302-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=TRUE, tidy.opts=list(width.cutoff=50)}</span></span>
+<span id="cb302-2"><a href="opts-tidy.html#cb302-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 長い式</span></span>
+<span id="cb302-3"><a href="opts-tidy.html#cb302-3" aria-hidden="true" tabindex="-1"></a><span class="in">1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+</span></span>
+<span id="cb302-4"><a href="opts-tidy.html#cb302-4" aria-hidden="true" tabindex="-1"></a><span class="in">1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1+1</span></span>
 <span id="cb302-5"><a href="opts-tidy.html#cb302-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>出力はこうなります.</p>
+<div class="sourceCode" id="cb303"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb303-1"><a href="opts-tidy.html#cb303-1"></a><span class="co"># 長い式</span></span>
+<span id="cb303-2"><a href="opts-tidy.html#cb303-2"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
+<span id="cb303-3"><a href="opts-tidy.html#cb303-3"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
+<span id="cb303-4"><a href="opts-tidy.html#cb303-4"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> </span>
+<span id="cb303-5"><a href="opts-tidy.html#cb303-5"></a>  <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
+<p>使用可能な引数を知るにはヘルプページ <code>?formatR::tidy_source</code> を読んでください. そして <a href="https://yihui.org/formatR/" class="uri">https://yihui.org/formatR/</a> で使用例とこの関数の限界を理解してください.</p>
+<p><code>tidy = styler</code> を設定したなら, コード整形には代わりに <strong>styler</strong> パッケージ <span class="citation">(<a href="#ref-R-styler" role="doc-biblioref">Müller and Walthert 2021</a>)</span> が使われます. R コードは <code>styler::style_text()</code> 関数で整形されます. <strong>styler</strong> パッケージは <strong>formatR</strong> よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 <code>%&gt;%</code> のあるコードも対処できたりします. チャンクオプション <code>tidy.opts</code> は <code>styler::style_text()</code> へ引数を渡して使うこともできます. これが例です.</p>
+<div class="sourceCode" id="cb304"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb304-1"><a href="opts-tidy.html#cb304-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, tidy=&#39;styler&#39;, tidy.opts=list(strict=FALSE)}</span></span>
+<span id="cb304-2"><a href="opts-tidy.html#cb304-2" aria-hidden="true" tabindex="-1"></a><span class="in"># 代入演算子のアラインメント</span></span>
+<span id="cb304-3"><a href="opts-tidy.html#cb304-3" aria-hidden="true" tabindex="-1"></a><span class="in">a   &lt;- 1#one variable</span></span>
+<span id="cb304-4"><a href="opts-tidy.html#cb304-4" aria-hidden="true" tabindex="-1"></a><span class="in">abc &lt;- 2#another variable</span></span>
+<span id="cb304-5"><a href="opts-tidy.html#cb304-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>デフォルトでは <code>tidy = FALSE</code> であり, あなたのコードは整形されません.</p>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-styler" class="csl-entry">
-Müller, Kirill, and Lorenz Walthert. 2020. <em>Styler: Non-Invasive Pretty Printing of r Code</em>. <a href="https://github.com/r-lib/styler">https://github.com/r-lib/styler</a>.
+Müller, Kirill, and Lorenz Walthert. 2021. <em>Styler: Non-Invasive Pretty Printing of r Code</em>. <a href="https://CRAN.R-project.org/package=styler">https://CRAN.R-project.org/package=styler</a>.
 </div>
 <div id="ref-R-formatR" class="csl-entry">
-———. 2019a. <em>formatR: Format r Code Automatically</em>. <a href="https://github.com/yihui/formatR">https://github.com/yihui/formatR</a>.
+———. 2021b. <em>formatR: Format r Code Automatically</em>. <a href="https://github.com/yihui/formatR">https://github.com/yihui/formatR</a>.
 </div>
 </div>
             </section>

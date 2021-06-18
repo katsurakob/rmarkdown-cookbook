@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,15 +496,15 @@ div.csl-indent {
 <div id="eng-asis" class="section level2" number="15.3">
 <h2><span class="header-section-number">15.3</span> <code>asis</code> エンジンでコンテンツを条件付きで実行する</h2>
 <p>その名が示すとおり, <code>asis</code> エンジンはチャンクの内容をそのまま書き出します. このエンジンを使う利点は条件に応じてコンテンツを読み込めることです. つまりチャンクオプション <code>echo</code> によりチャンクの内容の表示を決定します. <code>echo = FALSE</code> の時はチャンクは隠されます. 以下は簡単な例です.</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb440-1"><a href="eng-asis.html#cb440-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb440-2"><a href="eng-asis.html#cb440-2" aria-hidden="true" tabindex="-1"></a><span class="in">getRandomNumber &lt;- function() {</span></span>
-<span id="cb440-3"><a href="eng-asis.html#cb440-3" aria-hidden="true" tabindex="-1"></a><span class="in">  sample(1:6, 1)</span></span>
-<span id="cb440-4"><a href="eng-asis.html#cb440-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb440-5"><a href="eng-asis.html#cb440-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb440-6"><a href="eng-asis.html#cb440-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb440-7"><a href="eng-asis.html#cb440-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{asis, echo = getRandomNumber() == 4}</span></span>
-<span id="cb440-8"><a href="eng-asis.html#cb440-8" aria-hidden="true" tabindex="-1"></a><span class="in">https://xkcd.com/221/ によれば, **真の**乱数を生成しました!</span></span>
-<span id="cb440-9"><a href="eng-asis.html#cb440-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb442-1"><a href="eng-asis.html#cb442-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb442-2"><a href="eng-asis.html#cb442-2" aria-hidden="true" tabindex="-1"></a><span class="in">getRandomNumber &lt;- function() {</span></span>
+<span id="cb442-3"><a href="eng-asis.html#cb442-3" aria-hidden="true" tabindex="-1"></a><span class="in">  sample(1:6, 1)</span></span>
+<span id="cb442-4"><a href="eng-asis.html#cb442-4" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb442-5"><a href="eng-asis.html#cb442-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb442-6"><a href="eng-asis.html#cb442-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb442-7"><a href="eng-asis.html#cb442-7" aria-hidden="true" tabindex="-1"></a><span class="in">```{asis, echo = getRandomNumber() == 4}</span></span>
+<span id="cb442-8"><a href="eng-asis.html#cb442-8" aria-hidden="true" tabindex="-1"></a><span class="in">https://xkcd.com/221/ によれば, **真の**乱数を生成しました!</span></span>
+<span id="cb442-9"><a href="eng-asis.html#cb442-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>asis</code> チャンク内のテキストは条件式 <code>getRandomNumber() == 4</code> が (ランダムに) 真であるならば表示されます.</p>
 </div>
             </section>

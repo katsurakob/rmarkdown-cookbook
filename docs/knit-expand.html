@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,27 +496,27 @@ div.csl-indent {
 <div id="knit-expand" class="section level2" number="14.7">
 <h2><span class="header-section-number">14.7</span> Rmd ソースの生成に <code>knitr::knit_expand()</code> を使う</h2>
 <p><code>knitr::knit_expand()</code> 関数は, デフォルトで <code>{{ }}</code> 内の表現を値に展開 (expand) します. これが例です.</p>
-<div class="sourceCode" id="cb403"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb403-1"><a href="knit-expand.html#cb403-1"></a>knitr<span class="sc">::</span><span class="fu">knit_expand</span>(<span class="at">text =</span> <span class="st">&quot;`pi` の値は {{pi}} である.&quot;</span>)</span>
-<span id="cb403-2"><a href="knit-expand.html#cb403-2"></a><span class="do">## [1] &quot;`pi` の値は 3.14159265358979 である.&quot;</span></span>
-<span id="cb403-3"><a href="knit-expand.html#cb403-3"></a>knitr<span class="sc">::</span><span class="fu">knit_expand</span>(</span>
-<span id="cb403-4"><a href="knit-expand.html#cb403-4"></a>  <span class="at">text =</span> <span class="st">&quot;`a` の値は {{a}} なので, `a + 1` は {{a+1}} である.&quot;</span>,</span>
-<span id="cb403-5"><a href="knit-expand.html#cb403-5"></a>  <span class="at">a =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>), <span class="dv">4</span>)</span>
-<span id="cb403-6"><a href="knit-expand.html#cb403-6"></a>)</span>
-<span id="cb403-7"><a href="knit-expand.html#cb403-7"></a><span class="do">## [1] &quot;`a` の値は -1.1142 なので, `a + 1` は -0.1142 である.&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb405"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb405-1"><a href="knit-expand.html#cb405-1"></a>knitr<span class="sc">::</span><span class="fu">knit_expand</span>(<span class="at">text =</span> <span class="st">&quot;`pi` の値は {{pi}} である.&quot;</span>)</span>
+<span id="cb405-2"><a href="knit-expand.html#cb405-2"></a><span class="do">## [1] &quot;`pi` の値は 3.14159265358979 である.&quot;</span></span>
+<span id="cb405-3"><a href="knit-expand.html#cb405-3"></a>knitr<span class="sc">::</span><span class="fu">knit_expand</span>(</span>
+<span id="cb405-4"><a href="knit-expand.html#cb405-4"></a>  <span class="at">text =</span> <span class="st">&quot;`a` の値は {{a}} なので, `a + 1` は {{a+1}} である.&quot;</span>,</span>
+<span id="cb405-5"><a href="knit-expand.html#cb405-5"></a>  <span class="at">a =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">1</span>), <span class="dv">4</span>)</span>
+<span id="cb405-6"><a href="knit-expand.html#cb405-6"></a>)</span>
+<span id="cb405-7"><a href="knit-expand.html#cb405-7"></a><span class="do">## [1] &quot;`a` の値は -1.1142 なので, `a + 1` は -0.1142 である.&quot;</span></span></code></pre></div>
 <p><code>{{ }}</code> 内に動的なものが含まれている Rmd 文書であれば, <code>knit_expand()</code> を適用して <code>knit()</code> を呼び出してコンパイルすることができるということを, この例は意味しています. 例えばここに <code>template.Rmd</code> という文書があったとします.</p>
-<div class="sourceCode" id="cb404"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb404-1"><a href="knit-expand.html#cb404-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># {{i}} に対する回帰</span></span>
-<span id="cb404-2"><a href="knit-expand.html#cb404-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb404-3"><a href="knit-expand.html#cb404-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lm-{{i}}}</span></span>
-<span id="cb404-4"><a href="knit-expand.html#cb404-4" aria-hidden="true" tabindex="-1"></a><span class="in">lm(mpg ~ {{i}}, data = mtcars)</span></span>
-<span id="cb404-5"><a href="knit-expand.html#cb404-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb406"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb406-1"><a href="knit-expand.html#cb406-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># {{i}} に対する回帰</span></span>
+<span id="cb406-2"><a href="knit-expand.html#cb406-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb406-3"><a href="knit-expand.html#cb406-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r lm-{{i}}}</span></span>
+<span id="cb406-4"><a href="knit-expand.html#cb406-4" aria-hidden="true" tabindex="-1"></a><span class="in">lm(mpg ~ {{i}}, data = mtcars)</span></span>
+<span id="cb406-5"><a href="knit-expand.html#cb406-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><code>mtcars</code> データセット内の <code>mpg</code> に対する他の変数全てを一つ一つ使った線型回帰モデルを構築できます.</p>
-<div class="sourceCode" id="cb405"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb405-1"><a href="knit-expand.html#cb405-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
-<span id="cb405-2"><a href="knit-expand.html#cb405-2" aria-hidden="true" tabindex="-1"></a><span class="in">src = lapply(setdiff(names(mtcars), &#39;mpg&#39;), function(i) {</span></span>
-<span id="cb405-3"><a href="knit-expand.html#cb405-3" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_expand(&#39;template.Rmd&#39;)</span></span>
-<span id="cb405-4"><a href="knit-expand.html#cb405-4" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
-<span id="cb405-5"><a href="knit-expand.html#cb405-5" aria-hidden="true" tabindex="-1"></a><span class="in">res = knitr::knit_child(text = unlist(src), quiet = TRUE)</span></span>
-<span id="cb405-6"><a href="knit-expand.html#cb405-6" aria-hidden="true" tabindex="-1"></a><span class="in">cat(res, sep = &#39;\n&#39;)</span></span>
-<span id="cb405-7"><a href="knit-expand.html#cb405-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb407"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb407-1"><a href="knit-expand.html#cb407-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, echo=FALSE, results=&#39;asis&#39;}</span></span>
+<span id="cb407-2"><a href="knit-expand.html#cb407-2" aria-hidden="true" tabindex="-1"></a><span class="in">src = lapply(setdiff(names(mtcars), &#39;mpg&#39;), function(i) {</span></span>
+<span id="cb407-3"><a href="knit-expand.html#cb407-3" aria-hidden="true" tabindex="-1"></a><span class="in">  knitr::knit_expand(&#39;template.Rmd&#39;)</span></span>
+<span id="cb407-4"><a href="knit-expand.html#cb407-4" aria-hidden="true" tabindex="-1"></a><span class="in">})</span></span>
+<span id="cb407-5"><a href="knit-expand.html#cb407-5" aria-hidden="true" tabindex="-1"></a><span class="in">res = knitr::knit_child(text = unlist(src), quiet = TRUE)</span></span>
+<span id="cb407-6"><a href="knit-expand.html#cb407-6" aria-hidden="true" tabindex="-1"></a><span class="in">cat(res, sep = &#39;\n&#39;)</span></span>
+<span id="cb407-7"><a href="knit-expand.html#cb407-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この例が難しくて理解できないと感じたら, チャンクオプション <code>results = 'asis'</code> の意味を知るのに<a href="results-asis.html#results-asis">11.11</a>節を, <code>knitr::knit_child()</code> の使用法を知るのに<a href="child-document.html#child-document">16.4</a>節を見てください.</p>
 </div>
             </section>

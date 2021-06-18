@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,13 +496,13 @@ div.csl-indent {
 <div id="latex-extra" class="section level2" number="6.4">
 <h2><span class="header-section-number">6.4</span> LaTeX パッケージを追加で読み込む</h2>
 <!-- https://tex.stackexchange.com/questions/171711/how-to-include-latex-package-in-r-markdown/452884#452884 -->
-<p>追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて <strong>kableExtra</strong> <span class="citation">(<a href="#ref-R-kableExtra" role="doc-biblioref">Zhu 2020</a>)</span> のようないくつかのパッケージでは R パッケージの関数が LaTeX に依存して機能するものもあります. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.</p>
+<p>追加の LaTeX パッケージ を使うことで文書のスタイルに拡張的なカスタマイズが可能になります. 加えて <strong>kableExtra</strong> <span class="citation">(<a href="#ref-R-kableExtra" role="doc-biblioref">Zhu 2021</a>)</span> のようないくつかのパッケージでは R パッケージの関数が LaTeX に依存して機能するものもあります. R でもよくあるように, これらの関数を使えるようになる前に R Markdown 文書内でパッケージを読み込む必要があります.</p>
 <div id="loading-latex-packages" class="section level3" number="6.4.1">
 <h3><span class="header-section-number">6.4.1</span> LaTeX パッケージを読み込む</h3>
 <p><code>pdf_document</code> の YAML 設定で <code>extra_dependencies</code> オプション を使って追加の LaTeX パッケージを読み込めます. これにより中間出力の LaTeX 文書で読み込むべき LaTeX パッケージのリストを与えることができます. 例えばこのように.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb118-1"><a href="latex-extra.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
 <span id="cb118-2"><a href="latex-extra.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;追加 LaTeX パッケージを使う&quot;</span></span>
-<span id="cb118-3"><a href="latex-extra.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb118-3"><a href="latex-extra.html#cb118-3" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb118-4"><a href="latex-extra.html#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
 <span id="cb118-5"><a href="latex-extra.html#cb118-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">extra_dependencies</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;bbm&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;threeparttable&quot;</span><span class="kw">]</span></span>
 <span id="cb118-6"><a href="latex-extra.html#cb118-6" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
@@ -513,7 +513,7 @@ div.csl-indent {
 <span id="cb119-4"><a href="latex-extra.html#cb119-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">caption</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;labelfont={bf}&quot;</span><span class="kw">]</span></span>
 <span id="cb119-5"><a href="latex-extra.html#cb119-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">hyperref</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="st">&quot;unicode=true&quot;</span><span class="kw">,</span><span class="at"> </span><span class="st">&quot;breaklinks=true&quot;</span><span class="kw">]</span></span>
 <span id="cb119-6"><a href="latex-extra.html#cb119-6" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">lmodern</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span></code></pre></div>
-<p>これは, LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.</p>
+<p>これは LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.</p>
 <div class="sourceCode" id="cb120"><pre class="sourceCode tex"><code class="sourceCode latex"><span id="cb120-1"><a href="latex-extra.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[labelfont={bf}]{<span class="ex">caption</span>} </span>
 <span id="cb120-2"><a href="latex-extra.html#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[unicode=true, breaklinks=true]{<span class="ex">hyperref</span>}</span>
 <span id="cb120-3"><a href="latex-extra.html#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\userpackage</span>{lmodern}</span></code></pre></div>
@@ -532,7 +532,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-kableExtra" class="csl-entry">
-Zhu, Hao. 2020. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
+Zhu, Hao. 2021. <em>kableExtra: Construct Complex Table with Kable and Pipe Syntax</em>. <a href="https://CRAN.R-project.org/package=kableExtra">https://CRAN.R-project.org/package=kableExtra</a>.
 </div>
 </div>
             </section>

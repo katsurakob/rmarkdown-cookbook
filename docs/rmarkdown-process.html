@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -504,30 +504,30 @@ div.csl-indent {
 </p>
 </div>
 <p><code>.Rmd</code> 文書は, 文書の本来の形式です. YAML (メタデータ), テキスト (ナラティブ), コードチャンク を含んでいます.</p>
-<p>最初に <strong>knitr</strong> <span class="citation">(<a href="#ref-R-knitr" role="doc-biblioref">Xie 2021a</a>)</span> の <code>knit()</code> 関数が <code>.Rmd</code> ファイルに埋め込まれた全てのコードを実行し, 出力文書に出力コードを表示します. 全ての結果は, 一時的に作られた <code>.md</code> ファイルに含まれるよう, 適正なマークアップ言語へと変換されます.</p>
+<p>最初に <strong>knitr</strong> <span class="citation">(<a href="#ref-R-knitr" role="doc-biblioref">Xie 2021c</a>)</span> の <code>knit()</code> 関数が <code>.Rmd</code> ファイルに埋め込まれた全てのコードを実行し, 出力文書に出力コードを表示します. 全ての結果は, 一時的に作られた <code>.md</code> ファイルに含まれるよう, 適正なマークアップ言語へと変換されます.</p>
 <p>その後 <code>.md</code> ファイルは, あるマークアップ言語のファイルから別のものへと変換するための多用途なツールである Pandoc によって処理されます. Pandoc は文書の YAML フロントマターで指定された何らかのパラメータ (例: <code>title</code>, <code>author</code>, <code>date</code>) を受け取り, 文書を <code>output</code> パラメータで指定された出力フォーマット (HTML へ出力する <code>html_document</code> のような) へ変換します.</p>
-<p>出力フォーマットが PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの <code>.md</code> を もう一つの中間ファイル <code>.tex</code> に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. <a href="install-latex.html#install-latex">1.2</a> 節で話したように, <strong>rmarkdown</strong> パッケージは <strong>tinytex</strong> パッケージ <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021c</a>)</span> の <code>latexmk()</code> 関数を呼び出し, これが次々に LaTeX を呼び出して <code>.tex</code> をコンパイルし <code>.pdf</code> にします.</p>
+<p>出力フォーマットが PDF ならば, さらに処理が1層追加され, Pandoc が中間ファイルの <code>.md</code> を もう一つの中間ファイル <code>.tex</code> に変換します. このファイルはその後, 最終的な PDF 文書を形成するため LaTeX によって処理されます. <a href="install-latex.html#install-latex">1.2</a> 節で話したように, <strong>rmarkdown</strong> パッケージは <strong>tinytex</strong> パッケージ <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021e</a>)</span> の <code>latexmk()</code> 関数を呼び出し, これが次々に LaTeX を呼び出して <code>.tex</code> をコンパイルし <code>.pdf</code> にします.</p>
 <p>簡潔にまとめると, <code>rmarkdown::render()</code> = <code>knitr::knit()</code> + Pandoc (PDF の場合のみ + LaTeX) ということです.</p>
 <p>Robin Linacre が <a href="https://stackoverflow.com/q/40563479/559676" class="uri">https://stackoverflow.com/q/40563479/559676</a> で R Markdown と <strong>knitr</strong> と Pandoc の関係について良い要約を書いてくれました. この投稿には上記の概観よりも技術的に細かい話も含まれています.</p>
 <p>全ての R Markdown 文書が常に Pandoc を通してコンパイルされるわけではないことに注意してください. 中間ファイル <code>.md</code> は他の Markdown レンダラによってもコンパイルできます. 例えば2つ例を挙げます.</p>
 <ul>
-<li><p><strong>xaringan</strong> パッケージ <span class="citation">(<a href="#ref-R-xaringan" role="doc-biblioref">Xie 2020b</a>)</span> は出力された <code>.md</code> をウェブブラウザ上で Markdown コンテンツを表示するための JavaScript ライブラリに渡します.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p></li>
+<li><p><strong>xaringan</strong> パッケージ <span class="citation">(<a href="#ref-R-xaringan" role="doc-biblioref">Xie 2021f</a>)</span> は出力された <code>.md</code> をウェブブラウザ上で Markdown コンテンツを表示するための JavaScript ライブラリに渡します.<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p></li>
 <li><p><strong>blogdown</strong> パッケージは <span class="citation">(<a href="#ref-R-blogdown" role="doc-biblioref">Xie, Dervieux, and Presmanes Hill 2021</a>)</span> <code>.Rmarkdown</code> 文書形式をサポートし, <code>.Rmarkdown</code> を knit して <code>.markdown</code> にします. 通常であれば, Markdown 文書は外部のサイトジェネレータによって HTML にレンダリングされます.</p></li>
 </ul>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-xaringan" class="csl-entry">
-———. 2020b. <em>Xaringan: Presentation Ninja</em>. <a href="https://github.com/yihui/xaringan">https://github.com/yihui/xaringan</a>.
-</div>
 <div id="ref-R-knitr" class="csl-entry">
-———. 2021a. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
+———. 2021c. <em>Knitr: A General-Purpose Package for Dynamic Report Generation in r</em>. <a href="https://yihui.org/knitr/">https://yihui.org/knitr/</a>.
 </div>
 <div id="ref-R-tinytex" class="csl-entry">
-———. 2021c. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+———. 2021e. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+</div>
+<div id="ref-R-xaringan" class="csl-entry">
+———. 2021f. <em>Xaringan: Presentation Ninja</em>. <a href="https://github.com/yihui/xaringan">https://github.com/yihui/xaringan</a>.
 </div>
 <div id="ref-R-blogdown" class="csl-entry">
-Xie, Yihui, Christophe Dervieux, and Alison Presmanes Hill. 2021. <em>Blogdown: Create Blogs and Websites with r Markdown</em>. <a href="https://github.com/rstudio/blogdown">https://github.com/rstudio/blogdown</a>.
+Xie, Yihui, Christophe Dervieux, and Alison Presmanes Hill. 2021. <em>Blogdown: Create Blogs and Websites with r Markdown</em>. <a href="https://CRAN.R-project.org/package=blogdown">https://CRAN.R-project.org/package=blogdown</a>.
 </div>
 </div>
 <div class="footnotes">

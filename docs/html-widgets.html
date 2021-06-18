@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,19 +496,19 @@ div.csl-indent {
 <div id="html-widgets" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> HTML ウィジェットを表示する</h2>
 <p>HTML ウィジェット (<a href="https://htmlwidgets.org" class="uri">https://htmlwidgets.org</a>) はインタラクティブな JavaScript アプリケーションの典型で, HTML 出力でのみ動作します. HTML ウィジェットを含んだ Rmd 文書を, PDF や Word など HTML でないフォーマットへと knit すると, このようなエラーメッセージが返ってくるでしょう.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb189-1"><a href="html-widgets.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="an">Error:</span><span class="co"> Functions that produce HTML output found in document</span></span>
-<span id="cb189-2"><a href="html-widgets.html#cb189-2" aria-hidden="true" tabindex="-1"></a>targeting X output. Please change the output type of this</span>
-<span id="cb189-3"><a href="html-widgets.html#cb189-3" aria-hidden="true" tabindex="-1"></a>document to HTML. Alternatively, you can allow HTML output in</span>
-<span id="cb189-4"><a href="html-widgets.html#cb189-4" aria-hidden="true" tabindex="-1"></a>non-HTML formats by adding this option to the YAML front-matter</span>
-<span id="cb189-5"><a href="html-widgets.html#cb189-5" aria-hidden="true" tabindex="-1"></a>of your rmarkdown file:</span>
-<span id="cb189-6"><a href="html-widgets.html#cb189-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-7"><a href="html-widgets.html#cb189-7" aria-hidden="true" tabindex="-1"></a>  always_allow_html: yes</span>
-<span id="cb189-8"><a href="html-widgets.html#cb189-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb189-9"><a href="html-widgets.html#cb189-9" aria-hidden="true" tabindex="-1"></a>Note however that the HTML output will not be visible in</span>
-<span id="cb189-10"><a href="html-widgets.html#cb189-10" aria-hidden="true" tabindex="-1"></a>non-HTML formats.</span></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb191-1"><a href="html-widgets.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="an">Error:</span><span class="co"> Functions that produce HTML output found in document</span></span>
+<span id="cb191-2"><a href="html-widgets.html#cb191-2" aria-hidden="true" tabindex="-1"></a>targeting X output. Please change the output type of this</span>
+<span id="cb191-3"><a href="html-widgets.html#cb191-3" aria-hidden="true" tabindex="-1"></a>document to HTML. Alternatively, you can allow HTML output in</span>
+<span id="cb191-4"><a href="html-widgets.html#cb191-4" aria-hidden="true" tabindex="-1"></a>non-HTML formats by adding this option to the YAML front-matter</span>
+<span id="cb191-5"><a href="html-widgets.html#cb191-5" aria-hidden="true" tabindex="-1"></a>of your rmarkdown file:</span>
+<span id="cb191-6"><a href="html-widgets.html#cb191-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-7"><a href="html-widgets.html#cb191-7" aria-hidden="true" tabindex="-1"></a>  always_allow_html: yes</span>
+<span id="cb191-8"><a href="html-widgets.html#cb191-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb191-9"><a href="html-widgets.html#cb191-9" aria-hidden="true" tabindex="-1"></a>Note however that the HTML output will not be visible in</span>
+<span id="cb191-10"><a href="html-widgets.html#cb191-10" aria-hidden="true" tabindex="-1"></a>non-HTML formats.</span></code></pre></div>
 <p>上記のエラーメッセージに示された解決法よりも良い方法があるのですが, 追加のパッケージが絡んできます. R に <strong>webshot</strong> パッケージ<span class="citation">(<a href="#ref-R-webshot" role="doc-biblioref">Chang 2019</a>)</span> をインストールし, さらに PhantomJS をインストールしてください.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb190-1"><a href="html-widgets.html#cb190-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</span>
-<span id="cb190-2"><a href="html-widgets.html#cb190-2"></a>webshot<span class="sc">::</span><span class="fu">install_phantomjs</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb192-1"><a href="html-widgets.html#cb192-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;webshot&quot;</span>)</span>
+<span id="cb192-2"><a href="html-widgets.html#cb192-2"></a>webshot<span class="sc">::</span><span class="fu">install_phantomjs</span>()</span></code></pre></div>
 <p>それから HTML ウィジェットつきの Rmd 文書を非 HTML フォーマットで knit すれば, HTML ウィジェットは静的なスクリーンショットとして表示されます. スクリーンショットは <strong>knitr</strong> によって自動的に作られます. <strong>bookdown</strong> 本の <a href="https://bookdown.org/yihui/bookdown/html-widgets.html">Section 2.10</a> に, スクリーンショットの詳しい操作方法が書かれています.</p>
 </div>
 <h3>参考文献</h3>

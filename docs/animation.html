@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -495,7 +495,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="animation" class="section level2" number="4.14">
 <h2><span class="header-section-number">4.14</span> 複数の R プロットからアニメーションを作成する</h2>
-<p>1つのコードチャンクで連続したプロットを生成したとき, これらを結合して1つのアニメーションを生成できます. 出力フォーマットが HTML なら, これは簡単です. <strong>gifski</strong> パッケージ <span class="citation">(<a href="#ref-R-gifski" role="doc-biblioref">Ooms 2018</a>)</span> をインストールし, チャンクオプション <code>animation.hook = "gifski"</code> 設定するだけです. 図<a href="animation.html#fig:pacman">4.3</a> はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.</p>
+<p>1つのコードチャンクで連続したプロットを生成したとき, これらを結合して1つのアニメーションを生成できます. 出力フォーマットが HTML なら, これは簡単です. <strong>gifski</strong> パッケージ <span class="citation">(<a href="#ref-R-gifski" role="doc-biblioref">Ooms 2021a</a>)</span> をインストールし, チャンクオプション <code>animation.hook = "gifski"</code> 設定するだけです. 図<a href="animation.html#fig:pacman">4.3</a> はシンプルな「パックマン」のアニメーションで, これは以下のコードで作成しました.</p>
 <div class="sourceCode" id="cb66"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb66-1"><a href="animation.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, animation.hook=&quot;gifski&quot;}</span></span>
 <span id="cb66-2"><a href="animation.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="in">for (i in 1:2) {</span></span>
 <span id="cb66-3"><a href="animation.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="in">  pie(c(i %% 2, 6), col = c(&#39;red&#39;, &#39;yellow&#39;), labels = NA)</span></span>
@@ -529,13 +529,13 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-gifski" class="csl-entry">
-Ooms, Jeroen. 2018. <em>Gifski: Highest Quality GIF Encoder</em>. <a href="https://CRAN.R-project.org/package=gifski">https://CRAN.R-project.org/package=gifski</a>.
+Ooms, Jeroen. 2021a. <em>Gifski: Highest Quality GIF Encoder</em>. <a href="https://CRAN.R-project.org/package=gifski">https://CRAN.R-project.org/package=gifski</a>.
 </div>
 <div id="ref-R-gganimate" class="csl-entry">
 Pedersen, Thomas Lin, and David Robinson. 2020. <em>Gganimate: A Grammar of Animated Graphics</em>. <a href="https://CRAN.R-project.org/package=gganimate">https://CRAN.R-project.org/package=gganimate</a>.
 </div>
 <div id="ref-R-ggplot2" class="csl-entry">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://CRAN.R-project.org/package=ggplot2">https://CRAN.R-project.org/package=ggplot2</a>.
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, Hiroaki Yutani, and Dewey Dunnington. 2020. <em>Ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>.
 </div>
 <div id="ref-R-animation" class="csl-entry">
 ———. 2018. <em>Animation: A Gallery of Animations in Statistics and Utilities to Create Animations</em>. <a href="https://yihui.name/animation">https://yihui.name/animation</a>.

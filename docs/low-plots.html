@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -498,16 +498,16 @@ div.csl-indent {
 <p>R グラフィックスには2種類の作図関数があります. 高水準作図関数は新たなグラフを作成し, 低水準作図関数は既存のグラフに要素を追加します. 詳細は R マニュアルの12章 <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.html"><em>An Introduction to R</em></a> をご覧ください.</p>
 <p><strong>knitr</strong> はデフォルトで, 低水準作図関数がより前のグラフを次々と修正していく段階ではその途中段階のグラフを表示しません. 全ての低水準作図による変更が反映された最後のグラフのみが表示されます.</p>
 <p>特に教育目的では, 中間グラフを表示することが有用になりえます. チャンクオプション <code>fig.keep = 'low'</code> を設定すれば, 低水準作図による変更を保存できます. 例えば 図<a href="low-plots.html#fig:low-plots-1">11.3</a>, <a href="low-plots.html#fig:low-plots-2">11.4</a>は <code>fig.keep = 'low'</code> のオプションを設定した単一のコードチャンクからできたものですが, 2つのコードチャンクから生成されたように見えます. また, チャンクオプション <code>fig.cap = c('...の散布図', '... に回帰直線を追加')</code>  で異なる図のキャプションを割り当てています.</p>
-<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="low-plots.html#cb327-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb327-2"><a href="low-plots.html#cb327-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb329-1"><a href="low-plots.html#cb329-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
+<span id="cb329-2"><a href="low-plots.html#cb329-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-1"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-1.png" alt="cars データの散布図."  />
 <p class="caption">
 図 11.3: cars データの散布図.
 </p>
 </div>
-<div class="sourceCode" id="cb328"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb328-1"><a href="low-plots.html#cb328-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
-<span id="cb328-2"><a href="low-plots.html#cb328-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb330-1"><a href="low-plots.html#cb330-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
+<span id="cb330-2"><a href="low-plots.html#cb330-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:low-plots-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-2.png" alt="既にある散布図に回帰曲線を追加"  />
 <p class="caption">

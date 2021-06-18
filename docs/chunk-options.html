@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,18 +496,18 @@ div.csl-indent {
 <div id="chunk-options" class="section level1" number="11">
 <h1><span class="header-section-number">11</span> チャンクオプション</h1>
 <p>図<a href="rmarkdown-process.html#fig:rmdworkflow">2.1</a>に描かれているように, <strong>knitr</strong> パッケージは R Markdown においてきわめて重要な役割を担います. この章と後に続くの3つの章では <strong>knitr</strong> に関連するレシピをお見せします.</p>
-<p>R のチャンクを処理する際には, <strong>knitr</strong> の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) が使えます. 完全なリストは <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a> のオンラインドキュメントをご覧ください.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
+<p>R のチャンクを処理する際には, <strong>knitr</strong> の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) が使えます. 完全なリストは <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a> のオンラインドキュメントをご覧ください.<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a></p>
 <p>このあと続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いということも知っておいてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで <code>knitr::opts_chunk$set()</code> を呼び出してください. ふつうは文書の最初のチャンクオプションに設定します. 例えばこのように.</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb278-1"><a href="chunk-options.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
-<span id="cb278-2"><a href="chunk-options.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
-<span id="cb278-3"><a href="chunk-options.html#cb278-3" aria-hidden="true" tabindex="-1"></a><span class="in">  comment = &quot;#&gt;&quot;, echo = FALSE, fig.width = 6</span></span>
-<span id="cb278-4"><a href="chunk-options.html#cb278-4" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
-<span id="cb278-5"><a href="chunk-options.html#cb278-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb280-1"><a href="chunk-options.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
+<span id="cb280-2"><a href="chunk-options.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
+<span id="cb280-3"><a href="chunk-options.html#cb280-3" aria-hidden="true" tabindex="-1"></a><span class="in">  comment = &quot;#&gt;&quot;, echo = FALSE, fig.width = 6</span></span>
+<span id="cb280-4"><a href="chunk-options.html#cb280-4" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb280-5"><a href="chunk-options.html#cb280-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="37">
-<li id="fn37"><p><strong>訳注</strong>: 翻訳者による日本語訳はこちら: <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html</a><a href="chunk-options.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<ol start="38">
+<li id="fn38"><p><strong>訳注</strong>: 翻訳者による日本語訳はこちら: <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html</a><a href="chunk-options.html#fnref38" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,7 +496,7 @@ div.csl-indent {
 <div id="optipng" class="section level2" number="13.2">
 <h2><span class="header-section-number">13.2</span> PNG のグラフを最適化する</h2>
 <p>OptiPNG (<a href="http://optipng.sourceforge.net" class="uri">http://optipng.sourceforge.net</a>) プログラムをインストールしていれば, <code>knitr::hook_optipng()</code> フックを使って PNG 形式のグラフ画像ファイルの画質を劣化させることなく縮小して最適化できます.</p>
-<div class="sourceCode" id="cb377"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb377-1"><a href="optipng.html#cb377-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">optipng =</span> knitr<span class="sc">::</span>hook_optipng)</span></code></pre></div>
+<div class="sourceCode" id="cb379"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb379-1"><a href="optipng.html#cb379-1"></a>knitr<span class="sc">::</span>knit_hooks<span class="sc">$</span><span class="fu">set</span>(<span class="at">optipng =</span> knitr<span class="sc">::</span>hook_optipng)</span></code></pre></div>
 <p>このフックを設定したら, チャンクオプション <code>optipng</code>を使い, OptiPNG へのコマンドライン引数を渡すことができます (例えば <code>optipng = '-o7'</code>). コマンドライン引数はオプションなので, フックを有効にするためだけに <code>optipng = ''</code> と書くことも可能です. 使用可能な引数を知るには OptiPNG のウェブサイト上にあるユーザーマニュアルを見てください.</p>
 <p>macOS ユーザーは Homebrew (<a href="https://brew.sh" class="uri">https://brew.sh</a>) で簡単に OptiPNG をインストールできます (<code>brew install optipng</code>).</p>
 </div>

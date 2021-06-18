@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -499,19 +499,19 @@ div.csl-indent {
 <p>キャッシュされたコードチャンクに関しては, チャンクが再度実行されたかのように, 過去の実行結果から出力とオブジェクトが自動的に読み込まれます. キャッシュを読み込むほうが結果を計算するよりはるかに速いという場合に役に立ちます. しかしながら, うまい話というのは世に存在しません. あなたの使う場面によっては, キャッシュがどのように動作するかをより学びぶ必要があるでしょう. 特に <a href="https://yihui.org/en/2018/06/cache-invalidation/">cache invalidation</a> を学べば, <strong>knitr</strong>がしょっちゅうキャッシュを無効化したり, あるいは時に無効化が十分しないことに振り回されることなく, キャッシュの利点を最大限活かすことができます.</p>
 <p>最も適切なキャッシュの使用例は, コードチャンク内での計算に非常に時間がかかる R オブジェクトの保存と再読込に使うことですが, コードが <code>options()</code> を使って R のグローバルオプションを変更するといった副産物 (このような変更はキャッシュされません) があってはなりません. コードチャンクに副産物があるなら, キャッシュを使わないことをお薦めします.</p>
 <p>最初のほうで簡単に書いたように, キャッシュの動きはチャンクオプションに依存します. もし <code>include</code> 以外のチャンクオプションを変更したら, キャッシュは無効化されます. この仕様はよくある問題を解決してくれます. それは外部データファイルを読み込むときに, ファイルが更新されていたならキャッシュを無効化したい, というような場合です. 単純に <code>cache = TRUE</code> を使うだけでは不十分です.</p>
-<div class="sourceCode" id="cb285"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb285-1"><a href="cache.html#cb285-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r import-data, cache=TRUE}</span></span>
-<span id="cb285-2"><a href="cache.html#cb285-2" aria-hidden="true" tabindex="-1"></a><span class="in">d &lt;- read.csv(&#39;my-precious.csv&#39;)</span></span>
-<span id="cb285-3"><a href="cache.html#cb285-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb287-1"><a href="cache.html#cb287-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r import-data, cache=TRUE}</span></span>
+<span id="cb287-2"><a href="cache.html#cb287-2" aria-hidden="true" tabindex="-1"></a><span class="in">d &lt;- read.csv(&#39;my-precious.csv&#39;)</span></span>
+<span id="cb287-3"><a href="cache.html#cb287-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p><strong>knitr</strong> にデータファイルが変更されたかどうかを教えなければなりません. 1つの方法としては別のチャンクオプション <code>cache.extra = file.mtime('my-precious.csv')</code> を加えることですが, あるいはより厳密には <code>cache.extra = tools::md5sum('my-precious.csv')</code> を追加することがあります. 前者はファイルの更新時刻が変更されたらキャッシュを無効化する, という意味です. 後者はファイルの中身が変更されたらキャッシュを更新するということです. <code>cache.extra</code> は <strong>knitr</strong> の組み込みのチャンクオプション名ではないということに注意してください. 他の組み込みのオプション名と競合しない限り, この用途のオプションには好きな名前を使うことができます.</p>
 <p>同様に, 他の情報をキャッシュと関連付けることができます. 例えば R のバージョンなら <code>cache.extra = getRversion()</code>, システム日付なら <code>cache.extra = Sys.Date()</code>, オペレーティングシステムなら <code>cache.extra = Sys.info()[['sysname']]</code> というようにすると, これらの条件が変更されたときにキャッシュは正しく無効化されます.</p>
 <p>文書全体で <code>cache = TRUE</code> を設定することはお薦めしません. キャッシュはかなり扱いにくいものです. 代わりに, 実行に時間がかかり副産物がないとはっきりしているコードチャンクに限って, 個別にキャッシュを有効化することをお薦めします.</p>
 <p><strong>knitr</strong> のキャッシュの設計に不満があるなら, 自分でオブジェクトのキャッシュを取ることもできます. 以下はごく簡単な例です.</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb286-1"><a href="cache.html#cb286-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;results.rds&quot;</span>)) {</span>
-<span id="cb286-2"><a href="cache.html#cb286-2"></a>  res <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;results.rds&quot;</span>)</span>
-<span id="cb286-3"><a href="cache.html#cb286-3"></a>} <span class="cf">else</span> {</span>
-<span id="cb286-4"><a href="cache.html#cb286-4"></a>  res <span class="ot">&lt;-</span> <span class="fu">compute_it</span>()  <span class="co"># 実行時間のかかる関数</span></span>
-<span id="cb286-5"><a href="cache.html#cb286-5"></a>  <span class="fu">saveRDS</span>(res, <span class="st">&quot;results.rds&quot;</span>)</span>
-<span id="cb286-6"><a href="cache.html#cb286-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb288-1"><a href="cache.html#cb288-1"></a><span class="cf">if</span> (<span class="fu">file.exists</span>(<span class="st">&quot;results.rds&quot;</span>)) {</span>
+<span id="cb288-2"><a href="cache.html#cb288-2"></a>  res <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">&quot;results.rds&quot;</span>)</span>
+<span id="cb288-3"><a href="cache.html#cb288-3"></a>} <span class="cf">else</span> {</span>
+<span id="cb288-4"><a href="cache.html#cb288-4"></a>  res <span class="ot">&lt;-</span> <span class="fu">compute_it</span>()  <span class="co"># 実行時間のかかる関数</span></span>
+<span id="cb288-5"><a href="cache.html#cb288-5"></a>  <span class="fu">saveRDS</span>(res, <span class="st">&quot;results.rds&quot;</span>)</span>
+<span id="cb288-6"><a href="cache.html#cb288-6"></a>}</span></code></pre></div>
 <p>この例では, キャッシュを無効化する唯一の, そして簡単な方法は <code>result.rds</code> ファイルを削除することです. この簡単なキャッシュのしくみが気に入ったなら, <a href="cache-rds.html#cache-rds">14.9</a>節で紹介する <code>xfun::cache_rds()</code> を使うこともできます.</p>
 </div>
             </section>

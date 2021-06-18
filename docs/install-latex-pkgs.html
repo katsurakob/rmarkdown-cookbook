@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -503,7 +503,7 @@ div.csl-indent {
 <span id="cb8-5"><a href="install-latex-pkgs.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="install-latex-pkgs.html#cb8-6" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: /usr/local/bin/pdflatex (file tcrm0700):</span>
 <span id="cb8-7"><a href="install-latex-pkgs.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  Font tcrm0700 at 600 not found</span></code></pre></div>
-<p><a href="install-latex.html#install-latex">1.2</a> 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021c</a>)</span> が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, <code>tinytex::parse_install()</code> で足りない LaTex パッケージをインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, <a href="https://ctan.org" class="uri">https://ctan.org</a>) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, <code>.log</code> という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の <code>text</code> 引数に与えることができます. どちらの方法でも動作するはずです.</p>
+<p><a href="install-latex.html#install-latex">1.2</a> 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021e</a>)</span> が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, <code>tinytex::parse_install()</code> で足りない LaTex パッケージをインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, <a href="https://ctan.org" class="uri">https://ctan.org</a>) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, <code>.log</code> という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の <code>text</code> 引数に与えることができます. どちらの方法でも動作するはずです.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb9-1"><a href="install-latex-pkgs.html#cb9-1"></a><span class="co"># ログファイルが filename.log だとする</span></span>
 <span id="cb9-2"><a href="install-latex-pkgs.html#cb9-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
 <span id="cb9-3"><a href="install-latex-pkgs.html#cb9-3"></a></span>
@@ -527,7 +527,7 @@ div.csl-indent {
 <p><strong>訳注</strong></p>
 <p>日本語文書を作成する場合, いくらか追加の作業が必要かもしれません. 例えばコンパイル時, 毎回翻訳ファイルがないという旨の警告が出るかもしれません. これは出力に影響しませんが, 煩わしく感じるなら以下のようにして対応する LaTeX パッケージ (R のパッケージではないことに注意してください) をインストールすることで解決できます.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="install-latex-pkgs.html#cb11-1" aria-hidden="true" tabindex="-1"></a>tinytex<span class="sc">::</span><span class="fu">tlmgr_install</span>(<span class="st">&quot;texlive-msg-translations&quot;</span>)</span></code></pre></div>
-<p>一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, <code>haranoaji</code>, <code>bxjscls</code> <code>luatex-ja</code> といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, <strong>tinytex</strong> はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は <strong>tinytex</strong> を使わず手動でインストールする必要があるかもしれません. 上記の <code>tinytex::tlmgr_install()</code> 関数は <code>tlmgr</code> のコマンドを実行するための関数なので, <strong>tinytex</strong> を使用していない環境では <code>tlmgr install ...</code> を代わりに実行することになります.</p>
+<p>一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, <code>haranoaji</code>, <code>bxjscls</code> <code>luatex-ja</code> といった LaTeX パッケージが日本語文書の作成に広く使われます. 既に書かれているように, <strong>tinytex</strong> はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は <strong>tinytex</strong> を使わず手動でインストールする必要があるかもしれません. 上記の <code>tinytex::tlmgr_install()</code> 関数は <code>tlmgr</code> のコマンドを実行するための関数なので, <strong>tinytex</strong> を使用していない環境では <code>tlmgr install ...</code> を代わりに実行することになります.</p>
 <p>PDF 出力のためのセットアップは翻訳者が独自に書いた補足資料 <a href="https://rpubs.com/ktgrstsh/755893" class="uri">https://rpubs.com/ktgrstsh/755893</a> も参考になるかもしれません.</p>
 </div>
 
@@ -536,7 +536,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-tinytex" class="csl-entry">
-———. 2021c. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+———. 2021e. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
 </div>
 </div>
             </section>

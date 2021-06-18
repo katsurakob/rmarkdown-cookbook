@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -500,11 +500,11 @@ div.csl-indent {
 <div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="update-date.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></span></code></pre></div>
 <p>もっと人間にとって読みやすい, 特定の日次フォーマットを指定したいかもしれません. 例えば以下のようにします.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="update-date.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%x&#39;)`&quot;</span></span></code></pre></div>
-<p>例えば 2021年5月13日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
+<p>例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
 <ul>
-<li><code>%Y %B</code>: 2021 5月</li>
-<li><code>%y/%m/%d</code>: 21/05/13</li>
-<li><code>%b%d (%a)</code>: 5月13 (木)</li>
+<li><code>%Y %B</code>: 2021 6月</li>
+<li><code>%y/%m/%d</code>: 21/06/18</li>
+<li><code>%b%d (%a)</code>: 6月18 (金)</li>
 </ul>
 <p>表 <a href="update-date.html#tab:date-format">4.1</a> は POSIXct フォーマットの一覧です.</p>
 <table>
@@ -532,7 +532,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td align="left">%c</td>
-<td align="left">ロケール依存の時刻</td>
+<td align="left">ロケール依存の時刻フォーマット</td>
 <td align="left">%d</td>
 <td align="left">数値表記の日</td>
 </tr>
@@ -552,7 +552,7 @@ div.csl-indent {
 <td align="left">%M</td>
 <td align="left">数値表記の分</td>
 <td align="left">%p</td>
-<td align="left">ロケール依存の午前/午後</td>
+<td align="left">ロケール依存の午前/午後フォーマット</td>
 </tr>
 <tr class="odd">
 <td align="left">%S</td>
@@ -568,9 +568,9 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td align="left">%x</td>
-<td align="left">ロケール依存の日付</td>
+<td align="left">ロケール依存の日付フォーマット</td>
 <td align="left">%X</td>
-<td align="left">ロケール依存の時刻</td>
+<td align="left">ロケール依存の時刻フォーマット</td>
 </tr>
 <tr class="even">
 <td align="left">%y</td>
@@ -580,7 +580,7 @@ div.csl-indent {
 </tr>
 <tr class="odd">
 <td align="left">%z</td>
-<td align="left">GMT からのオフセット</td>
+<td align="left">GMT との時差</td>
 <td align="left">%Z</td>
 <td align="left">タイムゾーン (文字表記)</td>
 </tr>

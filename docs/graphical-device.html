@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,14 +496,14 @@ div.csl-indent {
 <div id="graphical-device" class="section level2" number="11.15">
 <h2><span class="header-section-number">11.15</span> 高品質なグラフィック (*)</h2>
 <p><strong>rmarkdown</strong> パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては <code>png()</code> を使うので, <strong>knitr</strong> は PNG 画像ファイルを生成し, PDF 出力に対しては <code>pdf()</code> デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション <code>dev</code> によって変更することができます. <strong>knitr</strong> によってサポートされているグラフィックデバイスの一覧は次のようになります. <code>"bmp"</code>, <code>"postscript"</code>, <code>"pdf"</code>, <code>"png"</code>, <code>"svg"</code>, <code>"jpeg"</code>, <code>"pictex"</code>, <code>"tiff"</code>, <code>"win.metafile"</code>, <code>"cairo_pdf"</code>, <code>"cairo_ps"</code>, <code>"quartz_pdf"</code>, <code>"quartz_png"</code>, <code>"quartz_jpeg"</code>, <code>"quartz_tiff"</code>, <code>"quartz_gif"</code>, <code>"quartz_psd"</code>, <code>"quartz_bmp"</code>, <code>"CairoJPEG"</code>, <code>"CairoPNG"</code>, <code>"CairoPS"</code>, <code>"CairoPDF"</code>, <code>"CairoSVG"</code>, <code>"CairoTIFF"</code>, <code>"Cairo_pdf"</code>, <code>"Cairo_png"</code>, <code>"Cairo_ps"</code>, <code>"Cairo_svg"</code>, <code>"svglite"</code>, <code>"ragg_png"</code>, <code>"tikz"</code></p>
-<p>大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイスについてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで <code>?svg</code> と打てば <code>svg</code> デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに <code>quartz_XXX</code> デバイスは <code>quartz()</code> 関数を元にしたもので, macOS でのみ有効です. <code>CairoXXX</code> デバイスは <strong>Cairo</strong> <span class="citation">(<a href="#ref-R-Cairo" role="doc-biblioref">Urbanek and Horner 2020</a>)</span> パッケージによるアドオンで, <code>Cairo_XXX</code> デバイスは <strong>cairoDevice</strong> package <span class="citation">(<a href="#ref-R-cairoDevice" role="doc-biblioref">Lawrence 2020</a>)</span> から<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>, <code>svglite</code> デバイスは <strong>svglite</strong> パッケージ <span class="citation">(<a href="#ref-R-svglite" role="doc-biblioref">Wickham, Henry, et al. 2020</a>)</span> から, <code>tikz</code> は <strong>tikzDevice</strong> パッケージ <span class="citation">(<a href="#ref-R-tikzDevice" role="doc-biblioref">Sharpsteen and Bracken 2020</a>)</span> からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.</p>
+<p>大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイスについてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで <code>?svg</code> と打てば <code>svg</code> デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに <code>quartz_XXX</code> デバイスは <code>quartz()</code> 関数を元にしたもので, macOS でのみ有効です. <code>CairoXXX</code> デバイスは <strong>Cairo</strong> <span class="citation">(<a href="#ref-R-Cairo" role="doc-biblioref">Urbanek and Horner 2020</a>)</span> パッケージによるアドオンで, <code>Cairo_XXX</code> デバイスは <strong>cairoDevice</strong> package <span class="citation">(<a href="#ref-R-cairoDevice" role="doc-biblioref">Lawrence 2020</a>)</span> から<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>, <code>svglite</code> デバイスは <strong>svglite</strong> パッケージ <span class="citation">(<a href="#ref-R-svglite" role="doc-biblioref">Wickham et al. 2021</a>)</span> から, <code>tikz</code> は <strong>tikzDevice</strong> パッケージ <span class="citation">(<a href="#ref-R-tikzDevice" role="doc-biblioref">Sharpsteen and Bracken 2020</a>)</span> からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.</p>
 <p>大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために <code>dev = "svg"</code> または <code>dev = "svglite"</code> を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの <code>png</code> デバイスはラスタ画像形式であることに注意してください.</p>
 <p>あなたが PDF 出力時のグラフ内の書体に対してこだわりが強い人なら, <code>dev = "tikz"</code> を使うこともできます. これは LaTeX がネイティヴでサポートしているからです. つまり, テキストや記号を含むグラフの全ての要素が LaTeX を介して高品質にレンダリングされるということです. 図<a href="graphical-device.html#fig:dev-tikz">11.2</a>に, <code>dev = "tikz"</code> で R のグラフ内で LaTeX 数式表現を書く例を示します.</p>
-<div class="sourceCode" id="cb324"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb324-1"><a href="graphical-device.html#cb324-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, .<span class="dv">1</span>))</span>
-<span id="cb324-2"><a href="graphical-device.html#cb324-2"></a><span class="fu">curve</span>(dnorm, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">&#39;$x$&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;$</span><span class="sc">\\</span><span class="st">phi(x)$&#39;</span>,</span>
-<span id="cb324-3"><a href="graphical-device.html#cb324-3"></a>      <span class="at">main =</span> <span class="st">&#39;The density function of $N(0, 1)$&#39;</span>)</span>
-<span id="cb324-4"><a href="graphical-device.html#cb324-4"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">1</span>, .<span class="dv">2</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
-<span id="cb324-5"><a href="graphical-device.html#cb324-5"></a>  <span class="st">&#39;$</span><span class="sc">\\</span><span class="st">phi(x)=</span><span class="sc">\\</span><span class="st">frac{1}{</span><span class="sc">\\</span><span class="st">sqrt{2</span><span class="sc">\\</span><span class="st">pi}}e^{</span><span class="sc">\\</span><span class="st">frac{-x^2}{2}}$&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb326-1"><a href="graphical-device.html#cb326-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, .<span class="dv">1</span>))</span>
+<span id="cb326-2"><a href="graphical-device.html#cb326-2"></a><span class="fu">curve</span>(dnorm, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="at">xlab =</span> <span class="st">&#39;$x$&#39;</span>, <span class="at">ylab =</span> <span class="st">&#39;$</span><span class="sc">\\</span><span class="st">phi(x)$&#39;</span>,</span>
+<span id="cb326-3"><a href="graphical-device.html#cb326-3"></a>      <span class="at">main =</span> <span class="st">&#39;The density function of $N(0, 1)$&#39;</span>)</span>
+<span id="cb326-4"><a href="graphical-device.html#cb326-4"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">1</span>, .<span class="dv">2</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
+<span id="cb326-5"><a href="graphical-device.html#cb326-5"></a>  <span class="st">&#39;$</span><span class="sc">\\</span><span class="st">phi(x)=</span><span class="sc">\\</span><span class="st">frac{1}{</span><span class="sc">\\</span><span class="st">sqrt{2</span><span class="sc">\\</span><span class="st">pi}}e^{</span><span class="sc">\\</span><span class="st">frac{-x^2}{2}}$&#39;</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:dev-tikz"></span>
 <img src="rmarkdown-cookbook_files/figure-html/dev-tikz-1.png" alt="tikz デバイスでレンダリングされたグラフ"  />
 <p class="caption">
@@ -511,10 +511,10 @@ div.csl-indent {
 </p>
 </div>
 <p>base R は実は数式表現をサポートしていますが, LaTeX を介してレンダリングされていないことに注意してください (詳細は <code>?plotmath</code> を見てください). <code>tikz</code> デバイスの細かい組版を調整するいくつかの発展的なオプションがあります. <code>?tikzDevice::tikz</code> で, できることを確認できます. 例えばグラフにマルチバイト文字が含まれているなら, 次のオプションを設定するといいでしょう.</p>
-<div class="sourceCode" id="cb325"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb325-1"><a href="graphical-device.html#cb325-1"></a><span class="fu">options</span>(<span class="at">tikzDefaultEngine =</span> <span class="st">&quot;xetex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb327-1"><a href="graphical-device.html#cb327-1"></a><span class="fu">options</span>(<span class="at">tikzDefaultEngine =</span> <span class="st">&quot;xetex&quot;</span>)</span></code></pre></div>
 <p>これは, LaTeX 文書でマルチバイト文字を処理する観点では, <code>xetex</code> の方が大抵の場合はデフォルトのエンジン <code>pdftex</code> より優れているからです.</p>
 <p><code>tikz</code> の主な欠点が2つあります. 1つ目は LaTeX のインストールが必要ということですが, これはそこまで深刻ではありません (<a href="install-latex.html#install-latex">1.2</a>節参照). 他にもいくつかの LaTeX パッケージが必要になりますが, TinyTeX を使用しているなら簡単にインストールできます.</p>
-<div class="sourceCode" id="cb326"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb326-1"><a href="graphical-device.html#cb326-1"></a>tinytex<span class="sc">::</span><span class="fu">tlmgr_install</span>(<span class="fu">c</span>(<span class="st">&quot;pgf&quot;</span>, <span class="st">&quot;preview&quot;</span>, <span class="st">&quot;xcolor&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb328-1"><a href="graphical-device.html#cb328-1"></a>tinytex<span class="sc">::</span><span class="fu">tlmgr_install</span>(<span class="fu">c</span>(<span class="st">&quot;pgf&quot;</span>, <span class="st">&quot;preview&quot;</span>, <span class="st">&quot;xcolor&quot;</span>))</span></code></pre></div>
 <p>2つ目の欠点は, デバイスが LaTeX ファイルを生成してから PDF にコンパイルするため, グラフのレンダリングが顕著に遅くなるということです. コードチャンクに時間がかかると感じるなら, チャンクオプション <code>cache = TRUE</code> でキャッシュを有効にすることもできます (第<a href="cache.html#cache">11.4</a>節参照).</p>
 <p>図<a href="graphical-device.html#fig:dev-tikz">11.2</a>には, チャンクオプション <code>fig.process = pdf2png</code> が使われています. <code>pdf2png</code> は<a href="fig-process.html#fig-process">11.14</a>節で定義された, 出力フォーマットが LaTeX でない時に PDF 画像を PNG に変換するものです. 変換しない場合, 本書のオンライン版をウエブブラウザで閲覧しても PDF グラフは見られないでしょう.</p>
 </div>
@@ -530,13 +530,13 @@ Sharpsteen, Charlie, and Cameron Bracken. 2020. <em>tikzDevice: R Graphics Outpu
 Urbanek, Simon, and Jeffrey Horner. 2020. <em>Cairo: R Graphics Device Using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output</em>. <a href="http://www.rforge.net/Cairo/">http://www.rforge.net/Cairo/</a>.
 </div>
 <div id="ref-R-svglite" class="csl-entry">
-Wickham, Hadley, Lionel Henry, Thomas Lin Pedersen, T Jake Luciani, Matthieu Decorde, and Vaudor Lise. 2020. <em>Svglite: An SVG Graphics Device</em>. <a href="https://github.com/r-lib/svglite">https://github.com/r-lib/svglite</a>.
+Wickham, Hadley, Lionel Henry, Thomas Lin Pedersen, T Jake Luciani, Matthieu Decorde, and Vaudor Lise. 2021. <em>Svglite: An SVG Graphics Device</em>. <a href="https://CRAN.R-project.org/package=svglite">https://CRAN.R-project.org/package=svglite</a>.
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="39">
-<li id="fn39"><p><strong>訳注</strong>: 名前のよく似た <code>cairo_pdf</code> は base R に含まれていることに注意してください.<a href="graphical-device.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<ol start="40">
+<li id="fn40"><p><strong>訳注</strong>: 名前のよく似た <code>cairo_pdf</code> は base R に含まれていることに注意してください.<a href="graphical-device.html#fnref40" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

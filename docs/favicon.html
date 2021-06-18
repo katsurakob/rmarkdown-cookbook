@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -498,12 +498,12 @@ div.csl-indent {
 <p><a href="include-html.html#include-html">7.10</a>節では <code>html_document</code> フォーマットの <code>includes</code> オプションを使って, 追加のコードを HTML のヘッダ, 本文, フッタに挿入できることを実演しました. このテクニックはファビコンというカスタムブラウザアイコンを HTML 出力に追加することにも使えます.</p>
 <p>ファビコンはブラウザのアドレスバー, タブタイトル, ブックマークに表示されるウェブサイトのロゴです. 例えば Google Chrome で CRAN のウェブサイト (<a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a>) を開いてブラウザのタブを見ると, 小さな R ロゴがあります. 携帯端末ならばファビコンはウェブサイトをホームスクリーンに固定表示した際にアプリアイコンの代わりに使われます.</p>
 <p>HTML 文書にファビコンを追加するには, 以下のコードをカスタムヘッダファイル (<a href="include-html.html#include-html">7.10</a>節で言及したように, <code>header.html</code> といった名前のファイル) を追加します.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb168-1"><a href="favicon.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;{ファビコン画像ファイルへのパス}&quot;</span> <span class="kw">/&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb170-1"><a href="favicon.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;shortcut icon&quot;</span><span class="ot"> href=</span><span class="st">&quot;{ファビコン画像ファイルへのパス}&quot;</span> <span class="kw">/&gt;</span></span></code></pre></div>
 <p>YAML メタデータを使って, このファイルを文書の <code>&lt;head&gt;</code> 領域に挿入できることを思い出してください.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb169-1"><a href="favicon.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb169-2"><a href="favicon.html#cb169-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
-<span id="cb169-3"><a href="favicon.html#cb169-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb169-4"><a href="favicon.html#cb169-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb171-1"><a href="favicon.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb171-2"><a href="favicon.html#cb171-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb171-3"><a href="favicon.html#cb171-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb171-4"><a href="favicon.html#cb171-4" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> header.html</span></span></code></pre></div>
 <p><code>&lt;link&gt;</code> の <code>href</code> 属性に与えるパスは, 他のアセット (例えば画像やデータ・セット) を参照するときと同じように, 相対パス構造を前提とすべきです. 使用する画像は, 最も小さい正方形の PNG ファイルがよく機能します. 典型的なウェブブラウザは画像を 16 x 16 ピクセルの領域に表示するため, シンプルなデザインがより良いということに留意してください.</p>
 <p>あなたの文書を表示する各種のブラウザやプラットフォームが, 特定のレイアウトに対して最適な解像度のバージョンのアイコンを用いるようにしたいのであれば, <a href="https://realfavicongenerator.net" class="uri">https://realfavicongenerator.net</a> といったサービスを使って, ファビコンセットとやや複雑な HTML ヘッダのコードを生成するとよいでしょう. このサービスは現在 <strong>pkgdown</strong> パッケージ <span class="citation">(<a href="#ref-R-pkgdown" role="doc-biblioref">Wickham and Hesselberth 2020</a>)</span> の <code>pkgdown::build_favicon()</code> 関数で R パッケージロゴからファビコンセットを作り出すのに使用されています.</p>
 </div>

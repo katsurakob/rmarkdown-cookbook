@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -497,33 +497,33 @@ div.csl-indent {
 <h2><span class="header-section-number">11.12</span> テキストの先頭のハッシュ記号を消す</h2>
 <!-- https://stackoverflow.com/questions/15081212/remove-hashes-in-r-output-from-r-markdown-and-knitr -->
 <p>デフォルトでは R コードのテキスト出力の先頭には 2つのハッシュ記号 <code>##</code> が付きます. この挙動はチャンクオプション <code>comment</code> で変更することができます. このオプションのデフォルトは <code>"###"</code> という文字列です. ハッシュを消したいなら, 空の文字列を使うことができます. これが例です.</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb312-1"><a href="opts-comment.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, comment=&quot;&quot;}</span></span>
-<span id="cb312-2"><a href="opts-comment.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
-<span id="cb312-3"><a href="opts-comment.html#cb312-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb314-1"><a href="opts-comment.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, comment=&quot;&quot;}</span></span>
+<span id="cb314-2"><a href="opts-comment.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="in">1:100</span></span>
+<span id="cb314-3"><a href="opts-comment.html#cb314-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>もちろん, <code>comment = "#&gt;"</code> などと他の文字列はなんでも使うことができます. なぜ <code>comment</code> オプションのデフォルトはハッシュ記号なのか? その理由は <code>#</code> が R ではコメントを意味するからです. テキスト出力がコメントアウトされていれば, レポートに掲載されたコードチャンクを全部まとめてコピーして自分で実行するのが簡単になり, テキスト出力が R コードとして扱われないということに悩むことがありません. 例えば以下のコードチャンクの4つの行のテキスト全てをコピーして, R コードとして安全に実行することができます.</p>
-<div class="sourceCode" id="cb313"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb313-1"><a href="opts-comment.html#cb313-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb313-2"><a href="opts-comment.html#cb313-2"></a><span class="do">## [1] 2</span></span>
-<span id="cb313-3"><a href="opts-comment.html#cb313-3"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb313-4"><a href="opts-comment.html#cb313-4"></a><span class="do">## [1] 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb315-1"><a href="opts-comment.html#cb315-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb315-2"><a href="opts-comment.html#cb315-2"></a><span class="do">## [1] 2</span></span>
+<span id="cb315-3"><a href="opts-comment.html#cb315-3"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb315-4"><a href="opts-comment.html#cb315-4"></a><span class="do">## [1] 4</span></span></code></pre></div>
 <p><code>comment = ""</code> でハッシュ記号を消したなら, 2つ目と2つ目のコードを手動で消さなければならないため, 全てのコードをコピーして簡単に実行するということができなくなります.</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb314-1"><a href="opts-comment.html#cb314-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb314-2"><a href="opts-comment.html#cb314-2"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb314-3"><a href="opts-comment.html#cb314-3"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb314-4"><a href="opts-comment.html#cb314-4"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
-<p><code>comment = ""</code> が好ましいという主張の1つには, テキスト出力が R コンソールのユーザーにとって見慣れたものになるという点です. R コンソールではテキスト出力の行の先頭にはハッシュ記号が現れません. 本当に R コンソールの挙動を模倣したいのであれば, <code>comment = ""</code> を <code>prompt = TRUE</code> と組み合わせて使うことができます. これが例です.</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb315-1"><a href="opts-comment.html#cb315-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, comment=&quot;&quot;, prompt=TRUE}</span></span>
-<span id="cb315-2"><a href="opts-comment.html#cb315-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
-<span id="cb315-3"><a href="opts-comment.html#cb315-3" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
-<span id="cb315-4"><a href="opts-comment.html#cb315-4" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
-<span id="cb315-5"><a href="opts-comment.html#cb315-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
-<span id="cb315-6"><a href="opts-comment.html#cb315-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p>ソースコードにプロンプト記号 <code>&gt;</code> と行の継続を表す記号 <code>+</code> が含まれているので, 出力は R コードをタイプして実行するときのものにかなり近づいているはずです.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb316-1"><a href="opts-comment.html#cb316-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<div class="sourceCode" id="cb316"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb316-1"><a href="opts-comment.html#cb316-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb316-2"><a href="opts-comment.html#cb316-2"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
-<span id="cb316-3"><a href="opts-comment.html#cb316-3"></a><span class="sc">&gt;</span> <span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
-<span id="cb316-4"><a href="opts-comment.html#cb316-4"></a><span class="sc">+</span>   <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
-<span id="cb316-5"><a href="opts-comment.html#cb316-5"></a><span class="sc">+</span> }</span>
-<span id="cb316-6"><a href="opts-comment.html#cb316-6"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<span id="cb316-3"><a href="opts-comment.html#cb316-3"></a><span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb316-4"><a href="opts-comment.html#cb316-4"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
+<p><code>comment = ""</code> が好ましいという主張の1つには, テキスト出力が R コンソールのユーザーにとって見慣れたものになるという点です. R コンソールではテキスト出力の行の先頭にはハッシュ記号が現れません. 本当に R コンソールの挙動を模倣したいのであれば, <code>comment = ""</code> を <code>prompt = TRUE</code> と組み合わせて使うことができます. これが例です.</p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb317-1"><a href="opts-comment.html#cb317-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, comment=&quot;&quot;, prompt=TRUE}</span></span>
+<span id="cb317-2"><a href="opts-comment.html#cb317-2" aria-hidden="true" tabindex="-1"></a><span class="in">1 + 1</span></span>
+<span id="cb317-3"><a href="opts-comment.html#cb317-3" aria-hidden="true" tabindex="-1"></a><span class="in">if (TRUE) {</span></span>
+<span id="cb317-4"><a href="opts-comment.html#cb317-4" aria-hidden="true" tabindex="-1"></a><span class="in">  2 + 2</span></span>
+<span id="cb317-5"><a href="opts-comment.html#cb317-5" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb317-6"><a href="opts-comment.html#cb317-6" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p>ソースコードにプロンプト記号 <code>&gt;</code> と行の継続を表す記号 <code>+</code> が含まれているので, 出力は R コードをタイプして実行するときのものにかなり近づいているはずです.</p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb318-1"><a href="opts-comment.html#cb318-1"></a><span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb318-2"><a href="opts-comment.html#cb318-2"></a>[<span class="dv">1</span>] <span class="dv">2</span></span>
+<span id="cb318-3"><a href="opts-comment.html#cb318-3"></a><span class="sc">&gt;</span> <span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
+<span id="cb318-4"><a href="opts-comment.html#cb318-4"></a><span class="sc">+</span>   <span class="dv">2</span> <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb318-5"><a href="opts-comment.html#cb318-5"></a><span class="sc">+</span> }</span>
+<span id="cb318-6"><a href="opts-comment.html#cb318-6"></a>[<span class="dv">1</span>] <span class="dv">4</span></span></code></pre></div>
 </div>
             </section>
 

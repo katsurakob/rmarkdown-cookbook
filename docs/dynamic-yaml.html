@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -506,17 +506,16 @@ div.csl-indent {
 <span id="cb30-4"><a href="dynamic-yaml.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb30-5"><a href="dynamic-yaml.html#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-6"><a href="dynamic-yaml.html#cb30-6" aria-hidden="true" tabindex="-1"></a>我々の市場シェアを頑張って計算してみました.</span>
-<span id="cb30-7"><a href="dynamic-yaml.html#cb30-7" aria-hidden="true" tabindex="-1"></a>I just tried really hard to calculate our market share:</span>
-<span id="cb30-8"><a href="dynamic-yaml.html#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="dynamic-yaml.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb30-10"><a href="dynamic-yaml.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="in">share &lt;- runif(1)</span></span>
-<span id="cb30-11"><a href="dynamic-yaml.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb30-12"><a href="dynamic-yaml.html#cb30-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-13"><a href="dynamic-yaml.html#cb30-13" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb30-14"><a href="dynamic-yaml.html#cb30-14" aria-hidden="true" tabindex="-1"></a>title: &quot;我々の市場シェアは今や <span class="in">`r round(100 * share, 2)`</span>% です!&quot;</span>
-<span id="cb30-15"><a href="dynamic-yaml.html#cb30-15" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb30-16"><a href="dynamic-yaml.html#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-17"><a href="dynamic-yaml.html#cb30-17" aria-hidden="true" tabindex="-1"></a>これはとても <span class="in">`r if(share &gt; 0.8) &quot;喜ばしい&quot; else &quot;悲しい&quot;`</span> ことです.</span></code></pre></div>
+<span id="cb30-7"><a href="dynamic-yaml.html#cb30-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-8"><a href="dynamic-yaml.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-9"><a href="dynamic-yaml.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="in">share &lt;- runif(1)</span></span>
+<span id="cb30-10"><a href="dynamic-yaml.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb30-11"><a href="dynamic-yaml.html#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-12"><a href="dynamic-yaml.html#cb30-12" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-13"><a href="dynamic-yaml.html#cb30-13" aria-hidden="true" tabindex="-1"></a>title: &quot;我々の市場シェアは今や <span class="in">`r round(100 * share, 2)`</span>% です!&quot;</span>
+<span id="cb30-14"><a href="dynamic-yaml.html#cb30-14" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb30-15"><a href="dynamic-yaml.html#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="dynamic-yaml.html#cb30-16" aria-hidden="true" tabindex="-1"></a>これはとても <span class="in">`r if(share &gt; 0.8) &quot;喜ばしい&quot; else &quot;悲しい&quot;`</span> ことです.</span></code></pre></div>
 <p>上記の例では, 変数 <code>share</code> を生成してから文書のタイトルを追加しています. このような場合であってもうまくいくのは, Pandoc は文書内に YAML セクションをいくつ書いても読み込み, そして全てをマージすることができるためです.</p>
 <p>タイトルだけでなくどの YAML フィールドも, パラメータ化されたレポートから動的に生成することができます (<a href="parameterized-reports.html#parameterized-reports">17.4</a> 節参照). 例えばこのように.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb31-1"><a href="dynamic-yaml.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>

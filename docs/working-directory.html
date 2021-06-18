@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -499,9 +499,9 @@ div.csl-indent {
 <p>よく分からない時は, <code>getwd()</code> をコードチャンクに追加して文書をコンパイルし, <code>getwd()</code> の出力を確認できます.</p>
 <p>時には他のディレクトリを作業ディレクトリとして使いたいこともあります. 一般的な作業ディレクトリの変更方法は <code>setwd()</code> ですが, <code>setwd()</code> は R Markdown あるいは他の <strong>knitr</strong> ソース文書で一貫して使えるわけではないことに注意してください. これは <code>setwd()</code> が現在のコードチャンクに限って動作し, 作業ディレクトリはこのコードチャンクが評価された後に元に戻ることを意味します.</p>
 <p>全てのコードチャンクに対して作業ディレクトリを変更したい場合, 文書の冒頭で <code>setup</code> コードチャンクを設定できます.</p>
-<div class="sourceCode" id="cb477"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb477-1"><a href="working-directory.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
-<span id="cb477-2"><a href="working-directory.html#cb477-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
-<span id="cb477-3"><a href="working-directory.html#cb477-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb479"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb479-1"><a href="working-directory.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, setup, include=FALSE}</span></span>
+<span id="cb479-2"><a href="working-directory.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_knit$set(root.dir = &#39;/tmp&#39;)</span></span>
+<span id="cb479-3"><a href="working-directory.html#cb479-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>これは以降の全てのコードチャンクの作業ディレクトリを変更します.</p>
 <p>RStudio を使用しているなら, 作業ディレクトリをメニュの <code>Tools -&gt; Global Options -&gt; R Markdown</code> からも選択できます (図<a href="working-directory.html#fig:rmd-wd">16.1</a>参照). デフォルトの作業ディレクトリは Rmd ファイルのディレクトリで, 他に2つの選択肢があります. “Current” オプションで R コンソールの現在の作業ディレクトリを使うか, “Project” オプションで Rmd ファイルが入っているプロジェクトのルートディレクトリを作業ディレクトリとして使うこともできます.</p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-wd"></span>
@@ -544,7 +544,7 @@ Attali, Dean. 2016. <em>Ezknitr: Avoid the Typical Working Directory Pain When U
 Müller, Kirill. 2020. <em>Here: A Simpler Way to Find Your Files</em>. <a href="https://CRAN.R-project.org/package=here">https://CRAN.R-project.org/package=here</a>.
 </div>
 <div id="ref-blogdown2017" class="csl-entry">
-Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://github.com/rstudio/blogdown">https://github.com/rstudio/blogdown</a>.
+Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creating Websites with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/blogdown/">https://bookdown.org/yihui/blogdown/</a>.
 </div>
 </div>
             </section>

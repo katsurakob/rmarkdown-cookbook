@@ -6,18 +6,13 @@ author:
   - "(著者) Riederer, Emily"
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
-site: bookdown::bookdown_site
 booklanguage: JP
-mainfont: "DejaVu Serif"
-mainfontoptions:
-  - Scale=0.9
-sansfont: "DejaVu Sans"
-sansfontoptions:
-  - Scale=0.9
-monofont: "Ricty"
-jmainfont: "Noto Serif CJK JP"
-jsansfont: "Noto Sans CJK JP"
-jmonofont: "Ricty"
+mainfont: Noto Serif CJK JP
+sansfont: Noto Sans CJK JP
+monofont: Ricty Discord
+jmainfont: Noto Serif CJK JP
+jsansfont: Noto Sans CJK JP
+jmonofont: Ricty Discord
 documentclass: bxjsreport
 classoption:
     - lualatex
@@ -32,6 +27,7 @@ lot: yes
 lof: yes
 fontsize: 11pt
 github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
+site: bookdown::bookdown_site
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
 ---
@@ -40,7 +36,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/05/13 00:03:56 JST, ver. 0.9.2, 本家の更新確認時刻: [2021/02/01 20:02:05 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/06/18 14:14:31 JST, ver. 0.9.3.1, 本家の更新確認時刻: [2021/06/10 19:47:43 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -110,7 +106,7 @@ xfun::session_info(c(
 ```
 
 ```
-## R version 4.0.5 (2021-03-31)
+## R version 4.1.0 (2021-05-18)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 20.04.2 LTS
 ## 
@@ -129,8 +125,8 @@ xfun::session_info(c(
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.22 knitr_1.33    rmarkdown_2.7
-##   rmdja_0.4.6.9 xfun_0.22    
+##   bookdown_0.22 knitr_1.33    rmarkdown_2.8
+##   rmdja_0.4.6.9 xfun_0.23    
 ## 
 ## Pandoc version: 2.11.4
 ```
@@ -368,7 +364,7 @@ tinytex::parse_packages(
 tinytex::tlmgr_install("texlive-msg-translations")
 ```
 
-一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, `haranoaji`, `bxjscls` `luatex-ja` といった LaTeX パッケージ (R のパッケージではないことに注意してください) が日本語文書の作成に広く使われます. 既に書かれているように, **tinytex** はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は **tinytex** を使わず手動でインストールする必要があるかもしれません. 上記の `tinytex::tlmgr_install()` 関数は `tlmgr` のコマンドを実行するための関数なので, **tinytex** を使用していない環境では `tlmgr install ...` を代わりに実行することになります.
+一方で以前から TeX Live を使用しているがここ数年は更新していない, という方にとっては, 手動でパッケージをインストールする必要があるかもしれません. 2021年現在は, `haranoaji`, `bxjscls` `luatex-ja` といった LaTeX パッケージが日本語文書の作成に広く使われます. 既に書かれているように, **tinytex** はかなりの精度で必要なパッケージを自動でインストールしてくれますが, インストール済みの TeX を使用する場合は **tinytex** を使わず手動でインストールする必要があるかもしれません. 上記の `tinytex::tlmgr_install()` 関数は `tlmgr` のコマンドを実行するための関数なので, **tinytex** を使用していない環境では `tlmgr install ...` を代わりに実行することになります.
 
 PDF 出力のためのセットアップは翻訳者が独自に書いた補足資料 https://rpubs.com/ktgrstsh/755893 も参考になるかもしれません.
 :::
@@ -847,7 +843,6 @@ output: pdf_document
 ---
 
 我々の市場シェアを頑張って計算してみました.
-I just tried really hard to calculate our market share:
 
 ```{r}
 share <- runif(1)
@@ -1053,7 +1048,7 @@ toBibtex(citation("xaringan"))
   title = {xaringan: Presentation Ninja},
   author = {Yihui Xie},
   year = {2021},
-  note = {R package version 0.20},
+  note = {R package version 0.21},
   url = {https://CRAN.R-project.org/package=xaringan},
 }
 ```
@@ -1091,7 +1086,7 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     and Hadley Wickham and Joe Cheng and Winston Chang and
     Richard Iannone},
   year = {2021},
-  note = {R package version 2.7},
+  note = {R package version 2.8},
   url = {https://CRAN.R-project.org/package=rmarkdown},
 }
 
@@ -1238,11 +1233,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年5月13日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%Y %B`: 2021 5月
-- `%y/%m/%d`: 21/05/13
-- `%b%d (%a)`:  5月13 (木)
+- `%Y %B`: 2021 6月
+- `%y/%m/%d`: 21/06/18
+- `%b%d (%a)`:  6月18 (金)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -1252,15 +1247,15 @@ Table: (\#tab:date-format) Rにおける日付と時刻のフォーマット
 |:----|:-----------------------------|:----|:---------------------------------------------|
 |%a   |曜日の略称                    |%A   |曜日の名称                                    |
 |%b   |月の略称                      |%B   |月の名称                                      |
-|%c   |ロケール依存の時刻            |%d   |数値表記の日                                  |
+|%c   |ロケール依存の時刻フォーマット|%d   |数値表記の日                                  |
 |%H   |数値表記の時間 (24 時間)      |%I   |数値表記の時間 (12 時間)                      |
 |%j   |1年の何日目か                 |%m   |数値表記の月                                  |
-|%M   |数値表記の分                  |%p   |ロケール依存の午前/午後                       |
+|%M   |数値表記の分                  |%p   |ロケール依存の午前/午後フォーマット           |
 |%S   |数値表記の秒                  |%U   |年の何週目か (日曜日始まり)                   |
 |%w   |数値表記の曜日 (0=日曜日)     |%W   |年の何週目か (月曜日始まり)                   |
-|%x   |ロケール依存の日付            |%X   |ロケール依存の時刻                            |
+|%x   |ロケール依存の日付フォーマット|%X   |ロケール依存の時刻フォーマット                |
 |%y   |下2桁表記の年                 |%Y   |4桁表記の年                                   |
-|%z   |GMT からのオフセット          |%Z   |タイムゾーン (文字表記)                       |
+|%z   |GMT との時差                  |%Z   |タイムゾーン (文字表記)                       |
 
 最後に, 説明文を日付に含めたいときのことを書いておきます. このように Rコードの前に「最終コンパイル日」のような何らかの文を追加することができます.
 
@@ -1429,9 +1424,10 @@ RStudio IDE と **blogdown** パッケージ [@R-blogdown] をインストール
 たまに「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. コーディング中毒にならないようにしましょう.
 
 :::{.infobox .caution data-latex"{caution}"}
+
 **訳注**
 
-上記の例では, 最終行の出典の右寄せが再現できません. これは Pandoc の fenced `Div` blocks の機能を使用しています. (\@ref(custom-blocks)節) 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください.
+上記の例では, 最終行の出典の右寄せが再現できません. 右寄せには Pandoc の fenced `Div` blocks の機能が使用されています (\@ref(custom-blocks)節). 詳細はこの文書のソース (Rmd と CSSファイル) を確認してください. HTML 版をご覧ならば上部ツールバーの "Edit" ボタンからソースのURLを辿ることができます.
 :::
 
 
@@ -1709,9 +1705,11 @@ List of 3
  |        |-:List of 2
  |           |-t: chr "Str"
  |           |-c: chr "world!"
- |-pandoc-api-version:List of 2
+ |-pandoc-api-version:List of 4
  |  |-: int 1
- |  |-: int 20
+ |  |-: int 17
+ |  |-: int 5
+ |  |-: int 4
  |-meta              : Named list()
 ```
 
@@ -2331,7 +2329,7 @@ fenced `Div` についてより詳しく知りたいなら, \@ref(custom-blocks)
 
 # LaTeX 出力 {#latex-output}
 
-多くの著作者にとって作品の主な出力は PDF レポートですが, この出力では強力な LaTex のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX テンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
+多くの著作者にとって作品の主な出力は PDF レポートですが, この出力では強力な LaTeX のスタイル設定を活用できます. この章では, LaTeX コードやパッケージをプリアンブルに含めることや, カスタム LaTeX テンプレートの使用, ヘッダとフッタの追加, 図を分割して生成する方法, 生の LaTeX コードを文書の本文に書く方法, といったPDFレポートのカスタマイズに使えるアプローチについて議論します.
 
 ただし, 始める前に注意しておきたいことがあります. R Markdown の恩恵の1つは単一のソース文書から複数のフォーマットの文書を生成できるということです. あなたの作品を単一の出力に対して仕立て上げるこにとよって, その出力フォーマット単体の見た目やパフォーマンスは向上するかもしれませんが, それはこの移植性を犠牲にすることでもあります. この問題は LaTeX に限ったことでなく. 他の出力フォーマットでも同様です.
 
@@ -2389,23 +2387,23 @@ links-as-notes: true
 
 あなたが LaTeX をある程度ご存知なら, これらのオプションの意味は明らかでしょう. `documentclass` オプション\index{YAML!documentclass} は, 例えば `article`, `book`, `report` などの文書クラスを設定します. `classoption` は文書クラスに与えたいオプションをリストにしたもので, 例えば二段組の文書を作りたいなら `twocolumn` オプション,^[このオプションは文書全体を変更しますが, 特定の位置から再度一段組に戻したいのなら, そこに `\onecolumn` コマンドを挿入することになるでしょう. 二段組モードを続けたいなら `\twocolumn` を挿入します.], 横置きレイアウトにするなら `landscape` オプション (デフォルトでは縦置き (portrait) レイアウト) があります. `papersize`\index{YAML!papersize} オプションは `a4`, `paper`, `a5` といった用紙サイズを設定します. `linestretch`\index{YAML!linestretch} オプションは行間を設定します. `fontsize`\index{YAML!fontsize} オプションはフォントサイズを `10pt`, `11pt`, `12pt` というふうに設定します. `links-as-notes` オプションはテキスト内のリンクを脚注に置き換えます. 紙に印刷する際には読者は紙面上のリンクをクリックできませんが, 脚注の URL を見ることができるので便利です.
 
-フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません.], `fontfamily` オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
+フォントの変更は少しトリッキーで, どの LaTeX エンジンを使っているかに依存します. LaTeX ベースの出力フォーマットで通常デフォルトの `pdflatex`\index{pdflatex} を使っているのなら^[**訳注**: 日本語文書を **pdflatex** で出力することは全く不可能というわけではありませんが, 技術的制約が多いため LaTeX に慣れている方以外にはお薦めしません. **xelatex** または **lualatex** の使用をお薦めします.], `fontfamily` オプションを使って読み込む LaTeX フォントパッケージを選択してください. 例えばこのように.
 
 ```yaml
 fontfamily: accanthis
 output:
-  pdf_document: 
+  pdf_document:
     latex_engine: pdflatex
 ```
 
 これで文書に [Accanthis](https://tug.org/FontCatalogue/accanthis/) フォントが使われます. 他にも多数の LaTeX フォントパッケージのリストがあるので https://tug.org/FontCatalogue/ を見てください. LaTeX ディストリビューションに TinyTeX をお使いで, インストールされていないフォントパッケージが要求されるときは, 文書がコンパイルされる際に自動でインストールされるはずです(\@ref(install-latex)節参照).
 
-LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: **rmdja** パッケージでは YAML フロントマターでさらに欧文用フォントと和文用フォントを個別に指定できます. 詳細はパッケージのドキュメント等を参考にしてください.] 例えばこのように.
+LaTeX エンジンに `xelatex` または `lualatex` を使っているなら, ローカルのコンピュータで使用可能なフォントから選ぶことができ, LaTeX パッケージの追加インストールはしなくともよいです. YAML オプションで `mainfont`\index{YAML!mainfont}, `sansfont`\index{YAML!sansfont}, `monofont`\index{YAML!monofont} を使えば, それぞれメインのフォント, サンセリフ体, そしてタイプライタ体のフォントを指定できます.^[**訳注**: **rmdja** パッケージでは YAML フロントマターで3種類のフォントをまとめて設定できたり, あるいは欧文用フォントと和文用フォントを個別に細かく指定できたりします. 詳細はパッケージのドキュメント等を参考にしてください.] 例えばこのように.
 
 ```yaml
 mainfont: Arial
 output:
-  pdf_document: 
+  pdf_document:
     latex_engine: xelatex
 ```
 
@@ -2487,7 +2485,7 @@ title: |
 ```yaml
 ---
 title: "追加 LaTeX パッケージを使う"
-output: 
+output:
   pdf_document:
     extra_dependencies: ["bbm", "threeparttable"]
 ---
@@ -2504,7 +2502,7 @@ output:
       lmodern: null
 ```
 
-これは, LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.
+これは LaTeX に慣れた人にとっては以下の LaTeX コードと同じです.
 
 ```tex
 \usepackage[labelfont={bf}]{caption} 
@@ -2857,8 +2855,8 @@ plot(rnorm(100))
 
 LaTeX と比べて HTML はおそらくページに分けた出力の組版が苦手です. しかし, 特に CSS や JavaScript と連携すれば, 結果を見せつける際にははるかに強力になります. 例えば HTML にインタラクティブアプリケーションを埋め込んだり, 動的に HTML ページの外観や, 内容すら変えることができます. CSS と JavaScript の小ワザは, HTML 出力においては有用ながらもシンプルですが, LaTeX 出力で再現するのがとても難しいこともあります (しばしば不可能なこともあります).
 
-この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった, R Markdown の HTML 出力を向上するテクニックを紹介します.
-In this chapter, we introduce techniques to enhance your HTML output from R Markdown, including how to apply custom CSS rules, use custom HTML templates, style or fold code blocks, arrange content in tabs, and embed files on HTML pages.
+この章では, カスタム CSS の適用方法, カスタム HTML テンプレートの使い方, コードブロックのスタイル変更や折りたたみ, 表の内容の並び替え, そして HTML ページへのファイル埋め込みといった, R Markdown の HTML 出力を改良するテクニックを紹介します.
+
 
 ## カスタム CSS を適用する {#html-css}
 
@@ -3117,6 +3115,14 @@ output:
 ```
 ````
 
+
+
+`code_folding` は Rと他の一部の言語 (デフォルトでは `r`, `python`, `bash`, `sql`, `cpp`, `stan`, and `julia`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.^[**訳注**: このサンプルコードは本家でも未完成なので表示できません.]
+
+
+````md
+````
+
 ## 内容をタブブラウジングさせる {#html-tabs}
 
 <!--https://stackoverflow.com/questions/38062706/rmarkdown-tabbed-and-untabbed-headings-->
@@ -3170,7 +3176,19 @@ head(mtcars)
 ## Results {.tabset .tabset-pills}
 ```
 
-デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加できます.
+デフォルトでは最初のタブがアクティブ (つまり表示されている) です. 他のタブを最初に表示させたいなら, そのセクションに `.active` 属性を追加できます. 以下の例では, 文書を開くか再読み込みしたときに第2のタブ(背景情報) がアクティブ, つまり表示されている状態になります.
+
+```md
+## 結果 {.tabset}
+
+### 内容
+
+ここに文章.
+
+### 背景情報 {.active}
+
+ここに文章.
+```
 
 タブセットを終わらせるには, 上位レベルのセクション見出しを新しく開始する必要があります. 新しいセクションの見出しは空にします. 例えばこのように.
 
@@ -3980,7 +3998,7 @@ knitr::pandoc_to()
 バージョン 1.16 以降の **rmarkdown** パッケージは `Div` ブロックを HTML と LaTeX どちらに対しても変換するようになりました. HTML 出力に対してはブロックの全ての属性が `<div>` タグの属性になります. 例えば `Div` は ID (`#` の後のに続くもの), 1つまたは複数のクラス (クラス名は `.` の後に書かれるものです), そしてそれ以外の属性を持ちます. 以下の `Div` ブロック,
 
 ```md
-::: {#hello .greeting .message width="40%"}
+::: {#hello .greeting .message style="color: red;"}
 Hello **world**!
 :::
 ```
@@ -3988,7 +4006,7 @@ Hello **world**!
 は以下の HTML コードに変換されます.
 
 ```html
-<div id="hello" class="greeting message" width="40%">
+<div id="hello" class="greeting message" style="color: red;">
   Hello <strong>world</strong>!
 </div>
 ```
@@ -5368,9 +5386,9 @@ HTML 版をご覧なら, 上の2つの表に違いが見られないでしょう
 
 - **formattable** [@R-formattable]: `percent()`, `accounting()` といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. **gt** のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの https://github.com/renkun-ken/formattable で見ることができます.
 
-- **DT** [@R-DT]: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみサポートしているため, 独立した節を設けて紹介したりはしません. **DT** は JavaScript ライブラリの **DataTables** を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. **DT** はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの **DaataTables** の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ https://github.com/rstudio/DT を見てください.
+- **DT** [@R-DT]: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみのサポートのため独立した節を設けて紹介したりはしません. **DT** は JavaScript ライブラリの **DataTables** を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. **DT** はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの **DataTables** の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ https://github.com/rstudio/DT を見てください.
 
-- **reactable** [@R-reactable]: **DT** と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で **DT** より優れているようです. もし **reactable** が 2015年時点で存在していれば, 私は **DT** を開発していなかったと思います. と言いつつも, **reactable** は**DT** にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント https://glin.github.io/reactable/ を読み, どちらが目的に合ったものかを知ることもできるでしょう.
+- **reactable** [@R-reactable]: **DT** と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で **DT** より優れているようです. もし **reactable** が 2015年時点で存在していれば, 私は **DT** を開発していなかったと思います. とは言うものの, **reactable** は**DT** にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント https://glin.github.io/reactable/ を読み, どちらが目的に合ったものかを知ることもできるでしょう.
 
 - **rhandsontable** [@R-rhandsontable]: これも **DT** と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには https://jrowen.github.io/rhandsontable/ を見てください.
 
@@ -6817,8 +6835,8 @@ Sys.which("pdfcrop")
 ```
 
 ```
-##                  pdfcrop 
-## "/usr/local/bin/pdfcrop"
+##                pdfcrop 
+## "/home/ks/bin/pdfcrop"
 ```
 
 LaTeX 配布パッケージの TinyTeX (\@ref(install-latex)節参照) を使っていて, `pdfcrop` があなたのシステムで利用できないときは, `tinytex::tlmgr_install('pdfcrop')`\index{tinytex!tlmgr\_install()} でインストールできます.
@@ -7729,7 +7747,7 @@ knitr::knit_engines$set(upper = function(options) {
 knitr::knit_engines$set(py = function(options) {
   code <- paste(options$code, collapse = '\n')
   out  <- system2(
-    'python', c('-c', shQuote(code)), stdout = TRUE
+    'python3', c('-c', shQuote(code)), stdout = TRUE
   )
   knitr::engine_output(options, code, out)
 })
@@ -8911,7 +8929,7 @@ plot(iris[, -5])
 
 この Rmd 文書は `blastula::render_email()` 関数でレンダリングされ, 出力は `blastula::smtp_send()` に渡されます. これはEメールを送信する関数です. `smtp_send()` にはEメールサーバとあなたの認証が必要であることに注意してください.
 
-RStudio Connect を使用しているなら, https://solutions.rstudio.com/examples/blastula-overview/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
+RStudio Connect を使用しているなら, https://solutions.rstudio.com/r/blastula/ で, 自動化したもの, 条件付けたもの, パラメータ化したEメールを含め, さらなる例が見つかります.
 
 <!--chapter:end:JP/content/17-workflow.Rmd-->
 
@@ -8977,15 +8995,22 @@ knitr::opts_chunk$set(
 
 -   **`echo`**: (`TRUE`; `logical` または `numeric`).: 出力される文書にソースコードを表示するかどうか. 「表示」「隠す」に対応する `TRUE`/`FALSE` に加え, どの R の評価式を表示するかを選ぶために `numeric` のベクトルを使用することもできます. 例: `echo=2:3` は 2, 3番めの評価式を表示し,  `echo = -4` は4番目だけを非表示にします.
 - `results`: (`'markup'`; `character`) 実行結果のテキストの部分をどう表示するかを制御します. このオプションは通常のテキスト出力にのみ影響することに注意してください (警告・メッセージ・エラーは適用範囲外です). 取りうる値は次のとおりです.
-  - `markup`: 出力の文書フォーマットに応じて適切な環境でテキスト出力をマークアップします. 例えば R Markdown ならば `"[1] 1 2 3"` が **knitr** によって以下のように加工されます. この場合, `results='markup'` は囲み (```` ``` ````) 付きのコードブロックとして出力されることを意味します.
-  ````
-  ```
-  [1] 1 2 3
-  ```
-  ````
-  - `asis`: テキスト出力を「そのまま」書き出します. つまり, 生の結果テキストをマークアップ一切なしでそのまま文書に書き出します.
-  - **`hold`**: チャンクと flush の全てのテキスト出力をチャンクの末尾に固定します.
-  - **`hide`** (または `FALSE`): テキスト出力を表示しません.
+    - `markup`: 出力の文書フォーマットに応じて適切な環境でテキスト出力をマークアップします. 例えば R Markdown ならば `"[1] 1 2 3"` が **knitr** によって以下のように加工されます. この場合, `results='markup'` は囲み (```` ``` ````) 付きのコードブロックとして出力されることを意味します.
+    
+    ````
+    ```
+    [1] 1 2 3
+    ```
+    ````
+    - `asis`: テキスト出力を「そのまま」書き出します. つまり, 生の結果テキストをマークアップ一切なしでそのまま文書に書き出します.
+    
+    ````
+    ```{r, results='asis'}
+    cat("I'm raw **Markdown** content.\n")
+    ```
+    ````
+    - **`hold`**: チャンクと flush の全てのテキスト出力をチャンクの末尾に固定します.
+    - **`hide`** (または `FALSE`): テキスト出力を表示しません.
 -   `collapse`: (`FALSE`; `logical`) 可能であれば, ソースと出力をつなげて1つのブロックにするかどうかです (デフォルトではソースと出力はそれぞれ独立したブロックです). このオプションは Markdown 文書でのみ有効です.
 -   **`warning`**: (`TRUE`; `logical`).: 警告文 (`warning()` で出力されるテキスト) を保存するかどうかです. `FALSE` の場合, 全ての警告文は文書に出力されず, 代わりにコンソールに書き出されます. 警告文の一部を選ぶインデックスとして, `numeric` 型のベクトルを指定することもできます. この場合のインデックスの数値は「何番目の警告文を表示するか」を参照する (例: `3` はこのチャンクから投げられた3番目の警告文を意味します) ものであって, 「何番目の R コードの警告文の出力を許可するか」ではないことに注意してください.
 -   **`error`**: (`TRUE`; `logical`).: エラー文 (`stop()` で出力される文です) を保持するかどうかです. デフォルトの `TRUE` では, **コード評価はエラーが出ても停止しません!** エラー時点で停止させたい場合はこのオプションを `FALSE` に指定してください. **R Markdown ではこのデフォルト値は `FALSE` に変更されていることに注意**してください. チャンクオプションに `include=FALSE` がある場合, 起こりうるエラーを見落とさないように,  **knitr** はエラー時点で停止するようになります.
@@ -9002,10 +9027,10 @@ knitr::opts_chunk$set(
 ### コードの装飾関連 {#code-decoration}
 
 - `tidy`: (`FALSE`) R コードを整形するかどうかです. 他の有効な値は次のとおりです.
-  - `TRUE` (`tidy = 'formatR'` と等価です): 整形のために `formatR::tidy_source()` を呼び出します.
-  - `'styler'`: コード整形のために `styler::style_text()` を呼び出します.
-  - 整形されたコードを返す, `function(code, ...) {}` という形式の任意の関数.
-  - 整形が失敗した場合, 元の R コードは変更されません (警告は表示されます).
+    - `TRUE` (`tidy = 'formatR'` と等価です): 整形のために `formatR::tidy_source()` を呼び出します.
+    - `'styler'`: コード整形のために `styler::style_text()` を呼び出します.
+    - 整形されたコードを返す, `function(code, ...) {}` という形式の任意の関数.
+    - 整形が失敗した場合, 元の R コードは変更されません (警告は表示されます).
 - `tidy.opts`: (`NULL`; `list`) `tidy` オプションで指定した関数へのオプション引数のリストです. 例えば `tidy.opts = list(blank = FALSE, width.cutoff = 60)` は `tidy = 'formatR'` に対して空白行を削除し各行が60文字におさまるように改行しようとします.
 - `prompt`: (`FALSE`; `logical`) R コードにプロンプト記号 (`>` など) を付けるかどうかです.  `?base::options` ヘルプページの `prompt` と `continue` を参照してください. プロンプト記号の追加は, 読者がコードをコピーするのを難しくさせるため, `prompt=FALSE` のほうが良い選択であることに留意してください. エンジンが `R` 以外の場合, このオプションはうまく機能しないことがあります (issue [\#1274](https://github.com/yihui/knitr/issues/1274)).
 -   **`comment`**: (`'##'`; `character`).: テキスト出力の各行の先頭文字です. デフォルトでは, コメントアウトできるよう `##` となっているので, 読者は文書から任意の範囲をそのままコピーしても出力部分は無視されるのでそのまま実行することができます. `comment = ''` を指定することで, デフォルトの `##` は除去されます.
@@ -9015,17 +9040,13 @@ knitr::opts_chunk$set(
 -   `size`: (`'normalsize'`; `character`) `.Rnw` 使用時のチャンクサイズのフォントサイズです. 指定可能なサイズは  [overleaf のヘルプページ (英語)](https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles) を参照してください^[訳注: `\normalsize`, `\Large`, `\LARGE` など LaTeX で指定できるフォントサイズを表すマクロのことを指しています].
 -   **`background`**: (`'#F7F7F7'`; `character`).:  `.Rnw` 使用時のチャンクブロックの背景色です^[訳注: R Markdown では背景色は CSS や `class.output` などで設定する必要があります. 詳細は R Markdown Cookbook などを参照してください].
 -   **`indent`**: (`character`).: チャンクの出力で各行に追加する文字です. 典型的には空白と同義です. このオプションは読み込み専用を想定しており, 値は **knitr** が文書を読み込む際に設定されます. 例えば以下のチャンクでは, `indent` は空白文字2個です^[訳注: R Markdown の場合は **knitr** 以外の中間処理があるため, 必ずしもこのルールを守りません].
-  
-
-```{.r .numberLines .lineAnchors}
-rnorm(10)
-```
-
-```
-##  [1]  1.37096 -0.56470  0.36313  0.63286  0.40427
-##  [6] -0.10612  1.51152 -0.09466  2.01842 -0.06271
-```
-
+    
+    ````
+    ```{r indent-example, echo=2}
+    set.seed(42)
+    rnorm(10)
+    ```
+    ````
 ### キャッシュ関連 {#cache-options}
 
 -   **`cache`**: (`FALSE`; `logical`).: コードチャンクのキャッシュを取るかどうかです. 初回の実行またはキャッシュが存在しない場合は通常通り実行され, 結果がデータセットが保存され (`.rdb`, `.rdx` ファイルなど), それ以降でコードチャンクが評価されることがあれば, 以前保存されたこれらのファイルからこのチャンクの結果を読み出します. ファイル名がチャンクラベルと R コードの MD5 ハッシュ値で一致する必要があることに注意してください. つまりチャンクになんらかの変更がある度に異なる MD5 ハッシュ値が生成されるため, キャッシュはその度に無効になります. 詳細は [キャッシュの解説](https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html#cache) を参考にしてください.
@@ -9036,8 +9057,8 @@ rnorm(10)
 -   **`cache.comments`**: (`NULL`; `logical`).: `FALSE` の場合, R コードチャンク内のコメントを書き換えてもキャッシュが無効になりません.
 -   **`cache.rebuild`**: (`FALSE`; `logical`).: `TRUE` の場合, キャッシュが有効であってもチャンクのコードの再評価を行います. このオプションはキャッシュの無効化の条件を指定したいときに有用です. 例えば `cache.rebuild = !file.exists("some-file")` とすれば `some-file` が存在しないときにチャンクが評価されキャッシュが再構成されます (issue [\#238](https://github.com/yihui/knitr/issues/238) を参照).
 -   **`dependson`**: (`NULL`; `character` または `numeric`).: このチャンクが依存しているチャンクのラベル名を文字ベクトルで指定します. このオプションはキャッシュされたチャンクでのみ適用されます. キャッシュされたチャンク内のオブジェクトは, 他のキャッシュされたチャンクに依存しているかもしれず, 他のチャンクの変更に合わせてこのチャンクも更新する必要があるかもしれません.
-  - `dependson` に `numeric` ベクトルを与えた場合, それはチャンクラベルのインデックスを意味します. 例えば `dependson = 1` ならばこの文書の1番目のチャンクに依存することを意味し, `dependson = c(-1, -2)` は直前の2つのチャンクを意味します (負のインデックスは現在のチャンクからの相対的な位置を表します).
-  - `opts_chunk$set()` によってグローバルにチャンクオプションを設定した場合, このオプションは機能しません. ローカルなチャンクオプションとして設定しなければなりません.
+    - `dependson` に `numeric` ベクトルを与えた場合, それはチャンクラベルのインデックスを意味します. 例えば `dependson = 1` ならばこの文書の1番目のチャンクに依存することを意味し, `dependson = c(-1, -2)` は直前の2つのチャンクを意味します (負のインデックスは現在のチャンクからの相対的な位置を表します).
+    - `opts_chunk$set()` によってグローバルにチャンクオプションを設定した場合, このオプションは機能しません. ローカルなチャンクオプションとして設定しなければなりません.
 -   **`autodep`**: (`FALSE`; `logical`).: グローバル変数を検出することでチャンク間の依存関係を分析するかどうかを指定します (あまり信頼できません). よって, `dependson` を明示的に指定する必要はありません.
 
 ### グラフ関連 {#plots}
@@ -9052,15 +9073,16 @@ rnorm(10)
     -   数値ベクトルを指定した場合, その値は保存する低水準プロットのインデックスとなります.
     低水準プロットとは `lines()` や `points()` などの関数によるグラフ描画のことです. `fig.keep` についてより理解するには次のようなチャンクを考えてください. 通常はこれで2つのグラフを出力します (`fig.keep = 'high'` を指定したので).  `fig.keep = 'none'` としたなら, いかなるグラフも保存されません. `fig.keep = 'all'` ならば, 4 つのグラフとして保存されます. `fig.keep = 'first'` ならば `plot(1)` によって作成されたグラフが保存されます. `fig.keep = 'last'`, なら, 最後の10本の垂線を描画したグラフが保存されます.
 
-```{.r .numberLines .lineAnchors}
-plot(1)  # 高水準プロット
-abline(0, 1)  # 低水準の作図
-plot(rnorm(10))  # 高水準プロット
-# ループ内での複数の低水準作図 (R 評価式としては1つ)
-for (i in 1:10) {
-  abline(v = i, lty = 2)
-}
-```
+    
+    ```{.r .numberLines .lineAnchors}
+    plot(1)  # 高水準プロット
+    abline(0, 1)  # 低水準の作図
+    plot(rnorm(10))  # 高水準プロット
+    # ループ内での複数の低水準作図 (R 評価式としては1つ)
+    for (i in 1:10) {
+      abline(v = i, lty = 2)
+    }
+    ```
 
 -   **`fig.show`**: (`'asis'`; `character`).: グラフをどのように表示し, 配置するかです. 可能な値は次のとおりです.
     -   `asis`: グラフが生成された場所にそのまま出力します (R ターミナルで実行した場合とおなじように).
@@ -9106,8 +9128,8 @@ for (i in 1:10) {
 
 - **`interval`**: (`1`; `numeric`).: アニメーションの1フレームごとの時間 (単位は秒) です.
 - **`animation.hook`**: (`knitr::hook_ffmpeg_html`; `function` または `character`). HTML 出力時のアニメーション作成用のフック関数を指定します. デフォルトでは FFmpeg を使って WebM 動画ファイルに変換します.
-  - 別のフック関数として [**gifski**](https://cran.r-project.org/package=gifski) パッケージの `knitr::hook_gifski` 関数はGIFアニメーションを作ることができます.
-  - このオプションは `'ffmpeg'` や `'gifski'` といった文字列を指定することもできます. これらは対応するフック関数の省略形です. 例: `animation.hook = 'gifski'` は `animation.hook = knitr::hook_gifski` を意味します.
+    - 別のフック関数として [**gifski**](https://cran.r-project.org/package=gifski) パッケージの `knitr::hook_gifski` 関数はGIFアニメーションを作ることができます.
+    - このオプションは `'ffmpeg'` や `'gifski'` といった文字列を指定することもできます. これらは対応するフック関数の省略形です. 例: `animation.hook = 'gifski'` は `animation.hook = knitr::hook_gifski` を意味します.
 - **`aniopts`**: (`'controls,loop'`; `character`).: アニメーションに対する追加のオプションです. 詳細は LaTeX の [**animate**
         パッケージのドキュメント](http://ctan.org/pkg/animate)を参照してください.
 - **`ffmpeg.bitrate`**: (`1M`; `character`).: WebM 動画の質を制御するための FFmpeg の引数 `-b:v` に対応する値を指定できます.
@@ -9127,21 +9149,48 @@ for (i in 1:10) {
 - **`engine`**: (`'R'`; `character`).: コードチャンクの言語名です. 指定可能な名前は `names(knitr::knit_engines$get())` で確認できます. 例: `python`, `sql`, `julia`, `bash`, `c`, など. `knitr::knit_engines` で他の言語を使うためのセットアップが可能です.
 - **`engine.path`**: (`NULL`; `character`).: 実行可能なエンジンのパスを指定します. あなたのお使いのシステムの別の実行ファイルを使用するためのオプションです. 例えば `python` はデフォルトでは `/usr/bin/python` を参照しますが, 他のバージョンを使うため `engine.path = '~/anaconda/bin/python'` などと指定することもできます^[訳注: R Markdown の場合, Python のバージョンは `reticulate` パッケージでも制御できます. むしろそちらをつかったほうが便利だと思われます.]. `engine.path` もまたパスのリストを与えられます. これによってエンジンごとにそれぞれパスを指定することができます. 以下のコードが例です. リストの名前はエンジン名と一致する必要があります.
 
-```{.r .numberLines .lineAnchors}
-knitr::opts_chunk$set(engine.path = list(python = "~/anaconda/bin/python", 
-  ruby = "/usr/local/bin/ruby"))
-```
+    
+    ```{.r .numberLines .lineAnchors}
+    knitr::opts_chunk$set(engine.path = list(python = "~/anaconda/bin/python", 
+      ruby = "/usr/local/bin/ruby"))
+    ```
 
+- **`engine.opts`**: (`NULL`; `character`) 言語エンジンに与える追加引数. チャンクの段階ではオプションを文字列またはリストで指定することができます.
+    
+    ````
+    ```{bash, engine.opts='-l'}
+    echo $PATH
+    ```
+    ````
+    
+    ````
+    ```{cat, engine.opts = list(file = "my_custom.css")}
+    h2 {
+      color: blue;
+    }
+    ```
+    ````
+    
+    グローバルレベルでは, 要素名に言語名を与えた文字列のリストが使用できます. `engine.path` と同様に, `knitr::opts_chunk$set()` で引数のテンプレートを作ると便利です.
+    
+    
+    ```{.r .numberLines .lineAnchors}
+    knitr::opts_chunk$set(engine.opts = list(perl = "-Mstrict -Mwarnings", 
+      bash = "-o errexit"))
+    ```
+    
+    各エンジンはそれぞれ自身の `engine.opts` を持ち, 固有のオプションを定義します. 言語エンジンのドキュメントを調べるべきでしょう. R Markdown クックブックには [`cat`](https://bookdown.org/yihui/rmarkdown-cookbook/eng-cat.html)^[翻訳版: https://gedevan-aleksizde.github.io/rmarkdown-cookbook/eng-cat.html], [`sass`/`scss`](https://bookdown.org/yihui/rmarkdown-cookbook/eng-sass.html)^[翻訳版: https://gedevan-aleksizde.github.io/rmarkdown-cookbook/eng-sass.html]エンジンの例が掲載されています.
 
 ### オプションテンプレート関連
 
 -   **`opts.label`**: (`NULL`; `character`).: `knitr::opts_template` でのオプションのラベルです. オプションセットのラベルは `knitr::opts_template` で設定できます (`?knitr::opts_template` を参照してください). このオプションにより, 頻繁に使うチャンクオプションのタイピング労力を削減できます. 
 
-**訳注**: 例えば次のように, `echo=F` を設定するテンプレート `noecho` をどこかで作成したとします. すると, 以降のチャンクで `opts.label="noecho"` を設定すると `opts_template` で設定した `noecho` のオプションが全て適用されます. もちろん複数のオプションをまとめることもできるので, 定番の設定を使いまわすのが簡単になります.
-
-```{.r .numberLines .lineAnchors}
-knitr::opts_template$set(noecho = list(echo = F))
-```
+    **訳注**: 例えば次のように, `echo=F` を設定するテンプレート `noecho` をどこかで作成したとします. すると, 以降のチャンクで `opts.label="noecho"` を設定すると `opts_template` で設定した `noecho` のオプションが全て適用されます. もちろん複数のオプションをまとめることもできるので, 定番の設定を使いまわすのが簡単になります.
+    
+    
+    ```{.r .numberLines .lineAnchors}
+    knitr::opts_template$set(noecho = list(echo = F))
+    ```
 
 ### ソースコードの抽出関連
 
@@ -9155,9 +9204,10 @@ knitr::opts_template$set(noecho = list(echo = F))
 
 パッケージオプションは [`knitr::opts_knit`](https://gedevan-aleksizde.github.io/knitr-doc-ja/objects.html#objects) を使用することで変更できます. **`knitr::opts_chunk` と混同しないでください**. 使用例は以下のとおりです.
 
-```{.r .numberLines .lineAnchors}
-knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
-```
+    
+    ```{.r .numberLines .lineAnchors}
+    knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
+    ```
 
 別の方法として, R の基本関数である `options()` を使ってパッケージオプションを設定する場合は `?knitr::opts_knit` を参照してください.
 

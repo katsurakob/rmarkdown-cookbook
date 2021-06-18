@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -497,13 +497,13 @@ div.csl-indent {
 <h1><span class="header-section-number">9</span> 複数の出力フォーマット</h1>
 <p>R Markdown の主な利点は1つのソースから複数種類の出力フォーマットを作成できることです. これは1つ以上の Rmd ファイルでも可能です. 例えば本書は R Markdown で書かれ, 2種類のフォーマットでコンパイルされています. 印刷用の PDF と, オンライン版の HTML です.</p>
 <p>コードチャンクの出力を全ての出力フォーマットに対応させるのは時には難題になることがあります. 例えばたった1つの CSS ルール (<code>img { border-radius: 50%; }</code>) で HTML 出力に対して円の画像を作成するのは非常に単純ですが, LaTeX 出力ではこれとそのまま同じようにはいきません. 典型的には Tikz グラフィックスに関係する問題になります.</p>
-<p>ある出力要素がすべての出力フォーマットに対して動作するわけではありません. 例えば <strong>gifski</strong> パッケージ <span class="citation">(<a href="#ref-R-gifski" role="doc-biblioref">Ooms 2018</a>)</span> (<a href="animation.html#animation">4.14</a>節参照) で GIF アニメを簡単に作ることができ, これは HTML 出力では完璧に動作しますが, LaTeX 出力に埋め込んだものは追加の GIF ファイルの処理と LaTeX パッケージなしでは不可能です.</p>
+<p>ある出力要素がすべての出力フォーマットに対して動作するわけではありません. 例えば <strong>gifski</strong> パッケージ <span class="citation">(<a href="#ref-R-gifski" role="doc-biblioref">Ooms 2021a</a>)</span> (<a href="animation.html#animation">4.14</a>節参照) で GIF アニメを簡単に作ることができ, これは HTML 出力では完璧に動作しますが, LaTeX 出力に埋め込んだものは追加の GIF ファイルの処理と LaTeX パッケージなしでは不可能です.</p>
 <p>この章では複数のフォーマットで動作する例を少しだけ提示します. ある機能が特定の出力フォーマットでのみ有効なら, その出力フォーマットに基づいて条件付きで有効・無効にする方法を提示します.</p>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-gifski" class="csl-entry">
-Ooms, Jeroen. 2018. <em>Gifski: Highest Quality GIF Encoder</em>. <a href="https://CRAN.R-project.org/package=gifski">https://CRAN.R-project.org/package=gifski</a>.
+Ooms, Jeroen. 2021a. <em>Gifski: Highest Quality GIF Encoder</em>. <a href="https://CRAN.R-project.org/package=gifski">https://CRAN.R-project.org/package=gifski</a>.
 </div>
 </div>
             </section>

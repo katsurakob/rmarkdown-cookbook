@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -501,18 +501,18 @@ div.csl-indent {
 <h3><span class="header-section-number">16.8.1</span> テンプレートのユースケースTemplate use-cases</h3>
 <p>テンプレートはカスタマイズされた文書構造・スタイル・コンテンツを共有するのに便利な方法です. 多くのすばらしい例が世に出回っています.</p>
 <p>多くのテンプレートは入力済みのメタデータによって文書構造とスタイルを追加しています. すでに <strong>rmarkdown</strong> パッケージの (HTML の) ビネットテンプレートを例としてお見せしました. 同様に, <strong>rmdformats</strong> パッケージ <span class="citation">(<a href="#ref-R-rmdformats" role="doc-biblioref">Barnier 2021</a>)</span> では様々なカスタムスタイル関数を <code>output</code> オプションに渡すテンプレートがいくつも提供されています.</p>
-<p>その他のテンプレートではパッケージで必要になる文書の構文を例示しているものがあります. 例えば <strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2020</a>)</span> はポスター・履歴書・その他のページレイアウト用に無数のテンプレートを同梱しています. 同様に <strong>xaringan</strong> パッケージ <span class="citation">(<a href="#ref-R-xaringan" role="doc-biblioref">Xie 2020b</a>)</span> の忍者風のプレゼンテーションテンプレートは様々なスライドフォーマットのオプションに対する構文を例示しています.</p>
+<p>その他のテンプレートではパッケージで必要になる文書の構文を例示しているものがあります. 例えば <strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2021</a>)</span> はポスター・履歴書・その他のページレイアウト用に無数のテンプレートを同梱しています. 同様に <strong>xaringan</strong> パッケージ <span class="citation">(<a href="#ref-R-xaringan" role="doc-biblioref">Xie 2021f</a>)</span> の忍者風のプレゼンテーションテンプレートは様々なスライドフォーマットのオプションに対する構文を例示しています.</p>
 <p>テンプレートによってはパッケージの機能と構文を例示していることもあります. 例えば <strong>flexdashboard</strong> パッケージ <span class="citation">(<a href="#ref-R-flexdashboard" role="doc-biblioref">Iannone, Allaire, and Borges 2020</a>)</span> と <strong>learnr</strong> <span class="citation">(<a href="#ref-R-learnr" role="doc-biblioref">Schloerke, Allaire, and Borges 2020</a>)</span> パッケージには,　サンプルのダッシュボートとチュートリアルをそれぞれ作成するために, パッケージから関数を呼び出すコードチャンク付きのテンプレートを同梱しています.</p>
 <p>同様に, テンプレートには定型的なコンテンツの雛形を含んでいるものもあります. 例えば <strong>rticles</strong> パッケージ <span class="citation">(<a href="#ref-R-rticles" role="doc-biblioref">Allaire, Xie, R Foundation, et al. 2021</a>)</span> にはたくさんテンプレートがあって, R Markdown 出力を様々な学術誌で要求されるスタイルとガイドラインに沿って調整できます. コンテンツの雛形は, 四半期レポートを作成するチームのようなところで組織的に設定する際にも便利です.</p>
 </div>
 <div id="テンプレートの準備" class="section level3" number="16.8.2">
 <h3><span class="header-section-number">16.8.2</span> テンプレートの準備</h3>
-<p><strong>usethis</strong> パッケージ <span class="citation">(<a href="#ref-R-usethis" role="doc-biblioref">Wickham and Bryan 2020</a>)</span> にはテンプレートの作成に役に立つ関数があります. <code>usethis::use_rmarkdown_template("テンプレート名")</code> を実行すると, 必要なディレクトリ構造とファイルが自動で作成されます. テンプレート名は自分で付けましょう.</p>
+<p><strong>usethis</strong> パッケージ <span class="citation">(<a href="#ref-R-usethis" role="doc-biblioref">Wickham and Bryan 2021</a>)</span> にはテンプレートの作成に役に立つ関数があります. <code>usethis::use_rmarkdown_template("テンプレート名")</code> を実行すると, 必要なディレクトリ構造とファイルが自動で作成されます. テンプレート名は自分で付けましょう.</p>
 <p>代わりに自分のテンプレートを手動で準備したいなら, <code>inst/rmarkdown/templates</code> のサブディレクトリを作成してください. このディレクトリ内に, 少なくとも2つのファイルを保存する必要があります.</p>
 <ol style="list-style-type: decimal">
 <li><p><code>template.yaml</code> という名前のファイル. これは RStudio IDE に対して, 人間が判読できるテンプレートの名称などの基本的なメタデータを与えます. 例えば以下のように 最低でも, このファイルは <code>name</code> と <code>description</code> フィールドを持っているべきです.</p>
-<div class="sourceCode" id="cb479"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb479-1"><a href="package-template.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
-<span id="cb479-2"><a href="package-template.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb481-1"><a href="package-template.html#cb481-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> テンプレートの例</span></span>
+<span id="cb481-2"><a href="package-template.html#cb481-2" aria-hidden="true" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span><span class="at"> このテンプレートが何をするか</span></span></code></pre></div>
 <p>テンプレートが選択された時に新しいディレクトリを作成してほしいなら, <code>create_dir: true</code> を含めることもできます. 例えば <a href="https://github.com/rstudio/learnr/blob/master/inst/rmarkdown/templates/tutorial/template.yaml"><strong>learnr</strong> パッケージのテンプレート</a>は <code>create_dir: true</code> を設定しており, 一方で <a href="https://github.com/rstudio/flexdashboard/blob/master/inst/rmarkdown/templates/flex_dashboard/template.yaml"><strong>flexdashboard</strong> パッケージのテンプレート</a> はデフォルトの <code>create_dir: false</code> を使用しています. これらのテンプレートを RStudio で開いてみると, 様々なユーザの意図に気付くはずです.</p></li>
 <li><p><code>skeleton/skeleton.Rmd</code> 内に保存された R Markdown 文書ファイル. これは R Markdown 文書に挿入したいどのようなコンテンツでも含めることができます.</p></li>
 </ol>
@@ -535,16 +535,16 @@ Iannone, Richard, JJ Allaire, and Barbara Borges. 2020. <em>Flexdashboard: R Mar
 Schloerke, Barret, JJ Allaire, and Barbara Borges. 2020. <em>Learnr: Interactive Tutorials for r</em>. <a href="https://CRAN.R-project.org/package=learnr">https://CRAN.R-project.org/package=learnr</a>.
 </div>
 <div id="ref-R-usethis" class="csl-entry">
-Wickham, Hadley, and Jennifer Bryan. 2020. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.
+Wickham, Hadley, and Jennifer Bryan. 2021. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.
 </div>
 <div id="ref-R-xaringan" class="csl-entry">
-———. 2020b. <em>Xaringan: Presentation Ninja</em>. <a href="https://github.com/yihui/xaringan">https://github.com/yihui/xaringan</a>.
+———. 2021f. <em>Xaringan: Presentation Ninja</em>. <a href="https://github.com/yihui/xaringan">https://github.com/yihui/xaringan</a>.
 </div>
 <div id="ref-rmarkdown2018" class="csl-entry">
 Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
 </div>
 <div id="ref-R-pagedown" class="csl-entry">
-Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2020. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
+Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2021. <em>Pagedown: Paginate the HTML Output of r Markdown with CSS for Print</em>. <a href="https://github.com/rstudio/pagedown">https://github.com/rstudio/pagedown</a>.
 </div>
 </div>
             </section>

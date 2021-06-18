@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -496,7 +496,7 @@ div.csl-indent {
 <div id="install-latex" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> PDF レポートの作成に LaTeX (TinyTeX) をインストールする</h2>
 <p>R Markdown から PDF 文書を作りたいなら, LaTeX がインストール済みである必要があります. 伝統的な選択肢として MiKTeX, MacTeX, そして TeX Live がありますが, R Markdown ユーザーに対しては <a href="https://yihui.org/tinytex/">TinyTeX</a> のインストールを推奨します.</p>
-<p>TinyTeX は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. TinyTeX は R パッケージの <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021c</a>)</span> でインストールできます.</p>
+<p>TinyTeX は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. TinyTeX は R パッケージの <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021e</a>)</span> でインストールできます.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb7-1"><a href="install-latex.html#cb7-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
 <span id="cb7-2"><a href="install-latex.html#cb7-2"></a><span class="co"># TinyTeX をアンインストールするなら,</span></span>
 <span id="cb7-3"><a href="install-latex.html#cb7-3"></a><span class="co"># tinytex::uninstall_tinytex() を実行してください</span></span></code></pre></div>
@@ -505,15 +505,15 @@ div.csl-indent {
 <li><p>TinyTeX は (他の LaTeX ディストリビューションと比べて) 軽量であり, クロスプラットフォームでありポータブルです. 例えば USB ドライブや他のポータブルデバイスに TinyTeX のコピーを保存し, 同じオペレーティングシステムの別のコンピュータで使用することができます.</p></li>
 <li><p>R Markdown を PDF へ変換する時, Pandoc はまず Markdown を中間ファイルとして LaTeX 文書に変換します. <strong>tinytex</strong> パッケージは LaTeX 文書を PDF にコンパイルするヘルパー関数を提供します (主な関数は <code>tinytex::latexmk()</code> です). TinyTeX を使っていて, インストールされていない LaTeX パッケージが必要ならば, <strong>tinytex</strong> は自動でインストールしようとします. LaTeX ファイルに対するコンパイルも, 全ての相互参照を確実に解決するために十分な回数だけ行おうとします.</p></li>
 </ol>
-<p>技術的に詳しい話に興味があるなら, <span class="citation"><a href="#ref-tinytex2019" role="doc-biblioref">Xie</a> (<a href="#ref-tinytex2019" role="doc-biblioref">2019b</a>)</span> の論文と <a href="https://yihui.org/tinytex/faq/" class="uri">https://yihui.org/tinytex/faq/</a> の FAQ を確認するとよいかもしれません.</p>
+<p>技術的に詳しい話に興味があるなら, <span class="citation"><a href="#ref-tinytex2019" role="doc-biblioref">Xie</a> (<a href="#ref-tinytex2019" role="doc-biblioref">2019</a>)</span> の論文と <a href="https://yihui.org/tinytex/faq/" class="uri">https://yihui.org/tinytex/faq/</a> の FAQ を確認するとよいかもしれません.</p>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-tinytex2019" class="csl-entry">
-———. 2019b. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em>, no. 1: 30–32. <a href="http://tug.org/TUGboat/Contents/contents40-1.html">http://tug.org/TUGboat/Contents/contents40-1.html</a>.
+———. 2019. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em>, no. 1: 30–32. <a href="http://tug.org/TUGboat/Contents/contents40-1.html">http://tug.org/TUGboat/Contents/contents40-1.html</a>.
 </div>
 <div id="ref-R-tinytex" class="csl-entry">
-———. 2021c. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+———. 2021e. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
 </div>
 </div>
 <div class="footnotes">

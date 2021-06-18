@@ -156,10 +156,10 @@ div.csl-indent {
 }
 </style>
 
-<link rel="stylesheet" href="css/style.css" type="text/css" />
-<link rel="stylesheet" href="css/box.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/style.css" type="text/css" />
 <link rel="stylesheet" href="rmarkdown-cookbook_files/styles/css/toc.css" type="text/css" />
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+<link rel="stylesheet" href="css/box.css" type="text/css" />
 </head>
 
 <body>
@@ -536,6 +536,14 @@ div.csl-indent {
 <span id="cb152-11"><a href="fold-show.html#cb152-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source = &#39;fold-hide&#39;}</span></span>
 <span id="cb152-12"><a href="fold-show.html#cb152-12" aria-hidden="true" tabindex="-1"></a><span class="in">2  # code is hidden initially</span></span>
 <span id="cb152-13"><a href="fold-show.html#cb152-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<p><code>code_folding</code> は Rと他の一部の言語 (デフォルトでは <code>r</code>, <code>python</code>, <code>bash</code>, <code>sql</code>, <code>cpp</code>, <code>stan</code>, and <code>julia</code>) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの <code>class.source</code> に <code>foldable</code> クラスを追加するか, または いずれかのチャンクで <code>knitr::opts_chunk$set(class.source = "foldable")</code> を使ってグローバルに折りたたみの適用範囲を広げることができます.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode md"><code class="sourceCode markdown"></code></pre></div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="29">
+<li id="fn29"><p><strong>訳注</strong>: このサンプルコードは本家でも未完成なので表示できません.<a href="fold-show.html#fnref29" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
             </section>
 
