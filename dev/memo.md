@@ -2,8 +2,6 @@
 
 基本的に, タイポ等あからさまなミスの指摘のみを受け付けます. 細かい言い回しの変更は, 強い理由がない限り対処しない予定です.
 
-原則として
-
 ## 動作環境
 
 * 明白な誤字脱字の修正程度ならば github 上の操作だけでもできます
@@ -88,5 +86,8 @@
 * pdf に svg を (knitr::include_graphics で) 埋め込む方法
 * Fenced Div で二段組にすべきか
   + 特に beamer の場合は latex コードを直接埋め込むこともできる.  
+<<<<<<< HEAD
 * .Rmarkdown にすると RStudio は認識するが bookdown が勝手に読み込むことはない https://github.com/rstudio/blogdown/issues/97#issuecomment-307931024 root ディレクトリと bookdown デフォルト挙動の問題
 * LaTeX のテンプレートを R Markdown に移植するときのポイント
+=======
+>>>>>>> 38430aaf8dd5611d7822ea6bf24ac655de8a58b1
