@@ -86,8 +86,5 @@
 * pdf に svg を (knitr::include_graphics で) 埋め込む方法
 * Fenced Div で二段組にすべきか
   + 特に beamer の場合は latex コードを直接埋め込むこともできる.  
-<<<<<<< HEAD
 * .Rmarkdown にすると RStudio は認識するが bookdown が勝手に読み込むことはない https://github.com/rstudio/blogdown/issues/97#issuecomment-307931024 root ディレクトリと bookdown デフォルト挙動の問題
 * LaTeX のテンプレートを R Markdown に移植するときのポイント
-=======
->>>>>>> 38430aaf8dd5611d7822ea6bf24ac655de8a58b1
