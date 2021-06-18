@@ -42,3 +42,9 @@ redirect('acknowledgements.html', 'acknowledgments.html')
 #     bookdown::publish_book('rmarkdown-cookbook', server = 'bookdown.org', render = 'none')
 #   }
 # }
+
+file.remove(c(
+  "rmarkdown-cookbook-tikzDictionary",
+  "jauthoryear.bbx",
+  "jauthoryear.cbx"
+  ))

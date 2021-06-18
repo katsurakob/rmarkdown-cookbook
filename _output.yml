@@ -24,7 +24,6 @@ rmdja::pdf_book_ja:
     in_header: 
       - latex/preamble.tex
       - latex/blackbox.tex
-#      - latex/infobox.tex
     before_body: latex/before_body.tex
     after_body: latex/after_body.tex
   fig_auto_font: no
