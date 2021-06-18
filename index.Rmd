@@ -7,16 +7,12 @@ author:
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
 booklanguage: JP
-mainfont: "DejaVu Serif"
-mainfontoptions:
-  - Scale=0.9
-sansfont: "DejaVu Sans"
-sansfontoptions:
-  - Scale=0.9
-monofont: "Ricty"
-jmainfont: "Noto Serif CJK JP"
-jsansfont: "Noto Sans CJK JP"
-jmonofont: "Ricty"
+mainfont: Noto Serif CJK JP
+sansfont: Noto Sans CJK JP
+monofont: Ricty Discord
+jmainfont: Noto Serif CJK JP
+jsansfont: Noto Sans CJK JP
+jmonofont: Ricty Discord
 documentclass: bxjsreport
 classoption:
     - lualatex
@@ -114,7 +110,7 @@ file.copy("_config.yml", "docs/")
 ```
 
 ---
-date: "`r last_update`, ver. 0.9.2.x, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.3.1, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
