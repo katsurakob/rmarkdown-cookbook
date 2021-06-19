@@ -9,10 +9,17 @@
 * ソースコードをいじる, 動作確認もしたいという場合は `SETUP.md` を参考にしてください.
 * コマンドラインで git で GitHub にアクセスできる. 以下のようにしてローカル git リポジトリを設定する想定のため, また更新時刻を取得するため 
   
-  ```
-  git clone ...
-  git remote add upstream git@github.com:yihui/rmarkdown-cookbook.git
-  ```
+    ```
+    git clone ...
+    git remote add upstream git@github.com:yihui/rmarkdown-cookbook.git
+    ```
+
+* tinytex だとtikzに必要なパッケージのいくつかを自動インストールできないかもしれません.
+
+    ```
+    tinytex::tlmgr_install("preview")
+    tinytex::tlmgr_install("grfext")
+    ```
 
 * Windows の動作は確認していません
 
