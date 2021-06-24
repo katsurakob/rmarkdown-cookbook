@@ -36,6 +36,7 @@ is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
     Rによる美麗で柔軟そして高速な動的レポート生成](https://gedevan-aleksizde.github.io/knitr-doc-ja/index.html)』
     / “[knitr: Elegant, flexible, and fast dynamic report generation
     with R](https://yihui.org/knitr/)”
+-   『[TinyTeX 非公式日本語版ドキュメント](https://gedevan-aleksizde.github.io/tinytex-doc-ja/)』/"[TinyTeX](https://yihui.org/tinytex/)"
 -   “[R Markdown: The Definitive
     Guide](https://bookdown.org/yihui/rmarkdown/)”
     ([近日翻訳予定](https://github.com/Gedevan-Aleksizde/rmarkdown-book))
