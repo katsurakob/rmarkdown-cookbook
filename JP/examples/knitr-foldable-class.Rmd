@@ -1,0 +1,22 @@
+---
+title: CSS コードチャンクを隠す
+output: 
+  html_document:
+    code_folding: hide
+---
+
+これは `css` エンジンを使用した CSS コードチャンクです. これは `code_folding = 'hide'` を指定しても隠すことができません.
+
+```{css}
+pre {
+  background-color: lightblue;
+}
+```
+
+しかし `foldable` クラスをチャンクのソースコードに追加すれば可能になります.
+
+```{css, class.source = 'foldable'}
+pre.foldable {
+  background-color: lightgreen;
+}
+```

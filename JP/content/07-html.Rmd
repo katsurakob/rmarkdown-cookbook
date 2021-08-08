@@ -152,7 +152,7 @@ foldable_engine <- c("r", "python", "bash", "sql", "cpp", "stan", "julia")
 foldable_engine <- knitr::combine_words(foldable_engine, before = "\x60")
 ```
 
-`code_folding` は Rと他の一部の言語 (デフォルトでは `r foldable_engine`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.^[**訳注**: このサンプルコードは本家でも未完成なので表示できません.]
+`code_folding` は Rと他の一部の言語 (デフォルトでは `r foldable_engine`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.
 
 
 `r import_example("knitr-foldable-class.Rmd")`
