@@ -63,6 +63,16 @@ tinytex::install_tinytex()
 
 技術的に詳しい話に興味があるなら, @tinytex2019 の論文と https://yihui.org/tinytex/faq/ の FAQ を確認するとよいかもしれません.
 
+:::{.infobox .memo data-latex="{memo}"}
+**訳注**
+
+上記の FAQ を含む **tinytex** パッケージのドキュメントの日本語版も翻訳者により作成されています 
+
+https://gedevan-aleksizde.github.io/tinytex-doc-ja/index.html
+
+:::
+
+
 ## 足りない LaTeX パッケージをインストールする {#install-latex-pkgs}
 
 文書を LaTeX を通して PDF にコンパイルしたい時, これらのようなエラーに遭遇するかもしれません.
