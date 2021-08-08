@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -500,11 +503,11 @@ div.csl-indent {
 <div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="update-date.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></span></code></pre></div>
 <p>もっと人間にとって読みやすい, 特定の日次フォーマットを指定したいかもしれません. 例えば以下のようにします.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="update-date.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%x&#39;)`&quot;</span></span></code></pre></div>
-<p>例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
+<p>例えば 2021年8月08日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
 <ul>
-<li><code>%Y %B</code>: 2021 6月</li>
-<li><code>%y/%m/%d</code>: 21/06/18</li>
-<li><code>%b%d (%a)</code>: 6月18 (金)</li>
+<li><code>%Y %B</code>: 2021 8月</li>
+<li><code>%y/%m/%d</code>: 21/08/08</li>
+<li><code>%b%d (%a)</code>: 8月08 (日)</li>
 </ul>
 <p>表 <a href="update-date.html#tab:date-format">4.1</a> は POSIXct フォーマットの一覧です.</p>
 <table>

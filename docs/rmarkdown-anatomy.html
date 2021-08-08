@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -589,8 +592,8 @@ div.csl-indent {
 <span id="cb17-27"><a href="rmarkdown-anatomy.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この文書を書いていると, それぞれの小片は, テキストとコードを含む独立した節を一直線上に並べたものだとみなせるでしょう. しかし我々が実際にしているのは, 概念としては図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
 <div class="figure" style="text-align: center"><span id="fig:rmd-containers"></span>
-<div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
-<script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンクX) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンクY) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンクX) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンクY) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 図 2.3: 入れ子状のコンテナとして表現された単純な R Markdown 文書の例
 </p>

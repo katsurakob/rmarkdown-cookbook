@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -601,7 +604,7 @@ div.csl-indent {
 <span id="cb429-3"><a href="cache-rds.html#cb429-3" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
 <span id="cb429-4"><a href="cache-rds.html#cb429-4" aria-hidden="true" tabindex="-1"></a><span class="in">1:10</span></span>
 <span id="cb429-5"><a href="cache-rds.html#cb429-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p><strong>knitr</strong> のキャッシュ機能の大きな欠点であると同時にユーザーが最もよく不満の対象とするのは, キャッシュがとても多くの要因で決まるため, 知らないうちに無効化してしまうことがある点です. 例えば, チャンクオプションのいかなる変更もキャッシュを無効化する可能性がありますが,<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a> 演算に影響しないであろうチャンクオプションもあります. 以下のコードチャンクでチャンクオプション <code>fig.width = 6</code> を <code>fig.width = 10</code> へと変更してもキャッシュを無効化すべきではありませんが, 実際は無効化してしまいます.</p>
+<p><strong>knitr</strong> のキャッシュ機能の大きな欠点であると同時にユーザーが最もよく不満の対象とするのは, キャッシュがとても多くの要因で決まるため, 知らないうちに無効化してしまうことがある点です. 例えば, チャンクオプションのいかなる変更もキャッシュを無効化する可能性がありますが,<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a> 演算に影響しないであろうチャンクオプションもあります. 以下のコードチャンクでチャンクオプション <code>fig.width = 6</code> を <code>fig.width = 10</code> へと変更してもキャッシュを無効化すべきではありませんが, 実際は無効化してしまいます.</p>
 <div class="sourceCode" id="cb430"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb430-1"><a href="cache-rds.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, cache=TRUE, fig.width=6}</span></span>
 <span id="cb430-2"><a href="cache-rds.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="in"># there are no plots in this chunk</span></span>
 <span id="cb430-3"><a href="cache-rds.html#cb430-3" aria-hidden="true" tabindex="-1"></a><span class="in">x &lt;- rnorm(1000)</span></span>
@@ -615,8 +618,8 @@ div.csl-indent {
 <!-- </div> -->
 <div class="footnotes">
 <hr />
-<ol start="41">
-<li id="fn41"><p>これはデフォルトの挙動であり, 変更することができます. より細かい粒度でキャッシュを生成し, 全てのチャンクオプションがキャッシュに影響しないようにするには, <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html</a> をご覧ください.<a href="cache-rds.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<ol start="40">
+<li id="fn40"><p>これはデフォルトの挙動であり, 変更することができます. より細かい粒度でキャッシュを生成し, 全てのチャンクオプションがキャッシュに影響しないようにするには, <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html</a> をご覧ください.<a href="cache-rds.html#fnref40" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

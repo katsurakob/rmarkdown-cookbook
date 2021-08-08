@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -520,7 +523,7 @@ div.csl-indent {
 <span id="cb436-3"><a href="custom-engine.html#cb436-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>HELLO, <strong>KNITR</strong> ENGINES!</p>
 </blockquote>
-<p>次に, <code>py</code> という名前のもう1つの Python エンジン<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>の例を紹介します. このエンジンは単純に R の <code>system2()</code> 関数から <code>python</code> コマンドを呼び出すことで実装しています.</p>
+<p>次に, <code>py</code> という名前のもう1つの Python エンジン<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>の例を紹介します. このエンジンは単純に R の <code>system2()</code> 関数から <code>python</code> コマンドを呼び出すことで実装しています.</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb437-1"><a href="custom-engine.html#cb437-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">py =</span> <span class="cf">function</span>(options) {</span>
 <span id="cb437-2"><a href="custom-engine.html#cb437-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>)</span>
 <span id="cb437-3"><a href="custom-engine.html#cb437-3"></a>  out  <span class="ot">&lt;-</span> <span class="fu">system2</span>(</span>
@@ -545,8 +548,8 @@ div.csl-indent {
 </div>
 <div class="footnotes">
 <hr />
-<ol start="42">
-<li id="fn42"><p>実用的には組み込みの <code>python</code> エンジンを使うべきです. これは <strong>reticulate</strong> パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (<a href="eng-python.html#eng-python">15.2</a>節参照).<a href="custom-engine.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<ol start="41">
+<li id="fn41"><p>実用的には組み込みの <code>python</code> エンジンを使うべきです. これは <strong>reticulate</strong> パッケージに基づいており, より良く Python コードチャンクをサポートしてくれます (<a href="eng-python.html#eng-python">15.2</a>節参照).<a href="custom-engine.html#fnref41" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

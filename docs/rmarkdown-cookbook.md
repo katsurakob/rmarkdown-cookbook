@@ -7,16 +7,10 @@ author:
   - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
 booklanguage: JP
-mainfont: Noto Serif CJK JP
-sansfont: Noto Sans CJK JP
 monofont: Ricty Discord
-jmainfont: Noto Serif CJK JP
-jsansfont: Noto Sans CJK JP
 jmonofont: Ricty Discord
 documentclass: bxjsreport
-classoption:
-    - lualatex
-    - ja=standard
+jfontpreset: noto
 link-citations: yes
 colorlinks: yes
 bibliography:
@@ -36,7 +30,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/06/18 14:14:31 JST, ver. 0.9.3.1, 本家の更新確認時刻: [2021/06/10 19:47:43 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/08/08 21:00:35 JST, ver. 0.9.4, 本家の更新確認時刻: [2021/07/29 23:57:49 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -306,6 +300,16 @@ tinytex::install_tinytex()
 1. R Markdown を PDF へ変換する時, Pandoc はまず Markdown を中間ファイルとして LaTeX 文書に変換します. **tinytex** パッケージは LaTeX 文書を PDF にコンパイルするヘルパー関数を提供します (主な関数は `tinytex::latexmk()` です). TinyTeX を使っていて, インストールされていない LaTeX パッケージが必要ならば, **tinytex** は自動でインストールしようとします. LaTeX ファイルに対するコンパイルも, 全ての相互参照を確実に解決するために十分な回数だけ行おうとします.
 
 技術的に詳しい話に興味があるなら, @tinytex2019 の論文と https://yihui.org/tinytex/faq/ の FAQ を確認するとよいかもしれません.
+
+:::{.infobox .memo data-latex="{memo}"}
+**訳注**
+
+上記の FAQ を含む **tinytex** パッケージのドキュメントの日本語版も翻訳者により作成されています 
+
+https://gedevan-aleksizde.github.io/tinytex-doc-ja/index.html
+
+:::
+
 
 ## 足りない LaTeX パッケージをインストールする {#install-latex-pkgs}
 
@@ -1049,7 +1053,7 @@ toBibtex(citation("xaringan"))
   author = {Yihui Xie},
   year = {2021},
   note = {R package version 0.21},
-  url = {https://CRAN.R-project.org/package=xaringan},
+  url = {https://github.com/yihui/xaringan},
 }
 ```
 
@@ -1086,8 +1090,8 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     and Hadley Wickham and Joe Cheng and Winston Chang and
     Richard Iannone},
   year = {2021},
-  note = {R package version 2.8},
-  url = {https://CRAN.R-project.org/package=rmarkdown},
+  note = {https://github.com/rstudio/rmarkdown, https://
+    pkgs.rstudio.com/rmarkdown/},
 }
 
 @Book{knitr2015,
@@ -1233,11 +1237,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年8月08日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%Y %B`: 2021 6月
-- `%y/%m/%d`: 21/06/18
-- `%b%d (%a)`:  6月18 (金)
+- `%Y %B`: 2021 8月
+- `%y/%m/%d`: 21/08/08
+- `%b%d (%a)`:  8月08 (日)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -3117,10 +3121,32 @@ output:
 
 
 
-`code_folding` は Rと他の一部の言語 (デフォルトでは `r`, `python`, `bash`, `sql`, `cpp`, `stan`, and `julia`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.^[**訳注**: このサンプルコードは本家でも未完成なので表示できません.]
+`code_folding` は Rと他の一部の言語 (デフォルトでは `r`, `python`, `bash`, `sql`, `cpp`, `stan`, and `julia`) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの `class.source` に `foldable` クラスを追加するか, または いずれかのチャンクで `knitr::opts_chunk$set(class.source = "foldable")` を使ってグローバルに折りたたみの適用範囲を広げることができます.
 
 
 ````md
+---
+title: CSS コードチャンクを隠す
+output: 
+  html_document:
+    code_folding: hide
+---
+
+これは `css` エンジンを使用した CSS コードチャンクです. これは `code_folding = 'hide'` を指定しても隠すことができません.
+
+```{css}
+pre {
+  background-color: lightblue;
+}
+```
+
+しかし `foldable` クラスをチャンクのソースコードに追加すれば可能になります.
+
+```{css, class.source = 'foldable'}
+pre.foldable {
+  background-color: lightgreen;
+}
+```
 ````
 
 ## 内容をタブブラウジングさせる {#html-tabs}
@@ -8874,23 +8900,64 @@ knit: myPackage::knit_with_date
 
 `?rmarkdown::render` のヘルプページを見て, `Knit` ボタンの背後にある `knit` 関数のカスタマイズについて, さらなるアイディアを見つけるのもよいでしょう.
 
-## Google ドライブで Rmd 文書を共同編集する {#google-drive}
+## trackdown で Google ドライブの Rmd 文書を共同編集する {#google-drive}
 
-**googledrive** パッケージ\index{R パッケージ!googledrive} [@R-googledrive] を基にして, Emily Kothe は **rmdrive** パッケージ\index{R パッケージ!rmdrive} にいくつかのラッパ関数を提供しています. パッケージはいまのところ GitHub の https://github.com/ekothe/rmdrive だけで利用可能です. いま書いている時点では, リッチドキュメントが不足しています. そこで代わりとして私は Janosch Linkersdörfer のフォークリポジトリ https://github.com/januz/rmdrive を推奨します. こちらは Ben Marwick のフォークに基づいています. まだ GIT を学んでいないなら, 他人の GIT リポジトリを自由にフォークし改善しているこのような事例が, 学びへのいい動機づけになるでしょう.
+**trackdown** パッケージ\index{R パッケージ!trackdown} [@R-trackdown] は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. **trackdown** は **googledrive** パッケージ\index{R パッケージ!googledrive} [@R-googledrive] を基にして, ローカルの `.Rmd` (または `.Rnw`) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ^[**訳注**: LaTeX の可読性?? バイナリファイルと比較して, ということでしょうか?]と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.
 
-**rmdrive** のワークフローは大まかに言って以下のようになります.
+現時点では **trackdown** GitHub https://github.com/ekothe/trackdown でのみ利用可能です. パッケージのドキュメントは https://ekothe.github.io/trackdown/ で読むことができます.
 
-1. プロジェクトの主著者かコントリビュータがいて, その人は GIT のようなバージョン管理ツールを扱う能力があると仮定します. 主著者は Rmd 文書の最初のバージョンを書き, `upload_rmd()` 関数で Google ドライブへアップロードします.
+### trackdown の作業工程
 
-1. Google ドライブの Rmd 文書は他の共同編集者たちと共有され, 編集者たちは Google ドキュメント上で変更をしたり改善提案をしたりできます.
+`.Rmd` (あるいは `.Rnw`) の共同での読み書き作業では, 異なるコンピュータのコードやナラティブを持つテキストを利用することが重要となります:
 
-1. 主著者は提案された変更を受け容れたり, `render_rmd()` 関数で Rmd 文書をローカルへダウンロード・プレビューしたりできます. 他の共同編集者たちも, コードチャンクを修正していて新たな結果を見たいならば, 自分で同様のことができます.
+- **コード** - 共同作業でのコード執筆は伝統的な **Git** を下地にしたオンラインリポジトリ (GitHub や GitLab) を使用する工程に沿って, 最も効率的になされます.
 
-1. 満足したら主著者は GIT リポジトリに変更をコミットできます.
+- **ナラティブ** - ナラティブとしてのテキスト共同執筆は, 同じ文書を複数のユーザで同時編集できる, よく知られシンプルなオンラインインターフェースである **Google ドキュメント** の使用によって最も効率的になされます.
 
-Google ドライブ上では共同編集作業を同期的に行うことも, 非同期的に行うことも可能です. 複数の人間が同じ文書を同時に編集することも, 先に他の人の編集が完了するまで待つことも可能です.
+したがって, この作業工程のイメージは単純です. `.Rmd` (または `.Rnw`) 文書をナラティブの共同編集のため Google ドキュメントとして Google ドライブにアップロードし, Git のバージョン管理と共同作業機能の力を利用しつつコードが機能し続けるようローカルに文書をダウンロードします. この Google ドライブへのアップロード/からのダウンロードの繰り返し作業は納得のいく成果物ができるまで続けられます (図\@ref(fig:trakdown1) 参照). この作業工程はこのように要約できます.
 
-このパッケージには `update_rmd()` 関数もあり, Rmd 文書をローカルで編集して, ローカルの Rmd 文書を Google ドライブへアップロードできます. これは Google ドライブ上の文書を完全に上書きしてしまうため, この関数を実行すべきではないでしょう. 主著者は予め共同編集者たちにこれを警告しておきたいかもしれません. 理想的には, 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきではありません. 編集された文書を `render_rmd()` 関数でローカル上で閲覧するだけなら大丈夫ですが, `render_rmd()` は文書をレンダリングする前に文書を自動的にダウンロードしますから気をつけてください.
+> **Git** による **コード** の共同執筆と **Google ドキュメント** による **ナラティブ**の共同執筆
+
+作業工程の詳細な例は https://ekothe.github.io/trackdown/articles/trackdown-workflow.html を見てください.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/trackdown1} 
+
+}
+
+\caption{trackdown の作業工程, コードの共同執筆は Git を使いローカルで行い,  ナラティブの共同執筆は Google ドキュメントを使いオンラインで行う}(\#fig:trakdown1)
+\end{figure}
+
+
+#### 関数と特別な機能 {-}
+
+**trackdown** は作業工程の管理のために様々な関数を提供します.
+
+- `upload_file()` は Google ドライブへ最初にファイルをアップロードする際に使います.
+- `update_file()` は Google ドライブにアップロード済みのファイルをローカルファイルで更新します.
+- `download_file()` はローカルファイルを, ダウンロードした Google ドライブのファイルの編集済みバージョンで更新します.
+- `render_file()` はGoogle ドライブのファイルをダウンロードしローカルでレンダリングします.
+
+さらにそれ以外にも **trackdown** は Google ドキュメントの文書の共同執筆・編集を円滑にする機能を提案します.
+
+- **コードを隠す:** 文書のヘッダにあるコード (YAML ヘッダや LaTeX プリアンブル) やコードチャンクは Google ドライブへのアップロード時に除去され, ダウンロード時まで自動保存されます. これによって共同編集者がコードをうっかり変更してファイルを破損してしまうのを防ぎ, ナラティブに意識を集中させることができます.
+
+- **出力のアップロード:** 実際の出力文書, つまりレンダリングされたファイルは Goodle ドライブに `.Rmd` (または `.Rnw`) ファイルとまとめてアップロードされます. これは共同編集者が図や表を含む全体のレイアウトを見通すのに役立ち, コメントの追加や変更の提案・議論を可能にします.
+
+- **Google ドライブの共有ドライブを使用する:** 文書を個人用の Google ドライブにも, 共同作業促進のために共有ドライブにもアップロードできます.
+
+#### Google ドキュメントの利点 {-}
+
+Google ドキュメントはユーザに親しみやすく直感的な, 無償の web ベースのインターフェースを提案しており, 複数ユーザが同時に同じ文書を編集することが可能です. Google ドキュメントでは以下が可能です.
+
+- 変更箇所の追跡 (提案の採用・却下履歴を含む)
+- 変更の提案と議論についてのコメントの追加
+- スペル・文法ミスのチェック (Grammarly のようなサードパーティのサービスとの統合も可能)
+
+さらに Google ドキュメントは誰でも文書の共同編集に貢献することが可能です. プログラミング経験も要求せず, ユーザは単にナラティブの編集にだけ集中することができます.
+
+全ての共同編集者が Google アカウントを持つ必要がないことも知っておいてください (ただし Google ドキュメントの全ての機能を活用するために持っておくことをお勧めします). **trackdown** の作業工程を管理する人物だけが, ファイル Google ドライブにアップロードするためにアカウントを持つ必要があります. 共有リンクを使用して他の共同編集者を文書の編集に招待することができます.
 
 
 ## **workflowr** で R Markdown プロジェクトを研究用サイトでまとめる {#workflowr}

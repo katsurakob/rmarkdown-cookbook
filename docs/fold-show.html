@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -536,14 +539,29 @@ div.csl-indent {
 <span id="cb152-11"><a href="fold-show.html#cb152-11" aria-hidden="true" tabindex="-1"></a><span class="in">```{r class.source = &#39;fold-hide&#39;}</span></span>
 <span id="cb152-12"><a href="fold-show.html#cb152-12" aria-hidden="true" tabindex="-1"></a><span class="in">2  # code is hidden initially</span></span>
 <span id="cb152-13"><a href="fold-show.html#cb152-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p><code>code_folding</code> は Rと他の一部の言語 (デフォルトでは <code>r</code>, <code>python</code>, <code>bash</code>, <code>sql</code>, <code>cpp</code>, <code>stan</code>, and <code>julia</code>) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの <code>class.source</code> に <code>foldable</code> クラスを追加するか, または いずれかのチャンクで <code>knitr::opts_chunk$set(class.source = "foldable")</code> を使ってグローバルに折りたたみの適用範囲を広げることができます.<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a></p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode md"><code class="sourceCode markdown"></code></pre></div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="29">
-<li id="fn29"><p><strong>訳注</strong>: このサンプルコードは本家でも未完成なので表示できません.<a href="fold-show.html#fnref29" class="footnote-back">↩︎</a></p></li>
-</ol>
+<p><code>code_folding</code> は Rと他の一部の言語 (デフォルトでは <code>r</code>, <code>python</code>, <code>bash</code>, <code>sql</code>, <code>cpp</code>, <code>stan</code>, and <code>julia</code>) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの <code>class.source</code> に <code>foldable</code> クラスを追加するか, または いずれかのチャンクで <code>knitr::opts_chunk$set(class.source = "foldable")</code> を使ってグローバルに折りたたみの適用範囲を広げることができます.</p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb153-1"><a href="fold-show.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb153-2"><a href="fold-show.html#cb153-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> CSS コードチャンクを隠す</span></span>
+<span id="cb153-3"><a href="fold-show.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> </span></span>
+<span id="cb153-4"><a href="fold-show.html#cb153-4" aria-hidden="true" tabindex="-1"></a><span class="co">  html_document:</span></span>
+<span id="cb153-5"><a href="fold-show.html#cb153-5" aria-hidden="true" tabindex="-1"></a><span class="co">    code_folding: hide</span></span>
+<span id="cb153-6"><a href="fold-show.html#cb153-6" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb153-7"><a href="fold-show.html#cb153-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-8"><a href="fold-show.html#cb153-8" aria-hidden="true" tabindex="-1"></a>これは <span class="in">`css`</span> エンジンを使用した CSS コードチャンクです. これは <span class="in">`code_folding = &#39;hide&#39;`</span> を指定しても隠すことができません.</span>
+<span id="cb153-9"><a href="fold-show.html#cb153-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-10"><a href="fold-show.html#cb153-10" aria-hidden="true" tabindex="-1"></a><span class="in">```{css}</span></span>
+<span id="cb153-11"><a href="fold-show.html#cb153-11" aria-hidden="true" tabindex="-1"></a><span class="in">pre {</span></span>
+<span id="cb153-12"><a href="fold-show.html#cb153-12" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: lightblue;</span></span>
+<span id="cb153-13"><a href="fold-show.html#cb153-13" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb153-14"><a href="fold-show.html#cb153-14" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb153-15"><a href="fold-show.html#cb153-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-16"><a href="fold-show.html#cb153-16" aria-hidden="true" tabindex="-1"></a>しかし <span class="in">`foldable`</span> クラスをチャンクのソースコードに追加すれば可能になります.</span>
+<span id="cb153-17"><a href="fold-show.html#cb153-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-18"><a href="fold-show.html#cb153-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{css, class.source = &#39;foldable&#39;}</span></span>
+<span id="cb153-19"><a href="fold-show.html#cb153-19" aria-hidden="true" tabindex="-1"></a><span class="in">pre.foldable {</span></span>
+<span id="cb153-20"><a href="fold-show.html#cb153-20" aria-hidden="true" tabindex="-1"></a><span class="in">  background-color: lightgreen;</span></span>
+<span id="cb153-21"><a href="fold-show.html#cb153-21" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb153-22"><a href="fold-show.html#cb153-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 </div>
             </section>
 

@@ -5,8 +5,7 @@
 %
 \documentclass[
   11pt,
-  lualatex,
-  ja=standard]{bxjsreport}
+  lualatex,ja=standard,jafont=noto]{bxjsreport}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex,ifpdf,ifthen}
@@ -18,24 +17,17 @@
   \usepackage{unicode-math}
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-  \setmainfont[]{Noto Serif CJK JP}
-  \setsansfont[]{Noto Sans CJK JP}
   \setmonofont[]{Ricty Discord}
 \fi
 
 % japanese font setting
-% if fonts are set by each family
+% if the preset is specified
 \ifxetex
-  \usepackage[AutoFallBack=true]{zxjatype}
-  \setjamainfont[]{Noto Serif CJK JP}
-  \setjasansfont[]{Noto Sans CJK JP}
-  \setjamonofont[]{Ricty Discord}
+  \usepackage{xeCJKfntef}
 \fi
 \ifluatex
-  \usepackage[]{luatexja-fontspec}
-  \setmainjfont[]{Noto Serif CJK JP}
-  \setsansjfont[]{Noto Sans CJK JP}
-  \setmonojfont[]{Ricty Discord}
+  \usepackage{luatexja}
+  \usepackage[,noto]{luatexja-preset}
 \fi
 
   \IfFileExists{pxrubrica.sty}{\usepackage{pxrubrica}}{}
@@ -246,6 +238,19 @@
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},breaklines,breakanywhere}
 % ----
 
+% ---- font style-changing macro for convenient ----
+\ifdefined\mcfamily
+  \newcommand{\textserif}[1]{{\rmfamily\mcfamily #1}}
+\else
+  \newcommand{\textserif}[1]{{\rmfamily #1}}
+\fi
+\ifdefined\gtfamily
+  \newcommand{\textsans}[1]{{\sffamily\gtfamily #1}}
+\else
+  \newcommand{\textsans}[1]{{\sffamily #1}}
+\fi
+% ----
+
 % ---- user-defined preamble here ----
 \usepackage{booktabs}
 \usepackage{longtable}
@@ -321,7 +326,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/06/18 14:14:31 JST, ver. 0.9.3.1, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/06/10 19:47:43 JST}}
+\date{2021/08/08 21:00:35 JST, ver. 0.9.4, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/07/29 23:57:49 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -672,6 +677,15 @@ TinyTeX\index{LaTeX!TinyTeX} は TeX Live をもとにカスタムされた LaTe
 \end{enumerate}
 
 技術的に詳しい話に興味があるなら, \textcite{tinytex2019} の論文と \url{https://yihui.org/tinytex/faq/} の FAQ を確認するとよいかもしれません.
+
+\begin{infobox}{memo}
+\textbf{訳注}
+
+上記の FAQ を含む \textbf{tinytex} パッケージのドキュメントの日本語版も翻訳者により作成されています
+
+\url{https://gedevan-aleksizde.github.io/tinytex-doc-ja/index.html}
+
+\end{infobox}
 
 \hypertarget{install-latex-pkgs}{%
 \section{足りない LaTeX パッケージをインストールする}\label{install-latex-pkgs}}
@@ -1498,7 +1512,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
   \DataTypeTok{note}\NormalTok{ = \{R package version 0.21\},}
-  \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=xaringan\},}
+  \DataTypeTok{url}\NormalTok{ = \{https://github.com/yihui/xaringan\},}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -1539,8 +1553,8 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    and Hadley Wickham and Joe Cheng and Winston Chang and}
 \NormalTok{    Richard Iannone\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 2.8\},}
-  \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=rmarkdown\},}
+  \DataTypeTok{note}\NormalTok{ = \{https://github.com/rstudio/rmarkdown, https://}
+\NormalTok{    pkgs.rstudio.com/rmarkdown/\},}
 \NormalTok{\}}
 
 \VariableTok{@Book}\NormalTok{\{}\OtherTok{knitr2015}\NormalTok{,}
@@ -1696,16 +1710,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年6月18日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年8月08日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%Y \%B}: 2021 6月
+  \texttt{\%Y \%B}: 2021 8月
 \item
-  \texttt{\%y/\%m/\%d}: 21/06/18
+  \texttt{\%y/\%m/\%d}: 21/08/08
 \item
-  \texttt{\%b\%d (\%a)}: 6月18 (金)
+  \texttt{\%b\%d (\%a)}: 8月08 (日)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -3823,11 +3837,32 @@ R Markdown の HTML 出力は, デフォルトで, Bootstrap フレームワー�
 \end{Highlighting}
 \end{Shaded}
 
-\texttt{code\_folding} は Rと他の一部の言語 (デフォルトでは \texttt{r}, \texttt{python}, \texttt{bash}, \texttt{sql}, \texttt{cpp}, \texttt{stan}, and \texttt{julia}) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの \texttt{class.source} に \texttt{foldable} クラスを追加するか, または いずれかのチャンクで \texttt{knitr::opts\_chunk\$set(class.source = "foldable")} を使ってグローバルに折りたたみの適用範囲を広げることができます.\footnote{\textbf{訳注}: このサンプルコードは本家でも未完成なので表示できません.}
+\texttt{code\_folding} は Rと他の一部の言語 (デフォルトでは \texttt{r}, \texttt{python}, \texttt{bash}, \texttt{sql}, \texttt{cpp}, \texttt{stan}, and \texttt{julia}) コードチャンクの表示・非表示の挙動を制御します. これがあなたにとって制約になるなら, それ以外の言語のチャンクオプションの \texttt{class.source} に \texttt{foldable} クラスを追加するか, または いずれかのチャンクで \texttt{knitr::opts\_chunk\$set(class.source = "foldable")} を使ってグローバルに折りたたみの適用範囲を広げることができます.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{{-}{-}{-}}
+\AnnotationTok{title:}\CommentTok{ CSS コードチャンクを隠す}
+\AnnotationTok{output:}\CommentTok{ }
+\CommentTok{  html\_document:}
+\CommentTok{    code\_folding: hide}
+\CommentTok{{-}{-}{-}}
 
+\NormalTok{これは }\InformationTok{\textasciigrave{}css\textasciigrave{}}\NormalTok{ エンジンを使用した CSS コードチャンクです. これは }\InformationTok{\textasciigrave{}code\_folding = \textquotesingle{}hide\textquotesingle{}\textasciigrave{}}\NormalTok{ を指定しても隠すことができません.}
+
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{css\}}
+\InformationTok{pre \{}
+\InformationTok{  background{-}color: lightblue;}
+\InformationTok{\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+\NormalTok{しかし }\InformationTok{\textasciigrave{}foldable\textasciigrave{}}\NormalTok{ クラスをチャンクのソースコードに追加すれば可能になります.}
+
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{css, class.source = \textquotesingle{}foldable\textquotesingle{}\}}
+\InformationTok{pre.foldable \{}
+\InformationTok{  background{-}color: lightgreen;}
+\InformationTok{\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10252,27 +10287,89 @@ YAML に直接ソースコードを置くなら, 関数全体をパーレン \te
 \texttt{?rmarkdown::render} のヘルプページを見て, \texttt{Knit} ボタンの背後にある \texttt{knit} 関数のカスタマイズについて, さらなるアイディアを見つけるのもよいでしょう.
 
 \hypertarget{google-drive}{%
-\section{Google ドライブで Rmd 文書を共同編集する}\label{google-drive}}
+\section{trackdown で Google ドライブの Rmd 文書を共同編集する}\label{google-drive}}
 
-\textbf{googledrive} パッケージ\index{R パッケージ!googledrive} \autocite{R-googledrive} を基にして, Emily Kothe は \textbf{rmdrive} パッケージ\index{R パッケージ!rmdrive} にいくつかのラッパ関数を提供しています. パッケージはいまのところ GitHub の \url{https://github.com/ekothe/rmdrive} だけで利用可能です. いま書いている時点では, リッチドキュメントが不足しています. そこで代わりとして私は Janosch Linkersdörfer のフォークリポジトリ \url{https://github.com/januz/rmdrive} を推奨します. こちらは Ben Marwick のフォークに基づいています. まだ GIT を学んでいないなら, 他人の GIT リポジトリを自由にフォークし改善しているこのような事例が, 学びへのいい動機づけになるでしょう.
+\textbf{trackdown} パッケージ\index{R パッケージ!trackdown} \autocite{R-trackdown} は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. \textbf{trackdown} は \textbf{googledrive} パッケージ\index{R パッケージ!googledrive} \autocite{R-googledrive} を基にして, ローカルの \texttt{.Rmd} (または \texttt{.Rnw}) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ\footnote{\textbf{訳注}: LaTeX の可読性?? バイナリファイルと比較して, ということでしょうか?}と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.
 
-\textbf{rmdrive} のワークフローは大まかに言って以下のようになります.
+現時点では \textbf{trackdown} GitHub \url{https://github.com/ekothe/trackdown} でのみ利用可能です. パッケージのドキュメントは \url{https://ekothe.github.io/trackdown/} で読むことができます.
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\hypertarget{trackdown-ux306eux4f5cux696dux5de5ux7a0b}{%
+\subsection{trackdown の作業工程}\label{trackdown-ux306eux4f5cux696dux5de5ux7a0b}}
+
+\texttt{.Rmd} (あるいは \texttt{.Rnw}) の共同での読み書き作業では, 異なるコンピュータのコードやナラティブを持つテキストを利用することが重要となります:
+
+\begin{itemize}
 \item
-  プロジェクトの主著者かコントリビュータがいて, その人は GIT のようなバージョン管理ツールを扱う能力があると仮定します. 主著者は Rmd 文書の最初のバージョンを書き, \texttt{upload\_rmd()} 関数で Google ドライブへアップロードします.
+  \textbf{コード} - 共同作業でのコード執筆は伝統的な \textbf{Git} を下地にしたオンラインリポジトリ (GitHub や GitLab) を使用する工程に沿って, 最も効率的になされます.
 \item
-  Google ドライブの Rmd 文書は他の共同編集者たちと共有され, 編集者たちは Google ドキュメント上で変更をしたり改善提案をしたりできます.
-\item
-  主著者は提案された変更を受け容れたり, \texttt{render\_rmd()} 関数で Rmd 文書をローカルへダウンロード・プレビューしたりできます. 他の共同編集者たちも, コードチャンクを修正していて新たな結果を見たいならば, 自分で同様のことができます.
-\item
-  満足したら主著者は GIT リポジトリに変更をコミットできます.
-\end{enumerate}
+  \textbf{ナラティブ} - ナラティブとしてのテキスト共同執筆は, 同じ文書を複数のユーザで同時編集できる, よく知られシンプルなオンラインインターフェースである \textbf{Google ドキュメント} の使用によって最も効率的になされます.
+\end{itemize}
 
-Google ドライブ上では共同編集作業を同期的に行うことも, 非同期的に行うことも可能です. 複数の人間が同じ文書を同時に編集することも, 先に他の人の編集が完了するまで待つことも可能です.
+したがって, この作業工程のイメージは単純です. \texttt{.Rmd} (または \texttt{.Rnw}) 文書をナラティブの共同編集のため Google ドキュメントとして Google ドライブにアップロードし, Git のバージョン管理と共同作業機能の力を利用しつつコードが機能し続けるようローカルに文書をダウンロードします. この Google ドライブへのアップロード/からのダウンロードの繰り返し作業は納得のいく成果物ができるまで続けられます (図\ref{fig:trakdown1} 参照). この作業工程はこのように要約できます.
 
-このパッケージには \texttt{update\_rmd()} 関数もあり, Rmd 文書をローカルで編集して, ローカルの Rmd 文書を Google ドライブへアップロードできます. これは Google ドライブ上の文書を完全に上書きしてしまうため, この関数を実行すべきではないでしょう. 主著者は予め共同編集者たちにこれを警告しておきたいかもしれません. 理想的には, 全ての共同編集者たちが Google ドライブ上でのみ文書を編集し, ローカルでは編集すべきではありません. 編集された文書を \texttt{render\_rmd()} 関数でローカル上で閲覧するだけなら大丈夫ですが, \texttt{render\_rmd()} は文書をレンダリングする前に文書を自動的にダウンロードしますから気をつけてください.
+\begin{quote}
+\textbf{Git} による \textbf{コード} の共同執筆と \textbf{Google ドキュメント} による \textbf{ナラティブ}の共同執筆
+\end{quote}
+
+作業工程の詳細な例は \url{https://ekothe.github.io/trackdown/articles/trackdown-workflow.html} を見てください.
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth,height=1\textheight,keepaspectratio]{JP/images/trackdown1} 
+
+}
+
+\caption{trackdown の作業工程, コードの共同執筆は Git を使いローカルで行い,  ナラティブの共同執筆は Google ドキュメントを使いオンラインで行う}\label{fig:trakdown1}
+\end{figure}
+
+\hypertarget{ux95a2ux6570ux3068ux7279ux5225ux306aux6a5fux80fd}{%
+\subsubsection*{関数と特別な機能}\label{ux95a2ux6570ux3068ux7279ux5225ux306aux6a5fux80fd}}
+\addcontentsline{toc}{subsubsection}{関数と特別な機能}
+
+\textbf{trackdown} は作業工程の管理のために様々な関数を提供します.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{upload\_file()} は Google ドライブへ最初にファイルをアップロードする際に使います.
+\item
+  \texttt{update\_file()} は Google ドライブにアップロード済みのファイルをローカルファイルで更新します.
+\item
+  \texttt{download\_file()} はローカルファイルを, ダウンロードした Google ドライブのファイルの編集済みバージョンで更新します.
+\item
+  \texttt{render\_file()} はGoogle ドライブのファイルをダウンロードしローカルでレンダリングします.
+\end{itemize}
+
+さらにそれ以外にも \textbf{trackdown} は Google ドキュメントの文書の共同執筆・編集を円滑にする機能を提案します.
+
+\begin{itemize}
+\item
+  \textbf{コードを隠す:} 文書のヘッダにあるコード (YAML ヘッダや LaTeX プリアンブル) やコードチャンクは Google ドライブへのアップロード時に除去され, ダウンロード時まで自動保存されます. これによって共同編集者がコードをうっかり変更してファイルを破損してしまうのを防ぎ, ナラティブに意識を集中させることができます.
+\item
+  \textbf{出力のアップロード:} 実際の出力文書, つまりレンダリングされたファイルは Goodle ドライブに \texttt{.Rmd} (または \texttt{.Rnw}) ファイルとまとめてアップロードされます. これは共同編集者が図や表を含む全体のレイアウトを見通すのに役立ち, コメントの追加や変更の提案・議論を可能にします.
+\item
+  \textbf{Google ドライブの共有ドライブを使用する:} 文書を個人用の Google ドライブにも, 共同作業促進のために共有ドライブにもアップロードできます.
+\end{itemize}
+
+\hypertarget{google-ux30c9ux30adux30e5ux30e1ux30f3ux30c8ux306eux5229ux70b9}{%
+\subsubsection*{Google ドキュメントの利点}\label{google-ux30c9ux30adux30e5ux30e1ux30f3ux30c8ux306eux5229ux70b9}}
+\addcontentsline{toc}{subsubsection}{Google ドキュメントの利点}
+
+Google ドキュメントはユーザに親しみやすく直感的な, 無償の web ベースのインターフェースを提案しており, 複数ユーザが同時に同じ文書を編集することが可能です. Google ドキュメントでは以下が可能です.
+
+\begin{itemize}
+\tightlist
+\item
+  変更箇所の追跡 (提案の採用・却下履歴を含む)
+\item
+  変更の提案と議論についてのコメントの追加
+\item
+  スペル・文法ミスのチェック (Grammarly のようなサードパーティのサービスとの統合も可能)
+\end{itemize}
+
+さらに Google ドキュメントは誰でも文書の共同編集に貢献することが可能です. プログラミング経験も要求せず, ユーザは単にナラティブの編集にだけ集中することができます.
+
+全ての共同編集者が Google アカウントを持つ必要がないことも知っておいてください (ただし Google ドキュメントの全ての機能を活用するために持っておくことをお勧めします). \textbf{trackdown} の作業工程を管理する人物だけが, ファイル Google ドライブにアップロードするためにアカウントを持つ必要があります. 共有リンクを使用して他の共同編集者を文書の編集に招待することができます.
 
 \hypertarget{workflowr}{%
 \section{\texorpdfstring{\textbf{workflowr} で R Markdown プロジェクトを研究用サイトでまとめる}{workflowr で R Markdown プロジェクトを研究用サイトでまとめる}}\label{workflowr}}
@@ -10828,7 +10925,7 @@ knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
 % --- bibliography settings ---
 
 % biblatex mode
-\printbibliography[title=参考文献,heading=bibintoc]
+\printbibliography
 % --- bibliography settings ends ---
 
 

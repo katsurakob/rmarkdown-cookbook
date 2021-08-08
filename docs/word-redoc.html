@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -504,12 +507,12 @@ div.csl-indent {
 <p>この出力フォーマットは, 実際には元の Rmd 文書を保存したWord 文書を生成するので, Word 文書を Rmd に変換して戻すこともできます. Word 上の変更履歴は CriticMarkup 構文 (<a href="http://criticmarkup.com" class="uri">http://criticmarkup.com</a>) で書かれたテキストへ変換されます 例えば <code>{++ 重要 ++}</code> はテキストに「重要」という単語が挿入されたことを表現しています.</p>
 <p><code>redoc::redoc</code> で生成された Word 文書は, <code>redoc::dedoc()</code> 関数で Rmd に変換できます. 例えば <code>redoc::dedoc("file.docx")</code> は <code>file.Rmd</code> を生成します. この処理では Word 上の変更履歴にどう対処するかを <code>track_changes</code> 引数で決めることができます. 例えば変更を受け入れるか破棄するか, 変更履歴を CriticMarkup に変換するかなどです. 変更履歴が完全に失われてしまわないように, <code>track_changes = 'criticmarkup'</code> を使うことを推奨します.</p>
 <p>Word 文書を編集する際には, R Markdown のコードチャンクやインライン R コードによって自動生成されて<strong>いない</strong>箇所を編集すると想定されています. 例えばコードチャンク内で <code>knitr::kable()</code> を使って自動生成された表は編集してはなりません. そのような変更は <code>dedoc()</code> で Word から Rmd に変換する際に失われるからです. コードチャンクで自動生成された出力を誤って編集することを避けるために, <code>redoc::redoc</code> フォーマットの <code>highlight_outputs</code> オプションを <code>true</code>に設定してください. これは自動出力した箇所を Word 上で背景色で強調表示することを意味します. あなたの共同編集者には Word 文書上の強調表示された箇所に触れないよう伝えるべきでしょう.</p>
-<p>繰り返しになりますが, <strong>redoc</strong> パッケージは未だ試験的であり現時点ではその機能がはっきりしないため, ここでの導入はあえて簡潔なものとしています. 信用できない場合, GitHub 上のパッケージのドキュメントを読むことをお薦めします<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>.</p>
+<p>繰り返しになりますが, <strong>redoc</strong> パッケージは未だ試験的であり現時点ではその機能がはっきりしないため, ここでの導入はあえて簡潔なものとしています. 信用できない場合, GitHub 上のパッケージのドキュメントを読むことをお薦めします<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>.</p>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="33">
-<li id="fn33"><p><strong>訳注</strong>: 2021/5/7 現在, <strong>redoc</strong> パッケージは開発を中止しています. 動作確認は使用者自身でお願いします.<a href="word-redoc.html#fnref33" class="footnote-back">↩︎</a></p></li>
+<ol start="32">
+<li id="fn32"><p><strong>訳注</strong>: 2021/5/7 現在, <strong>redoc</strong> パッケージは開発を中止しています. 動作確認は使用者自身でお願いします.<a href="word-redoc.html#fnref32" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

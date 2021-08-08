@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -502,7 +505,7 @@ div.csl-indent {
 <span id="cb43-3"><a href="write-bib.html#cb43-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Yihui Xie},</span>
 <span id="cb43-4"><a href="write-bib.html#cb43-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
 <span id="cb43-5"><a href="write-bib.html#cb43-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 0.21},</span>
-<span id="cb43-6"><a href="write-bib.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=xaringan},</span>
+<span id="cb43-6"><a href="write-bib.html#cb43-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://github.com/yihui/xaringan},</span>
 <span id="cb43-7"><a href="write-bib.html#cb43-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p><code>toBibtex()</code> で生成されたエントリを使うには, 出力を <code>.bib</code> ファイルにコピーし, 引用キーを追加しなければなりません (例えば <code>@Manual{,</code> の部分を <code>@Manual{R-xaringan,</code> と書き換える). これは <code>knitr::write_bib()</code> 関数によって自動化できます. この関数は引用エントリを生成し, 自動的にキーを加えてファイルに書き込みます. 例えばこのようにします.</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb44-1"><a href="write-bib.html#cb44-1"></a>knitr<span class="sc">::</span><span class="fu">write_bib</span>(<span class="fu">c</span>(<span class="fu">.packages</span>(), <span class="st">&quot;bookdown&quot;</span>), <span class="st">&quot;packages.bib&quot;</span>)</span></code></pre></div>
@@ -525,8 +528,8 @@ div.csl-indent {
 <span id="cb46-14"><a href="write-bib.html#cb46-14" aria-hidden="true" tabindex="-1"></a>    and Hadley Wickham and Joe Cheng and Winston Chang and</span>
 <span id="cb46-15"><a href="write-bib.html#cb46-15" aria-hidden="true" tabindex="-1"></a>    Richard Iannone},</span>
 <span id="cb46-16"><a href="write-bib.html#cb46-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2021},</span>
-<span id="cb46-17"><a href="write-bib.html#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {R package version 2.8},</span>
-<span id="cb46-18"><a href="write-bib.html#cb46-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://CRAN.R-project.org/package=rmarkdown},</span>
+<span id="cb46-17"><a href="write-bib.html#cb46-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {https://github.com/rstudio/rmarkdown, https://</span>
+<span id="cb46-18"><a href="write-bib.html#cb46-18" aria-hidden="true" tabindex="-1"></a>    pkgs.rstudio.com/rmarkdown/},</span>
 <span id="cb46-19"><a href="write-bib.html#cb46-19" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb46-20"><a href="write-bib.html#cb46-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-21"><a href="write-bib.html#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="va">@Book</span>{<span class="ot">knitr2015</span>,</span>

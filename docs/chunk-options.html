@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -496,7 +499,7 @@ div.csl-indent {
 <div id="chunk-options" class="section level1" number="11">
 <h1><span class="header-section-number">11</span> チャンクオプション</h1>
 <p>図<a href="rmarkdown-process.html#fig:rmdworkflow">2.1</a>に描かれているように, <strong>knitr</strong> パッケージは R Markdown においてきわめて重要な役割を担います. この章と後に続くの3つの章では <strong>knitr</strong> に関連するレシピをお見せします.</p>
-<p>R のチャンクを処理する際には, <strong>knitr</strong> の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) が使えます. 完全なリストは <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a> のオンラインドキュメントをご覧ください.<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a></p>
+<p>R のチャンクを処理する際には, <strong>knitr</strong> の挙動を細かく調整するのに 50 を超すチャンクオプション (chunk options) が使えます. 完全なリストは <a href="https://yihui.org/knitr/options/" class="uri">https://yihui.org/knitr/options/</a> のオンラインドキュメントをご覧ください.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a></p>
 <p>このあと続く各節では, チャンクオプションを個別のコードチャンクに適用する例のみを示します. ただし, どのチャンクオプションもグローバル設定で文書全体に適用できるので, コードチャンク1つ1つに繰り返しオプションを書かなくても良いということも知っておいてください. グローバルにチャンクオプションを設定するには, いずれかのコードチャンクで <code>knitr::opts_chunk$set()</code> を呼び出してください. ふつうは文書の最初のチャンクオプションに設定します. 例えばこのように.</p>
 <div class="sourceCode" id="cb280"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb280-1"><a href="chunk-options.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE}</span></span>
 <span id="cb280-2"><a href="chunk-options.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::opts_chunk$set(</span></span>
@@ -506,8 +509,8 @@ div.csl-indent {
 </div>
 <div class="footnotes">
 <hr />
-<ol start="38">
-<li id="fn38"><p><strong>訳注</strong>: 翻訳者による日本語訳はこちら: <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html</a><a href="chunk-options.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<ol start="37">
+<li id="fn37"><p><strong>訳注</strong>: 翻訳者による日本語訳はこちら: <a href="https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html" class="uri">https://gedevan-aleksizde.github.io/knitr-doc-ja/options.html</a><a href="chunk-options.html#fnref37" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

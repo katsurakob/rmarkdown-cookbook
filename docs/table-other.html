@@ -468,7 +468,10 @@ div.csl-indent {
 <li class="chapter" data-level="17.3" data-path="rmarkdown-render.html"><a href="rmarkdown-render.html"><i class="fa fa-check"></i><b>17.3</b> <code>rmarkdown::render()</code> で R Markdown をレンダリングする</a></li>
 <li class="chapter" data-level="17.4" data-path="parameterized-reports.html"><a href="parameterized-reports.html"><i class="fa fa-check"></i><b>17.4</b> パラメータ化されたレポート</a></li>
 <li class="chapter" data-level="17.5" data-path="custom-knit.html"><a href="custom-knit.html"><i class="fa fa-check"></i><b>17.5</b> <code>Knit</code> ボタンをカスタマイズする (*)</a></li>
-<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> Google ドライブで Rmd 文書を共同編集する</a></li>
+<li class="chapter" data-level="17.6" data-path="google-drive.html"><a href="google-drive.html"><i class="fa fa-check"></i><b>17.6</b> trackdown で Google ドライブの Rmd 文書を共同編集する</a>
+<ul>
+<li class="chapter" data-level="17.6.1" data-path="google-drive.html"><a href="google-drive.html#trackdown-の作業工程"><i class="fa fa-check"></i><b>17.6.1</b> trackdown の作業工程</a></li>
+</ul></li>
 <li class="chapter" data-level="17.7" data-path="workflowr.html"><a href="workflowr.html"><i class="fa fa-check"></i><b>17.7</b> <strong>workflowr</strong> で R Markdown プロジェクトを研究用サイトでまとめる</a></li>
 <li class="chapter" data-level="17.8" data-path="blastula-email.html"><a href="blastula-email.html"><i class="fa fa-check"></i><b>17.8</b> R Markdown から Eメールを送信する Send emails based on R Markdown</a></li>
 </ul></li>
@@ -495,10 +498,10 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="table-other" class="section level2" number="10.3">
 <h2><span class="header-section-number">10.3</span> その他の表作成パッケージ</h2>
-<p>多くの作表用 R パッケージがあります. <code>kable()</code> (<a href="kable.html#kable">10.1</a>節) と<strong>kableExtra</strong> (<a href="kableextra.html#kableextra">10.2</a>節) を紹介した)主な理由は他のパッケージより良いからではなく, 私がこれらにのみ詳しかったからです.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a> 存在は知っていますがあまり詳しくないパッケージを次に列挙します.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> ご自分で確認し, 目的に最も合っているものを決めることができます.</p>
+<p>多くの作表用 R パッケージがあります. <code>kable()</code> (<a href="kable.html#kable">10.1</a>節) と<strong>kableExtra</strong> (<a href="kableextra.html#kableextra">10.2</a>節) を紹介した)主な理由は他のパッケージより良いからではなく, 私がこれらにのみ詳しかったからです.<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a> 存在は知っていますがあまり詳しくないパッケージを次に列挙します.<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a> ご自分で確認し, 目的に最も合っているものを決めることができます.</p>
 <ul>
 <li><p><strong>flextable</strong> <span class="citation">(<a href="#ref-R-flextable" role="doc-biblioref">Gohel 2021a</a>)</span> と <strong>huxtable</strong> <span class="citation">(<a href="#ref-R-huxtable" role="doc-biblioref">Hugh-Jones 2021</a>)</span>: 幅広い種類の出力フォーマットをサポートするパッケージを探しているなら, <strong>flextable</strong> と <strong>huxtable</strong> が最善の2つの選択です. HTML, LaTeX. そして Office フォーマットを全てサポートし, よく使われる表の機能 (例えば条件付き書式とか) のほとんどをサポートしています. <strong>flextable</strong> の詳細は <a href="https://davidgohel.github.io/flextable/" class="uri">https://davidgohel.github.io/flextable/</a> で, <strong>huxtable</strong> のドキュメントは <a href="https://hughjonesd.github.io/huxtable/" class="uri">https://hughjonesd.github.io/huxtable/</a> で見られます.</p></li>
-<li><p><strong>gt</strong> <span class="citation">(<a href="#ref-R-gt" role="doc-biblioref">Iannone, Cheng, and Schloerke 2021</a>)</span>: 表のヘッダ, (題名・副題), 列のラベル, 表の本体, 行グループのラベル, 表のフッタといった異なる表のパーツをまとめて表を構成することができます. 数字のフォーマットを指定したり, セルの背景色に影をつけたりもできます. 現在は <strong>gt</strong> は主に HTML 出力をサポートしています.<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a> 詳細は <a href="https://gt.rstudio.com" class="uri">https://gt.rstudio.com</a> で見られます.</p></li>
+<li><p><strong>gt</strong> <span class="citation">(<a href="#ref-R-gt" role="doc-biblioref">Iannone, Cheng, and Schloerke 2021</a>)</span>: 表のヘッダ, (題名・副題), 列のラベル, 表の本体, 行グループのラベル, 表のフッタといった異なる表のパーツをまとめて表を構成することができます. 数字のフォーマットを指定したり, セルの背景色に影をつけたりもできます. 現在は <strong>gt</strong> は主に HTML 出力をサポートしています.<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a> 詳細は <a href="https://gt.rstudio.com" class="uri">https://gt.rstudio.com</a> で見られます.</p></li>
 <li><p><strong>formattable</strong> <span class="citation">(<a href="#ref-R-formattable" role="doc-biblioref">Ren and Russell 2021</a>)</span>: <code>percent()</code>, <code>accounting()</code> といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. <strong>gt</strong> のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの <a href="https://github.com/renkun-ken/formattable" class="uri">https://github.com/renkun-ken/formattable</a> で見ることができます.</p></li>
 <li><p><strong>DT</strong> <span class="citation">(<a href="#ref-R-DT" role="doc-biblioref">Xie, Cheng, and Tan 2021</a>)</span>: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみのサポートのため独立した節を設けて紹介したりはしません. <strong>DT</strong> は JavaScript ライブラリの <strong>DataTables</strong> を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. <strong>DT</strong> はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの <strong>DataTables</strong> の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ <a href="https://github.com/rstudio/DT" class="uri">https://github.com/rstudio/DT</a> を見てください.</p></li>
 <li><p><strong>reactable</strong> <span class="citation">(<a href="#ref-R-reactable" role="doc-biblioref">Lin 2020</a>)</span>: <strong>DT</strong> と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で <strong>DT</strong> より優れているようです. もし <strong>reactable</strong> が 2015年時点で存在していれば, 私は <strong>DT</strong> を開発していなかったと思います. とは言うものの, <strong>reactable</strong> は<strong>DT</strong> にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント <a href="https://glin.github.io/reactable/" class="uri">https://glin.github.io/reactable/</a> を読み, どちらが目的に合ったものかを知ることもできるでしょう.</p></li>
@@ -523,19 +526,19 @@ Daróczi, Gergely, and Roman Tsegelskyi. 2018. <em>Pander: An r Pandoc Writer</e
 Garbett, Shawn. 2020. <em>Tangram: The Grammar of Tables</em>. <a href="https://github.com/spgarbet/tangram">https://github.com/spgarbet/tangram</a>.
 </div>
 <div id="ref-R-flextable" class="csl-entry">
-Gohel, David. 2021a. <em>Flextable: Functions for Tabular Reporting</em>. <a href="https://CRAN.R-project.org/package=flextable">https://CRAN.R-project.org/package=flextable</a>.
+Gohel, David. 2021a. <em>Flextable: Functions for Tabular Reporting</em>.
 </div>
 <div id="ref-R-stargazer" class="csl-entry">
-Hlavac, Marek. 2018. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>.
+Hlavac, Marek. 2018. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>.
 </div>
 <div id="ref-R-huxtable" class="csl-entry">
 Hugh-Jones, David. 2021. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
 </div>
 <div id="ref-R-gt" class="csl-entry">
-Iannone, Richard, Joe Cheng, and Barret Schloerke. 2021. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://CRAN.R-project.org/package=gt">https://CRAN.R-project.org/package=gt</a>.
+Iannone, Richard, Joe Cheng, and Barret Schloerke. 2021. <em>Gt: Easily Create Presentation-Ready Display Tables</em>.
 </div>
 <div id="ref-R-reactable" class="csl-entry">
-Lin, Greg. 2020. <em>Reactable: Interactive Data Tables Based on React Table</em>. <a href="https://CRAN.R-project.org/package=reactable">https://CRAN.R-project.org/package=reactable</a>.
+Lin, Greg. 2020. <em>Reactable: Interactive Data Tables Based on React Table</em>.
 </div>
 <div id="ref-R-ztable" class="csl-entry">
 Moon, Keon-Woong. 2020. <em>Ztable: Zebra-Striped Tables in LaTeX and HTML Formats</em>. <a href="https://github.com/cardiomoon/ztable">https://github.com/cardiomoon/ztable</a>.
@@ -553,13 +556,13 @@ Oller Moreno, Sergio. 2020. <em>Condformat: Conditional Formatting in Data Frame
 Owen, Jonathan. 2018. <em>Rhandsontable: Interface to the Handsontable.js Library</em>. <a href="http://jrowen.github.io/rhandsontable/">http://jrowen.github.io/rhandsontable/</a>.
 </div>
 <div id="ref-R-formattable" class="csl-entry">
-Ren, Kun, and Kenton Russell. 2021. <em>Formattable: Create Formattable Data Structures</em>. <a href="https://CRAN.R-project.org/package=formattable">https://CRAN.R-project.org/package=formattable</a>.
+Ren, Kun, and Kenton Russell. 2021. <em>Formattable: Create Formattable Data Structures</em>.
 </div>
 <div id="ref-R-broom" class="csl-entry">
-Robinson, David, Alex Hayes, and Simon Couch. 2021. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
+Robinson, David, Alex Hayes, and Simon Couch. 2021. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>.
 </div>
 <div id="ref-R-gtsummary" class="csl-entry">
-Sjoberg, Daniel D., Michael Curry, Margie Hannum, Joseph Larmarange, Karissa Whiting, and Emily C. Zabor. 2021. <em>Gtsummary: Presentation-Ready Data Summary and Analytic Result Tables</em>. <a href="https://CRAN.R-project.org/package=gtsummary">https://CRAN.R-project.org/package=gtsummary</a>.
+Sjoberg, Daniel D., Michael Curry, Margie Hannum, Joseph Larmarange, Karissa Whiting, and Emily C. Zabor. 2021. <em>Gtsummary: Presentation-Ready Data Summary and Analytic Result Tables</em>.
 </div>
 <div id="ref-R-DT" class="csl-entry">
 Xie, Yihui, Joe Cheng, and Xianying Tan. 2021. <em>DT: A Wrapper of the JavaScript Library DataTables</em>. <a href="https://github.com/rstudio/DT">https://github.com/rstudio/DT</a>.
@@ -567,10 +570,10 @@ Xie, Yihui, Joe Cheng, and Xianying Tan. 2021. <em>DT: A Wrapper of the JavaScri
 </div>
 <div class="footnotes">
 <hr />
-<ol start="35">
-<li id="fn35"><p>平たく言うと, 自分では表を全く使いませんから, 洗練された表を作る方法を学ぶ強いモチベーションがありませんでした.<a href="table-other.html#fnref35" class="footnote-back">↩︎</a></p></li>
-<li id="fn36"><p><strong>訳注</strong>: これらの差異について, 最新の情報とは限りませんし, 必ずしも網羅的ではないですが, 翻訳者自身の作成したドキュメントでいくらか言及しています. <a href="https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html" class="uri">https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html</a><a href="table-other.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>LaTeX や Word といった他の出力フォーマットへのサポートが必要ならば, <strong>gtsummary</strong> パッケージ <span class="citation">(<a href="#ref-R-gtsummary" role="doc-biblioref">Sjoberg et al. 2021</a>)</span> はとても有望な <strong>gt</strong> を下地に拡張しています. <a href="https://github.com/ddsjoberg/gtsummary" class="uri">https://github.com/ddsjoberg/gtsummary</a><a href="table-other.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<ol start="34">
+<li id="fn34"><p>平たく言うと, 自分では表を全く使いませんから, 洗練された表を作る方法を学ぶ強いモチベーションがありませんでした.<a href="table-other.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p><strong>訳注</strong>: これらの差異について, 最新の情報とは限りませんし, 必ずしも網羅的ではないですが, 翻訳者自身の作成したドキュメントでいくらか言及しています. <a href="https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html" class="uri">https://gedevan-aleksizde.github.io/rmdja/advanced-tabulate.html</a><a href="table-other.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p>LaTeX や Word といった他の出力フォーマットへのサポートが必要ならば, <strong>gtsummary</strong> パッケージ <span class="citation">(<a href="#ref-R-gtsummary" role="doc-biblioref">Sjoberg et al. 2021</a>)</span> はとても有望な <strong>gt</strong> を下地に拡張しています. <a href="https://github.com/ddsjoberg/gtsummary" class="uri">https://github.com/ddsjoberg/gtsummary</a><a href="table-other.html#fnref36" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
