@@ -70,6 +70,7 @@ Imports:
     tangram,
     tikzDevice,
     tinytex,
+    trackdown,
     tufte,
     usethis,
     webshot,
@@ -82,6 +83,8 @@ Imports:
     rmdja
 Suggests:
     rsconnect
+Remotes:
+    github::ekothe/trackdown
 Encoding: UTF-8
 Remote:
     Gedevan-Aleksizde/rmdja
