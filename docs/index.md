@@ -4,7 +4,7 @@ author:
   - "(著者) Xie, Yihui"
   - "(著者) Dervieux, Christophe"
   - "(著者) Riederer, Emily"
-  - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
+  - "(翻訳者) Katagiri, Satoshi (片桐 智志)^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
 booklanguage: JP
 monofont: Ricty Discord
@@ -30,7 +30,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/08/08 20:59:36 JST, ver. 0.9.4, 本家の更新確認時刻: [2021/07/29 23:57:49 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/08/09 13:08:16 JST, ver. 0.9.4.1, 本家の更新確認時刻: [2021/07/29 23:57:49 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -46,7 +46,7 @@ date: "2021/08/08 20:59:36 JST, ver. 0.9.4, 本家の更新確認時刻: [2021/0
 
 本翻訳版に関するご意見は[こちら](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new)で受け付けています. また, ご覧になっているのが Web 版であれば, 上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は[翻訳メモ](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md)の内容を確認してからしていただけると助かります.
 
-This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
+This is an unofficial Japanese translation of the online version of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The tranlator is Katagiri, Satoshi. The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 ::::::
 
 <p style="text-align: center;"><a href="https://www.routledge.com/p/book/9780367563837"><img src="images/cover.png" alt="The R Markdown cookbook cover" /></a></p>
@@ -926,7 +926,7 @@ output:
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-参考文献目録\index{さんこうぶんけん@bibliography}を出力文書に含める方法の概要は, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
+参考文献目録\index{さんこうぶんけん@参考文献}を出力文書に含める方法の概要は, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
 
 ```yaml
 ---
@@ -1163,7 +1163,7 @@ knitr::write_bib(file = 'packages.bib')
 
 - **図 (または表) に対するキャプション**: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 
-- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@code chunk!label} チャンクが生成した図を参照する識別子を提供してくれます.
+- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@コードチャンク!ラベル} チャンクが生成した図を参照する識別子を提供してくれます.
 
 これらの条件が整って初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照される環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
 
@@ -1223,11 +1223,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年8月08日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年8月09日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 - `%Y %B`: 2021 8月
-- `%y/%m/%d`: 21/08/08
-- `%b%d (%a)`:  8月08 (日)
+- `%y/%m/%d`: 21/08/09
+- `%b%d (%a)`:  8月09 (月)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -6105,7 +6105,7 @@ if (TRUE) {
 
 ## テキスト出力ブロックに属性を与える (\*) {#attr-output}
 
-\@ref(chunk-styling)節では, `class.source`\index{チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には **knitr** には同様の様々なオプションがあります. それらは `class.message`\index{ちゃんくおぷしょん@チャンクオプション!class.message}, `class.warning`\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, `class.error`\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば `class.error` はチャンクオプション `error = TRUE`\index{チャンクオプション!error} (\@ref(opts-error)節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\@ref(chunk-styling)節でなされています.
+\@ref(chunk-styling)節では, `class.source`\index{ちゃんくおぷしょん@チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には **knitr** には同様の様々なオプションがあります. それらは `class.message`\index{ちゃんくおぷしょん@チャンクオプション!class.message}, `class.warning`\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, `class.error`\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば `class.error` はチャンクオプション `error = TRUE`\index{ちゃんくおぷしょん@チャンクオプション!error} (\@ref(opts-error)節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\@ref(chunk-styling)節でなされています.
 
 典型的には, テキスト出力ブロックは最低限コードブロックに囲まれており, Markdown のソースはこのようになります.
 
@@ -6210,7 +6210,7 @@ pdf2png <- function(path) {
 
 **rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF 出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `"bmp"`, `"postscript"`, `"pdf"`, `"png"`, `"svg"`, `"jpeg"`, `"pictex"`, `"tiff"`, `"win.metafile"`, `"cairo_pdf"`, `"cairo_ps"`, `"quartz_pdf"`, `"quartz_png"`, `"quartz_jpeg"`, `"quartz_tiff"`, `"quartz_gif"`, `"quartz_psd"`, `"quartz_bmp"`, `"CairoJPEG"`, `"CairoPNG"`, `"CairoPS"`, `"CairoPDF"`, `"CairoSVG"`, `"CairoTIFF"`, `"Cairo_pdf"`, `"Cairo_png"`, `"Cairo_ps"`, `"Cairo_svg"`, `"svglite"`, `"ragg_png"`, `"tikz"`
 
-大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいすデバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
 大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために `dev = "svg"` または `dev = "svglite"` を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの `png` デバイスはラスタ画像形式であることに注意してください.
 
@@ -7240,11 +7240,11 @@ plot3d(x, y, z, col = rainbow(1000))
 
 ## コードチャンクを再利用する {#reuse-chunks}
 
-コードチャンク\index{こーどちゃんく@コードチャンク}は, コピーアンドペーストなしで文書のどの場所でも自由に再利用できます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{こーどちゃんく@コードチャンク!再利用}には3種類の方法があります.
+コードチャンク\index{こーどちゃんく@コードチャンク}は, コピーアンドペーストなしで文書のどの場所でも自由に再利用できます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{こーどちゃんく@コードチャンク!さいりよう@再利用}には3種類の方法があります.
 
 ### チャンクを別の場所にも埋め込む (\*) {#embed-chunk}
 
-あるコードチャンクは, チャンクのラベル名を `<<>>`\index{こーどちゃんく@コードチャンク!うめこみ埋め込み}\index{こーどちゃんく@コードチャンク!<<>>} で囲んで別のコードチャンクに埋め込むことができます. すると **knitr** は自動的に `<<ラベル>>` を実際のコードへと展開してくれます. 例えば, この方法で R 関数を作ることができます.
+あるコードチャンクは, チャンクのラベル名を `<<>>`\index{こーどちゃんく@コードチャンク!うめこみ@埋め込み}\index{こーどちゃんく@コードチャンク!<<>>} で囲んで別のコードチャンクに埋め込むことができます. すると **knitr** は自動的に `<<ラベル>>` を実際のコードへと展開してくれます. 例えば, この方法で R 関数を作ることができます.
 
 ````md
 華氏温度を摂氏温度に変換する関数を定義する

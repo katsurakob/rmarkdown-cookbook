@@ -64,7 +64,7 @@
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
   pdftitle={R Markdown クックブック},
-  pdfauthor={(著者) Xie, Yihui; (著者) Dervieux, Christophe; (著者) Riederer, Emily; (翻訳者) Katagiri, Satoshi},
+  pdfauthor={(著者) Xie, Yihui; (著者) Dervieux, Christophe; (著者) Riederer, Emily; (翻訳者) Katagiri, Satoshi (片桐 智志)},
   colorlinks=true,
   linkcolor=Maroon,
   filecolor=Maroon,
@@ -325,8 +325,8 @@ arc=4pt}
 
 
 \title{R Markdown クックブック}
-\author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/08/08 21:00:35 JST, ver. 0.9.4, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/07/29 23:57:49 JST}}
+\author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi (片桐 智志)\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
+\date{2021/08/09 13:09:46 JST, ver. 0.9.4.1, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/07/29 23:57:49 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -391,7 +391,7 @@ arc=4pt}
 
 本翻訳版に関するご意見は\href{https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new}{こちら}で受け付けています. また, ご覧になっているのが Web 版であれば, 上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は\href{https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md}{翻訳メモ}の内容を確認してからしていただけると助かります.
 
-This is an unofficial Japanese translation of ``R Markdown Cookbook'' by Xie, Dervieux, and Riederer, which is licensed under \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{CC BY-NC-SA 4.0}. The original document is \href{https://bookdown.org/yihui/rmarkdown-cookbook/}{here}.
+This is an unofficial Japanese translation of the online version of ``R Markdown Cookbook'' by Xie, Dervieux, and Riederer, which is licensed under \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{CC BY-NC-SA 4.0}. The tranlator is Katagiri, Satoshi. The original document is \href{https://bookdown.org/yihui/rmarkdown-cookbook/}{here}.
 
 \end{infobox}
 
@@ -1378,7 +1378,7 @@ Rmd 文書をコンパイルする際には, YAML セクション\index{YAML}の
 \hypertarget{bibliography}{%
 \section{参考文献と引用}\label{bibliography}}
 
-参考文献目録\index{さんこうぶんけん@bibliography}を出力文書に含める方法の概要は, \textcite{bookdown2016} の \href{https://bookdown.org/yihui/bookdown/citations.html}{Section 2.8} を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの \texttt{bibliography} フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
+参考文献目録\index{さんこうぶんけん@参考文献}を出力文書に含める方法の概要は, \textcite{bookdown2016} の \href{https://bookdown.org/yihui/bookdown/citations.html}{Section 2.8} を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの \texttt{bibliography} フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1640,7 +1640,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \item
   \textbf{図 (または表) に対するキャプション}: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 \item
-  \textbf{ラベルの設定されたコードチャンク}:\index{こーどちゃんく@code chunk!label} チャンクが生成した図を参照する識別子を提供してくれます.
+  \textbf{ラベルの設定されたコードチャンク}:\index{こーどちゃんく@コードチャンク!ラベル} チャンクが生成した図を参照する識別子を提供してくれます.
 \end{itemize}
 
 これらの条件が整って初めて, テキスト内で \texttt{\textbackslash{}@ref(type:label)} という構文を使って相互参照を作成できます. \texttt{label} はチャンクラベルであり, \texttt{type} は参照される環境 (例:, \texttt{tab}, \texttt{fig}, \texttt{eqn}) です. 以下に例を示します.
@@ -1710,16 +1710,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年8月08日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年8月09日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
   \texttt{\%Y \%B}: 2021 8月
 \item
-  \texttt{\%y/\%m/\%d}: 21/08/08
+  \texttt{\%y/\%m/\%d}: 21/08/09
 \item
-  \texttt{\%b\%d (\%a)}: 8月08 (日)
+  \texttt{\%b\%d (\%a)}: 8月09 (月)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -6963,7 +6963,7 @@ R Markdown ではデフォルトでは \texttt{cache.path = "INPUT\_cache/FORMAT
 \hypertarget{attr-output}{%
 \section{テキスト出力ブロックに属性を与える (*)}\label{attr-output}}
 
-\ref{chunk-styling}節では, \texttt{class.source}\index{チャンクオプション!class.source} と \texttt{class.output}\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には \textbf{knitr} には同様の様々なオプションがあります. それらは \texttt{class.message}\index{ちゃんくおぷしょん@チャンクオプション!class.message}, \texttt{class.warning}\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, \texttt{class.error}\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば \texttt{class.error} はチャンクオプション \texttt{error = TRUE}\index{チャンクオプション!error} (\ref{opts-error}節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\ref{chunk-styling}節でなされています.
+\ref{chunk-styling}節では, \texttt{class.source}\index{ちゃんくおぷしょん@チャンクオプション!class.source} と \texttt{class.output}\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には \textbf{knitr} には同様の様々なオプションがあります. それらは \texttt{class.message}\index{ちゃんくおぷしょん@チャンクオプション!class.message}, \texttt{class.warning}\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, \texttt{class.error}\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば \texttt{class.error} はチャンクオプション \texttt{error = TRUE}\index{ちゃんくおぷしょん@チャンクオプション!error} (\ref{opts-error}節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\ref{chunk-styling}節でなされています.
 
 典型的には, テキスト出力ブロックは最低限コードブロックに囲まれており, Markdown のソースはこのようになります.
 
@@ -7086,7 +7086,7 @@ R のロゴをグラフに埋め込むために, とても強力な \textbf{magi
 
 \textbf{rmarkdown} パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては \texttt{png()} を使うので, \textbf{knitr} は PNG 画像ファイルを生成し, PDF 出力に対しては \texttt{pdf()} デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション \texttt{dev}\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. \textbf{knitr} によってサポートされているグラフィックデバイスの一覧は次のようになります. \texttt{"bmp"}, \texttt{"postscript"}, \texttt{"pdf"}, \texttt{"png"}, \texttt{"svg"}, \texttt{"jpeg"}, \texttt{"pictex"}, \texttt{"tiff"}, \texttt{"win.metafile"}, \texttt{"cairo\_pdf"}, \texttt{"cairo\_ps"}, \texttt{"quartz\_pdf"}, \texttt{"quartz\_png"}, \texttt{"quartz\_jpeg"}, \texttt{"quartz\_tiff"}, \texttt{"quartz\_gif"}, \texttt{"quartz\_psd"}, \texttt{"quartz\_bmp"}, \texttt{"CairoJPEG"}, \texttt{"CairoPNG"}, \texttt{"CairoPS"}, \texttt{"CairoPDF"}, \texttt{"CairoSVG"}, \texttt{"CairoTIFF"}, \texttt{"Cairo\_pdf"}, \texttt{"Cairo\_png"}, \texttt{"Cairo\_ps"}, \texttt{"Cairo\_svg"}, \texttt{"svglite"}, \texttt{"ragg\_png"}, \texttt{"tikz"}
 
-大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいすデバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで \texttt{?svg} と打てば \texttt{svg} デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに \texttt{quartz\_XXX} デバイスは \texttt{quartz()} 関数を元にしたもので, macOS でのみ有効です. \texttt{CairoXXX} デバイスは \textbf{Cairo} \autocite{R-Cairo} パッケージによるアドオンで, \texttt{Cairo\_XXX} デバイスは \textbf{cairoDevice} package \autocite{R-cairoDevice} から\footnote{\textbf{訳注}: 名前のよく似た \texttt{cairo\_pdf} は base R に含まれていることに注意してください.}, \texttt{svglite} デバイスは \textbf{svglite} パッケージ \autocite{R-svglite} から, \texttt{tikz} は \textbf{tikzDevice} パッケージ \autocite{R-tikzDevice} からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで \texttt{?svg} と打てば \texttt{svg} デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに \texttt{quartz\_XXX} デバイスは \texttt{quartz()} 関数を元にしたもので, macOS でのみ有効です. \texttt{CairoXXX} デバイスは \textbf{Cairo} \autocite{R-Cairo} パッケージによるアドオンで, \texttt{Cairo\_XXX} デバイスは \textbf{cairoDevice} package \autocite{R-cairoDevice} から\footnote{\textbf{訳注}: 名前のよく似た \texttt{cairo\_pdf} は base R に含まれていることに注意してください.}, \texttt{svglite} デバイスは \textbf{svglite} パッケージ \autocite{R-svglite} から, \texttt{tikz} は \textbf{tikzDevice} パッケージ \autocite{R-tikzDevice} からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
 大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために \texttt{dev = "svg"} または \texttt{dev = "svglite"} を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの \texttt{png} デバイスはラスタ画像形式であることに注意してください.
 
@@ -8248,12 +8248,12 @@ Sys.sleep(2)
 \hypertarget{reuse-chunks}{%
 \section{コードチャンクを再利用する}\label{reuse-chunks}}
 
-コードチャンク\index{こーどちゃんく@コードチャンク}は, コピーアンドペーストなしで文書のどの場所でも自由に再利用できます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{こーどちゃんく@コードチャンク!再利用}には3種類の方法があります.
+コードチャンク\index{こーどちゃんく@コードチャンク}は, コピーアンドペーストなしで文書のどの場所でも自由に再利用できます. ポイントはコードチャンクにラベルを付けることで, そうすると他の場所でラベルによって参照することができます. コードチャンクの再利用\index{こーどちゃんく@コードチャンク!さいりよう@再利用}には3種類の方法があります.
 
 \hypertarget{embed-chunk}{%
 \subsection{チャンクを別の場所にも埋め込む (*)}\label{embed-chunk}}
 
-あるコードチャンクは, チャンクのラベル名を \texttt{\textless{}\textless{}\textgreater{}\textgreater{}}\index{こーどちゃんく@コードチャンク!うめこみ埋め込み}\index{こーどちゃんく@コードチャンク!<<>>} で囲んで別のコードチャンクに埋め込むことができます. すると \textbf{knitr} は自動的に \texttt{\textless{}\textless{}ラベル\textgreater{}\textgreater{}} を実際のコードへと展開してくれます. 例えば, この方法で R 関数を作ることができます.
+あるコードチャンクは, チャンクのラベル名を \texttt{\textless{}\textless{}\textgreater{}\textgreater{}}\index{こーどちゃんく@コードチャンク!うめこみ@埋め込み}\index{こーどちゃんく@コードチャンク!<<>>} で囲んで別のコードチャンクに埋め込むことができます. すると \textbf{knitr} は自動的に \texttt{\textless{}\textless{}ラベル\textgreater{}\textgreater{}} を実際のコードへと展開してくれます. 例えば, この方法で R 関数を作ることができます.
 
 \begin{Shaded}
 \begin{Highlighting}[]
