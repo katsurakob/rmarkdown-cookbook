@@ -132,7 +132,7 @@ knitr::include_graphics(file.path(BOOKLANG, 'images/unnumbered-sections.png'), d
 
 <!-- https://stackoverflow.com/questions/32946203/including-bibliography-in-rmarkdown-document-with-use-of-the-knitcitations -->
 
-参考文献目録\index{さんこうぶんけん@bibliography}を出力文書に含める方法の概要は, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
+参考文献目録\index{さんこうぶんけん@参考文献}を出力文書に含める方法の概要は, @bookdown2016 の [Section 2.8](https://bookdown.org/yihui/bookdown/citations.html) を見るとよいでしょう. 基本的な使用法として, YAML\index{YAML!bibliography} メタデータの `bibliography` フィールドに文献目録ファイルを指定する必要があります. 例えばこのようにします.
 
 ```yaml
 ---
@@ -288,7 +288,7 @@ knitr::write_bib(file = 'packages.bib')
 
 - **図 (または表) に対するキャプション**: キャプションのない図は単なる画像として直接埋め込まれるたあめ, 付番された図 (figure) にはなりません.
 
-- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@code chunk!label} チャンクが生成した図を参照する識別子を提供してくれます.
+- **ラベルの設定されたコードチャンク**:\index{こーどちゃんく@コードチャンク!ラベル} チャンクが生成した図を参照する識別子を提供してくれます.
 
 これらの条件が整って初めて, テキスト内で `\@ref(type:label)` という構文を使って相互参照を作成できます. `label` はチャンクラベルであり, `type` は参照される環境 (例:, `tab`, `fig`, `eqn`) です. 以下に例を示します. 
 

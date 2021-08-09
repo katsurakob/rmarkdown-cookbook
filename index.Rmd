@@ -4,7 +4,7 @@ author:
   - "(著者) Xie, Yihui"
   - "(著者) Dervieux, Christophe"
   - "(著者) Riederer, Emily"
-  - "(翻訳者) Katagiri, Satoshi^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
+  - "(翻訳者) Katagiri, Satoshi (片桐 智志)^[twitter \\@ill_identified: https://twitter.com/ill_identified]"
 description: 本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう.
 booklanguage: JP
 monofont: Ricty Discord
@@ -104,7 +104,7 @@ file.copy("_config.yml", "docs/")
 ```
 
 ---
-date: "`r last_update`, ver. 0.9.4, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.4.1, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -120,7 +120,7 @@ date: "`r last_update`, ver. 0.9.4, 本家の更新確認時刻: [`r last_commit
 
 本翻訳版に関するご意見は[こちら](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/issues/new)で受け付けています. また, ご覧になっているのが Web 版であれば, 上部ツールバーからプルリクエストを作成することもできます. ただし修正依頼は[翻訳メモ](https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/blob/work/dev/memo.md)の内容を確認してからしていただけると助かります.
 
-This is an unofficial Japanese translation of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
+This is an unofficial Japanese translation of the online version of "R Markdown Cookbook" by Xie, Dervieux, and Riederer, which is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). The tranlator is Katagiri, Satoshi. The original document is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 ::::::
 
 ```{asis eval=knitr::is_html_output()}
