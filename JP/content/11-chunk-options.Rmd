@@ -357,7 +357,7 @@ if (TRUE) {
 
 ## テキスト出力ブロックに属性を与える (\*) {#attr-output}
 
-\@ref(chunk-styling)節では, `class.source`\index{チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には **knitr** には同様の様々なオプションがあります. それらは `class.message`\index{ちゃんくおぷしょん@チャンクオプション!class.message}, `class.warning`\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, `class.error`\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば `class.error` はチャンクオプション `error = TRUE`\index{チャンクオプション!error} (\@ref(opts-error)節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\@ref(chunk-styling)節でなされています.
+\@ref(chunk-styling)節では, `class.source`\index{ちゃんくおぷしょん@チャンクオプション!class.source} と `class.output`\index{ちゃんくおぷしょん@チャンクオプション!class.output} を使い, ソース・テキスト出力のブロックにスタイルを定義する例をいくつかお見せしました. 実際には **knitr** には同様の様々なオプションがあります. それらは `class.message`\index{ちゃんくおぷしょん@チャンクオプション!class.message}, `class.warning`\index{ちゃんくおぷしょん@チャンクオプション!class.warning}, `class.error`\index{ちゃんくおぷしょん@チャンクオプション!class.error} といったものです. これらのオプションはクラス名を対応するテキスト出力ブロックに追加するために使うことができます. 例えば `class.error` はチャンクオプション `error = TRUE`\index{ちゃんくおぷしょん@チャンクオプション!error} (\@ref(opts-error)節参照) が設定されているとき, エラーメッセージに対してクラスを追加します. これらのオプションがもっともよく使われるのは, クラス名に対応して定義された CSS\index{CSS} ルールで出力にスタイルを適用するときでしょう. この例の実演は\@ref(chunk-styling)節でなされています.
 
 典型的には, テキスト出力ブロックは最低限コードブロックに囲まれており, Markdown のソースはこのようになります.
 
@@ -450,7 +450,7 @@ pdf2png = function(path) {
 
 **rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF 出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `r knitr::combine_words(names(knitr:::auto_exts), before = '\x60"', after = '"\x60', and = "")`
 
-大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいすデバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
 大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために `dev = "svg"` または `dev = "svglite"` を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの `png` デバイスはラスタ画像形式であることに注意してください.
 
