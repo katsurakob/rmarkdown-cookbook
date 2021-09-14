@@ -686,7 +686,8 @@ Hello world!
 
 このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後にファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.
 
-```{sh}
+```{sh, echo=2}
+export PATH=$PATH:$RSTUDIO_PANDOC
 pandoc -f markdown -t json -o ast.json ast.md
 ```
 
@@ -718,7 +719,8 @@ end
 
 そしてこのスクリプト Pandoc の `--lua-filter` 引数に与えることができます. 例えばこうです.
 
-```{sh, comment=''}
+```{sh, comment='', echo=-1}
+export PATH=$PATH:$RSTUDIO_PANDOC
 pandoc -t markdown --atx-headers \
   --lua-filter=raise-header.lua ast.md
 ```
