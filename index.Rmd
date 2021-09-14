@@ -101,6 +101,8 @@ last_update <- format(Sys.time(), '%Y/%m/%d %H:%M:%S %Z')
 last_commit_origin <- format(as.POSIXct(system("git log -1 --pretty=format:%ci `cat .git/refs/remotes/upstream/master`", intern = T), tryFormats = "%Y-%m-%d %H:%M:%S %z"), '%Y/%m/%d %H:%M:%S %Z')
 
 file.copy("_config.yml", "docs/")
+
+tinytex::tlmgr_install(c("pgf", "preview", "xcolor", "grfext")) # TODO: grfext needed?
 ```
 
 ---
