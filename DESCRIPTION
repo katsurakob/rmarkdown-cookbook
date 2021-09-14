@@ -80,11 +80,10 @@ Imports:
     xtable,
     yaml,
     ztable,
-    rmdja
+    remotes
 Suggests:
     rsconnect
 Remotes:
-    github::ekothe/trackdown
+  github::ClaudioZandonella/trackdown,
+  github::Gedevan-Aleksizde/rmdja@development
 Encoding: UTF-8
-Remote:
-    Gedevan-Aleksizde/rmdja
