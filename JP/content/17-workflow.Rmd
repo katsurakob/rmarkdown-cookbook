@@ -236,7 +236,15 @@ knit: myPackage::knit_with_date
 
 **trackdown** パッケージ\index{R パッケージ!trackdown} [@R-trackdown] は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. **trackdown** は **googledrive** パッケージ\index{R パッケージ!googledrive} [@R-googledrive] を基にして, ローカルの `.Rmd` (または `.Rnw`) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ^[**訳注**: LaTeX の可読性?? バイナリファイルと比較して, ということでしょうか?]と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.
 
-現時点では **trackdown** GitHub https://github.com/ekothe/trackdown でのみ利用可能です. パッケージのドキュメントは https://ekothe.github.io/trackdown/ で読むことができます.
+**trackdown** は CRAN から, あるいは開発版を GitHub からインストールしてもいいでしょう. (https://github.com/claudiozandonella/trackdown):
+```{r, echo=TRUE, eval=FALSE}
+# install from CRAN
+install.packages("trackdown")
+
+# install the development version
+remotes::install_github("claudiozandonella/trackdown",
+                        build_vignettes = TRUE)
+```
 
 ### trackdown の作業工程
 
