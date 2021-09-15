@@ -286,7 +286,7 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
 ::::
 ```
 
-出力は:
+出力はこうなります.
 
 :::: {.blackbox data-latex=""}
 ::: {.center data-latex=""}
