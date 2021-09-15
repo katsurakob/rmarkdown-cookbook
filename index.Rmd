@@ -106,7 +106,7 @@ tinytex::tlmgr_install(c("pgf", "preview", "xcolor", "grfext")) # TODO: grfext n
 ```
 
 ---
-date: "`r last_update`, ver. 0.9.4.1, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
+date: "`r last_update`, ver. 0.9.5, 本家の更新確認時刻: [`r last_commit_origin`](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}

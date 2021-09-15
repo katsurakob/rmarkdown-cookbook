@@ -3,6 +3,7 @@ Package: rmarkdowncookbook
 Title: R Markdown Cookbook
 Version: 1.0.1
 Imports: 
+    base,
     animation,
     blastula,
     blogdown,
@@ -80,10 +81,10 @@ Imports:
     xtable,
     yaml,
     ztable,
-    remotes
+    remotes,
+    trackdown
 Suggests:
     rsconnect
 Remotes:
-  github::ClaudioZandonella/trackdown,
   github::Gedevan-Aleksizde/rmdja@development
 Encoding: UTF-8

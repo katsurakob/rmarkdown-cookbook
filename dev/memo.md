@@ -4,6 +4,7 @@
 
 ## 動作環境
 
+* 私の作業環境は主に Ubuntu 20.04 です.
 * 明白な誤字脱字の修正程度ならば github 上の操作だけでもできます
 
 * ソースコードをいじる, 動作確認もしたいという場合は `SETUP.md` を参考にしてください (renv でパッケージのバージョン管理ができます).
@@ -14,11 +15,21 @@
     git remote add upstream git@github.com:yihui/rmarkdown-cookbook.git
     ```
 
-* tinytex だとtikzに必要なパッケージのいくつかを自動インストールできないかもしれません.
+* tinytex だと tikz に必要な LaTeX パッケージのいくつかを自動インストールできないかもしれません. (TODO: 現在 index.Rmd にも同じ処理を書いているが, これはあまり行儀が良くないので修正したい)
 
     ```
-    tinytex::tlmgr_install("preview")
-    tinytex::tlmgr_install("grfext")
+    tinytex::tlmgr_install(c("pgf", "preview", "xcolor", "grfext"))
+    ```
+
+* **cairoDevice** の引用のためにインストールが必要です. これには `libgtk2.0-dev` のインストールが必要かもしれません.
+
+    ```
+    sudo apt install libgtk2.0-dev
+    ```
+* Asymptote のグラフ描画のために Asymptote のインストールが必要です
+
+    ```
+    sudo apt install asymptote
     ```
 
 * Windows の動作は確認していません
