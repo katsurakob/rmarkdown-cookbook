@@ -28,8 +28,6 @@ is [here](https://bookdown.org/yihui/rmarkdown-cookbook/).
 全編翻訳終了. ただし, 本家が現在も随時更新しているため,
 今後翻訳版も内容が変更される可能性があります.
 
-普通に読む範囲では問題ありません.
-
 ## 関連リンク
 
 -   『[`knitr`:
