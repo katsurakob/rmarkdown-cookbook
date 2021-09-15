@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.8 多段組み (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.8 多段組み (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="number-lines.html"/>
 <link rel="next" href="latex-output.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -582,7 +582,7 @@ div.csl-indent {
 <span id="cb106-45"><a href="multi-column.html#cb106-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb106-46"><a href="multi-column.html#cb106-46" aria-hidden="true" tabindex="-1"></a>:::</span>
 <span id="cb106-47"><a href="multi-column.html#cb106-47" aria-hidden="true" tabindex="-1"></a>::::::</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:multicol"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:multicol"></span>
 <img src="JP/images/multicol.png" alt="HTML, LaTeX, Beamer で動作する二段組み"  />
 <p class="caption">
 図 5.3: HTML, LaTeX, Beamer で動作する二段組み
@@ -631,7 +631,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -671,6 +670,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

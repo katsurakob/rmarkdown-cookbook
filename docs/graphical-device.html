@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.15 高品質なグラフィック (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.15 高品質なグラフィック (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="fig-process.html"/>
 <link rel="next" href="low-plots.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -499,7 +499,7 @@ div.csl-indent {
 <div id="graphical-device" class="section level2" number="11.15">
 <h2><span class="header-section-number">11.15</span> 高品質なグラフィック (*)</h2>
 <p><strong>rmarkdown</strong> パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては <code>png()</code> を使うので, <strong>knitr</strong> は PNG 画像ファイルを生成し, PDF 出力に対しては <code>pdf()</code> デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション <code>dev</code> によって変更することができます. <strong>knitr</strong> によってサポートされているグラフィックデバイスの一覧は次のようになります. <code>"bmp"</code>, <code>"postscript"</code>, <code>"pdf"</code>, <code>"png"</code>, <code>"svg"</code>, <code>"jpeg"</code>, <code>"pictex"</code>, <code>"tiff"</code>, <code>"win.metafile"</code>, <code>"cairo_pdf"</code>, <code>"cairo_ps"</code>, <code>"quartz_pdf"</code>, <code>"quartz_png"</code>, <code>"quartz_jpeg"</code>, <code>"quartz_tiff"</code>, <code>"quartz_gif"</code>, <code>"quartz_psd"</code>, <code>"quartz_bmp"</code>, <code>"CairoJPEG"</code>, <code>"CairoPNG"</code>, <code>"CairoPS"</code>, <code>"CairoPDF"</code>, <code>"CairoSVG"</code>, <code>"CairoTIFF"</code>, <code>"Cairo_pdf"</code>, <code>"Cairo_png"</code>, <code>"Cairo_ps"</code>, <code>"Cairo_svg"</code>, <code>"svglite"</code>, <code>"ragg_png"</code>, <code>"tikz"</code></p>
-<p>大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイスについてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで <code>?svg</code> と打てば <code>svg</code> デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに <code>quartz_XXX</code> デバイスは <code>quartz()</code> 関数を元にしたもので, macOS でのみ有効です. <code>CairoXXX</code> デバイスは <strong>Cairo</strong> <span class="citation">(<a href="#ref-R-Cairo" role="doc-biblioref">Urbanek and Horner 2020</a>)</span> パッケージによるアドオンで, <code>Cairo_XXX</code> デバイスは <strong>cairoDevice</strong> package <span class="citation">(<a href="#ref-R-cairoDevice" role="doc-biblioref">Lawrence 2020</a>)</span> から<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>, <code>svglite</code> デバイスは <strong>svglite</strong> パッケージ <span class="citation">(<a href="#ref-R-svglite" role="doc-biblioref">Wickham et al. 2021</a>)</span> から, <code>tikz</code> は <strong>tikzDevice</strong> パッケージ <span class="citation">(<a href="#ref-R-tikzDevice" role="doc-biblioref">Sharpsteen and Bracken 2020</a>)</span> からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.</p>
+<p>大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイスについてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで <code>?svg</code> と打てば <code>svg</code> デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに <code>quartz_XXX</code> デバイスは <code>quartz()</code> 関数を元にしたもので, macOS でのみ有効です. <code>CairoXXX</code> デバイスは <strong>Cairo</strong> <span class="citation">(<a href="#ref-R-Cairo" role="doc-biblioref">Urbanek and Horner 2020</a>)</span> パッケージによるアドオンで, <code>Cairo_XXX</code> デバイスは <strong>cairoDevice</strong> package <span class="citation">(<a href="#ref-R-cairoDevice" role="doc-biblioref">Lawrence 2020</a>)</span> から<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>, <code>svglite</code> デバイスは <strong>svglite</strong> パッケージ <span class="citation">(<a href="#ref-R-svglite" role="doc-biblioref">Wickham, Henry, et al. 2021</a>)</span> から, <code>tikz</code> は <strong>tikzDevice</strong> パッケージ <span class="citation">(<a href="#ref-R-tikzDevice" role="doc-biblioref">Sharpsteen and Bracken 2020</a>)</span> からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.</p>
 <p>大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために <code>dev = "svg"</code> または <code>dev = "svglite"</code> を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの <code>png</code> デバイスはラスタ画像形式であることに注意してください.</p>
 <p>あなたが PDF 出力時のグラフ内の書体に対してこだわりが強い人なら, <code>dev = "tikz"</code> を使うこともできます. これは LaTeX がネイティヴでサポートしているからです. つまり, テキストや記号を含むグラフの全ての要素が LaTeX を介して高品質にレンダリングされるということです. 図<a href="graphical-device.html#fig:dev-tikz">11.2</a>に, <code>dev = "tikz"</code> で R のグラフ内で LaTeX 数式表現を書く例を示します.</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb326-1"><a href="graphical-device.html#cb326-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, .<span class="dv">1</span>))</span>
@@ -507,7 +507,7 @@ div.csl-indent {
 <span id="cb326-3"><a href="graphical-device.html#cb326-3"></a>      <span class="at">main =</span> <span class="st">&#39;The density function of $N(0, 1)$&#39;</span>)</span>
 <span id="cb326-4"><a href="graphical-device.html#cb326-4"></a><span class="fu">text</span>(<span class="sc">-</span><span class="dv">1</span>, .<span class="dv">2</span>, <span class="at">cex =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">&#39;blue&#39;</span>,</span>
 <span id="cb326-5"><a href="graphical-device.html#cb326-5"></a>  <span class="st">&#39;$</span><span class="sc">\\</span><span class="st">phi(x)=</span><span class="sc">\\</span><span class="st">frac{1}{</span><span class="sc">\\</span><span class="st">sqrt{2</span><span class="sc">\\</span><span class="st">pi}}e^{</span><span class="sc">\\</span><span class="st">frac{-x^2}{2}}$&#39;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:dev-tikz"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dev-tikz"></span>
 <img src="rmarkdown-cookbook_files/figure-html/dev-tikz-1.png" alt="tikz デバイスでレンダリングされたグラフ"  />
 <p class="caption">
 図 11.2: tikz デバイスでレンダリングされたグラフ
@@ -524,7 +524,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-cairoDevice" class="csl-entry">
-Lawrence, Michael. 2020. <em>cairoDevice: Embeddable Cairo Graphics Device Driver</em>.
+Lawrence, Michael. 2020. <em>cairoDevice: Embeddable Cairo Graphics Device Driver</em>. <a href="https://CRAN.R-project.org/package=cairoDevice">https://CRAN.R-project.org/package=cairoDevice</a>.
 </div>
 <div id="ref-R-tikzDevice" class="csl-entry">
 Sharpsteen, Charlie, and Cameron Bracken. 2020. <em>tikzDevice: R Graphics Output in LaTeX Format</em>. <a href="https://github.com/daqana/tikzDevice">https://github.com/daqana/tikzDevice</a>.
@@ -533,7 +533,7 @@ Sharpsteen, Charlie, and Cameron Bracken. 2020. <em>tikzDevice: R Graphics Outpu
 Urbanek, Simon, and Jeffrey Horner. 2020. <em>Cairo: R Graphics Device Using Cairo Graphics Library for Creating High-Quality Bitmap (PNG, JPEG, TIFF), Vector (PDF, SVG, PostScript) and Display (X11 and Win32) Output</em>. <a href="http://www.rforge.net/Cairo/">http://www.rforge.net/Cairo/</a>.
 </div>
 <div id="ref-R-svglite" class="csl-entry">
-Wickham, Hadley, Lionel Henry, Thomas Lin Pedersen, T Jake Luciani, Matthieu Decorde, and Vaudor Lise. 2021. <em>Svglite: An SVG Graphics Device</em>.
+Wickham, Hadley, Lionel Henry, Thomas Lin Pedersen, T Jake Luciani, Matthieu Decorde, and Vaudor Lise. 2021. <em>Svglite: An SVG Graphics Device</em>. <a href="https://CRAN.R-project.org/package=svglite">https://CRAN.R-project.org/package=svglite</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -552,7 +552,6 @@ Wickham, Hadley, Lionel Henry, Thomas Lin Pedersen, T Jake Luciani, Matthieu Dec
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -592,6 +591,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.1 レンダリング時に何が起こっているのか | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.1 レンダリング時に何が起こっているのか | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="conceptual-overview.html"/>
 <link rel="next" href="rmarkdown-anatomy.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -500,7 +500,7 @@ div.csl-indent {
 <h2><span class="header-section-number">2.1</span> レンダリング時に何が起こっているのか</h2>
 <p>R Markdown はいくつかの異なるプロセスを合わせて文書を作成しています. これが R Markdown の全てのパーツがどう連動してるか理解するのに混乱する主な元凶です.<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a> 幸運にも, ユーザーが文書を作成できるようになるためにはこれらの処理の内部の挙動を全て理解することは必須ではありません. しかし, 文書の挙動を変えようとするだろうユーザーにとっては, どのパーツがどの挙動を担当しているかを理解することは重要です. あなたが検索する適切な範囲を絞れるようになれば, ヘルプを探すのがより簡単になります.</p>
 <p>R Markdown 文書に対する基本的なワークフローの構造を図<a href="rmarkdown-process.html#fig:rmdworkflow">2.1</a>に示します. ステップ (矢印) と, 出力ファイルが生成される前に作成される中間ファイルを強調しています. 全ての処理は <code>rmarkdown::render()</code> 関数内に実装されています. 以降は各ステップを詳細に説明します.</p>
-<div class="figure" style="text-align: center"><span id="fig:rmdworkflow"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rmdworkflow"></span>
 <img src="JP/images/workflow.png" alt="R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム"  />
 <p class="caption">
 図 2.1: R Markdown 文書がどのように最終的な出力文書に変換されるかを表すダイアグラム
@@ -550,7 +550,6 @@ Xie, Yihui, Christophe Dervieux, and Alison Presmanes Hill. 2021. <em>Blogdown: 
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -590,6 +589,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

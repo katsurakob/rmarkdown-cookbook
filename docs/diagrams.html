@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.15 ダイアグラムを作成する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.15 ダイアグラムを作成する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="animation.html"/>
 <link rel="next" href="special-chars.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -515,11 +515,11 @@ div.csl-indent {
 <span id="cb68-9"><a href="diagrams.html#cb68-9"></a><span class="st">  </span></span>
 <span id="cb68-10"><a href="diagrams.html#cb68-10"></a><span class="st">  # ノードIDでエッジを定義</span></span>
 <span id="cb68-11"><a href="diagrams.html#cb68-11"></a><span class="st">  rec1 -&gt; rec2 -&gt; rec3 -&gt; rec4</span></span>
-<span id="cb68-12"><a href="diagrams.html#cb68-12"></a><span class="st">  }&quot;</span>, </span>
+<span id="cb68-12"><a href="diagrams.html#cb68-12"></a><span class="st">  }&quot;</span>,</span>
 <span id="cb68-13"><a href="diagrams.html#cb68-13"></a>  <span class="at">height =</span> <span class="dv">500</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:diagram-profit"></span>
-<div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagram-profit"></span>
+<div id="htmlwidget-0f1cd91748e09524640d" style="width:288px;height:500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f1cd91748e09524640d">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 図 4.4: プログラマの絵空事を表したダイアグラム
 </p>
@@ -548,11 +548,11 @@ div.csl-indent {
 <span id="cb69-17"><a href="diagrams.html#cb69-17"></a><span class="st">  [2]: names(iris)[2]</span></span>
 <span id="cb69-18"><a href="diagrams.html#cb69-18"></a><span class="st">  [3]: names(iris)[3]</span></span>
 <span id="cb69-19"><a href="diagrams.html#cb69-19"></a><span class="st">  [4]: names(iris)[4]</span></span>
-<span id="cb69-20"><a href="diagrams.html#cb69-20"></a><span class="st">  &quot;</span>, </span>
+<span id="cb69-20"><a href="diagrams.html#cb69-20"></a><span class="st">  &quot;</span>,</span>
 <span id="cb69-21"><a href="diagrams.html#cb69-21"></a>  <span class="at">height =</span> <span class="dv">100</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:diagram-params"></span>
-<div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagram-params"></span>
+<div id="htmlwidget-daee486d3da8791976e9" style="width:576px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-daee486d3da8791976e9">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 図 4.5: R から入力されたパラメータを使用したダイアグラム
 </p>
@@ -575,10 +575,10 @@ de Vries, Andrie, and Javier Luraschi. 2020. <em>Nomnoml: Sassy UML Diagrams</em
 Iannone, Richard. 2020. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://github.com/rich-iannone/DiagrammeR">https://github.com/rich-iannone/DiagrammeR</a>.
 </div>
 <div id="ref-R-diagram" class="csl-entry">
-Soetaert, Karline. 2020. <em>Diagram: Functions for Visualising Simple Graphs (Networks), Plotting Flow Diagrams</em>.
+Soetaert, Karline. 2020. <em>Diagram: Functions for Visualising Simple Graphs (Networks), Plotting Flow Diagrams</em>. <a href="https://CRAN.R-project.org/package=diagram">https://CRAN.R-project.org/package=diagram</a>.
 </div>
 <div id="ref-R-dagitty" class="csl-entry">
-Textor, Johannes, Benito van der Zander, and Ankur Ankan. 2021. <em>Dagitty: Graphical Analysis of Structural Causal Models</em>.
+Textor, Johannes, Benito van der Zander, and Ankur Ankan. 2021. <em>Dagitty: Graphical Analysis of Structural Causal Models</em>. <a href="https://CRAN.R-project.org/package=dagitty">https://CRAN.R-project.org/package=dagitty</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -597,7 +597,6 @@ Textor, Johannes, Benito van der Zander, and Ankur Ankan. 2021. <em>Dagitty: Gra
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -637,6 +636,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.16 低水準作図関数で1つづつグラフを作る (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.16 低水準作図関数で1つづつグラフを作る (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="graphical-device.html"/>
 <link rel="next" href="opts-render.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -503,7 +503,7 @@ div.csl-indent {
 <p>特に教育目的では, 中間グラフを表示することが有用になりえます. チャンクオプション <code>fig.keep = 'low'</code> を設定すれば, 低水準作図による変更を保存できます. 例えば 図<a href="low-plots.html#fig:low-plots-1">11.3</a>, <a href="low-plots.html#fig:low-plots-2">11.4</a>は <code>fig.keep = 'low'</code> のオプションを設定した単一のコードチャンクからできたものですが, 2つのコードチャンクから生成されたように見えます. また, チャンクオプション <code>fig.cap = c('...の散布図', '... に回帰直線を追加')</code>  で異なる図のキャプションを割り当てています.</p>
 <div class="sourceCode" id="cb329"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb329-1"><a href="low-plots.html#cb329-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
 <span id="cb329-2"><a href="low-plots.html#cb329-2"></a><span class="fu">plot</span>(cars)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:low-plots-1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:low-plots-1"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-1.png" alt="cars データの散布図."  />
 <p class="caption">
 図 11.3: cars データの散布図.
@@ -511,7 +511,7 @@ div.csl-indent {
 </div>
 <div class="sourceCode" id="cb330"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb330-1"><a href="low-plots.html#cb330-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(dist <span class="sc">~</span> speed, <span class="at">data =</span> cars)</span>
 <span id="cb330-2"><a href="low-plots.html#cb330-2"></a><span class="fu">abline</span>(fit)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:low-plots-2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:low-plots-2"></span>
 <img src="rmarkdown-cookbook_files/figure-html/low-plots-2.png" alt="既にある散布図に回帰曲線を追加"  />
 <p class="caption">
 図 11.4: 既にある散布図に回帰曲線を追加
@@ -529,7 +529,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -569,6 +568,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

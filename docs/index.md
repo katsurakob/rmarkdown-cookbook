@@ -30,7 +30,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/08/09 13:08:16 JST, ver. 0.9.4.1, 本家の更新確認時刻: [2021/07/29 23:57:49 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/09/15 14:24:25 JST, ver. 1.0.0, 本家の更新確認時刻: [2021/08/17 19:34:48 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -100,9 +100,9 @@ xfun::session_info(c(
 ```
 
 ```
-## R version 4.1.0 (2021-05-18)
+## R version 4.1.1 (2021-08-10)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 20.04.2 LTS
+## Running under: Ubuntu 20.04.3 LTS
 ## 
 ## Locale:
 ##   LC_CTYPE=ja_JP.UTF-8      
@@ -119,10 +119,10 @@ xfun::session_info(c(
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.22 knitr_1.33    rmarkdown_2.8
-##   rmdja_0.4.6.9 xfun_0.23    
+##   bookdown_0.24  knitr_1.34     rmarkdown_2.11
+##   rmdja_0.4.6.9  xfun_0.26     
 ## 
-## Pandoc version: 2.11.4
+## Pandoc version: 2.14.2
 ```
 
 上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (`>` や `+`) を付けたりしません. またテキスト出力は2連続ハッシュ `##` でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: **rmarkdown**) で表記し, 本文中のコードやファイル名はタイプライタフォントで表記します (例: `knitr::knit('foo.Rmd')`). 関数名の末尾には括弧を付けます (例: `blogdown::serve_site()`). 二重コロン演算子 `::` はパッケージのオブジェクトへのアクセスを意味します.
@@ -216,15 +216,15 @@ I am the main translator, which means the most of this text is translated by me.
 
 
 ```{.r .numberLines .lineAnchors}
-contributors <- rbind(read.csv(textConnection(system("git shortlog -s master JP", 
-  intern = T)), header = F, sep = "\t"), read.csv(textConnection(system("git shortlog -s work JP", 
+contributors <- rbind(read.csv(textConnection(system("git shortlog -s master JP",
+  intern = T)), header = F, sep = "\t"), read.csv(textConnection(system("git shortlog -s work JP",
   intern = T)), header = F, sep = "\t"))
-contributors <- aggregate(contributors[, 1], by = list(contributors$V2), 
+contributors <- aggregate(contributors[, 1], by = list(contributors$V2),
   sum)
-contributors <- subset(contributors, !charmatch(contributors$Group.1, 
+contributors <- subset(contributors, !charmatch(contributors$Group.1,
   c("Katagiri, Satoshi", "S-Katagiri"), F))
-cat(paste0("* [", contributors[order(contributors$x), ]$Group.1, 
-  "](", "https://github.com/", contributors[order(contributors$x), 
+cat(paste0("* [", contributors[order(contributors$x), ]$Group.1,
+  "](", "https://github.com/", contributors[order(contributors$x),
     ]$Group.1, ")"), sep = ", ")
 ```
 
@@ -1042,8 +1042,8 @@ toBibtex(citation("xaringan"))
   title = {xaringan: Presentation Ninja},
   author = {Yihui Xie},
   year = {2021},
-  note = {R package version 0.21},
-  url = {https://github.com/yihui/xaringan},
+  note = {R package version 0.22},
+  url = {https://CRAN.R-project.org/package=xaringan},
 }
 ```
 
@@ -1069,7 +1069,7 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     Report Generation in R},
   author = {Yihui Xie},
   year = {2021},
-  note = {R package version 1.33},
+  note = {R package version 1.34},
   url = {https://yihui.org/knitr/},
 }
 
@@ -1080,8 +1080,8 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     and Hadley Wickham and Joe Cheng and Winston Chang and
     Richard Iannone},
   year = {2021},
-  note = {https://github.com/rstudio/rmarkdown, https://
-    pkgs.rstudio.com/rmarkdown/},
+  note = {R package version 2.11},
+  url = {https://CRAN.R-project.org/package=rmarkdown},
 }
 
 @Book{knitr2015,
@@ -1223,11 +1223,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年8月09日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年9月15日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%Y %B`: 2021 8月
-- `%y/%m/%d`: 21/08/09
-- `%b%d (%a)`:  8月09 (月)
+- `%Y %B`: 2021 9月
+- `%y/%m/%d`: 21/09/15
+- `%b%d (%a)`:  9月15 (水)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -1381,7 +1381,7 @@ Markdown では, 空白行はしばしば段落などの要素の分離に使わ
 
 
 ```{.r .numberLines .lineAnchors}
-blogdown:::quote_poem(c("かたつむり", "そろそろ登れ", 
+blogdown:::quote_poem(c("かたつむり", "そろそろ登れ",
   "富士の山"))
 ## [1] "> かたつむり  \nそろそろ登れ  \n富士の山"
 ```
@@ -1516,15 +1516,15 @@ DiagrammeR::grViz("digraph {
   
   # ノードIDでエッジを定義
   rec1 -> rec2 -> rec3 -> rec4
-  }", 
+  }",
   height = 500)
 ```
 
 <div class="figure" style="text-align: center">
 
 ```{=html}
-<div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0f1cd91748e09524640d" style="width:288px;height:500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f1cd91748e09524640d">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 <p class="caption">(\#fig:diagram-profit)プログラマの絵空事を表したダイアグラム</p>
@@ -1557,15 +1557,15 @@ DiagrammeR::grViz("
   [2]: names(iris)[2]
   [3]: names(iris)[3]
   [4]: names(iris)[4]
-  ", 
+  ",
   height = 100)
 ```
 
 <div class="figure" style="text-align: center">
 
 ```{=html}
-<div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-daee486d3da8791976e9" style="width:576px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-daee486d3da8791976e9">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 ```
 
 <p class="caption">(\#fig:diagram-params)R から入力されたパラメータを使用したダイアグラム</p>
@@ -1669,36 +1669,34 @@ xfun:::tree(
 
 ```
 List of 3
- |-blocks            :List of 2
- |  |-:List of 2
- |  |  |-t: chr "Header"
- |  |  |-c:List of 3
- |  |     |-: int 2
- |  |     |-:List of 3
- |  |     |  |-: chr "第1節"
- |  |     |  |-: list()
- |  |     |  |-: list()
- |  |     |-:List of 1
- |  |        |-:List of 2
- |  |           |-t: chr "Str"
- |  |           |-c: chr "第1節"
- |  |-:List of 2
- |     |-t: chr "Para"
- |     |-c:List of 3
- |        |-:List of 2
- |        |  |-t: chr "Str"
- |        |  |-c: chr "Hello"
- |        |-:List of 1
- |        |  |-t: chr "Space"
- |        |-:List of 2
- |           |-t: chr "Str"
- |           |-c: chr "world!"
- |-pandoc-api-version:List of 4
+ |-pandoc-api-version:List of 2
  |  |-: int 1
- |  |-: int 17
- |  |-: int 5
- |  |-: int 4
+ |  |-: int 22
  |-meta              : Named list()
+ |-blocks            :List of 2
+    |-:List of 2
+    |  |-t: chr "Header"
+    |  |-c:List of 3
+    |     |-: int 2
+    |     |-:List of 3
+    |     |  |-: chr "第1節"
+    |     |  |-: list()
+    |     |  |-: list()
+    |     |-:List of 1
+    |        |-:List of 2
+    |           |-t: chr "Str"
+    |           |-c: chr "第1節"
+    |-:List of 2
+       |-t: chr "Para"
+       |-c:List of 3
+          |-:List of 2
+          |  |-t: chr "Str"
+          |  |-c: chr "Hello"
+          |-:List of 1
+          |  |-t: chr "Space"
+          |-:List of 2
+             |-t: chr "Str"
+             |-c: chr "world!"
 ```
 
 あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
@@ -1727,6 +1725,7 @@ pandoc -t markdown --atx-headers \
 ```
 
 ```
+[WARNING] Deprecated: --atx-headers. Use --markdown-headings=atx instead.
 # 第1節
 
 Hello world!
@@ -1824,7 +1823,7 @@ colorize <- function(x, color) {
   if (knitr::is_latex_output()) {
     sprintf("\\textcolor{%s}{%s}", color, x)
   } else if (knitr::is_html_output()) {
-    sprintf("<span style='color: %s;'>%s</span>", color, 
+    sprintf("<span style='color: %s;'>%s</span>", color,
       x)
   } else x
 }
@@ -3869,7 +3868,7 @@ knitr::include_url("https://yihui.org")
 ```
 
 <div class="figure" style="text-align: center">
-<iframe src="https://yihui.org" width="100%" height="400px"></iframe>
+<iframe src="https://yihui.org" width="100%" height="400px" data-external="1"></iframe>
 <p class="caption">(\#fig:include-url)iframe または screenshot による Yihui's のホームページ</p>
 </div>
 
@@ -4086,7 +4085,7 @@ LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パ
 ::::
 ```
 
-出力は:
+出力はこうなります.
 
 :::: {.blackbox data-latex=""}
 ::: {.center data-latex=""}
@@ -4291,8 +4290,8 @@ box_args <- function(
 
 
 ```{.r .numberLines .lineAnchors}
-kable(x, format, digits = getOption("digits"), row.names = NA, 
-  col.names = NA, align, caption = NULL, label = NULL, format.args = list(), 
+kable(x, format, digits = getOption("digits"), row.names = NA,
+  col.names = NA, align, caption = NULL, label = NULL, format.args = list(),
   escape = TRUE, ...)
 ```
 
@@ -4420,7 +4419,7 @@ options(knitr.table.format = "latex")
 
 ```{.r .numberLines .lineAnchors}
 options(knitr.table.format = function() {
-  if (knitr::is_latex_output()) 
+  if (knitr::is_latex_output())
     "latex" else "pipe"
 })
 ```
@@ -4525,7 +4524,7 @@ format(10000.123, big.mark = ",")
 
 
 ```{.r .numberLines .lineAnchors}
-d <- cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 0, 
+d <- cbind(X1 = runif(3), X2 = 10^c(3, 5, 7), X3 = rnorm(3, 0,
   1000))
 # 最大で4桁表示
 knitr::kable(d, digits = 4)
@@ -4567,7 +4566,7 @@ knitr::kable(d, digits = 3, format.args = list(scientific = FALSE))
 
 ```{.r .numberLines .lineAnchors}
 # 大きな数に対してカンマ区切りする
-knitr::kable(d, digits = 3, format.args = list(big.mark = ",", 
+knitr::kable(d, digits = 3, format.args = list(big.mark = ",",
   scientific = FALSE))
 ```
 
@@ -4693,7 +4692,7 @@ knitr:::escape_latex(c("100%", "# コメント", "列名"))
 ```
 
 ```{.r .numberLines .lineAnchors}
-knitr:::escape_html(c("<アドレス>", "x = \"文字列\"", 
+knitr:::escape_html(c("<アドレス>", "x = \"文字列\"",
   "a & b"))
 ```
 
@@ -4908,7 +4907,7 @@ speed & dist\\
 
 
 ```{.r .numberLines .lineAnchors}
-knitr::kable(cars[1:2, ], format = "latex", table.envir = "table", 
+knitr::kable(cars[1:2, ], format = "latex", table.envir = "table",
   position = "!b")
 ```
 
@@ -4930,7 +4929,7 @@ speed & dist\\
 
 
 ```{.r .numberLines .lineAnchors}
-knitr::kable(iris2, caption = "長い長いキャプション", 
+knitr::kable(iris2, caption = "長い長いキャプション",
   caption.short = "短いキャプション")
 ```
 
@@ -4980,7 +4979,7 @@ R Markdown で **booktabs** のような LaTeX パッケージが追加で必要
     
     
     ```{.r .numberLines .lineAnchors}
-    knitr::kable(iris3, format = "latex", linesep = c("", "", "\\addlinespace"), 
+    knitr::kable(iris3, format = "latex", linesep = c("", "", "\\addlinespace"),
       booktabs = TRUE)
     ```
     
@@ -5020,7 +5019,7 @@ table 環境に含まれた場合, つまり表にキャプションを設定し
 
 
 ```{.r .numberLines .lineAnchors}
-knitr::kable(mtcars[1:2, 1:2], table.attr = "class=\"striped\"", 
+knitr::kable(mtcars[1:2, 1:2], table.attr = "class=\"striped\"",
   format = "html")
 ```
 
@@ -5928,9 +5927,9 @@ if (TRUE) {
 
 ```{.r .numberLines .lineAnchors}
 # 長い式
-1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 
-  1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 
-  1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 
+1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 +
+  1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 +
+  1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 +
   1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1 + 1
 ```
 
@@ -6162,8 +6161,9 @@ add_logo <- function(path, options) {
   logo <- file.path(R.home("doc"), "html", "logo.jpg")
   logo <- magick::image_read(logo)
   # デフォルトの重心は `northwest` (左上) で,
-  # ユーザーはチャンクオプション `magick.gravity` で変更できる
-  if (is.null(g <- options$magick.gravity)) 
+  # ユーザーはチャンクオプション `magick.gravity`
+  # で変更できる
+  if (is.null(g <- options$magick.gravity))
     g <- "northwest"
   # ロゴを画像に追加する
   img <- magick::image_composite(img, logo, gravity = g)
@@ -6180,7 +6180,7 @@ add_logo <- function(path, options) {
 
 ```{.r .numberLines .lineAnchors}
 par(mar = c(4, 4, 0.1, 0.1))
-hist(faithful$eruptions, breaks = 30, main = "", col = "gray", 
+hist(faithful$eruptions, breaks = 30, main = "", col = "gray",
   border = "white")
 ```
 
@@ -6197,7 +6197,7 @@ hist(faithful$eruptions, breaks = 30, main = "", col = "gray",
 ```{.r .numberLines .lineAnchors}
 pdf2png <- function(path) {
   # LaTeX でない出力に対してのみ変換する
-  if (knitr::is_latex_output()) 
+  if (knitr::is_latex_output())
     return(path)
   path2 <- xfun::with_ext(path, "png")
   img <- magick::image_read_pdf(path)
@@ -6955,7 +6955,7 @@ names(knitr:::.default.hooks)
 
 ```{.r .numberLines .lineAnchors}
 knitr::knit_hooks$set(greet = function(before) {
-  if (before) 
+  if (before)
     "Hello!" else "Bye!"
 })
 ```
@@ -7860,7 +7860,8 @@ names(knitr::knit_engines$get())
 ## [29] "asy"       "cat"       "asis"      "stan"     
 ## [33] "block"     "block2"    "js"        "css"      
 ## [37] "sql"       "go"        "python"    "julia"    
-## [41] "sass"      "scss"      "R"         "bslib"
+## [41] "sass"      "scss"      "R"         "bslib"    
+## [45] "targets"
 ```
 
 現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の `bash` コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の `bash` コードチャンクはそれ以前の `bash` チャンクで作成された変数を使うことができませんし, `cd` による作業ディレクトリの変更も異なる `bash` チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\@ref(eng-python)節参照).
@@ -7900,7 +7901,7 @@ knitr::knit_engines$set(foo = function(options) {
 ```{.r .numberLines .lineAnchors}
 knitr::knit_engines$set(upper = function(options) {
   code <- paste(options$code, collapse = "\n")
-  if (options$eval) 
+  if (options$eval)
     toupper(code) else code
 })
 ```
@@ -8092,7 +8093,7 @@ writeLines("これは長い文字列です.
 ですが 'シングルクオート' は大丈夫です.
 バックスラッシュがいくつ必要か考えるときにあなたが
 正気を失わないでいられることを願います.
-例えば, '\t' なのか `\\t` なのか '\\\\t' なのか?", 
+例えば, '\t' なのか `\\t` なのか '\\\\t' なのか?",
   con = "my-file.txt")
 ```
 
@@ -9081,7 +9082,15 @@ knit: myPackage::knit_with_date
 
 **trackdown** パッケージ\index{R パッケージ!trackdown} [@R-trackdown] は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. **trackdown** は **googledrive** パッケージ\index{R パッケージ!googledrive} [@R-googledrive] を基にして, ローカルの `.Rmd` (または `.Rnw`) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ^[**訳注**: LaTeX の可読性?? バイナリファイルと比較して, ということでしょうか?]と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.
 
-現時点では **trackdown** GitHub https://github.com/ekothe/trackdown でのみ利用可能です. パッケージのドキュメントは https://ekothe.github.io/trackdown/ で読むことができます.
+**trackdown** は CRAN から, あるいは開発版を GitHub からインストールしてもいいでしょう. (https://github.com/claudiozandonella/trackdown):
+
+```{.r .numberLines .lineAnchors}
+# install from CRAN
+install.packages("trackdown")
+
+# install the development version
+remotes::install_github("claudiozandonella/trackdown", build_vignettes = TRUE)
+```
 
 ### trackdown の作業工程
 

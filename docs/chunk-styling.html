@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.3 コードチャンクのスタイルを変更する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.3 コードチャンクのスタイルを変更する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="center-heading.html"/>
 <link rel="next" href="html-scroll.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -518,7 +518,7 @@ div.csl-indent {
 <span id="cb145-14"><a href="chunk-styling.html#cb145-14" aria-hidden="true" tabindex="-1"></a><span class="in">```{r df-drop-ok, class.source=&quot;bg-success&quot;}</span></span>
 <span id="cb145-15"><a href="chunk-styling.html#cb145-15" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;, drop = FALSE]</span></span>
 <span id="cb145-16"><a href="chunk-styling.html#cb145-16" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:chunk-bg"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk-bg"></span>
 <img src="JP/images/chunk-bg.png" alt="Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック"  />
 <p class="caption">
 図 7.1: Bootstrap で定義された背景色を使ったコードチャンクと出力ブロック
@@ -546,7 +546,7 @@ div.csl-indent {
 <span id="cb146-19"><a href="chunk-styling.html#cb146-19" aria-hidden="true" tabindex="-1"></a><span class="in">mtcars[1:5, &quot;mpg&quot;]</span></span>
 <span id="cb146-20"><a href="chunk-styling.html#cb146-20" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="chunk-styling.html#fig:chunk-border">7.2</a>が出力されたスタイルです.</p>
-<div class="figure" style="text-align: center"><span id="fig:chunk-border"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:chunk-border"></span>
 <img src="JP/images/chunk-border.png" alt="明桃色の背景, 赤い太枠線をもつコードチャンク"  />
 <p class="caption">
 図 7.2: 明桃色の背景, 赤い太枠線をもつコードチャンク
@@ -560,7 +560,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-flair" class="csl-entry">
-Bodwin, Kelly, and Hunter Glanz. 2020. <em>Flair: Highlight, Annotate, and Format Your r Source Code</em>.
+Bodwin, Kelly, and Hunter Glanz. 2020. <em>Flair: Highlight, Annotate, and Format Your r Source Code</em>. <a href="https://CRAN.R-project.org/package=flair">https://CRAN.R-project.org/package=flair</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -579,7 +579,6 @@ Bodwin, Kelly, and Hunter Glanz. 2020. <em>Flair: Highlight, Annotate, and Forma
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -619,6 +618,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

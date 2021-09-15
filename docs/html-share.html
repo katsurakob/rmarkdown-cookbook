@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.13 HTML 出力を Web で共有する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.13 HTML 出力を Web で共有する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="details-tag.html"/>
 <link rel="next" href="html-accessibility.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -501,7 +501,7 @@ div.csl-indent {
 <p>R Markdown を HTML ファイルにレンダリングする魅力的な側面の1つは, これらのファイルをとても簡単にインターネットでホストし, 他のウェブサイトと同様に共有できるということです. この節ではあなたの作成した HTML 文書を共有するオプションを簡単に要約します.</p>
 <div id="r-specific-services" class="section level3" number="7.13.1">
 <h3><span class="header-section-number">7.13.1</span> R 特化のサービス</h3>
-<p>RStudio は R Markdown で作られた様々な種類のコンテンツをインターネットで公開するためのサービスをいくつか提案しています. これらのサービスは特に RStudio IDE または <strong>rsconnect</strong> パッケージ <span class="citation">(<a href="#ref-R-rsconnect" role="doc-biblioref">Allaire 2021</a>)</span> を使って簡単に公開できます.</p>
+<p>RStudio は R Markdown で作られた様々な種類のコンテンツをインターネットで公開するためのサービスをいくつか提案しています. これらのサービスは特に RStudio IDE または <strong>rsconnect</strong> パッケージ <span class="citation">(<a href="#ref-R-rsconnect" role="doc-biblioref">McPherson and Allaire 2021</a>)</span> を使って簡単に公開できます.</p>
 <ul>
 <li><p><a href="https://rpubs.com"><strong>RPubs</strong></a> は静的な単一の R Markdown コンテンツの無料ホスティングを可能とします. RStudio IDE の <code>Publish</code> ボタンまたは <code>rsconnect::rpubsUpload()</code> 関数で簡単に公開できます. 詳細は “Getting Started” のページ (<a href="https://rpubs.com/about/getting-started" class="uri">https://rpubs.com/about/getting-started</a>) をご覧ください.</p></li>
 <li><p><a href="https://www.shinyapps.io"><strong>ShinyApps.io</strong></a> は R を実行するサーバを要する動的コンテンツのホスティングを可能にします. 例えば Shiny コンポネントを含んでいる<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>インタラクティブな R Markdown 文書をホストできます. ShinyApp.io は Shiny アプリケーション用の RPubs の類似サービスです. アプリとインタラクティブな R Markdown 文書は RStudio IDE の push ボタンか <code>rsconnect::deployApp()</code> 関数を使って公開できます. 詳細はユーザーガイド (<a href="https://docs.rstudio.com/shinyapps.io/" class="uri">https://docs.rstudio.com/shinyapps.io/</a>) をご覧ください.</p></li>
@@ -524,7 +524,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-rsconnect" class="csl-entry">
-Allaire, JJ. 2021. <em>Rsconnect: Deployment Interface for r Markdown Documents and Shiny Applications</em>. <a href="https://github.com/rstudio/rsconnect">https://github.com/rstudio/rsconnect</a>.
+McPherson, Jonathan, and JJ Allaire. 2021. <em>Rsconnect: Deployment Interface for r Markdown Documents and Shiny Applications</em>. <a href="https://github.com/rstudio/rsconnect">https://github.com/rstudio/rsconnect</a>.
 </div>
 <div id="ref-rmarkdown2018" class="csl-entry">
 Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.
@@ -536,7 +536,7 @@ Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creatin
 <div class="footnotes">
 <hr />
 <ol start="29">
-<li id="fn29"><p>R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで <code>runtime: shiny</code> または <code>runtime: shiny_prerendered</code> オプションを設定することもできます. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに <code>rmarkdown::run()</code> で文書を実行することになります. 詳しく知るには <span class="citation"><a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund</a> (<a href="#ref-rmarkdown2018" role="doc-biblioref">2018</a>)</span> (Chapter 19, <a href="https://bookdown.org/yihui/rmarkdown/shiny-documents.html" class="uri">https://bookdown.org/yihui/rmarkdown/shiny-documents.html</a>) をご覧ください.<a href="html-share.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>R Markdown 文書に Shiny コンポネントを含むには, YAML メタデータで <code>runtime: shiny</code> または <code>runtime: shiny_prerendered</code> オプションを設定することもできます. この文書を以前のように HTML 文書にレンダリングすることはできないでしょうが, 代わりに <code>rmarkdown::run()</code> で文書を実行することになります. 詳しく知るには <span class="citation">Xie, Allaire, and Grolemund (<a href="#ref-rmarkdown2018" role="doc-biblioref">2018</a>)</span> (Chapter 19, <a href="https://bookdown.org/yihui/rmarkdown/shiny-documents.html" class="uri">https://bookdown.org/yihui/rmarkdown/shiny-documents.html</a>) をご覧ください.<a href="html-share.html#fnref29" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
@@ -549,7 +549,6 @@ Xie, Yihui, Alison Presmanes Hill, and Amber Thomas. 2017. <em>Blogdown: Creatin
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -589,6 +588,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

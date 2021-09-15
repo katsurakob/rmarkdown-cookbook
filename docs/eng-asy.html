@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.9 Asymptote でグラフィックを作成する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.9 Asymptote でグラフィックを作成する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="eng-stata.html"/>
 <link rel="next" href="eng-sass.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -499,25 +499,25 @@ div.csl-indent {
 <div id="eng-asy" class="section level2" number="15.9">
 <h2><span class="header-section-number">15.9</span> Asymptote でグラフィックを作成する</h2>
 <p>Asymptote (<a href="https://asymptote.sourceforge.io" class="uri">https://asymptote.sourceforge.io</a>) はベクタグラフィックのための強力な言語です. Asymptote をインストール済みなら (インストールの説明はウェブサイトを見てください) <code>asy</code> エンジンを使い R Markdown に Asymptote のコードを書き実行することもできます. 以下はそのリポジトリ <a href="https://github.com/vectorgraphics/asymptote" class="uri">https://github.com/vectorgraphics/asymptote</a> からコピーした例で, 出力を図<a href="eng-asy.html#fig:elevation">15.1</a>に示します.</p>
-<div class="sourceCode" id="cb457"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb457-1"><a href="eng-asy.html#cb457-1"></a><span class="kw">import</span> graph3;</span>
-<span id="cb457-2"><a href="eng-asy.html#cb457-2"></a><span class="kw">import</span> grid3;</span>
-<span id="cb457-3"><a href="eng-asy.html#cb457-3"></a><span class="kw">import</span> palette;</span>
-<span id="cb457-4"><a href="eng-asy.html#cb457-4"></a>settings.prc = <span class="kw">false</span>;</span>
+<div class="sourceCode" id="cb457"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb457-1"><a href="eng-asy.html#cb457-1"></a><span class="kw">import</span> graph3<span class="op">;</span></span>
+<span id="cb457-2"><a href="eng-asy.html#cb457-2"></a><span class="kw">import</span> grid3<span class="op">;</span></span>
+<span id="cb457-3"><a href="eng-asy.html#cb457-3"></a><span class="kw">import</span> palette<span class="op">;</span></span>
+<span id="cb457-4"><a href="eng-asy.html#cb457-4"></a>settings<span class="op">.</span>prc <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
 <span id="cb457-5"><a href="eng-asy.html#cb457-5"></a></span>
-<span id="cb457-6"><a href="eng-asy.html#cb457-6"></a>currentprojection=orthographic(<span class="fl">0.8</span>,<span class="dv">1</span>,<span class="dv">2</span>);</span>
-<span id="cb457-7"><a href="eng-asy.html#cb457-7"></a>size(<span class="dv">500</span>,<span class="dv">400</span>,IgnoreAspect);</span>
+<span id="cb457-6"><a href="eng-asy.html#cb457-6"></a>currentprojection<span class="op">=</span>orthographic<span class="op">(</span><span class="fl">0.8</span><span class="op">,</span><span class="dv">1</span><span class="op">,</span><span class="dv">2</span><span class="op">);</span></span>
+<span id="cb457-7"><a href="eng-asy.html#cb457-7"></a>size<span class="op">(</span><span class="dv">500</span><span class="op">,</span><span class="dv">400</span><span class="op">,</span>IgnoreAspect<span class="op">);</span></span>
 <span id="cb457-8"><a href="eng-asy.html#cb457-8"></a></span>
-<span id="cb457-9"><a href="eng-asy.html#cb457-9"></a>real f(pair z) {<span class="cf">return</span> cos(<span class="dv">2</span>*pi*z.x)*sin(<span class="dv">2</span>*pi*z.y);}</span>
+<span id="cb457-9"><a href="eng-asy.html#cb457-9"></a>real f<span class="op">(</span>pair z<span class="op">)</span> <span class="op">{</span><span class="cf">return</span> cos<span class="op">(</span><span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>z<span class="op">.</span>x<span class="op">)*</span>sin<span class="op">(</span><span class="dv">2</span><span class="op">*</span>pi<span class="op">*</span>z<span class="op">.</span>y<span class="op">);}</span></span>
 <span id="cb457-10"><a href="eng-asy.html#cb457-10"></a></span>
-<span id="cb457-11"><a href="eng-asy.html#cb457-11"></a>surface s=surface(f,(-<span class="dv">1</span>/<span class="dv">2</span>,-<span class="dv">1</span>/<span class="dv">2</span>),(<span class="dv">1</span>/<span class="dv">2</span>,<span class="dv">1</span>/<span class="dv">2</span>),<span class="dv">50</span>,Spline);</span>
+<span id="cb457-11"><a href="eng-asy.html#cb457-11"></a>surface s<span class="op">=</span>surface<span class="op">(</span>f<span class="op">,(-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">,-</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">),(</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">,</span><span class="dv">1</span><span class="op">/</span><span class="dv">2</span><span class="op">),</span><span class="dv">50</span><span class="op">,</span>Spline<span class="op">);</span></span>
 <span id="cb457-12"><a href="eng-asy.html#cb457-12"></a></span>
-<span id="cb457-13"><a href="eng-asy.html#cb457-13"></a>surface S=planeproject(unitsquare3)*s;</span>
-<span id="cb457-14"><a href="eng-asy.html#cb457-14"></a>S.colors(palette(s.map(zpart),Rainbow()));</span>
-<span id="cb457-15"><a href="eng-asy.html#cb457-15"></a>draw(S,nolight);</span>
-<span id="cb457-16"><a href="eng-asy.html#cb457-16"></a>draw(s,lightgray+opacity(<span class="fl">0.7</span>));</span>
+<span id="cb457-13"><a href="eng-asy.html#cb457-13"></a>surface S<span class="op">=</span>planeproject<span class="op">(</span>unitsquare3<span class="op">)*</span>s<span class="op">;</span></span>
+<span id="cb457-14"><a href="eng-asy.html#cb457-14"></a>S<span class="op">.</span>colors<span class="op">(</span>palette<span class="op">(</span>s<span class="op">.</span>map<span class="op">(</span>zpart<span class="op">),</span>Rainbow<span class="op">()));</span></span>
+<span id="cb457-15"><a href="eng-asy.html#cb457-15"></a>draw<span class="op">(</span>S<span class="op">,</span>nolight<span class="op">);</span></span>
+<span id="cb457-16"><a href="eng-asy.html#cb457-16"></a>draw<span class="op">(</span>s<span class="op">,</span>lightgray<span class="op">+</span>opacity<span class="op">(</span><span class="fl">0.7</span><span class="op">));</span></span>
 <span id="cb457-17"><a href="eng-asy.html#cb457-17"></a></span>
-<span id="cb457-18"><a href="eng-asy.html#cb457-18"></a>grid3(XYZgrid);</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:elevation"></span>
+<span id="cb457-18"><a href="eng-asy.html#cb457-18"></a>grid3<span class="op">(</span>XYZgrid<span class="op">);</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:elevation"></span>
 <img src="rmarkdown-cookbook_files/figure-html/elevation-1.png" alt="Asymptote で作成した3Dグラフィック"  />
 <p class="caption">
 図 15.1: Asymptote で作成した3Dグラフィック
@@ -534,29 +534,29 @@ div.csl-indent {
 <span id="cb459-2"><a href="eng-asy.html#cb459-2"></a>y <span class="ot">&lt;-</span> <span class="fu">sin</span>(x)</span>
 <span id="cb459-3"><a href="eng-asy.html#cb459-3"></a><span class="fu">writeLines</span>(<span class="fu">paste</span>(x, y, <span class="at">sep =</span> <span class="st">&quot;,&quot;</span>), <span class="st">&quot;sine.csv&quot;</span>)</span></code></pre></div>
 <p>それから Asymptote でこれを読み込み, データに基づいたグラフを描画し図<a href="eng-asy.html#fig:sine-curve">15.2</a> に示します. 以下が <code>asy</code> コードチャンクです.</p>
-<div class="sourceCode" id="cb460"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb460-1"><a href="eng-asy.html#cb460-1"></a><span class="kw">import</span> graph;</span>
-<span id="cb460-2"><a href="eng-asy.html#cb460-2"></a>size(<span class="dv">400</span>,<span class="dv">300</span>,IgnoreAspect);</span>
-<span id="cb460-3"><a href="eng-asy.html#cb460-3"></a>settings.prc = <span class="kw">false</span>;</span>
+<div class="sourceCode" id="cb460"><pre class="sourceCode numberSource cpp numberLines lineAnchors"><code class="sourceCode cpp"><span id="cb460-1"><a href="eng-asy.html#cb460-1"></a><span class="kw">import</span> graph<span class="op">;</span></span>
+<span id="cb460-2"><a href="eng-asy.html#cb460-2"></a>size<span class="op">(</span><span class="dv">400</span><span class="op">,</span><span class="dv">300</span><span class="op">,</span>IgnoreAspect<span class="op">);</span></span>
+<span id="cb460-3"><a href="eng-asy.html#cb460-3"></a>settings<span class="op">.</span>prc <span class="op">=</span> <span class="kw">false</span><span class="op">;</span></span>
 <span id="cb460-4"><a href="eng-asy.html#cb460-4"></a></span>
 <span id="cb460-5"><a href="eng-asy.html#cb460-5"></a><span class="co">// import data from csv file</span></span>
-<span id="cb460-6"><a href="eng-asy.html#cb460-6"></a>file in=input(<span class="st">&quot;sine.csv&quot;</span>).line().csv();</span>
-<span id="cb460-7"><a href="eng-asy.html#cb460-7"></a>real[][] a=in.dimension(<span class="dv">0</span>,<span class="dv">0</span>);</span>
-<span id="cb460-8"><a href="eng-asy.html#cb460-8"></a>a=transpose(a);</span>
+<span id="cb460-6"><a href="eng-asy.html#cb460-6"></a>file in<span class="op">=</span>input<span class="op">(</span><span class="st">&quot;sine.csv&quot;</span><span class="op">).</span>line<span class="op">().</span>csv<span class="op">();</span></span>
+<span id="cb460-7"><a href="eng-asy.html#cb460-7"></a>real<span class="op">[][]</span> a<span class="op">=</span>in<span class="op">.</span>dimension<span class="op">(</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">);</span></span>
+<span id="cb460-8"><a href="eng-asy.html#cb460-8"></a>a<span class="op">=</span>transpose<span class="op">(</span>a<span class="op">);</span></span>
 <span id="cb460-9"><a href="eng-asy.html#cb460-9"></a></span>
 <span id="cb460-10"><a href="eng-asy.html#cb460-10"></a><span class="co">// generate a path</span></span>
-<span id="cb460-11"><a href="eng-asy.html#cb460-11"></a>path rpath = graph(a[<span class="dv">0</span>],a[<span class="dv">1</span>]);</span>
-<span id="cb460-12"><a href="eng-asy.html#cb460-12"></a>path lpath = (<span class="dv">1</span>,<span class="dv">0</span>)--(<span class="dv">5</span>,<span class="dv">1</span>);</span>
+<span id="cb460-11"><a href="eng-asy.html#cb460-11"></a>path rpath <span class="op">=</span> graph<span class="op">(</span>a<span class="op">[</span><span class="dv">0</span><span class="op">],</span>a<span class="op">[</span><span class="dv">1</span><span class="op">]);</span></span>
+<span id="cb460-12"><a href="eng-asy.html#cb460-12"></a>path lpath <span class="op">=</span> <span class="op">(</span><span class="dv">1</span><span class="op">,</span><span class="dv">0</span><span class="op">)--(</span><span class="dv">5</span><span class="op">,</span><span class="dv">1</span><span class="op">);</span></span>
 <span id="cb460-13"><a href="eng-asy.html#cb460-13"></a></span>
 <span id="cb460-14"><a href="eng-asy.html#cb460-14"></a><span class="co">// find intersection</span></span>
-<span id="cb460-15"><a href="eng-asy.html#cb460-15"></a>pair pA=intersectionpoint(rpath,lpath);</span>
+<span id="cb460-15"><a href="eng-asy.html#cb460-15"></a>pair pA<span class="op">=</span>intersectionpoint<span class="op">(</span>rpath<span class="op">,</span>lpath<span class="op">);</span></span>
 <span id="cb460-16"><a href="eng-asy.html#cb460-16"></a></span>
 <span id="cb460-17"><a href="eng-asy.html#cb460-17"></a><span class="co">// draw all</span></span>
-<span id="cb460-18"><a href="eng-asy.html#cb460-18"></a>draw(rpath,red);</span>
-<span id="cb460-19"><a href="eng-asy.html#cb460-19"></a>draw(lpath,dashed + blue);</span>
-<span id="cb460-20"><a href="eng-asy.html#cb460-20"></a>dot(<span class="st">&quot;$</span><span class="er">\d</span><span class="st">elta$&quot;</span>,pA,NE);</span>
-<span id="cb460-21"><a href="eng-asy.html#cb460-21"></a>xaxis(<span class="st">&quot;$x$&quot;</span>,BottomTop,LeftTicks);</span>
-<span id="cb460-22"><a href="eng-asy.html#cb460-22"></a>yaxis(<span class="st">&quot;$y$&quot;</span>,LeftRight,RightTicks);</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:sine-curve"></span>
+<span id="cb460-18"><a href="eng-asy.html#cb460-18"></a>draw<span class="op">(</span>rpath<span class="op">,</span>red<span class="op">);</span></span>
+<span id="cb460-19"><a href="eng-asy.html#cb460-19"></a>draw<span class="op">(</span>lpath<span class="op">,</span>dashed <span class="op">+</span> blue<span class="op">);</span></span>
+<span id="cb460-20"><a href="eng-asy.html#cb460-20"></a>dot<span class="op">(</span><span class="st">&quot;$</span><span class="er">\d</span><span class="st">elta$&quot;</span><span class="op">,</span>pA<span class="op">,</span>NE<span class="op">);</span></span>
+<span id="cb460-21"><a href="eng-asy.html#cb460-21"></a>xaxis<span class="op">(</span><span class="st">&quot;$x$&quot;</span><span class="op">,</span>BottomTop<span class="op">,</span>LeftTicks<span class="op">);</span></span>
+<span id="cb460-22"><a href="eng-asy.html#cb460-22"></a>yaxis<span class="op">(</span><span class="st">&quot;$y$&quot;</span><span class="op">,</span>LeftRight<span class="op">,</span>RightTicks<span class="op">);</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:sine-curve"></span>
 <img src="rmarkdown-cookbook_files/figure-html/sine-curve-1.png" alt="R からデータを渡し Asymptote でグラフを描く"  />
 <p class="caption">
 図 15.2: R からデータを渡し Asymptote でグラフを描く
@@ -574,7 +574,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -614,6 +613,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

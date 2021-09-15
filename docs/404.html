@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.10 図のキャプションへの付番 | R Markdown クックブック</title>
+  <title>Page not found | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.10 図のキャプションへの付番 | R Markdown クックブック" />
+  <meta property="og:title" content="Page not found | R Markdown クックブック" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://bookdown.org/yihui/rmarkdown-cookbook/" />
   <meta property="og:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="Gedevan-Aleksizde/rmarkdown-cookbook" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.10 図のキャプションへの付番 | R Markdown クックブック" />
+  <meta name="twitter:title" content="Page not found | R Markdown クックブック" />
   
   <meta name="twitter:description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
   <meta name="twitter:image" content="https://bookdown.org/yihui/rmarkdown-cookbook//images/cover.png" />
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="multiple-authors.html"/>
-<link rel="next" href="combine-words.html"/>
+
+
 <script src="libs/header-attrs/header-attrs.js"></script>
 <script src="libs/jquery/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -496,40 +496,19 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="figure-number" class="section level2" number="4.10">
-<h2><span class="header-section-number">4.10</span> 図のキャプションへの付番</h2>
-<!-- https://stackoverflow.com/questions/37116632/r-markdown-html-number-figures -->
-<p>以下の例のように, <strong>bookdown</strong> <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021a</a>)</span> 出力フォーマット を, 図のキャプションに図番号を追加するのに使うことができます.</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb57-1"><a href="figure-number.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb57-2"><a href="figure-number.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> bookdown::html_document2</span></span>
-<span id="cb57-3"><a href="figure-number.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
-<div class="sourceCode" id="cb58"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb58-1"><a href="figure-number.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r cars, fig.cap = &quot;すごいプロット&quot;}</span></span>
-<span id="cb58-2"><a href="figure-number.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="in">plot(cars)</span></span>
-<span id="cb58-3"><a href="figure-number.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb58-4"><a href="figure-number.html#cb58-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb58-5"><a href="figure-number.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="in">```{r mtcars, fig.cap = &quot;これもすごいプロット&quot;}</span></span>
-<span id="cb58-6"><a href="figure-number.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="in">plot(mpg ~ hp, mtcars)</span></span>
-<span id="cb58-7"><a href="figure-number.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
-<p><a href="cross-ref.html#cross-ref">4.7</a> 節では表や数式といった他の要素でどのように動くか, そして付番された要素をテキスト内で相互参照する方法を実演しています. <code>html_document2</code> の他にも, <code>pdf_document2</code>, <code>word_document2</code> といった他の出力に対する同様のフォーマット関数もあります.</p>
-<p><strong>bookdown</strong> 以外の R Markdown 出力フォーマットにもこの機能を追加できます. 鍵となるのはこれらが <strong>bookdown</strong> 出力フォーマットの「基本フォーマット」であることです. 例えば, <code>rticles::jss_article</code> フォーマットで図に付番と相互参照をするために以下が使えます.</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb59-1"><a href="figure-number.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb59-2"><a href="figure-number.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="at">  bookdown:</span><span class="fu">:pdf_book</span><span class="kw">:</span></span>
-<span id="cb59-3"><a href="figure-number.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">base_format</span><span class="kw">:</span><span class="at"> rticles::jss_article</span></span></code></pre></div>
-<p><strong>bookdown</strong> 出力フォーマット関数のヘルプページを読んで, <code>base_format</code> 引数があるかどうか確認してみてください (例: <code>?bookdown::html_document2</code>).</p>
-</div>
-<h3>参考文献</h3>
-<div id="refs" class="references csl-bib-body hanging-indent">
-<div id="ref-R-bookdown" class="csl-entry">
-———. 2021a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>.
-</div>
+<div id="page-not-found" class="section level1">
+<h1>Page not found</h1>
+<p>The page you requested cannot be found (perhaps it was moved or renamed).</p>
+<p>You may want to try searching to find the page's new location, or use
+the table of contents to find the page you are looking for.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="multiple-authors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="combine-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -560,7 +539,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/JP/content/04-content.Rmd",
+"link": "https://github.com/Gedevan-Aleksizde/rmarkdown-cookbook/edit/master/%s",
 "text": "Edit"
 },
 "history": {

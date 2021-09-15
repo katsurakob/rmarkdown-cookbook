@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.1 カスタム Word テンプレート | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.1 カスタム Word テンプレート | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="word.html"/>
 <link rel="next" href="word-redoc.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -505,14 +505,14 @@ div.csl-indent {
 <span id="cb179-4"><a href="word-template.html#cb179-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">reference_docx</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;template.docx&quot;</span></span>
 <span id="cb179-5"><a href="word-template.html#cb179-5" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
 <p>たった今言及したように, <code>template.docx</code> は Pandoc から生成されたものでなければなりません. このテンプレートは <code>word_document</code> 出力フォーマットを使ったどのような R Markdown 文書 からでも (この文書の実際の内容はなんでも問題ありませんが, スタイルを適用したい要素の種類を含んでいるべきです) 作ることができます<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>. それから <code>.docx</code> ファイルを開き, スタイルを編集します.</p>
-<div class="figure" style="text-align: center"><span id="fig:word-template-1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:word-template-1"></span>
 <img src="JP/images/word-template-1.png" alt="特定の文書要素のスタイルを見つける"  />
 <p class="caption">
 図 8.1: 特定の文書要素のスタイルを見つける
 </p>
 </div>
 <p>図<a href="word-template.html#fig:word-template-1">8.1</a>は Word の「ホーム」タブから「スタイル」ウィンドウを開くと見つけられます. カーソルを文書の特定の要素上に動かすと, スタイルリストの項目が強調されます. ある要素のスタイルを変更したいならば, 強調された項目上でドロップダウンメニューの「変更」をクリックして図<a href="word-template.html#fig:word-template-2">8.2</a>のようなダイアログボックスを見ることができます.</p>
-<div class="figure" style="text-align: center"><span id="fig:word-template-2"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:word-template-2"></span>
 <img src="JP/images/word-template-2.png" alt="Word 文書の要素のスタイルを変更する"  />
 <p class="caption">
 図 8.2: Word 文書の要素のスタイルを変更する
@@ -521,7 +521,7 @@ div.csl-indent {
 <p>スタイルの編集を終わったら, 文書を保存し (誤って上書きしないようなファイル名にしてください), 今後の Word 文書のテンプレートとして使用することができます. Pandoc が参照文書テンプレートを与えられて新しい Word 文書をレンダリングするとき, テンプレートのスタイルが読み出されて新しい文書に適用されます.</p>
 <p>カスタムスタイル付きの Word テンプレートを作成する方法の詳細については, <a href="https://vimeo.com/110804387" class="uri">https://vimeo.com/110804387</a> で短い動画を見るか, <a href="https://rmarkdown.rstudio.com/articles_docx.html" class="uri">https://rmarkdown.rstudio.com/articles_docx.html</a> の記事を読むとよいでしょう.</p>
 <p>文書の要素に対するスタイル名がすぐには見つからないこともあります. 複数のスタイルが同じ要素に適用され, それらのうち1つだけが強調されてみえることもあります. 修正したいスタイルが実際になんであるかは, 当て推量やネット検索で解決することが求められることもあります. 例えば「スタイルの管理」ボタン (図<a href="word-template.html#fig:word-template-1">8.1</a>のスタイルリストの下部にある, 左から3番目のボタン) をクリックし, “Table” スタイル (図<a href="word-template.html#fig:word-table">8.3</a>参照) を見つけるまでには多数のスタイル名をスクロールして飛ばさなければならりません. これでようやく, 枠線などの表のスタイルを修正できます.</p>
-<div class="figure" style="text-align: center"><span id="fig:word-table"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:word-table"></span>
 <img src="JP/images/word-table.png" alt="Word 文書の表のスタイルを修正する"  />
 <p class="caption">
 図 8.3: Word 文書の表のスタイルを修正する
@@ -548,7 +548,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -588,6 +587,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

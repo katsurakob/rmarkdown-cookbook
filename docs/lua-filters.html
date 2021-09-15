@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4.20 Pandoc の Lua フィルタから操作する (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4.20 Pandoc の Lua フィルタから操作する (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="code-appendix.html"/>
 <link rel="next" href="formatting.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -507,41 +507,39 @@ div.csl-indent {
 <p>このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後にファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb74-1"><a href="lua-filters.html#cb74-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> json <span class="at">-o</span> ast.json ast.md</span></code></pre></div>
 <p>そして JSON ファイルを R に読み込み, データ構造を書き出します.</p>
-<p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type,” <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
+<p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type”, <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb75-1"><a href="lua-filters.html#cb75-1"></a>xfun<span class="sc">:::</span><span class="fu">tree</span>(</span>
 <span id="cb75-2"><a href="lua-filters.html#cb75-2"></a>  jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&#39;ast.json&#39;</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb75-3"><a href="lua-filters.html#cb75-3"></a>)</span></code></pre></div>
 <pre><code>List of 3
- |-blocks            :List of 2
- |  |-:List of 2
- |  |  |-t: chr &quot;Header&quot;
- |  |  |-c:List of 3
- |  |     |-: int 2
- |  |     |-:List of 3
- |  |     |  |-: chr &quot;第1節&quot;
- |  |     |  |-: list()
- |  |     |  |-: list()
- |  |     |-:List of 1
- |  |        |-:List of 2
- |  |           |-t: chr &quot;Str&quot;
- |  |           |-c: chr &quot;第1節&quot;
- |  |-:List of 2
- |     |-t: chr &quot;Para&quot;
- |     |-c:List of 3
- |        |-:List of 2
- |        |  |-t: chr &quot;Str&quot;
- |        |  |-c: chr &quot;Hello&quot;
- |        |-:List of 1
- |        |  |-t: chr &quot;Space&quot;
- |        |-:List of 2
- |           |-t: chr &quot;Str&quot;
- |           |-c: chr &quot;world!&quot;
- |-pandoc-api-version:List of 4
+ |-pandoc-api-version:List of 2
  |  |-: int 1
- |  |-: int 17
- |  |-: int 5
- |  |-: int 4
- |-meta              : Named list()</code></pre>
+ |  |-: int 22
+ |-meta              : Named list()
+ |-blocks            :List of 2
+    |-:List of 2
+    |  |-t: chr &quot;Header&quot;
+    |  |-c:List of 3
+    |     |-: int 2
+    |     |-:List of 3
+    |     |  |-: chr &quot;第1節&quot;
+    |     |  |-: list()
+    |     |  |-: list()
+    |     |-:List of 1
+    |        |-:List of 2
+    |           |-t: chr &quot;Str&quot;
+    |           |-c: chr &quot;第1節&quot;
+    |-:List of 2
+       |-t: chr &quot;Para&quot;
+       |-c:List of 3
+          |-:List of 2
+          |  |-t: chr &quot;Str&quot;
+          |  |-c: chr &quot;Hello&quot;
+          |-:List of 1
+          |  |-t: chr &quot;Space&quot;
+          |-:List of 2
+             |-t: chr &quot;Str&quot;
+             |-c: chr &quot;world!&quot;</code></pre>
 <p>あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.</p>
 <p>最初に <code>raise-header.lua</code> という名前の Lua スクリプトファイルを作ります. これには <code>Header</code> という名前の関数が含まれており, “Header” タイプの要素を修正したいということを意味しています (一般に, あるタイプの要素を処理するためにタイプ名を関数名として使うことができます).</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode numberSource lua numberLines lineAnchors"><code class="sourceCode lua"><span id="cb77-1"><a href="lua-filters.html#cb77-1"></a><span class="kw">function</span> Header<span class="op">(</span>el<span class="op">)</span></span>
@@ -556,7 +554,8 @@ div.csl-indent {
 <p>そしてこのスクリプト Pandoc の <code>--lua-filter</code> 引数に与えることができます. 例えばこうです.</p>
 <div class="sourceCode" id="cb78"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb78-1"><a href="lua-filters.html#cb78-1"></a><span class="ex">pandoc</span> <span class="at">-t</span> markdown <span class="at">--atx-headers</span> <span class="dt">\</span></span>
 <span id="cb78-2"><a href="lua-filters.html#cb78-2"></a>  <span class="at">--lua-filter</span><span class="op">=</span>raise-header.lua ast.md</span></code></pre></div>
-<pre><code># 第1節
+<pre><code>[WARNING] Deprecated: --atx-headers. Use --markdown-headings=atx instead.
+# 第1節
 
 Hello world!</code></pre>
 <p><code>## Section One</code> を <code># Section One</code> へ変換することに成功したのがお分かりかと思います. この例は些細なものだと思うかも知れませんし, どうして次のように単に正規表現を使って <code>##</code> を <code>#</code> に置き換えないのかと思うことでしょう.</p>
@@ -599,7 +598,6 @@ Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2021. <em>Pagedown: Pa
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -639,6 +637,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

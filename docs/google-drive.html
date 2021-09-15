@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>17.6 trackdown で Google ドライブの Rmd 文書を共同編集する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="17.6 trackdown で Google ドライブの Rmd 文書を共同編集する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="custom-knit.html"/>
 <link rel="next" href="workflowr.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -498,8 +498,13 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="google-drive" class="section level2" number="17.6">
 <h2><span class="header-section-number">17.6</span> trackdown で Google ドライブの Rmd 文書を共同編集する</h2>
-<p><strong>trackdown</strong> パッケージ <span class="citation">(<a href="#ref-R-trackdown" role="doc-biblioref">Kothe et al. 2021</a>)</span> は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. <strong>trackdown</strong> は <strong>googledrive</strong> パッケージ <span class="citation">(<a href="#ref-R-googledrive" role="doc-biblioref">D’Agostino McGowan and Bryan 2020</a>)</span> を基にして, ローカルの <code>.Rmd</code> (または <code>.Rnw</code>) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.</p>
-<p>現時点では <strong>trackdown</strong> GitHub <a href="https://github.com/ekothe/trackdown" class="uri">https://github.com/ekothe/trackdown</a> でのみ利用可能です. パッケージのドキュメントは <a href="https://ekothe.github.io/trackdown/" class="uri">https://ekothe.github.io/trackdown/</a> で読むことができます.</p>
+<p><strong>trackdown</strong> パッケージ <span class="citation">(<a href="#ref-R-trackdown" role="doc-biblioref">Kothe et al. 2021</a>)</span> は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. <strong>trackdown</strong> は <strong>googledrive</strong> パッケージ <span class="citation">(<a href="#ref-R-googledrive" role="doc-biblioref">D’Agostino McGowan and Bryan 2021</a>)</span> を基にして, ローカルの <code>.Rmd</code> (または <code>.Rnw</code>) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.</p>
+<p><strong>trackdown</strong> は CRAN から, あるいは開発版を GitHub からインストールしてもいいでしょう. (<a href="https://github.com/claudiozandonella/trackdown" class="uri">https://github.com/claudiozandonella/trackdown</a>):</p>
+<div class="sourceCode" id="cb498"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb498-1"><a href="google-drive.html#cb498-1"></a><span class="co"># install from CRAN</span></span>
+<span id="cb498-2"><a href="google-drive.html#cb498-2"></a><span class="fu">install.packages</span>(<span class="st">&quot;trackdown&quot;</span>)</span>
+<span id="cb498-3"><a href="google-drive.html#cb498-3"></a></span>
+<span id="cb498-4"><a href="google-drive.html#cb498-4"></a><span class="co"># install the development version</span></span>
+<span id="cb498-5"><a href="google-drive.html#cb498-5"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;claudiozandonella/trackdown&quot;</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <div id="trackdown-の作業工程" class="section level3" number="17.6.1">
 <h3><span class="header-section-number">17.6.1</span> trackdown の作業工程</h3>
 <p><code>.Rmd</code> (あるいは <code>.Rnw</code>) の共同での読み書き作業では, 異なるコンピュータのコードやナラティブを持つテキストを利用することが重要となります:</p>
@@ -512,7 +517,7 @@ div.csl-indent {
 <p><strong>Git</strong> による <strong>コード</strong> の共同執筆と <strong>Google ドキュメント</strong> による <strong>ナラティブ</strong>の共同執筆</p>
 </blockquote>
 <p>作業工程の詳細な例は <a href="https://ekothe.github.io/trackdown/articles/trackdown-workflow.html" class="uri">https://ekothe.github.io/trackdown/articles/trackdown-workflow.html</a> を見てください.</p>
-<div class="figure" style="text-align: center"><span id="fig:trakdown1"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:trakdown1"></span>
 <img src="JP/images/trackdown1.png" alt="trackdown の作業工程, コードの共同執筆は Git を使いローカルで行い,  ナラティブの共同執筆は Google ドキュメントを使いオンラインで行う"  />
 <p class="caption">
 図 17.2: trackdown の作業工程, コードの共同執筆は Git を使いローカルで行い, ナラティブの共同執筆は Google ドキュメントを使いオンラインで行う
@@ -550,10 +555,10 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-googledrive" class="csl-entry">
-D’Agostino McGowan, Lucy, and Jennifer Bryan. 2020. <em>Googledrive: An Interface to Google Drive</em>.
+D’Agostino McGowan, Lucy, and Jennifer Bryan. 2021. <em>Googledrive: An Interface to Google Drive</em>. <a href="https://CRAN.R-project.org/package=googledrive">https://CRAN.R-project.org/package=googledrive</a>.
 </div>
 <div id="ref-R-trackdown" class="csl-entry">
-Kothe, Emily, Claudio Zandonella Callegher, Filippo Gambarota, Janosch Linkersdörfer, and Mathew Ling. 2021. <em>Trackdown: Collaborative Writing and Editing of r Markdown (or Sweave) Documents in Google Drive</em>.
+Kothe, Emily, Claudio Zandonella Callegher, Filippo Gambarota, Janosch Linkersdörfer, and Mathew Ling. 2021. <em>Trackdown: Collaborative Writing and Editing of r Markdown (or Sweave) Documents in Google Drive</em>. <a href="https://CRAN.R-project.org/package=trackdown">https://CRAN.R-project.org/package=trackdown</a>.
 </div>
 </div>
 <div class="footnotes">
@@ -572,7 +577,6 @@ Kothe, Emily, Claudio Zandonella Callegher, Filippo Gambarota, Janosch Linkersd�
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -612,6 +616,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

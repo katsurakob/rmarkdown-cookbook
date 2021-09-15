@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16.7 R パッケージのビネット | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16.7 R パッケージのビネット | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="working-directory.html"/>
 <link rel="next" href="package-template.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -499,9 +499,9 @@ div.csl-indent {
 <div id="package-vignette" class="section level2" number="16.7">
 <h2><span class="header-section-number">16.7</span> R パッケージのビネット</h2>
 <p>R パッケージの開発を経験したか, プロジェクトで自作関数の明瞭なドキュメントや厳格なテストが要求されたなら, プロジェクトを R パッケージと結びつけてみてはどうでしょうか. R パッケージの作り方が分からないなら, RStudio IDE でメニューバーの <code>File -&gt; New Project</code> をクリックし, プロジェクトの種類に R パッケージを選ぶことで簡単に始めることができます.</p>
-<p>プロジェクトの管理に R パッケージを使うことには多くの利益があります. 例えば <code>data/</code> フォルダにデータを置き, <code>R/</code> に R コードを書き, 例えば <strong>roxygen2</strong> パッケージ <span class="citation">(<a href="#ref-R-roxygen2" role="doc-biblioref">Wickham, Danenberg, et al. 2020</a>)</span> を使用して, ドキュメントを <code>man/</code> に生成し, <code>test/</code> には単体テストを追加できます. R Markdown のレポートなら <code>vignette/</code> にパッケージのビネットとして書くことができます. ビネット内ではデータセットを読み込みパッケージ内の関数を呼び出せます. (<code>R CMD build</code> コマンドか RStudio で) パッケージをビルドする時に, ビネットは自動でコンパイルされます.</p>
+<p>プロジェクトの管理に R パッケージを使うことには多くの利益があります. 例えば <code>data/</code> フォルダにデータを置き, <code>R/</code> に R コードを書き, 例えば <strong>roxygen2</strong> パッケージ <span class="citation">(<a href="#ref-R-roxygen2" role="doc-biblioref">Wickham, Danenberg, et al. 2021</a>)</span> を使用して, ドキュメントを <code>man/</code> に生成し, <code>test/</code> には単体テストを追加できます. R Markdown のレポートなら <code>vignette/</code> にパッケージのビネットとして書くことができます. ビネット内ではデータセットを読み込みパッケージ内の関数を呼び出せます. (<code>R CMD build</code> コマンドか RStudio で) パッケージをビルドする時に, ビネットは自動でコンパイルされます.</p>
 <p>R Markdown でパッケージのビネットを作成するのに最も簡単な方法は, RStudio のメニュー <code>File -&gt; New File -&gt; R Markdown -&gt; From Template</code>を経由するものです (図<a href="package-vignette.html#fig:package-vignette">16.4</a>参照). それから <strong>rmarkdown</strong> パッケージから “Package Vignette” を選択すると, ビネットのテンプレートが得られます. テンプレートの, タイトル・著者・その他のメタデータを変更したら, レポートの本文を書き始めましょう.</p>
-<div class="figure" style="text-align: center"><span id="fig:package-vignette"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:package-vignette"></span>
 <img src="JP/images/package-vignette.png" alt="RStudio でパッケージのビネットを作成する"  />
 <p class="caption">
 図 16.4: RStudio でパッケージのビネットを作成する
@@ -527,10 +527,10 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-usethis" class="csl-entry">
-Wickham, Hadley, and Jennifer Bryan. 2021. <em>Usethis: Automate Package and Project Setup</em>.
+Wickham, Hadley, and Jennifer Bryan. 2021. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.
 </div>
 <div id="ref-R-roxygen2" class="csl-entry">
-Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2020. <em>Roxygen2: In-Line Documentation for r</em>.
+Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2021. <em>Roxygen2: In-Line Documentation for r</em>. <a href="https://CRAN.R-project.org/package=roxygen2">https://CRAN.R-project.org/package=roxygen2</a>.
 </div>
 </div>
             </section>
@@ -543,7 +543,6 @@ Wickham, Hadley, Peter Danenberg, Gábor Csárdi, and Manuel Eugster. 2020. <em>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -583,6 +582,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

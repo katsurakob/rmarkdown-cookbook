@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15 その他の言語 | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15 その他の言語 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="cache-rds.html"/>
 <link rel="next" href="custom-engine.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -511,7 +511,8 @@ div.csl-indent {
 ## [29] &quot;asy&quot;       &quot;cat&quot;       &quot;asis&quot;      &quot;stan&quot;     
 ## [33] &quot;block&quot;     &quot;block2&quot;    &quot;js&quot;        &quot;css&quot;      
 ## [37] &quot;sql&quot;       &quot;go&quot;        &quot;python&quot;    &quot;julia&quot;    
-## [41] &quot;sass&quot;      &quot;scss&quot;      &quot;R&quot;         &quot;bslib&quot;</code></pre>
+## [41] &quot;sass&quot;      &quot;scss&quot;      &quot;R&quot;         &quot;bslib&quot;    
+## [45] &quot;targets&quot;</code></pre>
 <p>現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の <code>bash</code> コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の <code>bash</code> コードチャンクはそれ以前の <code>bash</code> チャンクで作成された変数を使うことができませんし, <code>cd</code> による作業ディレクトリの変更も異なる <code>bash</code> チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (<a href="eng-python.html#eng-python">15.2</a>節参照).</p>
 <p><em>R Markdown Definitive Guide</em> <span class="citation">(<a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">Section 2.7</a> では Python, シェル, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C そして Fortran のコードを使用する例が紹介されています. この章ではさらなる言語エンジンを紹介します. そしてさらなる例はリポジトリ <a href="https://github.com/yihui/knitr-examples" class="uri">https://github.com/yihui/knitr-examples</a> で見られます. “engine” という単語を含むファイルを探してください.</p>
 <p>初めに, カスタム言語エンジンの登録によってこれがどのように動作するかを解明しましょう.</p>
@@ -532,7 +533,6 @@ Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Defi
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -572,6 +572,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>7.9 カスタム HTML テンプレートを使う (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="7.9 カスタム HTML テンプレートを使う (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="embed-file.html"/>
 <link rel="next" href="include-html.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -503,7 +503,7 @@ div.csl-indent {
 <span id="cb162-2"><a href="html-template.html#cb162-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;head&gt;</span></span>
 <span id="cb162-3"><a href="html-template.html#cb162-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;title&gt;</span>$title$<span class="kw">&lt;/title&gt;</span></span>
 <span id="cb162-4"><a href="html-template.html#cb162-4" aria-hidden="true" tabindex="-1"></a>    $for(css)$</span>
-<span id="cb162-5"><a href="html-template.html#cb162-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span><span class="ot"> rel=</span><span class="st">&quot;stylesheet&quot;</span><span class="ot"> href=</span><span class="st">&quot;$css$&quot;</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb162-5"><a href="html-template.html#cb162-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;$css$&quot;</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text/css&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb162-6"><a href="html-template.html#cb162-6" aria-hidden="true" tabindex="-1"></a>    $endfor$</span>
 <span id="cb162-7"><a href="html-template.html#cb162-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/head&gt;</span></span>
 <span id="cb162-8"><a href="html-template.html#cb162-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;body&gt;</span></span>
@@ -513,7 +513,7 @@ div.csl-indent {
 <p>テンプレートに <code>$title$</code>, <code>$body$</code> といったいくつかの変数が含まれているのがわかるでしょう. Pandoc 変数の完全なリストとそれぞれの意味については <a href="https://pandoc.org/MANUAL.html#templates" class="uri">https://pandoc.org/MANUAL.html#templates</a> で検索できます.</p>
 <p>テンプレートによってあなたは HTML 出力をカスタマイズする究極の力を得ることになります. 例えば好きな CSS スタイルシートや JavaScript コード, あるいはライブラリを <code>&lt;head&gt;</code> 内で読み込ませたりできます. あるいは次のように, 文書が下書きか最終稿かを示すブーリアン変数 <code>draft</code> も使えます.</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb163-1"><a href="html-template.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;head&gt;</span></span>
-<span id="cb163-2"><a href="html-template.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span><span class="ot"> type=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb163-2"><a href="html-template.html#cb163-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;style</span> <span class="er">type</span><span class="ot">=</span><span class="st">&quot;text/css&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb163-3"><a href="html-template.html#cb163-3" aria-hidden="true" tabindex="-1"></a><span class="fu">.logo</span> {</span>
 <span id="cb163-4"><a href="html-template.html#cb163-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">float</span>: <span class="dv">right</span><span class="op">;</span></span>
 <span id="cb163-5"><a href="html-template.html#cb163-5" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -521,13 +521,13 @@ div.csl-indent {
 <span id="cb163-7"><a href="html-template.html#cb163-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span></span>
 <span id="cb163-8"><a href="html-template.html#cb163-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb163-9"><a href="html-template.html#cb163-9" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;body&gt;</span></span>
-<span id="cb163-10"><a href="html-template.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb163-10"><a href="html-template.html#cb163-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;logo&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb163-11"><a href="html-template.html#cb163-11" aria-hidden="true" tabindex="-1"></a>$if(draft)$</span>
 <span id="cb163-12"><a href="html-template.html#cb163-12" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- use draft.png to show that this is a draft --&gt;</span></span>
-<span id="cb163-13"><a href="html-template.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/draft.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Draft mode&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb163-13"><a href="html-template.html#cb163-13" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;images/draft.png&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;Draft mode&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb163-14"><a href="html-template.html#cb163-14" aria-hidden="true" tabindex="-1"></a>$else$</span>
 <span id="cb163-15"><a href="html-template.html#cb163-15" aria-hidden="true" tabindex="-1"></a><span class="co">&lt;!-- insert the formal logo if this is final --&gt;</span></span>
-<span id="cb163-16"><a href="html-template.html#cb163-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;images/logo.png&quot;</span><span class="ot"> alt=</span><span class="st">&quot;Final version&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb163-16"><a href="html-template.html#cb163-16" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;images/logo.png&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;Final version&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb163-17"><a href="html-template.html#cb163-17" aria-hidden="true" tabindex="-1"></a>$endif$</span>
 <span id="cb163-18"><a href="html-template.html#cb163-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span>
 <span id="cb163-19"><a href="html-template.html#cb163-19" aria-hidden="true" tabindex="-1"></a></span>
@@ -554,7 +554,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -594,6 +593,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

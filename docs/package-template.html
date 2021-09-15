@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>16.8 R パッケージの R Markdown テンプレート | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="16.8 R パッケージの R Markdown テンプレート | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="package-vignette.html"/>
 <link rel="next" href="bookdown.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -506,7 +506,7 @@ div.csl-indent {
 <p>多くのテンプレートは入力済みのメタデータによって文書構造とスタイルを追加しています. すでに <strong>rmarkdown</strong> パッケージの (HTML の) ビネットテンプレートを例としてお見せしました. 同様に, <strong>rmdformats</strong> パッケージ <span class="citation">(<a href="#ref-R-rmdformats" role="doc-biblioref">Barnier 2021</a>)</span> では様々なカスタムスタイル関数を <code>output</code> オプションに渡すテンプレートがいくつも提供されています.</p>
 <p>その他のテンプレートではパッケージで必要になる文書の構文を例示しているものがあります. 例えば <strong>pagedown</strong> パッケージ <span class="citation">(<a href="#ref-R-pagedown" role="doc-biblioref">Xie et al. 2021</a>)</span> はポスター・履歴書・その他のページレイアウト用に無数のテンプレートを同梱しています. 同様に <strong>xaringan</strong> パッケージ <span class="citation">(<a href="#ref-R-xaringan" role="doc-biblioref">Xie 2021f</a>)</span> の忍者風のプレゼンテーションテンプレートは様々なスライドフォーマットのオプションに対する構文を例示しています.</p>
 <p>テンプレートによってはパッケージの機能と構文を例示していることもあります. 例えば <strong>flexdashboard</strong> パッケージ <span class="citation">(<a href="#ref-R-flexdashboard" role="doc-biblioref">Iannone, Allaire, and Borges 2020</a>)</span> と <strong>learnr</strong> <span class="citation">(<a href="#ref-R-learnr" role="doc-biblioref">Schloerke, Allaire, and Borges 2020</a>)</span> パッケージには,　サンプルのダッシュボートとチュートリアルをそれぞれ作成するために, パッケージから関数を呼び出すコードチャンク付きのテンプレートを同梱しています.</p>
-<p>同様に, テンプレートには定型的なコンテンツの雛形を含んでいるものもあります. 例えば <strong>rticles</strong> パッケージ <span class="citation">(<a href="#ref-R-rticles" role="doc-biblioref">Allaire, Xie, R Foundation, et al. 2021</a>)</span> にはたくさんテンプレートがあって, R Markdown 出力を様々な学術誌で要求されるスタイルとガイドラインに沿って調整できます. コンテンツの雛形は, 四半期レポートを作成するチームのようなところで組織的に設定する際にも便利です.</p>
+<p>同様に, テンプレートには定型的なコンテンツの雛形を含んでいるものもあります. 例えば <strong>rticles</strong> パッケージ <span class="citation">(<a href="#ref-R-rticles" role="doc-biblioref">Allaire, Xie, Dervieux, et al. 2021</a>)</span> にはたくさんテンプレートがあって, R Markdown 出力を様々な学術誌で要求されるスタイルとガイドラインに沿って調整できます. コンテンツの雛形は, 四半期レポートを作成するチームのようなところで組織的に設定する際にも便利です.</p>
 </div>
 <div id="テンプレートの準備" class="section level3" number="16.8.2">
 <h3><span class="header-section-number">16.8.2</span> テンプレートの準備</h3>
@@ -526,7 +526,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-rticles" class="csl-entry">
-Allaire, JJ, Yihui Xie, R Foundation, Hadley Wickham, Journal of Statistical Software, Ramnath Vaidyanathan, Association for Computing Machinery, et al. 2021. <em>Rticles: Article Formats for r Markdown</em>. <a href="https://github.com/rstudio/rticles">https://github.com/rstudio/rticles</a>.
+Allaire, JJ, Yihui Xie, Christophe Dervieux, R Foundation, Hadley Wickham, Journal of Statistical Software, Ramnath Vaidyanathan, et al. 2021. <em>Rticles: Article Formats for r Markdown</em>. <a href="https://github.com/rstudio/rticles">https://github.com/rstudio/rticles</a>.
 </div>
 <div id="ref-R-rmdformats" class="csl-entry">
 Barnier, Julien. 2021. <em>Rmdformats: HTML Output Formats and Templates for Rmarkdown Documents</em>. <a href="https://github.com/juba/rmdformats">https://github.com/juba/rmdformats</a>.
@@ -535,10 +535,10 @@ Barnier, Julien. 2021. <em>Rmdformats: HTML Output Formats and Templates for Rma
 Iannone, Richard, JJ Allaire, and Barbara Borges. 2020. <em>Flexdashboard: R Markdown Format for Flexible Dashboards</em>. <a href="http://rmarkdown.rstudio.com/flexdashboard">http://rmarkdown.rstudio.com/flexdashboard</a>.
 </div>
 <div id="ref-R-learnr" class="csl-entry">
-Schloerke, Barret, JJ Allaire, and Barbara Borges. 2020. <em>Learnr: Interactive Tutorials for r</em>.
+Schloerke, Barret, JJ Allaire, and Barbara Borges. 2020. <em>Learnr: Interactive Tutorials for r</em>. <a href="https://CRAN.R-project.org/package=learnr">https://CRAN.R-project.org/package=learnr</a>.
 </div>
 <div id="ref-R-usethis" class="csl-entry">
-Wickham, Hadley, and Jennifer Bryan. 2021. <em>Usethis: Automate Package and Project Setup</em>.
+Wickham, Hadley, and Jennifer Bryan. 2021. <em>Usethis: Automate Package and Project Setup</em>. <a href="https://CRAN.R-project.org/package=usethis">https://CRAN.R-project.org/package=usethis</a>.
 </div>
 <div id="ref-R-xaringan" class="csl-entry">
 ———. 2021f. <em>Xaringan: Presentation Ninja</em>. <a href="https://github.com/yihui/xaringan">https://github.com/yihui/xaringan</a>.
@@ -560,7 +560,6 @@ Xie, Yihui, Romain Lesur, Brent Thorne, and Xianying Tan. 2021. <em>Pagedown: Pa
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -600,6 +599,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

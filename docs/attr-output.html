@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.13 テキスト出力ブロックに属性を与える (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.13 テキスト出力ブロックに属性を与える (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="opts-comment.html"/>
 <link rel="next" href="fig-process.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -504,7 +504,7 @@ div.csl-indent {
 <span id="cb319-2"><a href="attr-output.html#cb319-2" aria-hidden="true" tabindex="-1"></a><span class="in">出力された行</span></span>
 <span id="cb319-3"><a href="attr-output.html#cb319-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>出力フォーマットが HTML ならば, たいていの場合で<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>このように変換されます.</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb320-1"><a href="attr-output.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> class=</span><span class="st">&quot;className&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb320"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb320-1"><a href="attr-output.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;className&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb320-2"><a href="attr-output.html#cb320-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>出力された行<span class="kw">&lt;/code&gt;</span></span>
 <span id="cb320-3"><a href="attr-output.html#cb320-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
 <p><code>class.*</code> オプションは <code>&lt;pre&gt;</code> 要素の <code>class</code> 属性を制御します. この要素は先述のテキスト出力ブロックを入れたコンテナです.</p>
@@ -513,7 +513,7 @@ div.csl-indent {
 <span id="cb321-2"><a href="attr-output.html#cb321-2" aria-hidden="true" tabindex="-1"></a><span class="in">...</span></span>
 <span id="cb321-3"><a href="attr-output.html#cb321-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>そして HTML 出力はこのようになります.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb322-1"><a href="attr-output.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;background: pink;&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb322"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb322-1"><a href="attr-output.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;background: pink;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb322-2"><a href="attr-output.html#cb322-2" aria-hidden="true" tabindex="-1"></a>...</span>
 <span id="cb322-3"><a href="attr-output.html#cb322-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/pre&gt;</span></span></code></pre></div>
 <p><a href="number-lines.html#number-lines">5.7</a>, <a href="hook-scroll.html#hook-scroll">12.3</a>節でさらなる例を見ることができます.</p>
@@ -536,7 +536,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -576,6 +575,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

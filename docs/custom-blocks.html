@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>9.6 カスタムブロック (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="9.6 カスタムブロック (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="raw-content.html"/>
 <link rel="next" href="tables.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -514,7 +514,7 @@ div.csl-indent {
 <span id="cb197-2"><a href="custom-blocks.html#cb197-2" aria-hidden="true" tabindex="-1"></a>Hello **world**!</span>
 <span id="cb197-3"><a href="custom-blocks.html#cb197-3" aria-hidden="true" tabindex="-1"></a>:::</span></code></pre></div>
 <p>は以下の HTML コードに変換されます.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb198-1"><a href="custom-blocks.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> id=</span><span class="st">&quot;hello&quot;</span><span class="ot"> class=</span><span class="st">&quot;greeting message&quot;</span><span class="ot"> style=</span><span class="st">&quot;color: red;&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb198"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb198-1"><a href="custom-blocks.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;hello&quot;</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;greeting message&quot;</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;color: red;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb198-2"><a href="custom-blocks.html#cb198-2" aria-hidden="true" tabindex="-1"></a>  Hello <span class="kw">&lt;strong&gt;</span>world<span class="kw">&lt;/strong&gt;</span>!</span>
 <span id="cb198-3"><a href="custom-blocks.html#cb198-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>LaTeX 出力に対しては, 最初のクラス名が LaTeX 環境名として使われます. また, <code>Div</code> ブロックに <code>data-latex</code> と名付けた属性を与え, 環境の引数としましょう. 環境が引数を必要としないなら, この属性は空白にすることができます. 2つの単純な例を以下にお見せします. 1つ目の例は LaTeX で <code>verbatim</code> 環境を使用します. これは引数を必要としません.</p>
@@ -526,7 +526,7 @@ div.csl-indent {
 <span id="cb200-2"><a href="custom-blocks.html#cb200-2" aria-hidden="true" tabindex="-1"></a><span class="vs">ここに \emph{verbatim} テキストを表示.</span></span>
 <span id="cb200-3"><a href="custom-blocks.html#cb200-3" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">verbatim</span>}</span></code></pre></div>
 <p>ブロックが HTML へと変換される場合は, HTML コードはこのようになります.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb201-1"><a href="custom-blocks.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;verbatim&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb201"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb201-1"><a href="custom-blocks.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;verbatim&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb201-2"><a href="custom-blocks.html#cb201-2" aria-hidden="true" tabindex="-1"></a>ここに <span class="kw">&lt;em&gt;</span>verbatim<span class="kw">&lt;/em&gt;</span> テキストを表示.</span>
 <span id="cb201-3"><a href="custom-blocks.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>2つ目の例では <code>center</code> と <code>minipage</code> 環境を使い, ページ幅の半分の大きさに中央揃えしたボックス内にテキストを表示しています.</p>
@@ -595,7 +595,7 @@ div.csl-indent {
 <span id="cb208-5"><a href="custom-blocks.html#cb208-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb208-6"><a href="custom-blocks.html#cb208-6" aria-hidden="true" tabindex="-1"></a>この**新しい注意書き**を見てくれてありがとう! あなたがこれを見ていることは監視されており, 当局に報告される!</span>
 <span id="cb208-7"><a href="custom-blocks.html#cb208-7" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
-<p>出力は:</p>
+<p>出力はこうなります.</p>
 <div class="blackbox">
 <div class="center">
 <p><strong>注意!</strong></p>
@@ -752,7 +752,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -792,6 +791,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

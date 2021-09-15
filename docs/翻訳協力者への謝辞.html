@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>翻訳協力者への謝辞 | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="翻訳協力者への謝辞 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="片桐智志-katagiri-satoshi.html"/>
 <link rel="next" href="installation.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -503,15 +503,15 @@ div.csl-indent {
 <li><a href="https://github.com/nnawata">nnawata</a></li>
 </ul>
 <p>これは以下のようなプログラムで出力しています.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb3-1"><a href="翻訳協力者への謝辞.html#cb3-1"></a>contributors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">read.csv</span>(<span class="fu">textConnection</span>(<span class="fu">system</span>(<span class="st">&quot;git shortlog -s master JP&quot;</span>, </span>
-<span id="cb3-2"><a href="翻訳協力者への謝辞.html#cb3-2"></a>  <span class="at">intern =</span> T)), <span class="at">header =</span> F, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>), <span class="fu">read.csv</span>(<span class="fu">textConnection</span>(<span class="fu">system</span>(<span class="st">&quot;git shortlog -s work JP&quot;</span>, </span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb3-1"><a href="翻訳協力者への謝辞.html#cb3-1"></a>contributors <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">read.csv</span>(<span class="fu">textConnection</span>(<span class="fu">system</span>(<span class="st">&quot;git shortlog -s master JP&quot;</span>,</span>
+<span id="cb3-2"><a href="翻訳協力者への謝辞.html#cb3-2"></a>  <span class="at">intern =</span> T)), <span class="at">header =</span> F, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>), <span class="fu">read.csv</span>(<span class="fu">textConnection</span>(<span class="fu">system</span>(<span class="st">&quot;git shortlog -s work JP&quot;</span>,</span>
 <span id="cb3-3"><a href="翻訳協力者への謝辞.html#cb3-3"></a>  <span class="at">intern =</span> T)), <span class="at">header =</span> F, <span class="at">sep =</span> <span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>))</span>
-<span id="cb3-4"><a href="翻訳協力者への謝辞.html#cb3-4"></a>contributors <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(contributors[, <span class="dv">1</span>], <span class="at">by =</span> <span class="fu">list</span>(contributors<span class="sc">$</span>V2), </span>
+<span id="cb3-4"><a href="翻訳協力者への謝辞.html#cb3-4"></a>contributors <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(contributors[, <span class="dv">1</span>], <span class="at">by =</span> <span class="fu">list</span>(contributors<span class="sc">$</span>V2),</span>
 <span id="cb3-5"><a href="翻訳協力者への謝辞.html#cb3-5"></a>  sum)</span>
-<span id="cb3-6"><a href="翻訳協力者への謝辞.html#cb3-6"></a>contributors <span class="ot">&lt;-</span> <span class="fu">subset</span>(contributors, <span class="sc">!</span><span class="fu">charmatch</span>(contributors<span class="sc">$</span>Group<span class="fl">.1</span>, </span>
+<span id="cb3-6"><a href="翻訳協力者への謝辞.html#cb3-6"></a>contributors <span class="ot">&lt;-</span> <span class="fu">subset</span>(contributors, <span class="sc">!</span><span class="fu">charmatch</span>(contributors<span class="sc">$</span>Group<span class="fl">.1</span>,</span>
 <span id="cb3-7"><a href="翻訳協力者への謝辞.html#cb3-7"></a>  <span class="fu">c</span>(<span class="st">&quot;Katagiri, Satoshi&quot;</span>, <span class="st">&quot;S-Katagiri&quot;</span>), F))</span>
-<span id="cb3-8"><a href="翻訳協力者への謝辞.html#cb3-8"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;* [&quot;</span>, contributors[<span class="fu">order</span>(contributors<span class="sc">$</span>x), ]<span class="sc">$</span>Group<span class="fl">.1</span>, </span>
-<span id="cb3-9"><a href="翻訳協力者への謝辞.html#cb3-9"></a>  <span class="st">&quot;](&quot;</span>, <span class="st">&quot;https://github.com/&quot;</span>, contributors[<span class="fu">order</span>(contributors<span class="sc">$</span>x), </span>
+<span id="cb3-8"><a href="翻訳協力者への謝辞.html#cb3-8"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(<span class="st">&quot;* [&quot;</span>, contributors[<span class="fu">order</span>(contributors<span class="sc">$</span>x), ]<span class="sc">$</span>Group<span class="fl">.1</span>,</span>
+<span id="cb3-9"><a href="翻訳協力者への謝辞.html#cb3-9"></a>  <span class="st">&quot;](&quot;</span>, <span class="st">&quot;https://github.com/&quot;</span>, contributors[<span class="fu">order</span>(contributors<span class="sc">$</span>x),</span>
 <span id="cb3-10"><a href="翻訳協力者への謝辞.html#cb3-10"></a>    ]<span class="sc">$</span>Group<span class="fl">.1</span>, <span class="st">&quot;)&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;, &quot;</span>)</span></code></pre></div>
 
 </div>
@@ -526,7 +526,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -566,6 +565,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

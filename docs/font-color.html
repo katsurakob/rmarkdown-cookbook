@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5.1 フォント色 | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5.1 フォント色 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="formatting.html"/>
 <link rel="next" href="indent-text.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -519,7 +519,7 @@ output: pdf_document
 <span id="cb83-2"><a href="font-color.html#cb83-2"></a>  <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_latex_output</span>()) {</span>
 <span id="cb83-3"><a href="font-color.html#cb83-3"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;</span><span class="sc">\\</span><span class="st">textcolor{%s}{%s}&quot;</span>, color, x)</span>
 <span id="cb83-4"><a href="font-color.html#cb83-4"></a>  } <span class="cf">else</span> <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_html_output</span>()) {</span>
-<span id="cb83-5"><a href="font-color.html#cb83-5"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;&lt;span style=&#39;color: %s;&#39;&gt;%s&lt;/span&gt;&quot;</span>, color, </span>
+<span id="cb83-5"><a href="font-color.html#cb83-5"></a>    <span class="fu">sprintf</span>(<span class="st">&quot;&lt;span style=&#39;color: %s;&#39;&gt;%s&lt;/span&gt;&quot;</span>, color,</span>
 <span id="cb83-6"><a href="font-color.html#cb83-6"></a>      x)</span>
 <span id="cb83-7"><a href="font-color.html#cb83-7"></a>  } <span class="cf">else</span> x</span>
 <span id="cb83-8"><a href="font-color.html#cb83-8"></a>}</span></code></pre></div>
@@ -601,7 +601,6 @@ output: pdf_document
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -641,6 +640,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

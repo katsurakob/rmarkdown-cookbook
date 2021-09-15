@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.3 スクロール可能なテキスト出力 | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.3 スクロール可能なテキスト出力 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="hook-number.html"/>
 <link rel="next" href="hook-truncate.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -513,7 +513,7 @@ div.csl-indent {
 <span id="cb358-8"><a href="hook-scroll.html#cb358-8" aria-hidden="true" tabindex="-1"></a><span class="in">##  ... ...</span></span>
 <span id="cb358-9"><a href="hook-scroll.html#cb358-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>そして, テキスト出力ブロックは Pandoc によって HTML へと変換されます.</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb359-1"><a href="hook-scroll.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span><span class="ot"> style=</span><span class="st">&quot;max-height: 100px;&quot;</span><span class="kw">&gt;</span></span>
+<div class="sourceCode" id="cb359"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb359-1"><a href="hook-scroll.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;pre</span> <span class="er">style</span><span class="ot">=</span><span class="st">&quot;max-height: 100px;&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb359-2"><a href="hook-scroll.html#cb359-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;code&gt;</span>##   [1]   1   2   3   4   5   6   7   8   9  10</span>
 <span id="cb359-3"><a href="hook-scroll.html#cb359-3" aria-hidden="true" tabindex="-1"></a>##  [11]  11  12  13  14  15  16  17  18  19  20</span>
 <span id="cb359-4"><a href="hook-scroll.html#cb359-4" aria-hidden="true" tabindex="-1"></a>##  ... ...<span class="kw">&lt;/code&gt;</span></span>
@@ -565,7 +565,7 @@ div.csl-indent {
 <span id="cb361-2"><a href="hook-scroll.html#cb361-2"></a>  options<span class="sc">$</span>attr.output,</span>
 <span id="cb361-3"><a href="hook-scroll.html#cb361-3"></a>  <span class="fu">sprintf</span>(<span class="st">&#39;style=&quot;max-height: %s;&quot;&#39;</span>, options<span class="sc">$</span>max.height)</span>
 <span id="cb361-4"><a href="hook-scroll.html#cb361-4"></a>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:hook-scroll"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hook-scroll"></span>
 <img src="JP/images/hook-scroll.png" alt="チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例"  />
 <p class="caption">
 図 12.1: チャンクオプション max.height を指定した, スクロール可能なテキスト出力の例
@@ -583,7 +583,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -623,6 +622,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

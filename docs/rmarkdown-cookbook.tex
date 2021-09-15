@@ -326,7 +326,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi (片桐 智志)\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/08/09 13:09:46 JST, ver. 0.9.4.1, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/07/29 23:57:49 JST}}
+\date{2021/09/15 14:25:50 JST, ver. 1.0.0, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/08/17 19:34:48 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -453,9 +453,9 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 \end{Shaded}
 
 \begin{verbatim}
-## R version 4.1.0 (2021-05-18)
+## R version 4.1.1 (2021-08-10)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
-## Running under: Ubuntu 20.04.2 LTS
+## Running under: Ubuntu 20.04.3 LTS
 ## 
 ## Locale:
 ##   LC_CTYPE=ja_JP.UTF-8      
@@ -472,10 +472,10 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.22 knitr_1.33    rmarkdown_2.8
-##   rmdja_0.4.6.9 xfun_0.23    
+##   bookdown_0.24  knitr_1.34     rmarkdown_2.11
+##   rmdja_0.4.6.9  xfun_0.26     
 ## 
-## Pandoc version: 2.11.4
+## Pandoc version: 2.14.2
 \end{verbatim}
 
 上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (\texttt{\textgreater{}} や \texttt{+}) を付けたりしません. またテキスト出力は2連続ハッシュ \texttt{\#\#} でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: \textbf{rmarkdown}) で表記し, 本文中のコードやファイル名はタイプライタフォントで表記します (例: \texttt{knitr::knit(\textquotesingle{}foo.Rmd\textquotesingle{})}). 関数名の末尾には括弧を付けます (例: \texttt{blogdown::serve\_site()}). 二重コロン演算子 \texttt{::} はパッケージのオブジェクトへのアクセスを意味します.
@@ -583,15 +583,15 @@ I am the main translator, which means the most of this text is translated by me.
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s master JP"}\NormalTok{, }
-  \AttributeTok{intern =}\NormalTok{ T)), }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{), }\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s work JP"}\NormalTok{, }
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{rbind}\NormalTok{(}\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s master JP"}\NormalTok{,}
+  \AttributeTok{intern =}\NormalTok{ T)), }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{), }\FunctionTok{read.csv}\NormalTok{(}\FunctionTok{textConnection}\NormalTok{(}\FunctionTok{system}\NormalTok{(}\StringTok{"git shortlog {-}s work JP"}\NormalTok{,}
   \AttributeTok{intern =}\NormalTok{ T)), }\AttributeTok{header =}\NormalTok{ F, }\AttributeTok{sep =} \StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{"}\NormalTok{))}
-\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(contributors[, }\DecValTok{1}\NormalTok{], }\AttributeTok{by =} \FunctionTok{list}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{V2), }
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{aggregate}\NormalTok{(contributors[, }\DecValTok{1}\NormalTok{], }\AttributeTok{by =} \FunctionTok{list}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{V2),}
 \NormalTok{  sum)}
-\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(contributors, }\SpecialCharTok{!}\FunctionTok{charmatch}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }
+\NormalTok{contributors }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(contributors, }\SpecialCharTok{!}\FunctionTok{charmatch}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{,}
   \FunctionTok{c}\NormalTok{(}\StringTok{"Katagiri, Satoshi"}\NormalTok{, }\StringTok{"S{-}Katagiri"}\NormalTok{), F))}
-\FunctionTok{cat}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"* ["}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x), ]}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }
-  \StringTok{"]("}\NormalTok{, }\StringTok{"https://github.com/"}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x), }
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(}\StringTok{"* ["}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x), ]}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{,}
+  \StringTok{"]("}\NormalTok{, }\StringTok{"https://github.com/"}\NormalTok{, contributors[}\FunctionTok{order}\NormalTok{(contributors}\SpecialCharTok{$}\NormalTok{x),}
 \NormalTok{    ]}\SpecialCharTok{$}\NormalTok{Group}\FloatTok{.1}\NormalTok{, }\StringTok{")"}\NormalTok{), }\AttributeTok{sep =} \StringTok{", "}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -1034,7 +1034,7 @@ R Markdown 文書はテキスト (ナラティブ) とコードが混合して�
 \hypertarget{spin}{%
 \section{R スクリプトをレポートにレンダリングする}\label{spin}}
 
-長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを\href{https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/}{"\textbf{knitr} の秘宝}と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (\texttt{Ctrl / Cmd + Shift + K}) です.
+長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを\href{https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/}{``\textbf{knitr} の秘宝}と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (\texttt{Ctrl / Cmd + Shift + K}) です.
 
 R スクリプトをレポートにレンダリングすると, まず \texttt{knitr::spin()}\index{knitr!spin()} 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「\textbf{knitr}の秘宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.
 
@@ -1107,7 +1107,7 @@ R スクリプトをレポートにレンダリングすると, まず \texttt{k
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 
 \NormalTok{ここにインラインの値を書きましょう. $\textbackslash{}pi$ の値は}
-\InformationTok{\textasciigrave{}\textasciigrave{}r  pi  \textasciigrave{}\textasciigrave{}}
+\NormalTok{\textasciigrave{}\textasciigrave{}r  pi  \textasciigrave{}\textasciigrave{}}
 \NormalTok{であると知られています.}
 
 \NormalTok{最後に, 全ての roxygen コメントは任意だということを書いておきます.}
@@ -1464,7 +1464,7 @@ CSL ファイルは個別のフォーマット要件に合うようにを修正�
 \begin{Highlighting}[]
 \FunctionTok{\# 参考文献}
 
-\KeywordTok{\textless{}div}\OtherTok{ id=}\StringTok{"refs"}\KeywordTok{\textgreater{}\textless{}/div\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{id}\OtherTok{=}\StringTok{"refs"}\KeywordTok{\textgreater{}\textless{}/div\textgreater{}}
 
 \FunctionTok{\# 補遺}
 \end{Highlighting}
@@ -1478,7 +1478,7 @@ CSL ファイルは個別のフォーマット要件に合うようにを修正�
 \begin{Highlighting}[]
 \FunctionTok{\# 参考文献}
 
-\KeywordTok{\textless{}div}\OtherTok{ id=}\StringTok{"refs"}\KeywordTok{\textgreater{}\textless{}/div\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{id}\OtherTok{=}\StringTok{"refs"}\KeywordTok{\textgreater{}\textless{}/div\textgreater{}}
 
 \FunctionTok{\# (APPENDIX) 補遺 \{{-}\} }
 
@@ -1511,8 +1511,8 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
   \DataTypeTok{title}\NormalTok{ = \{xaringan: Presentation Ninja\},}
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 0.21\},}
-  \DataTypeTok{url}\NormalTok{ = \{https://github.com/yihui/xaringan\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 0.22\},}
+  \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=xaringan\},}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -1542,7 +1542,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    Report Generation in R\},}
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 1.33\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 1.34\},}
   \DataTypeTok{url}\NormalTok{ = \{https://yihui.org/knitr/\},}
 \NormalTok{\}}
 
@@ -1553,8 +1553,8 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    and Hadley Wickham and Joe Cheng and Winston Chang and}
 \NormalTok{    Richard Iannone\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{https://github.com/rstudio/rmarkdown, https://}
-\NormalTok{    pkgs.rstudio.com/rmarkdown/\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 2.11\},}
+  \DataTypeTok{url}\NormalTok{ = \{https://CRAN.R{-}project.org/package=rmarkdown\},}
 \NormalTok{\}}
 
 \VariableTok{@Book}\NormalTok{\{}\OtherTok{knitr2015}\NormalTok{,}
@@ -1710,16 +1710,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年8月09日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年9月15日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%Y \%B}: 2021 8月
+  \texttt{\%Y \%B}: 2021 9月
 \item
-  \texttt{\%y/\%m/\%d}: 21/08/09
+  \texttt{\%y/\%m/\%d}: 21/09/15
 \item
-  \texttt{\%b\%d (\%a)}: 8月09 (月)
+  \texttt{\%b\%d (\%a)}: 9月15 (水)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -1899,7 +1899,7 @@ Markdown では, 空白行はしばしば段落などの要素の分離に使わ
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{blogdown}\SpecialCharTok{:::}\FunctionTok{quote\_poem}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"かたつむり"}\NormalTok{, }\StringTok{"そろそろ登れ"}\NormalTok{, }
+\NormalTok{blogdown}\SpecialCharTok{:::}\FunctionTok{quote\_poem}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"かたつむり"}\NormalTok{, }\StringTok{"そろそろ登れ"}\NormalTok{,}
   \StringTok{"富士の山"}\NormalTok{))}
 \DocumentationTok{\#\# [1] "\textgreater{} かたつむり  \textbackslash{}nそろそろ登れ  \textbackslash{}n富士の山"}
 \end{Highlighting}
@@ -1936,7 +1936,7 @@ RStudio IDE と \textbf{blogdown} パッケージ \autocite{R-blogdown} をイ�
 
 たまに「fenced code block は空白を維持するのに, 詩句をコードブロックに書くのはなぜですか」と質問があります. コードは詩的でありますが, 詩はコードではありません. コーディング中毒にならないようにしましょう.
 
-:::\{.infobox .caution data-latex``\{caution\}''\}
+:::\{.infobox .caution data-latex''\{caution\}``\}
 
 \textbf{訳注}
 
@@ -2052,7 +2052,7 @@ RStudio IDE は Graphviz (\texttt{.gv}) および mermaid (\texttt{.mmd}) ファ
 \StringTok{  }
 \StringTok{  \# ノードIDでエッジを定義}
 \StringTok{  rec1 {-}\textgreater{} rec2 {-}\textgreater{} rec3 {-}\textgreater{} rec4}
-\StringTok{  \}"}\NormalTok{, }
+\StringTok{  \}"}\NormalTok{,}
   \AttributeTok{height =} \DecValTok{500}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2094,7 +2094,7 @@ Graphviz の置換機能は可読性を損なうことなく, R コードを Gra
 \StringTok{  [2]: names(iris)[2]}
 \StringTok{  [3]: names(iris)[3]}
 \StringTok{  [4]: names(iris)[4]}
-\StringTok{  "}\NormalTok{, }
+\StringTok{  "}\NormalTok{,}
   \AttributeTok{height =} \DecValTok{100}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -2217,36 +2217,34 @@ RStudio を使っているなら, 1行丸ごとコメントアウトするのに
 
 \begin{verbatim}
 List of 3
- |-blocks            :List of 2
- |  |-:List of 2
- |  |  |-t: chr "Header"
- |  |  |-c:List of 3
- |  |     |-: int 2
- |  |     |-:List of 3
- |  |     |  |-: chr "第1節"
- |  |     |  |-: list()
- |  |     |  |-: list()
- |  |     |-:List of 1
- |  |        |-:List of 2
- |  |           |-t: chr "Str"
- |  |           |-c: chr "第1節"
- |  |-:List of 2
- |     |-t: chr "Para"
- |     |-c:List of 3
- |        |-:List of 2
- |        |  |-t: chr "Str"
- |        |  |-c: chr "Hello"
- |        |-:List of 1
- |        |  |-t: chr "Space"
- |        |-:List of 2
- |           |-t: chr "Str"
- |           |-c: chr "world!"
- |-pandoc-api-version:List of 4
+ |-pandoc-api-version:List of 2
  |  |-: int 1
- |  |-: int 17
- |  |-: int 5
- |  |-: int 4
+ |  |-: int 22
  |-meta              : Named list()
+ |-blocks            :List of 2
+    |-:List of 2
+    |  |-t: chr "Header"
+    |  |-c:List of 3
+    |     |-: int 2
+    |     |-:List of 3
+    |     |  |-: chr "第1節"
+    |     |  |-: list()
+    |     |  |-: list()
+    |     |-:List of 1
+    |        |-:List of 2
+    |           |-t: chr "Str"
+    |           |-c: chr "第1節"
+    |-:List of 2
+       |-t: chr "Para"
+       |-c:List of 3
+          |-:List of 2
+          |  |-t: chr "Str"
+          |  |-c: chr "Hello"
+          |-:List of 1
+          |  |-t: chr "Space"
+          |-:List of 2
+             |-t: chr "Str"
+             |-c: chr "world!"
 \end{verbatim}
 
 あなたが AST に気づけば, Lua によって修正することができます. Pandoc は組み込みの Lua インタプリタを持っているので, 追加でツールをインストールする必要はありません. Lua スクリプトは Pandoc では「Lua フィルタ」と呼ばれます. 次に見出しのレベルを1上げる, 例えばレベル3の見出しを2に変換する簡単な例を見せます. これは文書のトップレベルの見出しがレベル2で, 代わりにレベル1から始めたい場合に便利です.
@@ -2277,6 +2275,7 @@ List of 3
 \end{Shaded}
 
 \begin{verbatim}
+[WARNING] Deprecated: --atx-headers. Use --markdown-headings=atx instead.
 # 第1節
 
 Hello world!
@@ -2363,13 +2362,15 @@ Markdown 構文にはテキストの色\index{ふぉんといろ@フォント色
 
 PDF でテキストの色を変更する例として, 以下のようなものを挙げます.
 
-\begin{verbatim}
----
-output: pdf_document
----
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{{-}{-}{-}}
+\NormalTok{output: pdf\_document}
+\NormalTok{{-}{-}{-}}
 
-薔薇は \textcolor{red}{赤い}, 菫は \textcolor{blue}{青い}.
-\end{verbatim}
+\NormalTok{薔薇は \textbackslash{}textcolor\{red\}\{赤い\}, 菫は \textbackslash{}textcolor\{blue\}\{青い\}.}
+\end{Highlighting}
+\end{Shaded}
 
 上記の例では, カーリー・ブレイス（\texttt{\{\}}）のペアの１番目には指定するテキスト色が含まれ, 2番めには色を適用したいテキストが含まれています.
 
@@ -2386,7 +2387,7 @@ output: pdf_document
   \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{()) \{}
     \FunctionTok{sprintf}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{textcolor\{\%s\}\{\%s\}"}\NormalTok{, color, x)}
 \NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_html\_output}\NormalTok{()) \{}
-    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\textless{}span style=\textquotesingle{}color: \%s;\textquotesingle{}\textgreater{}\%s\textless{}/span\textgreater{}"}\NormalTok{, color, }
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"\textless{}span style=\textquotesingle{}color: \%s;\textquotesingle{}\textgreater{}\%s\textless{}/span\textgreater{}"}\NormalTok{, color,}
 \NormalTok{      x)}
 \NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ x}
 \NormalTok{\}}
@@ -2693,7 +2694,7 @@ R コードチャンクで生成されないグラフや画像は, 2通りの方
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{これで出力時にインライン R コードがそのまま表示されます}
-\InformationTok{\textasciigrave{}\textasciigrave{} \textasciigrave{}r knitr::inline\_expr("1+1")\textasciigrave{} \textasciigrave{}\textasciigrave{}}\NormalTok{.}
+\NormalTok{\textasciigrave{}}\InformationTok{\textasciigrave{} \textasciigrave{}}\NormalTok{r knitr::inline\_expr("1+1")\textasciigrave{} \textasciigrave{}\textasciigrave{}.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4022,7 +4023,7 @@ HTML レポートで並列しているセクションをうまくまとめるに
   \KeywordTok{\textless{}head\textgreater{}}
     \KeywordTok{\textless{}title\textgreater{}}\NormalTok{$title$}\KeywordTok{\textless{}/title\textgreater{}}
 \NormalTok{    $for(css)$}
-    \KeywordTok{\textless{}link}\OtherTok{ rel=}\StringTok{"stylesheet"}\OtherTok{ href=}\StringTok{"$css$"}\OtherTok{ type=}\StringTok{"text/css"} \KeywordTok{/\textgreater{}}
+    \KeywordTok{\textless{}link} \ErrorTok{rel}\OtherTok{=}\StringTok{"stylesheet"} \ErrorTok{href}\OtherTok{=}\StringTok{"$css$"} \ErrorTok{type}\OtherTok{=}\StringTok{"text/css"} \KeywordTok{/\textgreater{}}
 \NormalTok{    $endfor$}
   \KeywordTok{\textless{}/head\textgreater{}}
   \KeywordTok{\textless{}body\textgreater{}}
@@ -4039,7 +4040,7 @@ HTML レポートで並列しているセクションをうまくまとめるに
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{\textless{}head\textgreater{}}
-\KeywordTok{\textless{}style}\OtherTok{ type=}\StringTok{"text/css"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}style} \ErrorTok{type}\OtherTok{=}\StringTok{"text/css"}\KeywordTok{\textgreater{}}
 \FunctionTok{.logo}\NormalTok{ \{}
   \KeywordTok{float}\NormalTok{: }\DecValTok{right}\OperatorTok{;}
 \NormalTok{\}}
@@ -4047,13 +4048,13 @@ HTML レポートで並列しているセクションをうまくまとめるに
 \KeywordTok{\textless{}/head\textgreater{}}
 
 \KeywordTok{\textless{}body\textgreater{}}
-\KeywordTok{\textless{}div}\OtherTok{ class=}\StringTok{"logo"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{class}\OtherTok{=}\StringTok{"logo"}\KeywordTok{\textgreater{}}
 \NormalTok{$if(draft)$}
 \CommentTok{\textless{}!{-}{-} use draft.png to show that this is a draft {-}{-}\textgreater{}}
-\KeywordTok{\textless{}img}\OtherTok{ src=}\StringTok{"images/draft.png"}\OtherTok{ alt=}\StringTok{"Draft mode"} \KeywordTok{/\textgreater{}}
+\KeywordTok{\textless{}img} \ErrorTok{src}\OtherTok{=}\StringTok{"images/draft.png"} \ErrorTok{alt}\OtherTok{=}\StringTok{"Draft mode"} \KeywordTok{/\textgreater{}}
 \NormalTok{$else$}
 \CommentTok{\textless{}!{-}{-} insert the formal logo if this is final {-}{-}\textgreater{}}
-\KeywordTok{\textless{}img}\OtherTok{ src=}\StringTok{"images/logo.png"}\OtherTok{ alt=}\StringTok{"Final version"} \KeywordTok{/\textgreater{}}
+\KeywordTok{\textless{}img} \ErrorTok{src}\OtherTok{=}\StringTok{"images/logo.png"} \ErrorTok{alt}\OtherTok{=}\StringTok{"Final version"} \KeywordTok{/\textgreater{}}
 \NormalTok{$endif$}
 \KeywordTok{\textless{}/div\textgreater{}}
 
@@ -4113,7 +4114,7 @@ HTML にあまり詳しくないなら, \ref{html-template}節がこのオプシ
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}div}\OtherTok{ class=}\StringTok{"footer"}\KeywordTok{\textgreater{}}\NormalTok{Copyright }\DecValTok{\&copy;}\NormalTok{ John Doe 2020}\KeywordTok{\textless{}/div\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{class}\OtherTok{=}\StringTok{"footer"}\KeywordTok{\textgreater{}}\NormalTok{Copyright }\DecValTok{\&copy;}\NormalTok{ John Doe 2020}\KeywordTok{\textless{}/div\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4170,7 +4171,7 @@ HTML 文書にファビコンを追加するには, 以下のコードをカス�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}link}\OtherTok{ rel=}\StringTok{"shortcut icon"}\OtherTok{ href=}\StringTok{"\{ファビコン画像ファイルへのパス\}"} \KeywordTok{/\textgreater{}}
+\KeywordTok{\textless{}link} \ErrorTok{rel}\OtherTok{=}\StringTok{"shortcut icon"} \ErrorTok{href}\OtherTok{=}\StringTok{"\{ファビコン画像ファイルへのパス\}"} \KeywordTok{/\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4868,7 +4869,7 @@ HTML ウィジェット (\url{https://htmlwidgets.org})\index{HTML!ウィジェ�
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}div}\OtherTok{ id=}\StringTok{"hello"}\OtherTok{ class=}\StringTok{"greeting message"}\OtherTok{ style=}\StringTok{"color: red;"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{id}\OtherTok{=}\StringTok{"hello"} \ErrorTok{class}\OtherTok{=}\StringTok{"greeting message"} \ErrorTok{style}\OtherTok{=}\StringTok{"color: red;"}\KeywordTok{\textgreater{}}
 \NormalTok{  Hello }\KeywordTok{\textless{}strong\textgreater{}}\NormalTok{world}\KeywordTok{\textless{}/strong\textgreater{}}\NormalTok{!}
 \KeywordTok{\textless{}/div\textgreater{}}
 \end{Highlighting}
@@ -4898,7 +4899,7 @@ LaTeX 出力はこうなります.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}div}\OtherTok{ class=}\StringTok{"verbatim"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{class}\OtherTok{=}\StringTok{"verbatim"}\KeywordTok{\textgreater{}}
 \NormalTok{ここに }\KeywordTok{\textless{}em\textgreater{}}\NormalTok{verbatim}\KeywordTok{\textless{}/em\textgreater{}}\NormalTok{ テキストを表示.}
 \KeywordTok{\textless{}/div\textgreater{}}
 \end{Highlighting}
@@ -5014,7 +5015,7 @@ LaTeX 出力に対しては, LaTeX パッケージの \textbf{framed}\index{LaTe
 \end{Highlighting}
 \end{Shaded}
 
-出力は:
+出力はこうなります.
 
 \begin{blackbox}
 
@@ -5231,8 +5232,8 @@ PDF 出力に対しては, 以前の例で定義した \texttt{blackbox} 環境�
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\FunctionTok{kable}\NormalTok{(x, format, }\AttributeTok{digits =} \FunctionTok{getOption}\NormalTok{(}\StringTok{"digits"}\NormalTok{), }\AttributeTok{row.names =} \ConstantTok{NA}\NormalTok{, }
-  \AttributeTok{col.names =} \ConstantTok{NA}\NormalTok{, align, }\AttributeTok{caption =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{label =} \ConstantTok{NULL}\NormalTok{, }
+\FunctionTok{kable}\NormalTok{(x, format, }\AttributeTok{digits =} \FunctionTok{getOption}\NormalTok{(}\StringTok{"digits"}\NormalTok{), }\AttributeTok{row.names =} \ConstantTok{NA}\NormalTok{,}
+  \AttributeTok{col.names =} \ConstantTok{NA}\NormalTok{, align, }\AttributeTok{caption =} \ConstantTok{NULL}\NormalTok{, }\AttributeTok{label =} \ConstantTok{NULL}\NormalTok{,}
   \AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(), }\AttributeTok{escape =} \ConstantTok{TRUE}\NormalTok{, ...)}
 \end{Highlighting}
 \end{Shaded}
@@ -5293,21 +5294,21 @@ PDF 出力に対しては, 以前の例で定義した \texttt{blackbox} 環境�
 \KeywordTok{\textless{}table\textgreater{}}
  \KeywordTok{\textless{}thead\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}   \KeywordTok{\textless{}/th\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ mpg }\KeywordTok{\textless{}/th\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ cyl }\KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}   \KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ mpg }\KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ cyl }\KeywordTok{\textless{}/th\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
  \KeywordTok{\textless{}/thead\textgreater{}}
 \KeywordTok{\textless{}tbody\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 Wag }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 Wag }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
 \KeywordTok{\textless{}/tbody\textgreater{}}
 \KeywordTok{\textless{}/table\textgreater{}}
@@ -5378,7 +5379,7 @@ PDF 出力に対しては, 以前の例で定義した \texttt{blackbox} 環境�
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \FunctionTok{options}\NormalTok{(}\AttributeTok{knitr.table.format =} \ControlFlowTok{function}\NormalTok{() \{}
-  \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{()) }
+  \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{())}
     \StringTok{"latex"} \ControlFlowTok{else} \StringTok{"pipe"}
 \NormalTok{\})}
 \end{Highlighting}
@@ -5515,7 +5516,7 @@ Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\AttributeTok{X1 =} \FunctionTok{runif}\NormalTok{(}\DecValTok{3}\NormalTok{), }\AttributeTok{X2 =} \DecValTok{10}\SpecialCharTok{\^{}}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{), }\AttributeTok{X3 =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{3}\NormalTok{, }
+\NormalTok{d }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\AttributeTok{X1 =} \FunctionTok{runif}\NormalTok{(}\DecValTok{3}\NormalTok{), }\AttributeTok{X2 =} \DecValTok{10}\SpecialCharTok{\^{}}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{), }\AttributeTok{X3 =} \FunctionTok{rnorm}\NormalTok{(}\DecValTok{3}\NormalTok{,}
   \DecValTok{0}\NormalTok{, }\DecValTok{1000}\NormalTok{))}
 \CommentTok{\# 最大で4桁表示}
 \NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(d, }\AttributeTok{digits =} \DecValTok{4}\NormalTok{)}
@@ -5575,7 +5576,7 @@ X1 & X2 & X3\\
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{\# 大きな数に対してカンマ区切りする}
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(d, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{big.mark =} \StringTok{","}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(d, }\AttributeTok{digits =} \DecValTok{3}\NormalTok{, }\AttributeTok{format.args =} \FunctionTok{list}\NormalTok{(}\AttributeTok{big.mark =} \StringTok{","}\NormalTok{,}
   \AttributeTok{scientific =} \ConstantTok{FALSE}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5741,7 +5742,7 @@ LaTeX で他によく知られた特殊文字として, \texttt{\#}, \texttt{\%}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{:::}\FunctionTok{escape\_html}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"\textless{}アドレス\textgreater{}"}\NormalTok{, }\StringTok{"x = }\SpecialCharTok{\textbackslash{}"}\StringTok{文字列}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{:::}\FunctionTok{escape\_html}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"\textless{}アドレス\textgreater{}"}\NormalTok{, }\StringTok{"x = }\SpecialCharTok{\textbackslash{}"}\StringTok{文字列}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{,}
   \StringTok{"a \& b"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -5978,7 +5979,7 @@ Hornet Sportabout & 19 & 8 & 360\\
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(cars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ], }\AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }\AttributeTok{table.envir =} \StringTok{"table"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(cars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, ], }\AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }\AttributeTok{table.envir =} \StringTok{"table"}\NormalTok{,}
   \AttributeTok{position =} \StringTok{"!b"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6003,7 +6004,7 @@ Hornet Sportabout & 19 & 8 & 360\\
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(iris2, }\AttributeTok{caption =} \StringTok{"長い長いキャプション"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(iris2, }\AttributeTok{caption =} \StringTok{"長い長いキャプション"}\NormalTok{,}
   \AttributeTok{caption.short =} \StringTok{"短いキャプション"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6061,7 +6062,7 @@ R Markdown で \textbf{booktabs} のような LaTeX パッケージが追加で�
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(iris3, }\AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }\AttributeTok{linesep =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{""}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(iris3, }\AttributeTok{format =} \StringTok{"latex"}\NormalTok{, }\AttributeTok{linesep =} \FunctionTok{c}\NormalTok{(}\StringTok{""}\NormalTok{, }\StringTok{""}\NormalTok{,}
   \StringTok{"}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{addlinespace"}\NormalTok{), }\AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -6100,31 +6101,31 @@ table 環境に含まれた場合, つまり表にキャプションを設定し
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{], }\AttributeTok{table.attr =} \StringTok{"class=}\SpecialCharTok{\textbackslash{}"}\StringTok{striped}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(mtcars[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{], }\AttributeTok{table.attr =} \StringTok{"class=}\SpecialCharTok{\textbackslash{}"}\StringTok{striped}\SpecialCharTok{\textbackslash{}"}\StringTok{"}\NormalTok{,}
   \AttributeTok{format =} \StringTok{"html"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}table}\OtherTok{ class=}\StringTok{"striped"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}table} \ErrorTok{class}\OtherTok{=}\StringTok{"striped"}\KeywordTok{\textgreater{}}
  \KeywordTok{\textless{}thead\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}   \KeywordTok{\textless{}/th\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ mpg }\KeywordTok{\textless{}/th\textgreater{}}
-   \KeywordTok{\textless{}th}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ cyl }\KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}   \KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ mpg }\KeywordTok{\textless{}/th\textgreater{}}
+   \KeywordTok{\textless{}th} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ cyl }\KeywordTok{\textless{}/th\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
  \KeywordTok{\textless{}/thead\textgreater{}}
 \KeywordTok{\textless{}tbody\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
   \KeywordTok{\textless{}tr\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 Wag }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
-   \KeywordTok{\textless{}td}\OtherTok{ style=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:left;"}\KeywordTok{\textgreater{}}\NormalTok{ Mazda RX4 Wag }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 21 }\KeywordTok{\textless{}/td\textgreater{}}
+   \KeywordTok{\textless{}td} \ErrorTok{style}\OtherTok{=}\StringTok{"text{-}align:right;"}\KeywordTok{\textgreater{}}\NormalTok{ 6 }\KeywordTok{\textless{}/td\textgreater{}}
   \KeywordTok{\textless{}/tr\textgreater{}}
 \KeywordTok{\textless{}/tbody\textgreater{}}
 \KeywordTok{\textless{}/table\textgreater{}}
@@ -6754,9 +6755,9 @@ R Markdown ではデフォルトでは \texttt{cache.path = "INPUT\_cache/FORMAT
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \CommentTok{\# 長い式}
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} 
-  \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} 
-  \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} 
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+}
+  \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+}
+  \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+}
   \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
 \end{Highlighting}
 \end{Shaded}
@@ -6979,7 +6980,7 @@ R Markdown ではデフォルトでは \texttt{cache.path = "INPUT\_cache/FORMAT
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}pre}\OtherTok{ class=}\StringTok{"className"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}pre} \ErrorTok{class}\OtherTok{=}\StringTok{"className"}\KeywordTok{\textgreater{}}
 \KeywordTok{\textless{}code\textgreater{}}\NormalTok{出力された行}\KeywordTok{\textless{}/code\textgreater{}}
 \KeywordTok{\textless{}/pre\textgreater{}}
 \end{Highlighting}
@@ -7001,7 +7002,7 @@ R Markdown ではデフォルトでは \texttt{cache.path = "INPUT\_cache/FORMAT
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}pre}\OtherTok{ style=}\StringTok{"background: pink;"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}pre} \ErrorTok{style}\OtherTok{=}\StringTok{"background: pink;"}\KeywordTok{\textgreater{}}
 \NormalTok{...}
 \KeywordTok{\textless{}/pre\textgreater{}}
 \end{Highlighting}
@@ -7031,7 +7032,7 @@ R のロゴをグラフに埋め込むために, とても強力な \textbf{magi
   \CommentTok{\# デフォルトの重心は \textasciigrave{}northwest\textasciigrave{} (左上) で,}
   \CommentTok{\# ユーザーはチャンクオプション \textasciigrave{}magick.gravity\textasciigrave{}}
   \CommentTok{\# で変更できる}
-  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.null}\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ options}\SpecialCharTok{$}\NormalTok{magick.gravity)) }
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{is.null}\NormalTok{(g }\OtherTok{\textless{}{-}}\NormalTok{ options}\SpecialCharTok{$}\NormalTok{magick.gravity))}
 \NormalTok{    g }\OtherTok{\textless{}{-}} \StringTok{"northwest"}
   \CommentTok{\# ロゴを画像に追加する}
 \NormalTok{  img }\OtherTok{\textless{}{-}}\NormalTok{ magick}\SpecialCharTok{::}\FunctionTok{image\_composite}\NormalTok{(img, logo, }\AttributeTok{gravity =}\NormalTok{ g)}
@@ -7049,7 +7050,7 @@ R のロゴをグラフに埋め込むために, とても強力な \textbf{magi
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \FunctionTok{par}\NormalTok{(}\AttributeTok{mar =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\FloatTok{0.1}\NormalTok{))}
-\FunctionTok{hist}\NormalTok{(faithful}\SpecialCharTok{$}\NormalTok{eruptions, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{, }\AttributeTok{col =} \StringTok{"gray"}\NormalTok{, }
+\FunctionTok{hist}\NormalTok{(faithful}\SpecialCharTok{$}\NormalTok{eruptions, }\AttributeTok{breaks =} \DecValTok{30}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{, }\AttributeTok{col =} \StringTok{"gray"}\NormalTok{,}
   \AttributeTok{border =} \StringTok{"white"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -7071,7 +7072,7 @@ R のロゴをグラフに埋め込むために, とても強力な \textbf{magi
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{pdf2png }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(path) \{}
   \CommentTok{\# LaTeX でない出力に対してのみ変換する}
-  \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{()) }
+  \ControlFlowTok{if}\NormalTok{ (knitr}\SpecialCharTok{::}\FunctionTok{is\_latex\_output}\NormalTok{())}
     \FunctionTok{return}\NormalTok{(path)}
 \NormalTok{  path2 }\OtherTok{\textless{}{-}}\NormalTok{ xfun}\SpecialCharTok{::}\FunctionTok{with\_ext}\NormalTok{(path, }\StringTok{"png"}\NormalTok{)}
 \NormalTok{  img }\OtherTok{\textless{}{-}}\NormalTok{ magick}\SpecialCharTok{::}\FunctionTok{image\_read\_pdf}\NormalTok{(path)}
@@ -7423,13 +7424,14 @@ R グラフィックスには2種類の作図関数があります. 高水準作
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\CommentTok{\# ここで local() を使うかは任意 (ここでは単に \textasciigrave{}hook\_old\textasciigrave{}}
+\CommentTok{\# ここで local() を使うかは任意 (ここでは単に}
+\CommentTok{\# \textasciigrave{}hook\_old\textasciigrave{}}
 \CommentTok{\# のような不要なグローバル変数を作ることを避ける目的)}
 \FunctionTok{local}\NormalTok{(\{}
 \NormalTok{  hook\_old }\OtherTok{\textless{}{-}}\NormalTok{ knitr}\SpecialCharTok{::}\NormalTok{knit\_hooks}\SpecialCharTok{$}\FunctionTok{get}\NormalTok{(}\StringTok{"NAME"}\NormalTok{)  }\CommentTok{\# 古いフックを保存する}
 \NormalTok{  knitr}\SpecialCharTok{::}\NormalTok{knit\_hooks}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{NAME =} \ControlFlowTok{function}\NormalTok{(x, options) \{}
-    \CommentTok{\# ここで, x に何らかの処理を行い, それから 新しい x}
-    \CommentTok{\# を古いフックに与える}
+    \CommentTok{\# ここで, x に何らかの処理を行い, それから 新しい}
+    \CommentTok{\# x を古いフックに与える}
     \FunctionTok{hook\_old}\NormalTok{(x, options)}
 \NormalTok{  \})}
 \NormalTok{\})}
@@ -7654,7 +7656,7 @@ Markdown 出力はこうなります.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}pre}\OtherTok{ style=}\StringTok{"max{-}height: 100px;"}\KeywordTok{\textgreater{}}
+\KeywordTok{\textless{}pre} \ErrorTok{style}\OtherTok{=}\StringTok{"max{-}height: 100px;"}\KeywordTok{\textgreater{}}
 \KeywordTok{\textless{}code\textgreater{}}\NormalTok{\#\#   [1]   1   2   3   4   5   6   7   8   9  10}
 \NormalTok{\#\#  [11]  11  12  13  14  15  16  17  18  19  20}
 \NormalTok{\#\#  ... ...}\KeywordTok{\textless{}/code\textgreater{}}
@@ -7786,19 +7788,21 @@ Pandoc の fenced code blocks についてより詳しく学ぶには, \url{http
 
 読者への練習問題として, 異なる方法で出力を打ち切ることに挑戦してみてください. 最大行を決定するチャンクオプション \texttt{out.lines}\index{ちゃんくおぷしょん@チャンクオプション!out.lines} を所与として, 末尾の行ではなく中間の行を打ち切ることができますか? 例えば \texttt{out.lines = 10} なら, このように最初と最後の5行を残し, 中間に \texttt{....} を追加します.
 
-\begin{verbatim}
-##    speed dist
-## 1      4    2
-## 2      4   10
-## 3      7    4
-## 4      7   22
-....
-## 46    24   70
-## 47    24   92
-## 48    24   93
-## 49    24  120
-## 50    25   85
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{\#\#    speed dist}
+\NormalTok{\#\# 1      4    2}
+\NormalTok{\#\# 2      4   10}
+\NormalTok{\#\# 3      7    4}
+\NormalTok{\#\# 4      7   22}
+\NormalTok{....}
+\NormalTok{\#\# 46    24   70}
+\NormalTok{\#\# 47    24   92}
+\NormalTok{\#\# 48    24   93}
+\NormalTok{\#\# 49    24  120}
+\NormalTok{\#\# 50    25   85}
+\end{Highlighting}
+\end{Shaded}
 
 出力の最終行, つまりフック関数の引数 \texttt{x} が空白行ならば, \texttt{c(head(x, n/2), \textquotesingle{}....\textquotesingle{},\ tail(x,\ n/2\ +\ 1))} のような処理が必要であることに注意してください. \texttt{+1} は最後の空白行を考慮するためです.
 
@@ -7820,7 +7824,7 @@ Pandoc の fenced code blocks についてより詳しく学ぶには, \url{http
 
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}html}
 \KeywordTok{\textless{}figure\textgreater{}}
-  \KeywordTok{\textless{}img}\OtherTok{ src=}\StringTok{"ファイルパス"}\OtherTok{ alt=}\StringTok{"キャプション"} \KeywordTok{/\textgreater{}}
+  \KeywordTok{\textless{}img} \ErrorTok{src}\OtherTok{=}\StringTok{"ファイルパス"} \ErrorTok{alt}\OtherTok{=}\StringTok{"キャプション"} \KeywordTok{/\textgreater{}}
   \KeywordTok{\textless{}figcaption\textgreater{}}\NormalTok{キャプション}\KeywordTok{\textless{}/figcaption\textgreater{}}
 \KeywordTok{\textless{}/figure\textgreater{}}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
@@ -7879,9 +7883,9 @@ Pandoc の fenced code blocks についてより詳しく学ぶには, \url{http
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{\textless{}div}\OtherTok{ class=}\StringTok{"figure"}\KeywordTok{\textgreater{}}
-  \KeywordTok{\textless{}img}\OtherTok{ src=}\StringTok{"ファイルパス"} \KeywordTok{/\textgreater{}}
-  \KeywordTok{\textless{}p}\OtherTok{ class=}\StringTok{"caption"}\KeywordTok{\textgreater{}}\NormalTok{キャプション}\KeywordTok{\textless{}/p\textgreater{}}
+\KeywordTok{\textless{}div} \ErrorTok{class}\OtherTok{=}\StringTok{"figure"}\KeywordTok{\textgreater{}}
+  \KeywordTok{\textless{}img} \ErrorTok{src}\OtherTok{=}\StringTok{"ファイルパス"} \KeywordTok{/\textgreater{}}
+  \KeywordTok{\textless{}p} \ErrorTok{class}\OtherTok{=}\StringTok{"caption"}\KeywordTok{\textgreater{}}\NormalTok{キャプション}\KeywordTok{\textless{}/p\textgreater{}}
 \KeywordTok{\textless{}/div\textgreater{}}
 \end{Highlighting}
 \end{Shaded}
@@ -7917,7 +7921,7 @@ Pandoc の fenced code blocks についてより詳しく学ぶには, \url{http
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{knitr}\SpecialCharTok{::}\NormalTok{knit\_hooks}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{greet =} \ControlFlowTok{function}\NormalTok{(before) \{}
-  \ControlFlowTok{if}\NormalTok{ (before) }
+  \ControlFlowTok{if}\NormalTok{ (before)}
     \StringTok{"Hello!"} \ControlFlowTok{else} \StringTok{"Bye!"}
 \NormalTok{\})}
 \end{Highlighting}
@@ -8119,51 +8123,49 @@ Sys.sleep(2)
 
 元のチャンクオプションは実際にはチャンクオプションの \texttt{params.scr} 内に文字列として保存されています. これを知ったあなたは \texttt{params.src} を出力するチャンクフックを書くこともできます. 以下はその完全な例です.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{{-}{-}{-}}
-\AnnotationTok{title:}\CommentTok{ 出力にチャンクヘッダを表示する}
-\CommentTok{{-}{-}{-}}
+\begin{verbatim}
+---
+title: 出力にチャンクヘッダを表示する
+---
 
-\NormalTok{本来のチャンクヘッダとフッタの内側にチャンクを出力する}
-\InformationTok{\textasciigrave{}wrapper\textasciigrave{}}\NormalTok{ という名前のチャンクフックを用意します.}
+本来のチャンクヘッダとフッタの内側にチャンクを出力する
+`wrapper` という名前のチャンクフックを用意します.
 
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, setup, include=FALSE\}}
-\InformationTok{knitr::knit\_hooks$set(wrapper = function(before, options) \{}
-\InformationTok{  \# 本来のチャンクはインデントされる}
-\InformationTok{  if (is.null(indent \textless{}{-} options$indent)) indent \textless{}{-} \textquotesingle{}\textquotesingle{}}
-\InformationTok{  }
-\InformationTok{  \# wrapper=TRUE オプションを隠す}
-\InformationTok{  opts \textless{}{-} gsub(\textquotesingle{}, wrapper=TRUE\textquotesingle{}, \textquotesingle{}\textquotesingle{}, options$params.src)}
-\InformationTok{  }
-\InformationTok{  if (before) \{}
-\InformationTok{    \# ヘッダを追加する}
-\InformationTok{    sprintf(\textquotesingle{}\textbackslash{}n\textbackslash{}n\%s\textasciigrave{}\textasciigrave{}\textasciigrave{}\textasciigrave{}\textbackslash{}n\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r,\%s\}\textbackslash{}n\textasciigrave{}\textasciigrave{}\textasciigrave{}\textasciigrave{}\textbackslash{}n\textquotesingle{}, indent, opts)}
-\InformationTok{  \} else \{}
-\InformationTok{    \# フッタを追加する}
-\InformationTok{    sprintf(\textquotesingle{}\textbackslash{}n\textbackslash{}n\%s\textasciigrave{}\textasciigrave{}\textasciigrave{}\textasciigrave{}\textbackslash{}n\textasciigrave{}\textasciigrave{}\textasciigrave{}\textbackslash{}n\textasciigrave{}\textasciigrave{}\textasciigrave{}\textasciigrave{}\textbackslash{}n\textquotesingle{}, indent)}
-\InformationTok{  \}}
-\InformationTok{\})}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+```{r, setup, include=FALSE}
+knitr::knit_hooks$set(wrapper = function(before, options) {
+  # 本来のチャンクはインデントされる
+  if (is.null(indent <- options$indent)) indent <- ''
+  
+  # wrapper=TRUE オプションを隠す
+  opts <- gsub(', wrapper=TRUE', '', options$params.src)
+  
+  if (before) {
+    # ヘッダを追加する
+    sprintf('\n\n%s````\n```{r,%s}\n````\n', indent, opts)
+  } else {
+    # フッタを追加する
+    sprintf('\n\n%s````\n```\n````\n', indent)
+  }
+})
+```
 
-\NormalTok{ここでチャンクオプション }\InformationTok{\textasciigrave{}wrapper=TRUE\textasciigrave{}}\NormalTok{  でフックを適用します. }\InformationTok{\textasciigrave{}wrapper=TRUE\textasciigrave{}}\NormalTok{ をヘッダの最後に置くことと, 正確に }\InformationTok{\textasciigrave{}wrapper=TRUE\textasciigrave{}}\NormalTok{ でなければならず, 上記で呼び出されている }\InformationTok{\textasciigrave{}gsub()\textasciigrave{}}\NormalTok{ を修正しない限り, 例えば }\InformationTok{\textasciigrave{}wrapper=T\textasciigrave{}}\NormalTok{ はダメで,  コンマとスペースの後に続けなければならないことも忘れないでください.}
+ここでチャンクオプション `wrapper=TRUE`  でフックを適用します. `wrapper=TRUE` をヘッダの最後に置くことと, 正確に `wrapper=TRUE` でなければならず, 上記で呼び出されている `gsub()` を修正しない限り, 例えば `wrapper=T` はダメで,  コンマとスペースの後に続けなければならないことも忘れないでください.
 
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, test{-}label, collapse=TRUE, wrapper=TRUE\}}
-\InformationTok{1 + 1}
-\InformationTok{plot(cars)}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+```{r, test-label, collapse=TRUE, wrapper=TRUE}
+1 + 1
+plot(cars)
+```
 
-\NormalTok{本来のチャンクヘッダが出力に現れるはずです. フックはチャンクがインデントされていても動作するはずです. これが例です.}
+本来のチャンクヘッダが出力に現れるはずです. フックはチャンクがインデントされていても動作するはずです. これが例です.
 
-\SpecialStringTok{{-} }\NormalTok{箇条書きその1}
+- 箇条書きその1
 
-  \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, eval=TRUE, wrapper=TRUE\}}
-\InformationTok{  2 + 2}
-\InformationTok{  \textasciigrave{}\textasciigrave{}\textasciigrave{}}
+  ```{r, eval=TRUE, wrapper=TRUE}
+  2 + 2
+  ```
 
-\SpecialStringTok{{-} }\NormalTok{もう1つ箇条書き}
-\end{Highlighting}
-\end{Shaded}
+- もう1つ箇条書き
+\end{verbatim}
 
 基本的には, \texttt{options\$params.src} から取り出したチャンクヘッダを \texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r,\ \}} の中に入れることで元のヘッダを再現しています. そしてこの行を1組の4連続バッククオートで囲んでいるので, 出力時にはそのまま表示されます. 本来のコードチャンクはインデントされているかもしれない (例: 箇条書き内にネストされている場合)ので, 適切にインデントを追加することも必要になります. これはチャンクオプション \texttt{options\$indent} に保存されています.
 
@@ -8637,14 +8639,16 @@ Sys.sleep(2)
 
 \textbf{knitr} はデフォルトでは文書内でチャンクラベルが重複することを許可しません. 重複するラベルは文書を knit する際にエラーを引き起こします. これは文書内でコードチャンクをコピーアンドペーストするときに最もよく起こります. あなたもこのようなエラーメッセージにでくわしたことがあるかもしれません.
 
-\begin{verbatim}
-processing file: myfile.Rmd
-Error in parse_block(g[-1], g[1], params.src, markdown_mode) :
-  Duplicate chunk label 'cars'
-Calls: <Anonymous> ... process_file -> split_file -> lapply ->
-  FUN -> parse_block
-Execution halted
-\end{verbatim}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{processing file: myfile.Rmd}
+\NormalTok{Error in parse\_block(g[{-}1], g[1], params.src, markdown\_mode) :}
+\NormalTok{  Duplicate chunk label \textquotesingle{}cars\textquotesingle{}}
+\NormalTok{Calls: \textless{}Anonymous\textgreater{} ... process\_file {-}\textgreater{} split\_file {-}\textgreater{} lapply {-}\textgreater{}}
+\NormalTok{  FUN {-}\textgreater{} parse\_block}
+\NormalTok{Execution halted}
+\end{Highlighting}
+\end{Shaded}
 
 しかし, 重複するラベルを許可したいこともあるというものです. 例えば親文書 \texttt{parent.Rmd} があり, その中で子文書を複数回 knit すれば, 失敗するでしょう.
 
@@ -8944,7 +8948,8 @@ R Markdown は \textbf{knitr} を通して R 言語以外の多くのプログ�
 ## [29] "asy"       "cat"       "asis"      "stan"     
 ## [33] "block"     "block2"    "js"        "css"      
 ## [37] "sql"       "go"        "python"    "julia"    
-## [41] "sass"      "scss"      "R"         "bslib"
+## [41] "sass"      "scss"      "R"         "bslib"    
+## [45] "targets"
 \end{verbatim}
 
 現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の \texttt{bash} コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の \texttt{bash} コードチャンクはそれ以前の \texttt{bash} チャンクで作成された変数を使うことができませんし, \texttt{cd} による作業ディレクトリの変更も異なる \texttt{bash} チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ\ldots\ldots, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\ref{eng-python}節参照).
@@ -8988,7 +8993,7 @@ R Markdown は \textbf{knitr} を通して R 言語以外の多くのプログ�
 \begin{Highlighting}[numbers=left,,]
 \NormalTok{knitr}\SpecialCharTok{::}\NormalTok{knit\_engines}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{upper =} \ControlFlowTok{function}\NormalTok{(options) \{}
 \NormalTok{  code }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(options}\SpecialCharTok{$}\NormalTok{code, }\AttributeTok{collapse =} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
-  \ControlFlowTok{if}\NormalTok{ (options}\SpecialCharTok{$}\NormalTok{eval) }
+  \ControlFlowTok{if}\NormalTok{ (options}\SpecialCharTok{$}\NormalTok{eval)}
     \FunctionTok{toupper}\NormalTok{(code) }\ControlFlowTok{else}\NormalTok{ code}
 \NormalTok{\})}
 \end{Highlighting}
@@ -9210,7 +9215,7 @@ R のパッケージ \textbf{r2d3} \autocite{R-r2d3}\index{R パッケージ!r2d
 \StringTok{ですが \textquotesingle{}シングルクオート\textquotesingle{} は大丈夫です.}
 \StringTok{バックスラッシュがいくつ必要か考えるときにあなたが}
 \StringTok{正気を失わないでいられることを願います.}
-\StringTok{例えば, \textquotesingle{}}\SpecialCharTok{\textbackslash{}t}\StringTok{\textquotesingle{} なのか \textasciigrave{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{t\textasciigrave{} なのか \textquotesingle{}}\SpecialCharTok{\textbackslash{}\textbackslash{}\textbackslash{}\textbackslash{}}\StringTok{t\textquotesingle{} なのか?"}\NormalTok{, }
+\StringTok{例えば, \textquotesingle{}}\SpecialCharTok{\textbackslash{}t}\StringTok{\textquotesingle{} なのか \textasciigrave{}}\SpecialCharTok{\textbackslash{}\textbackslash{}}\StringTok{t\textasciigrave{} なのか \textquotesingle{}}\SpecialCharTok{\textbackslash{}\textbackslash{}\textbackslash{}\textbackslash{}}\StringTok{t\textquotesingle{} なのか?"}\NormalTok{,}
   \AttributeTok{con =} \StringTok{"my{-}file.txt"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -9385,24 +9390,24 @@ Asymptote (\url{https://asymptote.sourceforge.io}) はベクタグラフィッ�
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\KeywordTok{import}\NormalTok{ graph3;}
-\KeywordTok{import}\NormalTok{ grid3;}
-\KeywordTok{import}\NormalTok{ palette;}
-\NormalTok{settings.prc = }\KeywordTok{false}\NormalTok{;}
+\KeywordTok{import}\NormalTok{ graph3}\OperatorTok{;}
+\KeywordTok{import}\NormalTok{ grid3}\OperatorTok{;}
+\KeywordTok{import}\NormalTok{ palette}\OperatorTok{;}
+\NormalTok{settings}\OperatorTok{.}\NormalTok{prc }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
 
-\NormalTok{currentprojection=orthographic(}\FloatTok{0.8}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{);}
-\NormalTok{size(}\DecValTok{500}\NormalTok{,}\DecValTok{400}\NormalTok{,IgnoreAspect);}
+\NormalTok{currentprojection}\OperatorTok{=}\NormalTok{orthographic}\OperatorTok{(}\FloatTok{0.8}\OperatorTok{,}\DecValTok{1}\OperatorTok{,}\DecValTok{2}\OperatorTok{);}
+\NormalTok{size}\OperatorTok{(}\DecValTok{500}\OperatorTok{,}\DecValTok{400}\OperatorTok{,}\NormalTok{IgnoreAspect}\OperatorTok{);}
 
-\NormalTok{real f(pair z) \{}\ControlFlowTok{return}\NormalTok{ cos(}\DecValTok{2}\NormalTok{*pi*z.x)*sin(}\DecValTok{2}\NormalTok{*pi*z.y);\}}
+\NormalTok{real f}\OperatorTok{(}\NormalTok{pair z}\OperatorTok{)} \OperatorTok{\{}\ControlFlowTok{return}\NormalTok{ cos}\OperatorTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{pi}\OperatorTok{*}\NormalTok{z}\OperatorTok{.}\NormalTok{x}\OperatorTok{)*}\NormalTok{sin}\OperatorTok{(}\DecValTok{2}\OperatorTok{*}\NormalTok{pi}\OperatorTok{*}\NormalTok{z}\OperatorTok{.}\NormalTok{y}\OperatorTok{);\}}
 
-\NormalTok{surface s=surface(f,({-}}\DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{,{-}}\DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{),(}\DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{/}\DecValTok{2}\NormalTok{),}\DecValTok{50}\NormalTok{,Spline);}
+\NormalTok{surface s}\OperatorTok{=}\NormalTok{surface}\OperatorTok{(}\NormalTok{f}\OperatorTok{,({-}}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\OperatorTok{,{-}}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\OperatorTok{),(}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\OperatorTok{,}\DecValTok{1}\OperatorTok{/}\DecValTok{2}\OperatorTok{),}\DecValTok{50}\OperatorTok{,}\NormalTok{Spline}\OperatorTok{);}
 
-\NormalTok{surface S=planeproject(unitsquare3)*s;}
-\NormalTok{S.colors(palette(s.map(zpart),Rainbow()));}
-\NormalTok{draw(S,nolight);}
-\NormalTok{draw(s,lightgray+opacity(}\FloatTok{0.7}\NormalTok{));}
+\NormalTok{surface S}\OperatorTok{=}\NormalTok{planeproject}\OperatorTok{(}\NormalTok{unitsquare3}\OperatorTok{)*}\NormalTok{s}\OperatorTok{;}
+\NormalTok{S}\OperatorTok{.}\NormalTok{colors}\OperatorTok{(}\NormalTok{palette}\OperatorTok{(}\NormalTok{s}\OperatorTok{.}\NormalTok{map}\OperatorTok{(}\NormalTok{zpart}\OperatorTok{),}\NormalTok{Rainbow}\OperatorTok{()));}
+\NormalTok{draw}\OperatorTok{(}\NormalTok{S}\OperatorTok{,}\NormalTok{nolight}\OperatorTok{);}
+\NormalTok{draw}\OperatorTok{(}\NormalTok{s}\OperatorTok{,}\NormalTok{lightgray}\OperatorTok{+}\NormalTok{opacity}\OperatorTok{(}\FloatTok{0.7}\OperatorTok{));}
 
-\NormalTok{grid3(XYZgrid);}
+\NormalTok{grid3}\OperatorTok{(}\NormalTok{XYZgrid}\OperatorTok{);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -9442,28 +9447,28 @@ PDF 出力に対しては追加の LaTeX パッケージが必要であること
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\KeywordTok{import}\NormalTok{ graph;}
-\NormalTok{size(}\DecValTok{400}\NormalTok{,}\DecValTok{300}\NormalTok{,IgnoreAspect);}
-\NormalTok{settings.prc = }\KeywordTok{false}\NormalTok{;}
+\KeywordTok{import}\NormalTok{ graph}\OperatorTok{;}
+\NormalTok{size}\OperatorTok{(}\DecValTok{400}\OperatorTok{,}\DecValTok{300}\OperatorTok{,}\NormalTok{IgnoreAspect}\OperatorTok{);}
+\NormalTok{settings}\OperatorTok{.}\NormalTok{prc }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
 
 \CommentTok{// import data from csv file}
-\NormalTok{file in=input(}\StringTok{"sine.csv"}\NormalTok{).line().csv();}
-\NormalTok{real[][] a=in.dimension(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{);}
-\NormalTok{a=transpose(a);}
+\NormalTok{file in}\OperatorTok{=}\NormalTok{input}\OperatorTok{(}\StringTok{"sine.csv"}\OperatorTok{).}\NormalTok{line}\OperatorTok{().}\NormalTok{csv}\OperatorTok{();}
+\NormalTok{real}\OperatorTok{[][]}\NormalTok{ a}\OperatorTok{=}\NormalTok{in}\OperatorTok{.}\NormalTok{dimension}\OperatorTok{(}\DecValTok{0}\OperatorTok{,}\DecValTok{0}\OperatorTok{);}
+\NormalTok{a}\OperatorTok{=}\NormalTok{transpose}\OperatorTok{(}\NormalTok{a}\OperatorTok{);}
 
 \CommentTok{// generate a path}
-\NormalTok{path rpath = graph(a[}\DecValTok{0}\NormalTok{],a[}\DecValTok{1}\NormalTok{]);}
-\NormalTok{path lpath = (}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{){-}{-}(}\DecValTok{5}\NormalTok{,}\DecValTok{1}\NormalTok{);}
+\NormalTok{path rpath }\OperatorTok{=}\NormalTok{ graph}\OperatorTok{(}\NormalTok{a}\OperatorTok{[}\DecValTok{0}\OperatorTok{],}\NormalTok{a}\OperatorTok{[}\DecValTok{1}\OperatorTok{]);}
+\NormalTok{path lpath }\OperatorTok{=} \OperatorTok{(}\DecValTok{1}\OperatorTok{,}\DecValTok{0}\OperatorTok{){-}{-}(}\DecValTok{5}\OperatorTok{,}\DecValTok{1}\OperatorTok{);}
 
 \CommentTok{// find intersection}
-\NormalTok{pair pA=intersectionpoint(rpath,lpath);}
+\NormalTok{pair pA}\OperatorTok{=}\NormalTok{intersectionpoint}\OperatorTok{(}\NormalTok{rpath}\OperatorTok{,}\NormalTok{lpath}\OperatorTok{);}
 
 \CommentTok{// draw all}
-\NormalTok{draw(rpath,red);}
-\NormalTok{draw(lpath,dashed + blue);}
-\NormalTok{dot(}\StringTok{"$}\ErrorTok{\textbackslash{}d}\StringTok{elta$"}\NormalTok{,pA,NE);}
-\NormalTok{xaxis(}\StringTok{"$x$"}\NormalTok{,BottomTop,LeftTicks);}
-\NormalTok{yaxis(}\StringTok{"$y$"}\NormalTok{,LeftRight,RightTicks);}
+\NormalTok{draw}\OperatorTok{(}\NormalTok{rpath}\OperatorTok{,}\NormalTok{red}\OperatorTok{);}
+\NormalTok{draw}\OperatorTok{(}\NormalTok{lpath}\OperatorTok{,}\NormalTok{dashed }\OperatorTok{+}\NormalTok{ blue}\OperatorTok{);}
+\NormalTok{dot}\OperatorTok{(}\StringTok{"$}\ErrorTok{\textbackslash{}d}\StringTok{elta$"}\OperatorTok{,}\NormalTok{pA}\OperatorTok{,}\NormalTok{NE}\OperatorTok{);}
+\NormalTok{xaxis}\OperatorTok{(}\StringTok{"$x$"}\OperatorTok{,}\NormalTok{BottomTop}\OperatorTok{,}\NormalTok{LeftTicks}\OperatorTok{);}
+\NormalTok{yaxis}\OperatorTok{(}\StringTok{"$y$"}\OperatorTok{,}\NormalTok{LeftRight}\OperatorTok{,}\NormalTok{RightTicks}\OperatorTok{);}
 \end{Highlighting}
 \end{Shaded}
 
@@ -10291,7 +10296,17 @@ YAML に直接ソースコードを置くなら, 関数全体をパーレン \te
 
 \textbf{trackdown} パッケージ\index{R パッケージ!trackdown} \autocite{R-trackdown} は R Markdown (または Sweave) 文書の共同執筆・編集に対するシンプルなソリューションを提案してくれます. \textbf{trackdown} は \textbf{googledrive} パッケージ\index{R パッケージ!googledrive} \autocite{R-googledrive} を基にして, ローカルの \texttt{.Rmd} (または \texttt{.Rnw}) ファイルをプレーンテキスト形式として Google ドライブにアップロードします. Markdown (あるいは LaTeX) の構文 の可読性のよさ\footnote{\textbf{訳注}: LaTeX の可読性?? バイナリファイルと比較して, ということでしょうか?}と Google ドキュメントの提案する広く普及しているオンラインのインターフェースという利点を活かすことで, 共同編集者たちは容易に執筆編集作業に貢献することができます. 全ての著者の貢献を統合したのち, 最終的な文書がローカルにダウンロードされレンダリングされます.
 
-現時点では \textbf{trackdown} GitHub \url{https://github.com/ekothe/trackdown} でのみ利用可能です. パッケージのドキュメントは \url{https://ekothe.github.io/trackdown/} で読むことができます.
+\textbf{trackdown} は CRAN から, あるいは開発版を GitHub からインストールしてもいいでしょう. (\url{https://github.com/claudiozandonella/trackdown}):
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\CommentTok{\# install from CRAN}
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"trackdown"}\NormalTok{)}
+
+\CommentTok{\# install the development version}
+\NormalTok{remotes}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"claudiozandonella/trackdown"}\NormalTok{, }\AttributeTok{build\_vignettes =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{trackdown-ux306eux4f5cux696dux5de5ux7a0b}{%
 \subsection{trackdown の作業工程}\label{trackdown-ux306eux4f5cux696dux5de5ux7a0b}}
@@ -10799,7 +10814,7 @@ rnorm(10)
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{engine.path =} \FunctionTok{list}\NormalTok{(}\AttributeTok{python =} \StringTok{"\textasciitilde{}/anaconda/bin/python"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{engine.path =} \FunctionTok{list}\NormalTok{(}\AttributeTok{python =} \StringTok{"\textasciitilde{}/anaconda/bin/python"}\NormalTok{,}
   \AttributeTok{ruby =} \StringTok{"/usr/local/bin/ruby"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -10824,7 +10839,7 @@ h2 {
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
-\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{engine.opts =} \FunctionTok{list}\NormalTok{(}\AttributeTok{perl =} \StringTok{"{-}Mstrict {-}Mwarnings"}\NormalTok{, }
+\NormalTok{knitr}\SpecialCharTok{::}\NormalTok{opts\_chunk}\SpecialCharTok{$}\FunctionTok{set}\NormalTok{(}\AttributeTok{engine.opts =} \FunctionTok{list}\NormalTok{(}\AttributeTok{perl =} \StringTok{"{-}Mstrict {-}Mwarnings"}\NormalTok{,}
   \AttributeTok{bash =} \StringTok{"{-}o errexit"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}

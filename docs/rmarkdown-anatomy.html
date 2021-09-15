@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2.2 R Markdown の解剖学 | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2.2 R Markdown の解剖学 | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="rmarkdown-process.html"/>
 <link rel="next" href="what-to-change.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -544,7 +544,7 @@ div.csl-indent {
 <h3><span class="header-section-number">2.2.3</span> コードチャンク</h3>
 <p>コードチャンクは R Markdown にとっての心臓の鼓動です. チャンク内のコードは <strong>knitr</strong> によって実行され, 出力は Markdown に翻訳され, レポートは現在のスクリプトとデータに動的に同期します. 各コードチャンクは言語エンジン (<a href="other-languages.html#other-languages">15</a>章), 任意に指定できるラベル, チャンクオプション (<a href="chunk-options.html#chunk-options">11</a>章), そしてコードで構成されます.</p>
 <p>コードチャンクに対してできるいくつかの修正について理解するためには, <strong>knitr</strong> の処理を少しだけ詳しく知ることが有意義です. 各チャンクでは, <strong>knitr</strong> 言語エンジンは3つの入力の部品を得ます. knit 環境 (<code>knitr::knit_global()</code>), 入力されたコード, そしてチャンクオプションのリストです. コードチャンクはコードの出力とともに見た目も整形して返します. 副作用として, knit 環境も修正されます. 例えばコードチャンク内のソースコードを介してこの環境内で新しい変数がつくられます. この処理は図<a href="rmarkdown-anatomy.html#fig:knitr-workflow">2.2</a>のように表せます.</p>
-<div class="figure" style="text-align: center"><span id="fig:knitr-workflow"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:knitr-workflow"></span>
 <div id="htmlwidget-985d8cbcdbe9419f04ec" style="width:672px;height:336px;" class="nomnoml html-widget"></div>
 <script type="application/json" data-for="htmlwidget-985d8cbcdbe9419f04ec">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [<frame>コードチャンク|\n  [コード]->[言語エンジン]\n  [チャンクオプション]->[言語エンジン]\n  [環境]->[言語エンジン]\n  [言語エンジン]->[整形されたコード]\n  [言語エンジン]->[整形された出力]\n  [言語エンジン]->[(変更された) 環境]\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
@@ -591,7 +591,7 @@ div.csl-indent {
 <span id="cb17-26"><a href="rmarkdown-anatomy.html#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="in">print(y)</span></span>
 <span id="cb17-27"><a href="rmarkdown-anatomy.html#cb17-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>この文書を書いていると, それぞれの小片は, テキストとコードを含む独立した節を一直線上に並べたものだとみなせるでしょう. しかし我々が実際にしているのは, 概念としては図<a href="rmarkdown-anatomy.html#fig:rmd-containers">2.3</a>でより細かく描いているように, 入れ子 (ネスト) になったコンテナの作成です<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a></p>
-<div class="figure" style="text-align: center"><span id="fig:rmd-containers"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:rmd-containers"></span>
 <div id="htmlwidget-4b44f6f23530052efafb" style="width:672px;height:480px;" class="nomnoml html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4b44f6f23530052efafb">{"x":{"code":"\n#fill: #FEFEFF\n#lineWidth: 1\n#zoom: 4\n#direction: right\n\n\n  [タイトル (レベル 1)|\n  \n    [節 X (レベル 2)| - テキスト | - コード (チャンクX) | - 第1小節 | - 第2小節]\n    [節 Y (レベル 2)| - テキスト | - コード (チャンクY) ]\n\n  ]","svg":false},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
@@ -624,7 +624,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -664,6 +663,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

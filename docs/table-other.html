@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>10.3 その他の表作成パッケージ | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="10.3 その他の表作成パッケージ | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="kableextra.html"/>
 <link rel="next" href="chunk-options.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -505,12 +505,12 @@ div.csl-indent {
 <li><p><strong>formattable</strong> <span class="citation">(<a href="#ref-R-formattable" role="doc-biblioref">Ren and Russell 2021</a>)</span>: <code>percent()</code>, <code>accounting()</code> といった数値を整形するものや, テキストの書式, 背景色やカラーバー, アイコンの追加などで数値を強調するなど, 表の列のスタイルを設定する関数を提供してくれます. <strong>gt</strong> のように, このパッケージも主に HTML フォーマットをサポートしています. 詳細は GitHub プロジェクトの <a href="https://github.com/renkun-ken/formattable" class="uri">https://github.com/renkun-ken/formattable</a> で見ることができます.</p></li>
 <li><p><strong>DT</strong> <span class="citation">(<a href="#ref-R-DT" role="doc-biblioref">Xie, Cheng, and Tan 2021</a>)</span>: 作者なのでこのパッケージには精通していると思っていますが, HTML フォーマットのみのサポートのため独立した節を設けて紹介したりはしません. <strong>DT</strong> は JavaScript ライブラリの <strong>DataTables</strong> を下地に構築されたもので, HTML ページ上で静的な表をインタラクティブな表に変えることができます. 表をソートしたり, 検索したり, ページ移動したりできるでしょう. <strong>DT</strong> はセルの整形もサポートしており, インタラクティブなアプリケーションの構築のため Shiny と連携して動作し, 多くの <strong>DataTables</strong> の拡張を導入します. 例えばエクセルへのエクスポート, 列の並び替えなどです. 詳細はパッケージのリポジトリ <a href="https://github.com/rstudio/DT" class="uri">https://github.com/rstudio/DT</a> を見てください.</p></li>
 <li><p><strong>reactable</strong> <span class="citation">(<a href="#ref-R-reactable" role="doc-biblioref">Lin 2020</a>)</span>: <strong>DT</strong> と同様にこのパッケージは JavaScript ライブラリを元にしてインタラクティブな表を作成します. 正直に言うと, 私が見る限り, 行のグループ化や HTML ウィジェットの埋め込み機能などいくつかの観点で <strong>DT</strong> より優れているようです. もし <strong>reactable</strong> が 2015年時点で存在していれば, 私は <strong>DT</strong> を開発していなかったと思います. とは言うものの, <strong>reactable</strong> は<strong>DT</strong> にあるすべての機能を揃えていません. よってあなたはこのパッケージのドキュメント <a href="https://glin.github.io/reactable/" class="uri">https://glin.github.io/reactable/</a> を読み, どちらが目的に合ったものかを知ることもできるでしょう.</p></li>
-<li><p><strong>rhandsontable</strong> <span class="citation">(<a href="#ref-R-rhandsontable" role="doc-biblioref">Owen 2018</a>)</span>: これも <strong>DT</strong> と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには <a href="https://jrowen.github.io/rhandsontable/" class="uri">https://jrowen.github.io/rhandsontable/</a> を見てください.</p></li>
+<li><p><strong>rhandsontable</strong> <span class="citation">(<a href="#ref-R-rhandsontable" role="doc-biblioref">Owen 2021</a>)</span>: これも <strong>DT</strong> と似ており, そして表上でデータを直接編集できるなど Excel っぽさがあります. 詳しく学ぶには <a href="https://jrowen.github.io/rhandsontable/" class="uri">https://jrowen.github.io/rhandsontable/</a> を見てください.</p></li>
 <li><p><strong>pixiedust</strong> <span class="citation">(<a href="#ref-R-pixiedust" role="doc-biblioref">Nutter 2021</a>)</span>: <strong>broom</strong> パッケージ <span class="citation">(<a href="#ref-R-broom" role="doc-biblioref">Robinson, Hayes, and Couch 2021</a>)</span> を介した統計モデル (線形モデルとか) 向けの表を作るのが特徴です. Markdown, HTML, LaTeX 出力フォーマットをサポートしています. リポジトリは <a href="https://github.com/nutterb/pixiedust" class="uri">https://github.com/nutterb/pixiedust</a> です.</p></li>
 <li><p><strong>stargazer</strong> <span class="citation">(<a href="#ref-R-stargazer" role="doc-biblioref">Hlavac 2018</a>)</span>: 回帰モデルと要約統計量の表を整形するのが特徴です. このパッケージは CRAN の <a href="https://cran.r-project.org/package=stargazer" class="uri">https://cran.r-project.org/package=stargazer</a> にあります.</p></li>
 <li><p><strong>xtable</strong> <span class="citation">(<a href="#ref-R-xtable" role="doc-biblioref">Dahl et al. 2019</a>)</span>: おそらく最古の作表パッケージです. 最初のリリースは2000年になります. LaTeX と HTML フォーマットの両方をサポートしています. パッケージは CRAN の <a href="https://cran.r-project.org/package=xtable" class="uri">https://cran.r-project.org/package=xtable</a> にあります.</p></li>
 </ul>
-<p>その他のパッケージは紹介しませんが, 名前だけ挙げておきます. <strong>tables</strong> <span class="citation">(<a href="#ref-R-tables" role="doc-biblioref">Murdoch 2020</a>)</span>, <strong>pander</strong> <span class="citation">(<a href="#ref-R-pander" role="doc-biblioref">Daróczi and Tsegelskyi 2018</a>)</span>, <strong>tangram</strong> <span class="citation">(<a href="#ref-R-tangram" role="doc-biblioref">Garbett 2020</a>)</span>, <strong>ztable</strong> <span class="citation">(<a href="#ref-R-ztable" role="doc-biblioref">Moon 2020</a>)</span>, <strong>condformat</strong> <span class="citation">(<a href="#ref-R-condformat" role="doc-biblioref">Oller Moreno 2020</a>)</span> があります.</p>
+<p>その他のパッケージは紹介しませんが, 名前だけ挙げておきます. <strong>tables</strong> <span class="citation">(<a href="#ref-R-tables" role="doc-biblioref">Murdoch 2020</a>)</span>, <strong>pander</strong> <span class="citation">(<a href="#ref-R-pander" role="doc-biblioref">Daróczi and Tsegelskyi 2021</a>)</span>, <strong>tangram</strong> <span class="citation">(<a href="#ref-R-tangram" role="doc-biblioref">Garbett 2020</a>)</span>, <strong>ztable</strong> <span class="citation">(<a href="#ref-R-ztable" role="doc-biblioref">Moon 2020</a>)</span>, <strong>condformat</strong> <span class="citation">(<a href="#ref-R-condformat" role="doc-biblioref">Oller Moreno 2020</a>)</span> があります.</p>
 
 </div>
 <!-- </div> -->
@@ -520,25 +520,25 @@ div.csl-indent {
 Dahl, David B., David Scott, Charles Roosen, Arni Magnusson, and Jonathan Swinton. 2019. <em>Xtable: Export Tables to LaTeX or HTML</em>. <a href="http://xtable.r-forge.r-project.org/">http://xtable.r-forge.r-project.org/</a>.
 </div>
 <div id="ref-R-pander" class="csl-entry">
-Daróczi, Gergely, and Roman Tsegelskyi. 2018. <em>Pander: An r Pandoc Writer</em>. <a href="http://rapporter.github.io/pander">http://rapporter.github.io/pander</a>.
+Daróczi, Gergely, and Roman Tsegelskyi. 2021. <em>Pander: An r Pandoc Writer</em>. <a href="https://rapporter.github.io/pander/">https://rapporter.github.io/pander/</a>.
 </div>
 <div id="ref-R-tangram" class="csl-entry">
 Garbett, Shawn. 2020. <em>Tangram: The Grammar of Tables</em>. <a href="https://github.com/spgarbet/tangram">https://github.com/spgarbet/tangram</a>.
 </div>
 <div id="ref-R-flextable" class="csl-entry">
-Gohel, David. 2021a. <em>Flextable: Functions for Tabular Reporting</em>.
+Gohel, David. 2021a. <em>Flextable: Functions for Tabular Reporting</em>. <a href="https://CRAN.R-project.org/package=flextable">https://CRAN.R-project.org/package=flextable</a>.
 </div>
 <div id="ref-R-stargazer" class="csl-entry">
-Hlavac, Marek. 2018. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>.
+Hlavac, Marek. 2018. <em>Stargazer: Well-Formatted Regression and Summary Statistics Tables</em>. <a href="https://CRAN.R-project.org/package=stargazer">https://CRAN.R-project.org/package=stargazer</a>.
 </div>
 <div id="ref-R-huxtable" class="csl-entry">
 Hugh-Jones, David. 2021. <em>Huxtable: Easily Create and Style Tables for LaTeX, HTML and Other Formats</em>. <a href="https://hughjonesd.github.io/huxtable/">https://hughjonesd.github.io/huxtable/</a>.
 </div>
 <div id="ref-R-gt" class="csl-entry">
-Iannone, Richard, Joe Cheng, and Barret Schloerke. 2021. <em>Gt: Easily Create Presentation-Ready Display Tables</em>.
+Iannone, Richard, Joe Cheng, and Barret Schloerke. 2021. <em>Gt: Easily Create Presentation-Ready Display Tables</em>. <a href="https://CRAN.R-project.org/package=gt">https://CRAN.R-project.org/package=gt</a>.
 </div>
 <div id="ref-R-reactable" class="csl-entry">
-Lin, Greg. 2020. <em>Reactable: Interactive Data Tables Based on React Table</em>.
+Lin, Greg. 2020. <em>Reactable: Interactive Data Tables Based on React Table</em>. <a href="https://CRAN.R-project.org/package=reactable">https://CRAN.R-project.org/package=reactable</a>.
 </div>
 <div id="ref-R-ztable" class="csl-entry">
 Moon, Keon-Woong. 2020. <em>Ztable: Zebra-Striped Tables in LaTeX and HTML Formats</em>. <a href="https://github.com/cardiomoon/ztable">https://github.com/cardiomoon/ztable</a>.
@@ -553,16 +553,16 @@ Nutter, Benjamin. 2021. <em>Pixiedust: Tables so Beautifully Fine-Tuned You Will
 Oller Moreno, Sergio. 2020. <em>Condformat: Conditional Formatting in Data Frames</em>. <a href="http://github.com/zeehio/condformat">http://github.com/zeehio/condformat</a>.
 </div>
 <div id="ref-R-rhandsontable" class="csl-entry">
-Owen, Jonathan. 2018. <em>Rhandsontable: Interface to the Handsontable.js Library</em>. <a href="http://jrowen.github.io/rhandsontable/">http://jrowen.github.io/rhandsontable/</a>.
+Owen, Jonathan. 2021. <em>Rhandsontable: Interface to the Handsontable.js Library</em>. <a href="http://jrowen.github.io/rhandsontable/">http://jrowen.github.io/rhandsontable/</a>.
 </div>
 <div id="ref-R-formattable" class="csl-entry">
-Ren, Kun, and Kenton Russell. 2021. <em>Formattable: Create Formattable Data Structures</em>.
+Ren, Kun, and Kenton Russell. 2021. <em>Formattable: Create Formattable Data Structures</em>. <a href="https://CRAN.R-project.org/package=formattable">https://CRAN.R-project.org/package=formattable</a>.
 </div>
 <div id="ref-R-broom" class="csl-entry">
-Robinson, David, Alex Hayes, and Simon Couch. 2021. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>.
+Robinson, David, Alex Hayes, and Simon Couch. 2021. <em>Broom: Convert Statistical Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.
 </div>
 <div id="ref-R-gtsummary" class="csl-entry">
-Sjoberg, Daniel D., Michael Curry, Margie Hannum, Joseph Larmarange, Karissa Whiting, and Emily C. Zabor. 2021. <em>Gtsummary: Presentation-Ready Data Summary and Analytic Result Tables</em>.
+Sjoberg, Daniel D., Michael Curry, Margie Hannum, Joseph Larmarange, Karissa Whiting, and Emily C. Zabor. 2021. <em>Gtsummary: Presentation-Ready Data Summary and Analytic Result Tables</em>. <a href="https://CRAN.R-project.org/package=gtsummary">https://CRAN.R-project.org/package=gtsummary</a>.
 </div>
 <div id="ref-R-DT" class="csl-entry">
 Xie, Yihui, Joe Cheng, and Xianying Tan. 2021. <em>DT: A Wrapper of the JavaScript Library DataTables</em>. <a href="https://github.com/rstudio/DT">https://github.com/rstudio/DT</a>.
@@ -586,7 +586,6 @@ Xie, Yihui, Joe Cheng, and Xianying Tan. 2021. <em>DT: A Wrapper of the JavaScri
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -626,6 +625,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

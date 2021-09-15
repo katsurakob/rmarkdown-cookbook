@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3.3 R スクリプトをレポートにレンダリングする | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3.3 R スクリプトをレポートにレンダリングする | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="rstudio-visual.html"/>
 <link rel="next" href="purl.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -498,7 +498,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="spin" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> R スクリプトをレポートにレンダリングする</h2>
-<p>長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを<a href="https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/">"<strong>knitr</strong> の秘宝</a>と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (<code>Ctrl / Cmd + Shift + K</code>) です.</p>
+<p>長らく RMarkdown を使っていても, 別の選択肢があることを見落としていることがあります. Dean Attali はこれを<a href="https://deanattali.com/2015/03/24/knitrs-best-hidden-gem-spin/">“<strong>knitr</strong> の秘宝</a>と読んでいます. 純粋な R スクリプトを直接レンダリングできるということです. RStudio IDE をお使いなら, R スクリプトをレンダリングするキーボードショートカットは Rmd 文書を knit するときと同じ (<code>Ctrl / Cmd + Shift + K</code>) です.</p>
 <p>R スクリプトをレポートにレンダリングすると, まず <code>knitr::spin()</code> 関数が呼ばれスクリプトが Rmd ファイルに変換されます. この関数こそ Dean Attali が「<strong>knitr</strong>の秘宝」と呼んでいるものです. レポートには全てのテキストとグラフィックの出力が掲載されます.</p>
 <p>レポートの要素を細かく管理したいなら, 以下のような構文が役に立ちます.</p>
 <ul>
@@ -553,7 +553,7 @@ div.csl-indent {
 <span id="cb20-15"><a href="spin.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb20-16"><a href="spin.html#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-17"><a href="spin.html#cb20-17" aria-hidden="true" tabindex="-1"></a>ここにインラインの値を書きましょう. $\pi$ の値は</span>
-<span id="cb20-18"><a href="spin.html#cb20-18" aria-hidden="true" tabindex="-1"></a><span class="in">``r  pi  ``</span></span>
+<span id="cb20-18"><a href="spin.html#cb20-18" aria-hidden="true" tabindex="-1"></a>``r  pi  ``</span>
 <span id="cb20-19"><a href="spin.html#cb20-19" aria-hidden="true" tabindex="-1"></a>であると知られています.</span>
 <span id="cb20-20"><a href="spin.html#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-21"><a href="spin.html#cb20-21" aria-hidden="true" tabindex="-1"></a>最後に, 全ての roxygen コメントは任意だということを書いておきます.</span>
@@ -571,7 +571,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -611,6 +610,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

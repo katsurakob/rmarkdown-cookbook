@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.5 HTML5 フォーマットで図を出力する | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.5 HTML5 フォーマットで図を出力する | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="hook-truncate.html"/>
 <link rel="next" href="chunk-hooks.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -510,7 +510,7 @@ div.csl-indent {
 <span id="cb367-9"><a href="hook-html5.html#cb367-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb367-10"><a href="hook-html5.html#cb367-10" aria-hidden="true" tabindex="-1"></a><span class="in">```html</span></span>
 <span id="cb367-11"><a href="hook-html5.html#cb367-11" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;figure&gt;</span></span>
-<span id="cb367-12"><a href="hook-html5.html#cb367-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span><span class="ot"> alt=</span><span class="st">&quot;キャプション&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb367-12"><a href="hook-html5.html#cb367-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;ファイルパス&quot;</span> <span class="er">alt</span><span class="ot">=</span><span class="st">&quot;キャプション&quot;</span> <span class="kw">/&gt;</span></span>
 <span id="cb367-13"><a href="hook-html5.html#cb367-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;figcaption&gt;</span>キャプション<span class="kw">&lt;/figcaption&gt;</span></span>
 <span id="cb367-14"><a href="hook-html5.html#cb367-14" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/figure&gt;</span></span>
 <span id="cb367-15"><a href="hook-html5.html#cb367-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -552,16 +552,16 @@ div.csl-indent {
 <span id="cb367-51"><a href="hook-html5.html#cb367-51" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
 <span id="cb367-52"><a href="hook-html5.html#cb367-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>図<a href="hook-html5.html#fig:hook-html5">12.2</a>がその出力です. この例では実際には <code>plot</code> フックを上書きしましたが, この章の他のほとんどの例ではデフォルトのフックの冒頭にカスタムフックを構築していることに注意してください. デフォルトのフックを完全に上書きするのは, 組み込まれている機能を無視しても構わない時に限るべきです. 例えば次の <code>plot</code> フックは <code>out.width ='100%'</code> や <code>fig.show = 'animate'</code> といったチャンクオプションがあるかもしれないことを考慮していません.</p>
-<div class="figure" style="text-align: center"><span id="fig:hook-html5"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:hook-html5"></span>
 <img src="JP/images/hook-html5.png" alt="HTML5 figure タグ内の図"  />
 <p class="caption">
 図 12.2: HTML5 figure タグ内の図
 </p>
 </div>
 <p>この例はファイルパス <code>x</code> と <code>plot</code> フックが活用できそうなことを示すものです. 図のスタイルのカスタマイズだけが必要なら, HTML5 タグを使うことはありません. 通常であれば, デフォルトの <code>plot</code> フックは以下のような HTML コードに画像を出力します.</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb368-1"><a href="hook-html5.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span><span class="ot"> class=</span><span class="st">&quot;figure&quot;</span><span class="kw">&gt;</span></span>
-<span id="cb368-2"><a href="hook-html5.html#cb368-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span><span class="ot"> src=</span><span class="st">&quot;ファイルパス&quot;</span> <span class="kw">/&gt;</span></span>
-<span id="cb368-3"><a href="hook-html5.html#cb368-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p</span><span class="ot"> class=</span><span class="st">&quot;caption&quot;</span><span class="kw">&gt;</span>キャプション<span class="kw">&lt;/p&gt;</span></span>
+<div class="sourceCode" id="cb368"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb368-1"><a href="hook-html5.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;div</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;figure&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb368-2"><a href="hook-html5.html#cb368-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;img</span> <span class="er">src</span><span class="ot">=</span><span class="st">&quot;ファイルパス&quot;</span> <span class="kw">/&gt;</span></span>
+<span id="cb368-3"><a href="hook-html5.html#cb368-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;p</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;caption&quot;</span><span class="kw">&gt;</span>キャプション<span class="kw">&lt;/p&gt;</span></span>
 <span id="cb368-4"><a href="hook-html5.html#cb368-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/div&gt;</span></span></code></pre></div>
 <p>よって <code>div.figure</code> と <code>p.caption</code> に対して CSS ルールを定義するだけで可能となります.</p>
 
@@ -577,7 +577,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -617,6 +616,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

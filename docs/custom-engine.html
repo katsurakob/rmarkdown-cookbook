@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.1 カスタム言語エンジンを登録する (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.1 カスタム言語エンジンを登録する (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="other-languages.html"/>
 <link rel="next" href="eng-python.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -513,7 +513,7 @@ div.csl-indent {
 <p>言語エンジンは実はプログラミング言語として動作しなくてもよいですが, コードチャンクの任意のテキストを処理できます. まずは, コードチャンクの本文を大文字に変換するエンジンの例をお見せします.</p>
 <div class="sourceCode" id="cb435"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb435-1"><a href="custom-engine.html#cb435-1"></a>knitr<span class="sc">::</span>knit_engines<span class="sc">$</span><span class="fu">set</span>(<span class="at">upper =</span> <span class="cf">function</span>(options) {</span>
 <span id="cb435-2"><a href="custom-engine.html#cb435-2"></a>  code <span class="ot">&lt;-</span> <span class="fu">paste</span>(options<span class="sc">$</span>code, <span class="at">collapse =</span> <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
-<span id="cb435-3"><a href="custom-engine.html#cb435-3"></a>  <span class="cf">if</span> (options<span class="sc">$</span>eval) </span>
+<span id="cb435-3"><a href="custom-engine.html#cb435-3"></a>  <span class="cf">if</span> (options<span class="sc">$</span>eval)</span>
 <span id="cb435-4"><a href="custom-engine.html#cb435-4"></a>    <span class="fu">toupper</span>(code) <span class="cf">else</span> code</span>
 <span id="cb435-5"><a href="custom-engine.html#cb435-5"></a>})</span></code></pre></div>
 <p>ポイントは <code>toupper</code> 関数を「コード」に適用して, <code>\n</code> でコードの全ての行を連結し, 単一の文字列として結果を返すことです. <code>toupper()</code> はチャンクオプション <code>eval = TRUE</code>の時にのみ適用され, そうでなければ元の文字列が返されることに注意してください. このことは <code>eval</code> のようなチャンクオプションをエンジン関数内で利用する方法を示唆しています. 同様に, <code>results = 'hide'</code> の時に出力を隠すため, 関数内に <code>if (options$results == 'hide') return()</code> を加えることも検討することもできます. 以下は <code>upper</code> エンジンをオプションとともに使用するチャンクの例です.</p>
@@ -562,7 +562,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -602,6 +601,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

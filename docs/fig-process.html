@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.14 グラフに後処理をかける (*) | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.14 グラフに後処理をかける (*) | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="attr-output.html"/>
 <link rel="next" href="graphical-device.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -507,21 +507,22 @@ div.csl-indent {
 <span id="cb323-5"><a href="fig-process.html#cb323-5"></a>  logo <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">R.home</span>(<span class="st">&quot;doc&quot;</span>), <span class="st">&quot;html&quot;</span>, <span class="st">&quot;logo.jpg&quot;</span>)</span>
 <span id="cb323-6"><a href="fig-process.html#cb323-6"></a>  logo <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read</span>(logo)</span>
 <span id="cb323-7"><a href="fig-process.html#cb323-7"></a>  <span class="co"># デフォルトの重心は `northwest` (左上) で,</span></span>
-<span id="cb323-8"><a href="fig-process.html#cb323-8"></a>  <span class="co"># ユーザーはチャンクオプション `magick.gravity` で変更できる</span></span>
-<span id="cb323-9"><a href="fig-process.html#cb323-9"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(g <span class="ot">&lt;-</span> options<span class="sc">$</span>magick.gravity)) </span>
-<span id="cb323-10"><a href="fig-process.html#cb323-10"></a>    g <span class="ot">&lt;-</span> <span class="st">&quot;northwest&quot;</span></span>
-<span id="cb323-11"><a href="fig-process.html#cb323-11"></a>  <span class="co"># ロゴを画像に追加する</span></span>
-<span id="cb323-12"><a href="fig-process.html#cb323-12"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_composite</span>(img, logo, <span class="at">gravity =</span> g)</span>
-<span id="cb323-13"><a href="fig-process.html#cb323-13"></a>  <span class="co"># 新しい画像を書き出す</span></span>
-<span id="cb323-14"><a href="fig-process.html#cb323-14"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path)</span>
-<span id="cb323-15"><a href="fig-process.html#cb323-15"></a>  path</span>
-<span id="cb323-16"><a href="fig-process.html#cb323-16"></a>}</span></code></pre></div>
+<span id="cb323-8"><a href="fig-process.html#cb323-8"></a>  <span class="co"># ユーザーはチャンクオプション `magick.gravity`</span></span>
+<span id="cb323-9"><a href="fig-process.html#cb323-9"></a>  <span class="co"># で変更できる</span></span>
+<span id="cb323-10"><a href="fig-process.html#cb323-10"></a>  <span class="cf">if</span> (<span class="fu">is.null</span>(g <span class="ot">&lt;-</span> options<span class="sc">$</span>magick.gravity))</span>
+<span id="cb323-11"><a href="fig-process.html#cb323-11"></a>    g <span class="ot">&lt;-</span> <span class="st">&quot;northwest&quot;</span></span>
+<span id="cb323-12"><a href="fig-process.html#cb323-12"></a>  <span class="co"># ロゴを画像に追加する</span></span>
+<span id="cb323-13"><a href="fig-process.html#cb323-13"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_composite</span>(img, logo, <span class="at">gravity =</span> g)</span>
+<span id="cb323-14"><a href="fig-process.html#cb323-14"></a>  <span class="co"># 新しい画像を書き出す</span></span>
+<span id="cb323-15"><a href="fig-process.html#cb323-15"></a>  magick<span class="sc">::</span><span class="fu">image_write</span>(img, path)</span>
+<span id="cb323-16"><a href="fig-process.html#cb323-16"></a>  path</span>
+<span id="cb323-17"><a href="fig-process.html#cb323-17"></a>}</span></code></pre></div>
 <p>基本的にこの関数は R のグラフのパスをとり, R のロゴを追加し, 元画像のパスに新しい画像を保存します. デフォルトでは, ロゴはグラフの左上 (northwest) の隅に追加されますが, ユーザーはカスタムチャンクオプション <code>magick.gravity</code> で位置をカスタマイズできます. このオプション名は任意に決められます.</p>
 <p>では上記の処理関数を <code>fig.process = add_logo</code> と <code>magick.gravity = "northwest"</code> オプションで以下のコードチャンクに適用します. よってロゴは右上の隅に追加されます. 実際の出力は図<a href="fig-process.html#fig:magick-logo">11.1</a>になります.</p>
 <div class="sourceCode" id="cb324"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb324-1"><a href="fig-process.html#cb324-1"></a><span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">0.1</span>, <span class="fl">0.1</span>))</span>
-<span id="cb324-2"><a href="fig-process.html#cb324-2"></a><span class="fu">hist</span>(faithful<span class="sc">$</span>eruptions, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>, </span>
+<span id="cb324-2"><a href="fig-process.html#cb324-2"></a><span class="fu">hist</span>(faithful<span class="sc">$</span>eruptions, <span class="at">breaks =</span> <span class="dv">30</span>, <span class="at">main =</span> <span class="st">&quot;&quot;</span>, <span class="at">col =</span> <span class="st">&quot;gray&quot;</span>,</span>
 <span id="cb324-3"><a href="fig-process.html#cb324-3"></a>  <span class="at">border =</span> <span class="st">&quot;white&quot;</span>)</span></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:magick-logo"></span>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:magick-logo"></span>
 <img src="rmarkdown-cookbook_files/figure-html/magick-logo-1.png" alt="チャンクオプション fig.process でグラフに R のロゴを追加する"  />
 <p class="caption">
 図 11.1: チャンクオプション fig.process でグラフに R のロゴを追加する
@@ -531,7 +532,7 @@ div.csl-indent {
 <p>最後に, <code>fig.process</code> オプションのもう1つの応用例をお見せします. 以下の <code>pdf2png()</code> 関数は PDF 画像を PNG に変換します. 第<a href="graphical-device.html#graphical-device">11.15</a>節ではグラフの生成のために <code>tikz</code> グラフィックデバイスを使用する例を見せました. この方法の問題は, デバイスが PDF を生成するため, LaTeX 以外の出力文書に対しては機能しないということです. チャンクオプション <code>dev = "tikz"</code> と <code>fig.process = pdf2png</code> を使えば, グラフの PNG 版を図<a href="graphical-device.html#fig:dev-tikz">11.2</a>に示すことができます.</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb325-1"><a href="fig-process.html#cb325-1"></a>pdf2png <span class="ot">&lt;-</span> <span class="cf">function</span>(path) {</span>
 <span id="cb325-2"><a href="fig-process.html#cb325-2"></a>  <span class="co"># LaTeX でない出力に対してのみ変換する</span></span>
-<span id="cb325-3"><a href="fig-process.html#cb325-3"></a>  <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_latex_output</span>()) </span>
+<span id="cb325-3"><a href="fig-process.html#cb325-3"></a>  <span class="cf">if</span> (knitr<span class="sc">::</span><span class="fu">is_latex_output</span>())</span>
 <span id="cb325-4"><a href="fig-process.html#cb325-4"></a>    <span class="fu">return</span>(path)</span>
 <span id="cb325-5"><a href="fig-process.html#cb325-5"></a>  path2 <span class="ot">&lt;-</span> xfun<span class="sc">::</span><span class="fu">with_ext</span>(path, <span class="st">&quot;png&quot;</span>)</span>
 <span id="cb325-6"><a href="fig-process.html#cb325-6"></a>  img <span class="ot">&lt;-</span> magick<span class="sc">::</span><span class="fu">image_read_pdf</span>(path)</span>
@@ -555,7 +556,6 @@ div.csl-indent {
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -595,6 +595,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

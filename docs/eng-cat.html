@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>15.6 cat エンジンでチャンクをファイルに書き出す | R Markdown クックブック</title>
   <meta name="description" content="本書は, 各種ツールを最大限活用するために役立つよう, あまり知られていない小ワザや簡潔で実践的な裏ワザの例を紹介します. 本書を読んだ後には, R Markdown 文書が, プレーンテキストから変換され, 処理の各ステップステップのほぼ全てで, どうカスタマイズするかが理解できることでしょう. 例えば, R コードから動的にコンテンツを作成する方法, 他の文書やチャンでコードを参照する方法, カスタマイズしたテンプレートでフォーマットを制御する方法, コードをちょっと調整する方法, 複数のプログラミング言語を分析に組み込む方法, といったことが学べるでしょう." />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="15.6 cat エンジンでチャンクをファイルに書き出す | R Markdown クックブック" />
   <meta property="og:type" content="book" />
@@ -36,7 +36,8 @@
 <link rel="prev" href="d3.html"/>
 <link rel="next" href="eng-sas.html"/>
 <script src="libs/header-attrs/header-attrs.js"></script>
-<script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/jquery/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -44,7 +45,6 @@
 <link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
-
 
 
 
@@ -505,7 +505,7 @@ div.csl-indent {
 <span id="cb448-4"><a href="eng-cat.html#cb448-4"></a><span class="st">ですが &#39;シングルクオート&#39; は大丈夫です.</span></span>
 <span id="cb448-5"><a href="eng-cat.html#cb448-5"></a><span class="st">バックスラッシュがいくつ必要か考えるときにあなたが</span></span>
 <span id="cb448-6"><a href="eng-cat.html#cb448-6"></a><span class="st">正気を失わないでいられることを願います.</span></span>
-<span id="cb448-7"><a href="eng-cat.html#cb448-7"></a><span class="st">例えば, &#39;</span><span class="sc">\t</span><span class="st">&#39; なのか `</span><span class="sc">\\</span><span class="st">t` なのか &#39;</span><span class="sc">\\\\</span><span class="st">t&#39; なのか?&quot;</span>, </span>
+<span id="cb448-7"><a href="eng-cat.html#cb448-7"></a><span class="st">例えば, &#39;</span><span class="sc">\t</span><span class="st">&#39; なのか `</span><span class="sc">\\</span><span class="st">t` なのか &#39;</span><span class="sc">\\\\</span><span class="st">t&#39; なのか?&quot;</span>,</span>
 <span id="cb448-8"><a href="eng-cat.html#cb448-8"></a>  <span class="at">con =</span> <span class="st">&quot;my-file.txt&quot;</span>)</span></code></pre></div>
 <p>R 4.0.0 以降では <code>r"()"</code> 内での生の文字列 (<code>?Quotes</code> のヘルプ参照) がサポートされ始めたので, 特殊文字のルールを全て覚える必要はなくなり, この問題は大いに緩和されました. 生の文字列があってもなお, チャンク内で長い文字列を明示的にファイルに書き出すことは読者の注意力を少しばかり削ぐ可能性があります.</p>
 <p><strong>knitr</strong> の <code>cat</code> エンジンは, 例えばバックスラッシュのリテラルが必要な時は, 二重バックスラッシュが必要といった, R の文字列ルールを一切考えることなく, コードチャンクの内容の表示かつ/または外部ファイルへの書き出しの方法を提供してくれます.</p>
@@ -616,7 +616,6 @@ Stephens, Jeremy, Kirill Simonov, Yihui Xie, Zhuoer Dong, Hadley Wickham, Jeffre
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
-<script src="libs/gitbook/js/lunr.js"></script>
 <script src="libs/gitbook/js/clipboard.min.js"></script>
 <script src="libs/gitbook/js/plugin-search.js"></script>
 <script src="libs/gitbook/js/plugin-sharing.js"></script>
@@ -656,6 +655,10 @@ gitbook.start({
 "text": null
 },
 "download": [["rmarkdown-cookbook.pdf", "PDF"], ["rmarkdown-cookbook.md", "Markdown"], ["rmarkdown-cookbook.tex", "TeX"]],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }
