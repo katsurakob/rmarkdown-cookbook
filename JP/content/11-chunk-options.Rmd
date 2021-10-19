@@ -237,7 +237,7 @@ for (i in 1:5) warning('ここにメッセージ ', i)
 
 使用可能な引数を知るにはヘルプページ `?formatR::tidy_source` を読んでください. そして https://yihui.org/formatR/ で使用例とこの関数の限界を理解してください.
 
-`tidy = styler` を設定したなら, コード整形には代わりに **styler** パッケージ [@R-styler]\index{R パッケージ!styler} が使われます. R コードは `styler::style_text()` 関数で整形されます. **styler** パッケージは **formatR** よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 `%>%` のあるコードも対処できたりします. チャンクオプション `tidy.opts`\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は `styler::style_text()` へ引数を渡して使うこともできます. これが例です.
+`tidy = styler` を設定したなら, コード整形には代わりに **styler** パッケージ [@R-styler]\index{R パッケージ!styler} が使われます. R コードは `styler::style_text()` 関数で整形されます. **styler** パッケージは **formatR** よりも豊富な機能を持ちます. 例えば, `%>%`, `!!`, `{{` といった tidyverse 特有の構文が含まれていてもアラインメントを維持することができます. チャンクオプション `tidy.opts`\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は `styler::style_text()` へ引数を渡して使うこともできます. これが例です.
 
 ````md
 ```{r, tidy='styler', tidy.opts=list(strict=FALSE)}`r ''`
