@@ -7,8 +7,8 @@ R Markdown クックブック 日本語版
 クックブック](https://gedevan-aleksizde.github.io/rmarkdown-cookbook/)』翻訳版のソースコードを含んでいます.
 現在, 翻訳版は**完成**です.
 
-最新更新時刻: 2021/09/15 09:55:08 JST 本家最終更新時刻: [2021/09/15
-09:46:12 JST](https://github.com/yihui/rmarkdown-cookbook)
+最新更新時刻: 2021/10/19 21:10:05 JST 本家最終更新時刻: [2021/10/19
+20:34:17 JST](https://github.com/yihui/rmarkdown-cookbook)
 
 [![R Markdown
 Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/images/cover.png)](https://www.routledge.com/p/book/9780367563837)
