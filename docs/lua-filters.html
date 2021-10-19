@@ -507,7 +507,7 @@ div.csl-indent {
 <p>このファイルは見出し1つとパラグラフ1つを持っています. Pandoc がこの内容をパースした後にファイルを JSON 形式に変換すれば, R ユーザーにとっては 結果として現れる AST を理解するよりも簡単でしょう.</p>
 <div class="sourceCode" id="cb74"><pre class="sourceCode numberSource sh numberLines lineAnchors"><code class="sourceCode bash"><span id="cb74-1"><a href="lua-filters.html#cb74-1"></a><span class="ex">pandoc</span> <span class="at">-f</span> markdown <span class="at">-t</span> json <span class="at">-o</span> ast.json ast.md</span></code></pre></div>
 <p>そして JSON ファイルを R に読み込み, データ構造を書き出します.</p>
-<p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type”, <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
+<p>この操作をしたら, Markdown の内容は再帰的なリストで表現されていることが分かるでしょう. その構造を以下に表します. ラベル <code>t</code> は “type,” <code>c</code> は “content” を表します. 例として見出しを取り上げてみましょう. タイプは “Header” で, その中身は3つの要素が含まれています. 見出しのレベル (<code>2</code>), 属性 (例えば ID が <code>section-one</code> であること), そしてテキストの内容です.</p>
 <div class="sourceCode" id="cb75"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb75-1"><a href="lua-filters.html#cb75-1"></a>xfun<span class="sc">:::</span><span class="fu">tree</span>(</span>
 <span id="cb75-2"><a href="lua-filters.html#cb75-2"></a>  jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(<span class="st">&#39;ast.json&#39;</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb75-3"><a href="lua-filters.html#cb75-3"></a>)</span></code></pre></div>

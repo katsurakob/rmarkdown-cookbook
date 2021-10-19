@@ -503,11 +503,11 @@ div.csl-indent {
 <div class="sourceCode" id="cb49"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb49-1"><a href="update-date.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r Sys.Date()`&quot;</span></span></code></pre></div>
 <p>もっと人間にとって読みやすい, 特定の日次フォーマットを指定したいかもしれません. 例えば以下のようにします.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb50-1"><a href="update-date.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;`r format(Sys.time(), &#39;%x&#39;)`&quot;</span></span></code></pre></div>
-<p>例えば 2021年9月15日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
+<p>例えば 2021年10月19日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.</p>
 <ul>
-<li><code>%Y %B</code>: 2021 9月</li>
-<li><code>%y/%m/%d</code>: 21/09/15</li>
-<li><code>%b%d (%a)</code>: 9月15 (水)</li>
+<li><code>%Y %B</code>: 2021 10月</li>
+<li><code>%y/%m/%d</code>: 21/10/19</li>
+<li><code>%b%d (%a)</code>: 10月19 (火)</li>
 </ul>
 <p>表 <a href="update-date.html#tab:date-format">4.1</a> は POSIXct フォーマットの一覧です.</p>
 <table>

@@ -326,7 +326,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi (片桐 智志)\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/09/15 14:25:50 JST, ver. 1.0.0, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/08/17 19:34:48 JST}}
+\date{2021/10/19 21:04:58 JST, ver. 1.1.0, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/10/08 00:59:21 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -472,10 +472,10 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.24  knitr_1.34     rmarkdown_2.11
+##   bookdown_0.24  knitr_1.36     rmarkdown_2.11
 ##   rmdja_0.4.6.9  xfun_0.26     
 ## 
-## Pandoc version: 2.14.2
+## Pandoc version: 2.14.0.3
 \end{verbatim}
 
 上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (\texttt{\textgreater{}} や \texttt{+}) を付けたりしません. またテキスト出力は2連続ハッシュ \texttt{\#\#} でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: \textbf{rmarkdown}) で表記し, 本文中のコードやファイル名はタイプライタフォントで表記します (例: \texttt{knitr::knit(\textquotesingle{}foo.Rmd\textquotesingle{})}). 関数名の末尾には括弧を付けます (例: \texttt{blogdown::serve\_site()}). 二重コロン演算子 \texttt{::} はパッケージのオブジェクトへのアクセスを意味します.
@@ -805,7 +805,7 @@ R Markdown にあるいくつかの部品を考慮することで, 我々はさ�
 \hypertarget{yaml-metadata}{%
 \subsection{YAML メタデータ}\label{yaml-metadata}}
 
-YAML metadata\index{YAML} (YAML ヘッダとも呼びます) はレンダリング作業中の多くのステージで処理され, 様々な形で最終的な文書に作用することができます. YAML メタデータは Pandoc, \textbf{rmarkdown}, そして \textbf{knitr} のそれぞれで読み込まれます. その過程で, YAML メタデータに含まれる情報は, コード, コンテンツ, そしてレンダリング処理に影響をあたえます.
+YAML metadata\index{YAML} (YAML ヘッダとも呼びます) はレンダリング作業中の多くのステージで処理され, 様々な形で最終的な文書に作用することができます. YAML メタデータは文書ファイルの一番冒頭に書かれ, Pandoc, \textbf{rmarkdown}, そして \textbf{knitr} のそれぞれで読み込まれます. その過程で, YAML メタデータに含まれる情報は, コード, コンテンツ, そしてレンダリング処理に影響をあたえます.
 
 典型的な YAML ヘッダは以下のような形をしており, 文書とレンダリング操作指示の基礎となるメタデータを含んでいます.
 
@@ -1542,7 +1542,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    Report Generation in R\},}
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 1.34\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 1.36\},}
   \DataTypeTok{url}\NormalTok{ = \{https://yihui.org/knitr/\},}
 \NormalTok{\}}
 
@@ -1710,16 +1710,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年9月15日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年10月19日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%Y \%B}: 2021 9月
+  \texttt{\%Y \%B}: 2021 10月
 \item
-  \texttt{\%y/\%m/\%d}: 21/09/15
+  \texttt{\%y/\%m/\%d}: 21/10/19
 \item
-  \texttt{\%b\%d (\%a)}: 9月15 (水)
+  \texttt{\%b\%d (\%a)}: 10月19 (火)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -2362,15 +2362,13 @@ Markdown 構文にはテキストの色\index{ふぉんといろ@フォント色
 
 PDF でテキストの色を変更する例として, 以下のようなものを挙げます.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{{-}{-}{-}}
-\NormalTok{output: pdf\_document}
-\NormalTok{{-}{-}{-}}
+\begin{verbatim}
+---
+output: pdf_document
+---
 
-\NormalTok{薔薇は \textbackslash{}textcolor\{red\}\{赤い\}, 菫は \textbackslash{}textcolor\{blue\}\{青い\}.}
-\end{Highlighting}
-\end{Shaded}
+薔薇は \textcolor{red}{赤い}, 菫は \textcolor{blue}{青い}.
+\end{verbatim}
 
 上記の例では, カーリー・ブレイス（\texttt{\{\}}）のペアの１番目には指定するテキスト色が含まれ, 2番めには色を適用したいテキストが含まれています.
 
@@ -6764,7 +6762,7 @@ R Markdown ではデフォルトでは \texttt{cache.path = "INPUT\_cache/FORMAT
 
 使用可能な引数を知るにはヘルプページ \texttt{?formatR::tidy\_source} を読んでください. そして \url{https://yihui.org/formatR/} で使用例とこの関数の限界を理解してください.
 
-\texttt{tidy = styler} を設定したなら, コード整形には代わりに \textbf{styler} パッケージ \autocite{R-styler}\index{R パッケージ!styler} が使われます. R コードは \texttt{styler::style\_text()} 関数で整形されます. \textbf{styler} パッケージは \textbf{formatR} よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 \texttt{\%\textgreater{}\%} のあるコードも対処できたりします. チャンクオプション \texttt{tidy.opts}\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は \texttt{styler::style\_text()} へ引数を渡して使うこともできます. これが例です.
+\texttt{tidy = styler} を設定したなら, コード整形には代わりに \textbf{styler} パッケージ \autocite{R-styler}\index{R パッケージ!styler} が使われます. R コードは \texttt{styler::style\_text()} 関数で整形されます. \textbf{styler} パッケージは \textbf{formatR} よりも豊富な機能を持ちます. 例えば, \texttt{\%\textgreater{}\%}, \texttt{!!}, \texttt{\{\{} といった tidyverse 特有の構文が含まれていてもアラインメントを維持することができます. チャンクオプション \texttt{tidy.opts}\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は \texttt{styler::style\_text()} へ引数を渡して使うこともできます. これが例です.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7788,21 +7786,19 @@ Pandoc の fenced code blocks についてより詳しく学ぶには, \url{http
 
 読者への練習問題として, 異なる方法で出力を打ち切ることに挑戦してみてください. 最大行を決定するチャンクオプション \texttt{out.lines}\index{ちゃんくおぷしょん@チャンクオプション!out.lines} を所与として, 末尾の行ではなく中間の行を打ち切ることができますか? 例えば \texttt{out.lines = 10} なら, このように最初と最後の5行を残し, 中間に \texttt{....} を追加します.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{\#\#    speed dist}
-\NormalTok{\#\# 1      4    2}
-\NormalTok{\#\# 2      4   10}
-\NormalTok{\#\# 3      7    4}
-\NormalTok{\#\# 4      7   22}
-\NormalTok{....}
-\NormalTok{\#\# 46    24   70}
-\NormalTok{\#\# 47    24   92}
-\NormalTok{\#\# 48    24   93}
-\NormalTok{\#\# 49    24  120}
-\NormalTok{\#\# 50    25   85}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+##    speed dist
+## 1      4    2
+## 2      4   10
+## 3      7    4
+## 4      7   22
+....
+## 46    24   70
+## 47    24   92
+## 48    24   93
+## 49    24  120
+## 50    25   85
+\end{verbatim}
 
 出力の最終行, つまりフック関数の引数 \texttt{x} が空白行ならば, \texttt{c(head(x, n/2), \textquotesingle{}....\textquotesingle{},\ tail(x,\ n/2\ +\ 1))} のような処理が必要であることに注意してください. \texttt{+1} は最後の空白行を考慮するためです.
 
@@ -8639,16 +8635,14 @@ plot(cars)
 
 \textbf{knitr} はデフォルトでは文書内でチャンクラベルが重複することを許可しません. 重複するラベルは文書を knit する際にエラーを引き起こします. これは文書内でコードチャンクをコピーアンドペーストするときに最もよく起こります. あなたもこのようなエラーメッセージにでくわしたことがあるかもしれません.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{processing file: myfile.Rmd}
-\NormalTok{Error in parse\_block(g[{-}1], g[1], params.src, markdown\_mode) :}
-\NormalTok{  Duplicate chunk label \textquotesingle{}cars\textquotesingle{}}
-\NormalTok{Calls: \textless{}Anonymous\textgreater{} ... process\_file {-}\textgreater{} split\_file {-}\textgreater{} lapply {-}\textgreater{}}
-\NormalTok{  FUN {-}\textgreater{} parse\_block}
-\NormalTok{Execution halted}
-\end{Highlighting}
-\end{Shaded}
+\begin{verbatim}
+processing file: myfile.Rmd
+Error in parse_block(g[-1], g[1], params.src, markdown_mode) :
+  Duplicate chunk label 'cars'
+Calls: <Anonymous> ... process_file -> split_file -> lapply ->
+  FUN -> parse_block
+Execution halted
+\end{verbatim}
 
 しかし, 重複するラベルを許可したいこともあるというものです. 例えば親文書 \texttt{parent.Rmd} があり, その中で子文書を複数回 knit すれば, 失敗するでしょう.
 

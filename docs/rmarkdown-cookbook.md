@@ -30,7 +30,7 @@ cover-image: images/cover.png
 
 
 ---
-date: "2021/09/15 14:25:50 JST, ver. 1.0.0, 本家の更新確認時刻: [2021/08/17 19:34:48 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2021/10/19 21:04:58 JST, ver. 1.1.0, 本家の更新確認時刻: [2021/10/08 00:59:21 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -119,10 +119,10 @@ xfun::session_info(c(
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.24  knitr_1.34     rmarkdown_2.11
+##   bookdown_0.24  knitr_1.36     rmarkdown_2.11
 ##   rmdja_0.4.6.9  xfun_0.26     
 ## 
-## Pandoc version: 2.14.2
+## Pandoc version: 2.14.0.3
 ```
 
 上記のセッション情報を見て分かるように, 本書では R ソースコードにプロンプト記号 (`>` や `+`) を付けたりしません. またテキスト出力は2連続ハッシュ `##` でコメントアウトしています. これはコードをコピーして実行する際の利便性のためです (テキスト出力はコメントアウトされているので無視されます). パッケージ名は太字 (例: **rmarkdown**) で表記し, 本文中のコードやファイル名はタイプライタフォントで表記します (例: `knitr::knit('foo.Rmd')`). 関数名の末尾には括弧を付けます (例: `blogdown::serve_site()`). 二重コロン演算子 `::` はパッケージのオブジェクトへのアクセスを意味します.
@@ -419,7 +419,7 @@ R Markdown にあるいくつかの部品を考慮することで, 我々はさ�
 
 ### YAML メタデータ {#yaml-metadata}
 
-YAML metadata\index{YAML} (YAML ヘッダとも呼びます) はレンダリング作業中の多くのステージで処理され, 様々な形で最終的な文書に作用することができます. YAML メタデータは Pandoc, **rmarkdown**, そして **knitr** のそれぞれで読み込まれます. その過程で, YAML メタデータに含まれる情報は, コード, コンテンツ, そしてレンダリング処理に影響をあたえます.
+YAML metadata\index{YAML} (YAML ヘッダとも呼びます) はレンダリング作業中の多くのステージで処理され, 様々な形で最終的な文書に作用することができます. YAML メタデータは文書ファイルの一番冒頭に書かれ, Pandoc, **rmarkdown**, そして **knitr** のそれぞれで読み込まれます. その過程で, YAML メタデータに含まれる情報は, コード, コンテンツ, そしてレンダリング処理に影響をあたえます.
 
 典型的な YAML ヘッダは以下のような形をしており, 文書とレンダリング操作指示の基礎となるメタデータを含んでいます.
 
@@ -1079,7 +1079,7 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     Report Generation in R},
   author = {Yihui Xie},
   year = {2021},
-  note = {R package version 1.34},
+  note = {R package version 1.36},
   url = {https://yihui.org/knitr/},
 }
 
@@ -1237,11 +1237,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年9月15日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2021年10月19日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%Y %B`: 2021 9月
-- `%y/%m/%d`: 21/09/15
-- `%b%d (%a)`:  9月15 (水)
+- `%Y %B`: 2021 10月
+- `%y/%m/%d`: 21/10/19
+- `%b%d (%a)`: 10月19 (火)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -5749,7 +5749,7 @@ if (TRUE) {
 
 使用可能な引数を知るにはヘルプページ `?formatR::tidy_source` を読んでください. そして https://yihui.org/formatR/ で使用例とこの関数の限界を理解してください.
 
-`tidy = styler` を設定したなら, コード整形には代わりに **styler** パッケージ [@R-styler]\index{R パッケージ!styler} が使われます. R コードは `styler::style_text()` 関数で整形されます. **styler** パッケージは **formatR** よりも豊富な機能を持ちます. 例えば, 引数のアラインメントができたりパイプ演算子 `%>%` のあるコードも対処できたりします. チャンクオプション `tidy.opts`\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は `styler::style_text()` へ引数を渡して使うこともできます. これが例です.
+`tidy = styler` を設定したなら, コード整形には代わりに **styler** パッケージ [@R-styler]\index{R パッケージ!styler} が使われます. R コードは `styler::style_text()` 関数で整形されます. **styler** パッケージは **formatR** よりも豊富な機能を持ちます. 例えば, `%>%`, `!!`, `{{` といった tidyverse 特有の構文が含まれていてもアラインメントを維持することができます. チャンクオプション `tidy.opts`\index{ちゃんくおぷしょん@チャンクオプション!tidy.opts} は `styler::style_text()` へ引数を渡して使うこともできます. これが例です.
 
 ````md
 ```{r, tidy='styler', tidy.opts=list(strict=FALSE)}
