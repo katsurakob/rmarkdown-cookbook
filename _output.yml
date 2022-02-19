@@ -20,6 +20,7 @@ rmdja::gitbook_ja:
       facebook: yes
       all: ['linkedin', 'weibo', 'instapaper', 'vk']
 rmdja::pdf_book_ja:
+  latex_engine: lualatex
   includes:
     in_header: 
       - latex/preamble.tex
@@ -31,7 +32,6 @@ rmdja::pdf_book_ja:
   keep_tex: yes
   keep_md: yes
   fig_crop: false
-  latex_engine: lualatex
   pandoc_args: [--top-level-division=chapter, --wrap=none]
   toc_depth: 3
   toc_unnumbered: no

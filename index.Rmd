@@ -10,7 +10,6 @@ booklanguage: JP
 monofont: Ricty Discord
 jmonofont: Ricty Discord
 documentclass: bxjsreport
-jfontpreset: noto
 link-citations: yes
 colorlinks: yes
 bibliography:
