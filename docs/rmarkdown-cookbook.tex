@@ -5,7 +5,7 @@
 %
 \documentclass[
   11pt,
-  lualatex,ja=standard,jafont=noto]{bxjsreport}
+  lualatex,ja=standard,jafont=noto-otf]{bxjsreport}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex,ifpdf,ifthen}
@@ -27,7 +27,7 @@
 \fi
 \ifluatex
   \usepackage{luatexja}
-  \usepackage[,noto]{luatexja-preset}
+  \usepackage[,noto-otf]{luatexja-preset}
 \fi
 
   \IfFileExists{pxrubrica.sty}{\usepackage{pxrubrica}}{}
@@ -326,7 +326,7 @@ arc=4pt}
 
 \title{R Markdown クックブック}
 \author{(著者) Xie, Yihui \and (著者) Dervieux, Christophe \and (著者) Riederer, Emily \and (翻訳者) Katagiri, Satoshi (片桐 智志)\footnote{twitter @ill\_identified: \url{https://twitter.com/ill_identified}}}
-\date{2021/10/19 21:04:58 JST, ver. 1.1.0, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2021/10/08 00:59:21 JST}}
+\date{2022/02/20 22:56:23 JST, ver. 1.2.0, 本家の更新確認時刻: \href{https://github.com/yihui/rmarkdown-cookbook}{2022/02/18 20:30:08 JST}}
 \usepackage{bxtexlogo}
 \colorlet{shadecolor}{gray!20}
 
@@ -453,7 +453,7 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 \end{Shaded}
 
 \begin{verbatim}
-## R version 4.1.1 (2021-08-10)
+## R version 4.1.2 (2021-11-01)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 20.04.3 LTS
 ## 
@@ -472,8 +472,8 @@ R Markdown は分析とレポート作成を1つのドキュメントとして�
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.24  knitr_1.36     rmarkdown_2.11
-##   rmdja_0.4.6.9  xfun_0.26     
+##   bookdown_0.24  knitr_1.37     rmarkdown_2.11
+##   rmdja_0.4.6.9  xfun_0.29     
 ## 
 ## Pandoc version: 2.14.0.3
 \end{verbatim}
@@ -576,7 +576,7 @@ I am the main translator, which means the most of this text is translated by me.
 \begin{itemize}
 \tightlist
 \item
-  \href{https://github.com/nnawata}{nnawata}
+  \href{https://github.com/eitsupi}{eitsupi}, * \href{https://github.com/nnawata}{nnawata}
 \end{itemize}
 
 これは以下のようなプログラムで出力しています.
@@ -1542,7 +1542,7 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \NormalTok{    Report Generation in R\},}
   \DataTypeTok{author}\NormalTok{ = \{Yihui Xie\},}
   \DataTypeTok{year}\NormalTok{ = \{2021\},}
-  \DataTypeTok{note}\NormalTok{ = \{R package version 1.36\},}
+  \DataTypeTok{note}\NormalTok{ = \{R package version 1.37\},}
   \DataTypeTok{url}\NormalTok{ = \{https://yihui.org/knitr/\},}
 \NormalTok{\}}
 
@@ -1710,16 +1710,16 @@ R パッケージを引用するには, base R の \texttt{citation()}\index{uti
 \end{Highlighting}
 \end{Shaded}
 
-例えば 2021年10月19日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2022年2月20日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
 \begin{itemize}
 \tightlist
 \item
-  \texttt{\%Y \%B}: 2021 10月
+  \texttt{\%Y \%B}: 2022 2月
 \item
-  \texttt{\%y/\%m/\%d}: 21/10/19
+  \texttt{\%y/\%m/\%d}: 22/02/20
 \item
-  \texttt{\%b\%d (\%a)}: 10月19 (火)
+  \texttt{\%b\%d (\%a)}: 2月20 (日)
 \end{itemize}
 
 表 \ref{tab:date-format} は POSIXct フォーマットの一覧です.
@@ -1955,9 +1955,9 @@ Daniel Anderson らによって開発された \textbf{equatiomatic} パッケ�
 \end{Highlighting}
 \end{Shaded}
 
-\[
+\begin{equation}
 \operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
-\]
+\end{equation}
 
 \begin{Shaded}
 \begin{Highlighting}[numbers=left,,]
@@ -1966,9 +1966,9 @@ Daniel Anderson らによって開発された \textbf{equatiomatic} パッケ�
 \end{Highlighting}
 \end{Shaded}
 
-\[
+\begin{equation}
 \operatorname{\widehat{mpg}} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp})
-\]
+\end{equation}
 
 実際の数式を表示するには, チャンクオプション \texttt{results = "asis"}\index{ちゃんくおぷしょん@チャンクオプション!results} (オプションの意味は\ref{results-asis}節参照) が必要です. そうしないと, テキスト出力がそのまま表示されてしまいます.
 
@@ -2000,7 +2000,7 @@ Daniel Anderson らによって開発された \textbf{equatiomatic} パッケ�
 
 アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\ref{fig:pacman} が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
-PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの \href{https://ctan.org/pkg/animate}{\textbf{animate}} を読み込む必要があります (方法は\ref{latex-extra}節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. その上で以下の例のように, チャンクオプション \texttt{fig.show = "animate"}\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で \textbf{animate} パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
+PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの \href{https://ctan.org/pkg/animate}{\textbf{animate}} を読み込む必要があります (方法は\ref{latex-extra}節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. その上で以下の例のように, チャンクオプション \texttt{fig.show = "animate"}\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で \textbf{animate} パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7085,7 +7085,7 @@ R のロゴをグラフに埋め込むために, とても強力な \textbf{magi
 
 \textbf{rmarkdown} パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては \texttt{png()} を使うので, \textbf{knitr} は PNG 画像ファイルを生成し, PDF 出力に対しては \texttt{pdf()} デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション \texttt{dev}\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. \textbf{knitr} によってサポートされているグラフィックデバイスの一覧は次のようになります. \texttt{"bmp"}, \texttt{"postscript"}, \texttt{"pdf"}, \texttt{"png"}, \texttt{"svg"}, \texttt{"jpeg"}, \texttt{"pictex"}, \texttt{"tiff"}, \texttt{"win.metafile"}, \texttt{"cairo\_pdf"}, \texttt{"cairo\_ps"}, \texttt{"quartz\_pdf"}, \texttt{"quartz\_png"}, \texttt{"quartz\_jpeg"}, \texttt{"quartz\_tiff"}, \texttt{"quartz\_gif"}, \texttt{"quartz\_psd"}, \texttt{"quartz\_bmp"}, \texttt{"CairoJPEG"}, \texttt{"CairoPNG"}, \texttt{"CairoPS"}, \texttt{"CairoPDF"}, \texttt{"CairoSVG"}, \texttt{"CairoTIFF"}, \texttt{"Cairo\_pdf"}, \texttt{"Cairo\_png"}, \texttt{"Cairo\_ps"}, \texttt{"Cairo\_svg"}, \texttt{"svglite"}, \texttt{"ragg\_png"}, \texttt{"tikz"}
 
-大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで \texttt{?svg} と打てば \texttt{svg} デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに \texttt{quartz\_XXX} デバイスは \texttt{quartz()} 関数を元にしたもので, macOS でのみ有効です. \texttt{CairoXXX} デバイスは \textbf{Cairo} \autocite{R-Cairo} パッケージによるアドオンで, \texttt{Cairo\_XXX} デバイスは \textbf{cairoDevice} package \autocite{R-cairoDevice} から\footnote{\textbf{訳注}: 名前のよく似た \texttt{cairo\_pdf} は base R に含まれていることに注意してください.}, \texttt{svglite} デバイスは \textbf{svglite} パッケージ \autocite{R-svglite} から, \texttt{tikz} は \textbf{tikzDevice} パッケージ \autocite{R-tikzDevice} からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで \texttt{?svg} と打てば \texttt{svg} デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに \texttt{quartz\_XXX} デバイスは \texttt{quartz()} 関数を元にしたもので, macOS でのみ有効です. \texttt{CairoXXX} デバイスは \textbf{Cairo} \autocite{R-Cairo} パッケージによるアドオンで, \texttt{Cairo\_XXX} デバイスは \textbf{cairoDevice} package から\footnote{\textbf{訳注}: 名前のよく似た \texttt{cairo\_pdf} は base R に含まれていることに注意してください.}, \texttt{svglite} デバイスは \textbf{svglite} パッケージ \autocite{R-svglite} から, \texttt{tikz} は \textbf{tikzDevice} パッケージ \autocite{R-tikzDevice} からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
 大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために \texttt{dev = "svg"} または \texttt{dev = "svglite"} を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの \texttt{png} デバイスはラスタ画像形式であることに注意してください.
 
@@ -8937,13 +8937,13 @@ R Markdown は \textbf{knitr} を通して R 言語以外の多くのプログ�
 ##  [9] "node"      "octave"    "perl"      "psql"     
 ## [13] "Rscript"   "ruby"      "sas"       "scala"    
 ## [17] "sed"       "sh"        "stata"     "zsh"      
-## [21] "highlight" "Rcpp"      "tikz"      "dot"      
-## [25] "c"         "cc"        "fortran"   "fortran95"
-## [29] "asy"       "cat"       "asis"      "stan"     
-## [33] "block"     "block2"    "js"        "css"      
-## [37] "sql"       "go"        "python"    "julia"    
-## [41] "sass"      "scss"      "R"         "bslib"    
-## [45] "targets"
+## [21] "asis"      "asy"       "block"     "block2"   
+## [25] "bslib"     "c"         "cat"       "cc"       
+## [29] "comment"   "css"       "dot"       "embed"    
+## [33] "fortran"   "fortran95" "go"        "highlight"
+## [37] "js"        "julia"     "python"    "R"        
+## [41] "Rcpp"      "sass"      "scss"      "sql"      
+## [45] "stan"      "targets"   "tikz"      "verbatim"
 \end{verbatim}
 
 現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の \texttt{bash} コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の \texttt{bash} コードチャンクはそれ以前の \texttt{bash} チャンクで作成された変数を使うことができませんし, \texttt{cd} による作業ディレクトリの変更も異なる \texttt{bash} チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ\ldots\ldots, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\ref{eng-python}節参照).
@@ -9165,7 +9165,7 @@ R Markdown と \textbf{knitr} の Python サポートは \textbf{reticulate} パ
 \hypertarget{d3}{%
 \section{D3 で可視化する}\label{d3}}
 
-R のパッケージ \textbf{r2d3} \autocite{R-r2d3}\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで \texttt{r2d3()} 関数を呼び出すか, \texttt{d3} エンジン\index{げんごえんじん@言語エンジン!D3}\index{D3}\index{ず図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は \texttt{d3} エンジンで棒グラフを描く例です.
+R のパッケージ \textbf{r2d3} \autocite{R-r2d3}\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで \texttt{r2d3()} 関数を呼び出すか, \texttt{d3} エンジン\index{げんごえんじん@言語エンジン!D3}\index{D3}\index{ず@図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は \texttt{d3} エンジンで棒グラフを描く例です.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9543,39 +9543,24 @@ R パッケージの \textbf{sass} \autocite{R-sass} \index{R パッケージ!sa
 
 \ref{source-script}節で紹介した \texttt{source()} の方法には欠点があります. それはデフォルトではソースコードを見ることができないという点です. \texttt{source(..., echo = TRUE)} を使うことはできますが, ソースコードのシンタックスがきちんとハイライトされません. 加えて\ref{source-script}節で言及したように, \texttt{source()} の \texttt{local} 引数について注意を払う必要があります. この節ではこういった問題のない代わりになる方法を紹介します.
 
-1つでも外部スクリプトがあれば, 基本的にはそれを読み込んで中身を, チャンクの \texttt{code} オプション\index{ちゃんくおぷしょん@チャンクオプション!code}に渡すことができます. \texttt{code} オプションは文字列ベクトルをとるので, それをコードチャンクの本文として扱えます. 以下に少しだけ例をお見せします.
+1つでも外部スクリプトがあれば, 基本的にはそれを読み込んで中身を, チャンクの \texttt{file} オプション\index{ちゃんくおぷしょん@チャンクオプション!file} から渡すことができます. \texttt{file} オプションはファイルパスの文字列ベクトルをとります. 以下に少しだけ例をお見せします.
+
+ある外部ファイルを読み込める状態とします.
+
+\begin{verbatim}
+````md
+```{r, file='your-script.R'}
+```
+````
+\end{verbatim}
 
 \begin{itemize}
 \item
-  \texttt{code} オプションはソースコードを文字列ベクトルとして取ることができます. これが例です.
+  好きな数だけスクリプトを読み込むことができます:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, code=c(\textquotesingle{}1 + 1\textquotesingle{}, \textquotesingle{}if (TRUE) plot(cars)\textquotesingle{})\}}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-\item
-  外部ファイルを読み込むこともできます.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, code=xfun::read\_utf8(\textquotesingle{}your{-}script.R\textquotesingle{})\}}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-\end{Highlighting}
-\end{Shaded}
-\item
-  ファイルを好きな数だけ読み込むこともできます.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, include=FALSE\}}
-\InformationTok{read\_files \textless{}{-} function(files) \{}
-\InformationTok{  unlist(lapply(files, xfun::read\_utf8))}
-\InformationTok{\}}
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
-
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, code=read\_files(c(\textquotesingle{}one.R\textquotesingle{}, \textquotesingle{}two.R\textquotesingle{}))\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{r, file=c(\textquotesingle{}one.R\textquotesingle{}, \textquotesingle{}two.R\textquotesingle{})\}}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -9589,7 +9574,7 @@ R パッケージの \textbf{sass} \autocite{R-sass} \index{R パッケージ!sa
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{python, code=xfun::read\_utf8(\textquotesingle{}script.py\textquotesingle{})\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{python, file=\textquotesingle{}script.py\textquotesingle{}\}}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
@@ -9598,13 +9583,13 @@ R パッケージの \textbf{sass} \autocite{R-sass} \index{R パッケージ!sa
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{Rcpp, code=xfun::read\_utf8(\textquotesingle{}file.cpp\textquotesingle{})\}}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{Rcpp, file=\textquotesingle{}source.cpp\textquotesingle{}\}}
 \InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
 \end{Highlighting}
 \end{Shaded}
 \end{itemize}
 
-\texttt{code} オプションがあれば, お気に入りのエディタ使って複雑なコードを開発した上で, それを R Markdown 文書のコードチャンクに読み込ませるということができます.
+\texttt{file} オプションがあれば, お気に入りのエディタ使って複雑なコードを開発した上で, それを R Markdown 文書のコードチャンクに読み込ませるということができます.
 
 \hypertarget{read-chunk}{%
 \section{外部スクリプトから複数のコードチャンクを読み込む (*)}\label{read-chunk}}
@@ -9739,7 +9724,7 @@ R Markdown 文書が長過ぎると思った時は, 短い文書\index{こぶん
 \hypertarget{keep-files}{%
 \section{グラフ画像ファイルを残す}\label{keep-files}}
 
-ほとんどの R Markdown 出力フォーマットはデフォルトで \texttt{self\_contained = TRUE}\index{しゅつりょくおぷしょん@出力オプション!self\_contained} オプションを使用しています. これは出力文書に R グラフを埋め込むので, 出力文書を閲覧する時の中間ファイルは必要ありません. その結果, グラフ画像のフォルダ (典型的には \texttt{\_files} という接尾語があります) は Rmd 文書がレンダリングされた後に削除されます\index{ず図!ふぁいるをのこす@ファイルを残す}.
+ほとんどの R Markdown 出力フォーマットはデフォルトで \texttt{self\_contained = TRUE}\index{しゅつりょくおぷしょん@出力オプション!self\_contained} オプションを使用しています. これは出力文書に R グラフを埋め込むので, 出力文書を閲覧する時の中間ファイルは必要ありません. その結果, グラフ画像のフォルダ (典型的には \texttt{\_files} という接尾語があります) は Rmd 文書がレンダリングされた後に削除されます\index{ず@図!ふぁいるをのこす@ファイルを残す}.
 
 ときにはグラフ画像ファイルを残したいことがあります. 例えば学術誌の中には, 画像ファイルを別個に提出するよう著者に求めるものもあります. R Markdown ではこれらのファイルの自動削除を回避する3通りの方法があります.
 
@@ -10489,6 +10474,28 @@ knitr::opts_chunk$set(
   R のコードとして有効なものである限り, いくらでも複雑な構文を書くことができます.
 \end{itemize}
 
+チャンクオプションの書き方の別の方法として, コードチャンクの本文内に \texttt{\#\textbar{}} の後に書くことができます. 例えば以下のように.
+
+\begin{verbatim}
+```{r}
+#| my-chunk, echo = FALSE, fig.width = 10,
+#| fig.cap = "This is a long long
+#|   long long caption."
+plot(cars)
+```
+\end{verbatim}
+
+チャンクオプションとコードの間を1行開けるかどうかは任意です. この記法はオプションの改行が許容されます. 好きなだけ改行してオプションを書くことができます. 同じオプションが本文とチャンクヘッダ (\texttt{\textasciigrave{}\textasciigrave{}\textasciigrave{}\{\}} の内側) の両方で指定された場合, 前者が後者を上書きします. チャンク内では \texttt{\textless{}タグ\textgreater{}:\ \textless{}値\textgreater{}} のような YAML 式の記法でオプションを書くこともできます. 通常は, 1行毎に1つづつオプションを書かねばなりません. 例えば以下のように.
+
+\begin{verbatim}
+```{r}
+#| echo: false
+#| fig.width: 10
+```
+\end{verbatim}
+
+YAML 記法を選択した場合, 生の R の式ではなく YAML の値として有効なものを書かねばなりません.
+
 以下では \texttt{オプション}: (\texttt{デフォルト値}; 値の型) という形式で, \textbf{knitr} で使えるチャンクオプションのリストを掲載します.
 
 \hypertarget{evaluate}{%
@@ -10556,7 +10563,7 @@ cat("I'm raw **Markdown** content.\n")
 \item
   \textbf{\texttt{class.output}}: (\texttt{NULL}; \texttt{character}).: テキストの出力ブロックに追加するクラス名のベクトル. このオプションは R Markdown で HTML を出力する際にのみ機能します. 例えば \texttt{class.output = c(\textquotesingle{}foo\textquotesingle{},\ \textquotesingle{}bar\textquotesingle{})} はテキスト出力が \texttt{\textless{}pre\ class="foo\ bar"\textgreater{}\textless{}/pre\textgreater{}} で囲まれたブロックとして書き出されます.
 \item
-  \textbf{\texttt{class.message}}/\textbf{\texttt{class.warning}}/\textbf{\texttt{class.error}}: (\texttt{NULL}; \texttt{character})・: \texttt{class.output} と同様に, R Markdown においてそれぞれ メッセージ文, 警告文, エラー文のブロックに対してクラス名を与えます. \texttt{class.source} もまた同様にソースコードのブロックに対して適用されます. \textcite{ref}(\#code-decoration)節を参照してください.
+  \textbf{\texttt{class.message}}/\textbf{\texttt{class.warning}}/\textbf{\texttt{class.error}}: (\texttt{NULL}; \texttt{character})・: \texttt{class.output} と同様に, R Markdown においてそれぞれ メッセージ文, 警告文, エラー文のブロックに対してクラス名を与えます. \texttt{class.source} もまた同様にソースコードのブロックに対して適用されます. \ref{code-decoration}節を参照してください.
 \item
   \textbf{\texttt{attr.output}}/\textbf{\texttt{attr.message}}/\textbf{\texttt{attr.warning}}/\textbf{\texttt{attr.error}}: (\texttt{NULL}; \texttt{character}).: 上記の \texttt{class.*} オプション群と同様に, Pandoc に対してコードブロックの属性を指定します. つまり \texttt{class.*} は \texttt{attr.*} の特殊ケースです. 例: \texttt{class.source = \textquotesingle{}numberLines\textquotesingle{}} は \texttt{attr.source = \textquotesingle{}.numberLines\textquotesingle{}} と等価ですが, \texttt{attr.source} は任意の値を取ることができます. 例えば, \texttt{attr.source = c(\textquotesingle{}.numberLines\textquotesingle{},\ \textquotesingle{}startFrom="11"\textquotesingle{})}.
 \item
@@ -10596,6 +10603,12 @@ cat("I'm raw **Markdown** content.\n")
 \item
   \textbf{\texttt{attr.source}}: (\texttt{NULL}; \texttt{character}).: ソースコードブロックの属性です. \texttt{attr.output} などの \texttt{attr.*} シリーズと同様です.
 \item
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{lang}: (\texttt{NULL}; \texttt{character}) コードチャンクの言語名です. デフォルトでは言語名はエンジン名と同じです. 例: \texttt{r}. このオプションは主に Markdown ベースの文書出力でシンタックスハイライトするためのものです.
+  \end{itemize}
+\item
   \texttt{size}: (\texttt{\textquotesingle{}normalsize\textquotesingle{}}; \texttt{character}) \texttt{.Rnw} 使用時のチャンクサイズのフォントサイズです. 指定可能なサイズは \href{https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles}{overleaf のヘルプページ (英語)} を参照してください\footnote{訳注: \texttt{\textbackslash{}normalsize}, \texttt{\textbackslash{}Large}, \texttt{\textbackslash{}LARGE} など LaTeX で指定できるフォントサイズを表すマクロのことを指しています}.
 \item
   \textbf{\texttt{background}}: (\texttt{\textquotesingle{}\#F7F7F7\textquotesingle{}}; \texttt{character}).: \texttt{.Rnw} 使用時のチャンクブロックの背景色です\footnote{訳注: R Markdown では背景色は CSS や \texttt{class.output} などで設定する必要があります. 詳細は R Markdown Cookbook などを参照してください}.
@@ -10618,7 +10631,7 @@ rnorm(10)
 \item
   \textbf{\texttt{cache.vars}}: (\texttt{NULL}; \texttt{character}).: キャッシュデータベースに保存される変数名のベクトルを指定します. デフォルトではチャンクで作られた全ての変数が識別され保存されますが, 変数名の自動検出はロバストではないかもしれませんし, 保存したい変数を選別したい場合もあるかもしれないので, 保存したい変数を手動選択することもできます.
 \item
-  \textbf{\texttt{cache.globals}}: (\texttt{NULL}; \texttt{character}).: このチャンクで作成されない変数の名前のベクトルを指定します. このオプションは主に \texttt{autodep = TRUE} オプションをより正確に動作させたいときに使います. チャンク \texttt{B} で使われているグローバル変数が チャンク \texttt{A} のローカル変数として使われているときなど. グローバル変数の自動検出に失敗した際に使う場合, こにオプションを使って手動でグローバル変数の名前を指定してください (具体例として issue \href{https://github.com/yihui/knitr/issues/1403}{\#1403} を参照してください).
+  \textbf{\texttt{cache.globals}}: (\texttt{NULL}; \texttt{character}).: このチャンクで作成されない変数の名前のベクトルを指定します. このオプションは主に \texttt{autodep = TRUE} オプションをより正確に動作させたいときに使います. チャンク \texttt{B} で使われているグローバル変数が チャンク \texttt{A} のローカル変数として使われているときなど. グローバル変数の自動検出に失敗した際に使う場合, こにオプションを使って手動でグローバル変数の名前を指定してください (具体例として issue \href{https://github.com/yihui/knitr/issues/1403}{\#1403} を参照してください). さらに, \texttt{cache.globals = FALSE} は, 変数がグローバルかローカルかにかかわらず, コードチャンク内のすべての変数を検出することを意味します.
 \item
   \textbf{\texttt{cache.lazy}}: (\texttt{TRUE}; logical).: 遅延読み込み \texttt{lazyLoad()} を使うか, 直接 \texttt{load()} でオブジェクトを読み込むかを指定します. 非常に大きなオブジェクトに対しては, 遅延読み込みは機能しないかもしれません. よってこの場合は \texttt{cache.lazy = FALSE} が望ましいかもしれません (issue \href{https://github.com/yihui/knitr/issues/572}{\#572} を参照してください).
 \item
@@ -10783,7 +10796,7 @@ rnorm(10)
 \begin{itemize}
 \tightlist
 \item
-  \textbf{\texttt{code}}: (\texttt{NULL}; \texttt{character}).: 指定された場合, そのチャンクのコードを上書きします. この機能によって, プログラミング的にコード挿入が可能になります. 例えば \texttt{code = readLines(\textquotesingle{}test.R\textquotesingle{})} とすれば \texttt{test.R} の内容を現在のチャンクで実行します.
+  \textbf{\texttt{code}}: (\texttt{NULL}; \texttt{character}).: 指定された場合, そのチャンクのコードを上書きします. この機能によって, プログラミング的にコード挿入が可能になります. 例えば \texttt{code = readLines(\textquotesingle{}test.R\textquotesingle{})} とすれば \texttt{test.R} の内容を現在のチャンクで実行します. \texttt{file}: (\texttt{NULL}; \texttt{character}) これが指定された場合, \texttt{code} オプションが, チャンクとして読み込まれた外部ファイルの内容で上書きされます. \texttt{file = "test.R"} というチャンクオプションは \texttt{code = xfun::read\_all("test.R")} を指定しているのと同じことを意味します.
 \item
   \textbf{\texttt{ref.label}}: (\texttt{NULL}; \texttt{character}).: 現在のチャンクのコードに引き継ぐ, 別のチャンクのラベルの文字列ベクトルを指定します (動作例は \href{https://gedevan-aleksizde.github.io/knitr-doc-ja/reference.html\#reference}{チャンク参照} を確認してください).
 \end{itemize}
@@ -10911,7 +10924,7 @@ knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
 \item
   \textbf{\texttt{latex.options.color}}, \textbf{\texttt{latex.options.graphicx}}: (\texttt{NULL}).: それぞれ LaTeX パッケージの \textbf{color} と \textbf{graphicx} に対するオプションを指定します. これらのオプションは \texttt{.Rnw} 限定の機能です\footnote{訳注: R Markdown ではこの機能もやはり YAML フロントマターが担当しています}.
 \item
-  \textbf{\texttt{latex.tilde}} (\texttt{NULL}): .Rnw 文書のハイライト出力部でのチルダを表す LaTeX コマンドです (使用例は issue \href{https://github.com/yihui/knitr/issues/1992}{\#1992} を見てください).
+  \textbf{\texttt{latex.tilde}} (\texttt{NULL}): .Rnw 文書のシンタックスハイライトされたチャンク出力内でのチルダ文字を表す LaTeX コマンドの文字列です (使用例は issue \href{https://github.com/yihui/knitr/issues/1992}{\#1992} を見てください).
 \item
   \textbf{\texttt{out.format}}: (\texttt{NULL}; \texttt{character}).: 可能な値は \texttt{latex}, \texttt{sweave}, \texttt{html}, \texttt{markdown}, \texttt{jekyll} です. このオプションは入力ファイル名に応じて自動で決定され, 自動設定されるフック関数に影響します. 例えば \texttt{?knitr::render\_latex} を参考にしてください. このオプションは \texttt{knitr::knit()} が実行される\textbf{前に}設定する必要があります (文書内で設定しても機能しません).
 \item
@@ -10934,7 +10947,7 @@ knitr::opts_knit$set(progress = TRUE, verbose = TRUE)
 % --- bibliography settings ---
 
 % biblatex mode
-\printbibliography
+\printbibliography[title=参考文献,heading=bibintoc]
 % --- bibliography settings ends ---
 
 

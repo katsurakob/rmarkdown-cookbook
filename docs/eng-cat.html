@@ -583,13 +583,13 @@ div.csl-indent {
 <span id="cb451-7"><a href="eng-cat.html#cb451-7" aria-hidden="true" tabindex="-1"></a><span class="in">  bb: 2</span></span>
 <span id="cb451-8"><a href="eng-cat.html#cb451-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>その出力を以下に表示し, そしてファイル <code>demo.yml</code> としても生成します.</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode numberSource yaml yaml numberLines lineAnchors"><code class="sourceCode yaml"><span id="cb452-1"><a href="eng-cat.html#cb452-1"></a><span class="fu">a</span><span class="kw">:</span></span>
+<div class="sourceCode" id="cb452"><pre class="sourceCode numberSource yaml numberLines lineAnchors"><code class="sourceCode yaml"><span id="cb452-1"><a href="eng-cat.html#cb452-1"></a><span class="fu">a</span><span class="kw">:</span></span>
 <span id="cb452-2"><a href="eng-cat.html#cb452-2"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something&quot;</span></span>
 <span id="cb452-3"><a href="eng-cat.html#cb452-3"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
 <span id="cb452-4"><a href="eng-cat.html#cb452-4"></a><span class="fu">b</span><span class="kw">:</span></span>
 <span id="cb452-5"><a href="eng-cat.html#cb452-5"></a><span class="at">  </span><span class="fu">aa</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;something else&quot;</span></span>
 <span id="cb452-6"><a href="eng-cat.html#cb452-6"></a><span class="at">  </span><span class="fu">bb</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div>
-<p>ファイル <code>demo.yml</code> が実際に生成されたことを示すには, <strong>yaml</strong> パッケージ <span class="citation">(<a href="#ref-R-yaml" role="doc-biblioref">Stephens et al. 2020</a>)</span> で読み込んでみることができます.</p>
+<p>ファイル <code>demo.yml</code> が実際に生成されたことを示すには, <strong>yaml</strong> パッケージ <span class="citation">(<a href="#ref-R-yaml" role="doc-biblioref">Stephens et al. 2022</a>)</span> で読み込んでみることができます.</p>
 <div class="sourceCode" id="cb453"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb453-1"><a href="eng-cat.html#cb453-1"></a>xfun<span class="sc">::</span><span class="fu">tree</span>(yaml<span class="sc">::</span><span class="fu">read_yaml</span>(<span class="st">&quot;demo.yml&quot;</span>))</span></code></pre></div>
 <pre><code>## List of 2
 ##  |-a:List of 2
@@ -603,7 +603,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-yaml" class="csl-entry">
-Stephens, Jeremy, Kirill Simonov, Yihui Xie, Zhuoer Dong, Hadley Wickham, Jeffrey Horner, reikoch, Will Beasley, Brendan O’Connor, and Gregory R. Warnes. 2020. <em>Yaml: Methods to Convert r Data to YAML and Back</em>. <a href="https://github.com/viking/r-yaml/">https://github.com/viking/r-yaml/</a>.
+Stephens, Jeremy, Kirill Simonov, Yihui Xie, Zhuoer Dong, Hadley Wickham, Jeffrey Horner, reikoch, et al. 2022. <em>Yaml: Methods to Convert r Data to YAML and Back</em>. <a href="https://github.com/vubiostat/r-yaml/">https://github.com/vubiostat/r-yaml/</a>.
 </div>
 </div>
             </section>

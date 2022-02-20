@@ -499,27 +499,27 @@ div.csl-indent {
 <div id="read-chunk" class="section level2" number="16.3">
 <h2><span class="header-section-number">16.3</span> 外部スクリプトから複数のコードチャンクを読み込む (*)</h2>
 <p><a href="option-code.html#option-code">16.2</a>節では, コードを単一のチャンクに読み込む方法を紹介しました. この節では外部スクリプトから複数のチャンクを読み取る方法を1つ紹介します. ポイントは, スクリプト内のコードにラベルを付ける必要がありますが, 同じラベルを R Markdown 文書のコードチャンクにも使用できるという点です. つまり外部スクリプトのコードを <code>knitr::read_chunk()</code> 関数を介して各コードチャンクに展開できるのです. スクリプトのブロックにラベルを付けるには, <code>## ----</code> の後にラベルを書きます (行の終わりにも好きな数のダッシュ記号を続けることができます). 例えば次のように, 1つのスクリプトにはラベル付けされたブロックを複数含めることができます.</p>
-<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb469-1"><a href="read-chunk.html#cb469-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- test-a --------</span></span>
-<span id="cb469-2"><a href="read-chunk.html#cb469-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb469-3"><a href="read-chunk.html#cb469-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb469-4"><a href="read-chunk.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- test-b --------</span></span>
-<span id="cb469-5"><a href="read-chunk.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
-<span id="cb469-6"><a href="read-chunk.html#cb469-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(cars)</span>
-<span id="cb469-7"><a href="read-chunk.html#cb469-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb468-1"><a href="read-chunk.html#cb468-1" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- test-a --------</span></span>
+<span id="cb468-2"><a href="read-chunk.html#cb468-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb468-3"><a href="read-chunk.html#cb468-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb468-4"><a href="read-chunk.html#cb468-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ---- test-b --------</span></span>
+<span id="cb468-5"><a href="read-chunk.html#cb468-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="cn">TRUE</span>) {</span>
+<span id="cb468-6"><a href="read-chunk.html#cb468-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(cars)</span>
+<span id="cb468-7"><a href="read-chunk.html#cb468-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>上記のスクリプトのファイル名が <code>test.R</code> であるとします. R Markdown 文書ではこれを <code>knitr::read_chunk()</code> 関数で読み込み, コードチャンク内ではそのコードをラベルで使えます. これが例です.</p>
-<div class="sourceCode" id="cb470"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb470-1"><a href="read-chunk.html#cb470-1" aria-hidden="true" tabindex="-1"></a>外部スクリプトを読み込む</span>
-<span id="cb470-2"><a href="read-chunk.html#cb470-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-3"><a href="read-chunk.html#cb470-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE, cache=FALSE}</span></span>
-<span id="cb470-4"><a href="read-chunk.html#cb470-4" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::read_chunk(&#39;test.R&#39;)</span></span>
-<span id="cb470-5"><a href="read-chunk.html#cb470-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb470-6"><a href="read-chunk.html#cb470-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-7"><a href="read-chunk.html#cb470-7" aria-hidden="true" tabindex="-1"></a>これで, 例えばこのようにコードを使用できる</span>
-<span id="cb470-8"><a href="read-chunk.html#cb470-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-9"><a href="read-chunk.html#cb470-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-a, echo=FALSE}</span></span>
-<span id="cb470-10"><a href="read-chunk.html#cb470-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb470-11"><a href="read-chunk.html#cb470-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb470-12"><a href="read-chunk.html#cb470-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-b, fig.height=4}</span></span>
-<span id="cb470-13"><a href="read-chunk.html#cb470-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb469-1"><a href="read-chunk.html#cb469-1" aria-hidden="true" tabindex="-1"></a>外部スクリプトを読み込む</span>
+<span id="cb469-2"><a href="read-chunk.html#cb469-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-3"><a href="read-chunk.html#cb469-3" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, include=FALSE, cache=FALSE}</span></span>
+<span id="cb469-4"><a href="read-chunk.html#cb469-4" aria-hidden="true" tabindex="-1"></a><span class="in">knitr::read_chunk(&#39;test.R&#39;)</span></span>
+<span id="cb469-5"><a href="read-chunk.html#cb469-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb469-6"><a href="read-chunk.html#cb469-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-7"><a href="read-chunk.html#cb469-7" aria-hidden="true" tabindex="-1"></a>これで, 例えばこのようにコードを使用できる</span>
+<span id="cb469-8"><a href="read-chunk.html#cb469-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-9"><a href="read-chunk.html#cb469-9" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-a, echo=FALSE}</span></span>
+<span id="cb469-10"><a href="read-chunk.html#cb469-10" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb469-11"><a href="read-chunk.html#cb469-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb469-12"><a href="read-chunk.html#cb469-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, test-b, fig.height=4}</span></span>
+<span id="cb469-13"><a href="read-chunk.html#cb469-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
 <p>コードチャンクの副産物にも影響するというのが主な理由ですが <code>knitr::read_chunk()</code> を使っていることに注意してください. つまりこの関数を読み込んだコードチャンクがキャッシュされていないことを確認してください (この説明は<a href="cache.html#cache">11.4</a>節参照).</p>
 <p><a href="source-script.html#source-script">16.1</a>, <a href="option-code.html#option-code">16.2</a>節で紹介したように, この方法は別の環境でコード開発できるという柔軟性をもたらしてくれます.</p>
 </div>

@@ -506,13 +506,13 @@ div.csl-indent {
 ##  [9] &quot;node&quot;      &quot;octave&quot;    &quot;perl&quot;      &quot;psql&quot;     
 ## [13] &quot;Rscript&quot;   &quot;ruby&quot;      &quot;sas&quot;       &quot;scala&quot;    
 ## [17] &quot;sed&quot;       &quot;sh&quot;        &quot;stata&quot;     &quot;zsh&quot;      
-## [21] &quot;highlight&quot; &quot;Rcpp&quot;      &quot;tikz&quot;      &quot;dot&quot;      
-## [25] &quot;c&quot;         &quot;cc&quot;        &quot;fortran&quot;   &quot;fortran95&quot;
-## [29] &quot;asy&quot;       &quot;cat&quot;       &quot;asis&quot;      &quot;stan&quot;     
-## [33] &quot;block&quot;     &quot;block2&quot;    &quot;js&quot;        &quot;css&quot;      
-## [37] &quot;sql&quot;       &quot;go&quot;        &quot;python&quot;    &quot;julia&quot;    
-## [41] &quot;sass&quot;      &quot;scss&quot;      &quot;R&quot;         &quot;bslib&quot;    
-## [45] &quot;targets&quot;</code></pre>
+## [21] &quot;asis&quot;      &quot;asy&quot;       &quot;block&quot;     &quot;block2&quot;   
+## [25] &quot;bslib&quot;     &quot;c&quot;         &quot;cat&quot;       &quot;cc&quot;       
+## [29] &quot;comment&quot;   &quot;css&quot;       &quot;dot&quot;       &quot;embed&quot;    
+## [33] &quot;fortran&quot;   &quot;fortran95&quot; &quot;go&quot;        &quot;highlight&quot;
+## [37] &quot;js&quot;        &quot;julia&quot;     &quot;python&quot;    &quot;R&quot;        
+## [41] &quot;Rcpp&quot;      &quot;sass&quot;      &quot;scss&quot;      &quot;sql&quot;      
+## [45] &quot;stan&quot;      &quot;targets&quot;   &quot;tikz&quot;      &quot;verbatim&quot;</code></pre>
 <p>現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の <code>bash</code> コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の <code>bash</code> コードチャンクはそれ以前の <code>bash</code> チャンクで作成された変数を使うことができませんし, <code>cd</code> による作業ディレクトリの変更も異なる <code>bash</code> チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (<a href="eng-python.html#eng-python">15.2</a>節参照).</p>
 <p><em>R Markdown Definitive Guide</em> <span class="citation">(<a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の <a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">Section 2.7</a> では Python, シェル, SQL, Rcpp, Stan, JavaScript, CSS, Julia, C そして Fortran のコードを使用する例が紹介されています. この章ではさらなる言語エンジンを紹介します. そしてさらなる例はリポジトリ <a href="https://github.com/yihui/knitr-examples" class="uri">https://github.com/yihui/knitr-examples</a> で見られます. “engine” という単語を含むファイルを探してください.</p>
 <p>初めに, カスタム言語エンジンの登録によってこれがどのように動作するかを解明しましょう.</p>

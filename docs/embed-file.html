@@ -515,12 +515,12 @@ div.csl-indent {
 <div class="sourceCode" id="cb161"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb161-1"><a href="embed-file.html#cb161-1"></a><span class="co"># embed all Rmd and csv files</span></span>
 <span id="cb161-2"><a href="embed-file.html#cb161-2"></a>xfun<span class="sc">::</span><span class="fu">embed_files</span>(<span class="fu">list.files</span>(<span class="st">&quot;.&quot;</span>, <span class="st">&quot;[.](Rmd|csv)$&quot;</span>))</span></code></pre></div>
 <p>複数のファイルに対しては, これらの関数はまず zip ファイルに圧縮してから, その zip ファイルを埋め込みます. これらの関数はリンクを返し, 読者は HTML ページのリンクをクリックして埋め込んだファイルをダウンロードすることができます.</p>
-<p>これらの関数のより詳細な技術的情報は, ヘルプページ <code>?xfun::embed_file</code> またはブログ投稿 <a href="https://yihui.org/en/2018/07/embed-file/" class="uri">https://yihui.org/en/2018/07/embed-file/</a> で学ぶことができます. 同様のアイディアにより, <strong>downloadthis</strong> package <span class="citation">(<a href="#ref-R-downloadthis" role="doc-biblioref">Mattioni Maturana 2020</a>)</span> はダウンロードボタンを実装したことで, ユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.</p>
+<p>これらの関数のより詳細な技術的情報は, ヘルプページ <code>?xfun::embed_file</code> またはブログ投稿 <a href="https://yihui.org/en/2018/07/embed-file/" class="uri">https://yihui.org/en/2018/07/embed-file/</a> で学ぶことができます. 同様のアイディアにより, <strong>downloadthis</strong> package <span class="citation">(<a href="#ref-R-downloadthis" role="doc-biblioref">Mattioni Maturana 2022</a>)</span> はダウンロードボタンを実装したことで, ユーザーはリンクではなくダウンロードボタンをクリックしてダウンロードできるようになります. ボタンを使うほうがお好みなら, こちらを使うことも検討するとよいでしょう.</p>
 </div>
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-downloadthis" class="csl-entry">
-Mattioni Maturana, Felipe. 2020. <em>Downloadthis: Implement Download Buttons in Rmarkdown</em>. <a href="https://github.com/fmmattioni/downloadthis">https://github.com/fmmattioni/downloadthis</a>.
+Mattioni Maturana, Felipe. 2022. <em>Downloadthis: Implement Download Buttons in Rmarkdown</em>. <a href="https://github.com/fmmattioni/downloadthis">https://github.com/fmmattioni/downloadthis</a>.
 </div>
 <div id="ref-R-xfun" class="csl-entry">
 ———. 2021g. <em>Xfun: Supporting Functions for Packages Maintained by Yihui Xie</em>. <a href="https://github.com/yihui/xfun">https://github.com/yihui/xfun</a>.

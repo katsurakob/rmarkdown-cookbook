@@ -499,7 +499,7 @@ div.csl-indent {
 <div id="install-latex" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> PDF レポートの作成に LaTeX (TinyTeX) をインストールする</h2>
 <p>R Markdown から PDF 文書を作りたいなら, LaTeX がインストール済みである必要があります. 伝統的な選択肢として MiKTeX, MacTeX, そして TeX Live がありますが, R Markdown ユーザーに対しては <a href="https://yihui.org/tinytex/">TinyTeX</a> のインストールを推奨します.</p>
-<p>TinyTeX は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. TinyTeX は R パッケージの <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021e</a>)</span> でインストールできます.</p>
+<p>TinyTeX は TeX Live をもとにカスタムされた LaTeX ディストリビューションで, 比較的サイズが小さく, それでいて, 特に R ユーザーが使うようなほとんどの機能を備えています. TinyTeX のインストールや起動にはシステム管理者権限は不要です<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>. TinyTeX は R パッケージの <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2022</a>)</span> でインストールできます.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb7-1"><a href="install-latex.html#cb7-1"></a>tinytex<span class="sc">::</span><span class="fu">install_tinytex</span>()</span>
 <span id="cb7-2"><a href="install-latex.html#cb7-2"></a><span class="co"># TinyTeX をアンインストールするなら,</span></span>
 <span id="cb7-3"><a href="install-latex.html#cb7-3"></a><span class="co"># tinytex::uninstall_tinytex() を実行してください</span></span></code></pre></div>
@@ -518,10 +518,10 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-tinytex2019" class="csl-entry">
-———. 2019. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em>, no. 1: 30–32. <a href="http://tug.org/TUGboat/Contents/contents40-1.html">http://tug.org/TUGboat/Contents/contents40-1.html</a>.
+———. 2019. <span>“TinyTeX: A Lightweight, Cross-Platform, and Easy-to-Maintain LaTeX Distribution Based on TeX Live.”</span> <em>TUGboat</em>, no. 1: 30–32. <a href="https://tug.org/TUGboat/Contents/contents40-1.html">https://tug.org/TUGboat/Contents/contents40-1.html</a>.
 </div>
 <div id="ref-R-tinytex" class="csl-entry">
-———. 2021e. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+———. 2022. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
 </div>
 </div>
 <div class="footnotes">

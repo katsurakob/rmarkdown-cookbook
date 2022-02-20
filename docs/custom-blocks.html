@@ -558,7 +558,7 @@ div.csl-indent {
 <h3><span class="header-section-number">9.6.2</span> 影付きブロックを追加する</h3>
 <p>まず, 影付きボックスの内部にコンテンツを入れる方法を紹介します. ボックスは黒の背景色とオレンジ色の枠があり, 角は丸めます. ボックス内のテキストは白色です.</p>
 <p>HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSSにあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば <a href="https://www.w3schools.com/css/" class="uri">https://www.w3schools.com/css/</a> とか<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode numberSource css css numberLines lineAnchors"><code class="sourceCode css"><span id="cb205-1"><a href="custom-blocks.html#cb205-1"></a><span class="fu">.blackbox</span> {</span>
+<div class="sourceCode" id="cb205"><pre class="sourceCode numberSource css numberLines lineAnchors"><code class="sourceCode css"><span id="cb205-1"><a href="custom-blocks.html#cb205-1"></a><span class="fu">.blackbox</span> {</span>
 <span id="cb205-2"><a href="custom-blocks.html#cb205-2"></a>  <span class="kw">padding</span>: <span class="dv">1</span><span class="dt">em</span><span class="op">;</span></span>
 <span id="cb205-3"><a href="custom-blocks.html#cb205-3"></a>  <span class="kw">background</span>: <span class="cn">black</span><span class="op">;</span></span>
 <span id="cb205-4"><a href="custom-blocks.html#cb205-4"></a>  <span class="kw">color</span>: <span class="cn">white</span><span class="op">;</span></span>
@@ -569,7 +569,7 @@ div.csl-indent {
 <span id="cb205-9"><a href="custom-blocks.html#cb205-9"></a>  <span class="kw">text-align</span>: <span class="dv">center</span><span class="op">;</span></span>
 <span id="cb205-10"><a href="custom-blocks.html#cb205-10"></a>}</span></code></pre></div>
 <p>LaTeX 出力に対しては, LaTeX パッケージの <strong>framed</strong> を基にして <code>blackbox</code> という名前で新しい環境を作成し, 黒い背景色と白い文字色にします.</p>
-<div class="sourceCode" id="cb206"><pre class="sourceCode numberSource latex latex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb206-1"><a href="custom-blocks.html#cb206-1"></a><span class="bu">\usepackage</span>{<span class="ex">color</span>}</span>
+<div class="sourceCode" id="cb206"><pre class="sourceCode numberSource latex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb206-1"><a href="custom-blocks.html#cb206-1"></a><span class="bu">\usepackage</span>{<span class="ex">color</span>}</span>
 <span id="cb206-2"><a href="custom-blocks.html#cb206-2"></a><span class="bu">\usepackage</span>{<span class="ex">framed</span>}</span>
 <span id="cb206-3"><a href="custom-blocks.html#cb206-3"></a><span class="fu">\setlength</span>{<span class="fu">\fboxsep</span>}{.8em}</span>
 <span id="cb206-4"><a href="custom-blocks.html#cb206-4"></a></span>
@@ -655,7 +655,7 @@ div.csl-indent {
 <span id="cb212-4"><a href="custom-blocks.html#cb212-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb212-5"><a href="custom-blocks.html#cb212-5" aria-hidden="true" tabindex="-1"></a>::::</span></code></pre></div>
 <p>PDF 出力に対しては, 以前の例で定義した <code>blackbox</code> 環境を基に <code>infobox</code> 環境を作成し, ボックスの左側に画像を追加できます. LaTeX 環境に画像を追加する方法はいくつもあります. これはそのうちの1つにすぎません. なお, これは上記の CSS で定義したスタイルを正確に再現するものではありません.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode numberSource tex tex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb213-1"><a href="custom-blocks.html#cb213-1"></a><span class="fu">\newenvironment</span>{infobox}[1]</span>
+<div class="sourceCode" id="cb213"><pre class="sourceCode numberSource tex numberLines lineAnchors"><code class="sourceCode latex"><span id="cb213-1"><a href="custom-blocks.html#cb213-1"></a><span class="fu">\newenvironment</span>{infobox}[1]</span>
 <span id="cb213-2"><a href="custom-blocks.html#cb213-2"></a>  {</span>
 <span id="cb213-3"><a href="custom-blocks.html#cb213-3"></a>  <span class="kw">\begin</span>{<span class="ex">itemize</span>}</span>
 <span id="cb213-4"><a href="custom-blocks.html#cb213-4"></a>  <span class="fu">\renewcommand</span>{<span class="ex">\labelitemi</span>}{</span>

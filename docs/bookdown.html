@@ -498,7 +498,7 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="bookdown" class="section level2" number="16.9">
 <h2><span class="header-section-number">16.9</span> <strong>bookdown</strong> で本や長いレポートを書く</h2>
-<p><strong>bookdown</strong> パッケージ <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021a</a>)</span> は複数の R Markdown 文書で構成される長い文書を作成できるように設計されています. 例えば本を執筆したいなら, 章ごとに別々の Rmd ファイルに書き, <strong>bookdown</strong> を使ってこれらのファイルを本にコンパイルできます.</p>
+<p><strong>bookdown</strong> パッケージ <span class="citation">(<a href="#ref-R-bookdown" role="doc-biblioref">Xie 2021b</a>)</span> は複数の R Markdown 文書で構成される長い文書を作成できるように設計されています. 例えば本を執筆したいなら, 章ごとに別々の Rmd ファイルに書き, <strong>bookdown</strong> を使ってこれらのファイルを本にコンパイルできます.</p>
 <p>RStudio ユーザーにとって最も簡単な始め方は, 図<a href="bookdown.html#fig:bookdown-project">16.5</a>にあるように, IDE 上で <code>File -&gt; New Project -&gt; New Directory -&gt; Book Project using bookdown</code> を選んで <strong>bookdown</strong> プロジェクトを作成することです.</p>
 <p>RStudio を使っていないか, コンソールから作業するのが好きなら, <code>bookdown:::bookdown_skeleton('本のディレクトリ')</code> 関数を呼べば同じものが作れます.</p>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:bookdown-project"></span>
@@ -508,34 +508,34 @@ div.csl-indent {
 </p>
 </div>
 <p>使用法を実演するために, 同じディレクトリに3つのファイルを含めた最低限の例を用意しました.</p>
-<div class="sourceCode" id="cb482"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb482-1"><a href="bookdown.html#cb482-1" aria-hidden="true" tabindex="-1"></a>directory</span>
-<span id="cb482-2"><a href="bookdown.html#cb482-2" aria-hidden="true" tabindex="-1"></a>  |- index.Rmd</span>
-<span id="cb482-3"><a href="bookdown.html#cb482-3" aria-hidden="true" tabindex="-1"></a>  |- 01-導入.Rmd</span>
-<span id="cb482-4"><a href="bookdown.html#cb482-4" aria-hidden="true" tabindex="-1"></a>  |- 02-分析.Rmd</span></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb481-1"><a href="bookdown.html#cb481-1" aria-hidden="true" tabindex="-1"></a>directory</span>
+<span id="cb481-2"><a href="bookdown.html#cb481-2" aria-hidden="true" tabindex="-1"></a>  |- index.Rmd</span>
+<span id="cb481-3"><a href="bookdown.html#cb481-3" aria-hidden="true" tabindex="-1"></a>  |- 01-導入.Rmd</span>
+<span id="cb481-4"><a href="bookdown.html#cb481-4" aria-hidden="true" tabindex="-1"></a>  |- 02-分析.Rmd</span></code></pre></div>
 <p>以下に各ファイルの中身とそれぞれの役目を示します.</p>
 <ul>
 <li><p><strong>index.Rmd</strong>:</p>
-<div class="sourceCode" id="cb483"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb483-1"><a href="bookdown.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb483-2"><a href="bookdown.html#cb483-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;最低限の bookdown プロジェクト&quot;</span></span>
-<span id="cb483-3"><a href="bookdown.html#cb483-3" aria-hidden="true" tabindex="-1"></a><span class="an">site:</span><span class="co"> bookdown::bookdown_site</span></span>
-<span id="cb483-4"><a href="bookdown.html#cb483-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> bookdown::gitbook</span></span>
-<span id="cb483-5"><a href="bookdown.html#cb483-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb483-6"><a href="bookdown.html#cb483-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb483-7"><a href="bookdown.html#cb483-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># はじめに {-}</span></span>
-<span id="cb483-8"><a href="bookdown.html#cb483-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb483-9"><a href="bookdown.html#cb483-9" aria-hidden="true" tabindex="-1"></a>なにか書く</span></code></pre></div></li>
+<div class="sourceCode" id="cb482"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb482-1"><a href="bookdown.html#cb482-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb482-2"><a href="bookdown.html#cb482-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> &quot;最低限の bookdown プロジェクト&quot;</span></span>
+<span id="cb482-3"><a href="bookdown.html#cb482-3" aria-hidden="true" tabindex="-1"></a><span class="an">site:</span><span class="co"> bookdown::bookdown_site</span></span>
+<span id="cb482-4"><a href="bookdown.html#cb482-4" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span><span class="co"> bookdown::gitbook</span></span>
+<span id="cb482-5"><a href="bookdown.html#cb482-5" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb482-6"><a href="bookdown.html#cb482-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-7"><a href="bookdown.html#cb482-7" aria-hidden="true" tabindex="-1"></a><span class="fu"># はじめに {-}</span></span>
+<span id="cb482-8"><a href="bookdown.html#cb482-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb482-9"><a href="bookdown.html#cb482-9" aria-hidden="true" tabindex="-1"></a>なにか書く</span></code></pre></div></li>
 </ul>
 <p>最初のファイルは典型的には <code>index.Rmd</code> と呼ばれます. YAML フロントマターを与える唯一の Rmd ファイルとなるべきです. また, 特殊な YAML フィールド, <code>site: bookdown::bookdown_site</code> を含めて, <strong>bookdown</strong> を使うべきことを <strong>rmarkdown</strong> に知らせることで, 単一の Rmd ファイルをレンダリングするのではなく, 全ての Rmd ファイルをビルドさせます. <code>bookdown::gitbook</code> ・ <code>bookdown::pdf_book</code> ・ <code>bookdown::word_document2</code> ・ <code>bookdown::epub_book</code> といったどのような <strong>bookdown</strong> 出力フォーマットでも使えます.</p>
 <p>次の2つの Rmd ファイルは2つの章になります.</p>
 <ul>
 <li><p><strong>01-導入.Rmd:</strong></p>
-<div class="sourceCode" id="cb484"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb484-1"><a href="bookdown.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第1章</span></span>
-<span id="cb484-2"><a href="bookdown.html#cb484-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb484-3"><a href="bookdown.html#cb484-3" aria-hidden="true" tabindex="-1"></a>これは第1章です.</span></code></pre></div></li>
+<div class="sourceCode" id="cb483"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb483-1"><a href="bookdown.html#cb483-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第1章</span></span>
+<span id="cb483-2"><a href="bookdown.html#cb483-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb483-3"><a href="bookdown.html#cb483-3" aria-hidden="true" tabindex="-1"></a>これは第1章です.</span></code></pre></div></li>
 <li><p><strong>02-分析.Rmd</strong>:</p>
-<div class="sourceCode" id="cb485"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb485-1"><a href="bookdown.html#cb485-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第2章</span></span>
-<span id="cb485-2"><a href="bookdown.html#cb485-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb485-3"><a href="bookdown.html#cb485-3" aria-hidden="true" tabindex="-1"></a>これは第2章です.</span></code></pre></div></li>
+<div class="sourceCode" id="cb484"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb484-1"><a href="bookdown.html#cb484-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 第2章</span></span>
+<span id="cb484-2"><a href="bookdown.html#cb484-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb484-3"><a href="bookdown.html#cb484-3" aria-hidden="true" tabindex="-1"></a>これは第2章です.</span></code></pre></div></li>
 </ul>
 <p>これらの Rmd ファイルをレンダリングするためには, <code>rmarkdown::render()</code> の代わりに <code>bookdown::render_book('index.Rmd')</code> を呼ぶべきです. その内部では, デフォルトで <strong>bookdown</strong> が全ての Rmd ファイルを1つの Rmd に結合し, コンパイルします. ファイルは名前順に結合されます. 上記の例でファイル名の頭に数字を付けたのはそれが理由です.</p>
 <p><strong>bookdown</strong> プロジェクトをカスタマイズできる設定は多くあります. <strong>bookdown</strong> のより包括的な概要として, <strong>rmarkdown</strong> 本 <span class="citation">(<a href="#ref-rmarkdown2018" role="doc-biblioref">Xie, Allaire, and Grolemund 2018</a>)</span> の Chapter 18 を読んでください. 完全なドキュメントは <strong>bookdown</strong> 本 <span class="citation">(<a href="#ref-bookdown2016" role="doc-biblioref">Xie 2016</a>)</span> になります.</p>
@@ -546,7 +546,7 @@ div.csl-indent {
 ———. 2016. <em>Bookdown: Authoring Books and Technical Documents with <span>R</span> Markdown</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/bookdown">https://bookdown.org/yihui/bookdown</a>.
 </div>
 <div id="ref-R-bookdown" class="csl-entry">
-———. 2021a. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>.
+———. 2021b. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
 </div>
 <div id="ref-rmarkdown2018" class="csl-entry">
 Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <em>R Markdown: The Definitive Guide</em>. Boca Raton, Florida: Chapman; Hall/CRC. <a href="https://bookdown.org/yihui/rmarkdown">https://bookdown.org/yihui/rmarkdown</a>.

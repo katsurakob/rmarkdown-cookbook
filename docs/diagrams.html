@@ -499,7 +499,7 @@ div.csl-indent {
 <div id="diagrams" class="section level2" number="4.15">
 <h2><span class="header-section-number">4.15</span> ダイアグラムを作成する</h2>
 <p>ダイアグラムやフローチャートを生成する, R とは独立したプログラム (例: Graphviz) は多くありますが, これらは Rmd 文書内のコードチャンク内で直接取り扱うほうが簡単です.</p>
-<p>R ではいくつかのパッケージが使用可能ですが, その中で <strong>DiagrammeR</strong> <span class="citation">(<a href="#ref-R-DiagrammeR" role="doc-biblioref">Iannone 2020</a>)</span> とその他いくつかを最後に簡単に解説します. 完全なデモは <a href="https://rich-iannone.github.io/DiagrammeR/" class="uri">https://rich-iannone.github.io/DiagrammeR/</a> で見ることができます. この節では基本的な使用法とダイアグラム内で R コードを使う方法を紹介します.</p>
+<p>R ではいくつかのパッケージが使用可能ですが, その中で <strong>DiagrammeR</strong> <span class="citation">(<a href="#ref-R-DiagrammeR" role="doc-biblioref">Iannone 2022</a>)</span> とその他いくつかを最後に簡単に解説します. 完全なデモは <a href="https://rich-iannone.github.io/DiagrammeR/" class="uri">https://rich-iannone.github.io/DiagrammeR/</a> で見ることができます. この節では基本的な使用法とダイアグラム内で R コードを使う方法を紹介します.</p>
 <div id="basic-diagrams" class="section level3" number="4.15.1">
 <h3><span class="header-section-number">4.15.1</span> 基本的なダイアグラム</h3>
 <p><strong>DiagrammeR</strong> はいくつかの異なるグラフ言語を使ってグラフを作成する方法を提供します. この節では Graphviz の例を提示しますが,<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a> <strong>DiagrammeR</strong> は純粋に R コードだけでグラフを作ることもできます.</p>
@@ -518,8 +518,8 @@ div.csl-indent {
 <span id="cb68-12"><a href="diagrams.html#cb68-12"></a><span class="st">  }&quot;</span>,</span>
 <span id="cb68-13"><a href="diagrams.html#cb68-13"></a>  <span class="at">height =</span> <span class="dv">500</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagram-profit"></span>
-<div id="htmlwidget-8cbcdbe9419f04ec4b44" style="width:288px;height:500px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-8cbcdbe9419f04ec4b44">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0f1cd91748e09524640d" style="width:288px;height:500px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-0f1cd91748e09524640d">{"x":{"diagram":"digraph {\n  graph [layout = dot, rankdir = TB]\n  \n  node [shape = rectangle]        \n  rec1 [label = \"ステップ 1. 起床する\"]\n  rec2 [label = \"ステップ 2. コードを書く\"]\n  rec3 [label = \"ステップ 3. ???\"]\n  rec4 [label = \"ステップ 4. 収入を得る\"]\n  \n  # ノードIDでエッジを定義\n  rec1 -> rec2 -> rec3 -> rec4\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 図 4.4: プログラマの絵空事を表したダイアグラム
 </p>
@@ -551,8 +551,8 @@ div.csl-indent {
 <span id="cb69-20"><a href="diagrams.html#cb69-20"></a><span class="st">  &quot;</span>,</span>
 <span id="cb69-21"><a href="diagrams.html#cb69-21"></a>  <span class="at">height =</span> <span class="dv">100</span>)</span></code></pre></div>
 <div class="figure" style="text-align: center"><span style="display:block;" id="fig:diagram-params"></span>
-<div id="htmlwidget-f6f23530052efafb0f1c" style="width:576px;height:100px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-f6f23530052efafb0f1c">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-daee486d3da8791976e9" style="width:576px;height:100px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-daee486d3da8791976e9">{"x":{"diagram":"\n  digraph graph2 {\n  \n  graph [layout = dot, rankdir = LR]\n  \n  # node definitions with substituted label text\n  node [shape = oval]\n  a [label = \"Sepal.Length\"]\n  b [label = \"Sepal.Width\"]\n  c [label = \"Petal.Length\"]\n  d [label = \"Petal.Width\"]\n  \n  a -> b -> c -> d\n  }","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 図 4.5: R から入力されたパラメータを使用したダイアグラム
 </p>
@@ -572,7 +572,7 @@ Barrett, Malcolm. 2021. <em>Ggdag: Analyze and Create Elegant Directed Acyclic G
 de Vries, Andrie, and Javier Luraschi. 2020. <em>Nomnoml: Sassy UML Diagrams</em>. <a href="https://github.com/rstudio/nomnoml">https://github.com/rstudio/nomnoml</a>.
 </div>
 <div id="ref-R-DiagrammeR" class="csl-entry">
-Iannone, Richard. 2020. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://github.com/rich-iannone/DiagrammeR">https://github.com/rich-iannone/DiagrammeR</a>.
+Iannone, Richard. 2022. <em>DiagrammeR: Graph/Network Visualization</em>. <a href="https://github.com/rich-iannone/DiagrammeR">https://github.com/rich-iannone/DiagrammeR</a>.
 </div>
 <div id="ref-R-diagram" class="csl-entry">
 Soetaert, Karline. 2020. <em>Diagram: Functions for Visualising Simple Graphs (Networks), Plotting Flow Diagrams</em>. <a href="https://CRAN.R-project.org/package=diagram">https://CRAN.R-project.org/package=diagram</a>.

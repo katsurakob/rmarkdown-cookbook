@@ -506,7 +506,7 @@ div.csl-indent {
 <span id="cb8-5"><a href="install-latex-pkgs.html#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="install-latex-pkgs.html#cb8-6" aria-hidden="true" tabindex="-1"></a>!pdfTeX error: /usr/local/bin/pdflatex (file tcrm0700):</span>
 <span id="cb8-7"><a href="install-latex-pkgs.html#cb8-7" aria-hidden="true" tabindex="-1"></a>  Font tcrm0700 at 600 not found</span></code></pre></div>
-<p><a href="install-latex.html#install-latex">1.2</a> 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2021e</a>)</span> が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, <code>tinytex::parse_install()</code> で足りない LaTex パッケージをインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, <a href="https://ctan.org" class="uri">https://ctan.org</a>) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, <code>.log</code> という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の <code>text</code> 引数に与えることができます. どちらの方法でも動作するはずです.</p>
+<p><a href="install-latex.html#install-latex">1.2</a> 節で紹介した TinyTeX を使用しているなら, だいたいの場合このようなエラーに対処する必要はありません. <strong>tinytex</strong> <span class="citation">(<a href="#ref-R-tinytex" role="doc-biblioref">Xie 2022</a>)</span> が自動で対処してくれるからですが, 何らかの理由でこのようなエラーに遭遇した場合でもやはり, <code>tinytex::parse_install()</code> で足りない LaTex パッケージをインストールするのは簡単です. この関数は LaTeX ログファイルのパスを引数として, 足りないパッケージの問題を自動的に解決し, CTAN (the Comprehensive TEX Archive Network, <a href="https://ctan.org" class="uri">https://ctan.org</a>) で見つけられたものをインストールしようとします. LaTeX ログファイルは典型的には入力文書ファイルとおなじ基底名と, <code>.log</code> という拡張子名を持ちます. このログファイルを見つけられない場合, エラーメッセージをこの関数の <code>text</code> 引数に与えることができます. どちらの方法でも動作するはずです.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r numberLines lineAnchors"><code class="sourceCode r"><span id="cb9-1"><a href="install-latex-pkgs.html#cb9-1"></a><span class="co"># ログファイルが filename.log だとする</span></span>
 <span id="cb9-2"><a href="install-latex-pkgs.html#cb9-2"></a>tinytex<span class="sc">::</span><span class="fu">parse_install</span>(<span class="st">&quot;filename.log&quot;</span>)</span>
 <span id="cb9-3"><a href="install-latex-pkgs.html#cb9-3"></a></span>
@@ -539,7 +539,7 @@ div.csl-indent {
 <h3>参考文献</h3>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-R-tinytex" class="csl-entry">
-———. 2021e. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
+———. 2022. <em>Tinytex: Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents</em>. <a href="https://github.com/yihui/tinytex">https://github.com/yihui/tinytex</a>.
 </div>
 </div>
             </section>

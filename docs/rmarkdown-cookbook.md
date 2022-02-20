@@ -10,7 +10,6 @@ booklanguage: JP
 monofont: Ricty Discord
 jmonofont: Ricty Discord
 documentclass: bxjsreport
-jfontpreset: noto
 link-citations: yes
 colorlinks: yes
 bibliography:
@@ -24,13 +23,14 @@ github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
 site: bookdown::bookdown_site
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
+biblio-title: "参考文献"
 ---
 
 
 
 
 ---
-date: "2021/10/19 21:04:58 JST, ver. 1.1.0, 本家の更新確認時刻: [2021/10/08 00:59:21 JST](https://github.com/yihui/rmarkdown-cookbook)"
+date: "2022/02/20 22:56:23 JST, ver. 1.2.0, 本家の更新確認時刻: [2022/02/18 20:30:08 JST](https://github.com/yihui/rmarkdown-cookbook)"
 ---
 
 # はじめに {-}
@@ -100,7 +100,7 @@ xfun::session_info(c(
 ```
 
 ```
-## R version 4.1.1 (2021-08-10)
+## R version 4.1.2 (2021-11-01)
 ## Platform: x86_64-pc-linux-gnu (64-bit)
 ## Running under: Ubuntu 20.04.3 LTS
 ## 
@@ -119,8 +119,8 @@ xfun::session_info(c(
 ##   LC_IDENTIFICATION=C       
 ## 
 ## Package version:
-##   bookdown_0.24  knitr_1.36     rmarkdown_2.11
-##   rmdja_0.4.6.9  xfun_0.26     
+##   bookdown_0.24  knitr_1.37     rmarkdown_2.11
+##   rmdja_0.4.6.9  xfun_0.29     
 ## 
 ## Pandoc version: 2.14.0.3
 ```
@@ -210,7 +210,7 @@ I am the main translator, which means the most of this text is translated by me.
 
 加えて, 日本語版の修正提案に協力していただいた方を以下にクレジットします. R Markdown クックブックなので R を使って機械的に掲載してみます. 以下に Github でのPRがマージされた方のアカウント名が表示されます.
 
-* [nnawata](https://github.com/nnawata)
+* [eitsupi](https://github.com/eitsupi), * [nnawata](https://github.com/nnawata)
 
 これは以下のようなプログラムで出力しています.
 
@@ -1079,7 +1079,7 @@ knitr::write_bib(c("knitr", "rmarkdown"), width = 60)
     Report Generation in R},
   author = {Yihui Xie},
   year = {2021},
-  note = {R package version 1.36},
+  note = {R package version 1.37},
   url = {https://yihui.org/knitr/},
 }
 
@@ -1237,11 +1237,11 @@ date: "`r Sys.Date()`"
 date: "`r format(Sys.time(), '%x')`"
 ```
 
-例えば 2021年10月19日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
+例えば 2022年2月20日 といったコードはあなたが文書を knit するごとに, 日付を動的に生成します. 日付のフォーマットをカスタマイズしたいならば, ご自分でフォーマット文字列を与えて変更できます. いくつか例をお見せしましょう.
 
-- `%Y %B`: 2021 10月
-- `%y/%m/%d`: 21/10/19
-- `%b%d (%a)`: 10月19 (火)
+- `%Y %B`: 2022 2月
+- `%y/%m/%d`: 22/02/20
+- `%b%d (%a)`:  2月20 (日)
 
 表 \@ref(tab:date-format) は POSIXct フォーマットの一覧です.
 
@@ -1446,18 +1446,22 @@ fit <- lm(mpg ~ cyl + disp, mtcars)
 equatiomatic::extract_eq(fit)
 ```
 
-$$
+
+
+\begin{equation}
 \operatorname{mpg} = \alpha + \beta_{1}(\operatorname{cyl}) + \beta_{2}(\operatorname{disp}) + \epsilon
-$$
+\end{equation}
 
 ```{.r .numberLines .lineAnchors}
 # 実際の係数を表示
 equatiomatic::extract_eq(fit, use_coefs = TRUE)
 ```
 
-$$
+
+
+\begin{equation}
 \operatorname{\widehat{mpg}} = 34.66 - 1.59(\operatorname{cyl}) - 0.02(\operatorname{disp})
-$$
+\end{equation}
 
 実際の数式を表示するには, チャンクオプション `results = "asis"`\index{ちゃんくおぷしょん@チャンクオプション!results} (オプションの意味は\@ref(results-asis)節参照) が必要です. そうしないと, テキスト出力がそのまま表示されてしまいます.
 
@@ -1486,7 +1490,7 @@ for (i in 1:2) {
 
 アニメーションのフォーマットは GIF で, HTML 出力ではうまく動作しますが, LaTeX は GIF を直接サポートしていません. あなたが本書の PDF または印刷版を読んでいるなら, 図\@ref(fig:pacman) が2つの動かない画像になっているのはこれが理由です. 本書のオンライン版を読めば, 実際のアニメーションが見られるでしょう.
 
-PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. 第2位に, Acrobat Reader でのみアニメーションの動作を見ることができます. その上で以下の例のように, チャンクオプション `fig.show = "animate"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
+PDF でもアニメーションを動作させることはできますが, 事前準備が2つ必要です. 第1に, LaTeX パッケージの [**animate**](https://ctan.org/pkg/animate) を読み込む必要があります (方法は\@ref(latex-extra)節参照). 第2に, Acrobat Reader でのみアニメーションを見ることができます. その上で以下の例のように, チャンクオプション `fig.show = "animate"`\index{ちゃんくおぷしょん@チャンクオプション!fig.show} で **animate** パッケージ\index{R パッケージ!animate} を使いアニメーションを作成できるようにします.
 
 ````md
 ---
@@ -4104,7 +4108,7 @@ output:
 HTML 出力に対しては, CSS ファイル内でそのルールを定義します. CSS\index{CSS}にあまり詳しくなくても, 無料で見られるオンラインチュートリアルが豊富にあります. 例えば https://www.w3schools.com/css/ とか^[**訳注**: このサイト相当の日本語のサイトを翻訳者は知らないので Moziila のサイトなどを参考にしてください https://developer.mozilla.org/ja/docs/Learn/Getting_started_with_the_web/CSS_basics (一部未翻訳のページもあるかもしれません)].
 
 
-```{.css .css .numberLines .lineAnchors}
+```{.css .numberLines .lineAnchors}
 .blackbox {
   padding: 1em;
   background: black;
@@ -4120,7 +4124,7 @@ HTML 出力に対しては, CSS ファイル内でそのルールを定義しま
 LaTeX 出力に対しては, LaTeX パッケージの **framed**\index{LaTeX パッケージ!framed} を基にして `blackbox` という名前で新しい環境を作成し, 黒い背景色と白い文字色にします.
 
 
-```{.latex .latex .numberLines .lineAnchors}
+```{.latex .numberLines .lineAnchors}
 \usepackage{color}
 \usepackage{framed}
 \setlength{\fboxsep}{.8em}
@@ -4242,7 +4246,7 @@ HTML 出力では, CSS の `background-image`\index{CSS プロパティ!backgrou
 PDF 出力に対しては, 以前の例で定義した `blackbox` 環境を基に `infobox` 環境を作成し, ボックスの左側に画像を追加できます. LaTeX 環境に画像を追加する方法はいくつもあります. これはそのうちの1つにすぎません. なお, これは上記の CSS で定義したスタイルを正確に再現するものではありません.
 
 
-```{.tex .tex .numberLines .lineAnchors}
+```{.tex .numberLines .lineAnchors}
 \newenvironment{infobox}[1]
   {
   \begin{itemize}
@@ -6028,7 +6032,7 @@ pdf2png <- function(path) {
 
 **rmarkdown** パッケージはそれぞれの出力フォーマットに対して妥当なデフォルトのグラフィックデバイスを設定しています. 例えば HTML 出力に対しては `png()` を使うので, **knitr** は PNG 画像ファイルを生成し, PDF 出力に対しては `pdf()` デバイスを使う, などです. あなたがデフォルトのグラフィックデバイスの品質に不満なら, チャンクオプション `dev`\index{ちゃんくおぷしょん@チャンクオプション!dev} によって変更することができます. **knitr** によってサポートされているグラフィックデバイスの一覧は次のようになります. `"bmp"`, `"postscript"`, `"pdf"`, `"png"`, `"svg"`, `"jpeg"`, `"pictex"`, `"tiff"`, `"win.metafile"`, `"cairo_pdf"`, `"cairo_ps"`, `"quartz_pdf"`, `"quartz_png"`, `"quartz_jpeg"`, `"quartz_tiff"`, `"quartz_gif"`, `"quartz_psd"`, `"quartz_bmp"`, `"CairoJPEG"`, `"CairoPNG"`, `"CairoPS"`, `"CairoPDF"`, `"CairoSVG"`, `"CairoTIFF"`, `"Cairo_pdf"`, `"Cairo_png"`, `"Cairo_ps"`, `"Cairo_svg"`, `"svglite"`, `"ragg_png"`, `"tikz"`
 
-大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package [@R-cairoDevice] から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
+大抵の場合, グラフィックデバイスの名前は関数名でもあります. デバイス\index{ず@図!でばいす@デバイス}についてもっと詳しく知りたいなら, あなたは R のヘルプページを読むことができます. 例えば R コンソールで `?svg` と打てば `svg` デバイスの詳細を知ることができます. このデバイスは base R に含まれています. さらに `quartz_XXX` デバイスは `quartz()` 関数を元にしたもので, macOS でのみ有効です. `CairoXXX` デバイスは **Cairo** [@R-Cairo] パッケージによるアドオンで, `Cairo_XXX` デバイスは **cairoDevice** package から^[**訳注**: 名前のよく似た `cairo_pdf` は base R に含まれていることに注意してください.], `svglite` デバイスは **svglite** パッケージ [@R-svglite] から, `tikz` は **tikzDevice** パッケージ [@R-tikzDevice] からのデバイスです. アドオンパッケージ由来のデバイスを使いたいなら, そのパッケージをまずインストールしなければなりません.\index{R パッケージ!グラフィックデバイス}
 
 大抵はベクタ画像はラスタ画像よりも高品質であり, ベクタ画像は品質を損なうことなく縮尺を変更できます. HTML 出力では, SVG のグラフのために `dev = "svg"` または `dev = "svglite"` を使うことを検討してください. SVG はベクタ画像形式で, デフォルトの `png` デバイスはラスタ画像形式であることに注意してください.
 
@@ -7706,13 +7710,13 @@ names(knitr::knit_engines$get())
 ##  [9] "node"      "octave"    "perl"      "psql"     
 ## [13] "Rscript"   "ruby"      "sas"       "scala"    
 ## [17] "sed"       "sh"        "stata"     "zsh"      
-## [21] "highlight" "Rcpp"      "tikz"      "dot"      
-## [25] "c"         "cc"        "fortran"   "fortran95"
-## [29] "asy"       "cat"       "asis"      "stan"     
-## [33] "block"     "block2"    "js"        "css"      
-## [37] "sql"       "go"        "python"    "julia"    
-## [41] "sass"      "scss"      "R"         "bslib"    
-## [45] "targets"
+## [21] "asis"      "asy"       "block"     "block2"   
+## [25] "bslib"     "c"         "cat"       "cc"       
+## [29] "comment"   "css"       "dot"       "embed"    
+## [33] "fortran"   "fortran95" "go"        "highlight"
+## [37] "js"        "julia"     "python"    "R"        
+## [41] "Rcpp"      "sass"      "scss"      "sql"      
+## [45] "stan"      "targets"   "tikz"      "verbatim"
 ```
 
 現時点では, R 言語でないほとんどの言語はコードチャンクごとに独立して実行されます. 例えば, 同じ文書内の `bash` コードチャンクは全てそれぞれ別々のセッションで実行されるため, 後の `bash` コードチャンクはそれ以前の `bash` チャンクで作成された変数を使うことができませんし, `cd` による作業ディレクトリの変更も異なる `bash` チャンク間で維持できません. R, Python, そして Julia のコードチャンクのみが同一セッションで実行されます. 全ての R コードチャンクは同一の R セッションで実行され, 全ての Python コードチャンクは同一の Python セッションされ……, ということに注意してください. R セッションと Python セッションは2つの異なるセッションですが, 一方のセッションからもう一方のセッションのオブジェクトにアクセスしたり操作したりすることは可能です (\@ref(eng-python)節参照).
@@ -7903,7 +7907,7 @@ knitr::opts_chunk$set(engine.opts = list(bash = "-l"))
 
 ## D3 で可視化する {#d3}
 
-R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで `r2d3()` 関数を呼び出すか, `d3` エンジン\index{げんごえんじん@言語エンジン!D3}\index{D3}\index{ず図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は `d3` エンジンで棒グラフを描く例です.
+R のパッケージ **r2d3** [@R-r2d3]\index{R パッケージ!r2d3} は D3 可視化のインターフェースです. このパッケージは例えば Shiny のような他のアプリケーションと同様に R Markdown 文書内で使うことができます. R Markdown 内で使うにはコードチャンクで `r2d3()` 関数を呼び出すか, `d3` エンジン\index{げんごえんじん@言語エンジン!D3}\index{D3}\index{ず@図!D3}を使用することができます. 後者は D3 ライブラリと Javascript の理解が要求されますが, それは本書で扱う範囲を超えますので, 読者自身による学習に任せます. 以下は `d3` エンジンで棒グラフを描く例です.
 
 ````md
 ---
@@ -8043,7 +8047,7 @@ b:
 その出力を以下に表示し, そしてファイル `demo.yml` としても生成します.
 
 
-```{.yaml .yaml .numberLines .lineAnchors}
+```{.yaml .numberLines .lineAnchors}
 a:
   aa: "something"
   bb: 1
@@ -8257,52 +8261,40 @@ source("your-script.R", local = knitr::knit_global())
 
 \@ref(source-script)節で紹介した `source()` の方法には欠点があります. それはデフォルトではソースコードを見ることができないという点です. `source(..., echo = TRUE)` を使うことはできますが, ソースコードのシンタックスがきちんとハイライトされません. 加えて\@ref(source-script)節で言及したように, `source()` の `local` 引数について注意を払う必要があります. この節ではこういった問題のない代わりになる方法を紹介します.
 
-1つでも外部スクリプトがあれば, 基本的にはそれを読み込んで中身を, チャンクの `code` オプション\index{ちゃんくおぷしょん@チャンクオプション!code}に渡すことができます. `code` オプションは文字列ベクトルをとるので, それをコードチャンクの本文として扱えます. 以下に少しだけ例をお見せします.
+1つでも外部スクリプトがあれば, 基本的にはそれを読み込んで中身を, チャンクの `file` オプション\index{ちゃんくおぷしょん@チャンクオプション!file} から渡すことができます. `file` オプションはファイルパスの文字列ベクトルをとります. 以下に少しだけ例をお見せします.
 
-- `code` オプションはソースコードを文字列ベクトルとして取ることができます. これが例です.
+ある外部ファイルを読み込める状態とします.
 
     ````md
-    ```{r, code=c('1 + 1', 'if (TRUE) plot(cars)')}
+    ```{r, file='your-script.R'}
     ```
     ````
 
-- 外部ファイルを読み込むこともできます.
+- 好きな数だけスクリプトを読み込むことができます:
 
     ````md
-    ```{r, code=xfun::read_utf8('your-script.R')}
+    ```{r, file=c('one.R', 'two.R')}
     ```
     ````
-
-- ファイルを好きな数だけ読み込むこともできます.
-
-    ````md
-    ```{r, include=FALSE}
-    read_files <- function(files) {
-      unlist(lapply(files, xfun::read_utf8))
-    }
-    ```
-
-    ```{r, code=read_files(c('one.R', 'two.R'))}
-    ```
-    ````
+  
 
 他の言語のスクリプトも読み込めます. R Markdown で他の言語を使う方法は\@ref(other-languages)章を確認してください. 以下に, もう少しだけ R 以外のコードの例をお見せします.
 
 - Python スクリプトを読み込む.
 
     ````md
-    ```{python, code=xfun::read_utf8('script.py')}
+    ```{python, file='script.py'}
     ```
     ````
 
 - C++ ファイルを読み込む:
 
     ````md
-    ```{Rcpp, code=xfun::read_utf8('file.cpp')}
+    ```{Rcpp, file='source.cpp'}
     ```
     ````
 
-`code` オプションがあれば, お気に入りのエディタ使って複雑なコードを開発した上で, それを R Markdown 文書のコードチャンクに読み込ませるということができます.
+`file` オプションがあれば, お気に入りのエディタ使って複雑なコードを開発した上で, それを R Markdown 文書のコードチャンクに読み込ませるということができます.
 
 ## 外部スクリプトから複数のコードチャンクを読み込む (\*) {#read-chunk}
 
@@ -8419,7 +8411,7 @@ cat(unlist(res), sep = '\n')
 
 ## グラフ画像ファイルを残す {#keep-files}
 
-ほとんどの R Markdown 出力フォーマットはデフォルトで `self_contained = TRUE`\index{しゅつりょくおぷしょん@出力オプション!self\_contained} オプションを使用しています. これは出力文書に R グラフを埋め込むので, 出力文書を閲覧する時の中間ファイルは必要ありません. その結果, グラフ画像のフォルダ (典型的には `_files` という接尾語があります) は Rmd 文書がレンダリングされた後に削除されます\index{ず図!ふぁいるをのこす@ファイルを残す}.
+ほとんどの R Markdown 出力フォーマットはデフォルトで `self_contained = TRUE`\index{しゅつりょくおぷしょん@出力オプション!self\_contained} オプションを使用しています. これは出力文書に R グラフを埋め込むので, 出力文書を閲覧する時の中間ファイルは必要ありません. その結果, グラフ画像のフォルダ (典型的には `_files` という接尾語があります) は Rmd 文書がレンダリングされた後に削除されます\index{ず@図!ふぁいるをのこす@ファイルを残す}.
 
 ときにはグラフ画像ファイルを残したいことがあります. 例えば学術誌の中には, 画像ファイルを別個に提出するよう著者に求めるものもあります. R Markdown ではこれらのファイルの自動削除を回避する3通りの方法があります.
 
@@ -9061,6 +9053,29 @@ knitr::opts_chunk$set(
   - 理論上はチャンクラベルもまた引用符で囲む必要がありますが, 利便性のため書かなくとも自動で引用符が追加されます (例: ```` ```{r, 2a}``` ```` は ```` ```{r, label='2a'}``` ```` として扱われます).
   - R のコードとして有効なものである限り, いくらでも複雑な構文を書くことができます.
 
+チャンクオプションの書き方の別の方法として, コードチャンクの本文内に `#| ` の後に書くことができます. 例えば以下のように.
+
+````
+```{r}
+#| my-chunk, echo = FALSE, fig.width = 10,
+#| fig.cap = "This is a long long
+#|   long long caption."
+plot(cars)
+```
+````
+
+チャンクオプションとコードの間を1行開けるかどうかは任意です. この記法はオプションの改行が許容されます. 好きなだけ改行してオプションを書くことができます. 同じオプションが本文とチャンクヘッダ (```` ```{} ```` の内側) の両方で指定された場合, 前者が後者を上書きします. チャンク内では `<タグ>: <値>` のような YAML 式の記法でオプションを書くこともできます. 通常は, 1行毎に1つづつオプションを書かねばなりません. 例えば以下のように.
+
+````
+```{r}
+#| echo: false
+#| fig.width: 10
+```
+````
+
+YAML 記法を選択した場合, 生の R の式ではなく YAML の値として有効なものを書かねばなりません.
+
+
 以下では `オプション`: (`デフォルト値`; 値の型) という形式で, **knitr** で使えるチャンクオプションのリストを掲載します.
 
 ### コード評価関連 {#evaluate}
@@ -9094,7 +9109,7 @@ knitr::opts_chunk$set(
 -   **`include`**: (`TRUE`; `logical`).: 出力する文書にチャンクの出力を含めるかどうかです. `FALSE` ならばなにも書き出されませんが, コードの評価はなされ, チャンク内にプロット命令があるのならグラフのファイルも生成されます. よってこの図をそれ以降で任意に挿入することもできます.
 -   **`strip.white`**: (`TRUE`; `logical`).: 出力時にソースコードの冒頭と末尾から空白行を除去するかどうかです.
 -   **`class.output`**: (`NULL`; `character`).: テキストの出力ブロックに追加するクラス名のベクトル. このオプションは R Markdown で HTML を出力する際にのみ機能します. 例えば `class.output = c('foo', 'bar')` はテキスト出力が `<pre class="foo bar"></pre>` で囲まれたブロックとして書き出されます.
--   **`class.message`**/**`class.warning`**/**`class.error`**: (`NULL`; `character`)・: `class.output` と同様に, R Markdown においてそれぞれ メッセージ文, 警告文, エラー文のブロックに対してクラス名を与えます. `class.source` もまた同様にソースコードのブロックに対して適用されます. @ref(#code-decoration)節を参照してください.
+-   **`class.message`**/**`class.warning`**/**`class.error`**: (`NULL`; `character`)・: `class.output` と同様に, R Markdown においてそれぞれ メッセージ文, 警告文, エラー文のブロックに対してクラス名を与えます. `class.source` もまた同様にソースコードのブロックに対して適用されます. \@ref(code-decoration)節を参照してください.
 -   **`attr.output`**/**`attr.message`**/**`attr.warning`**/**`attr.error`**: (`NULL`;
     `character`).: 上記の `class.*` オプション群と同様に, Pandoc に対してコードブロックの属性を指定します. つまり `class.*` は `attr.*` の特殊ケースです. 例: `class.source = 'numberLines'` は `attr.source = '.numberLines'` と等価ですが, `attr.source` は任意の値を取ることができます. 例えば, `attr.source = c('.numberLines', 'startFrom="11"')`.
 -   **`render`**: (`knitr::knit_print`; `function(x, options, ...)`).: チャンクで表示される値に対して適用する関数です. 関数の第1引数には (`x`) はチャンクの各評価式が評価された結果が与えられます. このチャンクのチャンクオプションがリストとして第二引数 `opstions` に与えられます. この関数は文字列を返すことを想定しています. 詳細は package vignette (`vignette('knit_print', package = 'knitr')`) を参照してください.
@@ -9113,6 +9128,7 @@ knitr::opts_chunk$set(
 -   **`highlight`**: (`TRUE`; `logical`).: ソースコードをシンタックスハイライトするかどうかです^[訳注: R Markdown ではさらに, YAML フロントマターで適用するハイライトのテーマ名を指定できます].
 -   **`class.source`**: (`NULL`; `character`).: 出力された文書のソースコードブロックのクラス名です. 出力ブロックに対して機能する `class.output` をはじめとする `class.*` シリーズと同様です.
 -   **`attr.source`**: (`NULL`; `character`).: ソースコードブロックの属性です. `attr.output` などの `attr.*` シリーズと同様です.
+- -   `lang`: (`NULL`; `character`) コードチャンクの言語名です. デフォルトでは言語名はエンジン名と同じです. 例: `r`. このオプションは主に Markdown ベースの文書出力でシンタックスハイライトするためのものです.
 -   `size`: (`'normalsize'`; `character`) `.Rnw` 使用時のチャンクサイズのフォントサイズです. 指定可能なサイズは  [overleaf のヘルプページ (英語)](https://www.overleaf.com/learn/latex/Font_sizes,_families,_and_styles) を参照してください^[訳注: `\normalsize`, `\Large`, `\LARGE` など LaTeX で指定できるフォントサイズを表すマクロのことを指しています].
 -   **`background`**: (`'#F7F7F7'`; `character`).:  `.Rnw` 使用時のチャンクブロックの背景色です^[訳注: R Markdown では背景色は CSS や `class.output` などで設定する必要があります. 詳細は R Markdown Cookbook などを参照してください].
 -   **`indent`**: (`character`).: チャンクの出力で各行に追加する文字です. 典型的には空白と同義です. このオプションは読み込み専用を想定しており, 値は **knitr** が文書を読み込む際に設定されます. 例えば以下のチャンクでは, `indent` は空白文字2個です^[訳注: R Markdown の場合は **knitr** 以外の中間処理があるため, 必ずしもこのルールを守りません].
@@ -9128,7 +9144,7 @@ knitr::opts_chunk$set(
 -   **`cache`**: (`FALSE`; `logical`).: コードチャンクのキャッシュを取るかどうかです. 初回の実行またはキャッシュが存在しない場合は通常通り実行され, 結果がデータセットが保存され (`.rdb`, `.rdx` ファイルなど), それ以降でコードチャンクが評価されることがあれば, 以前保存されたこれらのファイルからこのチャンクの結果を読み出します. ファイル名がチャンクラベルと R コードの MD5 ハッシュ値で一致する必要があることに注意してください. つまりチャンクになんらかの変更がある度に異なる MD5 ハッシュ値が生成されるため, キャッシュはその度に無効になります. 詳細は [キャッシュの解説](https://gedevan-aleksizde.github.io/knitr-doc-ja/cache.html#cache) を参考にしてください.
 -   **`cache.path`**: (`'cache/'`; `character`).: 生成したキャッシュファイルの保存場所を指定します. R Markdown ではデフォルトでは入力ファイルの名前に基づきます. 例えば `INPUT.Rmd` の `FOO` というラベルのチャンクのキャッシュは `INPUT_cache/FOO_*.*` というファイルパスに保存されます.
 -   **`cache.vars`**: (`NULL`; `character`).: キャッシュデータベースに保存される変数名のベクトルを指定します. デフォルトではチャンクで作られた全ての変数が識別され保存されますが, 変数名の自動検出はロバストではないかもしれませんし,  保存したい変数を選別したい場合もあるかもしれないので, 保存したい変数を手動選択することもできます.
--   **`cache.globals`**: (`NULL`; `character`).: このチャンクで作成されない変数の名前のベクトルを指定します. このオプションは主に `autodep = TRUE` オプションをより正確に動作させたいときに使います. チャンク `B` で使われているグローバル変数が チャンク `A` のローカル変数として使われているときなど. グローバル変数の自動検出に失敗した際に使う場合, こにオプションを使って手動でグローバル変数の名前を指定してください (具体例として issue [\#1403](https://github.com/yihui/knitr/issues/1403) を参照してください).
+-   **`cache.globals`**: (`NULL`; `character`).: このチャンクで作成されない変数の名前のベクトルを指定します. このオプションは主に `autodep = TRUE` オプションをより正確に動作させたいときに使います. チャンク `B` で使われているグローバル変数が チャンク `A` のローカル変数として使われているときなど. グローバル変数の自動検出に失敗した際に使う場合, こにオプションを使って手動でグローバル変数の名前を指定してください (具体例として issue [\#1403](https://github.com/yihui/knitr/issues/1403) を参照してください). さらに, `cache.globals = FALSE` は, 変数がグローバルかローカルかにかかわらず, コードチャンク内のすべての変数を検出することを意味します. 
 -   **`cache.lazy`**: (`TRUE`; logical).: 遅延読み込み `lazyLoad()` を使うか, 直接 `load()` でオブジェクトを読み込むかを指定します. 非常に大きなオブジェクトに対しては, 遅延読み込みは機能しないかもしれません. よってこの場合は `cache.lazy = FALSE` が望ましいかもしれません (issue [\#572](https://github.com/yihui/knitr/issues/572) を参照してください).
 -   **`cache.comments`**: (`NULL`; `logical`).: `FALSE` の場合, R コードチャンク内のコメントを書き換えてもキャッシュが無効になりません.
 -   **`cache.rebuild`**: (`FALSE`; `logical`).: `TRUE` の場合, キャッシュが有効であってもチャンクのコードの再評価を行います. このオプションはキャッシュの無効化の条件を指定したいときに有用です. 例えば `cache.rebuild = !file.exists("some-file")` とすれば `some-file` が存在しないときにチャンクが評価されキャッシュが再構成されます (issue [\#238](https://github.com/yihui/knitr/issues/238) を参照).
@@ -9214,6 +9230,7 @@ knitr::opts_chunk$set(
 ### コードチャンク関連 {#code-chunk}
 
 - **`code`**: (`NULL`; `character`).: 指定された場合, そのチャンクのコードを上書きします. この機能によって, プログラミング的にコード挿入が可能になります. 例えば `code = readLines('test.R')` とすれば `test.R` の内容を現在のチャンクで実行します.
+`file`: (`NULL`; `character`) これが指定された場合, `code` オプションが, チャンクとして読み込まれた外部ファイルの内容で上書きされます. `file = "test.R"` というチャンクオプションは `code = xfun::read_all("test.R")` を指定しているのと同じことを意味します.
 - **`ref.label`**: (`NULL`; `character`).: 現在のチャンクのコードに引き継ぐ, 別のチャンクのラベルの文字列ベクトルを指定します (動作例は  [チャンク参照](https://gedevan-aleksizde.github.io/knitr-doc-ja/reference.html#reference) を確認してください).
 
 ### 子文書関連 {#child-document-appendix}
@@ -9298,7 +9315,7 @@ knitr::opts_chunk$set(
 - **`header`**: (`NULL`; `character`).: 文書の開始前に挿入するテキストを指定します. (例えば, LaTeX ならば `\documentclass{article}` の直後, HTML ならば `<head>` タグの直後). このオプションは LaTeX プリアンブルや HTML ヘッダでコマンドやスタイルの定義をするのに有用です. ドキュメントの開始地点は `knitr::knit_patterns$get('document.begin')` で知ることができます. このオプションは `.Rnw` と `.Rhtml` 限定の機能です^[訳注: R Markdown ではヘッダの設定は YAML フロントマターで行います].
 -   `label.prefix`: (`c(table = 'tab:')`; character) ラベルの接頭語を指定します. 現時点では `kable::kable()` によって生成される表のラベルに対する接頭語のみサポートしています.
 -  **`latex.options.color`**, **`latex.options.graphicx`**: (`NULL`).: それぞれ LaTeX パッケージの  **color** と **graphicx** に対するオプションを指定します. これらのオプションは `.Rnw` 限定の機能です^[訳注: R Markdown ではこの機能もやはり YAML フロントマターが担当しています].
-- **`latex.tilde`** (`NULL`): .Rnw 文書のハイライト出力部でのチルダを表す LaTeX コマンドです (使用例は issue [#1992](https://github.com/yihui/knitr/issues/1992) を見てください).
+- **`latex.tilde`** (`NULL`): .Rnw 文書のシンタックスハイライトされたチャンク出力内でのチルダ文字を表す LaTeX コマンドの文字列です (使用例は issue [#1992](https://github.com/yihui/knitr/issues/1992) を見てください).
 -   **`out.format`**: (`NULL`; `character`).: 可能な値は `latex`, `sweave`,
     `html`, `markdown`, `jekyll` です. このオプションは入力ファイル名に応じて自動で決定され, 自動設定されるフック関数に影響します. 例えば `?knitr::render_latex` を参考にしてください. このオプションは `knitr::knit()` が実行される**前に**設定する必要があります (文書内で設定しても機能しません).
 -   **`progress`**: (`TRUE`; `logical`).: `knitr::knit()` の実行中にプログレスバーを表示するかどうかを指定します.
