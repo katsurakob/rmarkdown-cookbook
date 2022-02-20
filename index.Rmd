@@ -10,7 +10,6 @@ booklanguage: JP
 monofont: Ricty Discord
 jmonofont: Ricty Discord
 documentclass: bxjsreport
-jfontpreset: noto
 link-citations: yes
 colorlinks: yes
 bibliography:
@@ -24,6 +23,7 @@ github-repo: Gedevan-Aleksizde/rmarkdown-cookbook
 site: bookdown::bookdown_site
 url: 'https\://bookdown.org/yihui/rmarkdown-cookbook/'
 cover-image: images/cover.png
+biblio-title: "参考文献"
 ---
 
 ```{r setup, include=FALSE}
