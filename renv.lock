@@ -43,10 +43,10 @@
     },
     "DiagrammeR": {
       "Package": "DiagrammeR",
-      "Version": "1.0.8",
+      "Version": "1.0.6.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "cea1d840e6f63022ccb13350662f77c6",
+      "Hash": "3cb13b97961593b4a1ed0c8e37df9d9b",
       "Requirements": [
         "RColorBrewer",
         "downloader",
